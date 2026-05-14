@@ -16,6 +16,7 @@ export default function PrivacidadPage() {
         <ul className="list-disc list-inside space-y-1 text-zinc-400 ml-2">
           <li><strong className="text-zinc-200">Titular:</strong> Carlos Gálvez Carrillo</li>
           <li><strong className="text-zinc-200">NIF:</strong> 49080222Q</li>
+          <li><strong className="text-zinc-200">Domicilio:</strong> Calle Museo 4, 21840 Niebla (Huelva), España</li>
           <li><strong className="text-zinc-200">Email:</strong> info@marsof.es</li>
         </ul>
 
