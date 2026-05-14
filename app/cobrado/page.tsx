@@ -38,15 +38,15 @@ export default async function CobradoPage({
   return (
     <div className="min-h-screen bg-zinc-900/40 flex items-center justify-center px-6">
       <div className="text-center max-w-md">
-        <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">✓</div>
+        <div className="w-20 h-20 bg-sky-500/20 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">✓</div>
         <h1 className="text-3xl font-bold text-zinc-100 mb-4">¡Pago confirmado!</h1>
         <p className="text-zinc-400 mb-2">
           Hemos registrado el pago de la factura <strong>{num}</strong>
           {importeFormateado ? ` por ${importeFormateado}` : ''}.
         </p>
         <p className="text-zinc-500 text-sm mb-8">No recibirás más recordatorios por esta factura.</p>
-        <div className="bg-emerald-500/100/10 border border-emerald-500/20 rounded-xl p-5 text-sm text-emerald-300">
-          Gestión de cobros automatizada por <strong>Saldea</strong> · <a href="https://marsof.es" style={{ color: '#059669' }}>marsof.es</a>
+        <div className="bg-sky-500/100/10 border border-sky-500/20 rounded-xl p-5 text-sm text-sky-300">
+          Gestión de cobros automatizada por <strong>Saldea</strong> · <a href="https://marsof.es" style={{ color: '#0284c7' }}>marsof.es</a>
         </div>
       </div>
     </div>

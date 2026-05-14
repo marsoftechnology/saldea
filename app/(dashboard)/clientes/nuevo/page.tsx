@@ -65,7 +65,7 @@ export default function NuevoClientePage() {
             onChange={handleChange}
             required
             placeholder="Pedro García"
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
           />
         </div>
 
@@ -78,7 +78,7 @@ export default function NuevoClientePage() {
             onChange={handleChange}
             required
             placeholder="pedro@empresa.com"
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
           />
         </div>
 
@@ -89,7 +89,7 @@ export default function NuevoClientePage() {
             value={form.empresa}
             onChange={handleChange}
             placeholder="Empresa S.L."
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
           />
         </div>
 
@@ -100,7 +100,7 @@ export default function NuevoClientePage() {
             value={form.telefono}
             onChange={handleChange}
             placeholder="600 000 000"
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
           />
         </div>
 
@@ -111,7 +111,7 @@ export default function NuevoClientePage() {
         <button
           type="submit"
           disabled={cargando}
-          className="w-full bg-emerald-500 text-white py-3 rounded-lg font-medium hover:bg-emerald-400 transition-colors disabled:opacity-60"
+          className="w-full bg-sky-500 text-white py-3 rounded-lg font-medium hover:bg-sky-400 transition-colors disabled:opacity-60"
         >
           {cargando ? 'Guardando...' : 'Guardar cliente'}
         </button>

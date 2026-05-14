@@ -46,7 +46,7 @@ export default async function AnalyticsPage() {
   const topDeudores = Object.values(deudaPorCliente).sort((a, b) => b.importe - a.importe).slice(0, 5)
 
   const estados = [
-    { label: 'Cobradas', count: cobradas.length, importe: importeCobrado, color: 'bg-emerald-500/100', textColor: 'text-emerald-300' },
+    { label: 'Cobradas', count: cobradas.length, importe: importeCobrado, color: 'bg-sky-500/100', textColor: 'text-sky-300' },
     { label: 'Pendientes', count: pendientes.length, importe: importePendiente, color: 'bg-yellow-400', textColor: 'text-amber-300' },
     { label: 'Vencidas', count: vencidas.length, importe: importeVencido, color: 'bg-red-400', textColor: 'text-rose-300' },
   ]
@@ -67,7 +67,7 @@ export default async function AnalyticsPage() {
         </div>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 border border-white/5 shadow-sm">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Cobrado</p>
-          <p className="text-xl font-bold text-emerald-400">{formatearEuros(importeCobrado)}</p>
+          <p className="text-xl font-bold text-sky-400">{formatearEuros(importeCobrado)}</p>
           <p className="text-xs text-zinc-500 mt-1">{cobradas.length} facturas</p>
         </div>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 border border-white/5 shadow-sm">
@@ -93,7 +93,7 @@ export default async function AnalyticsPage() {
                 <span className="font-semibold text-zinc-100">{tasaCobro}%</span>
               </div>
               <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-emerald-500/100 rounded-full transition-all" style={{ width: `${tasaCobro}%` }} />
+                <div className="h-full bg-sky-500/100 rounded-full transition-all" style={{ width: `${tasaCobro}%` }} />
               </div>
             </div>
             <div>
@@ -102,7 +102,7 @@ export default async function AnalyticsPage() {
                 <span className="font-semibold text-zinc-100">{tasaImporte}%</span>
               </div>
               <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-emerald-400 rounded-full transition-all" style={{ width: `${tasaImporte}%` }} />
+                <div className="h-full bg-sky-400 rounded-full transition-all" style={{ width: `${tasaImporte}%` }} />
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@ export default async function AnalyticsPage() {
               return (
                 <div key={log.id} className="flex items-center justify-between p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center text-sm">✉️</div>
+                    <div className="w-8 h-8 bg-sky-500/10 rounded-lg flex items-center justify-center text-sm">✉️</div>
                     <div>
                       <p className="text-sm font-medium text-zinc-100">{log.asunto}</p>
                       <p className="text-xs text-zinc-500">{cliente?.nombre ?? '—'}{factura ? ` · Factura ${factura.numero}` : ''}</p>
@@ -174,7 +174,7 @@ export default async function AnalyticsPage() {
                   <div className="text-right flex-shrink-0">
                     <p className="text-xs text-zinc-500">{formatearFecha(log.enviado_at)}</p>
                     {factura && (
-                      <Link href={`/facturas/${factura.id}`} className="text-xs text-emerald-400 hover:underline">
+                      <Link href={`/facturas/${factura.id}`} className="text-xs text-sky-400 hover:underline">
                         Ver factura →
                       </Link>
                     )}
@@ -194,7 +194,7 @@ export default async function AnalyticsPage() {
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl mt-6">
         <div className="flex items-center justify-between p-6 border-b border-white/5">
           <h2 className="font-semibold text-zinc-100">Todas las facturas</h2>
-          <Link href="/facturas" className="text-sm text-emerald-400 hover:underline">Gestionar →</Link>
+          <Link href="/facturas" className="text-sm text-sky-400 hover:underline">Gestionar →</Link>
         </div>
         {todas.length === 0 ? (
           <div className="p-12 text-center">

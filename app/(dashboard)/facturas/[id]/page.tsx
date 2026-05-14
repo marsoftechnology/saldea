@@ -63,7 +63,7 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
             <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Vencimiento</p>
             <p className="text-lg font-semibold text-zinc-100">{formatearFecha(factura.fecha_vencimiento)}</p>
             {factura.estado !== 'cobrada' && factura.estado !== 'cancelada' && (
-              <p className={`text-sm mt-0.5 ${dias > 0 ? 'text-red-500' : 'text-emerald-400'}`}>
+              <p className={`text-sm mt-0.5 ${dias > 0 ? 'text-red-500' : 'text-sky-400'}`}>
                 {dias > 0 ? `Vencida hace ${dias} días` : `Vence en ${Math.abs(dias)} días`}
               </p>
             )}
@@ -91,7 +91,7 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
           {recordatorios?.map(r => (
             <div key={r.id} className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className={`w-2 h-2 rounded-full ${r.enviado ? 'bg-emerald-500/100' : 'bg-gray-200'}`} />
+                <div className={`w-2 h-2 rounded-full ${r.enviado ? 'bg-sky-500/100' : 'bg-gray-200'}`} />
                 <span className="text-sm text-zinc-300">Día {r.dias_offset} — Tono {r.tono}</span>
               </div>
               <span className="text-xs text-zinc-500">

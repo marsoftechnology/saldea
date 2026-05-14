@@ -31,7 +31,7 @@ export function PricingSection() {
   return (
     <section id="precios" className="py-28 max-w-3xl mx-auto px-6">
       <div className="text-center mb-12">
-        <p className="text-emerald-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">Precios</p>
+        <p className="text-sky-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">Precios</p>
         <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
           {esMensual ? 'Empieza gratis 7 días' : 'Ahorra casi 2 meses pagando al año'}
         </h2>
@@ -47,7 +47,7 @@ export function PricingSection() {
         <div className="relative inline-flex bg-zinc-900/80 border border-white/10 rounded-full p-1.5 shadow-inner backdrop-blur">
           {/* Slider animado */}
           <div
-            className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-emerald-500 rounded-full shadow-lg shadow-emerald-500/30 transition-transform duration-300 ease-out ${
+            className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-sky-500 rounded-full shadow-lg shadow-sky-500/30 transition-transform duration-300 ease-out ${
               esMensual ? 'translate-x-0' : 'translate-x-[calc(100%+12px)]'
             }`}
             style={{ left: '6px' }}
@@ -71,7 +71,7 @@ export function PricingSection() {
           >
             Anual
             <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full transition-colors ${
-              !esMensual ? 'bg-zinc-900 text-emerald-400' : 'bg-emerald-500/20 text-emerald-300'
+              !esMensual ? 'bg-zinc-900 text-sky-400' : 'bg-sky-500/20 text-sky-300'
             }`}>
               −{MESES_AHORRADOS} meses
             </span>
@@ -80,14 +80,14 @@ export function PricingSection() {
       </div>
 
       {/* Card único Pro */}
-      <div className="relative rounded-3xl bg-gradient-to-br from-emerald-500/30 via-white/5 to-transparent p-[1px] shadow-2xl shadow-emerald-500/10">
+      <div className="relative rounded-3xl bg-gradient-to-br from-sky-500/30 via-white/5 to-transparent p-[1px] shadow-2xl shadow-sky-500/10">
         <div className="relative bg-zinc-950/90 backdrop-blur-xl rounded-3xl p-8 md:p-10">
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-zinc-900 text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-500 text-zinc-900 text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide">
             {esMensual ? '7 días gratis' : 'Ahorra 89€'}
           </div>
 
           <div className="text-center mb-8 mt-2">
-            <p className="text-xs font-semibold text-emerald-400 uppercase tracking-[0.2em] mb-2">Saldea Pro</p>
+            <p className="text-xs font-semibold text-sky-400 uppercase tracking-[0.2em] mb-2">Saldea Pro</p>
             <p className="text-zinc-400 text-sm mb-7">Para autónomos y micro-empresas que ya facturan en serio</p>
 
             <div className="flex items-end justify-center gap-2 mb-2">
@@ -105,7 +105,7 @@ export function PricingSection() {
             </p>
 
             {!esMensual && (
-              <p className="text-emerald-400 text-sm font-semibold mt-3">
+              <p className="text-sky-400 text-sm font-semibold mt-3">
                 Ahorras {AHORRO_ANUAL_EUROS}€ al año respecto al mensual
               </p>
             )}
@@ -114,7 +114,7 @@ export function PricingSection() {
           <div className="space-y-3 text-sm text-zinc-300 mb-10 max-w-md mx-auto">
             {features.map((f, i) => (
               <p key={i} className="flex items-start gap-3">
-                <span className="text-emerald-400 font-bold mt-0.5 text-base">✓</span>
+                <span className="text-sky-400 font-bold mt-0.5 text-base">✓</span>
                 <span>{f}</span>
               </p>
             ))}
@@ -122,7 +122,7 @@ export function PricingSection() {
 
           <Link
             href={`/registro?plan=${intervalo}`}
-            className="block w-full text-center bg-emerald-500 text-zinc-900 py-4 rounded-xl font-bold text-base hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5"
+            className="block w-full text-center bg-sky-500 text-zinc-900 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5"
           >
             {esMensual ? 'Empezar 7 días gratis →' : 'Pagar 499€ y empezar →'}
           </Link>

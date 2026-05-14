@@ -20,7 +20,7 @@ export default function MarcarCobradaButton({ facturaId }: { facturaId: string }
     <button
       onClick={marcarCobrada}
       disabled={cargando}
-      className="bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-400 transition-colors disabled:opacity-60"
+      className="bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-sky-400 transition-colors disabled:opacity-60"
     >
       {cargando ? 'Guardando...' : '✓ Marcar como cobrada'}
     </button>

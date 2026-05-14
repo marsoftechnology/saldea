@@ -62,7 +62,7 @@ export default function EnviarRecordatorioButton({
         {cargando ? 'Enviando...' : '📧 Enviar recordatorio ahora'}
       </button>
       {resultado && (
-        <span className={`text-xs ${resultado.includes('Error') ? 'text-red-500' : 'text-emerald-400'}`}>
+        <span className={`text-xs ${resultado.includes('Error') ? 'text-red-500' : 'text-sky-400'}`}>
           {resultado}
         </span>
       )}

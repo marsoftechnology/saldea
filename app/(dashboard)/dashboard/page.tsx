@@ -45,7 +45,7 @@ export default async function DashboardPage() {
             <h1 className="text-2xl font-bold text-white tracking-tight">Panel de control</h1>
             <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${
               plan === 'pro'
-                ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30'
+                ? 'bg-sky-500/10 text-sky-300 border border-sky-500/30'
                 : 'bg-zinc-800/60 text-zinc-400 border border-white/10'
             }`}>
               Plan {plan}
@@ -56,7 +56,7 @@ export default async function DashboardPage() {
         {plan === 'free' && (
           <Link
             href="/ajustes#plan"
-            className="text-sm font-bold text-zinc-900 bg-emerald-500 hover:bg-emerald-400 px-4 py-2 rounded-lg transition-colors shadow-lg shadow-emerald-500/20"
+            className="text-sm font-bold text-zinc-900 bg-sky-500 hover:bg-sky-400 px-4 py-2 rounded-lg transition-colors shadow-lg shadow-sky-500/20"
           >
             Subir a Pro · 49€/mes →
           </Link>
@@ -89,16 +89,16 @@ export default async function DashboardPage() {
           <p className="text-2xl font-bold text-white">{formatearEuros(totalPendiente)}</p>
           <p className="text-xs text-zinc-500 mt-1">{facturasVencidas} vencidas</p>
         </div>
-        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 hover:border-emerald-500/30 transition-colors">
+        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 hover:border-sky-500/30 transition-colors">
           <p className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2 font-semibold">Cobrado</p>
-          <p className="text-2xl font-bold text-emerald-400">{formatearEuros(totalCobrado)}</p>
+          <p className="text-2xl font-bold text-sky-400">{formatearEuros(totalCobrado)}</p>
           <p className="text-xs text-zinc-500 mt-1">{todas.filter(f => f.estado === 'cobrada').length} facturas</p>
         </div>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors">
           <p className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2 font-semibold">Tasa de cobro</p>
           <p className="text-2xl font-bold text-white">{tasaCobro}%</p>
           <div className="mt-2 h-1.5 bg-white/5 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" style={{ width: `${tasaCobro}%` }} />
+            <div className="h-full bg-gradient-to-r from-sky-500 to-sky-400 rounded-full" style={{ width: `${tasaCobro}%` }} />
           </div>
         </div>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors">
@@ -110,7 +110,7 @@ export default async function DashboardPage() {
 
       {/* Acciones rápidas */}
       <div className="flex gap-3 mb-8 flex-wrap">
-        <Link href="/facturas/nueva" className="bg-emerald-500 text-zinc-900 px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20">
+        <Link href="/facturas/nueva" className="bg-sky-500 text-zinc-900 px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
           + Nueva factura
         </Link>
         <Link href="/clientes/nuevo" className="bg-white/[0.05] border border-white/10 text-zinc-200 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-white/[0.08] hover:border-white/20 transition-colors">
@@ -122,7 +122,7 @@ export default async function DashboardPage() {
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl overflow-hidden">
         <div className="flex items-center justify-between p-6 border-b border-white/5">
           <h2 className="font-semibold text-white">Últimas facturas</h2>
-          <Link href="/facturas" className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors">Ver todas →</Link>
+          <Link href="/facturas" className="text-sm text-sky-400 hover:text-sky-300 transition-colors">Ver todas →</Link>
         </div>
 
         {facturas && facturas.length > 0 ? (
@@ -145,7 +145,7 @@ export default async function DashboardPage() {
         ) : (
           <div className="p-12 text-center">
             <p className="text-zinc-500 text-sm mb-4">Aún no tienes facturas</p>
-            <Link href="/facturas/nueva" className="text-emerald-400 text-sm font-medium hover:underline">
+            <Link href="/facturas/nueva" className="text-sky-400 text-sm font-medium hover:underline">
               Crear tu primera factura →
             </Link>
           </div>

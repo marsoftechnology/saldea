@@ -29,7 +29,7 @@ export async function enviarEmail(params: {
 }): Promise<boolean> {
   try {
     const { para, asunto, cuerpo, desde, nombreEmpresa, facturaId, logoUrl, colorPrimario, idioma, adjuntos } = params
-    const color = colorPrimario && /^#[0-9a-fA-F]{6}$/.test(colorPrimario) ? colorPrimario : '#059669'
+    const color = colorPrimario && /^#[0-9a-fA-F]{6}$/.test(colorPrimario) ? colorPrimario : '#0284c7'
     const i = (idioma && idioma in T ? idioma : 'es') as Idioma
     const t = T[i]
 

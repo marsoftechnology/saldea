@@ -36,7 +36,7 @@ export default async function ClienteDetallePage({ params }: { params: Promise<{
         </Link>
         <div className="flex items-start gap-4 justify-between">
           <div className="flex items-start gap-4">
-            <div className="w-14 h-14 bg-emerald-500/20 text-emerald-300 rounded-full flex items-center justify-center font-semibold text-xl">
+            <div className="w-14 h-14 bg-sky-500/20 text-sky-300 rounded-full flex items-center justify-center font-semibold text-xl">
               {cliente.nombre.charAt(0).toUpperCase()}
             </div>
             <div>
@@ -73,7 +73,7 @@ export default async function ClienteDetallePage({ params }: { params: Promise<{
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Total cobrado</p>
-          <p className="text-2xl font-bold text-emerald-400">{formatearEuros(totalCobrado)}</p>
+          <p className="text-2xl font-bold text-sky-400">{formatearEuros(totalCobrado)}</p>
         </div>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Pendiente de cobro</p>
@@ -84,7 +84,7 @@ export default async function ClienteDetallePage({ params }: { params: Promise<{
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl">
         <div className="flex items-center justify-between p-6 border-b border-white/5">
           <h2 className="font-semibold text-zinc-100">Facturas ({facturas?.length ?? 0})</h2>
-          <Link href="/facturas/nueva" className="text-sm text-emerald-400 hover:text-emerald-300 font-medium">
+          <Link href="/facturas/nueva" className="text-sm text-sky-400 hover:text-sky-300 font-medium">
             + Nueva factura
           </Link>
         </div>

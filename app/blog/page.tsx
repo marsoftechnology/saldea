@@ -30,7 +30,7 @@ export default function BlogIndex() {
           </div>
           <Link
             href="/registro"
-            className="bg-emerald-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-emerald-400 transition-colors"
+            className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors"
           >
             Probar Saldea gratis
           </Link>
@@ -48,12 +48,12 @@ export default function BlogIndex() {
             <Link
               key={a.slug}
               href={`/blog/${a.slug}`}
-              className="block border border-white/10 rounded-xl p-8 hover:border-emerald-500/40 transition-all"
+              className="block border border-white/10 rounded-xl p-8 hover:border-sky-500/40 transition-all"
             >
-              <div className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-2">
+              <div className="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">
                 {a.categoria}
               </div>
-              <h2 className="text-2xl font-bold text-zinc-100 mb-3 hover:text-emerald-300 transition-colors">
+              <h2 className="text-2xl font-bold text-zinc-100 mb-3 hover:text-sky-300 transition-colors">
                 {a.titulo}
               </h2>
               <p className="text-zinc-400 leading-relaxed mb-4">{a.resumen}</p>
@@ -71,7 +71,7 @@ export default function BlogIndex() {
           </p>
           <Link
             href="/registro"
-            className="inline-block bg-emerald-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-emerald-400 transition-colors"
+            className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors"
           >
             Empezar gratis →
           </Link>

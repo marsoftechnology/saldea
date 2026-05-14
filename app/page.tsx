@@ -58,9 +58,9 @@ export default function MarsofPage() {
 
       {/* Decoración de fondo: glow verde + grid */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-emerald-500/10 blur-3xl" />
-        <div className="absolute top-[50%] right-[-10%] w-[600px] h-[600px] rounded-full bg-emerald-600/5 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.08),transparent_50%)]" />
+        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-sky-500/10 blur-3xl" />
+        <div className="absolute top-[50%] right-[-10%] w-[600px] h-[600px] rounded-full bg-sky-600/5 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(14,165,233,0.08),transparent_50%)]" />
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
@@ -77,7 +77,7 @@ export default function MarsofPage() {
             <Logo variant="mark" size="xs" href={null} />
             <div className="flex items-center gap-2">
               <span className="text-xl font-bold tracking-tight text-white">Marsof</span>
-              <span className="text-[10px] uppercase tracking-wider bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold">Beta</span>
+              <span className="text-[10px] uppercase tracking-wider bg-sky-500/10 text-sky-300 border border-sky-500/20 px-2 py-0.5 rounded-full font-bold">Beta</span>
             </div>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
@@ -105,8 +105,8 @@ export default function MarsofPage() {
         </Reveal>
 
         <Reveal effect="fade-up">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-full text-xs font-medium mb-8">
-            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-8">
+            <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
             Construido para autónomos y pymes españolas
           </div>
         </Reveal>
@@ -114,7 +114,7 @@ export default function MarsofPage() {
         <Reveal effect="fade-up" delay={80}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.0] tracking-tight mb-7 max-w-4xl mx-auto">
             Automatiza lo que te<br />
-            <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-sky-500 bg-clip-text text-transparent">
               roba el tiempo
             </span>{' '}
             cada mes.
@@ -132,7 +132,7 @@ export default function MarsofPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/saldea"
-              className="group inline-flex items-center gap-2 bg-emerald-500 text-white px-7 py-4 rounded-xl font-bold text-base hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 bg-sky-500 text-white px-7 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5"
             >
               Empezar con Saldea
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -173,7 +173,7 @@ export default function MarsofPage() {
       <section id="productos" className="py-28 max-w-6xl mx-auto px-6">
         <Reveal effect="fade-up">
           <div className="text-center mb-16">
-            <p className="text-emerald-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">Productos</p>
+            <p className="text-sky-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">Productos</p>
             <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
               Nuestra suite de apps
             </h2>
@@ -189,7 +189,7 @@ export default function MarsofPage() {
               <div
                 className={`relative h-full rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1 ${
                   app.estado === 'disponible'
-                    ? 'bg-gradient-to-br from-emerald-500/20 via-zinc-900/50 to-zinc-900/50 border-2 border-emerald-500/40 shadow-xl shadow-emerald-500/10'
+                    ? 'bg-gradient-to-br from-sky-500/20 via-zinc-900/50 to-zinc-900/50 border-2 border-sky-500/40 shadow-xl shadow-sky-500/10'
                     : 'bg-zinc-900/40 border border-white/10 hover:border-white/20'
                 }`}
               >
@@ -197,7 +197,7 @@ export default function MarsofPage() {
                 <div className="flex items-center justify-between mb-7">
                   <span className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
                     app.estado === 'disponible'
-                      ? 'bg-emerald-500 text-zinc-900'
+                      ? 'bg-sky-500 text-zinc-900'
                       : 'bg-zinc-800 text-zinc-400 border border-white/10'
                   }`}>
                     {app.etiqueta}
@@ -210,7 +210,7 @@ export default function MarsofPage() {
 
                 <div className="mt-auto">
                   <p className={`text-sm font-medium mb-4 ${
-                    app.estado === 'disponible' ? 'text-emerald-300' : 'text-zinc-500'
+                    app.estado === 'disponible' ? 'text-sky-300' : 'text-zinc-500'
                   }`}>
                     {app.precio}
                   </p>
@@ -218,12 +218,12 @@ export default function MarsofPage() {
                   {app.estado === 'disponible' && app.href ? (
                     <Link
                       href={app.href}
-                      className="block w-full text-center bg-emerald-500 text-zinc-900 py-3 rounded-xl font-bold hover:bg-emerald-400 transition-colors"
+                      className="block w-full text-center bg-sky-500 text-zinc-900 py-3 rounded-xl font-bold hover:bg-sky-400 transition-colors"
                     >
                       Probar {app.nombre} →
                     </Link>
                   ) : avisado[app.nombre] ? (
-                    <div className="text-center py-3 text-sm text-emerald-300 font-medium bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                    <div className="text-center py-3 text-sm text-sky-300 font-medium bg-sky-500/10 rounded-xl border border-sky-500/20">
                       ✓ Te avisamos cuando esté lista
                     </div>
                   ) : (
@@ -234,7 +234,7 @@ export default function MarsofPage() {
                         placeholder="tu@email.com"
                         value={emailAviso[app.nombre] || ''}
                         onChange={e => setEmailAviso(prev => ({ ...prev, [app.nombre]: e.target.value }))}
-                        className="flex-1 min-w-0 px-3 py-2.5 bg-zinc-950/60 border border-white/10 rounded-lg text-sm text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+                        className="flex-1 min-w-0 px-3 py-2.5 bg-zinc-950/60 border border-white/10 rounded-lg text-sm text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
                       />
                       <button
                         type="submit"
@@ -256,7 +256,7 @@ export default function MarsofPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center">
             <Reveal effect="slide-left">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-sky-300 bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full">
                 Producto destacado
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-white mt-5 mb-5 tracking-tight">
@@ -268,27 +268,27 @@ export default function MarsofPage() {
                 y pausa cuando se confirma el pago.
               </p>
               <ul className="space-y-3 text-zinc-300 mb-8">
-                <li className="flex items-start gap-3"><span className="text-emerald-400 font-bold mt-0.5">✓</span> 5 tonos de cordial a último aviso legal</li>
-                <li className="flex items-start gap-3"><span className="text-emerald-400 font-bold mt-0.5">✓</span> Detecta automáticamente respuestas del cliente</li>
-                <li className="flex items-start gap-3"><span className="text-emerald-400 font-bold mt-0.5">✓</span> Importación masiva CSV + plantillas 4 idiomas</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> 5 tonos de cordial a último aviso legal</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Detecta automáticamente respuestas del cliente</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Importación masiva CSV + plantillas 4 idiomas</li>
               </ul>
               <Link
                 href="/saldea"
-                className="inline-flex items-center gap-2 bg-emerald-500 text-zinc-900 px-6 py-3 rounded-xl font-bold hover:bg-emerald-400 transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-sky-500 text-zinc-900 px-6 py-3 rounded-xl font-bold hover:bg-sky-400 transition-all hover:-translate-y-0.5"
               >
                 Empezar 7 días gratis →
               </Link>
             </Reveal>
             <Reveal effect="slide-right" delay={150}>
               <div className="relative">
-                <div className="absolute inset-0 bg-emerald-500/15 blur-3xl -z-10 rounded-3xl" />
-                <div className="rounded-xl bg-gradient-to-br from-emerald-500/30 via-white/10 to-transparent p-[1px] shadow-2xl shadow-emerald-500/10">
+                <div className="absolute inset-0 bg-sky-500/15 blur-3xl -z-10 rounded-3xl" />
+                <div className="rounded-xl bg-gradient-to-br from-sky-500/30 via-white/10 to-transparent p-[1px] shadow-2xl shadow-sky-500/10">
                   <div className="rounded-xl bg-zinc-900 overflow-hidden">
                     <div className="flex items-center gap-2 px-4 py-3 bg-zinc-950/80 border-b border-white/5">
                       <div className="flex gap-1.5">
                         <span className="w-2.5 h-2.5 rounded-full bg-rose-500/60" />
                         <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-sky-500/60" />
                       </div>
                       <div className="flex-1 flex justify-center">
                         <div className="bg-zinc-800/80 text-zinc-500 text-xs px-3 py-1 rounded-md font-mono">
@@ -316,7 +316,7 @@ export default function MarsofPage() {
         <div className="max-w-5xl mx-auto px-6">
           <Reveal effect="fade-up">
             <div className="text-center mb-16">
-              <p className="text-emerald-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">Manifiesto</p>
+              <p className="text-sky-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">Manifiesto</p>
               <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
                 Por qué existe Marsof
               </h2>
@@ -331,7 +331,7 @@ export default function MarsofPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {principios.map((p, i) => (
               <Reveal key={p.titulo} effect="fade-up" delay={i * 80}>
-                <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6 h-full hover:border-emerald-500/30 transition-colors">
+                <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6 h-full hover:border-sky-500/30 transition-colors">
                   <div className="text-3xl mb-4">{p.icono}</div>
                   <h3 className="font-bold text-white mb-2">{p.titulo}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed">{p.desc}</p>
@@ -346,8 +346,8 @@ export default function MarsofPage() {
       <section className="py-28">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <Reveal effect="scale">
-            <div className="relative rounded-3xl bg-gradient-to-br from-emerald-500/20 via-emerald-500/10 to-transparent border border-emerald-500/30 p-12 md:p-16 overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.15),transparent_60%)]" />
+            <div className="relative rounded-3xl bg-gradient-to-br from-sky-500/20 via-sky-500/10 to-transparent border border-sky-500/30 p-12 md:p-16 overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.15),transparent_60%)]" />
               <div className="relative">
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight">
                   Empieza hoy, sin riesgos
@@ -357,7 +357,7 @@ export default function MarsofPage() {
                 </p>
                 <Link
                   href="/saldea"
-                  className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-2xl shadow-emerald-500/20"
+                  className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-2xl shadow-sky-500/20"
                 >
                   Empezar con Saldea
                   <span>→</span>

@@ -42,14 +42,14 @@ function Mark({ size, idSuffix = '' }: { size: number; idSuffix?: string }) {
       height={size}
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ filter: 'drop-shadow(0 6px 16px rgba(16,185,129,0.35))' }}
+      style={{ filter: 'drop-shadow(0 6px 16px rgba(14,165,233,0.35))' }}
     >
       <defs>
         {/* Fondo: gradient diagonal emerald */}
         <linearGradient id={bgId} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#6ee7b7" />
-          <stop offset="55%" stopColor="#10b981" />
-          <stop offset="100%" stopColor="#047857" />
+          <stop offset="0%" stopColor="#7dd3fc" />
+          <stop offset="55%" stopColor="#0ea5e9" />
+          <stop offset="100%" stopColor="#0369a1" />
         </linearGradient>
         {/* Highlight glossy superior */}
         <linearGradient id={hlId} x1="0%" y1="0%" x2="0%" y2="100%">
@@ -58,7 +58,7 @@ function Mark({ size, idSuffix = '' }: { size: number; idSuffix?: string }) {
         </linearGradient>
         {/* Gradient para las letras (dark con un tinte) */}
         <linearGradient id={innerId} x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#022c22" />
+          <stop offset="0%" stopColor="#082f49" />
           <stop offset="100%" stopColor="#0a0a0b" />
         </linearGradient>
         {/* Sombra interior sutil */}

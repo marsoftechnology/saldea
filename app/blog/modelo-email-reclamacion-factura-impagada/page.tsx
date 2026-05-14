@@ -114,7 +114,7 @@ export default function ArticuloPage() {
           </div>
           <Link
             href="/registro"
-            className="bg-emerald-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-emerald-400 transition-colors"
+            className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors"
           >
             Probar Saldea gratis
           </Link>
@@ -134,7 +134,7 @@ export default function ArticuloPage() {
 
         {/* Cabecera */}
         <header className="mb-10">
-          <div className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-3">
+          <div className="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-3">
             Cobros · Plantillas
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 leading-tight mb-5">
@@ -158,7 +158,7 @@ export default function ArticuloPage() {
           <ol className="space-y-2">
             {seccionesIndice.map((s, i) => (
               <li key={s.id}>
-                <a href={`#${s.id}`} className="text-emerald-300 hover:text-emerald-200 hover:underline">
+                <a href={`#${s.id}`} className="text-sky-300 hover:text-sky-200 hover:underline">
                   {i + 1}. {s.titulo}
                 </a>
               </li>
@@ -232,7 +232,7 @@ export default function ArticuloPage() {
         {/* Sección: plantillas */}
         <section id="plantillas" className="mt-14 scroll-mt-24">
           <h2 className="text-2xl font-bold text-zinc-100 mb-2">Las 4 plantillas (copia y pega)</h2>
-          <p className="text-zinc-400 mb-8">Sustituye los campos entre llaves <code className="text-emerald-300 bg-emerald-500/10 text-emerald-300 px-1 rounded">{`{NOMBRE_CLIENTE}`}</code> por los datos reales de tu factura.</p>
+          <p className="text-zinc-400 mb-8">Sustituye los campos entre llaves <code className="text-sky-300 bg-sky-500/10 text-sky-300 px-1 rounded">{`{NOMBRE_CLIENTE}`}</code> por los datos reales de tu factura.</p>
 
           <div className="space-y-10">
             {plantillas.map((pl) => (
@@ -286,14 +286,14 @@ export default function ArticuloPage() {
             <strong>Saldea</strong> hace exactamente eso por ti: importas tus facturas, configuras tu tono, y la IA se encarga del resto. Detecta cuando el cliente paga o discute, escala el tono según los días de retraso, y solo te avisa cuando hay algo importante.
           </p>
 
-          <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-500/30 rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-zinc-100 mb-2">Prueba Saldea gratis 1 mes</h3>
             <p className="text-zinc-300 mb-5">
               Sin tarjeta, sin permanencia. Plan Pro completo durante 30 días para que veas la diferencia.
             </p>
             <Link
               href="/registro"
-              className="inline-block bg-emerald-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-emerald-400 transition-colors"
+              className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors"
             >
               Empezar gratis →
             </Link>
@@ -304,7 +304,7 @@ export default function ArticuloPage() {
         <footer className="mt-16 pt-8 border-t border-white/10 text-sm text-zinc-400">
           <p>
             ¿Te ha resultado útil este artículo? Cuéntanoslo en{' '}
-            <a href="mailto:hola@marsof.es" className="text-emerald-300 hover:underline">hola@marsof.es</a>.
+            <a href="mailto:hola@marsof.es" className="text-sky-300 hover:underline">hola@marsof.es</a>.
           </p>
         </footer>
       </article>

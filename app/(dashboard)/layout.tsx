@@ -44,8 +44,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="flex h-screen bg-[#0a0a0b] text-zinc-100">
       {/* Decoración de fondo sutil */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-[-30%] left-[20%] w-[600px] h-[600px] rounded-full bg-emerald-500/[0.06] blur-3xl" />
-        <div className="absolute bottom-[-20%] right-[10%] w-[500px] h-[500px] rounded-full bg-emerald-600/[0.04] blur-3xl" />
+        <div className="absolute top-[-30%] left-[20%] w-[600px] h-[600px] rounded-full bg-sky-500/[0.06] blur-3xl" />
+        <div className="absolute bottom-[-20%] right-[10%] w-[500px] h-[500px] rounded-full bg-sky-600/[0.04] blur-3xl" />
       </div>
 
       {/* Sidebar */}
@@ -54,7 +54,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="flex items-center gap-2.5">
             <Logo variant="mark" size="sm" href="/" />
             <div className="flex flex-col leading-none gap-0.5 min-w-0">
-              <span className="text-lg font-bold bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent">Saldea</span>
+              <span className="text-lg font-bold bg-gradient-to-r from-sky-300 to-sky-500 bg-clip-text text-transparent">Saldea</span>
               <span className="text-[9px] text-zinc-600 uppercase tracking-wider font-semibold">by Marsof</span>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 className={cn(
                   'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
                   activo
-                    ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/20'
+                    ? 'bg-sky-500/10 text-sky-300 border border-sky-500/20'
                     : 'text-zinc-400 hover:bg-white/[0.04] hover:text-zinc-100 border border-transparent'
                 )}
               >
@@ -92,7 +92,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             className={cn(
               'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors w-full',
               pathname === '/ajustes'
-                ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/20'
+                ? 'bg-sky-500/10 text-sky-300 border border-sky-500/20'
                 : 'text-zinc-400 hover:bg-white/[0.04] hover:text-zinc-100 border border-transparent'
             )}
           >

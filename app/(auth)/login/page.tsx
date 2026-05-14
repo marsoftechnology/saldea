@@ -43,7 +43,7 @@ export default function LoginPage() {
             onChange={e => setEmail(e.target.value)}
             required
             placeholder="tu@email.com"
-            className="w-full px-4 py-3 bg-zinc-900/80 border border-white/10 rounded-lg text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition"
+            className="w-full px-4 py-3 bg-zinc-900/80 border border-white/10 rounded-lg text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40 transition"
           />
         </div>
 
@@ -55,7 +55,7 @@ export default function LoginPage() {
             onChange={e => setPassword(e.target.value)}
             required
             placeholder="••••••••"
-            className="w-full px-4 py-3 bg-zinc-900/80 border border-white/10 rounded-lg text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition"
+            className="w-full px-4 py-3 bg-zinc-900/80 border border-white/10 rounded-lg text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40 transition"
           />
         </div>
 
@@ -68,7 +68,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={cargando}
-          className="w-full bg-emerald-500 text-zinc-900 py-3 rounded-lg font-bold hover:bg-emerald-400 transition-colors disabled:opacity-60 shadow-lg shadow-emerald-500/20"
+          className="w-full bg-sky-500 text-zinc-900 py-3 rounded-lg font-bold hover:bg-sky-400 transition-colors disabled:opacity-60 shadow-lg shadow-sky-500/20"
         >
           {cargando ? 'Entrando...' : 'Iniciar sesión'}
         </button>
@@ -76,7 +76,7 @@ export default function LoginPage() {
 
       <p className="text-center text-sm text-zinc-500 mt-6">
         ¿No tienes cuenta?{' '}
-        <Link href="/registro" className="text-emerald-400 font-semibold hover:text-emerald-300 hover:underline">
+        <Link href="/registro" className="text-sky-400 font-semibold hover:text-sky-300 hover:underline">
           Regístrate gratis
         </Link>
       </p>

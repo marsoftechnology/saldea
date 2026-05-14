@@ -26,7 +26,7 @@ export default function AjustesPage() {
   const [firma, setFirma] = useState('')
   const [logoUrl, setLogoUrl] = useState<string | null>(null)
   const [subiendoLogo, setSubiendoLogo] = useState(false)
-  const [colorPrimario, setColorPrimario] = useState('#059669')
+  const [colorPrimario, setColorPrimario] = useState('#0284c7')
   const [idioma, setIdioma] = useState<'es'|'ca'|'en'|'pt'>('es')
   const [evitarFestivos, setEvitarFestivos] = useState(false)
   const [ofrecerPlazosDia, setOfrecerPlazosDia] = useState(0)
@@ -231,7 +231,7 @@ export default function AjustesPage() {
                 <div className="flex items-center gap-2">
                   <h2 className="text-base font-semibold text-zinc-100">Plan y suscripción</h2>
                   <span className={`text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide ${
-                    plan === 'pro' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-gray-100 text-zinc-400'
+                    plan === 'pro' ? 'bg-sky-500/20 text-sky-300' : 'bg-gray-100 text-zinc-400'
                   }`}>{plan}</span>
                 </div>
                 <p className="text-xs text-zinc-400 mt-1">
@@ -255,32 +255,32 @@ export default function AjustesPage() {
                   onClick={() => setIntervaloPago('mes')}
                   className={`px-4 py-2.5 rounded-lg text-sm font-semibold border-2 transition-colors ${
                     intervaloPago === 'mes'
-                      ? 'bg-emerald-500/10 border-emerald-500 text-emerald-300'
+                      ? 'bg-sky-500/10 border-sky-500 text-sky-300'
                       : 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:border-white/20'
                   }`}
                 >
                   Mensual · 49€/mes
-                  <span className="block text-[10px] text-emerald-400 font-bold mt-0.5">7 días gratis</span>
+                  <span className="block text-[10px] text-sky-400 font-bold mt-0.5">7 días gratis</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setIntervaloPago('anio')}
                   className={`px-4 py-2.5 rounded-lg text-sm font-semibold border-2 transition-colors flex items-center gap-2 ${
                     intervaloPago === 'anio'
-                      ? 'bg-emerald-500/10 border-emerald-500 text-emerald-300'
+                      ? 'bg-sky-500/10 border-sky-500 text-sky-300'
                       : 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:border-white/20'
                   }`}
                 >
                   <div className="flex flex-col items-start">
                     <span>Anual · 499€/año</span>
-                    <span className="text-[10px] text-emerald-400 font-bold">Ahorra 89€ (casi 2 meses)</span>
+                    <span className="text-[10px] text-sky-400 font-bold">Ahorra 89€ (casi 2 meses)</span>
                   </div>
                 </button>
               </div>
               <button
                 type="button"
                 onClick={() => setMostrarPago(true)}
-                className="bg-emerald-500 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-emerald-400 transition-colors"
+                className="bg-sky-500 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-sky-400 transition-colors"
               >
                 {intervaloPago === 'mes' ? 'Empezar 7 días gratis →' : 'Pagar 499€ y empezar →'}
               </button>
@@ -318,7 +318,7 @@ export default function AjustesPage() {
                 onChange={e => setNombre(e.target.value)}
                 required
                 placeholder="Carlos García"
-                className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+                className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
               />
             </div>
 
@@ -332,7 +332,7 @@ export default function AjustesPage() {
                 value={empresa}
                 onChange={e => setEmpresa(e.target.value)}
                 placeholder="Mi Empresa S.L."
-                className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+                className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
               />
             </div>
 
@@ -365,7 +365,7 @@ export default function AjustesPage() {
             <div>
             <label className="block text-sm font-medium text-zinc-300 mb-2">
               Máximo de recordatorios por factura
-              <span className="ml-2 text-emerald-400 font-semibold">{maxRecordatorios}</span>
+              <span className="ml-2 text-sky-400 font-semibold">{maxRecordatorios}</span>
             </label>
             <input
               type="range"
@@ -374,7 +374,7 @@ export default function AjustesPage() {
               step={1}
               value={maxRecordatorios}
               onChange={e => setMaxRecordatorios(parseInt(e.target.value))}
-              className="w-full accent-emerald-600"
+              className="w-full accent-sky-600"
             />
             <div className="flex justify-between text-xs text-zinc-500 mt-1">
               <span>1</span>
@@ -386,7 +386,7 @@ export default function AjustesPage() {
           <div className="mt-6 pt-6 border-t border-white/5">
             <label className="block text-sm font-medium text-zinc-300 mb-2">
               ⏳ Días de gracia antes del primer aviso
-              <span className="ml-2 text-emerald-400 font-semibold">{diasGracia}</span>
+              <span className="ml-2 text-sky-400 font-semibold">{diasGracia}</span>
               <span className="ml-1 text-zinc-500 font-normal text-xs">{diasGracia === 0 ? '(sin espera)' : `días`}</span>
             </label>
             <input
@@ -396,7 +396,7 @@ export default function AjustesPage() {
               step={1}
               value={diasGracia}
               onChange={e => setDiasGracia(parseInt(e.target.value))}
-              className="w-full accent-emerald-600"
+              className="w-full accent-sky-600"
             />
             <div className="flex justify-between text-xs text-zinc-500 mt-1">
               <span>0</span>
@@ -425,11 +425,11 @@ export default function AjustesPage() {
                   onClick={() => setPatronDias(p.id)}
                   className={`text-left p-3 rounded-lg border-2 transition-colors ${
                     patronDias === p.id
-                      ? 'border-emerald-500 bg-emerald-500/10'
+                      ? 'border-sky-500 bg-sky-500/10'
                       : 'border-white/10 bg-zinc-900/40 hover:border-gray-300'
                   }`}
                 >
-                  <p className={`text-sm font-medium ${patronDias === p.id ? 'text-emerald-300' : 'text-zinc-100'}`}>{p.titulo}</p>
+                  <p className={`text-sm font-medium ${patronDias === p.id ? 'text-sky-300' : 'text-zinc-100'}`}>{p.titulo}</p>
                   <p className="text-xs text-zinc-400 mt-0.5">{p.desc}</p>
                 </button>
               ))}
@@ -443,7 +443,7 @@ export default function AjustesPage() {
                   value={diasPersonalizadosTexto}
                   onChange={e => setDiasPersonalizadosTexto(e.target.value)}
                   placeholder="5, 12, 25, 45"
-                  className="w-full px-4 py-2.5 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+                  className="w-full px-4 py-2.5 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
                 />
               </div>
             )}
@@ -463,7 +463,7 @@ export default function AjustesPage() {
                 type="checkbox"
                 checked={enviarFinSemana}
                 onChange={e => setEnviarFinSemana(e.target.checked)}
-                className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+                className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
               />
               <div className="flex-1">
                 <p className="text-sm font-medium text-zinc-300">📅 Enviar también los fines de semana</p>
@@ -479,7 +479,7 @@ export default function AjustesPage() {
           <div className="mt-6 pt-6 border-t border-white/5">
             <label className="block text-sm font-medium text-zinc-300 mb-2">
               📧 Máximo de emails al mes por cliente
-              <span className="ml-2 text-emerald-400 font-semibold">{maxEmailsMes}</span>
+              <span className="ml-2 text-sky-400 font-semibold">{maxEmailsMes}</span>
               <span className="ml-1 text-zinc-500 font-normal text-xs">email{maxEmailsMes === 1 ? '' : 's'}/mes</span>
             </label>
             <input
@@ -489,7 +489,7 @@ export default function AjustesPage() {
               step={1}
               value={maxEmailsMes}
               onChange={e => setMaxEmailsMes(parseInt(e.target.value))}
-              className="w-full accent-emerald-600"
+              className="w-full accent-sky-600"
             />
             <div className="flex justify-between text-xs text-zinc-500 mt-1">
               <span>1</span>
@@ -532,11 +532,11 @@ export default function AjustesPage() {
                   onClick={() => setTonoPreset(t.id)}
                   className={`text-left p-3 rounded-lg border-2 transition-colors ${
                     tonoPreset === t.id
-                      ? 'border-emerald-500 bg-emerald-500/10'
+                      ? 'border-sky-500 bg-sky-500/10'
                       : 'border-white/10 bg-zinc-900/40 hover:border-gray-300'
                   }`}
                 >
-                  <p className={`text-sm font-medium ${tonoPreset === t.id ? 'text-emerald-300' : 'text-zinc-100'}`}>{t.titulo}</p>
+                  <p className={`text-sm font-medium ${tonoPreset === t.id ? 'text-sky-300' : 'text-zinc-100'}`}>{t.titulo}</p>
                   <p className="text-xs text-zinc-400 mt-0.5">{t.desc}</p>
                 </button>
               ))}
@@ -554,7 +554,7 @@ export default function AjustesPage() {
               <p className="text-xs text-zinc-400 mb-3 leading-relaxed">
                 Si escribes texto en alguna plantilla, Saldea la usará tal cual <strong>sin pasar por la IA</strong>. Si la dejas vacía, la IA generará un email único cada vez según el tono.
                 <br />
-                Variables disponibles: <code className="text-emerald-300 bg-emerald-500/10 px-1 rounded">{'{cliente}'}</code> <code className="text-emerald-300 bg-emerald-500/10 px-1 rounded">{'{empresa}'}</code> <code className="text-emerald-300 bg-emerald-500/10 px-1 rounded">{'{factura}'}</code> <code className="text-emerald-300 bg-emerald-500/10 px-1 rounded">{'{importe}'}</code> <code className="text-emerald-300 bg-emerald-500/10 px-1 rounded">{'{vencimiento}'}</code> <code className="text-emerald-300 bg-emerald-500/10 px-1 rounded">{'{dias_vencida}'}</code> <code className="text-emerald-300 bg-emerald-500/10 px-1 rounded">{'{empresa_emisor}'}</code>
+                Variables disponibles: <code className="text-sky-300 bg-sky-500/10 px-1 rounded">{'{cliente}'}</code> <code className="text-sky-300 bg-sky-500/10 px-1 rounded">{'{empresa}'}</code> <code className="text-sky-300 bg-sky-500/10 px-1 rounded">{'{factura}'}</code> <code className="text-sky-300 bg-sky-500/10 px-1 rounded">{'{importe}'}</code> <code className="text-sky-300 bg-sky-500/10 px-1 rounded">{'{vencimiento}'}</code> <code className="text-sky-300 bg-sky-500/10 px-1 rounded">{'{dias_vencida}'}</code> <code className="text-sky-300 bg-sky-500/10 px-1 rounded">{'{empresa_emisor}'}</code>
                 <br />
                 <span className="text-zinc-500">La primera línea es el asunto. Después, una línea en blanco, y el cuerpo del email.</span>
               </p>
@@ -573,7 +573,7 @@ export default function AjustesPage() {
                       onChange={e => setPlantillas(prev => ({ ...prev, [p.id]: e.target.value }))}
                       rows={6}
                       placeholder={p.placeholder}
-                      className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 font-mono"
+                      className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-700 focus:outline-none focus:ring-2 focus:ring-sky-500/40 font-mono"
                     />
                     <p className="text-xs text-zinc-500 mt-1">
                       {plantillas[p.id].trim() ? '✓ Plantilla activa (no se usará IA)' : 'Vacío — la IA generará el email automáticamente'}
@@ -608,7 +608,7 @@ export default function AjustesPage() {
                 <div className="w-20 h-20 border-2 border-dashed border-white/10 rounded-lg flex items-center justify-center text-zinc-600 text-xs">Sin logo</div>
               )}
               <div className="flex-1 space-y-2">
-                <label className="inline-block bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer hover:bg-emerald-500/150/20">
+                <label className="inline-block bg-sky-500/10 border border-sky-500/30 text-sky-300 px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer hover:bg-sky-500/150/20">
                   {subiendoLogo ? 'Subiendo...' : (logoUrl ? 'Cambiar logo' : 'Subir logo')}
                   <input type="file" accept="image/png,image/jpeg,image/webp" onChange={subirLogo} disabled={subiendoLogo} className="hidden" />
                 </label>
@@ -629,7 +629,7 @@ export default function AjustesPage() {
               onChange={e => setFirma(e.target.value)}
               rows={6}
               placeholder={`Carlos García\nDirector Financiero — RuralMar S.Coop.\n📞 600 000 000\n🌐 marsof.es\n📧 carlos@marsof.es`}
-              className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-700 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
             />
             <p className="text-xs text-zinc-500 mt-1">
               {firma.trim() ? '✓ Firma activa' : 'Vacío — no se añadirá firma al email'}
@@ -650,11 +650,11 @@ export default function AjustesPage() {
                     type="text"
                     value={colorPrimario}
                     onChange={e => setColorPrimario(e.target.value)}
-                    placeholder="#059669"
-                    className="w-32 px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 font-mono"
+                    placeholder="#0284c7"
+                    className="w-32 px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-700 focus:outline-none focus:ring-2 focus:ring-sky-500/40 font-mono"
                   />
                   <div className="mt-2 flex gap-2">
-                    {['#059669','#2563eb','#dc2626','#7c3aed','#ea580c','#0891b2','#0f172a'].map(c => (
+                    {['#0284c7','#2563eb','#dc2626','#7c3aed','#ea580c','#0891b2','#0f172a'].map(c => (
                       <button key={c} type="button" onClick={() => setColorPrimario(c)} aria-label={c}
                         className={`w-7 h-7 rounded-full border-2 transition ${colorPrimario === c ? 'border-gray-900 scale-110' : 'border-white/10 hover:scale-105'}`}
                         style={{ backgroundColor: c }} />
@@ -688,7 +688,7 @@ export default function AjustesPage() {
                     type="button"
                     onClick={() => setIdioma(l.id)}
                     className={`p-2 rounded-lg border-2 text-sm transition-colors ${
-                      idioma === l.id ? 'border-emerald-500 bg-emerald-500/10 text-emerald-300 font-medium' : 'border-white/10 bg-zinc-900/40 hover:border-gray-300 text-zinc-100'
+                      idioma === l.id ? 'border-sky-500 bg-sky-500/10 text-sky-300 font-medium' : 'border-white/10 bg-zinc-900/40 hover:border-gray-300 text-zinc-100'
                     }`}
                   >
                     {l.titulo}
@@ -717,7 +717,7 @@ export default function AjustesPage() {
                 type="checkbox"
                 checked={evitarFestivos}
                 onChange={e => setEvitarFestivos(e.target.checked)}
-                className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+                className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
               />
               <div className="flex-1">
                 <p className="text-sm font-medium text-zinc-300">🇪🇸 No enviar en festivos nacionales españoles</p>
@@ -732,7 +732,7 @@ export default function AjustesPage() {
             <div className="mt-6 pt-6 border-t border-white/5">
               <label className="block text-sm font-medium text-zinc-300 mb-2">
                 💳 Ofrecer pago a plazos a partir del día
-                <span className="ml-2 text-emerald-400 font-semibold">{ofrecerPlazosDia === 0 ? 'Nunca' : `${ofrecerPlazosDia}`}</span>
+                <span className="ml-2 text-sky-400 font-semibold">{ofrecerPlazosDia === 0 ? 'Nunca' : `${ofrecerPlazosDia}`}</span>
               </label>
               <input
                 type="range"
@@ -741,7 +741,7 @@ export default function AjustesPage() {
                 step={5}
                 value={ofrecerPlazosDia}
                 onChange={e => setOfrecerPlazosDia(parseInt(e.target.value))}
-                className="w-full accent-emerald-600"
+                className="w-full accent-sky-600"
               />
               <div className="flex justify-between text-xs text-zinc-500 mt-1">
                 <span>Nunca</span>
@@ -761,7 +761,7 @@ export default function AjustesPage() {
                   type="checkbox"
                   checked={variarTextos}
                   onChange={e => setVariarTextos(e.target.checked)}
-                  className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+                  className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
                 />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-zinc-300">🔄 Variar el texto entre emails (anti-bot)</p>
@@ -803,7 +803,7 @@ export default function AjustesPage() {
                   type="checkbox"
                   checked={recargoMoraActivo}
                   onChange={e => setRecargoMoraActivo(e.target.checked)}
-                  className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+                  className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
                 />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-zinc-300">📈 Activar recargo por mora</p>
@@ -814,16 +814,16 @@ export default function AjustesPage() {
               {recargoMoraActivo && (
                 <div className="mt-4 ml-7 space-y-4 bg-zinc-900/30 rounded-lg p-4">
                   <div>
-                    <label className="block text-xs font-medium text-zinc-400 mb-1">Porcentaje de recargo: <span className="text-emerald-400 font-semibold">{recargoMoraPct}%</span></label>
+                    <label className="block text-xs font-medium text-zinc-400 mb-1">Porcentaje de recargo: <span className="text-sky-400 font-semibold">{recargoMoraPct}%</span></label>
                     <input type="range" min={0} max={50} step={1} value={recargoMoraPct}
                       onChange={e => setRecargoMoraPct(parseInt(e.target.value))}
-                      className="w-full accent-emerald-600" />
+                      className="w-full accent-sky-600" />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-zinc-400 mb-1">Aplicar a partir del día: <span className="text-emerald-400 font-semibold">{recargoMoraDia}</span></label>
+                    <label className="block text-xs font-medium text-zinc-400 mb-1">Aplicar a partir del día: <span className="text-sky-400 font-semibold">{recargoMoraDia}</span></label>
                     <input type="range" min={1} max={90} step={1} value={recargoMoraDia}
                       onChange={e => setRecargoMoraDia(parseInt(e.target.value))}
-                      className="w-full accent-emerald-600" />
+                      className="w-full accent-sky-600" />
                   </div>
                   <p className="text-xs text-zinc-400">Ejemplo: factura de 500€ vencida 35 días → la IA mencionará <strong>{((500 * recargoMoraPct) / 100).toFixed(2)}€</strong> de recargo si día ≥ {recargoMoraDia}.</p>
                 </div>
@@ -838,17 +838,17 @@ export default function AjustesPage() {
               <div className="bg-zinc-900/30 rounded-lg p-4 space-y-4">
                 <div>
                   <label className="block text-xs font-medium text-zinc-400 mb-1">
-                    Descuento: <span className="text-emerald-400 font-semibold">{descuentoProntoPagoPct === 0 ? 'Desactivado' : `${descuentoProntoPagoPct}%`}</span>
+                    Descuento: <span className="text-sky-400 font-semibold">{descuentoProntoPagoPct === 0 ? 'Desactivado' : `${descuentoProntoPagoPct}%`}</span>
                   </label>
                   <input type="range" min={0} max={20} step={1} value={descuentoProntoPagoPct}
                     onChange={e => setDescuentoProntoPagoPct(parseInt(e.target.value))}
-                    className="w-full accent-emerald-600" />
+                    className="w-full accent-sky-600" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1">Plazo para aplicarlo: <span className="text-emerald-400 font-semibold">{descuentoProntoPagoDias} día{descuentoProntoPagoDias === 1 ? '' : 's'}</span></label>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1">Plazo para aplicarlo: <span className="text-sky-400 font-semibold">{descuentoProntoPagoDias} día{descuentoProntoPagoDias === 1 ? '' : 's'}</span></label>
                   <input type="range" min={1} max={30} step={1} value={descuentoProntoPagoDias}
                     onChange={e => setDescuentoProntoPagoDias(parseInt(e.target.value))}
-                    className="w-full accent-emerald-600" />
+                    className="w-full accent-sky-600" />
                 </div>
                 {descuentoProntoPagoPct > 0 && (
                   <p className="text-xs text-zinc-400">Ejemplo: factura de 500€ → si paga en {descuentoProntoPagoDias} días, ahorra <strong>{((500 * descuentoProntoPagoPct) / 100).toFixed(2)}€</strong>.</p>
@@ -881,7 +881,7 @@ export default function AjustesPage() {
                 type="checkbox"
                 checked={resumenDiario}
                 onChange={e => setResumenDiario(e.target.checked)}
-                className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+                className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
               />
               <div className="flex-1">
                 <p className="text-sm font-medium text-zinc-300">📅 Resumen diario por email</p>
@@ -894,7 +894,7 @@ export default function AjustesPage() {
                 type="checkbox"
                 checked={resumenSemanal}
                 onChange={e => setResumenSemanal(e.target.checked)}
-                className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+                className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
               />
               <div className="flex-1">
                 <p className="text-sm font-medium text-zinc-300">📈 Resumen semanal por email</p>
@@ -927,7 +927,7 @@ export default function AjustesPage() {
                   type="checkbox"
                   checked={modoVacaciones}
                   onChange={e => setModoVacaciones(e.target.checked)}
-                  className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+                  className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
                 />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-zinc-300">🌴 Modo Vacaciones</p>
@@ -942,7 +942,7 @@ export default function AjustesPage() {
                     type="date"
                     value={modoVacacionesHasta}
                     onChange={e => setModoVacacionesHasta(e.target.value)}
-                    className="px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                    className="px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
                   />
                   <p className="text-xs text-zinc-400 mt-2">A partir de esa fecha vuelven los resúmenes y avisos automáticamente.</p>
                 </div>
@@ -955,7 +955,7 @@ export default function AjustesPage() {
                   type="checkbox"
                   checked={aprenderHistorial}
                   onChange={e => setAprenderHistorial(e.target.checked)}
-                  className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+                  className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
                 />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-zinc-300">🧬 Aprender del histórico de cada cliente <span className="ml-1 text-xs bg-amber-100 text-amber-300 px-2 py-0.5 rounded-full font-normal">beta</span></p>
@@ -987,7 +987,7 @@ export default function AjustesPage() {
         {mensaje && (
           <div className={`px-4 py-3 rounded-lg text-sm ${
             mensaje.tipo === 'ok'
-              ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300'
+              ? 'bg-sky-500/10 border border-sky-500/30 text-sky-300'
               : 'bg-rose-500/10 border border-rose-500/30 text-rose-300'
           }`}>
             {mensaje.texto}
@@ -997,7 +997,7 @@ export default function AjustesPage() {
         <button
           type="submit"
           disabled={guardando}
-          className="w-full bg-emerald-500 text-white py-3 rounded-lg font-medium hover:bg-emerald-400 transition-colors disabled:opacity-60"
+          className="w-full bg-sky-500 text-white py-3 rounded-lg font-medium hover:bg-sky-400 transition-colors disabled:opacity-60"
         >
           {guardando ? 'Guardando...' : 'Guardar cambios'}
         </button>

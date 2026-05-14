@@ -115,7 +115,7 @@ export default function ImportarPage() {
             type="file"
             accept=".csv"
             onChange={onArchivoSeleccionado}
-            className="block w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-emerald-500/10 file:text-emerald-300 hover:file:bg-emerald-500/20 cursor-pointer"
+            className="block w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-sky-500/10 file:text-sky-300 hover:file:bg-sky-500/20 cursor-pointer"
           />
         </label>
       </div>
@@ -156,7 +156,7 @@ export default function ImportarPage() {
             <button
               onClick={importar}
               disabled={cargando}
-              className="bg-emerald-500 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-400 disabled:opacity-60 transition-colors"
+              className="bg-sky-500 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-sky-400 disabled:opacity-60 transition-colors"
             >
               {cargando ? 'Importando...' : `Importar ${filas.length} registros`}
             </button>
@@ -174,7 +174,7 @@ export default function ImportarPage() {
       {/* Resultado */}
       {resultado && (
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6">
-          <div className={`text-center mb-4 ${resultado.importadas === resultado.total ? 'text-emerald-400' : 'text-amber-300'}`}>
+          <div className={`text-center mb-4 ${resultado.importadas === resultado.total ? 'text-sky-400' : 'text-amber-300'}`}>
             <p className="text-4xl font-bold">{resultado.importadas}</p>
             <p className="text-sm">de {resultado.total} importadas correctamente</p>
           </div>
@@ -190,7 +190,7 @@ export default function ImportarPage() {
 
           <Link
             href="/facturas"
-            className="block w-full bg-emerald-500 text-white text-center py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-400 transition-colors"
+            className="block w-full bg-sky-500 text-white text-center py-2.5 rounded-lg text-sm font-medium hover:bg-sky-400 transition-colors"
           >
             Ver facturas importadas →
           </Link>

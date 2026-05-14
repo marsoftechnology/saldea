@@ -31,7 +31,7 @@ export function colorEstado(estado: string): string {
   switch (estado) {
     case 'pendiente': return 'text-amber-300 bg-amber-500/10 border-amber-500/30'
     case 'vencida':   return 'text-rose-300 bg-rose-500/10 border-rose-500/30'
-    case 'cobrada':   return 'text-emerald-300 bg-emerald-500/10 border-emerald-500/30'
+    case 'cobrada':   return 'text-sky-300 bg-sky-500/10 border-sky-500/30'
     case 'cancelada': return 'text-zinc-400 bg-zinc-500/10 border-zinc-500/30'
     default:          return 'text-zinc-400 bg-zinc-500/10 border-zinc-500/30'
   }

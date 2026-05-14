@@ -91,28 +91,28 @@ export default function EditarClientePage() {
           <label className="block text-sm font-medium text-zinc-300 mb-1">Nombre completo *</label>
           <input
             name="nombre" value={form.nombre} onChange={handleChange} required
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-zinc-300 mb-1">Email *</label>
           <input
             name="email" type="email" value={form.email} onChange={handleChange} required
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-zinc-300 mb-1">Empresa</label>
           <input
             name="empresa" value={form.empresa} onChange={handleChange}
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-zinc-300 mb-1">Teléfono</label>
           <input
             name="telefono" value={form.telefono} onChange={handleChange}
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
           />
         </div>
 
@@ -122,7 +122,7 @@ export default function EditarClientePage() {
 
         <button
           type="submit" disabled={cargando}
-          className="w-full bg-emerald-500 text-white py-3 rounded-lg font-medium hover:bg-emerald-400 transition-colors disabled:opacity-60"
+          className="w-full bg-sky-500 text-white py-3 rounded-lg font-medium hover:bg-sky-400 transition-colors disabled:opacity-60"
         >
           {cargando ? 'Guardando...' : 'Guardar cambios'}
         </button>

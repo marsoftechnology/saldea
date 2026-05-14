@@ -21,7 +21,7 @@ export default async function FacturasPage() {
           <h1 className="text-2xl font-bold text-white tracking-tight">Facturas</h1>
           <p className="text-zinc-500 text-sm mt-1">{facturas?.length ?? 0} facturas en total</p>
         </div>
-        <Link href="/facturas/nueva" className="bg-emerald-500 text-zinc-900 px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20">
+        <Link href="/facturas/nueva" className="bg-sky-500 text-zinc-900 px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
           + Nueva factura
         </Link>
       </div>
@@ -56,7 +56,7 @@ export default async function FacturasPage() {
             <p className="text-4xl mb-4">📄</p>
             <p className="text-zinc-100 font-medium mb-2">Aún no tienes facturas</p>
             <p className="text-zinc-500 text-sm mb-6">Crea tu primera factura y la IA se encargará de cobrarla</p>
-            <Link href="/facturas/nueva" className="inline-block bg-emerald-500 text-zinc-900 px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20">
+            <Link href="/facturas/nueva" className="inline-block bg-sky-500 text-zinc-900 px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
               Crear primera factura
             </Link>
           </div>

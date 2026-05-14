@@ -168,7 +168,7 @@ export default function NuevaFacturaPage() {
             value={form.cliente_id}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 bg-zinc-900/80"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40 bg-zinc-900/80"
           >
             <option value="">Selecciona un cliente</option>
             {clientes.map(c => (
@@ -178,7 +178,7 @@ export default function NuevaFacturaPage() {
           {clientes.length === 0 && (
             <p className="text-xs text-zinc-500 mt-1">
               No tienes clientes.{' '}
-              <Link href="/clientes/nuevo" className="text-emerald-400 hover:underline">Añade uno primero</Link>
+              <Link href="/clientes/nuevo" className="text-sky-400 hover:underline">Añade uno primero</Link>
             </p>
           )}
         </div>
@@ -192,7 +192,7 @@ export default function NuevaFacturaPage() {
               onChange={handleChange}
               required
               placeholder="001"
-              className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+              className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
             />
           </div>
           <div>
@@ -206,7 +206,7 @@ export default function NuevaFacturaPage() {
               onChange={handleChange}
               required
               placeholder="850.00"
-              className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+              className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
             />
           </div>
         </div>
@@ -219,7 +219,7 @@ export default function NuevaFacturaPage() {
             value={form.fecha_vencimiento}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
           />
         </div>
 
@@ -231,7 +231,7 @@ export default function NuevaFacturaPage() {
             onChange={handleChange as React.ChangeEventHandler<HTMLTextAreaElement>}
             rows={2}
             placeholder="Servicios de diseño web — Proyecto X"
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 resize-none"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40 resize-none"
           />
         </div>
 
@@ -245,7 +245,7 @@ export default function NuevaFacturaPage() {
               <select
                 value={maxRecFactura ?? ''}
                 onChange={e => setMaxRecFactura(e.target.value === '' ? null : parseInt(e.target.value))}
-                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
               >
                 <option value="">Por defecto ({maxRecGlobal})</option>
                 {[1,2,3,4,5,6,7,8,9,10].map(n => <option key={n} value={n}>{n}</option>)}
@@ -256,7 +256,7 @@ export default function NuevaFacturaPage() {
               <select
                 value={patronFactura ?? ''}
                 onChange={e => setPatronFactura(e.target.value === '' ? null : e.target.value as Patron)}
-                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
               >
                 <option value="">Por defecto ({patronGlobal})</option>
                 <option value="agresivo">⚡ Agresivo</option>
@@ -275,7 +275,7 @@ export default function NuevaFacturaPage() {
                 value={diasPersonalizadosTexto}
                 onChange={e => setDiasPersonalizadosTexto(e.target.value)}
                 placeholder="5, 12, 25"
-                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
               />
             </div>
           )}
@@ -286,7 +286,7 @@ export default function NuevaFacturaPage() {
               <select
                 value={diasGraciaFactura ?? ''}
                 onChange={e => setDiasGraciaFactura(e.target.value === '' ? null : parseInt(e.target.value))}
-                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
               >
                 <option value="">Por defecto ({diasGraciaGlobal === 0 ? 'sin espera' : `${diasGraciaGlobal} días`})</option>
                 {[0,1,2,3,4,5,6,7].map(n => <option key={n} value={n}>{n === 0 ? 'Sin espera' : `${n} día${n === 1 ? '' : 's'}`}</option>)}
@@ -297,7 +297,7 @@ export default function NuevaFacturaPage() {
               <select
                 value={tonoFactura ?? ''}
                 onChange={e => setTonoFactura(e.target.value === '' ? null : e.target.value as TonoPreset)}
-                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
               >
                 <option value="">Por defecto ({tonoGlobal})</option>
                 <option value="cordial">😊 Cordial</option>
@@ -310,12 +310,12 @@ export default function NuevaFacturaPage() {
           </div>
         </div>
 
-        <div className="bg-emerald-500/100/10 border border-emerald-500/20 rounded-lg p-4">
-          <p className="text-sm text-emerald-300 font-medium mb-1">
+        <div className="bg-sky-500/100/10 border border-sky-500/20 rounded-lg p-4">
+          <p className="text-sm text-sky-300 font-medium mb-1">
             📧 {maxRecEfectivo} recordatorio{maxRecEfectivo === 1 ? '' : 's'} automático{maxRecEfectivo === 1 ? '' : 's'}
-            {hayOverride && <span className="ml-1 text-xs font-normal bg-emerald-200 text-emerald-200 px-2 py-0.5 rounded-full">solo esta factura</span>}
+            {hayOverride && <span className="ml-1 text-xs font-normal bg-sky-200 text-sky-200 px-2 py-0.5 rounded-full">solo esta factura</span>}
           </p>
-          <p className="text-xs text-emerald-400">
+          <p className="text-xs text-sky-400">
             {diasPreview.map((d, i) => `Día ${d}: ${tonosPreview[i]}`).join(' · ')}
           </p>
         </div>
@@ -327,7 +327,7 @@ export default function NuevaFacturaPage() {
         <button
           type="submit"
           disabled={cargando || clientes.length === 0}
-          className="w-full bg-emerald-500 text-white py-3 rounded-lg font-medium hover:bg-emerald-400 transition-colors disabled:opacity-60"
+          className="w-full bg-sky-500 text-white py-3 rounded-lg font-medium hover:bg-sky-400 transition-colors disabled:opacity-60"
         >
           {cargando ? 'Guardando...' : 'Crear factura'}
         </button>
