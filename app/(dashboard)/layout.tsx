@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
 import { cn } from '@/lib/utils'
+import { Logo } from '@/app/components/Logo'
 
 const navegacion = [
   { href: '/dashboard', label: 'Inicio', icono: '📊' },
@@ -50,12 +51,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Sidebar */}
       <aside className="w-60 bg-zinc-950/80 backdrop-blur-xl border-r border-white/5 flex flex-col">
         <div className="p-5 border-b border-white/5">
-          <div className="flex items-baseline gap-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent">Saldea</span>
-            <span className="text-[10px] text-zinc-600">by Marsof</span>
+          <div className="flex items-center gap-2.5">
+            <Logo variant="mark" size="sm" href="/" />
+            <div className="flex flex-col leading-none gap-0.5 min-w-0">
+              <span className="text-lg font-bold bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent">Saldea</span>
+              <span className="text-[9px] text-zinc-600 uppercase tracking-wider font-semibold">by Marsof</span>
+            </div>
           </div>
           {usuario && (
-            <p className="text-xs text-zinc-500 mt-1 truncate" title={displayName}>
+            <p className="text-xs text-zinc-500 mt-3 truncate" title={displayName}>
               {displayName}
             </p>
           )}

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Logo } from '@/app/components/Logo'
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +18,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </div>
 
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
+        <div className="flex flex-col items-center mb-8 gap-4">
+          <Logo variant="mark" size="md" href="/" />
           <Link href="/" className="inline-flex items-baseline gap-2">
             <span className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 bg-clip-text text-transparent">
               Saldea

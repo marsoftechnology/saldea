@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Reveal } from './saldea/Reveal'
 import { Counter } from './saldea/Counter'
+import { Logo } from './components/Logo'
 
 const apps = [
   {
@@ -72,9 +73,12 @@ export default function MarsofPage() {
       {/* Navbar */}
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-tight text-white">Marsof</span>
-            <span className="text-[10px] uppercase tracking-wider bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold">Beta</span>
+          <div className="flex items-center gap-3">
+            <Logo variant="mark" size="xs" href={null} />
+            <div className="flex items-center gap-2">
+              <span className="text-xl font-bold tracking-tight text-white">Marsof</span>
+              <span className="text-[10px] uppercase tracking-wider bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold">Beta</span>
+            </div>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
             <a href="#productos" className="text-zinc-400 hover:text-zinc-200 transition-colors">Productos</a>
@@ -93,7 +97,13 @@ export default function MarsofPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative max-w-5xl mx-auto px-6 pt-24 pb-20 text-center">
+      <section className="relative max-w-5xl mx-auto px-6 pt-20 pb-20 text-center">
+        <Reveal effect="scale" duration={900}>
+          <div className="mb-10 flex justify-center">
+            <Logo variant="full" size="lg" href={null} />
+          </div>
+        </Reveal>
+
         <Reveal effect="fade-up">
           <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-full text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
@@ -361,9 +371,10 @@ export default function MarsofPage() {
       {/* Footer */}
       <footer className="border-t border-white/5 py-10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
-          <div className="flex items-center gap-2 flex-wrap justify-center">
-            <span className="font-bold text-zinc-300">Marsof</span>
-            <span>· Suite de micro-SaaS con IA para autónomos españoles</span>
+          <div className="flex items-center gap-3 flex-wrap justify-center">
+            <Logo variant="inline" size="xs" href={null} subtitleColor="text-zinc-600" />
+            <span className="text-zinc-700">·</span>
+            <span>Suite de micro-SaaS con IA</span>
           </div>
           <div className="flex gap-6 flex-wrap justify-center">
             <Link href="/saldea" className="hover:text-zinc-300 transition-colors">Saldea</Link>
