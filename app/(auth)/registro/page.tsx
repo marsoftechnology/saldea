@@ -42,6 +42,13 @@ export default function RegistroPage() {
       return
     }
 
+    // Email de bienvenida (no bloqueante, errores se ignoran)
+    fetch('/api/welcome-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre, empresa }),
+    }).catch(() => {})
+
     router.push('/dashboard')
   }
 
