@@ -88,19 +88,19 @@ export default function ImportarPage() {
       </div>
 
       {/* Instrucciones */}
-      <div className="bg-blue-50 border border-blue-100 rounded-xl p-5 mb-6">
-        <h2 className="font-semibold text-blue-900 mb-2 text-sm">Formato del CSV</h2>
-        <p className="text-blue-700 text-sm mb-3">El archivo debe tener estas columnas (en este orden):</p>
+      <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 mb-6">
+        <h2 className="font-semibold text-zinc-100 mb-2 text-sm">Formato del CSV</h2>
+        <p className="text-zinc-400 text-sm mb-3">El archivo debe tener estas columnas (en este orden):</p>
         <div className="flex flex-wrap gap-2 mb-3">
           {COLUMNAS.map(c => (
-            <span key={c} className={`text-xs px-2 py-1 rounded font-mono ${c === 'empresa' || c === 'descripcion' ? 'bg-blue-100 text-blue-500' : 'bg-blue-200 text-blue-800'}`}>
+            <span key={c} className={`text-xs px-2 py-1 rounded font-mono ${c === 'empresa' || c === 'descripcion' ? 'bg-zinc-800 text-zinc-400' : 'bg-sky-500/20 text-sky-300'}`}>
               {c}{c === 'empresa' || c === 'descripcion' ? ' (opcional)' : ''}
             </span>
           ))}
         </div>
         <button
           onClick={descargarPlantilla}
-          className="text-sm text-blue-700 underline hover:text-blue-900"
+          className="text-sm text-sky-400 hover:text-sky-300"
         >
           Descargar plantilla de ejemplo →
         </button>
