@@ -1,4 +1,4 @@
-# Guía de despliegue de Numio a Vercel
+# Guía de despliegue de Saldea a Vercel
 
 Esta guía te lleva de "código en tu PC" a "SaaS funcionando 24/7 en internet" en aproximadamente 30 minutos.
 
@@ -22,12 +22,12 @@ Ya tienes cuentas en:
 1. Entra en https://github.com y haz login
 2. Click en el botón verde **"New"** (arriba a la izquierda) o ve a https://github.com/new
 3. Rellena:
-   - **Repository name**: `numio`
+   - **Repository name**: `saldea`
    - **Description**: "SaaS para cobrar facturas con IA"
    - **Visibility**: **Private** (importante, para que tu código no sea público)
    - NO marques "Add a README", "Add .gitignore", ni "Choose a license" (ya tenemos todo)
 4. Click **"Create repository"**
-5. Verás una pantalla con instrucciones. **Copia la URL** del repo (algo como `https://github.com/tuusuario/numio.git`)
+5. Verás una pantalla con instrucciones. **Copia la URL** del repo (algo como `https://github.com/tuusuario/saldea.git`)
 
 ---
 
@@ -46,7 +46,7 @@ GitHub te pedirá login. Usa **tu usuario** y como contraseña usa un **Personal
 1. GitHub → tu foto arriba derecha → **Settings**
 2. Abajo del menú lateral → **Developer settings**
 3. **Personal access tokens** → **Tokens (classic)** → **Generate new token (classic)**
-4. Note: "Numio deploy", Expiration: 90 días, marca `repo`
+4. Note: "Saldea deploy", Expiration: 90 días, marca `repo`
 5. Click "Generate token" y **COPIA el token** (solo se ve una vez)
 6. Úsalo como contraseña al hacer `git push`
 
@@ -56,9 +56,9 @@ GitHub te pedirá login. Usa **tu usuario** y como contraseña usa un **Personal
 
 1. Entra en https://vercel.com y haz login (recomendado: con GitHub para conectar todo automáticamente)
 2. En el dashboard, click **"Add New..."** → **"Project"**
-3. Vercel listará tus repos de GitHub. Busca **`numio`** y click **"Import"**
+3. Vercel listará tus repos de GitHub. Busca **`saldea`** y click **"Import"**
 4. Verás una pantalla de configuración:
-   - **Project Name**: `numio` (déjalo así)
+   - **Project Name**: `saldea` (déjalo así)
    - **Framework Preset**: Next.js (se autodetecta)
    - **Root Directory**: deja como está
    - **Build settings**: deja como está
@@ -81,20 +81,20 @@ Vercel tarda 2-3 minutos en compilar y desplegar.
 
 ## Paso 4: Configurar URLs en Supabase
 
-Cuando Vercel termine, te da una URL del tipo `https://numio-xxx.vercel.app`. Necesitas autorizarla en Supabase.
+Cuando Vercel termine, te da una URL del tipo `https://saldea-xxx.vercel.app`. Necesitas autorizarla en Supabase.
 
 1. Ve a https://supabase.com/dashboard/project/fqrlagpreazuuuwravbi
 2. Sidebar izquierda → **Authentication** → **URL Configuration**
-3. En **Site URL** pon: `https://numio-xxx.vercel.app` (la URL real de Vercel)
+3. En **Site URL** pon: `https://saldea-xxx.vercel.app` (la URL real de Vercel)
 4. En **Redirect URLs** añade:
-   - `https://numio-xxx.vercel.app/**`
+   - `https://saldea-xxx.vercel.app/**`
 5. Guarda los cambios
 
 ---
 
 ## Paso 5: Probar que todo funciona
 
-1. Abre `https://numio-xxx.vercel.app` en una pestaña
+1. Abre `https://saldea-xxx.vercel.app` en una pestaña
 2. Regístrate con un email
 3. Crea un cliente y una factura
 4. Pulsa "Enviar recordatorio ahora"
@@ -123,8 +123,8 @@ El remitente `onboarding@resend.dev` solo envía a tu propio email. Para enviar 
 2. **Verificarlo en Resend**:
    - Resend → Domains → Add Domain → sigue las instrucciones DNS
 3. **Cambiar el remitente** en `lib/resend.ts` línea 14:
-   - De: `'Numio <onboarding@resend.dev>'`
-   - A: `'Numio <noreply@tudominio.com>'`
+   - De: `'Saldea <onboarding@resend.dev>'`
+   - A: `'Saldea <noreply@tudominio.com>'`
 4. Commit y push, Vercel redespliega solo
 
 ---

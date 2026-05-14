@@ -74,7 +74,7 @@ export default function ImportarPage() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = 'plantilla_numio.csv'
+    a.download = 'plantilla_saldea.csv'
     a.click()
     URL.revokeObjectURL(url)
   }
