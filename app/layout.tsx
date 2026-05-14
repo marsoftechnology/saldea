@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Numio — Cobra tus facturas sin esfuerzo',
+  title: 'Saldea by Marsof — Cobra tus facturas sin esfuerzo',
   description: 'Automatiza el cobro de tus facturas impagadas con IA. Mensajes personalizados que escalan en tono hasta que te paguen.',
 }
 

@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { generarMensajeRecordatorio } from '@/lib/anthropic'
 import { enviarEmail } from '@/lib/resend'
-import { diasVencida } from '@/lib/utils'
+import { generarPDFFactura } from '@/lib/pdf'
+import { diasVencida, formatearEuros, formatearFecha } from '@/lib/utils'
+import { renderizarPlantilla } from '@/lib/recordatorios'
 
 export async function POST(req: NextRequest) {
   try {
@@ -25,17 +27,77 @@ export async function POST(req: NextRequest) {
     const nombreEmpresa = user.user_metadata?.empresa || user.user_metadata?.nombre || 'Tu empresa'
     const dias = diasVencida(factura.fecha_vencimiento)
 
-    const { asunto, cuerpo } = await generarMensajeRecordatorio({
-      nombreCliente: cliente.nombre,
-      empresa: cliente.empresa,
-      numeroFactura: factura.numero,
-      importe: factura.importe,
-      diasVencida: dias,
-      tono,
-      nombreEmpresa,
-    })
+    const { data: config } = await supabase
+      .from('configuraciones_usuario')
+      .select('plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias')
+      .eq('user_id', user.id)
+      .maybeSingle()
 
-    const enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo })
+    const tonoFinal = tono as 'amigable' | 'firme' | 'formal' | 'extremo'
+    const plantillaCampo = `plantilla_${tonoFinal}` as 'plantilla_amigable' | 'plantilla_firme' | 'plantilla_formal' | 'plantilla_extremo'
+    const plantillaUsuario = config?.[plantillaCampo]?.trim()
+
+    let asunto: string
+    let cuerpo: string
+
+    if (plantillaUsuario) {
+      const rendered = renderizarPlantilla(plantillaUsuario, {
+        cliente: cliente.nombre,
+        empresa: cliente.empresa ?? '',
+        factura: factura.numero,
+        importe: formatearEuros(Number(factura.importe)),
+        vencimiento: formatearFecha(factura.fecha_vencimiento),
+        dias_vencida: dias,
+        empresa_emisor: nombreEmpresa,
+      })
+      asunto = rendered.asunto
+      cuerpo = rendered.cuerpo
+    } else {
+      const umbralPlazos = config?.ofrecer_pago_plazos_dia ?? 0
+      const ofrecerPagoPlazos = umbralPlazos > 0 && dias >= umbralPlazos
+      const recargoActivo = config?.recargo_mora_activo === true && dias >= (config?.recargo_mora_dia ?? 30)
+      const gen = await generarMensajeRecordatorio({
+        nombreCliente: cliente.nombre,
+        empresa: cliente.empresa,
+        numeroFactura: factura.numero,
+        importe: factura.importe,
+        diasVencida: dias,
+        tono: tonoFinal,
+        nombreEmpresa,
+        idioma: (config?.idioma ?? 'es') as 'es'|'ca'|'en'|'pt',
+        ofrecerPagoPlazos,
+        variarTextos: config?.variar_textos === true,
+        recargoMoraPct: recargoActivo ? Number(config?.recargo_mora_pct ?? 0) : 0,
+        descuentoProntoPagoPct: Number(config?.descuento_pronto_pago_pct ?? 0),
+        descuentoProntoPagoDias: Number(config?.descuento_pronto_pago_dias ?? 7),
+      })
+      asunto = gen.asunto
+      cuerpo = gen.cuerpo
+    }
+
+    const firmaUsuario = config?.firma?.trim()
+    if (firmaUsuario) {
+      cuerpo = cuerpo.trimEnd() + '\n\n---\n' + firmaUsuario
+    }
+
+    let adjuntos: Array<{ nombre: string; contenido: Uint8Array }> = []
+    try {
+      const pdfBytes = await generarPDFFactura({
+        numero: factura.numero,
+        importe: factura.importe,
+        fechaVencimiento: factura.fecha_vencimiento,
+        descripcion: factura.descripcion,
+        clienteNombre: cliente.nombre,
+        clienteEmpresa: cliente.empresa,
+        clienteEmail: cliente.email,
+        emisor: nombreEmpresa,
+      })
+      adjuntos = [{ nombre: `Factura-${factura.numero}.pdf`, contenido: pdfBytes }]
+    } catch (pdfErr) {
+      console.error('PDF generation failed, sending email without attachment:', pdfErr)
+    }
+
+    const enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId, adjuntos, logoUrl: config?.logo_url, colorPrimario: config?.color_primario, idioma: config?.idioma as 'es'|'ca'|'en'|'pt' | undefined, nombreEmpresa })
 
     if (enviado) {
       await Promise.all([

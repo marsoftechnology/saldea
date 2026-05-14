@@ -29,11 +29,11 @@ export function diasVencida(fechaVencimiento: string): number {
 
 export function colorEstado(estado: string): string {
   switch (estado) {
-    case 'pendiente': return 'text-yellow-600 bg-yellow-50 border-yellow-200'
-    case 'vencida':   return 'text-red-600 bg-red-50 border-red-200'
-    case 'cobrada':   return 'text-green-600 bg-green-50 border-green-200'
-    case 'cancelada': return 'text-gray-500 bg-gray-50 border-gray-200'
-    default:          return 'text-gray-600 bg-gray-50 border-gray-200'
+    case 'pendiente': return 'text-amber-300 bg-amber-500/10 border-amber-500/30'
+    case 'vencida':   return 'text-rose-300 bg-rose-500/10 border-rose-500/30'
+    case 'cobrada':   return 'text-emerald-300 bg-emerald-500/10 border-emerald-500/30'
+    case 'cancelada': return 'text-zinc-400 bg-zinc-500/10 border-zinc-500/30'
+    default:          return 'text-zinc-400 bg-zinc-500/10 border-zinc-500/30'
   }
 }
 

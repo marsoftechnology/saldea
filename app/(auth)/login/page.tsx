@@ -31,36 +31,36 @@ export default function LoginPage() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold text-gray-900 mb-2">Bienvenido de vuelta</h1>
-      <p className="text-gray-500 text-sm mb-8">Entra en tu cuenta para gestionar tus cobros</p>
+      <h1 className="text-2xl font-bold text-white mb-2 tracking-tight">Bienvenido de vuelta</h1>
+      <p className="text-zinc-400 text-sm mb-8">Entra en tu cuenta para gestionar tus cobros</p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <label className="block text-sm font-medium text-zinc-300 mb-1.5">Email</label>
           <input
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
             placeholder="tu@email.com"
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+            className="w-full px-4 py-3 bg-zinc-900/80 border border-white/10 rounded-lg text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+          <label className="block text-sm font-medium text-zinc-300 mb-1.5">Contraseña</label>
           <input
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
             placeholder="••••••••"
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+            className="w-full px-4 py-3 bg-zinc-900/80 border border-white/10 rounded-lg text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition"
           />
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg">
+          <div className="bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm px-4 py-3 rounded-lg">
             {error}
           </div>
         )}
@@ -68,15 +68,15 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={cargando}
-          className="w-full bg-emerald-600 text-white py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors disabled:opacity-60"
+          className="w-full bg-emerald-500 text-zinc-900 py-3 rounded-lg font-bold hover:bg-emerald-400 transition-colors disabled:opacity-60 shadow-lg shadow-emerald-500/20"
         >
           {cargando ? 'Entrando...' : 'Iniciar sesión'}
         </button>
       </form>
 
-      <p className="text-center text-sm text-gray-500 mt-6">
+      <p className="text-center text-sm text-zinc-500 mt-6">
         ¿No tienes cuenta?{' '}
-        <Link href="/registro" className="text-emerald-600 font-medium hover:underline">
+        <Link href="/registro" className="text-emerald-400 font-semibold hover:text-emerald-300 hover:underline">
           Regístrate gratis
         </Link>
       </p>
