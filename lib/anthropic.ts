@@ -36,15 +36,25 @@ export async function generarMensajeRecordatorio(params: {
     extremo: 'Tono extremo y duro, sin contemplaciones. Este es el ÚLTIMO aviso amistoso antes de iniciar acciones legales. Da plazo máximo de 7 días naturales para regularizar el pago. Avisa explícitamente: (1) que se procederá a reclamación judicial sin más avisos, (2) que los costes legales y de procurador serán a cargo del deudor, (3) que se podrá inscribir al deudor en registros de morosos (ASNEF, RAI). Sin saludos cordiales, conciso, duro y profesional. Nada de empatía. Asunto en mayúsculas.',
   }
 
+  const estadoFactura = diasVencida < 0
+    ? `la factura TODAVÍA NO está vencida: vence en ${Math.abs(diasVencida)} días`
+    : diasVencida === 0
+    ? 'la factura vence HOY'
+    : `la factura lleva ${diasVencida} días VENCIDA (impagada)`
+
+  const instruccionesTonoAjustado = diasVencida < 0
+    ? 'Usa un tono amable y preventivo. La factura todavía no está vencida: recuérdale al cliente que el pago se acerca. Sé cercano, profesional y positivo. NO uses palabras como "vencida", "impagada", "urgente", "reclamación" ni nada similar.'
+    : instruccionesTono[tono]
+
   const prompt = `Eres el asistente de cobros de "${nombreEmpresa}", una empresa española.
 
-Escribe un email de reclamación de pago con los siguientes datos:
+Escribe un email relacionado con el pago de la siguiente factura:
 - Cliente: ${nombreCliente}${empresa ? ` (${empresa})` : ''}
 - Número de factura: ${numeroFactura}
 - Importe: ${importe.toFixed(2)}€
-- Días vencida: ${diasVencida} días
+- Estado: ${estadoFactura}
 
-Instrucciones de tono: ${instruccionesTono[tono]}
+Instrucciones de tono: ${instruccionesTonoAjustado}
 ${ofrecerPagoPlazos ? '\nDado que la factura lleva varios días impagada, incluye en el email una propuesta CLARA de fraccionar el pago en plazos (2-3 cuotas mensuales) si el cliente lo necesita. Que se note que es una opción flexible para facilitar el cobro, no una concesión por debilidad.\n' : ''}
 ${variarTextos ? '\nVARÍA el vocabulario, las fórmulas de inicio y cierre, la estructura de párrafos y los giros respecto a un email estándar. No uses frases hechas obvias del cobro automatizado ("Le recordamos que...", "Esperamos su pronto pago..."). Que suene a alguien escribiendo a mano, no a una plantilla.\n' : ''}
 ${recargoMoraPct > 0 ? `\nInforma al cliente de que su factura está siendo objeto de un recargo del ${recargoMoraPct}% por mora (es decir, ${(importe * recargoMoraPct / 100).toFixed(2)}€ adicionales sobre el importe original). Menciónalo claramente para que entienda la urgencia.\n` : ''}
