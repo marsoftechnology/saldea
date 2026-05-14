@@ -17,13 +17,16 @@ function getSupabase() {
   )
 }
 
-async function setPlan(userId: string, plan: 'free' | 'pro') {
+async function updateUser(userId: string, fields: {
+  plan?: 'free' | 'pro'
+  stripe_customer_id?: string | null
+  stripe_subscription_id?: string | null
+}) {
   const supabase = getSupabase()
-  // Upsert: si no existe configuracion_usuario la creamos con el plan correcto.
   await supabase
     .from('configuraciones_usuario')
-    .upsert({ user_id: userId, plan }, { onConflict: 'user_id' })
-  console.log(`[stripe-webhook] user ${userId} → plan=${plan}`)
+    .upsert({ user_id: userId, ...fields }, { onConflict: 'user_id' })
+  console.log(`[stripe-webhook] user ${userId} →`, fields)
 }
 
 export async function POST(req: NextRequest) {
@@ -52,8 +55,12 @@ export async function POST(req: NextRequest) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session
         const userId = session.client_reference_id ?? session.metadata?.user_id
-        if (userId && session.payment_status === 'paid') {
-          await setPlan(userId, 'pro')
+        if (userId) {
+          await updateUser(userId, {
+            plan: 'pro',
+            stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer?.id ?? null,
+            stripe_subscription_id: typeof session.subscription === 'string' ? session.subscription : session.subscription?.id ?? null,
+          })
         }
         break
       }
@@ -63,20 +70,22 @@ export async function POST(req: NextRequest) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const userId = (sub.metadata as any)?.user_id
         if (!userId) break
-        // Activo si está active o trialing. Si no, vuelve a free.
         const activo = sub.status === 'active' || sub.status === 'trialing'
-        await setPlan(userId, activo ? 'pro' : 'free')
+        await updateUser(userId, {
+          plan: activo ? 'pro' : 'free',
+          stripe_customer_id: typeof sub.customer === 'string' ? sub.customer : sub.customer?.id ?? null,
+          stripe_subscription_id: sub.id,
+        })
         break
       }
       case 'customer.subscription.deleted': {
         const sub = event.data.object as Stripe.Subscription
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const userId = (sub.metadata as any)?.user_id
-        if (userId) await setPlan(userId, 'free')
+        if (userId) await updateUser(userId, { plan: 'free', stripe_subscription_id: null })
         break
       }
       default:
-        // No hacemos nada con el resto de eventos.
         break
     }
   } catch (err) {

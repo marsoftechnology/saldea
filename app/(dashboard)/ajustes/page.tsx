@@ -44,6 +44,26 @@ export default function AjustesPage() {
   const [plan, setPlan] = useState<'free' | 'pro'>('free')
   const [intervaloPago, setIntervaloPago] = useState<'mes' | 'anio'>('mes')
   const [mostrarPago, setMostrarPago] = useState(false)
+  const [abriendoPortal, setAbriendoPortal] = useState(false)
+  const [errorPortal, setErrorPortal] = useState('')
+
+  async function abrirPortal() {
+    setErrorPortal('')
+    setAbriendoPortal(true)
+    try {
+      const res = await fetch('/api/stripe-portal', { method: 'POST' })
+      const data = await res.json()
+      if (!res.ok) {
+        setErrorPortal(data?.error || 'No se pudo abrir el portal del cliente.')
+        setAbriendoPortal(false)
+        return
+      }
+      window.location.href = data.url
+    } catch {
+      setErrorPortal('Error de red. Inténtalo de nuevo.')
+      setAbriendoPortal(false)
+    }
+  }
   const [cargando, setCargando] = useState(true)
   const [guardando, setGuardando] = useState(false)
   const [mensaje, setMensaje] = useState<{ tipo: 'ok' | 'error'; texto: string } | null>(null)
@@ -242,9 +262,24 @@ export default function AjustesPage() {
               </div>
             </div>
             {plan === 'pro' && (
-              <span className="text-sm text-zinc-500">Activo</span>
+              <div className="flex flex-col items-end gap-1">
+                <button
+                  type="button"
+                  onClick={abrirPortal}
+                  disabled={abriendoPortal}
+                  className="text-sm font-bold text-sky-300 bg-sky-500/10 border border-sky-500/30 hover:bg-sky-500/20 px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
+                >
+                  {abriendoPortal ? 'Abriendo...' : 'Gestionar suscripción →'}
+                </button>
+                <span className="text-[10px] text-zinc-500">Cancelar · cambiar tarjeta · facturas</span>
+              </div>
             )}
           </div>
+          {errorPortal && plan === 'pro' && (
+            <div className="bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs px-3 py-2 rounded-lg mb-3">
+              {errorPortal}
+            </div>
+          )}
 
           {plan === 'free' && (
             <div className="border-t border-white/5 pt-4">
