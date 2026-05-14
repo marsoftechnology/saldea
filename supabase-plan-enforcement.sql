@@ -8,15 +8,23 @@ alter table configuraciones_usuario
 
 -- Aseguramos que existe una fila por usuario nuevo automáticamente.
 -- Si no existe, en Saldea se asume 'free' por defecto.
-create or replace function ensure_user_config()
+-- IMPORTANTE: search_path explícito + tabla schema-qualified + exception handler.
+-- Sin esto el signup de Supabase devuelve "Database error saving new user".
+create or replace function public.ensure_user_config()
 returns trigger
 language plpgsql
 security definer
+set search_path = public, pg_temp
 as $$
 begin
-  insert into configuraciones_usuario (user_id)
-  values (new.id)
-  on conflict (user_id) do nothing;
+  begin
+    insert into public.configuraciones_usuario (user_id)
+    values (new.id)
+    on conflict (user_id) do nothing;
+  exception when others then
+    -- Nunca bloquear el signup si la inserción de config falla
+    raise warning 'ensure_user_config fallo: %', SQLERRM;
+  end;
   return new;
 end;
 $$;
