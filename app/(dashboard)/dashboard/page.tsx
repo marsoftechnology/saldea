@@ -10,6 +10,23 @@ export default async function DashboardPage() {
   if (!org) redirect('/login')
 
   const supabase = await createServerSupabaseClient()
+
+  // Si el onboarding NO está completado y la org está vacía → redirige a /bienvenida
+  const { data: orgRow } = await supabase
+    .from('organizations')
+    .select('onboarding_completado_at')
+    .eq('id', org.org_id)
+    .maybeSingle()
+  if (!orgRow?.onboarding_completado_at) {
+    const { count: countFacturas } = await supabase
+      .from('facturas')
+      .select('id', { count: 'exact', head: true })
+      .eq('org_id', org.org_id)
+    if ((countFacturas ?? 0) === 0) {
+      redirect('/bienvenida')
+    }
+  }
+
   const { data: todasFacturas } = await supabase
     .from('facturas').select('id, importe, estado').eq('org_id', org.org_id)
 

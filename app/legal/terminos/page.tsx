@@ -9,7 +9,7 @@ export default function TerminosPage() {
   return (
     <article className="prose prose-invert max-w-none">
       <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">Aviso legal y condiciones de uso</h1>
-      <p className="text-zinc-500 text-sm">Última actualización: 14 de mayo de 2026</p>
+      <p className="text-zinc-500 text-sm">Última actualización: 15 de mayo de 2026</p>
 
       <section className="mt-10 space-y-5 text-zinc-300 leading-relaxed">
         <h2 className="text-xl font-bold text-white mt-10 mb-3">1. Identificación del titular</h2>
@@ -51,12 +51,40 @@ export default function TerminosPage() {
           Saldea ofrece los siguientes planes:
         </p>
         <ul className="list-disc list-inside space-y-1 text-zinc-400 ml-2">
-          <li><strong className="text-zinc-200">Plan Free:</strong> gratuito con limitaciones (hasta 3 facturas activas, 10 clientes, 30 emails/mes, 1 tono).</li>
-          <li><strong className="text-zinc-200">Plan Pro Mensual:</strong> 49 €/mes con periodo de prueba gratuito de 7 días. Se requiere tarjeta. El primer cobro se realiza el día 8 si no se cancela antes.</li>
-          <li><strong className="text-zinc-200">Plan Pro Anual:</strong> 499 €/año, cobro al instante, sin periodo de prueba.</li>
+          <li><strong className="text-zinc-200">Plan Free:</strong> gratuito con limitaciones (hasta 3 facturas activas, 10 clientes, 30 emails/mes, 1 tono y <strong className="text-zinc-100">1 único miembro</strong> en la organización).</li>
+          <li><strong className="text-zinc-200">Plan Pro Mensual:</strong> 49 €/mes con periodo de prueba gratuito de 7 días. Se requiere tarjeta. El primer cobro se realiza el día 8 si no se cancela antes. Incluye <strong className="text-zinc-100">hasta 10 miembros</strong> de equipo.</li>
+          <li><strong className="text-zinc-200">Plan Pro Anual:</strong> 499 €/año, cobro al instante, sin periodo de prueba. Mismas funcionalidades que Pro Mensual.</li>
         </ul>
         <p>
-          Los pagos son procesados por <strong className="text-zinc-100">Stripe Payments Europe, Ltd.</strong> (Irlanda). El titular del servicio no almacena datos bancarios en ningún momento.
+          Los pagos de la suscripción son procesados por <strong className="text-zinc-100">Stripe Payments Europe, Ltd.</strong> (Irlanda). El titular del servicio no almacena datos bancarios en ningún momento.
+        </p>
+        <p>
+          El plan y la suscripción se asocian a la <strong className="text-zinc-100">organización</strong> creada por el usuario titular (propietario), no a cada miembro individual. Solo el propietario puede contratar, modificar o cancelar el plan.
+        </p>
+
+        <h2 className="text-xl font-bold text-white mt-10 mb-3">5.bis. Stripe Connect (cobros a tus clientes)</h2>
+        <p>
+          Saldea ofrece, como funcionalidad opcional, la integración con <strong className="text-zinc-100">Stripe Connect</strong> para que el usuario pueda cobrar sus facturas a sus propios clientes mediante un enlace de pago seguro (&quot;Payment Link&quot;).
+        </p>
+        <ul className="list-disc list-inside space-y-1 text-zinc-400 ml-2">
+          <li>La conexión se realiza mediante OAuth: el usuario autoriza expresamente a Saldea a generar Payment Links en su nombre. Puede revocar este acceso en cualquier momento desde Ajustes o desde su dashboard de Stripe.</li>
+          <li>Los fondos pagados por el deudor llegan <strong className="text-zinc-100">directamente</strong> a la cuenta bancaria que el usuario haya configurado en Stripe. Saldea <strong className="text-zinc-100">no recibe</strong>, custodia ni transmite dichos fondos en ningún momento.</li>
+          <li>Las comisiones aplicables son las propias de Stripe (típicamente 1,4% + 0,25 € para tarjetas del EEE). Saldea <strong className="text-zinc-100">no añade</strong> comisiones adicionales sobre las transacciones.</li>
+          <li>Las relaciones entre el usuario y Stripe se rigen por los <a href="https://stripe.com/es/connect-account/legal" className="text-sky-400 hover:text-sky-300 underline" target="_blank" rel="noopener noreferrer">términos de Stripe Connected Account</a>, que el usuario acepta al conectar su cuenta.</li>
+        </ul>
+
+        <h2 className="text-xl font-bold text-white mt-10 mb-3">5.ter. Miembros del equipo y roles</h2>
+        <p>
+          El propietario de la organización puede invitar a otros usuarios (mediante email) para que colaboren en la gestión de los cobros. Cada miembro tiene un rol que determina sus permisos:
+        </p>
+        <ul className="list-disc list-inside space-y-1 text-zinc-400 ml-2">
+          <li><strong className="text-zinc-200">Propietario (owner):</strong> control total, gestiona el plan y Stripe.</li>
+          <li><strong className="text-zinc-200">Administrador (admin):</strong> invita miembros, cambia configuración y realiza todas las operaciones de cobro.</li>
+          <li><strong className="text-zinc-200">Miembro (member):</strong> crea/edita clientes y facturas, envía recordatorios y registra pagos.</li>
+          <li><strong className="text-zinc-200">Solo lectura (readonly):</strong> únicamente consulta datos; no puede editar.</li>
+        </ul>
+        <p>
+          El propietario es responsable de las acciones realizadas por todos los miembros de su organización. Los miembros invitados deben mantener la confidencialidad de los datos de los clientes de la organización a la que pertenezcan y aceptan las presentes condiciones al aceptar la invitación.
         </p>
 
         <h2 className="text-xl font-bold text-white mt-10 mb-3">6. Cancelación, derecho de desistimiento y reembolsos</h2>
@@ -78,6 +106,7 @@ export default function TerminosPage() {
           <li>Hostigar, amenazar o intimidar a terceros.</li>
           <li>Vulnerar derechos de terceros, incluidos los derivados del RGPD.</li>
           <li>Realizar ingeniería inversa, decompilación o explotación no autorizada del software.</li>
+          <li>Utilizar la función de WhatsApp para enviar mensajes masivos no autorizados o que vulneren los términos de uso de WhatsApp/Meta. La función abre tu propio WhatsApp con el texto pre-rellenado; el envío y la responsabilidad sobre el mensaje son tuyos.</li>
         </ul>
         <p>
           El incumplimiento puede conllevar la suspensión inmediata de la cuenta sin reembolso.

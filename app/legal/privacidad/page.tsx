@@ -9,7 +9,7 @@ export default function PrivacidadPage() {
   return (
     <article className="prose prose-invert max-w-none">
       <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">Política de Privacidad</h1>
-      <p className="text-zinc-500 text-sm">Última actualización: 14 de mayo de 2026</p>
+      <p className="text-zinc-500 text-sm">Última actualización: 15 de mayo de 2026</p>
 
       <section className="mt-10 space-y-5 text-zinc-300 leading-relaxed">
         <h2 className="text-xl font-bold text-white mt-10 mb-3">1. Responsable del tratamiento</h2>
@@ -27,19 +27,28 @@ export default function PrivacidadPage() {
         <h3 className="text-lg font-semibold text-white mt-5 mb-2">2.1. Datos de tu cuenta (eres el interesado)</h3>
         <ul className="list-disc list-inside space-y-1 text-zinc-400 ml-2">
           <li>Email de registro (obligatorio).</li>
-          <li>Contraseña (almacenada cifrada, nunca legible).</li>
-          <li>Nombre y, opcionalmente, nombre de tu empresa.</li>
+          <li>Contraseña (almacenada cifrada con bcrypt por Supabase Auth, nunca legible).</li>
+          <li>Nombre y, opcionalmente, nombre de tu empresa u organización.</li>
           <li>Datos de uso (facturas creadas, configuración, fechas de inicio de sesión).</li>
           <li>Datos de facturación de la suscripción (procesados por Stripe; nosotros solo guardamos el ID de cliente).</li>
+          <li><strong className="text-zinc-200">Si conectas tu Stripe vía Stripe Connect</strong>: ID de tu cuenta de Stripe (account_id), país, estado de habilitación de cobros y fecha de conexión. No almacenamos ni accedemos a tus credenciales ni a tu saldo.</li>
+          <li><strong className="text-zinc-200">Si invitas miembros a tu organización</strong>: email del invitado, rol asignado, fecha de invitación y aceptación.</li>
         </ul>
         <h3 className="text-lg font-semibold text-white mt-5 mb-2">2.2. Datos de tus clientes (tú eres el responsable, nosotros encargados)</h3>
         <ul className="list-disc list-inside space-y-1 text-zinc-400 ml-2">
           <li>Nombre, email, empresa y teléfono de los clientes que tú añades.</li>
           <li>Datos de las facturas que tú emites (número, importe, fecha, descripción).</li>
-          <li>Contenido de los recordatorios enviados y las respuestas recibidas.</li>
+          <li>Pagos registrados (importe, fecha, método, referencia y notas).</li>
+          <li>PDFs de factura que subas al sistema (almacenados en Supabase Storage con acceso restringido a tu organización).</li>
+          <li>Contenido de los recordatorios enviados (email y, si lo accionas manualmente, plantillas para WhatsApp) y las respuestas recibidas.</li>
+          <li>Notas internas asociadas a clientes o facturas (visibles solo para los miembros de tu organización).</li>
         </ul>
         <p>
-          Sobre los datos del punto 2.2 actúas como <strong className="text-zinc-100">Responsable del Tratamiento</strong> conforme al RGPD; Saldea actúa como <strong className="text-zinc-100">Encargado del Tratamiento</strong>, tratándolos exclusivamente para prestar el servicio según tus instrucciones.
+          Sobre los datos del punto 2.2 actúas como <strong className="text-zinc-100">Responsable del Tratamiento</strong> conforme al RGPD; Saldea actúa como <strong className="text-zinc-100">Encargado del Tratamiento</strong>, tratándolos exclusivamente para prestar el servicio según tus instrucciones. Si tu organización tiene varios miembros, todos ellos acceden a estos datos en virtud de la autorización que tú, como titular, les otorgas al invitarles.
+        </p>
+        <h3 className="text-lg font-semibold text-white mt-5 mb-2">2.3. Datos de pago de los deudores (Stripe Connect)</h3>
+        <p>
+          Cuando un cliente paga una factura a través del botón &quot;Pagar ahora&quot; (Stripe Payment Link generado con tu cuenta de Stripe Connect), los datos de tarjeta los recoge y procesa directamente <strong className="text-zinc-100">Stripe</strong> en tu cuenta — Saldea <strong className="text-zinc-100">nunca</strong> ve, almacena ni transmite datos bancarios. Saldea solo recibe a través del webhook de Stripe la confirmación del pago (importe, fecha, ID del payment_intent) para marcar la factura como cobrada automáticamente.
         </p>
 
         <h2 className="text-xl font-bold text-white mt-10 mb-3">3. Finalidad y base jurídica</h2>
@@ -91,13 +100,16 @@ export default function PrivacidadPage() {
           Para prestar el servicio compartimos algunos datos con los siguientes proveedores. Todos cuentan con garantías adecuadas (DPA firmado y, cuando aplica, cláusulas contractuales tipo de la UE):
         </p>
         <ul className="list-disc list-inside space-y-2 text-zinc-400 ml-2">
-          <li><strong className="text-zinc-200">Supabase</strong> (Supabase Inc., USA · servidores en UE) — base de datos y autenticación.</li>
+          <li><strong className="text-zinc-200">Supabase</strong> (Supabase Inc., USA · servidores en UE) — base de datos, autenticación y almacenamiento de PDFs.</li>
           <li><strong className="text-zinc-200">Vercel</strong> (Vercel Inc., USA + CDN global) — hosting y servidores de aplicación.</li>
-          <li><strong className="text-zinc-200">Stripe</strong> (Stripe Payments Europe, Ltd., Irlanda) — procesamiento de pagos.</li>
-          <li><strong className="text-zinc-200">Resend</strong> (Resend Inc., USA · servidores en UE) — envío de emails.</li>
+          <li><strong className="text-zinc-200">Stripe</strong> (Stripe Payments Europe, Ltd., Irlanda) — procesamiento de la suscripción a Saldea Pro y, mediante Stripe Connect, procesamiento de los cobros de tus facturas a tus clientes.</li>
+          <li><strong className="text-zinc-200">Resend</strong> (Resend Inc., USA · servidores en UE) — envío de emails (recordatorios a tus clientes, invitaciones a miembros, resúmenes a ti).</li>
           <li><strong className="text-zinc-200">Cloudflare</strong> (Cloudflare Inc., USA) — DNS, email routing y seguridad.</li>
-          <li><strong className="text-zinc-200">Anthropic</strong> (Anthropic PBC, USA) — proveedor de la IA Claude que genera los recordatorios. <strong className="text-zinc-100">Los datos enviados a Anthropic no se utilizan para entrenar modelos.</strong></li>
+          <li><strong className="text-zinc-200">Anthropic</strong> (Anthropic PBC, USA) — proveedor de la IA Claude que genera los recordatorios. <strong className="text-zinc-100">Los datos enviados a Anthropic no se utilizan para entrenar modelos.</strong> Le pasamos: nombre/empresa del cliente, número e importe de factura y días de vencimiento. No le enviamos tu base de datos completa ni datos bancarios.</li>
         </ul>
+        <p>
+          <strong className="text-zinc-200">WhatsApp.</strong> Saldea no envía mensajes a WhatsApp directamente. La función de WhatsApp genera un enlace <code className="text-xs">wa.me</code> con el texto pre-rellenado para que tú, manualmente, abras tu propia cuenta de WhatsApp y lo envíes. Saldea no transmite datos a Meta/WhatsApp.
+        </p>
         <p>
           No vendemos, alquilamos ni cedemos tus datos a terceros con fines comerciales.
         </p>
@@ -129,8 +141,16 @@ export default function PrivacidadPage() {
 
         <h2 className="text-xl font-bold text-white mt-10 mb-3">8. Seguridad</h2>
         <p>
-          Aplicamos medidas técnicas y organizativas adecuadas para garantizar la seguridad de tus datos: cifrado en tránsito (HTTPS/TLS), cifrado en reposo de la base de datos, contraseñas hasheadas con bcrypt, autenticación gestionada por Supabase Auth, y separación estricta entre los datos de cada usuario mediante Row Level Security.
+          Aplicamos medidas técnicas y organizativas adecuadas para garantizar la seguridad de tus datos:
         </p>
+        <ul className="list-disc list-inside space-y-1 text-zinc-400 ml-2">
+          <li>Cifrado en tránsito (HTTPS/TLS) y en reposo de la base de datos.</li>
+          <li>Contraseñas hasheadas con bcrypt, autenticación gestionada por Supabase Auth.</li>
+          <li>Separación estricta entre datos de cada organización mediante <strong className="text-zinc-100">Row Level Security</strong> a nivel de PostgreSQL.</li>
+          <li>PDFs de facturas almacenados con políticas RLS que limitan el acceso a los miembros de cada organización.</li>
+          <li>Webhooks de Stripe firmados con HMAC; rechazamos cualquier evento sin firma válida.</li>
+          <li>Tokens de invitación generados con <code className="text-xs">crypto.randomBytes(24)</code> y caducidad de 7 días.</li>
+        </ul>
 
         <h2 className="text-xl font-bold text-white mt-10 mb-3">9. Menores</h2>
         <p>
