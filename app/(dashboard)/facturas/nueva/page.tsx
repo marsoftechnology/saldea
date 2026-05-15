@@ -33,6 +33,7 @@ export default function NuevaFacturaPage() {
     importe: '',
     fecha_vencimiento: '',
     descripcion: '',
+    link_pago: '',
   })
 
   useEffect(() => {
@@ -80,6 +81,20 @@ export default function NuevaFacturaPage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { router.push('/login'); return }
 
+    // Validar link de pago si se proporcionó
+    let linkPagoFinal: string | null = null
+    if (form.link_pago.trim()) {
+      try {
+        const u = new URL(form.link_pago.trim())
+        if (u.protocol !== 'http:' && u.protocol !== 'https:') throw new Error()
+        linkPagoFinal = form.link_pago.trim()
+      } catch {
+        setError('El link de pago no es una URL válida (debe empezar por http:// o https://)')
+        setCargando(false)
+        return
+      }
+    }
+
     const { data: factura, error: errFactura } = await supabase.from('facturas').insert({
       user_id: user.id,
       cliente_id: form.cliente_id,
@@ -87,6 +102,7 @@ export default function NuevaFacturaPage() {
       importe: parseFloat(form.importe),
       fecha_vencimiento: form.fecha_vencimiento,
       descripcion: form.descripcion || null,
+      link_pago: linkPagoFinal,
       estado: 'pendiente',
       max_recordatorios: maxRecFactura,
       patron_dias: patronFactura,
@@ -233,6 +249,23 @@ export default function NuevaFacturaPage() {
             placeholder="Servicios de diseño web — Proyecto X"
             className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40 resize-none"
           />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-zinc-300 mb-1">
+            💳 Link de pago (opcional)
+          </label>
+          <input
+            name="link_pago"
+            type="url"
+            value={form.link_pago}
+            onChange={handleChange}
+            placeholder="https://buy.stripe.com/... o https://paypal.me/..."
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
+          />
+          <p className="text-xs text-zinc-500 mt-1">
+            Si lo añades, aparecerá un botón &quot;Pagar ahora&quot; en los recordatorios. Puedes ponerlo después.
+          </p>
         </div>
 
         <div className="border-t border-white/5 pt-4">

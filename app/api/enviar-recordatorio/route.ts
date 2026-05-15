@@ -70,6 +70,7 @@ export async function POST(req: NextRequest) {
         recargoMoraPct: recargoActivo ? Number(config?.recargo_mora_pct ?? 0) : 0,
         descuentoProntoPagoPct: Number(config?.descuento_pronto_pago_pct ?? 0),
         descuentoProntoPagoDias: Number(config?.descuento_pronto_pago_dias ?? 7),
+        tieneLinkPago: !!factura.link_pago,
       })
       asunto = gen.asunto
       cuerpo = gen.cuerpo
@@ -81,23 +82,42 @@ export async function POST(req: NextRequest) {
     }
 
     let adjuntos: Array<{ nombre: string; contenido: Uint8Array }> = []
-    try {
-      const pdfBytes = await generarPDFFactura({
-        numero: factura.numero,
-        importe: factura.importe,
-        fechaVencimiento: factura.fecha_vencimiento,
-        descripcion: factura.descripcion,
-        clienteNombre: cliente.nombre,
-        clienteEmpresa: cliente.empresa,
-        clienteEmail: cliente.email,
-        emisor: nombreEmpresa,
-      })
-      adjuntos = [{ nombre: `Factura-${factura.numero}.pdf`, contenido: pdfBytes }]
-    } catch (pdfErr) {
-      console.error('PDF generation failed, sending email without attachment:', pdfErr)
+
+    // 1) Intentar usar el PDF que subió el usuario
+    if (factura.pdf_propio_path) {
+      try {
+        const { data: pdfFile, error: dlErr } = await supabase
+          .storage
+          .from('facturas-pdf')
+          .download(factura.pdf_propio_path)
+        if (dlErr || !pdfFile) throw dlErr ?? new Error('no data')
+        const buffer = new Uint8Array(await pdfFile.arrayBuffer())
+        adjuntos = [{ nombre: `Factura-${factura.numero}.pdf`, contenido: buffer }]
+      } catch (dlErr) {
+        console.error('No se pudo leer PDF propio, usando autogenerado:', dlErr)
+      }
     }
 
-    const enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId, adjuntos, logoUrl: config?.logo_url, colorPrimario: config?.color_primario, idioma: config?.idioma as 'es'|'ca'|'en'|'pt' | undefined, nombreEmpresa })
+    // 2) Fallback: generar PDF automático
+    if (adjuntos.length === 0) {
+      try {
+        const pdfBytes = await generarPDFFactura({
+          numero: factura.numero,
+          importe: factura.importe,
+          fechaVencimiento: factura.fecha_vencimiento,
+          descripcion: factura.descripcion,
+          clienteNombre: cliente.nombre,
+          clienteEmpresa: cliente.empresa,
+          clienteEmail: cliente.email,
+          emisor: nombreEmpresa,
+        })
+        adjuntos = [{ nombre: `Factura-${factura.numero}.pdf`, contenido: pdfBytes }]
+      } catch (pdfErr) {
+        console.error('PDF generation failed, sending email without attachment:', pdfErr)
+      }
+    }
+
+    const enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId, adjuntos, logoUrl: config?.logo_url, colorPrimario: config?.color_primario, idioma: config?.idioma as 'es'|'ca'|'en'|'pt' | undefined, nombreEmpresa, linkPago: factura.link_pago ?? null })
 
     if (enviado) {
       await Promise.all([

@@ -18,6 +18,9 @@ export type Factura = {
   estado: 'pendiente' | 'vencida' | 'cobrada' | 'cancelada'
   descripcion: string | null
   created_at: string
+  notas_internas: string | null
+  link_pago: string | null
+  pdf_propio_path: string | null
   cliente?: Cliente
 }
 

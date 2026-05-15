@@ -19,8 +19,9 @@ export async function generarMensajeRecordatorio(params: {
   recargoMoraPct?: number
   descuentoProntoPagoPct?: number
   descuentoProntoPagoDias?: number
+  tieneLinkPago?: boolean
 }): Promise<{ asunto: string; cuerpo: string }> {
-  const { nombreCliente, empresa, numeroFactura, importe, diasVencida, tono, nombreEmpresa, idioma = 'es', ofrecerPagoPlazos = false, variarTextos = false, recargoMoraPct = 0, descuentoProntoPagoPct = 0, descuentoProntoPagoDias = 7 } = params
+  const { nombreCliente, empresa, numeroFactura, importe, diasVencida, tono, nombreEmpresa, idioma = 'es', ofrecerPagoPlazos = false, variarTextos = false, recargoMoraPct = 0, descuentoProntoPagoPct = 0, descuentoProntoPagoDias = 7, tieneLinkPago = false } = params
 
   const idiomaInstruccion = {
     es: 'El email debe estar completamente en español y ser apropiado para el mercado español.',
@@ -59,6 +60,7 @@ ${ofrecerPagoPlazos ? '\nDado que la factura lleva varios días impagada, incluy
 ${variarTextos ? '\nVARÍA el vocabulario, las fórmulas de inicio y cierre, la estructura de párrafos y los giros respecto a un email estándar. No uses frases hechas obvias del cobro automatizado ("Le recordamos que...", "Esperamos su pronto pago..."). Que suene a alguien escribiendo a mano, no a una plantilla.\n' : ''}
 ${recargoMoraPct > 0 ? `\nInforma al cliente de que su factura está siendo objeto de un recargo del ${recargoMoraPct}% por mora (es decir, ${(importe * recargoMoraPct / 100).toFixed(2)}€ adicionales sobre el importe original). Menciónalo claramente para que entienda la urgencia.\n` : ''}
 ${descuentoProntoPagoPct > 0 ? `\nOFRECE un descuento por pronto pago: si el cliente abona la factura en los próximos ${descuentoProntoPagoDias} días desde HOY, se beneficiará de un ${descuentoProntoPagoPct}% de descuento (ahorraría ${(importe * descuentoProntoPagoPct / 100).toFixed(2)}€). Preséntalo como un incentivo positivo, no como una amenaza.\n` : ''}
+${tieneLinkPago ? '\nIMPORTANTE: Al final de este email aparecerá automáticamente un botón "Pagar ahora" con un enlace de pago online. NO incluyas ninguna URL ni instrucciones de transferencia bancaria. Menciona simplemente que puede pagar al instante haciendo clic en el botón que verá a continuación. Una sola frase basta.\n' : ''}
 ${idiomaInstruccion}
 Devuelve SOLO un JSON con este formato exacto, sin texto adicional:
 {"asunto": "...", "cuerpo": "..."}`

@@ -4,6 +4,9 @@ import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
 import MarcarCobradaButton from './MarcarCobradaButton'
 import EnviarRecordatorioButton from './EnviarRecordatorioButton'
+import NotasInternasEditor from './NotasInternasEditor'
+import LinkPagoEditor from './LinkPagoEditor'
+import PdfPropioUploader from './PdfPropioUploader'
 
 export default async function FacturaDetallePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -83,6 +86,19 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
           </div>
         )}
       </div>
+
+      {/* PDF de la factura */}
+      <PdfPropioUploader
+        facturaId={factura.id}
+        numeroFactura={factura.numero}
+        pdfPathInicial={factura.pdf_propio_path ?? null}
+      />
+
+      {/* Link de pago */}
+      <LinkPagoEditor facturaId={factura.id} linkInicial={factura.link_pago ?? null} />
+
+      {/* Notas internas */}
+      <NotasInternasEditor facturaId={factura.id} notasIniciales={factura.notas_internas ?? null} />
 
       {/* Recordatorios automáticos */}
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-4">
