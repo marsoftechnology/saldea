@@ -1,16 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export async function POST(req: NextRequest) {
+  void req
   try {
+    const org = await getActiveOrg()
+    if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    if (org.role !== 'owner') return NextResponse.json({ error: 'Solo el owner puede desconectar Stripe' }, { status: 403 })
     const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
     const { data: config } = await supabase
       .from('configuraciones_usuario')
       .select('stripe_connect_account_id')
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .maybeSingle()
 
     const accountId = config?.stripe_connect_account_id
@@ -41,15 +44,13 @@ export async function POST(req: NextRequest) {
         stripe_connect_country: null,
         stripe_connect_connected_at: null,
       })
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
 
-    // Como medida de seguridad, también quitamos los link_pago de las facturas
-    // que pudieran apuntar a Payment Links del Stripe ahora desconectado.
-    // Solo eliminamos los que empiezan por buy.stripe.com (Payment Links).
+    // Quitar Payment Links de Stripe en facturas de la org (la cuenta ya no funciona)
     await supabase
       .from('facturas')
       .update({ link_pago: null })
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .like('link_pago', 'https://buy.stripe.com/%')
 
     return NextResponse.json({ ok: true })

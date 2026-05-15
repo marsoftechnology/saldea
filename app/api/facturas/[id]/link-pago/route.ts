@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getActiveOrg } from '@/lib/auth-org'
 
 function esUrlValida(s: string): boolean {
   try {
@@ -16,9 +17,10 @@ export async function PATCH(
 ) {
   try {
     const { id } = await params
+    const org = await getActiveOrg()
+    if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite editar' }, { status: 403 })
     const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
     const body = await req.json()
     const link = body?.link_pago
@@ -39,7 +41,7 @@ export async function PATCH(
       .from('facturas')
       .update({ link_pago: valor })
       .eq('id', id)
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
     return NextResponse.json({ ok: true })

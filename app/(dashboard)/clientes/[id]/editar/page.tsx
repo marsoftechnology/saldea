@@ -21,11 +21,11 @@ export default function EditarClientePage() {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) { router.push('/login'); return }
+      // RLS scope a la org del usuario — no necesitamos filtrar por user_id
       const { data: cliente } = await supabase
         .from('clientes')
         .select('*')
         .eq('id', clienteId)
-        .eq('user_id', user.id)
         .maybeSingle()
       if (!cliente) { router.push('/clientes'); return }
       setForm({

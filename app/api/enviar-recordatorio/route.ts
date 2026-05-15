@@ -5,20 +5,24 @@ import { enviarEmail } from '@/lib/resend'
 import { generarPDFFactura } from '@/lib/pdf'
 import { diasVencida, formatearEuros, formatearFecha } from '@/lib/utils'
 import { renderizarPlantilla } from '@/lib/recordatorios'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export async function POST(req: NextRequest) {
   try {
     const { facturaId, tono } = await req.json()
 
+    const org = await getActiveOrg()
+    if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite enviar recordatorios' }, { status: 403 })
+
     const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    const user = org.user
 
     const { data: factura } = await supabase
       .from('facturas')
       .select('*, cliente:clientes(*)')
       .eq('id', facturaId)
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .single()
 
     if (!factura) return NextResponse.json({ error: 'Factura no encontrada' }, { status: 404 })
@@ -31,13 +35,20 @@ export async function POST(req: NextRequest) {
     const importePagado = (pagosFactura ?? []).reduce((s, p) => s + Number(p.importe), 0)
 
     const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null }
-    const nombreEmpresa = user.user_metadata?.empresa || user.user_metadata?.nombre || 'Tu empresa'
+
+    // Nombre de empresa: nombre de la org (fallback al user_metadata para compatibilidad)
+    const { data: orgData } = await supabase
+      .from('organizations')
+      .select('name')
+      .eq('id', org.org_id)
+      .maybeSingle()
+    const nombreEmpresa = orgData?.name || user.user_metadata?.empresa || user.user_metadata?.nombre || 'Tu empresa'
     const dias = diasVencida(factura.fecha_vencimiento)
 
     const { data: config } = await supabase
       .from('configuraciones_usuario')
       .select('plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias')
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .maybeSingle()
 
     const tonoFinal = tono as 'amigable' | 'firme' | 'formal' | 'extremo'
@@ -132,6 +143,7 @@ export async function POST(req: NextRequest) {
         supabase.from('logs_email').insert({
           factura_id: facturaId,
           cliente_id: factura.cliente_id,
+          org_id: org.org_id,
           asunto,
           cuerpo,
           estado: 'enviado',

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
 import { computarDiasRecordatorios, parsearDiasPersonalizados, calcularTonos, type Patron, type TonoPreset } from '@/lib/recordatorios'
+import { getActiveOrgIdClient } from '@/lib/client-org'
 import type { Cliente } from '@/types'
 
 export default function NuevaFacturaPage() {
@@ -40,10 +41,11 @@ export default function NuevaFacturaPage() {
     async function cargar() {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
+      const orgId = await getActiveOrgIdClient()
       const [clientesRes, configRes] = await Promise.all([
         supabase.from('clientes').select('*').order('nombre'),
-        user
-          ? supabase.from('configuraciones_usuario').select('max_recordatorios, patron_dias, dias_personalizados, dias_gracia, tono_preset, aprender_historial').eq('user_id', user.id).maybeSingle()
+        orgId
+          ? supabase.from('configuraciones_usuario').select('max_recordatorios, patron_dias, dias_personalizados, dias_gracia, tono_preset, aprender_historial').eq('org_id', orgId).maybeSingle()
           : Promise.resolve({ data: null }),
       ])
       setClientes(clientesRes.data ?? [])
@@ -81,6 +83,13 @@ export default function NuevaFacturaPage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { router.push('/login'); return }
 
+    const orgId = await getActiveOrgIdClient()
+    if (!orgId) {
+      setError('No se pudo determinar tu organización. Recarga la página.')
+      setCargando(false)
+      return
+    }
+
     // Validar link de pago si se proporcionó
     let linkPagoFinal: string | null = null
     if (form.link_pago.trim()) {
@@ -97,6 +106,7 @@ export default function NuevaFacturaPage() {
 
     const { data: factura, error: errFactura } = await supabase.from('facturas').insert({
       user_id: user.id,
+      org_id: orgId,
       cliente_id: form.cliente_id,
       numero: form.numero,
       importe: parseFloat(form.importe),
@@ -127,13 +137,13 @@ export default function NuevaFacturaPage() {
       const { data: configChk } = await supabase
         .from('configuraciones_usuario')
         .select('aprender_historial')
-        .eq('user_id', user.id)
+        .eq('org_id', orgId)
         .maybeSingle()
       if (configChk?.aprender_historial) {
         const { data: cobradas } = await supabase
           .from('facturas')
           .select('fecha_vencimiento, created_at')
-          .eq('user_id', user.id)
+          .eq('org_id', orgId)
           .eq('cliente_id', form.cliente_id)
           .eq('estado', 'cobrada')
           .limit(20)
@@ -155,6 +165,7 @@ export default function NuevaFacturaPage() {
 
     const recordatorios = diasPreview.map((dias_offset, i) => ({
       factura_id: factura.id,
+      org_id: orgId,
       dias_offset: dias_offset + ajusteExtra,
       tono: tonosPreview[i],
       enviado: false,

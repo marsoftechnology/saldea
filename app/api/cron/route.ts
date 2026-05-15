@@ -28,19 +28,19 @@ export async function GET(req: NextRequest) {
   const esFinDeSemana = diaSemanaES === 'Sat' || diaSemanaES === 'Sun'
   const esFestivo = esFestivoNacionalES(new Date())
 
-  // Si es fin de semana o festivo, filtrar por preferencias del usuario
-  let userIdsPermitidos: string[] | null = null
+  // Si es fin de semana o festivo, filtrar por preferencias de la org (configuraciones_usuario)
+  let orgIdsPermitidas: string[] | null = null
   if (esFinDeSemana || esFestivo) {
-    let query = supabase.from('configuraciones_usuario').select('user_id')
+    let query = supabase.from('configuraciones_usuario').select('org_id')
     if (esFinDeSemana) query = query.eq('enviar_fin_semana', true)
     if (esFestivo) query = query.eq('evitar_festivos', false)
     const { data: configs } = await query
-    userIdsPermitidos = (configs ?? []).map(c => c.user_id)
-    if (userIdsPermitidos.length === 0) {
+    orgIdsPermitidas = (configs ?? []).map(c => c.org_id).filter(Boolean) as string[]
+    if (orgIdsPermitidas.length === 0) {
       return NextResponse.json({
         procesadas: 0,
         enviados: 0,
-        motivo: esFinDeSemana ? 'fin de semana sin usuarios permitidos' : 'festivo nacional sin usuarios permitidos',
+        motivo: esFinDeSemana ? 'fin de semana sin orgs permitidas' : 'festivo nacional sin orgs permitidas',
       })
     }
   }
@@ -52,8 +52,8 @@ export async function GET(req: NextRequest) {
     .lte('fecha_vencimiento', hoy)
     .or(`pausada_hasta.is.null,pausada_hasta.lte.${hoy}`)
 
-  if (userIdsPermitidos) {
-    query = query.in('user_id', userIdsPermitidos)
+  if (orgIdsPermitidas) {
+    query = query.in('org_id', orgIdsPermitidas)
   }
 
   const { data: facturasPendientes } = await query
@@ -65,20 +65,20 @@ export async function GET(req: NextRequest) {
   let enviados = 0
   let omitidosPorLimite = 0
 
-  // Cache de configuración + plan por usuario para no re-consultar
+  // Cache de configuración + plan por org para no re-consultar
   const configCache = new Map<string, { max_emails_mes: number; plan: Plan }>()
-  async function getUserConfig(userId: string): Promise<{ max_emails_mes: number; plan: Plan }> {
-    if (configCache.has(userId)) return configCache.get(userId)!
+  async function getOrgConfig(orgId: string): Promise<{ max_emails_mes: number; plan: Plan }> {
+    if (configCache.has(orgId)) return configCache.get(orgId)!
     const { data } = await supabase
       .from('configuraciones_usuario')
       .select('max_emails_mes, plan')
-      .eq('user_id', userId)
+      .eq('org_id', orgId)
       .maybeSingle()
     const cfg = {
       max_emails_mes: data?.max_emails_mes ?? 5,
       plan: (data?.plan === 'pro' ? 'pro' : 'free') as Plan,
     }
-    configCache.set(userId, cfg)
+    configCache.set(orgId, cfg)
     return cfg
   }
 
@@ -102,27 +102,18 @@ export async function GET(req: NextRequest) {
     return n
   }
 
-  // Cache de emails GLOBALES por usuario este mes (para plan Free)
-  const emailsUsuarioMes = new Map<string, number>()
-  async function emailsUsuarioEsteMes(userId: string): Promise<number> {
-    if (emailsUsuarioMes.has(userId)) return emailsUsuarioMes.get(userId)!
-    const { data: facturasUser } = await supabase
-      .from('facturas')
-      .select('id')
-      .eq('user_id', userId)
-    const ids = (facturasUser ?? []).map(f => f.id)
-    if (ids.length === 0) {
-      emailsUsuarioMes.set(userId, 0)
-      return 0
-    }
+  // Cache de emails GLOBALES por org este mes (para plan Free)
+  const emailsOrgMes = new Map<string, number>()
+  async function emailsOrgEsteMes(orgId: string): Promise<number> {
+    if (emailsOrgMes.has(orgId)) return emailsOrgMes.get(orgId)!
     const { count } = await supabase
       .from('logs_email')
       .select('*', { count: 'exact', head: true })
-      .in('factura_id', ids)
+      .eq('org_id', orgId)
       .eq('estado', 'enviado')
       .gte('enviado_at', inicioMesISO)
     const n = count ?? 0
-    emailsUsuarioMes.set(userId, n)
+    emailsOrgMes.set(orgId, n)
     return n
   }
   let omitidosFreeTopeMensual = 0
@@ -138,13 +129,13 @@ export async function GET(req: NextRequest) {
     const pendiente = recordatorios.find(r => !r.enviado && dias >= r.dias_offset)
     if (!pendiente) continue
 
-    // Comprobar plan del usuario
-    const { max_emails_mes: maxMes, plan: planUsuario } = await getUserConfig(factura.user_id)
+    // Comprobar plan de la org
+    const { max_emails_mes: maxMes, plan: planUsuario } = await getOrgConfig(factura.org_id)
 
     // Free: tope global de 30 emails/mes
     if (planUsuario === 'free') {
-      const enviadosUsuario = await emailsUsuarioEsteMes(factura.user_id)
-      if (enviadosUsuario >= LIMITES_FREE.emailsMes) {
+      const enviadosOrg = await emailsOrgEsteMes(factura.org_id)
+      if (enviadosOrg >= LIMITES_FREE.emailsMes) {
         omitidosFreeTopeMensual++
         continue
       }
@@ -158,8 +149,13 @@ export async function GET(req: NextRequest) {
     }
 
     try {
-      const { data: userData } = await supabase.auth.admin.getUserById(factura.user_id)
-      const nombreEmpresa = userData.user?.user_metadata?.empresa || userData.user?.user_metadata?.nombre || 'Tu empresa'
+      // Nombre de empresa: nombre de la org
+      const { data: orgData } = await supabase
+        .from('organizations')
+        .select('name')
+        .eq('id', factura.org_id)
+        .maybeSingle()
+      const nombreEmpresa = orgData?.name || 'Tu empresa'
 
       // Plan Free → forzamos siempre tono amigable (sin escalado)
       let tonoFinal = pendiente.tono as 'amigable' | 'firme' | 'formal' | 'extremo'
@@ -171,7 +167,7 @@ export async function GET(req: NextRequest) {
       const { data: config } = await supabase
         .from('configuraciones_usuario')
         .select(`plantilla_${tonoFinal}, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias`)
-        .eq('user_id', factura.user_id)
+        .eq('org_id', factura.org_id)
         .maybeSingle()
 
       const configMap = config as Record<string, string | null> | null
@@ -286,6 +282,7 @@ export async function GET(req: NextRequest) {
           supabase.from('logs_email').insert({
             factura_id: factura.id,
             cliente_id: factura.cliente_id,
+            org_id: factura.org_id,
             asunto,
             cuerpo,
             estado: 'enviado',
@@ -301,7 +298,7 @@ export async function GET(req: NextRequest) {
         enviados++
         // Actualizar contadores en caché (acabamos de enviar uno)
         emailsClienteMes.set(factura.cliente_id, (emailsClienteMes.get(factura.cliente_id) ?? 0) + 1)
-        emailsUsuarioMes.set(factura.user_id, (emailsUsuarioMes.get(factura.user_id) ?? 0) + 1)
+        emailsOrgMes.set(factura.org_id, (emailsOrgMes.get(factura.org_id) ?? 0) + 1)
       }
     } catch (e) {
       console.error(`Error procesando factura ${factura.id}:`, e)

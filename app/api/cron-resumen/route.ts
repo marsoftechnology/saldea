@@ -21,12 +21,12 @@ export async function GET(req: NextRequest) {
   }).format(new Date())
   const esLunes = diaSemana === 'Mon'
 
-  // Usuarios con resumen_diario=true, O (resumen_semanal=true AND es lunes)
+  // Configuraciones (1 por org) con resumen_diario=true, O (resumen_semanal=true AND es lunes)
   // Excluyendo los que están en modo vacaciones activo
   const hoyStr = new Date().toISOString().split('T')[0]
   const { data: configs } = await supabase
     .from('configuraciones_usuario')
-    .select('user_id, resumen_diario, resumen_semanal, modo_vacaciones, modo_vacaciones_hasta')
+    .select('user_id, org_id, resumen_diario, resumen_semanal, modo_vacaciones, modo_vacaciones_hasta')
 
   if (!configs) return NextResponse.json({ procesados: 0 })
 
@@ -50,30 +50,32 @@ export async function GET(req: NextRequest) {
       const nombre = userData.user?.user_metadata?.nombre || 'amigo'
       if (!userEmail) continue
 
-      // Estadísticas del periodo
+      const orgId = conf.org_id
+      if (!orgId) continue
+      // Estadísticas del periodo — scope por org (no por user)
       const [emailsCount, cobradasRes, vencidasRes, respuestasRes, pendientesRes] = await Promise.all([
         supabase.from('logs_email')
           .select('id', { count: 'exact', head: true })
           .gte('enviado_at', desdeISO)
           .eq('estado', 'enviado')
-          .in('cliente_id', (await supabase.from('clientes').select('id').eq('user_id', conf.user_id)).data?.map(c => c.id) ?? []),
+          .eq('org_id', orgId),
         supabase.from('facturas')
           .select('id, importe, numero, cliente:clientes(nombre)')
-          .eq('user_id', conf.user_id)
+          .eq('org_id', orgId)
           .eq('estado', 'cobrada'),
         supabase.from('facturas')
           .select('id, importe, numero, fecha_vencimiento, cliente:clientes(nombre)')
-          .eq('user_id', conf.user_id)
-          .in('estado', ['pendiente', 'vencida'])
+          .eq('org_id', orgId)
+          .in('estado', ['pendiente', 'vencida', 'parcialmente_cobrada'])
           .lt('fecha_vencimiento', new Date().toISOString().split('T')[0]),
         supabase.from('respuestas_clientes')
           .select('id, categoria, resumen, cliente:clientes(nombre)')
-          .eq('user_id', conf.user_id)
+          .eq('org_id', orgId)
           .gte('created_at', desdeISO),
         supabase.from('facturas')
           .select('id, importe')
-          .eq('user_id', conf.user_id)
-          .in('estado', ['pendiente', 'vencida']),
+          .eq('org_id', orgId)
+          .in('estado', ['pendiente', 'vencida', 'parcialmente_cobrada']),
       ])
 
       const numEmails = emailsCount.count ?? 0

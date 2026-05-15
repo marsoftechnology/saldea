@@ -3,22 +3,21 @@ import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { formatearEuros, formatearFecha, colorEstado, etiquetaEstado } from '@/lib/utils'
 import { LIMITES_FREE } from '@/lib/plan'
 import { redirect } from 'next/navigation'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export default async function DashboardPage() {
+  const org = await getActiveOrg()
+  if (!org) redirect('/login')
+
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
-
   const { data: todasFacturas } = await supabase
-    .from('facturas').select('id, importe, estado').eq('user_id', user.id)
+    .from('facturas').select('id, importe, estado').eq('org_id', org.org_id)
 
-  const facturaIds = todasFacturas?.map(f => f.id) ?? []
-
-  // Pagos del usuario para calcular cobrado real (incluye parciales)
+  // Pagos de la org para calcular cobrado real (incluye parciales)
   const { data: pagosUser } = await supabase
     .from('pagos')
     .select('factura_id, importe')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
   const pagosPorFactura = new Map<string, number>()
   for (const p of pagosUser ?? []) {
     pagosPorFactura.set(p.factura_id, (pagosPorFactura.get(p.factura_id) ?? 0) + Number(p.importe))
@@ -26,12 +25,10 @@ export default async function DashboardPage() {
   const totalPagado = Array.from(pagosPorFactura.values()).reduce((s, v) => s + v, 0)
 
   const [{ data: facturas }, { data: clientes }, { count: logsCount }, { data: configPlan }] = await Promise.all([
-    supabase.from('facturas').select('*, cliente:clientes(nombre, empresa)').eq('user_id', user.id).order('created_at', { ascending: false }).limit(5),
-    supabase.from('clientes').select('id').eq('user_id', user.id),
-    facturaIds.length > 0
-      ? supabase.from('logs_email').select('id', { count: 'exact', head: true }).in('factura_id', facturaIds)
-      : Promise.resolve({ count: 0, data: null, error: null }),
-    supabase.from('configuraciones_usuario').select('plan').eq('user_id', user.id).maybeSingle(),
+    supabase.from('facturas').select('*, cliente:clientes(nombre, empresa)').eq('org_id', org.org_id).order('created_at', { ascending: false }).limit(5),
+    supabase.from('clientes').select('id').eq('org_id', org.org_id),
+    supabase.from('logs_email').select('id', { count: 'exact', head: true }).eq('org_id', org.org_id),
+    supabase.from('configuraciones_usuario').select('plan').eq('org_id', org.org_id).maybeSingle(),
   ])
 
   const plan = (configPlan?.plan === 'pro' ? 'pro' : 'free') as 'free' | 'pro'

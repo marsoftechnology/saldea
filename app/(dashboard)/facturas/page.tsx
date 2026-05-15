@@ -2,16 +2,17 @@ import Link from 'next/link'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { formatearEuros, formatearFecha, colorEstado, etiquetaEstado } from '@/lib/utils'
 import { redirect } from 'next/navigation'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export default async function FacturasPage() {
+  const org = await getActiveOrg()
+  if (!org) redirect('/login')
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
 
   const { data: facturas } = await supabase
     .from('facturas')
     .select('*, cliente:clientes(nombre, empresa)')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
     .order('created_at', { ascending: false })
 
   return (

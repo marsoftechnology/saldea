@@ -13,6 +13,7 @@ const navegacion = [
   { href: '/clientes', label: 'Clientes', icono: '👥' },
   { href: '/analytics', label: 'Informes', icono: '📈' },
   { href: '/importar', label: 'Importar CSV', icono: '📥' },
+  { href: '/equipo', label: 'Equipo', icono: '🤝' },
 ]
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {

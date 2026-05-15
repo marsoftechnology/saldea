@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getActiveOrg } from '@/lib/auth-org'
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY
@@ -10,14 +11,14 @@ function getStripe() {
 
 export async function GET() {
   try {
+    const org = await getActiveOrg()
+    if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
     const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
     const { data: config } = await supabase
       .from('configuraciones_usuario')
       .select('stripe_connect_account_id, stripe_connect_charges_enabled, stripe_connect_country, stripe_connect_connected_at')
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .maybeSingle()
 
     if (!config?.stripe_connect_account_id) {
@@ -42,7 +43,7 @@ export async function GET() {
         await supabase
           .from('configuraciones_usuario')
           .update({ stripe_connect_charges_enabled: chargesEnabled })
-          .eq('user_id', user.id)
+          .eq('org_id', org.org_id)
       }
     } catch (e) {
       console.error('Error consultando estado de cuenta Stripe Connect:', e)

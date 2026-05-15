@@ -36,12 +36,12 @@ export async function POST(req: NextRequest) {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
-  let factura: { id: string; user_id: string; cliente_id: string; numero: string; importe: number; fecha_vencimiento: string; estado: string } | null = null
+  let factura: { id: string; user_id: string; org_id: string; cliente_id: string; numero: string; importe: number; fecha_vencimiento: string; estado: string } | null = null
 
   if (facturaId) {
     const { data } = await supabase
       .from('facturas')
-      .select('id, user_id, cliente_id, numero, importe, fecha_vencimiento, estado')
+      .select('id, user_id, org_id, cliente_id, numero, importe, fecha_vencimiento, estado')
       .eq('id', facturaId)
       .maybeSingle()
     factura = data
@@ -51,17 +51,17 @@ export async function POST(req: NextRequest) {
   if (!factura) {
     const { data: cliente } = await supabase
       .from('clientes')
-      .select('id, user_id')
+      .select('id, org_id')
       .ilike('email', body.from)
       .maybeSingle()
 
     if (cliente) {
       const { data } = await supabase
         .from('facturas')
-        .select('id, user_id, cliente_id, numero, importe, fecha_vencimiento, estado')
+        .select('id, user_id, org_id, cliente_id, numero, importe, fecha_vencimiento, estado')
         .eq('cliente_id', cliente.id)
-        .eq('user_id', cliente.user_id)
-        .in('estado', ['pendiente', 'vencida'])
+        .eq('org_id', cliente.org_id)
+        .in('estado', ['pendiente', 'vencida', 'parcialmente_cobrada'])
         .order('fecha_vencimiento', { ascending: false })
         .limit(1)
         .maybeSingle()
@@ -81,6 +81,7 @@ export async function POST(req: NextRequest) {
       factura_id: factura.id,
       cliente_id: factura.cliente_id,
       user_id: factura.user_id,
+      org_id: factura.org_id,
       email_de: body.from,
       asunto: body.subject,
       cuerpo: body.body,
@@ -161,6 +162,7 @@ export async function POST(req: NextRequest) {
       factura_id: factura.id,
       cliente_id: factura.cliente_id,
       user_id: factura.user_id,
+      org_id: factura.org_id,
       email_de: body.from,
       asunto: body.subject,
       cuerpo: body.body,

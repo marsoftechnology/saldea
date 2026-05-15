@@ -1,24 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export async function GET() {
+  const org = await getActiveOrg()
+  if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
   const { data } = await supabase
     .from('configuraciones_usuario')
     .select('*')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
     .maybeSingle()
 
   return NextResponse.json({ configuracion: data })
 }
 
 export async function PATCH(req: NextRequest) {
+  const org = await getActiveOrg()
+  if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  // Solo owners y admins pueden cambiar la config de la org
+  if (org.role !== 'owner' && org.role !== 'admin') {
+    return NextResponse.json({ error: 'Solo owner/admin pueden cambiar la configuración' }, { status: 403 })
+  }
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
   const body = await req.json()
 
@@ -149,7 +154,7 @@ export async function PATCH(req: NextRequest) {
 
   const { error } = await supabase
     .from('configuraciones_usuario')
-    .upsert({ user_id: user.id, ...campos }, { onConflict: 'user_id' })
+    .upsert({ user_id: org.user_id, org_id: org.org_id, ...campos }, { onConflict: 'user_id' })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 

@@ -2,16 +2,17 @@ import Link from 'next/link'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { formatearFecha } from '@/lib/utils'
 import { redirect } from 'next/navigation'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export default async function ClientesPage() {
+  const org = await getActiveOrg()
+  if (!org) redirect('/login')
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
 
   const { data: clientes } = await supabase
     .from('clientes')
     .select('*')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
     .order('created_at', { ascending: false })
 
   return (

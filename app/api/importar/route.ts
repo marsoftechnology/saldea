@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { getUserPlan } from '@/lib/plan'
+import { getActiveOrg } from '@/lib/auth-org'
 
 interface FilaCSV {
   nombre: string
@@ -14,9 +15,11 @@ interface FilaCSV {
 
 export async function POST(req: NextRequest) {
   try {
+    const org = await getActiveOrg()
+    if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite importar' }, { status: 403 })
     const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    const user = org.user
 
     // La importación masiva solo está disponible en plan Pro
     const plan = await getUserPlan(user.id, supabase)
@@ -65,7 +68,7 @@ export async function POST(req: NextRequest) {
         const { data: clienteExistente } = await supabase
           .from('clientes')
           .select('id')
-          .eq('user_id', user.id)
+          .eq('org_id', org.org_id)
           .eq('email', fila.email.trim())
           .single()
 
@@ -78,6 +81,7 @@ export async function POST(req: NextRequest) {
             .from('clientes')
             .insert({
               user_id: user.id,
+              org_id: org.org_id,
               nombre: fila.nombre.trim(),
               email: fila.email.trim(),
               empresa: fila.empresa?.trim() || null,
@@ -104,6 +108,7 @@ export async function POST(req: NextRequest) {
           .from('facturas')
           .insert({
             user_id: user.id,
+            org_id: org.org_id,
             cliente_id: clienteId,
             numero: fila.factura_numero.trim(),
             importe,
@@ -121,9 +126,9 @@ export async function POST(req: NextRequest) {
 
         // Crear recordatorios automáticos
         await supabase.from('recordatorios').insert([
-          { factura_id: factura.id, dias_offset: 7, tono: 'amigable', enviado: false },
-          { factura_id: factura.id, dias_offset: 15, tono: 'firme', enviado: false },
-          { factura_id: factura.id, dias_offset: 30, tono: 'formal', enviado: false },
+          { factura_id: factura.id, org_id: org.org_id, dias_offset: 7, tono: 'amigable', enviado: false },
+          { factura_id: factura.id, org_id: org.org_id, dias_offset: 15, tono: 'firme', enviado: false },
+          { factura_id: factura.id, org_id: org.org_id, dias_offset: 30, tono: 'formal', enviado: false },
         ])
 
         importadas++

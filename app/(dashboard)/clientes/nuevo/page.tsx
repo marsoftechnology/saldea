@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
+import { getActiveOrgIdClient } from '@/lib/client-org'
 
 export default function NuevoClientePage() {
   const router = useRouter()
@@ -25,8 +26,16 @@ export default function NuevoClientePage() {
 
     if (!user) { router.push('/login'); return }
 
+    const orgId = await getActiveOrgIdClient()
+    if (!orgId) {
+      setError('No se pudo determinar tu organización. Recarga la página.')
+      setCargando(false)
+      return
+    }
+
     const { error } = await supabase.from('clientes').insert({
       user_id: user.id,
+      org_id: orgId,
       nombre: form.nombre,
       email: form.email,
       telefono: form.telefono || null,

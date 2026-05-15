@@ -2,16 +2,17 @@ import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { formatearEuros, formatearFecha, colorEstado, etiquetaEstado } from '@/lib/utils'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export default async function AnalyticsPage() {
+  const org = await getActiveOrg()
+  if (!org) redirect('/login')
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
 
   const { data: facturas } = await supabase
     .from('facturas')
     .select('id, numero, importe, estado, fecha_vencimiento, created_at, cliente:clientes(nombre, empresa)')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
     .order('created_at', { ascending: false })
 
   const facturaIds = facturas?.map(f => f.id) ?? []
@@ -20,11 +21,11 @@ export default async function AnalyticsPage() {
     ? await supabase.from('logs_email').select('id, asunto, enviado_at, factura_id').in('factura_id', facturaIds).order('enviado_at', { ascending: false }).limit(15)
     : { data: [] }
 
-  // Sumar todos los pagos del usuario para reflejar cobros reales (incluyendo parciales)
+  // Sumar todos los pagos de la org para reflejar cobros reales (incluyendo parciales)
   const { data: pagosUser } = await supabase
     .from('pagos')
     .select('factura_id, importe')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
 
   const pagosPorFactura = new Map<string, number>()
   for (const p of pagosUser ?? []) {

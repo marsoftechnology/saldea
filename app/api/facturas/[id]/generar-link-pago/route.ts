@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getActiveOrg } from '@/lib/auth-org'
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY
@@ -16,15 +17,16 @@ export async function POST(
 ) {
   try {
     const { id } = await params
+    const org = await getActiveOrg()
+    if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite editar' }, { status: 403 })
     const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
-    // Cuenta de Stripe Connect del usuario
+    // Cuenta de Stripe Connect de la org (la mantiene el owner)
     const { data: config } = await supabase
       .from('configuraciones_usuario')
       .select('stripe_connect_account_id, stripe_connect_charges_enabled')
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .maybeSingle()
 
     if (!config?.stripe_connect_account_id) {
@@ -45,7 +47,7 @@ export async function POST(
       .from('facturas')
       .select('*, cliente:clientes(*)')
       .eq('id', id)
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .single()
 
     if (!factura) return NextResponse.json({ error: 'Factura no encontrada' }, { status: 404 })
@@ -79,13 +81,15 @@ export async function POST(
         ],
         metadata: {
           factura_id: factura.id,
-          user_id: user.id,
+          org_id: org.org_id,
+          user_id: org.user_id,
           numero_factura: factura.numero,
         },
         payment_intent_data: {
           metadata: {
             factura_id: factura.id,
-            user_id: user.id,
+            org_id: org.org_id,
+            user_id: org.user_id,
             numero_factura: factura.numero,
           },
           description: `Factura ${factura.numero}`,
@@ -107,7 +111,7 @@ export async function POST(
       .from('facturas')
       .update({ link_pago: link.url })
       .eq('id', factura.id)
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
 
     if (errUpdate) {
       console.error('Error guardando link_pago:', errUpdate)

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getActiveOrg } from '@/lib/auth-org'
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY
@@ -18,17 +19,20 @@ function getStripe() {
  */
 export async function POST() {
   try {
-    const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) {
+    const org = await getActiveOrg()
+    if (!org) {
       return NextResponse.json({ error: 'No autenticado' }, { status: 401 })
     }
+    if (org.role !== 'owner') {
+      return NextResponse.json({ error: 'Solo el owner puede gestionar la suscripción' }, { status: 403 })
+    }
+    const supabase = await createServerSupabaseClient()
 
-    // Recuperar el stripe_customer_id de este usuario
+    // Recuperar el stripe_customer_id de la org
     const { data: config } = await supabase
       .from('configuraciones_usuario')
       .select('stripe_customer_id')
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .maybeSingle()
 
     const customerId = config?.stripe_customer_id

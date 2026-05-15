@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { recalcularEstadoFactura } from '@/lib/pagos'
+import { getActiveOrg } from '@/lib/auth-org'
 
 const METODOS_VALIDOS = ['transferencia', 'tarjeta', 'efectivo', 'bizum', 'stripe', 'paypal', 'otro']
 
@@ -10,9 +11,11 @@ export async function POST(
 ) {
   try {
     const { id: facturaId } = await params
+    const org = await getActiveOrg()
+    if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite editar' }, { status: 403 })
+
     const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
     const body = await req.json()
     const importeRaw = Number(body?.importe)
@@ -26,12 +29,12 @@ export async function POST(
     const referencia = typeof body?.referencia === 'string' ? body.referencia.trim().slice(0, 200) || null : null
     const notas = typeof body?.notas === 'string' ? body.notas.trim().slice(0, 1000) || null : null
 
-    // Validar que la factura existe y pertenece al usuario
+    // Validar que la factura existe y pertenece a la org
     const { data: factura } = await supabase
       .from('facturas')
       .select('id, importe, estado')
       .eq('id', facturaId)
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .maybeSingle()
     if (!factura) return NextResponse.json({ error: 'Factura no encontrada' }, { status: 404 })
     if (factura.estado === 'cancelada') {
@@ -43,7 +46,8 @@ export async function POST(
       .from('pagos')
       .insert({
         factura_id: facturaId,
-        user_id: user.id,
+        user_id: org.user_id,
+        org_id: org.org_id,
         importe,
         fecha,
         metodo,

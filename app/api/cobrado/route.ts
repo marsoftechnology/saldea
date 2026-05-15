@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
 
     const { data: factura, error } = await supabase
       .from('facturas')
-      .select('id, estado, numero, importe, user_id')
+      .select('id, estado, numero, importe, user_id, org_id')
       .eq('id', facturaId)
       .single()
 
@@ -36,6 +36,7 @@ export async function GET(req: NextRequest) {
       await supabase.from('pagos').insert({
         factura_id: facturaId,
         user_id: factura.user_id,
+        org_id: factura.org_id,
         importe: Math.round(pendiente * 100) / 100,
         metodo: 'otro',
         notas: 'Confirmado por el cliente desde el email',

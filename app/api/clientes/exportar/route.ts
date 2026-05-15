@@ -1,20 +1,21 @@
 import { NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { generarCSV, csvResponse } from '@/lib/csv'
+import { getActiveOrg } from '@/lib/auth-org'
 
 function isoHoy(): string {
   return new Date().toISOString().slice(0, 10)
 }
 
 export async function GET() {
-  const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const org = await getActiveOrg()
+  if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
+  const supabase = await createServerSupabaseClient()
   const { data: clientes, error } = await supabase
     .from('clientes')
     .select('id, nombre, email, empresa, telefono, created_at')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
     .order('nombre')
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
@@ -23,13 +24,13 @@ export async function GET() {
   const { data: facturasAll } = await supabase
     .from('facturas')
     .select('id, cliente_id, importe, estado')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
 
   // Pagos reales por factura
   const { data: pagosAll } = await supabase
     .from('pagos')
     .select('factura_id, importe')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
   const pagadoPorFactura = new Map<string, number>()
   for (const p of pagosAll ?? []) {
     pagadoPorFactura.set(p.factura_id, (pagadoPorFactura.get(p.factura_id) ?? 0) + Number(p.importe))

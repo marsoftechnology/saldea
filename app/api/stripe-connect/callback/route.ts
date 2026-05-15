@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getActiveOrg } from '@/lib/auth-org'
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY
@@ -29,9 +30,13 @@ export async function GET(req: NextRequest) {
     return NextResponse.redirect(new URL('/ajustes?stripe_error=invalid_state', req.url))
   }
 
+  const org = await getActiveOrg()
+  if (!org) return NextResponse.redirect(new URL('/login', req.url))
+  // Solo owner puede conectar Stripe
+  if (org.role !== 'owner') {
+    return NextResponse.redirect(new URL('/ajustes?stripe_error=solo_owner_puede_conectar', req.url))
+  }
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.redirect(new URL('/login', req.url))
 
   const secret = process.env.STRIPE_SECRET_KEY
   if (!secret) {
@@ -69,7 +74,8 @@ export async function GET(req: NextRequest) {
       .from('configuraciones_usuario')
       .upsert(
         {
-          user_id: user.id,
+          user_id: org.user_id,
+          org_id: org.org_id,
           stripe_connect_account_id: stripeAccountId,
           stripe_connect_charges_enabled: account.charges_enabled ?? false,
           stripe_connect_country: account.country ?? null,

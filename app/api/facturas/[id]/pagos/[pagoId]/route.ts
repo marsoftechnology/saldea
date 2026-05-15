@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { recalcularEstadoFactura } from '@/lib/pagos'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export async function DELETE(
   req: NextRequest,
@@ -8,16 +9,17 @@ export async function DELETE(
 ) {
   try {
     const { id: facturaId, pagoId } = await params
+    const org = await getActiveOrg()
+    if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite editar' }, { status: 403 })
     const supabase = await createServerSupabaseClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
-    // Verificar que el pago existe y pertenece al usuario y a la factura
+    // Verificar que el pago existe y pertenece a la org y a la factura
     const { data: pago } = await supabase
       .from('pagos')
-      .select('id, factura_id, user_id')
+      .select('id, factura_id')
       .eq('id', pagoId)
-      .eq('user_id', user.id)
+      .eq('org_id', org.org_id)
       .eq('factura_id', facturaId)
       .maybeSingle()
     if (!pago) return NextResponse.json({ error: 'Pago no encontrado' }, { status: 404 })

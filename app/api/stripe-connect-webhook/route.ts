@@ -27,7 +27,7 @@ async function registrarPagoStripe(params: {
   const supabase = getSupabase()
   const { data: factura } = await supabase
     .from('facturas')
-    .select('id, estado, numero, importe, user_id, cliente_id')
+    .select('id, estado, numero, importe, user_id, org_id, cliente_id')
     .eq('id', facturaId)
     .maybeSingle()
 
@@ -72,6 +72,7 @@ async function registrarPagoStripe(params: {
   await supabase.from('pagos').insert({
     factura_id: facturaId,
     user_id: factura.user_id,
+    org_id: factura.org_id,
     importe: Math.round(importe * 100) / 100,
     metodo: 'stripe',
     referencia,
@@ -86,6 +87,7 @@ async function registrarPagoStripe(params: {
   await supabase.from('logs_email').insert({
     factura_id: facturaId,
     cliente_id: factura.cliente_id,
+    org_id: factura.org_id,
     asunto: '💳 Pago recibido vía Stripe',
     cuerpo: `Stripe ha confirmado un pago de ${importe.toFixed(2)}€ para la factura ${factura.numero}. Ref: ${referencia}. (Origen: ${fuente})`,
     estado: 'enviado',

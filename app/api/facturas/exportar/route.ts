@@ -1,20 +1,21 @@
 import { NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { generarCSV, csvResponse } from '@/lib/csv'
+import { getActiveOrg } from '@/lib/auth-org'
 
 function isoHoy(): string {
   return new Date().toISOString().slice(0, 10)
 }
 
 export async function GET() {
-  const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const org = await getActiveOrg()
+  if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
+  const supabase = await createServerSupabaseClient()
   const { data: facturas, error } = await supabase
     .from('facturas')
     .select('numero, importe, fecha_vencimiento, estado, descripcion, created_at, link_pago, notas_internas, cliente:clientes(nombre, email, empresa, telefono)')
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
     .order('fecha_vencimiento', { ascending: false })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

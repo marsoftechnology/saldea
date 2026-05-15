@@ -8,18 +8,19 @@ import LinkPagoEditor from './LinkPagoEditor'
 import PdfPropioUploader from './PdfPropioUploader'
 import PagosSection from './PagosSection'
 import WhatsAppRecordatorioButton from './WhatsAppRecordatorioButton'
+import { getActiveOrg } from '@/lib/auth-org'
 
 export default async function FacturaDetallePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
+  const org = await getActiveOrg()
+  if (!org) redirect('/login')
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
 
   const { data: factura } = await supabase
     .from('facturas')
     .select('*, cliente:clientes(*)')
     .eq('id', id)
-    .eq('user_id', user.id)
+    .eq('org_id', org.org_id)
     .single()
 
   if (!factura) notFound()
@@ -45,11 +46,13 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
   const dias = diasVencida(factura.fecha_vencimiento)
   const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; telefono: string | null }
 
-  // Empresa emisora para el mensaje de WhatsApp
-  const { data: { user: userFull } } = await supabase.auth.getUser()
-  const empresaEmisor = (userFull?.user_metadata?.empresa as string | undefined)
-    || (userFull?.user_metadata?.nombre as string | undefined)
-    || 'tu empresa'
+  // Empresa emisora para el mensaje de WhatsApp: nombre de la org
+  const { data: orgData } = await supabase
+    .from('organizations')
+    .select('name')
+    .eq('id', org.org_id)
+    .maybeSingle()
+  const empresaEmisor = orgData?.name || 'tu empresa'
   const totalPagado = (pagos ?? []).reduce((s, p) => s + Number(p.importe), 0)
   const pendienteFactura = Math.max(0, Number(factura.importe) - totalPagado)
 
