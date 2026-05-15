@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/app/components/Logo'
 import OrgSwitcher from './OrgSwitcher'
+import ThemeToggle from './ThemeToggle'
 
 const navegacion = [
   { href: '/dashboard', label: 'Inicio', icono: '📊' },
@@ -82,6 +83,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <span>⚙️</span>
             Ajustes
           </Link>
+          <ThemeToggle />
           <button
             onClick={cerrarSesion}
             className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-400 hover:bg-white/[0.04] hover:text-zinc-100 w-full transition-colors"
