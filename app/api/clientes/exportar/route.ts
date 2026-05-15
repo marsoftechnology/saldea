@@ -19,19 +19,32 @@ export async function GET() {
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
-  // Para cada cliente, agregamos métricas de sus facturas
+  // Para cada cliente, agregamos métricas de sus facturas — usando pagos reales
   const { data: facturasAll } = await supabase
     .from('facturas')
-    .select('cliente_id, importe, estado')
+    .select('id, cliente_id, importe, estado')
     .eq('user_id', user.id)
+
+  // Pagos reales por factura
+  const { data: pagosAll } = await supabase
+    .from('pagos')
+    .select('factura_id, importe')
+    .eq('user_id', user.id)
+  const pagadoPorFactura = new Map<string, number>()
+  for (const p of pagosAll ?? []) {
+    pagadoPorFactura.set(p.factura_id, (pagadoPorFactura.get(p.factura_id) ?? 0) + Number(p.importe))
+  }
 
   const facturasPorCliente = new Map<string, { cobrado: number; pendiente: number; total: number }>()
   for (const f of facturasAll ?? []) {
     const acc = facturasPorCliente.get(f.cliente_id) ?? { cobrado: 0, pendiente: 0, total: 0 }
     const importe = Number(f.importe)
+    const pagado = pagadoPorFactura.get(f.id) ?? 0
     acc.total += 1
-    if (f.estado === 'cobrada') acc.cobrado += importe
-    else if (f.estado !== 'cancelada') acc.pendiente += importe
+    acc.cobrado += pagado
+    if (f.estado !== 'cancelada') {
+      acc.pendiente += Math.max(0, importe - pagado)
+    }
     facturasPorCliente.set(f.cliente_id, acc)
   }
 
