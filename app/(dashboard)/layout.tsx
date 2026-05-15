@@ -1,11 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/app/components/Logo'
+import OrgSwitcher from './OrgSwitcher'
 
 const navegacion = [
   { href: '/dashboard', label: 'Inicio', icono: '📊' },
@@ -19,27 +19,12 @@ const navegacion = [
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const router = useRouter()
-  const [usuario, setUsuario] = useState<{ nombre: string; empresa: string } | null>(null)
-
-  useEffect(() => {
-    const supabase = createClient()
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) {
-        setUsuario({
-          nombre: user.user_metadata?.nombre || user.email?.split('@')[0] || '',
-          empresa: user.user_metadata?.empresa || '',
-        })
-      }
-    })
-  }, [pathname])
 
   async function cerrarSesion() {
     const supabase = createClient()
     await supabase.auth.signOut()
     router.push('/login')
   }
-
-  const displayName = usuario?.empresa?.trim() || usuario?.nombre?.trim() || '...'
 
   return (
     <div className="flex h-screen bg-[#0a0a0b] text-zinc-100">
@@ -59,11 +44,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <span className="text-[9px] text-zinc-600 uppercase tracking-wider font-semibold">by Marsof</span>
             </div>
           </div>
-          {usuario && (
-            <p className="text-xs text-zinc-500 mt-3 truncate" title={displayName}>
-              {displayName}
-            </p>
-          )}
+          {/* Switcher de organización */}
+          <OrgSwitcher />
         </div>
 
         <nav className="flex-1 p-3 space-y-1">
