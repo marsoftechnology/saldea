@@ -92,6 +92,13 @@ export async function POST(req: NextRequest) {
           clienteId = nuevoCliente.id
         }
 
+        // Calcular estado según fecha de vencimiento
+        const hoy = new Date()
+        hoy.setHours(0, 0, 0, 0)
+        const fechaVenc = new Date(fila.fecha_vencimiento.trim())
+        fechaVenc.setHours(0, 0, 0, 0)
+        const estadoCalculado = fechaVenc < hoy ? 'vencida' : 'pendiente'
+
         // Crear factura
         const { data: factura, error: errFactura } = await supabase
           .from('facturas')
@@ -102,7 +109,7 @@ export async function POST(req: NextRequest) {
             importe,
             fecha_vencimiento: fila.fecha_vencimiento.trim(),
             descripcion: fila.descripcion?.trim() || null,
-            estado: 'pendiente',
+            estado: estadoCalculado,
           })
           .select('id')
           .single()
