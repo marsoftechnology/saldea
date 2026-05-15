@@ -12,12 +12,16 @@ export const metadata: Metadata = {
 }
 
 const nav = [
-  { href: '/admin', label: 'Resumen general', icono: '🏢' },
+  { href: '/admin', label: 'Resumen financiero', icono: '🏢' },
   { href: '/admin/saldea', label: 'Saldea', icono: '💼', seccion: true },
+  { href: '/admin/saldea/ingresos', label: '↳ Pagos detallados', icono: '💰' },
+  { href: '/admin/saldea/suscripciones', label: '↳ Suscripciones', icono: '🔁' },
+]
+
+const navOperativo = [
   { href: '/admin/saldea/usuarios', label: '↳ Usuarios', icono: '👥' },
   { href: '/admin/saldea/organizaciones', label: '↳ Organizaciones', icono: '🏛️' },
-  { href: '/admin/saldea/facturas', label: '↳ Facturas', icono: '📄' },
-  { href: '/admin/saldea/ingresos', label: '↳ Ingresos', icono: '💰' },
+  { href: '/admin/saldea/facturas', label: '↳ Facturas de clientes', icono: '📄' },
 ]
 
 export default async function AdminLayoutProtegido({ children }: { children: React.ReactNode }) {
@@ -47,6 +51,20 @@ export default async function AdminLayoutProtegido({ children }: { children: Rea
               {item.label}
             </Link>
           ))}
+
+          <div className="pt-4 mt-4 border-t border-white/5">
+            <p className="text-[10px] uppercase tracking-wider text-zinc-600 px-3 mb-2">Datos operativos</p>
+            {navOperativo.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-zinc-500 hover:bg-white/[0.04] hover:text-zinc-300 border border-transparent transition-colors"
+              >
+                <span>{item.icono}</span>
+                {item.label}
+              </Link>
+            ))}
+          </div>
 
           <div className="pt-4 mt-4 border-t border-white/5">
             <p className="text-[10px] uppercase tracking-wider text-zinc-600 px-3 mb-2">Próximas apps</p>
