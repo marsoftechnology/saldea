@@ -20,33 +20,53 @@ export default async function AnalyticsPage() {
     ? await supabase.from('logs_email').select('id, asunto, enviado_at, factura_id').in('factura_id', facturaIds).order('enviado_at', { ascending: false }).limit(15)
     : { data: [] }
 
+  // Sumar todos los pagos del usuario para reflejar cobros reales (incluyendo parciales)
+  const { data: pagosUser } = await supabase
+    .from('pagos')
+    .select('factura_id, importe')
+    .eq('user_id', user.id)
+
+  const pagosPorFactura = new Map<string, number>()
+  for (const p of pagosUser ?? []) {
+    pagosPorFactura.set(p.factura_id, (pagosPorFactura.get(p.factura_id) ?? 0) + Number(p.importe))
+  }
+
   const todas = facturas ?? []
 
   const cobradas = todas.filter(f => f.estado === 'cobrada')
   const pendientes = todas.filter(f => f.estado === 'pendiente')
   const vencidas = todas.filter(f => f.estado === 'vencida')
+  const parciales = todas.filter(f => f.estado === 'parcialmente_cobrada')
 
-  const importeTotal = todas.reduce((s, f) => s + f.importe, 0)
-  const importeCobrado = cobradas.reduce((s, f) => s + f.importe, 0)
-  const importePendiente = pendientes.reduce((s, f) => s + f.importe, 0)
-  const importeVencido = vencidas.reduce((s, f) => s + f.importe, 0)
+  const importeTotal = todas.reduce((s, f) => s + Number(f.importe), 0)
+  // Importe efectivamente cobrado = suma de todos los pagos
+  const importeCobrado = Array.from(pagosPorFactura.values()).reduce((s, v) => s + v, 0)
+  // Pendiente real = total facturado - cobrado - canceladas
+  const importeCanceladas = todas.filter(f => f.estado === 'cancelada').reduce((s, f) => s + Number(f.importe), 0)
+  const importePendiente = pendientes.reduce((s, f) => s + (Number(f.importe) - (pagosPorFactura.get(f.id) ?? 0)), 0)
+  const importeVencido = vencidas.reduce((s, f) => s + (Number(f.importe) - (pagosPorFactura.get(f.id) ?? 0)), 0)
+  const importeParcialPendiente = parciales.reduce((s, f) => s + (Number(f.importe) - (pagosPorFactura.get(f.id) ?? 0)), 0)
+  void importeCanceladas
 
-  const tasaCobro = todas.length > 0 ? Math.round((cobradas.length / todas.length) * 100) : 0
+  // Tasa de cobro: por importe usa pagado/total, por nº usa cobradas+parciales (cuentan como "ha cobrado algo")
+  const tasaCobro = todas.length > 0 ? Math.round(((cobradas.length + parciales.length) / todas.length) * 100) : 0
   const tasaImporte = importeTotal > 0 ? Math.round((importeCobrado / importeTotal) * 100) : 0
 
-  // Clientes con deuda pendiente
+  // Clientes con deuda pendiente (incluye parciales con el importe pendiente real)
   const deudaPorCliente: Record<string, { nombre: string; empresa: string | null; importe: number; facturas: number }> = {}
-  vencidas.concat(pendientes).forEach(f => {
+  vencidas.concat(pendientes).concat(parciales).forEach(f => {
     const c = f.cliente as unknown as { nombre: string; empresa: string | null }
     const key = c?.nombre ?? 'Desconocido'
     if (!deudaPorCliente[key]) deudaPorCliente[key] = { nombre: key, empresa: c?.empresa ?? null, importe: 0, facturas: 0 }
-    deudaPorCliente[key].importe += f.importe
+    const pendienteFactura = Number(f.importe) - (pagosPorFactura.get(f.id) ?? 0)
+    deudaPorCliente[key].importe += pendienteFactura
     deudaPorCliente[key].facturas += 1
   })
   const topDeudores = Object.values(deudaPorCliente).sort((a, b) => b.importe - a.importe).slice(0, 5)
 
   const estados = [
     { label: 'Cobradas', count: cobradas.length, importe: importeCobrado, color: 'bg-sky-500/100', textColor: 'text-sky-300' },
+    { label: 'Parciales', count: parciales.length, importe: importeParcialPendiente, color: 'bg-violet-400', textColor: 'text-violet-300' },
     { label: 'Pendientes', count: pendientes.length, importe: importePendiente, color: 'bg-yellow-400', textColor: 'text-amber-300' },
     { label: 'Vencidas', count: vencidas.length, importe: importeVencido, color: 'bg-red-400', textColor: 'text-rose-300' },
   ]
@@ -72,8 +92,8 @@ export default async function AnalyticsPage() {
         </div>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 border border-white/5 shadow-sm">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Pendiente</p>
-          <p className="text-xl font-bold text-amber-300">{formatearEuros(importePendiente + importeVencido)}</p>
-          <p className="text-xs text-zinc-500 mt-1">{pendientes.length + vencidas.length} facturas</p>
+          <p className="text-xl font-bold text-amber-300">{formatearEuros(importePendiente + importeVencido + importeParcialPendiente)}</p>
+          <p className="text-xs text-zinc-500 mt-1">{pendientes.length + vencidas.length + parciales.length} facturas</p>
         </div>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 border border-white/5 shadow-sm">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Recordatorios</p>

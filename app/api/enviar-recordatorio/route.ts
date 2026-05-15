@@ -23,6 +23,13 @@ export async function POST(req: NextRequest) {
 
     if (!factura) return NextResponse.json({ error: 'Factura no encontrada' }, { status: 404 })
 
+    // Calcular importe ya pagado (parcial o total) — la IA mencionará el pendiente
+    const { data: pagosFactura } = await supabase
+      .from('pagos')
+      .select('importe')
+      .eq('factura_id', facturaId)
+    const importePagado = (pagosFactura ?? []).reduce((s, p) => s + Number(p.importe), 0)
+
     const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null }
     const nombreEmpresa = user.user_metadata?.empresa || user.user_metadata?.nombre || 'Tu empresa'
     const dias = diasVencida(factura.fecha_vencimiento)
@@ -71,6 +78,7 @@ export async function POST(req: NextRequest) {
         descuentoProntoPagoPct: Number(config?.descuento_pronto_pago_pct ?? 0),
         descuentoProntoPagoDias: Number(config?.descuento_pronto_pago_dias ?? 7),
         tieneLinkPago: !!factura.link_pago,
+        importePagado,
       })
       asunto = gen.asunto
       cuerpo = gen.cuerpo
@@ -133,7 +141,8 @@ export async function POST(req: NextRequest) {
           .eq('factura_id', facturaId)
           .eq('tono', tono)
           .eq('enviado', false),
-        dias > 0
+        // Solo forzamos 'vencida' si la factura no está cobrada ni parcialmente_cobrada
+        dias > 0 && factura.estado !== 'cobrada' && factura.estado !== 'parcialmente_cobrada'
           ? supabase.from('facturas').update({ estado: 'vencida' }).eq('id', facturaId)
           : Promise.resolve(),
       ])

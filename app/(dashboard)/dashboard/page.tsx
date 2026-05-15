@@ -14,6 +14,17 @@ export default async function DashboardPage() {
 
   const facturaIds = todasFacturas?.map(f => f.id) ?? []
 
+  // Pagos del usuario para calcular cobrado real (incluye parciales)
+  const { data: pagosUser } = await supabase
+    .from('pagos')
+    .select('factura_id, importe')
+    .eq('user_id', user.id)
+  const pagosPorFactura = new Map<string, number>()
+  for (const p of pagosUser ?? []) {
+    pagosPorFactura.set(p.factura_id, (pagosPorFactura.get(p.factura_id) ?? 0) + Number(p.importe))
+  }
+  const totalPagado = Array.from(pagosPorFactura.values()).reduce((s, v) => s + v, 0)
+
   const [{ data: facturas }, { data: clientes }, { count: logsCount }, { data: configPlan }] = await Promise.all([
     supabase.from('facturas').select('*, cliente:clientes(nombre, empresa)').eq('user_id', user.id).order('created_at', { ascending: false }).limit(5),
     supabase.from('clientes').select('id').eq('user_id', user.id),
@@ -32,10 +43,16 @@ export default async function DashboardPage() {
   )
 
   const todas = todasFacturas ?? []
-  const totalPendiente = todas.filter(f => f.estado === 'pendiente' || f.estado === 'vencida').reduce((acc, f) => acc + f.importe, 0)
-  const totalCobrado = todas.filter(f => f.estado === 'cobrada').reduce((acc, f) => acc + f.importe, 0)
+  // Total pendiente = suma de (importe - pagado) de facturas no cobradas y no canceladas
+  const totalPendiente = todas
+    .filter(f => f.estado !== 'cobrada' && f.estado !== 'cancelada')
+    .reduce((acc, f) => acc + Math.max(0, Number(f.importe) - (pagosPorFactura.get(f.id) ?? 0)), 0)
+  // Cobrado = suma real de pagos (incluye parciales)
+  const totalCobrado = totalPagado
   const facturasVencidas = todas.filter(f => f.estado === 'vencida').length
-  const tasaCobro = todas.length > 0 ? Math.round((todas.filter(f => f.estado === 'cobrada').length / todas.length) * 100) : 0
+  // Tasa de cobro: facturas con algún pago (cobradas + parciales) / total
+  const facturasConPago = todas.filter(f => f.estado === 'cobrada' || f.estado === 'parcialmente_cobrada').length
+  const tasaCobro = todas.length > 0 ? Math.round((facturasConPago / todas.length) * 100) : 0
 
   return (
     <div className="p-8">

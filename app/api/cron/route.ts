@@ -48,7 +48,7 @@ export async function GET(req: NextRequest) {
   let query = supabase
     .from('facturas')
     .select('*, cliente:clientes(*), recordatorios(*)')
-    .in('estado', ['pendiente', 'vencida'])
+    .in('estado', ['pendiente', 'vencida', 'parcialmente_cobrada'])
     .lte('fecha_vencimiento', hoy)
     .or(`pausada_hasta.is.null,pausada_hasta.lte.${hoy}`)
 
@@ -129,7 +129,9 @@ export async function GET(req: NextRequest) {
   let tonosForzadosFree = 0
 
   for (const factura of facturasPendientes) {
-    const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null }
+    const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; pausar_recordatorios?: boolean | null }
+    // Si el cliente tiene los recordatorios pausados, saltar
+    if (cliente?.pausar_recordatorios) continue
     const dias = diasVencida(factura.fecha_vencimiento)
     const recordatorios = (factura.recordatorios ?? []) as Array<{ dias_offset: number; enviado: boolean; tono: string; id: string }>
 
@@ -188,6 +190,18 @@ export async function GET(req: NextRequest) {
       const descuentoProntoPagoPct = Number(configMap?.descuento_pronto_pago_pct ?? 0)
       const descuentoProntoPagoDias = Number(configMap?.descuento_pronto_pago_dias ?? 7)
 
+      // Calcular pagos previos para informar a la IA del importe pendiente
+      const { data: pagosFactura } = await supabase
+        .from('pagos')
+        .select('importe')
+        .eq('factura_id', factura.id)
+      const importePagado = (pagosFactura ?? []).reduce((s: number, p: { importe: number }) => s + Number(p.importe), 0)
+
+      // Si ya está totalmente pagada (caso raro: cron tarda en correr), saltamos
+      if (importePagado + 0.005 >= Number(factura.importe)) {
+        continue
+      }
+
       let asunto: string
       let cuerpo: string
 
@@ -219,6 +233,7 @@ export async function GET(req: NextRequest) {
           descuentoProntoPagoPct,
           descuentoProntoPagoDias,
           tieneLinkPago: !!factura.link_pago,
+          importePagado,
         })
         asunto = gen.asunto
         cuerpo = gen.cuerpo
@@ -278,7 +293,10 @@ export async function GET(req: NextRequest) {
           supabase.from('recordatorios')
             .update({ enviado: true, enviado_at: new Date().toISOString(), mensaje_preview: cuerpo.substring(0, 200) })
             .eq('id', pendiente.id),
-          supabase.from('facturas').update({ estado: 'vencida' }).eq('id', factura.id),
+          // Solo forzamos 'vencida' si no hay pagos parciales ni está cobrada
+          factura.estado !== 'cobrada' && factura.estado !== 'parcialmente_cobrada'
+            ? supabase.from('facturas').update({ estado: 'vencida' }).eq('id', factura.id)
+            : Promise.resolve(),
         ])
         enviados++
         // Actualizar contadores en caché (acabamos de enviar uno)

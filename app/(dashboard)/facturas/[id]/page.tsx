@@ -2,11 +2,12 @@ import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { formatearEuros, formatearFecha, colorEstado, etiquetaEstado, diasVencida } from '@/lib/utils'
 import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
-import MarcarCobradaButton from './MarcarCobradaButton'
 import EnviarRecordatorioButton from './EnviarRecordatorioButton'
 import NotasInternasEditor from './NotasInternasEditor'
 import LinkPagoEditor from './LinkPagoEditor'
 import PdfPropioUploader from './PdfPropioUploader'
+import PagosSection from './PagosSection'
+import WhatsAppRecordatorioButton from './WhatsAppRecordatorioButton'
 
 export default async function FacturaDetallePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -35,8 +36,22 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
     .eq('factura_id', id)
     .order('enviado_at', { ascending: false })
 
+  const { data: pagos } = await supabase
+    .from('pagos')
+    .select('*')
+    .eq('factura_id', id)
+    .order('fecha', { ascending: false })
+
   const dias = diasVencida(factura.fecha_vencimiento)
-  const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null }
+  const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; telefono: string | null }
+
+  // Empresa emisora para el mensaje de WhatsApp
+  const { data: { user: userFull } } = await supabase.auth.getUser()
+  const empresaEmisor = (userFull?.user_metadata?.empresa as string | undefined)
+    || (userFull?.user_metadata?.nombre as string | undefined)
+    || 'tu empresa'
+  const totalPagado = (pagos ?? []).reduce((s, p) => s + Number(p.importe), 0)
+  const pendienteFactura = Math.max(0, Number(factura.importe) - totalPagado)
 
   return (
     <div className="p-8 max-w-2xl">
@@ -81,11 +96,33 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
 
         {factura.estado !== 'cobrada' && factura.estado !== 'cancelada' && (
           <div className="mt-6 pt-6 border-t border-white/5 flex gap-3">
-            <MarcarCobradaButton facturaId={factura.id} />
             <EnviarRecordatorioButton facturaId={factura.id} clienteEmail={cliente?.email} diasVencida={dias} />
           </div>
         )}
       </div>
+
+      {/* Pagos recibidos (parciales o completos) */}
+      <PagosSection
+        facturaId={factura.id}
+        importeFactura={Number(factura.importe)}
+        pagosIniciales={pagos ?? []}
+        facturaCancelada={factura.estado === 'cancelada'}
+      />
+
+      {/* WhatsApp recordatorio (solo si la factura está pendiente / vencida / parcial) */}
+      {factura.estado !== 'cobrada' && factura.estado !== 'cancelada' && (
+        <WhatsAppRecordatorioButton
+          facturaNumero={factura.numero}
+          facturaImporte={Number(factura.importe)}
+          facturaPendiente={pendienteFactura}
+          fechaVencimiento={factura.fecha_vencimiento}
+          diasVencida={dias}
+          linkPago={factura.link_pago ?? null}
+          clienteNombre={cliente.nombre}
+          clienteTelefono={cliente.telefono}
+          empresaEmisor={empresaEmisor}
+        />
+      )}
 
       {/* PDF de la factura */}
       <PdfPropioUploader

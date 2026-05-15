@@ -21,9 +21,21 @@ export default async function ClientesPage() {
           <h1 className="text-2xl font-bold text-zinc-100">Clientes</h1>
           <p className="text-zinc-400 text-sm mt-1">{clientes?.length ?? 0} clientes registrados</p>
         </div>
-        <Link href="/clientes/nuevo" className="bg-sky-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-sky-400 transition-colors">
-          + Nuevo cliente
-        </Link>
+        <div className="flex items-center gap-2">
+          {(clientes?.length ?? 0) > 0 && (
+            <a
+              href="/api/clientes/exportar"
+              download
+              className="text-zinc-300 border border-white/10 hover:bg-white/5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors inline-flex items-center gap-1.5"
+              title="Descargar todos los clientes en CSV"
+            >
+              ⬇ Exportar CSV
+            </a>
+          )}
+          <Link href="/clientes/nuevo" className="bg-sky-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-sky-400 transition-colors">
+            + Nuevo cliente
+          </Link>
+        </div>
       </div>
 
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl">

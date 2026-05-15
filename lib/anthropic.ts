@@ -20,8 +20,12 @@ export async function generarMensajeRecordatorio(params: {
   descuentoProntoPagoPct?: number
   descuentoProntoPagoDias?: number
   tieneLinkPago?: boolean
+  importePagado?: number
 }): Promise<{ asunto: string; cuerpo: string }> {
-  const { nombreCliente, empresa, numeroFactura, importe, diasVencida, tono, nombreEmpresa, idioma = 'es', ofrecerPagoPlazos = false, variarTextos = false, recargoMoraPct = 0, descuentoProntoPagoPct = 0, descuentoProntoPagoDias = 7, tieneLinkPago = false } = params
+  const { nombreCliente, empresa, numeroFactura, importe, diasVencida, tono, nombreEmpresa, idioma = 'es', ofrecerPagoPlazos = false, variarTextos = false, recargoMoraPct = 0, descuentoProntoPagoPct = 0, descuentoProntoPagoDias = 7, tieneLinkPago = false, importePagado = 0 } = params
+
+  const pendiente = Math.max(0, importe - importePagado)
+  const hayPagoParcial = importePagado > 0.005 && pendiente > 0.005
 
   const idiomaInstruccion = {
     es: 'El email debe estar completamente en español y ser apropiado para el mercado español.',
@@ -47,14 +51,24 @@ export async function generarMensajeRecordatorio(params: {
     ? 'Usa un tono amable y preventivo. La factura todavía no está vencida: recuérdale al cliente que el pago se acerca. Sé cercano, profesional y positivo. NO uses palabras como "vencida", "impagada", "urgente", "reclamación" ni nada similar.'
     : instruccionesTono[tono]
 
+  const datosImporte = hayPagoParcial
+    ? `- Importe total de la factura: ${importe.toFixed(2)}€
+- Importe YA PAGADO: ${importePagado.toFixed(2)}€ (PAGO PARCIAL recibido)
+- Importe PENDIENTE de cobro: ${pendiente.toFixed(2)}€ (este es el saldo a reclamar)`
+    : `- Importe: ${importe.toFixed(2)}€`
+
+  const instruccionPagoParcial = hayPagoParcial
+    ? '\nIMPORTANTE: El cliente ya ha realizado un PAGO PARCIAL. AGRADÉCELE el abono recibido y centra la reclamación SOLO en el importe pendiente. Sé claro: "Tras tu pago de X€, queda pendiente Y€". No reclames el total original.\n'
+    : ''
+
   const prompt = `Eres el asistente de cobros de "${nombreEmpresa}", una empresa española.
 
 Escribe un email relacionado con el pago de la siguiente factura:
 - Cliente: ${nombreCliente}${empresa ? ` (${empresa})` : ''}
 - Número de factura: ${numeroFactura}
-- Importe: ${importe.toFixed(2)}€
+${datosImporte}
 - Estado: ${estadoFactura}
-
+${instruccionPagoParcial}
 Instrucciones de tono: ${instruccionesTonoAjustado}
 ${ofrecerPagoPlazos ? '\nDado que la factura lleva varios días impagada, incluye en el email una propuesta CLARA de fraccionar el pago en plazos (2-3 cuotas mensuales) si el cliente lo necesita. Que se note que es una opción flexible para facilitar el cobro, no una concesión por debilidad.\n' : ''}
 ${variarTextos ? '\nVARÍA el vocabulario, las fórmulas de inicio y cierre, la estructura de párrafos y los giros respecto a un email estándar. No uses frases hechas obvias del cobro automatizado ("Le recordamos que...", "Esperamos su pronto pago..."). Que suene a alguien escribiendo a mano, no a una plantilla.\n' : ''}

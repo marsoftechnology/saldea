@@ -21,9 +21,21 @@ export default async function FacturasPage() {
           <h1 className="text-2xl font-bold text-white tracking-tight">Facturas</h1>
           <p className="text-zinc-500 text-sm mt-1">{facturas?.length ?? 0} facturas en total</p>
         </div>
-        <Link href="/facturas/nueva" className="bg-sky-500 text-zinc-900 px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
-          + Nueva factura
-        </Link>
+        <div className="flex items-center gap-2">
+          {(facturas?.length ?? 0) > 0 && (
+            <a
+              href="/api/facturas/exportar"
+              download
+              className="text-zinc-300 border border-white/10 hover:bg-white/5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors inline-flex items-center gap-1.5"
+              title="Descargar todas las facturas en CSV"
+            >
+              ⬇ Exportar CSV
+            </a>
+          )}
+          <Link href="/facturas/nueva" className="bg-sky-500 text-zinc-900 px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
+            + Nueva factura
+          </Link>
+        </div>
       </div>
 
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl overflow-hidden">

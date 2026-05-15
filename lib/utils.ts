@@ -29,20 +29,22 @@ export function diasVencida(fechaVencimiento: string): number {
 
 export function colorEstado(estado: string): string {
   switch (estado) {
-    case 'pendiente': return 'text-amber-300 bg-amber-500/10 border-amber-500/30'
-    case 'vencida':   return 'text-rose-300 bg-rose-500/10 border-rose-500/30'
-    case 'cobrada':   return 'text-sky-300 bg-sky-500/10 border-sky-500/30'
-    case 'cancelada': return 'text-zinc-400 bg-zinc-500/10 border-zinc-500/30'
-    default:          return 'text-zinc-400 bg-zinc-500/10 border-zinc-500/30'
+    case 'pendiente':              return 'text-amber-300 bg-amber-500/10 border-amber-500/30'
+    case 'vencida':                return 'text-rose-300 bg-rose-500/10 border-rose-500/30'
+    case 'cobrada':                return 'text-sky-300 bg-sky-500/10 border-sky-500/30'
+    case 'parcialmente_cobrada':   return 'text-violet-300 bg-violet-500/10 border-violet-500/30'
+    case 'cancelada':              return 'text-zinc-400 bg-zinc-500/10 border-zinc-500/30'
+    default:                       return 'text-zinc-400 bg-zinc-500/10 border-zinc-500/30'
   }
 }
 
 export function etiquetaEstado(estado: string): string {
   switch (estado) {
-    case 'pendiente': return 'Pendiente'
-    case 'vencida':   return 'Vencida'
-    case 'cobrada':   return 'Cobrada'
-    case 'cancelada': return 'Cancelada'
-    default:          return estado
+    case 'pendiente':              return 'Pendiente'
+    case 'vencida':                return 'Vencida'
+    case 'cobrada':                return 'Cobrada'
+    case 'parcialmente_cobrada':   return 'Parcial'
+    case 'cancelada':              return 'Cancelada'
+    default:                       return estado
   }
 }

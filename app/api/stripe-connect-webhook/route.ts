@@ -17,11 +17,17 @@ function getSupabase() {
   )
 }
 
-async function marcarFacturaComoCobrada(facturaId: string, fuente: string) {
+async function registrarPagoStripe(params: {
+  facturaId: string
+  importeCentimos: number | null
+  referencia: string
+  fuente: string
+}) {
+  const { facturaId, importeCentimos, referencia, fuente } = params
   const supabase = getSupabase()
   const { data: factura } = await supabase
     .from('facturas')
-    .select('id, estado, numero, user_id, cliente_id')
+    .select('id, estado, numero, importe, user_id, cliente_id')
     .eq('id', facturaId)
     .maybeSingle()
 
@@ -34,18 +40,58 @@ async function marcarFacturaComoCobrada(facturaId: string, fuente: string) {
     return
   }
 
-  await supabase.from('facturas').update({ estado: 'cobrada' }).eq('id', facturaId)
+  // Si ya hay un pago con esta referencia, no duplicar (idempotencia)
+  const { data: pagoExistente } = await supabase
+    .from('pagos')
+    .select('id')
+    .eq('factura_id', facturaId)
+    .eq('referencia', referencia)
+    .maybeSingle()
+  if (pagoExistente) {
+    console.log(`[connect-webhook] pago ${referencia} ya existe — skip`)
+    return
+  }
 
-  // Log de "email" interno para que aparezca en el historial
+  // Importe: si Stripe nos da el importe usamos ese, si no el pendiente de la factura
+  let importe: number
+  if (importeCentimos && importeCentimos > 0) {
+    importe = importeCentimos / 100
+  } else {
+    const { data: pagosPrevios } = await supabase
+      .from('pagos')
+      .select('importe')
+      .eq('factura_id', facturaId)
+    const yaPagado = (pagosPrevios ?? []).reduce((s, p) => s + Number(p.importe), 0)
+    importe = Math.max(0, Number(factura.importe) - yaPagado)
+  }
+  if (importe <= 0) {
+    console.log(`[connect-webhook] importe 0 para factura ${factura.numero} — skip`)
+    return
+  }
+
+  await supabase.from('pagos').insert({
+    factura_id: facturaId,
+    user_id: factura.user_id,
+    importe: Math.round(importe * 100) / 100,
+    metodo: 'stripe',
+    referencia,
+    notas: `Auto-cobrada vía Stripe (${fuente})`,
+  })
+
+  // Recalcular estado (puede ser cobrada o parcialmente_cobrada si Stripe trae menos del total)
+  const { recalcularEstadoFactura } = await import('@/lib/pagos')
+  await recalcularEstadoFactura(supabase, facturaId)
+
+  // Log en el historial de la factura
   await supabase.from('logs_email').insert({
     factura_id: facturaId,
     cliente_id: factura.cliente_id,
     asunto: '💳 Pago recibido vía Stripe',
-    cuerpo: `Stripe ha confirmado el pago de la factura ${factura.numero}. La factura se ha marcado como cobrada automáticamente. (Origen: ${fuente})`,
+    cuerpo: `Stripe ha confirmado un pago de ${importe.toFixed(2)}€ para la factura ${factura.numero}. Ref: ${referencia}. (Origen: ${fuente})`,
     estado: 'enviado',
   })
 
-  console.log(`[connect-webhook] factura ${factura.numero} marcada como cobrada (origen: ${fuente})`)
+  console.log(`[connect-webhook] pago ${importe}€ registrado para factura ${factura.numero} (ref ${referencia}, origen ${fuente})`)
 }
 
 export async function POST(req: NextRequest) {
@@ -76,7 +122,12 @@ export async function POST(req: NextRequest) {
         const session = event.data.object as Stripe.Checkout.Session
         const facturaId = session.metadata?.factura_id
         if (facturaId && session.payment_status === 'paid') {
-          await marcarFacturaComoCobrada(facturaId, 'checkout.session.completed')
+          await registrarPagoStripe({
+            facturaId,
+            importeCentimos: session.amount_total ?? null,
+            referencia: session.id,
+            fuente: 'checkout.session.completed',
+          })
         }
         break
       }
@@ -86,7 +137,12 @@ export async function POST(req: NextRequest) {
         const intent = event.data.object as Stripe.PaymentIntent
         const facturaId = intent.metadata?.factura_id
         if (facturaId) {
-          await marcarFacturaComoCobrada(facturaId, 'payment_intent.succeeded')
+          await registrarPagoStripe({
+            facturaId,
+            importeCentimos: intent.amount_received ?? intent.amount ?? null,
+            referencia: intent.id,
+            fuente: 'payment_intent.succeeded',
+          })
         }
         break
       }
