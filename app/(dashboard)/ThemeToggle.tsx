@@ -14,10 +14,11 @@ export default function ThemeToggle() {
 
   function cambiar() {
     const nuevo = tema === 'dark' ? 'light' : 'dark'
-    setTema(nuevo)
     localStorage.setItem('saldea_theme', nuevo)
-    if (nuevo === 'light') document.documentElement.classList.add('light')
-    else document.documentElement.classList.remove('light')
+    // Recargamos para que Tailwind v4 + color-mix() respeten las nuevas variables
+    // (sin recarga, color-mix queda cacheado y algunos colores no se invierten).
+    // El script inline del <head> aplica el tema antes del primer paint → no hay flash.
+    window.location.reload()
   }
 
   if (!montado) {
