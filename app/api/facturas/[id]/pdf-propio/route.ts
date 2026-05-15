@@ -16,11 +16,12 @@ export async function PATCH(
     const body = await req.json()
     const path = body?.pdf_propio_path
 
-    // Validar: o es null, o es string que empieza por user.id/ (defensa: usuario no puede apuntar a PDF ajeno)
+    // Validar: o es null, o es string que empieza por la org_id activa
+    // (defensa: el miembro no puede apuntar a un PDF de otra org)
     let valor: string | null = null
     if (typeof path === 'string' && path.trim()) {
       const limpio = path.trim()
-      if (!limpio.startsWith(`${org.user_id}/`)) {
+      if (!limpio.startsWith(`${org.org_id}/`)) {
         return NextResponse.json({ error: 'Ruta no autorizada' }, { status: 403 })
       }
       if (limpio.length > 500) {

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { createClient } from '@/lib/supabase'
+import { getActiveOrgIdClient } from '@/lib/client-org'
 
 const MAX_SIZE = 10 * 1024 * 1024 // 10 MB
 
@@ -39,7 +40,10 @@ export default function PdfPropioUploader({
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) throw new Error('No autenticado')
 
-      const ruta = `${user.id}/${facturaId}.pdf`
+      const orgId = await getActiveOrgIdClient()
+      if (!orgId) throw new Error('No se pudo determinar la organización')
+
+      const ruta = `${orgId}/${facturaId}.pdf`
       const { error: upErr } = await supabase
         .storage
         .from('facturas-pdf')
