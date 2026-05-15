@@ -4,6 +4,9 @@ import { Resend } from 'resend'
 import { getActiveOrg } from '@/lib/auth-org'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { createServiceRoleClient } from '@/lib/supabase-service'
+import { getOrgPlan, contarAsientosOrg, limiteMiembrosOrg, LIMITES_PRO } from '@/lib/plan'
+
+const LIMITES_PRO_MIEMBROS = LIMITES_PRO.miembrosEquipo
 
 const ROLES_VALIDOS = ['admin', 'member', 'readonly']
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'
@@ -33,6 +36,23 @@ export async function POST(req: NextRequest) {
   const email = emailRaw.trim().toLowerCase()
   const supabase = await createServerSupabaseClient()
   const admin = createServiceRoleClient()
+
+  // Comprobar límite del plan antes de aceptar la invitación
+  const plan = await getOrgPlan(org.org_id, admin)
+  const limite = limiteMiembrosOrg(plan)
+  const asientos = await contarAsientosOrg(org.org_id, admin)
+  if (asientos.total >= limite) {
+    return NextResponse.json({
+      error: plan === 'free'
+        ? `El plan Free solo permite ${limite} miembro (tú mismo). Sube a Pro desde Ajustes para invitar a tu equipo (hasta ${LIMITES_PRO_MIEMBROS} miembros).`
+        : `Has llegado al límite de ${limite} miembros del plan Pro. Contacta con soporte para un plan ampliado.`,
+      codigo: 'PLAN_LIMIT_MIEMBROS',
+      limite,
+      usados: asientos.total,
+      detalle: { miembros: asientos.miembros, invitacionesPendientes: asientos.invitacionesPendientes },
+      plan,
+    }, { status: 403 })
+  }
 
   // Verificar que ese email no está ya en la org (vía service role para poder consultar auth.users)
   // Primero ver si hay un usuario con ese email

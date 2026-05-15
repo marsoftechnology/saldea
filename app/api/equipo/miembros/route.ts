@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getActiveOrg } from '@/lib/auth-org'
 import { createServiceRoleClient } from '@/lib/supabase-service'
+import { getOrgPlan, limiteMiembrosOrg } from '@/lib/plan'
 
 export async function GET() {
   const org = await getActiveOrg()
@@ -53,9 +54,17 @@ export async function GET() {
     .is('accepted_at', null)
     .order('created_at', { ascending: false })
 
+  // Plan + límite de asientos
+  const plan = await getOrgPlan(org.org_id, admin)
+  const limite = limiteMiembrosOrg(plan)
+  const usados = enriquecidos.length + (invitaciones?.length ?? 0)
+
   return NextResponse.json({
     miembros: enriquecidos,
     invitaciones: invitaciones ?? [],
     miRol: org.role,
+    plan,
+    limite,
+    usados,
   })
 }

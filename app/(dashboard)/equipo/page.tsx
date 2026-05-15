@@ -48,6 +48,9 @@ export default function EquipoPage() {
   const [miembros, setMiembros] = useState<Miembro[]>([])
   const [invitaciones, setInvitaciones] = useState<Invite[]>([])
   const [miRol, setMiRol] = useState<Rol | null>(null)
+  const [plan, setPlan] = useState<'free' | 'pro'>('free')
+  const [limite, setLimite] = useState<number>(1)
+  const [usados, setUsados] = useState<number>(0)
   const [cargando, setCargando] = useState(true)
 
   const [emailInvitar, setEmailInvitar] = useState('')
@@ -63,6 +66,9 @@ export default function EquipoPage() {
       setMiembros(data.miembros ?? [])
       setInvitaciones(data.invitaciones ?? [])
       setMiRol(data.miRol ?? null)
+      setPlan(data.plan ?? 'free')
+      setLimite(data.limite ?? 1)
+      setUsados(data.usados ?? 0)
     } finally {
       setCargando(false)
     }
@@ -71,6 +77,8 @@ export default function EquipoPage() {
   useEffect(() => { cargar() }, [])
 
   const puedeGestionar = miRol === 'owner' || miRol === 'admin'
+  const asientosLlenos = usados >= limite
+  const planFreeBloqueando = plan === 'free' && asientosLlenos
 
   async function invitar() {
     setAviso(null)
@@ -156,24 +164,51 @@ export default function EquipoPage() {
         </p>
       </div>
 
+      {/* Banner de plan + asientos */}
+      <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4 mb-4 flex items-center justify-between gap-3 flex-wrap">
+        <div className="text-xs text-zinc-400">
+          <span className="font-semibold text-zinc-100">{usados} / {limite}</span> asiento{limite === 1 ? '' : 's'} usado{usados === 1 ? '' : 's'}
+          <span className="text-zinc-600 mx-2">·</span>
+          Plan <span className={`font-bold ${plan === 'pro' ? 'text-sky-300' : 'text-zinc-400'}`}>{plan.toUpperCase()}</span>
+          {plan === 'free' && (
+            <span className="text-zinc-600 ml-2">(Free: 1 miembro · Pro: hasta 10)</span>
+          )}
+        </div>
+        {planFreeBloqueando && (
+          <Link
+            href="/ajustes#plan"
+            className="text-xs font-bold text-zinc-900 bg-sky-500 hover:bg-sky-400 px-3 py-1.5 rounded-lg whitespace-nowrap"
+          >
+            Subir a Pro para invitar →
+          </Link>
+        )}
+      </div>
+
       {/* Formulario de invitar */}
       {puedeGestionar && (
-        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-6">
+        <div className={`bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-6 ${asientosLlenos ? 'opacity-60' : ''}`}>
           <h2 className="font-semibold text-zinc-100 mb-3 flex items-center gap-2">
             <span>✉️</span> Invitar a un compañero
           </h2>
+          {planFreeBloqueando && (
+            <div className="mb-3 text-xs bg-amber-500/10 border border-amber-500/30 text-amber-300 px-3 py-2 rounded-lg">
+              El plan Free solo incluye 1 miembro (tú). Sube a Pro para invitar a tu equipo (hasta {limite === 1 ? 10 : limite} miembros incluidos).
+            </div>
+          )}
           <div className="flex gap-2 flex-wrap">
             <input
               type="email"
               placeholder="email@ejemplo.com"
               value={emailInvitar}
               onChange={e => setEmailInvitar(e.target.value)}
-              className="flex-1 min-w-[200px] px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+              disabled={asientosLlenos}
+              className="flex-1 min-w-[200px] px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-sky-500/40 disabled:cursor-not-allowed"
             />
             <select
               value={rolInvitar}
               onChange={e => setRolInvitar(e.target.value as Rol)}
-              className="px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+              disabled={asientosLlenos}
+              className="px-3 py-2 border border-white/10 rounded-lg text-sm text-zinc-100 bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-sky-500/40 disabled:cursor-not-allowed"
             >
               <option value="member">Miembro</option>
               <option value="admin">Administrador</option>
@@ -181,8 +216,8 @@ export default function EquipoPage() {
             </select>
             <button
               onClick={invitar}
-              disabled={invitando}
-              className="px-4 py-2 rounded-lg bg-sky-500 text-white font-medium text-sm hover:bg-sky-400 disabled:opacity-60"
+              disabled={invitando || asientosLlenos}
+              className="px-4 py-2 rounded-lg bg-sky-500 text-white font-medium text-sm hover:bg-sky-400 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {invitando ? 'Enviando…' : 'Invitar'}
             </button>
