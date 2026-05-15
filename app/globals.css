@@ -22,14 +22,34 @@ body {
  * =========================================================
  * TEMA CLARO (clase .light en <html>)
  *
- * Reescribe los colores zinc/black/white más usados de la app
- * cuando el usuario activa el modo claro. Implementación tipo
- * "override" para no tocar 80 archivos uno por uno.
+ * Tailwind v4 usa variables CSS para los colores (oklab vía
+ * color-mix). Para invertir el tema sin refactorizar 80 archivos,
+ * redefinimos las variables --color-zinc-* y --color-white cuando
+ * la app está en modo claro. Las clases existentes (bg-zinc-900/40,
+ * text-zinc-100, border-white/10…) se recomponen automáticamente
+ * con los nuevos valores.
  * =========================================================
  */
 html.light {
   --background: #fafafa;
   --foreground: #18181b;
+
+  /* Invertimos las escalas: lo oscuro pasa a ser claro y viceversa */
+  --color-zinc-50: #18181b;
+  --color-zinc-100: #27272a;
+  --color-zinc-200: #3f3f46;
+  --color-zinc-300: #52525b;
+  --color-zinc-400: #71717a;
+  --color-zinc-500: #a1a1aa;
+  --color-zinc-600: #d4d4d8;
+  --color-zinc-700: #e4e4e7;
+  --color-zinc-800: #ececef;
+  --color-zinc-900: #f4f4f5;
+  --color-zinc-950: #fafafa;
+
+  /* Border/overlay translúcidos: invertimos blanco ↔ negro */
+  --color-white: #000;
+  --color-black: #fff;
 }
 
 html.light body {
@@ -37,55 +57,23 @@ html.light body {
   color: #18181b;
 }
 
-/* Fondos principales */
+/* Excepción: el fondo principal hard-coded [#0a0a0b] del layout */
 html.light .bg-\[\#0a0a0b\] { background-color: #fafafa !important; }
-html.light .bg-zinc-950,
-html.light .bg-zinc-950\/80,
-html.light .bg-zinc-950\/60 { background-color: rgba(244, 244, 245, 0.95) !important; }
-html.light .bg-zinc-900,
-html.light .bg-zinc-900\/40,
-html.light .bg-zinc-900\/30,
-html.light .bg-zinc-900\/60,
-html.light .bg-zinc-900\/80 { background-color: rgba(255, 255, 255, 0.95) !important; }
-html.light .bg-zinc-800,
-html.light .bg-zinc-800\/60 { background-color: #e4e4e7 !important; }
 
-/* Texto */
-html.light .text-zinc-100,
-html.light .text-zinc-200,
+/* Texto blanco (text-white) usado en algunos sitios: invertir manualmente */
 html.light .text-white { color: #18181b !important; }
-html.light .text-zinc-300 { color: #27272a !important; }
-html.light .text-zinc-400 { color: #52525b !important; }
-html.light .text-zinc-500 { color: #71717a !important; }
-html.light .text-zinc-600 { color: #a1a1aa !important; }
 
-/* Bordes */
-html.light .border-white\/5,
-html.light .border-white\/10,
-html.light .border-white\/20 { border-color: rgba(0, 0, 0, 0.08) !important; }
+/* Botón sky-500: texto blanco hardcoded queda igual (botón azul, texto blanco
+   funciona bien en ambos temas). Pero shadow-sky-500 puede quedar muy fuerte. */
+html.light .shadow-lg.shadow-sky-500\/20 { box-shadow: 0 8px 20px rgba(2, 132, 199, 0.12) !important; }
 
-/* Hovers grisáceos translúcidos → más oscuros sobre fondo claro */
-html.light .hover\:bg-white\/5:hover,
-html.light .hover\:bg-white\/\[0\.03\]:hover,
-html.light .hover\:bg-white\/\[0\.04\]:hover,
-html.light .hover\:bg-white\/\[0\.08\]:hover { background-color: rgba(0, 0, 0, 0.04) !important; }
-
-html.light .hover\:bg-zinc-800:hover,
-html.light .hover\:bg-zinc-900:hover,
-html.light .hover\:bg-zinc-900\/30:hover,
-html.light .hover\:bg-zinc-900\/70:hover { background-color: #f4f4f5 !important; }
-
-html.light .hover\:border-white\/20:hover { border-color: rgba(0, 0, 0, 0.15) !important; }
-
-/* Backgrounds de tarjetas/superficies translucidas */
-html.light .bg-white\/\[0\.03\],
-html.light .bg-white\/\[0\.05\],
-html.light .bg-white\/\[0\.08\] { background-color: rgba(0, 0, 0, 0.03) !important; }
-
-/* Placeholders */
-html.light .placeholder-zinc-600::placeholder { color: #a1a1aa !important; }
-
-/* Decoración de fondo (los blobs sky) — más sutiles en light */
-html.light .bg-sky-500\/\[0\.06\],
-html.light .bg-sky-500\/\[0\.04\],
-html.light .bg-sky-600\/\[0\.04\] { background-color: rgba(2, 132, 199, 0.04) !important; }
+/* Inputs y selects: aseguramos que el fondo no quede gris muy claro */
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #ffffff;
+  color: #18181b;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+html.light input::placeholder,
+html.light textarea::placeholder { color: #a1a1aa; }
