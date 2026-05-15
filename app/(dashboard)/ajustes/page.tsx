@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
 import { computarDiasRecordatorios, parsearDiasPersonalizados, type Patron, type TonoPreset } from '@/lib/recordatorios'
 import { PagoModal } from '@/app/components/PagoModal'
+import StripeConnectSection from './StripeConnectSection'
 
 export default function AjustesPage() {
   const [nombre, setNombre] = useState('')
@@ -329,6 +330,9 @@ export default function AjustesPage() {
         </div>
       </div>
       {mostrarPago && <PagoModal onClose={() => setMostrarPago(false)} interval={intervaloPago} />}
+
+      {/* Stripe Connect: cobros automáticos */}
+      <StripeConnectSection />
 
       <form onSubmit={guardar} className="space-y-3">
 
