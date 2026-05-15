@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function AdminLoginPage() {
@@ -9,6 +9,18 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [cargando, setCargando] = useState(false)
+
+  // Inyectar meta robots noindex en cliente (la página es 'use client' y no podemos
+  // exportar metadata estático; lo hacemos en runtime).
+  useEffect(() => {
+    let m = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null
+    if (!m) {
+      m = document.createElement('meta')
+      m.setAttribute('name', 'robots')
+      document.head.appendChild(m)
+    }
+    m.content = 'noindex, nofollow'
+  }, [])
 
   async function submit(e: React.FormEvent) {
     e.preventDefault()

@@ -1,7 +1,15 @@
+import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { adminSesionActiva } from '@/lib/admin-auth'
 import LogoutAdminButton from './LogoutAdminButton'
+
+// Refuerzo: aunque robots.txt lo bloquea, ponemos noindex/nofollow a nivel HTML
+// para que ningún buscador indexe el panel admin bajo ninguna circunstancia.
+export const metadata: Metadata = {
+  title: 'Marsof Admin · Panel privado',
+  robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+}
 
 const nav = [
   { href: '/admin', label: 'Resumen general', icono: '🏢' },
