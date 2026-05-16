@@ -9,6 +9,22 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'ley-3-2004-morosidad-explicada',
+    titulo: 'Ley 3/2004 contra la morosidad: guía completa 2026',
+    resumen: 'Plazos máximos, intereses de demora del 12,5% y los 40€ de indemnización por costes de cobro. Todo lo que debes saber para cobrar tus facturas con respaldo legal.',
+    fecha: '2026-05-16',
+    minutos: 8,
+    categoria: 'Marco legal',
+  },
+  {
+    slug: 'como-cobrar-cliente-moroso',
+    titulo: 'Cómo cobrar a un cliente moroso paso a paso',
+    resumen: 'Calendario de 7 fases probado para recuperar tu dinero sin acabar en juicio. Del recordatorio amable al procedimiento monitorio, con plantillas y plazos.',
+    fecha: '2026-05-16',
+    minutos: 10,
+    categoria: 'Guía práctica',
+  },
+  {
     slug: 'modelo-email-reclamacion-factura-impagada',
     titulo: 'Modelo de email de reclamación de factura impagada (4 plantillas 2026)',
     resumen: 'Las 4 plantillas que de verdad funcionan en España según los días de retraso. Listas para copiar, adaptadas a la Ley 3/2004 de morosidad y RGPD.',
@@ -58,7 +74,7 @@ export default function BlogIndex() {
               </h2>
               <p className="text-zinc-400 leading-relaxed mb-4">{a.resumen}</p>
               <div className="text-sm text-zinc-500">
-                <time dateTime={a.fecha}>13 de mayo, 2026</time> · {a.minutos} min de lectura
+                <time dateTime={a.fecha}>{new Date(a.fecha).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}</time> · {a.minutos} min de lectura
               </div>
             </Link>
           ))}
