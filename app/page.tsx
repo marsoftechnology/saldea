@@ -83,8 +83,8 @@ export default function MarsofPage() {
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
             <a href="#productos" className="text-zinc-400 hover:text-zinc-200 transition-colors">Productos</a>
-            <a href="#mision" className="text-zinc-400 hover:text-zinc-200 transition-colors">Misión</a>
-            <Link href="/blog/modelo-email-reclamacion-factura-impagada" className="text-zinc-400 hover:text-zinc-200 transition-colors">Blog</Link>
+            <Link href="/sobre-marsof" className="text-zinc-400 hover:text-zinc-200 transition-colors">Sobre Marsof</Link>
+            <Link href="/blog" className="text-zinc-400 hover:text-zinc-200 transition-colors">Blog</Link>
           </div>
           <div className="flex items-center gap-2">
             <ThemeToggleNav />
@@ -125,8 +125,7 @@ export default function MarsofPage() {
 
         <Reveal effect="fade-up" delay={160}>
           <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Marsof es una suite de micro-SaaS con IA para pequeños negocios.
-            Cada app resuelve una tarea repetitiva que te quita horas — y lo hace sola.
+            <strong className="text-zinc-200">Marsof Technology</strong> es una empresa española de software que desarrolla micro-SaaS con IA para autónomos y pymes. Cada app resuelve una tarea repetitiva que te quita horas — y lo hace sola.
           </p>
         </Reveal>
 
