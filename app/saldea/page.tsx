@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { PricingSection } from './PricingSection'
 import { Reveal } from './Reveal'
 import { Counter } from './Counter'
+import ThemeToggleNav from '../components/ThemeToggleNav'
 
 // Marco "browser window" reutilizable para envolver screenshots del producto
 function BrowserFrame({ src, alt, url, priority = false }: { src: string; alt: string; url: string; priority?: boolean }) {
@@ -135,6 +136,7 @@ export default function SaldeaPage() {
             <a href="#precios" className="hidden md:block text-sm text-zinc-400 hover:text-zinc-200 font-medium px-3 py-2 transition-colors">
               Precios
             </a>
+            <ThemeToggleNav />
             <Link href="/login" className="text-sm text-zinc-400 hover:text-zinc-200 font-medium px-3 py-2 transition-colors">
               Acceder
             </Link>

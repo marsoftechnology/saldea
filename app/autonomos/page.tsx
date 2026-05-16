@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import ThemeToggleNav from '../components/ThemeToggleNav'
 
 export const metadata: Metadata = {
   title: 'Saldea para autónomos: cobra tus facturas sin perseguir a clientes',
@@ -27,7 +28,10 @@ export default function PageAutonomos() {
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
-          <Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link>
+          <div className="flex items-center gap-2">
+            <ThemeToggleNav />
+            <Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link>
+          </div>
         </div>
       </nav>
 

@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Reveal } from './saldea/Reveal'
 import { Counter } from './saldea/Counter'
 import { Logo } from './components/Logo'
+import ThemeToggleNav from './components/ThemeToggleNav'
 
 const apps = [
   {
@@ -86,6 +87,7 @@ export default function MarsofPage() {
             <Link href="/blog/modelo-email-reclamacion-factura-impagada" className="text-zinc-400 hover:text-zinc-200 transition-colors">Blog</Link>
           </div>
           <div className="flex items-center gap-2">
+            <ThemeToggleNav />
             <Link href="/login" className="text-sm text-zinc-400 hover:text-zinc-200 font-medium px-3 py-2 transition-colors">
               Acceder
             </Link>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import ThemeToggleNav from '../components/ThemeToggleNav'
 
 export const metadata: Metadata = {
   title: 'Blog · Cómo cobrar mejor tus facturas | Saldea',
@@ -76,12 +77,15 @@ export default function BlogIndex() {
             <span className="text-zinc-600">/</span>
             <span className="text-zinc-100 font-semibold">Blog</span>
           </div>
-          <Link
-            href="/registro"
-            className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors"
-          >
-            Probar Saldea gratis
-          </Link>
+          <div className="flex items-center gap-2">
+            <ThemeToggleNav />
+            <Link
+              href="/registro"
+              className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors"
+            >
+              Probar Saldea gratis
+            </Link>
+          </div>
         </div>
       </nav>
 
