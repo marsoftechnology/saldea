@@ -10,6 +10,22 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'modelo-presupuesto-autonomo',
+    titulo: 'Modelo de presupuesto para autónomos (plantilla gratis)',
+    resumen: 'Plantilla profesional con las 5 cláusulas que blindan tus cobros: anticipo, Ley 3/2004, suspensión por impago, validez y firma del cliente.',
+    fecha: '2026-05-16',
+    minutos: 8,
+    categoria: 'Plantillas',
+  },
+  {
+    slug: 'gestion-cuentas-a-cobrar-pyme',
+    titulo: 'Gestión de cuentas a cobrar para pymes',
+    resumen: 'KPIs (DSO, aging, morosidad), política de crédito y automatización. Cómo gestionar profesionalmente el dinero que NO has cobrado todavía.',
+    fecha: '2026-05-16',
+    minutos: 10,
+    categoria: 'Finanzas',
+  },
+  {
     slug: 'factura-electronica-b2b-obligatoria-espana',
     titulo: 'Factura electrónica B2B obligatoria en España',
     resumen: 'La Ley Crea y Crece obliga a todas las empresas a usar factura electrónica. Fechas exactas, multas hasta 10.000€ y guía práctica.',

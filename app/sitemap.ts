@@ -4,6 +4,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'
 
 // Slugs de los artículos del blog. Cuando añadas uno nuevo, añade aquí su carpeta.
 const BLOG_SLUGS = [
+  'modelo-presupuesto-autonomo',
+  'gestion-cuentas-a-cobrar-pyme',
   'razones-clientes-no-pagan-facturas',
   'verifactu-facturas-electronicas-2026',
   'factura-electronica-b2b-obligatoria-espana',
@@ -39,6 +41,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/precios`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${BASE_URL}/comparativa/saldea-vs-quipu`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${BASE_URL}/comparativa/saldea-vs-anfix`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${BASE_URL}/huelva`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/sevilla`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/login`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
     { url: `${BASE_URL}/registro`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
