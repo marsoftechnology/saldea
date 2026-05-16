@@ -10,6 +10,22 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'razones-clientes-no-pagan-facturas',
+    titulo: '7 razones por las que tus clientes no te pagan',
+    resumen: 'No todos los impagos son iguales. Las 7 razones más comunes ordenadas por frecuencia, con la solución concreta para cada una.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Análisis',
+  },
+  {
+    slug: 'verifactu-facturas-electronicas-2026',
+    titulo: 'Veri*factu y facturas electrónicas en España 2026',
+    resumen: 'La nueva obligación que afecta a autónomos y empresas. Plazos, sanciones (hasta 50.000€) y cómo prepararte.',
+    fecha: '2026-05-16',
+    minutos: 8,
+    categoria: 'Normativa fiscal',
+  },
+  {
     slug: 'factura-proforma-vs-factura-ordinaria',
     titulo: 'Factura proforma vs factura ordinaria',
     resumen: 'Una vale para Hacienda, la otra no. Diferencias legales y cuándo usar cada una. Con plantilla gratis.',

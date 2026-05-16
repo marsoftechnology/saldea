@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import ThemeToggleNav from '../components/ThemeToggleNav'
+import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Recursos gratis: plantillas, calculadoras y guías de cobros | Saldea',
@@ -103,6 +104,7 @@ export default function PageRecursos() {
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar 1 mes gratis →</Link>
         </div>
       </section>
+      <MarketingFooter />
     </div>
   )
 }

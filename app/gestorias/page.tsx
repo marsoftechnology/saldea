@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import ThemeToggleNav from '../components/ThemeToggleNav'
+import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea para gestorías y asesorías: cobra las facturas de tus clientes sin perseguir',
@@ -157,6 +158,7 @@ export default function PageGestorias() {
           <Link href="/registro" className="inline-block bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all">Empezar 1 mes gratis →</Link>
         </div>
       </section>
+      <MarketingFooter />
     </div>
   )
 }

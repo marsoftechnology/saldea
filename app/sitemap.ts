@@ -4,6 +4,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'
 
 // Slugs de los artículos del blog. Cuando añadas uno nuevo, añade aquí su carpeta.
 const BLOG_SLUGS = [
+  'razones-clientes-no-pagan-facturas',
+  'verifactu-facturas-electronicas-2026',
   'software-gestion-cobros-comparativa',
   'ley-3-2004-morosidad-explicada',
   'como-cobrar-cliente-moroso',
@@ -32,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/comparativa/saldea-vs-holded`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${BASE_URL}/glosario`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/sobre-marsof`, lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
+    { url: `${BASE_URL}/contacto`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE_URL}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/login`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
     { url: `${BASE_URL}/registro`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },

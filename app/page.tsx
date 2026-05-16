@@ -7,6 +7,7 @@ import { Reveal } from './saldea/Reveal'
 import { Counter } from './saldea/Counter'
 import { Logo } from './components/Logo'
 import ThemeToggleNav from './components/ThemeToggleNav'
+import MarketingFooter from './components/MarketingFooter'
 
 const apps = [
   {
@@ -369,25 +370,7 @@ export default function MarsofPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/5 py-10">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
-          <div className="flex items-center gap-3 flex-wrap justify-center">
-            <Logo variant="inline" size="xs" href={null} subtitleColor="text-zinc-600" />
-            <span className="text-zinc-700">·</span>
-            <span>Suite de micro-SaaS con IA</span>
-          </div>
-          <div className="flex gap-5 flex-wrap justify-center">
-            <Link href="/saldea" className="hover:text-zinc-300 transition-colors">Saldea</Link>
-            <Link href="/blog/modelo-email-reclamacion-factura-impagada" className="hover:text-zinc-300 transition-colors">Blog</Link>
-            <Link href="/login" className="hover:text-zinc-300 transition-colors">Acceder</Link>
-            <Link href="/legal/terminos" className="hover:text-zinc-300 transition-colors">Términos</Link>
-            <Link href="/legal/privacidad" className="hover:text-zinc-300 transition-colors">Privacidad</Link>
-            <Link href="/legal/cookies" className="hover:text-zinc-300 transition-colors">Cookies</Link>
-          </div>
-          <p>© {new Date().getFullYear()} Carlos Gálvez Carrillo. Hecho en España.</p>
-        </div>
-      </footer>
+      <MarketingFooter />
     </div>
   )
 }

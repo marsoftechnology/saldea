@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import ThemeToggleNav from '../components/ThemeToggleNav'
+import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Marsof Technology — Empresa española de software para autónomos',
@@ -213,6 +214,7 @@ export default function PageSobreMarsof() {
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
           </div>
         </section>
+        <MarketingFooter />
       </div>
     </>
   )
