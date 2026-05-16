@@ -10,6 +10,30 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'morosidad-sector-construccion',
+    titulo: 'Morosidad en el sector construcción 2026',
+    resumen: 'El sector con peor morosidad de España (108 días de pago medio). Causas, marco legal específico y cómo proteger tu empresa.',
+    fecha: '2026-05-16',
+    minutos: 8,
+    categoria: 'Sector',
+  },
+  {
+    slug: 'ratio-liquidez-pyme-2026',
+    titulo: 'Ratio de liquidez para pymes: fórmula y valores ideales',
+    resumen: 'El indicador clave para saber si tu empresa puede pagar a corto plazo. Fórmula, ejemplos y cómo mejorarlo cobrando antes.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Finanzas',
+  },
+  {
+    slug: 'domiciliacion-sepa-cobros-automaticos',
+    titulo: 'Domiciliación SEPA: cómo cobrar automáticamente',
+    resumen: 'Cómo funciona el cobro SEPA paso a paso. Mandato, plazos, B2C vs B2B y costes. Reduce la morosidad estructural hasta un 70%.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Cobros',
+  },
+  {
     slug: 'modelo-presupuesto-autonomo',
     titulo: 'Modelo de presupuesto para autónomos (plantilla gratis)',
     resumen: 'Plantilla profesional con las 5 cláusulas que blindan tus cobros: anticipo, Ley 3/2004, suspensión por impago, validez y firma del cliente.',
