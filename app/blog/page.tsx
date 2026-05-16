@@ -9,6 +9,14 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'software-gestion-cobros-comparativa',
+    titulo: 'Mejor software de gestión de cobros 2026: comparativa España',
+    resumen: 'Análisis honesto de 7 herramientas para cobrar facturas en España. Saldea, Holded, Quipu, Anfix, Sage, Chaser y Excel cara a cara: precios, IA, integración Stripe.',
+    fecha: '2026-05-16',
+    minutos: 12,
+    categoria: 'Comparativa',
+  },
+  {
     slug: 'ley-3-2004-morosidad-explicada',
     titulo: 'Ley 3/2004 contra la morosidad: guía completa 2026',
     resumen: 'Plazos máximos, intereses de demora del 12,5% y los 40€ de indemnización por costes de cobro. Todo lo que debes saber para cobrar tus facturas con respaldo legal.',
@@ -23,6 +31,30 @@ const articulos = [
     fecha: '2026-05-16',
     minutos: 10,
     categoria: 'Guía práctica',
+  },
+  {
+    slug: 'como-enviar-burofax-reclamar-deuda',
+    titulo: 'Cómo enviar un burofax para reclamar una deuda',
+    resumen: 'Guía paso a paso con modelo gratis: contenido, precio (28-35€), envío online en Correos y qué pasa si el deudor no lo recoge.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Procedimiento legal',
+  },
+  {
+    slug: 'calcular-intereses-demora-factura-impagada',
+    titulo: 'Cómo calcular los intereses de demora de una factura impagada',
+    resumen: 'Fórmula exacta, tipo actualizado a 2026 (12,5%) y tabla con ejemplos reales según importe y días de retraso. Listo para reclamar al moroso.',
+    fecha: '2026-05-16',
+    minutos: 5,
+    categoria: 'Cálculos legales',
+  },
+  {
+    slug: 'procedimiento-monitorio-reclamar-deuda',
+    titulo: 'Procedimiento monitorio: cómo reclamar una deuda sin abogado',
+    resumen: 'Paso a paso para el monitorio en España: documentación, formularios, plazos y coste (0€ si la deuda es inferior a 2.000€).',
+    fecha: '2026-05-16',
+    minutos: 9,
+    categoria: 'Vía judicial',
   },
   {
     slug: 'modelo-email-reclamacion-factura-impagada',
