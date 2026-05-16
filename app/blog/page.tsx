@@ -10,6 +10,38 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'morosidad-sector-hosteleria',
+    titulo: 'Morosidad en hostelería y restauración',
+    resumen: 'Cómo cobrar a hoteles, restaurantes y catering. Tipos de cliente, plazos reales y estrategia anti-morosos para proveedores.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Sector',
+  },
+  {
+    slug: 'morosidad-sector-agroalimentario',
+    titulo: 'Morosidad agroalimentaria: Ley 12/2013',
+    resumen: 'La Ley de la Cadena Alimentaria obliga a pagar en 30/60 días. Sanciones hasta 1.000.000€. Cómo cobrar a cadenas y mayoristas.',
+    fecha: '2026-05-16',
+    minutos: 8,
+    categoria: 'Sector',
+  },
+  {
+    slug: 'morosidad-sector-sanitario',
+    titulo: 'Morosidad en clínicas y mutuas sanitarias',
+    resumen: 'Clínicas privadas (60-90 días), mutuas (60-120), residencias (30-60). Cómo cobrar sin perder el cliente.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Sector',
+  },
+  {
+    slug: 'morosidad-ecommerce-tiendas-online',
+    titulo: 'Morosidad en ecommerce: chargebacks y SEPA',
+    resumen: 'Los 3 tipos de impago en tiendas online: chargebacks (25€ comisión), SEPA devuelto, B2B con plazos. Cómo defenderse de cada uno.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Sector',
+  },
+  {
     slug: 'morosidad-sector-construccion',
     titulo: 'Morosidad en el sector construcción 2026',
     resumen: 'El sector con peor morosidad de España (108 días de pago medio). Causas, marco legal específico y cómo proteger tu empresa.',
