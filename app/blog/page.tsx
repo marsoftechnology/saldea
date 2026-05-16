@@ -10,6 +10,30 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'factura-proforma-vs-factura-ordinaria',
+    titulo: 'Factura proforma vs factura ordinaria',
+    resumen: 'Una vale para Hacienda, la otra no. Diferencias legales y cuándo usar cada una. Con plantilla gratis.',
+    fecha: '2026-05-16',
+    minutos: 5,
+    categoria: 'Facturación',
+  },
+  {
+    slug: 'facturas-recurrentes-suscripciones',
+    titulo: 'Facturas recurrentes para suscripciones',
+    resumen: 'Cómo gestionar cuotas mensuales en SaaS, alquileres y mantenimientos. Automatización, SEPA y reducción de impagos.',
+    fecha: '2026-05-16',
+    minutos: 6,
+    categoria: 'Facturación',
+  },
+  {
+    slug: 'factoring-vs-recordatorios-cobro',
+    titulo: 'Factoring vs recordatorios automáticos: ¿qué te conviene?',
+    resumen: 'Comparativa honesta entre adelantar facturas con descuento del 3-5% o usar recordatorios automáticos sin coste por factura.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Financiación',
+  },
+  {
     slug: 'como-evitar-clientes-morosos',
     titulo: 'Cómo evitar clientes morosos: 8 reglas antes de firmar',
     resumen: 'Reclamar a un moroso te ocupa 10 veces más tiempo que detectarlo antes de empezar. Esta es la lista que ojalá te hubieran dado el primer día.',
