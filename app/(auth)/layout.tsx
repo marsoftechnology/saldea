@@ -35,7 +35,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         <p className="text-center text-xs text-zinc-600 mt-6">
-          7 días gratis · cancela en 1 clic · sin permanencia
+          1 mes gratis · cancela en 1 clic · sin permanencia
         </p>
       </div>
     </div>

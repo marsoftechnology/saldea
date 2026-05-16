@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
             Bienvenido a Saldea ${nombre ? '· ' + nombre : ''}
           </h1>
           <p style="margin: 0; font-size: 14px; opacity: 0.9;">
-            Tu trial gratuito de 7 días ya está activo
+            Tu trial gratuito de 1 mes ya está activo
           </p>
         </div>
 

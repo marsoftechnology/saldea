@@ -296,7 +296,7 @@ export default function AjustesPage() {
                   }`}
                 >
                   Mensual · 49€/mes
-                  <span className="block text-[10px] text-sky-400 font-bold mt-0.5">7 días gratis</span>
+                  <span className="block text-[10px] text-sky-400 font-bold mt-0.5">1 mes gratis</span>
                 </button>
                 <button
                   type="button"
@@ -318,7 +318,7 @@ export default function AjustesPage() {
                 onClick={() => setMostrarPago(true)}
                 className="bg-sky-500 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-sky-400 transition-colors"
               >
-                {intervaloPago === 'mes' ? 'Empezar 7 días gratis →' : 'Pagar 499€ y empezar →'}
+                {intervaloPago === 'mes' ? 'Empezar 1 mes gratis →' : 'Pagar 499€ y empezar →'}
               </button>
               <p className="text-xs text-zinc-500 mt-3">
                 {intervaloPago === 'mes'

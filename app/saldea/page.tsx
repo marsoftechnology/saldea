@@ -39,7 +39,7 @@ function BrowserFrame({ src, alt, url, priority = false }: { src: string; alt: s
 
 export const metadata: Metadata = {
   title: 'Saldea — Cobra tus facturas sin perseguir a nadie',
-  description: 'IA que escribe, manda y escala el tono de tus recordatorios de cobro. Detecta cuando el cliente paga, discute o está de vacaciones. 7 días gratis.',
+  description: 'IA que escribe, manda y escala el tono de tus recordatorios de cobro. Detecta cuando el cliente paga, discute o está de vacaciones. 1 mes gratis.',
 }
 
 const pasos = [
@@ -76,10 +76,10 @@ const faqs = [
   { p: '¿Necesito saber de tecnología?', r: 'No. Si sabes usar el correo electrónico, sabes usar Saldea. La configuración inicial tarda menos de 10 minutos.' },
   { p: '¿Mis clientes sabrán que es automático?', r: 'No notarán nada. Los emails llevan el nombre de tu empresa como remitente, tu logo y tu firma. La IA escribe en español natural, no parece un bot.' },
   { p: '¿Qué pasa si un cliente responde al email?', r: 'Saldea lo detecta automáticamente (plan Pro). Si dice "ya pagué" pausa los recordatorios y te avisa. Si discute, pausa 30 días y te alerta. Si está de vacaciones, extrae la fecha de vuelta y reanuda entonces.' },
-  { p: '¿Cuándo se me cobra y cómo cancelo?', r: 'En el plan mensual: los primeros 7 días son gratis y sin cobro. Si no cancelas antes, el día 8 se carga el primer pago de 49€. En el plan anual: el cobro de 499€ se realiza al firmar (no hay trial porque asumimos que ya conoces el producto). En ambos puedes cancelar en 1 clic desde tu panel, sin llamadas ni permanencia.' },
-  { p: '¿Por qué el anual no tiene 7 días gratis?', r: 'El trial de 7 días está pensado para que pruebes Saldea sin riesgo antes de comprometerte. Si eliges el anual, asumimos que ya has probado el mensual o sabes lo que quieres. A cambio te llevas un descuento equivalente a casi 2 meses gratis (ahorras 89€ al año).' },
-  { p: '¿Necesito poner tarjeta para empezar?', r: 'Sí. En el mensual la tarjeta activa la prueba de 7 días pero NO se carga hasta el día 8. En el anual la tarjeta se cobra al instante (499€).' },
-  { p: '¿Mensual o anual: cuál me conviene?', r: 'Si todavía estás validando si Saldea encaja contigo, empieza con el mensual (7 días gratis, sales cuando quieras). Si ya lo conoces o tienes claro que vas a usarlo más de 10 meses al año, el anual te ahorra 89€ (~15%).' },
+  { p: '¿Cuándo se me cobra y cómo cancelo?', r: 'En el plan mensual: los primeros 30 días son gratis y sin cobro. Si no cancelas antes, el día 31 se carga el primer pago de 49€. En el plan anual: el cobro de 499€ se realiza al firmar (no hay trial porque asumimos que ya conoces el producto). En ambos puedes cancelar en 1 clic desde tu panel, sin llamadas ni permanencia.' },
+  { p: '¿Por qué el anual no tiene 1 mes gratis?', r: 'El trial de 1 mes está pensado para que pruebes Saldea sin riesgo antes de comprometerte. Si eliges el anual, asumimos que ya has probado el mensual o sabes lo que quieres. A cambio te llevas un descuento equivalente a casi 2 meses gratis (ahorras 89€ al año).' },
+  { p: '¿Necesito poner tarjeta para empezar?', r: 'Sí. En el mensual la tarjeta activa la prueba de 30 días pero NO se carga hasta el día 31. En el anual la tarjeta se cobra al instante (499€).' },
+  { p: '¿Mensual o anual: cuál me conviene?', r: 'Si todavía estás validando si Saldea encaja contigo, empieza con el mensual (1 mes gratis, sales cuando quieras). Si ya lo conoces o tienes claro que vas a usarlo más de 10 meses al año, el anual te ahorra 89€ (~15%).' },
   { p: '¿Puedo importar mis facturas actuales?', r: 'Sí. Importa tus facturas desde un CSV en segundos. La plantilla está disponible en el panel.' },
   { p: '¿Qué pasa con la privacidad de mis clientes?', r: 'Saldea cumple RGPD. Los datos están en servidores europeos (Supabase, Vercel) cifrados. Ningún dato se vende ni se usa para entrenar modelos de IA.' },
   { p: '¿Hay integración con mi software de facturación?', r: 'Próximamente: Holded, FacturaDirecta, Quaderno, Sage. Mientras tanto, puedes importar las facturas exportadas a CSV desde cualquiera de esos sistemas.' },
@@ -126,7 +126,7 @@ export default function SaldeaPage() {
               href="/registro"
               className="bg-white text-zinc-900 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-zinc-100 transition-colors"
             >
-              7 días gratis →
+              1 mes gratis →
             </Link>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function SaldeaPage() {
         <Reveal effect="fade-up">
           <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-7">
             <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
-            7 días gratis · cancela en 1 clic
+            1 mes gratis · cancela en 1 clic
           </div>
         </Reveal>
 
@@ -165,7 +165,7 @@ export default function SaldeaPage() {
               href="/registro?plan=mes"
               className="group relative inline-flex items-center gap-2 bg-sky-500 text-white px-7 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all w-full sm:w-auto justify-center shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5"
             >
-              Empezar 7 días gratis
+              Empezar 1 mes gratis
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
             <a
@@ -560,13 +560,13 @@ export default function SaldeaPage() {
                   Empieza a cobrar hoy
                 </h2>
                 <p className="text-zinc-300 mb-10 text-lg max-w-xl mx-auto">
-                  7 días gratis. Cancela en 1 clic antes y no pagas nada. Sin permanencia.
+                  1 mes gratis. Cancela en 1 clic antes y no pagas nada. Sin permanencia.
                 </p>
                 <Link
                   href="/registro?plan=mes"
                   className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-2xl shadow-sky-500/20"
                 >
-                  Empezar 7 días gratis
+                  Empezar 1 mes gratis
                   <span>→</span>
                 </Link>
               </div>

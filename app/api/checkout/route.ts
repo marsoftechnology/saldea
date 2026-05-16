@@ -33,13 +33,13 @@ export async function POST(req: NextRequest) {
 
     const priceId = interval === 'anio' && priceAnual ? priceAnual : priceMensual
 
-    // Solo el plan mensual lleva trial de 7 días. El anual va directo al cobro
+    // Solo el plan mensual lleva trial de 30 días (1 mes gratis). El anual va directo al cobro
     // (asumimos que el usuario ya conoce el producto si compra un año entero).
     const subscriptionData: Record<string, unknown> = {
       metadata: { user_id: user.id, org_id: org.org_id, interval },
     }
     if (interval === 'mes') {
-      subscriptionData.trial_period_days = 7
+      subscriptionData.trial_period_days = 30
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

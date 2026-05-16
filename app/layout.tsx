@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: APP_URL,
     title: 'Saldea — Cobra tus facturas sin perseguir a nadie',
-    description: 'La IA escribe los recordatorios por ti y escala el tono hasta que tus clientes pagan. 7 días gratis.',
+    description: 'La IA escribe los recordatorios por ti y escala el tono hasta que tus clientes pagan. 1 mes gratis.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Saldea — Cobra tus facturas sin perseguir a nadie',
-    description: 'La IA escribe los recordatorios por ti y escala el tono hasta que tus clientes pagan. 7 días gratis.',
+    description: 'La IA escribe los recordatorios por ti y escala el tono hasta que tus clientes pagan. 1 mes gratis.',
   },
   robots: { index: true, follow: true },
 }

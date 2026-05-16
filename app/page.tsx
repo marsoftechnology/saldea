@@ -13,7 +13,7 @@ const apps = [
     descripcion: 'Cobro automático de facturas con IA. Envía recordatorios que escalan en tono hasta que te paguen.',
     icono: '💰',
     estado: 'disponible' as const,
-    precio: '7 días gratis · luego 49€/mes o 499€/año',
+    precio: '1 mes gratis · luego 49€/mes o 499€/año',
     href: '/saldea',
     etiqueta: 'Disponible ahora',
   },
@@ -144,7 +144,7 @@ export default function MarsofPage() {
               Ver todos los productos
             </a>
           </div>
-          <p className="text-zinc-500 text-sm mt-5">7 días gratis · sin permanencia</p>
+          <p className="text-zinc-500 text-sm mt-5">1 mes gratis · sin permanencia</p>
         </Reveal>
       </section>
 
@@ -276,7 +276,7 @@ export default function MarsofPage() {
                 href="/saldea"
                 className="inline-flex items-center gap-2 bg-sky-500 text-zinc-900 px-6 py-3 rounded-xl font-bold hover:bg-sky-400 transition-all hover:-translate-y-0.5"
               >
-                Empezar 7 días gratis →
+                Empezar 1 mes gratis →
               </Link>
             </Reveal>
             <Reveal effect="slide-right" delay={150}>
@@ -353,7 +353,7 @@ export default function MarsofPage() {
                   Empieza hoy, sin riesgos
                 </h2>
                 <p className="text-zinc-300 mb-10 text-lg max-w-xl mx-auto">
-                  Prueba Saldea gratis durante 7 días. Cancela en 1 clic antes y no pagas nada.
+                  Prueba Saldea gratis durante 1 mes. Cancela en 1 clic antes y no pagas nada.
                 </p>
                 <Link
                   href="/saldea"

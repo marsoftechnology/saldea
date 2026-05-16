@@ -81,7 +81,7 @@ export default function OGImage() {
             }}
           >
             <span style={{ width: 8, height: 8, borderRadius: 9999, background: '#0ea5e9', display: 'flex' }} />
-            7 días gratis · cancela en 1 clic
+            1 mes gratis · cancela en 1 clic
           </div>
           <div
             style={{

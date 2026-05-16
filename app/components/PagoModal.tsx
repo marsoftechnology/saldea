@@ -32,7 +32,7 @@ export function PagoModal({ onClose, interval = 'mes' }: { onClose: () => void; 
   const titulo = interval === 'anio' ? 'Plan Pro — 499€/año' : 'Plan Pro — 49€/mes'
   const tagline = interval === 'anio'
     ? 'Cobro único · sin permanencia · no se renueva sin tu permiso'
-    : '7 días gratis · sin permanencia · cancela cuando quieras'
+    : '1 mes gratis · sin permanencia · cancela cuando quieras'
 
   return (
     <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>
