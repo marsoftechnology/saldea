@@ -10,6 +10,30 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'psicologia-precios-saas-b2b',
+    titulo: 'Psicología de precios en SaaS B2B',
+    resumen: 'Cómo poner precio a tu software B2B sin equivocarse. Anclajes, precio psicológico, trial sin tarjeta y errores típicos que comete el 90%.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Estrategia',
+  },
+  {
+    slug: 'como-medir-dso-pyme',
+    titulo: 'Cómo medir el DSO de tu pyme',
+    resumen: 'El KPI de tesorería más importante que casi nadie mide. Fórmula, ejemplos y cómo reducirlo para liberar capital sin pedir préstamos.',
+    fecha: '2026-05-16',
+    minutos: 6,
+    categoria: 'Finanzas',
+  },
+  {
+    slug: 'nda-clausula-confidencialidad-autonomo',
+    titulo: 'NDA y confidencialidad para autónomos',
+    resumen: 'Plantilla gratis de cláusula NDA, cuándo usarla, tipos (unilateral/bilateral) y errores típicos al firmarla.',
+    fecha: '2026-05-16',
+    minutos: 6,
+    categoria: 'Plantillas',
+  },
+  {
     slug: 'morosidad-sector-transporte-logistica',
     titulo: 'Morosidad en transporte y logística (Ley 15/2009)',
     resumen: 'El transporte tiene plazo legal de 30 días (Ley 15/2009). Cómo aplicarla, evitar trampas y proteger tu liquidez como transportista.',
