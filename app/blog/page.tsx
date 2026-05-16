@@ -10,6 +10,30 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'como-evitar-clientes-morosos',
+    titulo: 'Cómo evitar clientes morosos: 8 reglas antes de firmar',
+    resumen: 'Reclamar a un moroso te ocupa 10 veces más tiempo que detectarlo antes de empezar. Esta es la lista que ojalá te hubieran dado el primer día.',
+    fecha: '2026-05-16',
+    minutos: 8,
+    categoria: 'Prevención',
+  },
+  {
+    slug: 'plazos-pago-entre-empresas-espana',
+    titulo: 'Plazos de pago entre empresas en España 2026',
+    resumen: '60 días B2B, 30 días Administración, 30 días perecederos. Todos los plazos legales de pago y cómo aprovecharlos en reclamaciones.',
+    fecha: '2026-05-16',
+    minutos: 6,
+    categoria: 'Marco legal',
+  },
+  {
+    slug: 'contrato-prestacion-servicios-autonomo',
+    titulo: 'Modelo contrato prestación de servicios autónomo (gratis)',
+    resumen: 'Plantilla completa con cláusulas antimorosos, intereses Ley 3/2004 y protección legal. Lista para usar.',
+    fecha: '2026-05-16',
+    minutos: 11,
+    categoria: 'Plantillas',
+  },
+  {
     slug: 'software-gestion-cobros-comparativa',
     titulo: 'Mejor software de gestión de cobros 2026: comparativa España',
     resumen: 'Análisis honesto de 7 herramientas para cobrar facturas en España. Saldea, Holded, Quipu, Anfix, Sage, Chaser y Excel cara a cara: precios, IA, integración Stripe.',
