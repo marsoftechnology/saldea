@@ -38,8 +38,24 @@ function BrowserFrame({ src, alt, url, priority = false }: { src: string; alt: s
 }
 
 export const metadata: Metadata = {
-  title: 'Saldea — Cobra tus facturas sin perseguir a nadie',
-  description: 'IA que escribe, manda y escala el tono de tus recordatorios de cobro. Detecta cuando el cliente paga, discute o está de vacaciones. 1 mes gratis.',
+  title: 'Saldea — Software de cobros con IA para autónomos y pymes',
+  description: 'Automatiza el cobro de tus facturas impagadas con IA. Recordatorios que escalan en tono, detección de respuestas, Stripe Connect. 49€/mes · 1 mes gratis.',
+  alternates: { canonical: 'https://marsof.es/saldea' },
+  keywords: [
+    'software cobros',
+    'cobrar facturas impagadas',
+    'recordatorios de pago automaticos',
+    'IA cobros morosos',
+    'gestion de cobros pymes',
+    'saldea',
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'es_ES',
+    siteName: 'Saldea by Marsof',
+    title: 'Saldea — Software de cobros con IA',
+    description: 'IA que persigue tus facturas impagadas 24/7. 1 mes gratis.',
+  },
 }
 
 const pasos = [

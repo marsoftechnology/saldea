@@ -1,0 +1,14 @@
+/* TEAM */
+Founder: Carlos Galvez Carrillo
+Site: https://marsof.es
+Location: Huelva, Espana
+
+/* THANKS */
+A los autonomos y gestorias que reclaman cobros manualmente.
+Esto va por vosotros.
+
+/* SITE */
+Last update: 2026/05/16
+Standards: HTML5, CSS3, ES2024
+Components: Next.js 16, TypeScript, Tailwind v4
+Backend: Supabase, Stripe, Anthropic Claude
