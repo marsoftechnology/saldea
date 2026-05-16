@@ -10,6 +10,14 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'factura-electronica-b2b-obligatoria-espana',
+    titulo: 'Factura electrónica B2B obligatoria en España',
+    resumen: 'La Ley Crea y Crece obliga a todas las empresas a usar factura electrónica. Fechas exactas, multas hasta 10.000€ y guía práctica.',
+    fecha: '2026-05-16',
+    minutos: 7,
+    categoria: 'Normativa fiscal',
+  },
+  {
     slug: 'razones-clientes-no-pagan-facturas',
     titulo: '7 razones por las que tus clientes no te pagan',
     resumen: 'No todos los impagos son iguales. Las 7 razones más comunes ordenadas por frecuencia, con la solución concreta para cada una.',
