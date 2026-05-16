@@ -194,7 +194,7 @@ export default function SaldeaPage() {
             </a>
           </div>
           <p className="text-zinc-500 text-sm">
-            Sin permanencia · cancela antes del día 8 y no pagas nada
+            Sin permanencia · cancela antes del día 31 y no pagas nada
           </p>
         </Reveal>
 

@@ -322,7 +322,7 @@ export default function AjustesPage() {
               </button>
               <p className="text-xs text-zinc-500 mt-3">
                 {intervaloPago === 'mes'
-                  ? 'Se requiere tarjeta. El primer cobro se realiza el día 8. Cancela en 1 clic antes y no pagas nada.'
+                  ? 'Se requiere tarjeta. El primer cobro se realiza el día 31. Cancela en 1 clic antes y no pagas nada.'
                   : 'Cobro único de 499€. Sin permanencia. No se renueva sin tu permiso.'}
               </p>
             </div>
