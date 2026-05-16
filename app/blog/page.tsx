@@ -10,6 +10,30 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'morosidad-sector-transporte-logistica',
+    titulo: 'Morosidad en transporte y logística (Ley 15/2009)',
+    resumen: 'El transporte tiene plazo legal de 30 días (Ley 15/2009). Cómo aplicarla, evitar trampas y proteger tu liquidez como transportista.',
+    fecha: '2026-05-16',
+    minutos: 6,
+    categoria: 'Sector',
+  },
+  {
+    slug: 'morosidad-sector-formacion',
+    titulo: 'Morosidad en formación y consultoría',
+    resumen: 'Cómo cobrar a empresas por servicios profesionales. Retainer mensual, hitos de pago y cláusulas que blindan tus honorarios.',
+    fecha: '2026-05-16',
+    minutos: 6,
+    categoria: 'Sector',
+  },
+  {
+    slug: 'morosidad-sector-retail-comercio',
+    titulo: 'Morosidad en retail y comercio',
+    resumen: 'Cómo cobrar a tiendas y comercios. Estacionalidad, descuentos por pronto pago, señales de cierre y protección al proveedor.',
+    fecha: '2026-05-16',
+    minutos: 6,
+    categoria: 'Sector',
+  },
+  {
     slug: 'morosidad-sector-hosteleria',
     titulo: 'Morosidad en hostelería y restauración',
     resumen: 'Cómo cobrar a hoteles, restaurantes y catering. Tipos de cliente, plazos reales y estrategia anti-morosos para proveedores.',
