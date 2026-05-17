@@ -53,7 +53,7 @@ export default function MarketingFooter() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p className="text-xs text-zinc-500">
-            © {ano} <strong className="text-zinc-300">Marsof Technology</strong>. Hecho en Cartaya, Huelva (España).
+            © {ano} <strong className="text-zinc-300">Marsof Technology</strong>. Hecho en Niebla, Huelva (España).
           </p>
           <p className="text-xs text-zinc-500">
             Datos en servidores europeos · RGPD · Soporte en español

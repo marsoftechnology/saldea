@@ -47,7 +47,7 @@ export default function PageMalaga() {
           </ul>
           <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por qué encaja en Málaga</h2>
           <ul className="space-y-3 text-zinc-300 mb-8">
-            <li>✓ <strong>Empresa hermana en Andalucía</strong>: Marsof está en Cartaya (Huelva), conocemos el ecosistema andaluz</li>
+            <li>✓ <strong>Empresa hermana en Andalucía</strong>: Marsof está en Niebla (Huelva), conocemos el ecosistema andaluz</li>
             <li>✓ <strong>IA en castellano</strong> que entiende el contexto español</li>
             <li>✓ <strong>Cumple Ley 3/2004 y Veri*factu</strong></li>
             <li>✓ <strong>Soporte cercano</strong> en horario peninsular</li>

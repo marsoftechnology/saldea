@@ -55,7 +55,7 @@ export default function PageSevilla() {
 
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea en Sevilla: automatiza el cobro de tus facturas</h1>
           <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-            Si eres autónomo, gestoría o pyme en <strong>Sevilla</strong>, sabes lo que es perseguir cobros. Saldea, desarrollada en <strong>Marsof Technology</strong> (Cartaya, Huelva), automatiza ese proceso con IA. Te quita horas semanales de trabajo manual.
+            Si eres autónomo, gestoría o pyme en <strong>Sevilla</strong>, sabes lo que es perseguir cobros. Saldea, desarrollada en <strong>Marsof Technology</strong> (Niebla, Huelva), automatiza ese proceso con IA. Te quita horas semanales de trabajo manual.
           </p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El tejido empresarial sevillano y los cobros</h2>
@@ -78,7 +78,7 @@ export default function PageSevilla() {
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por qué Saldea encaja en Sevilla</h2>
           <ul className="space-y-3 text-zinc-300 mb-8">
-            <li>✓ <strong>Empresa española y andaluza</strong>: Marsof está en Cartaya, no en Silicon Valley</li>
+            <li>✓ <strong>Empresa española y andaluza</strong>: Marsof está en Niebla, no en Silicon Valley</li>
             <li>✓ <strong>Soporte en español horario peninsular</strong>: si tienes dudas, te contestamos rápido</li>
             <li>✓ <strong>Conoce la Ley 3/2004</strong>: los emails escalan automáticamente y citan la normativa española</li>
             <li>✓ <strong>Stripe Connect integrado</strong>: tus cobros aparecen en tu cuenta bancaria directamente</li>

@@ -5,13 +5,13 @@ import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Marsof Technology — Empresa española de software para autónomos',
-  description: 'Marsof Technology es una empresa de software con sede en Cartaya (Huelva). Desarrollamos Saldea, una IA que automatiza el cobro de facturas para autónomos y pymes españolas.',
+  description: 'Marsof Technology es una empresa de software con sede en Niebla (Huelva). Desarrollamos Saldea, una IA que automatiza el cobro de facturas para autónomos y pymes españolas.',
   alternates: { canonical: 'https://marsof.es/sobre-marsof' },
   keywords: [
     'Marsof',
     'Marsof Technology',
     'Marsof Huelva',
-    'Marsof Cartaya',
+    'Marsof Niebla',
     'Marsof Saldea',
     'empresa software Huelva',
     'Carlos Gálvez Marsof',
@@ -35,7 +35,7 @@ const schemaOrg = {
   url: 'https://marsof.es',
   logo: 'https://marsof.es/og-image.png',
   image: 'https://marsof.es/og-image.png',
-  description: 'Empresa española de software con sede en Cartaya (Huelva). Desarrolla Saldea, IA para automatizar el cobro de facturas.',
+  description: 'Empresa española de software con sede en Niebla (Huelva). Desarrolla Saldea, IA para automatizar el cobro de facturas.',
   foundingDate: '2026',
   founders: [
     {
@@ -47,7 +47,7 @@ const schemaOrg = {
   ],
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Cartaya',
+    addressLocality: 'Niebla',
     addressRegion: 'Huelva',
     addressCountry: 'ES',
   },
@@ -90,7 +90,7 @@ const schemaPerson = {
   name: 'Carlos Gálvez Carrillo',
   jobTitle: 'Fundador y CEO de Marsof Technology',
   worksFor: { '@id': 'https://marsof.es/#organization' },
-  address: { '@type': 'PostalAddress', addressLocality: 'Cartaya', addressRegion: 'Huelva', addressCountry: 'ES' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Niebla', addressRegion: 'Huelva', addressCountry: 'ES' },
   url: 'https://marsof.es/sobre-marsof',
 }
 
@@ -114,13 +114,13 @@ export default function PageSobreMarsof() {
         <section className="max-w-3xl mx-auto px-6 py-16">
           <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6">
             <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
-            Marsof Technology · Cartaya · Huelva
+            Marsof Technology · Niebla · Huelva
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Sobre Marsof Technology</h1>
 
           <p className="text-lg text-zinc-300 leading-relaxed mb-8">
-            <strong>Marsof Technology</strong> es una empresa española de software fundada en 2026 con sede en Cartaya (Huelva). Desarrollamos herramientas SaaS que automatizan los procesos administrativos más tediosos para autónomos, gestorías y pymes en España.
+            <strong>Marsof Technology</strong> es una empresa española de software fundada en 2026 con sede en Niebla (Huelva). Desarrollamos herramientas SaaS que automatizan los procesos administrativos más tediosos para autónomos, gestorías y pymes en España.
           </p>
 
           <p className="text-lg text-zinc-300 leading-relaxed mb-8">
@@ -129,7 +129,7 @@ export default function PageSobreMarsof() {
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">¿Quién está detrás de Marsof?</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            <strong>Marsof</strong> fue fundada por <strong>Carlos Gálvez Carrillo</strong>, un emprendedor de Cartaya con experiencia en el sector financiero y la asesoría a cooperativas agroalimentarias. La idea de Saldea nació al ver cómo gestorías y autónomos perdían entre 3 y 5 horas semanales reclamando facturas a clientes morosos.
+            <strong>Marsof</strong> fue fundada por <strong>Carlos Gálvez Carrillo</strong>, un emprendedor de Niebla con experiencia en el sector financiero y la asesoría a cooperativas agroalimentarias. La idea de Saldea nació al ver cómo gestorías y autónomos perdían entre 3 y 5 horas semanales reclamando facturas a clientes morosos.
           </p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Nuestra misión</h2>
@@ -140,7 +140,7 @@ export default function PageSobreMarsof() {
           <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">¿Dónde está Marsof?</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-8">
             <ul className="space-y-2 text-zinc-300">
-              <li><strong>Sede:</strong> Cartaya, Huelva (Andalucía, España)</li>
+              <li><strong>Sede:</strong> Niebla, Huelva (Andalucía, España)</li>
               <li><strong>Operaciones:</strong> 100% online, sirviendo a toda España</li>
               <li><strong>Servidores:</strong> Frankfurt (Alemania) — RGPD compliance</li>
               <li><strong>Web:</strong> <a href="https://marsof.es" className="text-sky-400 hover:underline">https://marsof.es</a></li>

@@ -31,7 +31,7 @@ export default function PagePrensa() {
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Quiénes somos en 1 párrafo</h2>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-10">
           <p className="text-zinc-300 leading-relaxed">
-            <strong>Marsof Technology</strong> es una empresa española de software fundada en 2026 en Cartaya (Huelva). Desarrolla <strong>Saldea</strong>, una IA que automatiza el cobro de facturas impagadas para autónomos, gestorías y pymes en España. Lo hace combinando recordatorios escalados con Claude (IA de Anthropic) y Stripe Connect para cobros automáticos. Cumple Ley 3/2004 y RGPD con datos en servidores europeos.
+            <strong>Marsof Technology</strong> es una empresa española de software fundada en 2026 en Niebla (Huelva). Desarrolla <strong>Saldea</strong>, una IA que automatiza el cobro de facturas impagadas para autónomos, gestorías y pymes en España. Lo hace combinando recordatorios escalados con Claude (IA de Anthropic) y Stripe Connect para cobros automáticos. Cumple Ley 3/2004 y RGPD con datos en servidores europeos.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function PagePrensa() {
             <p className="text-xs text-zinc-500 mt-1">Fundación</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 text-center">
-            <p className="text-2xl font-bold text-sky-400">Cartaya</p>
+            <p className="text-2xl font-bold text-sky-400">Niebla</p>
             <p className="text-xs text-zinc-500 mt-1">Huelva, España</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 text-center">
@@ -60,7 +60,7 @@ export default function PagePrensa() {
           <h3 className="font-bold text-zinc-100 text-lg mb-2">Carlos Gálvez Carrillo</h3>
           <p className="text-zinc-400 text-sm mb-3">Fundador y CEO de Marsof Technology</p>
           <p className="text-zinc-300 leading-relaxed text-sm mb-3">
-            Carlos es vecino de Cartaya (Huelva) y emprendedor con experiencia en el sector financiero y la asesoría a cooperativas agroalimentarias. La idea de Saldea nació al ver cómo gestorías y autónomos perdían entre 3 y 5 horas semanales reclamando facturas a clientes morosos. Combinó esa experiencia con su interés por la inteligencia artificial y construyó Saldea en 2026.
+            Carlos es vecino de Niebla (Huelva) y emprendedor con experiencia en el sector financiero y la asesoría a cooperativas agroalimentarias. La idea de Saldea nació al ver cómo gestorías y autónomos perdían entre 3 y 5 horas semanales reclamando facturas a clientes morosos. Combinó esa experiencia con su interés por la inteligencia artificial y construyó Saldea en 2026.
           </p>
           <p className="text-zinc-500 text-xs">Contacto directo: <a href="mailto:carlos@marsof.es" className="text-sky-400 hover:underline">carlos@marsof.es</a></p>
         </div>

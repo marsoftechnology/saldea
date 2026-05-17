@@ -36,7 +36,7 @@ export default function PageGranada() {
         </ul>
         <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por qué encaja en Granada</h2>
         <ul className="space-y-3 text-zinc-300 mb-8">
-          <li>✓ Empresa hermana en Andalucía (Cartaya, Huelva)</li>
+          <li>✓ Empresa hermana en Andalucía (Niebla, Huelva)</li>
           <li>✓ IA en castellano</li>
           <li>✓ Cumple Ley 3/2004 y Veri*factu</li>
           <li>✓ 1 mes gratis sin tarjeta</li>
