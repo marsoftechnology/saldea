@@ -10,6 +10,14 @@ export const metadata: Metadata = {
 
 const articulos = [
   {
+    slug: 'como-cobrar-cliente-sin-enfadarlo',
+    titulo: 'Cómo cobrar a un cliente sin que se enfade',
+    resumen: 'La técnica probada para reclamar facturas impagadas sin perder al cliente. 7 pasos psicológicos y errores típicos que rompen relaciones.',
+    fecha: '2026-05-17',
+    minutos: 8,
+    categoria: 'Psicología del cobro',
+  },
+  {
     slug: 'psicologia-precios-saas-b2b',
     titulo: 'Psicología de precios en SaaS B2B',
     resumen: 'Cómo poner precio a tu software B2B sin equivocarse. Anclajes, precio psicológico, trial sin tarjeta y errores típicos que comete el 90%.',

@@ -4,6 +4,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'
 
 // Slugs de los artículos del blog. Cuando añadas uno nuevo, añade aquí su carpeta.
 const BLOG_SLUGS = [
+  'como-cobrar-cliente-sin-enfadarlo',
   'modelo-presupuesto-autonomo',
   'gestion-cuentas-a-cobrar-pyme',
   'ratio-liquidez-pyme-2026',
