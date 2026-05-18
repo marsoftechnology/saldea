@@ -133,7 +133,7 @@ const BLOQUES = [
   },
   {
     id: 'mentalidad',
-    titulo: 'Mentalidad y resiliencia',
+    titulo: 'Mentalidad',
     emoji: '🧠',
     preguntas: [
       {
@@ -152,7 +152,7 @@ const BLOQUES = [
         key: 'q11',
         numero: '11',
         titulo: 'Resolución de crisis',
-        pregunta: 'Ante un problema técnico o de negocio que te bloquea, ¿cómo actúas?',
+        pregunta: 'Ante un problema que te bloquea, ¿cómo actúas?',
         opciones: [
           'Lo analicé, tomé una decisión y seguí adelante',
           'Pedí ayuda y lo resolví en equipo',
@@ -164,7 +164,7 @@ const BLOQUES = [
         key: 'q12',
         numero: '12',
         titulo: 'Tolerancia al caos',
-        pregunta: 'El plan falla, el producto cambia de dirección, no hay ingresos. ¿Cómo estás con eso?',
+        pregunta: 'El plan falla, el producto cambia, no hay ingresos. ¿Cómo estás con eso?',
         opciones: [
           'Es mi entorno natural — la incertidumbre me activa',
           'Lo acepto y lo gestiono aunque me cuesta',
@@ -176,7 +176,7 @@ const BLOQUES = [
   },
   {
     id: 'vision',
-    titulo: 'Visión y alineación',
+    titulo: 'Visión',
     emoji: '🎯',
     preguntas: [
       {
@@ -262,7 +262,7 @@ const BLOQUES = [
   },
 ]
 
-const TODAS_LAS_PREGUNTAS = BLOQUES.flatMap(b => b.preguntas)
+const TODAS = BLOQUES.flatMap(b => b.preguntas)
 
 export default function EncuestaPage() {
   const [nombre, setNombre] = useState('')
@@ -270,10 +270,11 @@ export default function EncuestaPage() {
   const [respuestas, setRespuestas] = useState<Record<string, string>>({})
   const [enviando, setEnviando] = useState(false)
   const [resultado, setResultado] = useState<number | null>(null)
+  const [resultadoEmail, setResultadoEmail] = useState('')
   const [error, setError] = useState('')
 
   const respondidas = Object.keys(respuestas).length
-  const total = TODAS_LAS_PREGUNTAS.length
+  const total = TODAS.length
   const progreso = Math.round((respondidas / total) * 100)
   const completo = respondidas === total && nombre.trim() && email.trim()
 
@@ -291,6 +292,7 @@ export default function EncuestaPage() {
       const data = await res.json() as { ok?: boolean; porcentaje?: number; error?: string }
       if (!res.ok || !data.ok) throw new Error(data.error ?? 'Error al enviar')
       setResultado(data.porcentaje ?? 0)
+      setResultadoEmail(email)
     } catch {
       setError('Algo falló al enviar. Inténtalo de nuevo.')
     } finally {
@@ -299,175 +301,203 @@ export default function EncuestaPage() {
   }
 
   if (resultado !== null) {
-    const nivel = resultado >= 70
-      ? { texto: 'Perfil sólido', sub: 'Revisaremos tu perfil en detalle', color: '#16a34a', bg: '#f0fdf4', emoji: '🚀' }
-      : resultado >= 50
-      ? { texto: 'Perfil prometedor', sub: 'Hay aspectos interesantes a explorar', color: '#d97706', bg: '#fffbeb', emoji: '⚡' }
-      : { texto: 'No encaja por ahora', sub: 'Puede que el timing no sea el adecuado', color: '#dc2626', bg: '#fef2f2', emoji: '📋' }
+    const nivel =
+      resultado >= 70 ? { label: 'Perfil sólido', color: '#22c55e', ring: 'rgba(34,197,94,0.15)', emoji: '🚀', msg: 'Nos pondremos en contacto contigo pronto.' }
+      : resultado >= 50 ? { label: 'Perfil prometedor', color: '#f59e0b', ring: 'rgba(245,158,11,0.15)', emoji: '⚡', msg: 'Hay aspectos interesantes. Revisaremos tu perfil.' }
+      : { label: 'No encaja por ahora', color: '#ef4444', ring: 'rgba(239,68,68,0.15)', emoji: '📋', msg: 'Puede que el timing o el perfil no sea el adecuado ahora mismo.' }
 
     return (
-      <main className="min-h-screen bg-[#0f172a] flex items-center justify-center p-6">
-        <div className="w-full max-w-lg text-center">
-          <div className="text-5xl mb-6">{nivel.emoji}</div>
-          <h1 className="text-3xl font-bold text-white mb-2">Encuesta completada</h1>
-          <p className="text-slate-400 mb-10">Hemos recibido tus respuestas. Nos pondremos en contacto si hay encaje.</p>
-          <div className="rounded-2xl p-10 mb-8" style={{ background: nivel.bg, border: `2px solid ${nivel.color}20` }}>
-            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: nivel.color }}>{nivel.texto}</p>
-            <p className="text-8xl font-black mb-2" style={{ color: nivel.color }}>{resultado}%</p>
-            <p className="text-sm" style={{ color: nivel.color + '99' }}>{nivel.sub}</p>
+      <div style={{ minHeight: '100vh', background: '#060d1a', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+        <div style={{ width: '100%', maxWidth: 480, textAlign: 'center' }}>
+          <div style={{ fontSize: 56, marginBottom: 24 }}>{nivel.emoji}</div>
+          <h1 style={{ fontSize: 28, fontWeight: 700, color: '#fff', margin: '0 0 8px' }}>Encuesta completada</h1>
+          <p style={{ fontSize: 15, color: '#64748b', margin: '0 0 40px' }}>{nivel.msg}</p>
+          <div style={{ background: nivel.ring, border: `1px solid ${nivel.color}30`, borderRadius: 20, padding: '40px 32px', marginBottom: 32 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: nivel.color, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 8 }}>{nivel.label}</div>
+            <div style={{ fontSize: 88, fontWeight: 900, color: nivel.color, lineHeight: 1, margin: '0 0 8px' }}>{resultado}%</div>
+            <div style={{ fontSize: 13, color: nivel.color + '80' }}>compatibilidad con el perfil buscado</div>
           </div>
-          <p className="text-slate-500 text-sm">Te contactaremos en los próximos días en <span className="text-slate-300">{email}</span></p>
+          <p style={{ fontSize: 13, color: '#475569' }}>
+            Te contactaremos en <span style={{ color: '#94a3b8' }}>{resultadoEmail}</span>
+          </p>
         </div>
-      </main>
+      </div>
     )
   }
 
   return (
-    <main className="min-h-screen bg-[#0f172a]">
-      {/* Header */}
-      <div className="border-b border-slate-800 px-6 py-4 flex items-center justify-between sticky top-0 bg-[#0f172a]/95 backdrop-blur z-10">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-            <span className="text-white font-bold text-sm">M</span>
+    <div style={{ minHeight: '100vh', background: '#060d1a', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+
+      {/* Top bar */}
+      <div style={{ position: 'sticky', top: 0, zIndex: 50, background: 'rgba(6,13,26,0.92)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '0 24px' }}>
+        <div style={{ maxWidth: 720, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ width: 30, height: 30, borderRadius: 8, background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 800, color: '#fff' }}>M</div>
+            <span style={{ fontSize: 14, fontWeight: 600, color: '#e2e8f0' }}>Marsof Technology</span>
           </div>
-          <span className="text-white font-semibold text-sm">Marsof Technology</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="h-1.5 w-36 rounded-full bg-slate-800 overflow-hidden">
-            <div className="h-full rounded-full bg-blue-500 transition-all duration-500" style={{ width: `${progreso}%` }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 120, height: 4, background: 'rgba(255,255,255,0.08)', borderRadius: 99, overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${progreso}%`, background: 'linear-gradient(90deg, #3b82f6, #60a5fa)', borderRadius: 99, transition: 'width 0.4s ease' }} />
+            </div>
+            <span style={{ fontSize: 12, color: '#475569', minWidth: 36, textAlign: 'right' }}>{respondidas}/{total}</span>
           </div>
-          <span className="text-slate-400 text-xs tabular-nums">{respondidas}/{total}</span>
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 py-12">
+      <div style={{ maxWidth: 680, margin: '0 auto', padding: '64px 24px 80px' }}>
+
         {/* Hero */}
-        <div className="mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-500/20 rounded-full px-4 py-1.5 mb-6">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            <span className="text-blue-400 text-xs font-medium">Posición abierta · Cofundador/a técnico</span>
+        <div style={{ marginBottom: 64 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: 99, padding: '6px 14px', marginBottom: 28 }}>
+            <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#60a5fa', animation: 'pulse 2s infinite' }} />
+            <span style={{ fontSize: 12, fontWeight: 500, color: '#93c5fd', letterSpacing: 0.3 }}>Posición abierta · Cofundador/a técnico</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
+          <h1 style={{ fontSize: 'clamp(36px, 6vw, 52px)', fontWeight: 900, color: '#f8fafc', lineHeight: 1.1, margin: '0 0 20px', letterSpacing: -1 }}>
             ¿Eres el cofundador<br />
-            <span className="text-blue-400">que buscamos?</span>
+            <span style={{ background: 'linear-gradient(135deg, #60a5fa, #a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>que buscamos?</span>
           </h1>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p style={{ fontSize: 17, color: '#64748b', lineHeight: 1.7, margin: '0 0 32px', maxWidth: 560 }}>
             Marsof construye micro-SaaS con IA para autónomos y pymes españolas.
-            Buscamos un cofundador con skin in the game, mentalidad de builder y ganas de crecer.
-            Son 18 preguntas — unos 8 minutos.
+            Buscamos un cofundador con skin in the game y mentalidad de builder.
           </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+            {[['⏱', '~8 minutos'], ['📝', '18 preguntas'], ['🔒', 'Confidencial']].map(([icon, text]) => (
+              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 8, padding: '6px 12px' }}>
+                <span style={{ fontSize: 13 }}>{icon}</span>
+                <span style={{ fontSize: 13, color: '#64748b' }}>{text}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-10">
+        <form onSubmit={handleSubmit}>
+
           {/* Datos personales */}
-          <div className="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 space-y-4">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="text-xl">👤</span>
-              <h2 className="text-white font-semibold">Sobre ti</h2>
+          <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 28, marginBottom: 48 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+              <span style={{ fontSize: 18 }}>👤</span>
+              <span style={{ fontSize: 15, fontWeight: 600, color: '#e2e8f0' }}>Sobre ti</span>
             </div>
-            <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">Nombre completo</label>
-              <input
-                type="text"
-                value={nombre}
-                onChange={e => setNombre(e.target.value)}
-                placeholder="Tu nombre"
-                required
-                className="w-full bg-slate-900 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">Email de contacto</label>
-              <input
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="tu@email.com"
-                required
-                className="w-full bg-slate-900 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-              />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              {[
+                { label: 'Nombre completo', value: nombre, onChange: setNombre, type: 'text', placeholder: 'Tu nombre' },
+                { label: 'Email de contacto', value: email, onChange: setEmail, type: 'email', placeholder: 'tu@email.com' },
+              ].map(field => (
+                <div key={field.label}>
+                  <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 8 }}>{field.label}</label>
+                  <input
+                    type={field.type}
+                    value={field.value}
+                    onChange={e => field.onChange(e.target.value)}
+                    placeholder={field.placeholder}
+                    required
+                    style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '11px 14px', color: '#f1f5f9', fontSize: 14, outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s' }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(59,130,246,0.5)' }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Bloques de preguntas */}
-          {BLOQUES.map(bloque => (
-            <div key={bloque.id}>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-2xl">{bloque.emoji}</span>
-                <h2 className="text-white font-bold text-lg">{bloque.titulo}</h2>
-                <div className="flex-1 h-px bg-slate-800" />
-              </div>
-              <div className="space-y-4">
-                {bloque.preguntas.map(p => (
-                  <div
-                    key={p.key}
-                    className={`rounded-2xl border p-6 transition-colors ${respuestas[p.key] ? 'border-blue-500/40 bg-blue-950/20' : 'border-slate-700 bg-slate-800/40'}`}
-                  >
-                    <div className="flex items-start gap-4 mb-5">
-                      <span className="text-xs font-bold text-blue-400 bg-blue-400/10 rounded-lg px-2 py-1 mt-0.5 shrink-0">
-                        {p.numero}
-                      </span>
-                      <div>
-                        <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">{p.titulo}</p>
-                        <h3 className="text-white font-semibold leading-snug">{p.pregunta}</h3>
-                      </div>
+          {/* Bloques */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
+            {BLOQUES.map((bloque, bi) => {
+              const bloqueRespondidas = bloque.preguntas.filter(p => respuestas[p.key]).length
+              const bloqueCompleto = bloqueRespondidas === bloque.preguntas.length
+              return (
+                <div key={bloque.id}>
+                  {/* Bloque header */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 10, background: bloqueCompleto ? 'rgba(34,197,94,0.1)' : 'rgba(59,130,246,0.08)', border: `1px solid ${bloqueCompleto ? 'rgba(34,197,94,0.25)' : 'rgba(59,130,246,0.15)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, flexShrink: 0 }}>
+                      {bloqueCompleto ? '✓' : bloque.emoji}
                     </div>
-                    <div className="space-y-2 pl-10">
-                      {p.opciones.map(opcion => {
-                        const sel = respuestas[p.key] === opcion
-                        return (
-                          <label
-                            key={opcion}
-                            className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer transition-all ${sel ? 'bg-blue-600/20 border border-blue-500/50' : 'border border-transparent hover:bg-slate-700/50 hover:border-slate-600'}`}
-                          >
-                            <div className={`mt-0.5 w-4 h-4 rounded-full border-2 shrink-0 flex items-center justify-center transition-colors ${sel ? 'border-blue-400 bg-blue-400' : 'border-slate-500'}`}>
-                              {sel && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
-                            </div>
-                            <input
-                              type="radio"
-                              name={p.key}
-                              value={opcion}
-                              checked={sel}
-                              onChange={() => setRespuestas(prev => ({ ...prev, [p.key]: opcion }))}
-                              className="sr-only"
-                            />
-                            <span className={`text-sm leading-snug ${sel ? 'text-white' : 'text-slate-300'}`}>{opcion}</span>
-                          </label>
-                        )
-                      })}
+                    <div>
+                      <div style={{ fontSize: 11, color: '#334155', fontWeight: 500, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 2 }}>Bloque {bi + 1} de {BLOQUES.length}</div>
+                      <div style={{ fontSize: 16, fontWeight: 700, color: bloqueCompleto ? '#22c55e' : '#e2e8f0' }}>{bloque.titulo}</div>
                     </div>
+                    <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.05)', marginLeft: 4 }} />
+                    <span style={{ fontSize: 12, color: bloqueCompleto ? '#22c55e' : '#334155' }}>{bloqueRespondidas}/{bloque.preguntas.length}</span>
                   </div>
-                ))}
-              </div>
-            </div>
-          ))}
 
-          {error && (
-            <div className="rounded-xl bg-red-900/30 border border-red-500/30 p-4 text-red-400 text-sm">{error}</div>
-          )}
+                  {/* Preguntas */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                    {bloque.preguntas.map(p => {
+                      const sel = respuestas[p.key]
+                      return (
+                        <div key={p.key} style={{ background: sel ? 'rgba(59,130,246,0.04)' : 'rgba(255,255,255,0.02)', border: `1px solid ${sel ? 'rgba(59,130,246,0.2)' : 'rgba(255,255,255,0.06)'}`, borderRadius: 14, padding: '22px 24px', transition: 'border-color 0.2s' }}>
+                          <div style={{ display: 'flex', gap: 14, marginBottom: 18 }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: '#3b82f6', background: 'rgba(59,130,246,0.1)', borderRadius: 6, padding: '3px 8px', flexShrink: 0, alignSelf: 'flex-start', letterSpacing: 0.5 }}>{p.numero}</span>
+                            <div>
+                              <div style={{ fontSize: 11, color: '#334155', textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 4 }}>{p.titulo}</div>
+                              <div style={{ fontSize: 15, fontWeight: 600, color: '#e2e8f0', lineHeight: 1.5 }}>{p.pregunta}</div>
+                            </div>
+                          </div>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingLeft: 38 }}>
+                            {p.opciones.map(opcion => {
+                              const activa = sel === opcion
+                              return (
+                                <label key={opcion} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '11px 14px', borderRadius: 10, cursor: 'pointer', background: activa ? 'rgba(59,130,246,0.12)' : 'transparent', border: `1px solid ${activa ? 'rgba(59,130,246,0.4)' : 'rgba(255,255,255,0.05)'}`, transition: 'all 0.15s' }}
+                                  onMouseEnter={e => { if (!activa) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)' }}
+                                  onMouseLeave={e => { if (!activa) (e.currentTarget as HTMLElement).style.background = 'transparent' }}
+                                >
+                                  <div style={{ width: 16, height: 16, borderRadius: '50%', border: `2px solid ${activa ? '#60a5fa' : '#334155'}`, background: activa ? '#3b82f6' : 'transparent', flexShrink: 0, marginTop: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.15s' }}>
+                                    {activa && <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#fff' }} />}
+                                  </div>
+                                  <input type="radio" name={p.key} value={opcion} checked={activa} onChange={() => setRespuestas(prev => ({ ...prev, [p.key]: opcion }))} style={{ display: 'none' }} />
+                                  <span style={{ fontSize: 14, color: activa ? '#e2e8f0' : '#94a3b8', lineHeight: 1.5, transition: 'color 0.15s' }}>{opcion}</span>
+                                </label>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
 
-          <button
-            type="submit"
-            disabled={!completo || enviando}
-            className={`w-full py-4 rounded-2xl font-bold text-lg transition-all ${completo && !enviando ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 hover:-translate-y-0.5' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}
-          >
-            {enviando ? (
-              <span className="flex items-center justify-center gap-2">
-                <span className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                Enviando...
-              </span>
-            ) : !completo ? (
-              `Responde todas las preguntas (${respondidas}/${total})`
-            ) : (
-              'Enviar candidatura →'
+          {/* Submit */}
+          <div style={{ marginTop: 48 }}>
+            {error && (
+              <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 10, padding: '12px 16px', color: '#f87171', fontSize: 14, marginBottom: 16 }}>{error}</div>
             )}
-          </button>
-
-          <p className="text-center text-slate-600 text-xs pb-8">
-            Tus respuestas son confidenciales y solo las verá el equipo fundador de Marsof.
-          </p>
+            <button
+              type="submit"
+              disabled={!completo || enviando}
+              style={{ width: '100%', padding: '16px 24px', borderRadius: 12, fontSize: 16, fontWeight: 700, border: 'none', cursor: completo && !enviando ? 'pointer' : 'not-allowed', background: completo && !enviando ? 'linear-gradient(135deg, #3b82f6, #2563eb)' : 'rgba(255,255,255,0.05)', color: completo && !enviando ? '#fff' : '#334155', boxShadow: completo && !enviando ? '0 8px 32px rgba(59,130,246,0.25)' : 'none', transition: 'all 0.2s', transform: 'translateY(0)' }}
+              onMouseEnter={e => { if (completo && !enviando) (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)' }}
+            >
+              {enviando ? (
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+                  <span style={{ width: 18, height: 18, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', animation: 'spin 0.7s linear infinite', display: 'inline-block' }} />
+                  Enviando candidatura...
+                </span>
+              ) : !completo ? (
+                `Completa todas las preguntas (${respondidas}/${total})`
+              ) : (
+                'Enviar candidatura →'
+              )}
+            </button>
+            <p style={{ textAlign: 'center', fontSize: 12, color: '#1e293b', marginTop: 16 }}>
+              Tus respuestas son confidenciales y solo las verá el equipo fundador de Marsof.
+            </p>
+          </div>
         </form>
       </div>
-    </main>
+
+      <style>{`
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+        @keyframes spin { to{transform:rotate(360deg)} }
+        * { box-sizing: border-box; }
+        input::placeholder { color: #334155; }
+        @media(max-width:520px) {
+          div[style*="gridTemplateColumns"] { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </div>
   )
 }
