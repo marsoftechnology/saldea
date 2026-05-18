@@ -167,7 +167,7 @@ export async function POST(req: NextRequest) {
   `
 
   await enviarEmail({
-    para: 'carlosgc90personal@gmail.com',
+    para: process.env.ENCUESTA_EMAIL_DESTINO ?? 'carlosgc90personal@gmail.com',
     asunto: `🚀 Cofundador — ${porcentaje}% — ${nombre}`,
     cuerpo,
     desde: 'Marsof <cobros@marsof.es>',
