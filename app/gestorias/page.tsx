@@ -48,7 +48,7 @@ export default function PageGestorias() {
         <Link href="/registro" className="inline-flex items-center gap-2 bg-sky-500 text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/30">
           Empezar 1 mes gratis →
         </Link>
-        <p className="text-xs text-zinc-500 mt-4">Sin tarjeta hasta el día 31 · Cancela en 1 clic · Sin permanencia</p>
+        <p className="text-xs text-zinc-500 mt-4">30 días gratis · Sin tarjeta · Sin permanencia</p>
       </section>
 
       <section className="max-w-4xl mx-auto px-6 py-12">
@@ -123,7 +123,7 @@ export default function PageGestorias() {
             <li>✓ Soporte en español</li>
           </ul>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all">Empezar 1 mes gratis →</Link>
-          <p className="text-xs text-zinc-500 mt-4">Sin tarjeta hasta el día 31. Cancela cuando quieras.</p>
+          <p className="text-xs text-zinc-500 mt-4">30 días gratis. Sin tarjeta. Cancela cuando quieras.</p>
         </div>
       </section>
 
