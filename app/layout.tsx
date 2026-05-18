@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 1 mes gratis.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Marsof Technology',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     site: '@marsof_es',
     title: 'Marsof — Software español para automatizar tu negocio',
     description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 1 mes gratis.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
