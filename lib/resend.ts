@@ -4,7 +4,7 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
 }
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://cobrate.vercel.app'
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'
 
 const T = {
   es: { boton: '✓ Ya he pagado esta factura', botonNota: 'Al hacer clic confirmas que has realizado el pago', botonPagar: '💳 Pagar ahora', botonPagarNota: 'Te lleva al sistema de pago seguro del emisor', footer: 'Este email ha sido enviado automáticamente por Saldea · marsof.es' },
