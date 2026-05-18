@@ -18,6 +18,7 @@ export default function MarketingFooter() {
               <li><Link href="/contacto" className="text-zinc-400 hover:text-zinc-100 transition-colors">Contacto</Link></li>
               <li><Link href="/blog" className="text-zinc-400 hover:text-zinc-100 transition-colors">Blog</Link></li>
               <li><Link href="/recursos" className="text-zinc-400 hover:text-zinc-100 transition-colors">Recursos gratis</Link></li>
+              <li><Link href="/ofertas" className="text-zinc-400 hover:text-zinc-100 transition-colors">Trabaja con nosotros</Link></li>
             </ul>
           </div>
 
