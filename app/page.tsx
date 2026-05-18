@@ -78,7 +78,6 @@ export default function MarsofPage() {
             <Logo variant="mark" size="xs" href={null} />
             <div className="flex items-center gap-2">
               <span className="text-xl font-bold tracking-tight text-white">Marsof</span>
-              <span className="text-[10px] uppercase tracking-wider bg-sky-500/10 text-sky-300 border border-sky-500/20 px-2 py-0.5 rounded-full font-bold">Beta</span>
             </div>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
