@@ -61,12 +61,6 @@ export default function OfertasPage() {
             <Link href="/saldea" className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors hidden sm:block">
               Ver Saldea
             </Link>
-            <Link
-              href="/encuesta"
-              className="bg-white text-zinc-900 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-zinc-100 transition-colors"
-            >
-              Aplicar ahora →
-            </Link>
           </div>
         </div>
       </nav>
@@ -123,13 +117,6 @@ export default function OfertasPage() {
                   </span>
                 </div>
               </div>
-              <Link
-                href="/encuesta"
-                className="shrink-0 inline-flex items-center gap-2 bg-white text-zinc-900 font-semibold text-sm px-6 py-3 rounded-xl hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-lg shadow-white/10"
-              >
-                Aplicar ahora
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </Link>
             </div>
           </div>
 
@@ -182,17 +169,17 @@ export default function OfertasPage() {
               </div>
 
               {/* CTA card */}
-              <div className="rounded-xl bg-gradient-to-br from-sky-500/10 to-violet-500/10 border border-sky-500/15 p-6">
-                <div className="text-2xl mb-3">🚀</div>
-                <h4 className="text-white font-semibold mb-2">¿Te encaja?</h4>
-                <p className="text-sm text-zinc-400 mb-4 leading-relaxed">
-                  Rellena la entrevista. Son 18 preguntas, ~8 minutos. Si hay encaje te contactamos en 48h.
+              <div className="rounded-xl bg-white/[0.03] border border-white/8 p-6">
+                <h4 className="text-white font-semibold mb-2">¿Te encaja el perfil?</h4>
+                <p className="text-sm text-zinc-400 mb-5 leading-relaxed">
+                  18 preguntas, unos 8 minutos. Si hay encaje nos pondremos en contacto en 48h.
                 </p>
                 <Link
                   href="/encuesta"
                   className="inline-flex items-center gap-2 bg-white text-zinc-900 font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-zinc-100 transition-all"
                 >
-                  Hacer la entrevista →
+                  Hacer la entrevista
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </Link>
               </div>
             </div>
