@@ -81,16 +81,6 @@ export const metadata: Metadata = {
   },
 }
 
-// Script inline para aplicar el tema ANTES del primer paint (evita flash de fondo blanco/oscuro)
-const temaInicial = `
-  (function() {
-    try {
-      var t = localStorage.getItem('saldea_theme');
-      if (t === 'light') document.documentElement.classList.add('light');
-    } catch (e) {}
-  })();
-`
-
 // Schema JSON-LD para Google (rich results, knowledge panel)
 const schemaOrganizacion = {
   '@context': 'https://schema.org',
@@ -244,7 +234,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className="h-full">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: temaInicial }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganizacion) }}

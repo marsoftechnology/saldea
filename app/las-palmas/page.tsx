@@ -1,13 +1,12 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
-import ThemeToggleNav from '../components/ThemeToggleNav'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea en Las Palmas: software de cobros para empresas canarias',
-  description: 'Software con IA para automatizar el cobro de facturas en Las Palmas y Canarias. Para autónomos, hostelería y servicios. 1 mes gratis.',
+  description: 'Software con IA para automatizar el cobro de facturas en Las Palmas y Canarias. Para autÃ³nomos, hostelerÃ­a y servicios. 1 mes gratis.',
   alternates: { canonical: 'https://marsof.es/las-palmas' },
-  keywords: ['software cobros Las Palmas', 'gestoría Canarias', 'autónomo Las Palmas', 'Saldea Canarias', 'pyme Tenerife'],
+  keywords: ['software cobros Las Palmas', 'gestorÃ­a Canarias', 'autÃ³nomo Las Palmas', 'Saldea Canarias', 'pyme Tenerife'],
   openGraph: { title: 'Saldea en Las Palmas', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
 }
 const schema = { '@context': 'https://schema.org', '@type': 'Service', serviceType: 'Software de cobros con IA', provider: { '@id': 'https://marsof.es/#organization' }, areaServed: { '@type': 'City', name: 'Las Palmas de Gran Canaria' } }
@@ -19,32 +18,33 @@ export default function PageLasPalmas() {
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
-          <div className="flex items-center gap-2"><ThemeToggleNav /><Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link></div>
+          <div className="flex items-center gap-2">
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link></div>
         </div>
       </nav>
       <section className="max-w-4xl mx-auto px-6 pt-16 pb-12">
-        <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6"><span>📍 Atendiendo Las Palmas y Canarias</span></div>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea para empresas y autónomos canarios</h1>
-        <p className="text-zinc-400 text-lg leading-relaxed mb-8">Canarias tiene un régimen fiscal único (IGIC en lugar de IVA) y un tejido económico centrado en turismo, servicios, comercio y un creciente sector tecnológico (ZEC). Saldea automatiza tus cobros con IA. Tu software de facturación gestiona el IGIC.</p>
+        <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6"><span>ðŸ“ Atendiendo Las Palmas y Canarias</span></div>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea para empresas y autÃ³nomos canarios</h1>
+        <p className="text-zinc-400 text-lg leading-relaxed mb-8">Canarias tiene un rÃ©gimen fiscal Ãºnico (IGIC en lugar de IVA) y un tejido econÃ³mico centrado en turismo, servicios, comercio y un creciente sector tecnolÃ³gico (ZEC). Saldea automatiza tus cobros con IA. Tu software de facturaciÃ³n gestiona el IGIC.</p>
         <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Sectores canarios donde encaja Saldea</h2>
         <ul className="space-y-2 text-zinc-300 mb-8">
-          <li>🏖️ <strong>Turismo y hostelería</strong> (todo el archipiélago)</li>
-          <li>🛒 <strong>Comercio</strong> mayorista y minorista</li>
-          <li>📊 <strong>Asesorías y gestorías</strong> con experiencia en REF</li>
-          <li>⚓ <strong>Servicios portuarios</strong> y logística</li>
-          <li>💻 <strong>Empresas tecnológicas</strong> ZEC y nómadas digitales</li>
+          <li>ðŸ–ï¸ <strong>Turismo y hostelerÃ­a</strong> (todo el archipiÃ©lago)</li>
+          <li>ðŸ›’ <strong>Comercio</strong> mayorista y minorista</li>
+          <li>ðŸ“Š <strong>AsesorÃ­as y gestorÃ­as</strong> con experiencia en REF</li>
+          <li>âš“ <strong>Servicios portuarios</strong> y logÃ­stica</li>
+          <li>ðŸ’» <strong>Empresas tecnolÃ³gicas</strong> ZEC y nÃ³madas digitales</li>
         </ul>
-        <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por qué encaja en Canarias</h2>
+        <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por quÃ© encaja en Canarias</h2>
         <ul className="space-y-3 text-zinc-300 mb-8">
-          <li>✓ <strong>Compatible con IGIC</strong> (tu software de facturación se encarga)</li>
-          <li>✓ Régimen fiscal especial (REF) no afecta a Saldea</li>
-          <li>✓ Cumple Ley 3/2004</li>
-          <li>✓ 1 mes gratis sin tarjeta</li>
+          <li>âœ“ <strong>Compatible con IGIC</strong> (tu software de facturaciÃ³n se encarga)</li>
+          <li>âœ“ RÃ©gimen fiscal especial (REF) no afecta a Saldea</li>
+          <li>âœ“ Cumple Ley 3/2004</li>
+          <li>âœ“ 1 mes gratis sin tarjeta</li>
         </ul>
         <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">
           <h2 className="text-2xl font-bold mb-2">Empieza desde Canarias</h2>
-          <p className="text-zinc-400 mb-6">5 min. 0€ hasta el día 31.</p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
+          <p className="text-zinc-400 mb-6">5 min. 0â‚¬ hasta el dÃ­a 31.</p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis â†’</Link>
         </div>
       </section>
       <MarketingFooter />

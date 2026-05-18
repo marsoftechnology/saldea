@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -6,44 +6,43 @@ import Image from 'next/image'
 import { Reveal } from './saldea/Reveal'
 import { Counter } from './saldea/Counter'
 import { Logo } from './components/Logo'
-import ThemeToggleNav from './components/ThemeToggleNav'
 import MarketingFooter from './components/MarketingFooter'
 
 const apps = [
   {
     nombre: 'Saldea',
-    descripcion: 'Cobro automático de facturas con IA. Envía recordatorios que escalan en tono hasta que te paguen.',
-    icono: '💰',
+    descripcion: 'Cobro automÃ¡tico de facturas con IA. EnvÃ­a recordatorios que escalan en tono hasta que te paguen.',
+    icono: 'ðŸ’°',
     estado: 'disponible' as const,
-    precio: '1 mes gratis · luego 49€/mes o 499€/año',
+    precio: '1 mes gratis Â· luego 49â‚¬/mes o 499â‚¬/aÃ±o',
     href: '/saldea',
     etiqueta: 'Disponible ahora',
   },
   {
     nombre: 'Contrak',
-    descripcion: 'Gestión y seguimiento de contratos. Alertas automáticas de renovación, plantillas y firma digital integrada.',
-    icono: '📋',
+    descripcion: 'GestiÃ³n y seguimiento de contratos. Alertas automÃ¡ticas de renovaciÃ³n, plantillas y firma digital integrada.',
+    icono: 'ðŸ“‹',
     estado: 'proximamente' as const,
     precio: 'En desarrollo',
     href: null,
-    etiqueta: 'Próximamente',
+    etiqueta: 'PrÃ³ximamente',
   },
   {
-    nombre: 'Nómixa',
-    descripcion: 'Nóminas y liquidaciones para autónomos con empleados. Automatiza la gestión mensual en minutos.',
-    icono: '👥',
+    nombre: 'NÃ³mixa',
+    descripcion: 'NÃ³minas y liquidaciones para autÃ³nomos con empleados. Automatiza la gestiÃ³n mensual en minutos.',
+    icono: 'ðŸ‘¥',
     estado: 'proximamente' as const,
     precio: 'En desarrollo',
     href: null,
-    etiqueta: 'Próximamente',
+    etiqueta: 'PrÃ³ximamente',
   },
 ]
 
 const principios = [
-  { icono: '⚡', titulo: 'Configuración en minutos', desc: 'No necesitas saber de tecnología. Cada app está diseñada para que empieces el mismo día.' },
-  { icono: '🇪🇸', titulo: 'Diseñado para España', desc: 'En español, adaptado a la normativa fiscal española y a cómo se hacen los negocios aquí.' },
-  { icono: '💶', titulo: 'Sin permanencia', desc: 'Paga solo mientras lo usas. Cancela en un clic, sin llamadas ni trámites.' },
-  { icono: '🔒', titulo: 'Datos en Europa', desc: 'Cumplimos RGPD. Tus datos viven en servidores europeos cifrados. No los vendemos ni entrenamos modelos con ellos.' },
+  { icono: 'âš¡', titulo: 'ConfiguraciÃ³n en minutos', desc: 'No necesitas saber de tecnologÃ­a. Cada app estÃ¡ diseÃ±ada para que empieces el mismo dÃ­a.' },
+  { icono: 'ðŸ‡ªðŸ‡¸', titulo: 'DiseÃ±ado para EspaÃ±a', desc: 'En espaÃ±ol, adaptado a la normativa fiscal espaÃ±ola y a cÃ³mo se hacen los negocios aquÃ­.' },
+  { icono: 'ðŸ’¶', titulo: 'Sin permanencia', desc: 'Paga solo mientras lo usas. Cancela en un clic, sin llamadas ni trÃ¡mites.' },
+  { icono: 'ðŸ”’', titulo: 'Datos en Europa', desc: 'Cumplimos RGPD. Tus datos viven en servidores europeos cifrados. No los vendemos ni entrenamos modelos con ellos.' },
 ]
 
 export default function MarsofPage() {
@@ -58,7 +57,7 @@ export default function MarsofPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0b] text-zinc-100 antialiased overflow-x-hidden">
 
-      {/* Decoración de fondo: glow verde + grid */}
+      {/* DecoraciÃ³n de fondo: glow verde + grid */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-sky-500/10 blur-3xl" />
         <div className="absolute top-[50%] right-[-10%] w-[600px] h-[600px] rounded-full bg-sky-600/5 blur-3xl" />
@@ -92,12 +91,11 @@ export default function MarsofPage() {
             </Link>
           </div>
           <div className="flex items-center gap-2">
-            <ThemeToggleNav />
-            <Link href="/login" className="text-sm text-zinc-400 hover:text-zinc-200 font-medium px-3 py-2 transition-colors">
+<Link href="/login" className="text-sm text-zinc-400 hover:text-zinc-200 font-medium px-3 py-2 transition-colors">
               Acceder
             </Link>
             <Link href="/saldea" className="bg-white text-zinc-900 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-zinc-100 transition-colors">
-              Probar Saldea →
+              Probar Saldea â†’
             </Link>
           </div>
         </div>
@@ -114,7 +112,7 @@ export default function MarsofPage() {
         <Reveal effect="fade-up">
           <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
-            Construido para autónomos y pymes españolas
+            Construido para autÃ³nomos y pymes espaÃ±olas
           </div>
         </Reveal>
 
@@ -130,7 +128,7 @@ export default function MarsofPage() {
 
         <Reveal effect="fade-up" delay={160}>
           <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            <strong className="text-zinc-200">Marsof Technology</strong> es una empresa española de software que desarrolla micro-SaaS con IA para autónomos y pymes. Cada app resuelve una tarea repetitiva que te quita horas — y lo hace sola.
+            <strong className="text-zinc-200">Marsof Technology</strong> es una empresa espaÃ±ola de software que desarrolla micro-SaaS con IA para autÃ³nomos y pymes. Cada app resuelve una tarea repetitiva que te quita horas â€” y lo hace sola.
           </p>
         </Reveal>
 
@@ -141,7 +139,7 @@ export default function MarsofPage() {
               className="group inline-flex items-center gap-2 bg-sky-500 text-white px-7 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5"
             >
               Empezar con Saldea
-              <span className="transition-transform group-hover:translate-x-1">→</span>
+              <span className="transition-transform group-hover:translate-x-1">â†’</span>
             </Link>
             <a
               href="#productos"
@@ -150,7 +148,7 @@ export default function MarsofPage() {
               Ver todos los productos
             </a>
           </div>
-          <p className="text-zinc-500 text-sm mt-5">1 mes gratis · sin permanencia</p>
+          <p className="text-zinc-500 text-sm mt-5">1 mes gratis Â· sin permanencia</p>
         </Reveal>
       </section>
 
@@ -161,8 +159,8 @@ export default function MarsofPage() {
             {[
               { num: 10, label: 'horas ahorradas al mes', suffix: 'h' },
               { num: 3, label: 'apps en desarrollo', suffix: '' },
-              { num: 100, label: 'hecho en España', suffix: '%' },
-              { num: 0, label: 'permanencia · cancela cuando quieras', suffix: '€' },
+              { num: 100, label: 'hecho en EspaÃ±a', suffix: '%' },
+              { num: 0, label: 'permanencia Â· cancela cuando quieras', suffix: 'â‚¬' },
             ].map((s, i) => (
               <Reveal key={i} effect="fade-up" delay={i * 80}>
                 <p className="text-4xl md:text-5xl font-bold text-white tracking-tight">
@@ -226,11 +224,11 @@ export default function MarsofPage() {
                       href={app.href}
                       className="block w-full text-center bg-sky-500 text-zinc-900 py-3 rounded-xl font-bold hover:bg-sky-400 transition-colors"
                     >
-                      Probar {app.nombre} →
+                      Probar {app.nombre} â†’
                     </Link>
                   ) : avisado[app.nombre] ? (
                     <div className="text-center py-3 text-sm text-sky-300 font-medium bg-sky-500/10 rounded-xl border border-sky-500/20">
-                      ✓ Te avisamos cuando esté lista
+                      âœ“ Te avisamos cuando estÃ© lista
                     </div>
                   ) : (
                     <form onSubmit={e => handleAviso(app.nombre, e)} className="flex gap-2">
@@ -246,7 +244,7 @@ export default function MarsofPage() {
                         type="submit"
                         className="bg-white/10 text-white px-4 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/20 transition-colors whitespace-nowrap"
                       >
-                        Avísame
+                        AvÃ­same
                       </button>
                     </form>
                   )}
@@ -270,19 +268,19 @@ export default function MarsofPage() {
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed mb-6">
                 IA que escribe y manda los recordatorios por ti.
-                Escala el tono con los días, entiende las respuestas de tus clientes
+                Escala el tono con los dÃ­as, entiende las respuestas de tus clientes
                 y pausa cuando se confirma el pago.
               </p>
               <ul className="space-y-3 text-zinc-300 mb-8">
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> 5 tonos de cordial a último aviso legal</li>
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Detecta automáticamente respuestas del cliente</li>
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Importación masiva CSV + plantillas 4 idiomas</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">âœ“</span> 5 tonos de cordial a Ãºltimo aviso legal</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">âœ“</span> Detecta automÃ¡ticamente respuestas del cliente</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">âœ“</span> ImportaciÃ³n masiva CSV + plantillas 4 idiomas</li>
               </ul>
               <Link
                 href="/saldea"
                 className="inline-flex items-center gap-2 bg-sky-500 text-zinc-900 px-6 py-3 rounded-xl font-bold hover:bg-sky-400 transition-all hover:-translate-y-0.5"
               >
-                Empezar 1 mes gratis →
+                Empezar 1 mes gratis â†’
               </Link>
             </Reveal>
             <Reveal effect="slide-right" delay={150}>
@@ -317,18 +315,18 @@ export default function MarsofPage() {
         </div>
       </section>
 
-      {/* Misión */}
+      {/* MisiÃ³n */}
       <section id="mision" className="py-28">
         <div className="max-w-5xl mx-auto px-6">
           <Reveal effect="fade-up">
             <div className="text-center mb-16">
               <p className="text-sky-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">Manifiesto</p>
               <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
-                Por qué existe Marsof
+                Por quÃ© existe Marsof
               </h2>
               <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                Los autónomos y las pymes españolas dedican demasiado tiempo a tareas que se repiten cada semana o cada mes:
-                perseguir cobros, renovar contratos, gestionar nóminas. Marsof automatiza esas tareas con IA
+                Los autÃ³nomos y las pymes espaÃ±olas dedican demasiado tiempo a tareas que se repiten cada semana o cada mes:
+                perseguir cobros, renovar contratos, gestionar nÃ³minas. Marsof automatiza esas tareas con IA
                 para que puedas centrarte en hacer crecer tu negocio.
               </p>
             </div>
@@ -366,7 +364,7 @@ export default function MarsofPage() {
                   className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-2xl shadow-sky-500/20"
                 >
                   Empezar con Saldea
-                  <span>→</span>
+                  <span>â†’</span>
                 </Link>
               </div>
             </div>
