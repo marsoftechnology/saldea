@@ -142,7 +142,7 @@ export default function PageSobreMarsof() {
               <li><strong>Operaciones:</strong> 100% online, sirviendo a toda España</li>
               <li><strong>Servidores:</strong> Frankfurt (Alemania) — RGPD compliance</li>
               <li><strong>Web:</strong> <a href="https://marsof.es" className="text-sky-400 hover:underline">https://marsof.es</a></li>
-              <li><strong>Contacto:</strong> <a href="mailto:hola@marsof.es" className="text-sky-400 hover:underline">hola@marsof.es</a></li>
+              <li><strong>Contacto:</strong> <a href="mailto:carlosgc@marsof.es" className="text-sky-400 hover:underline">carlosgc@marsof.es</a></li>
             </ul>
           </div>
 
@@ -202,7 +202,7 @@ export default function PageSobreMarsof() {
             Si quieres saber más sobre <strong>Marsof Technology</strong>, escríbenos:
           </p>
           <ul className="space-y-2 text-zinc-300 mb-12">
-            <li>📧 <strong>Email:</strong> <a href="mailto:hola@marsof.es" className="text-sky-400 hover:underline">hola@marsof.es</a></li>
+            <li>📧 <strong>Email:</strong> <a href="mailto:carlosgc@marsof.es" className="text-sky-400 hover:underline">carlosgc@marsof.es</a></li>
             <li>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/marsof" className="text-sky-400 hover:underline">linkedin.com/company/marsof</a></li>
           </ul>
 
