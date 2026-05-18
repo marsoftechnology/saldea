@@ -1,10 +1,10 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Contacto | Marsof Technology',
-  description: 'Contacta con Marsof Technology. Soporte de Saldea, ventas, prensa, alianzas. Email, formulario y direcciÃ³n en Niebla, Huelva.',
+  description: 'Contacta con Marsof Technology. Soporte de Saldea, ventas, prensa, alianzas. Email, formulario y dirección en Niebla, Huelva.',
   alternates: { canonical: 'https://marsof.es/contacto' },
   keywords: [
     'Marsof contacto',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Contacto | Marsof Technology',
-    description: 'Soporte, ventas, prensa. Email y direcciÃ³n.',
+    description: 'Soporte, ventas, prensa. Email y dirección.',
     type: 'website',
     locale: 'es_ES',
   },
@@ -31,39 +31,39 @@ const schemaContacto = {
 
 const contactos = [
   {
-    icono: 'ðŸ’¬',
+    icono: '💬',
     titulo: 'Soporte Saldea',
-    desc: 'Dudas sobre tu cuenta, facturaciÃ³n o errores tÃ©cnicos.',
+    desc: 'Dudas sobre tu cuenta, facturación o errores técnicos.',
     email: 'soporte@marsof.es',
     respuesta: '24-48h laborables',
   },
   {
-    icono: 'ðŸš€',
-    titulo: 'Ventas / DemostraciÃ³n',
+    icono: '🚀',
+    titulo: 'Ventas / Demostración',
     desc: 'Quieres una demo personalizada o tienes preguntas antes de comprar.',
     email: 'hola@marsof.es',
-    respuesta: 'Mismo dÃ­a laborable',
+    respuesta: 'Mismo día laborable',
   },
   {
-    icono: 'ðŸ¤',
+    icono: '🤝',
     titulo: 'Alianzas y partners',
-    desc: 'GestorÃ­as que quieren ofrecer Saldea a sus clientes, integradores, revendedores.',
+    desc: 'Gestorías que quieren ofrecer Saldea a sus clientes, integradores, revendedores.',
     email: 'partners@marsof.es',
-    respuesta: '3-5 dÃ­as laborables',
+    respuesta: '3-5 días laborables',
   },
   {
-    icono: 'ðŸ“°',
+    icono: '📰',
     titulo: 'Prensa y medios',
     desc: 'Periodistas, podcasts, eventos. Tenemos kit de prensa preparado.',
     email: 'prensa@marsof.es',
     respuesta: '24h laborables',
   },
   {
-    icono: 'âš–ï¸',
+    icono: '⚖️',
     titulo: 'Legal y privacidad',
     desc: 'Cuestiones RGPD, ejercicio de derechos, solicitudes legales.',
     email: 'legal@marsof.es',
-    respuesta: '72h mÃ¡ximo (RGPD)',
+    respuesta: '72h máximo (RGPD)',
   },
 ]
 
@@ -84,7 +84,7 @@ export default function PageContacto() {
 
         <section className="max-w-3xl mx-auto px-6 py-16">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Contacto</h1>
-          <p className="text-zinc-400 text-lg mb-12">Elige el canal adecuado para que llegues a la persona correcta. Respondemos en espaÃ±ol, en horario laboral espaÃ±ol.</p>
+          <p className="text-zinc-400 text-lg mb-12">Elige el canal adecuado para que llegues a la persona correcta. Respondemos en español, en horario laboral español.</p>
 
           <div className="space-y-4 mb-16">
             {contactos.map((c) => (
@@ -107,21 +107,21 @@ export default function PageContacto() {
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">Datos de la empresa</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-12">
             <ul className="space-y-2 text-zinc-300">
-              <li><strong>RazÃ³n social:</strong> Marsof Technology</li>
-              <li><strong>Sede:</strong> Niebla, Huelva (EspaÃ±a)</li>
+              <li><strong>Razón social:</strong> Marsof Technology</li>
+              <li><strong>Sede:</strong> Niebla, Huelva (España)</li>
               <li><strong>Web:</strong> <a href="https://marsof.es" className="text-sky-400 hover:underline">https://marsof.es</a></li>
-              <li><strong>Fundador:</strong> Carlos GÃ¡lvez Carrillo</li>
+              <li><strong>Fundador:</strong> Carlos Gálvez Carrillo</li>
               <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/marsof" className="text-sky-400 hover:underline">linkedin.com/company/marsof</a></li>
             </ul>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mb-4">Horario de atenciÃ³n</h2>
-          <p className="text-zinc-400 leading-relaxed mb-12">Lunes a viernes, 9:00 a 18:00 (hora peninsular espaÃ±ola). Cerrado fines de semana y festivos nacionales.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-4">Horario de atención</h2>
+          <p className="text-zinc-400 leading-relaxed mb-12">Lunes a viernes, 9:00 a 18:00 (hora peninsular española). Cerrado fines de semana y festivos nacionales.</p>
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
-            <h2 className="text-xl font-bold mb-2">Â¿Quieres probar Saldea antes de hablar?</h2>
-            <p className="text-zinc-400 mb-5">1 mes gratis sin tarjeta. La forma mÃ¡s rÃ¡pida de saber si te encaja.</p>
-            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis â†’</Link>
+            <h2 className="text-xl font-bold mb-2">¿Quieres probar Saldea antes de hablar?</h2>
+            <p className="text-zinc-400 mb-5">1 mes gratis sin tarjeta. La forma más rápida de saber si te encaja.</p>
+            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
           </div>
         </section>
         <MarketingFooter />

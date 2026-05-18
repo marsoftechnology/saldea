@@ -1,12 +1,12 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea en Pamplona: software de cobros para empresas navarras',
-  description: 'Software con IA para automatizar el cobro de facturas en Pamplona y Navarra. Para gestorÃ­as, industria y servicios. 1 mes gratis.',
+  description: 'Software con IA para automatizar el cobro de facturas en Pamplona y Navarra. Para gestorías, industria y servicios. 1 mes gratis.',
   alternates: { canonical: 'https://marsof.es/pamplona' },
-  keywords: ['software cobros Pamplona', 'gestorÃ­a Pamplona', 'autÃ³nomo Navarra', 'Saldea Pamplona'],
+  keywords: ['software cobros Pamplona', 'gestoría Pamplona', 'autónomo Navarra', 'Saldea Pamplona'],
   openGraph: { title: 'Saldea en Pamplona', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
 }
 const schema = { '@context': 'https://schema.org', '@type': 'Service', serviceType: 'Software de cobros con IA', provider: { '@id': 'https://marsof.es/#organization' }, areaServed: { '@type': 'City', name: 'Pamplona' } }
@@ -23,28 +23,28 @@ export default function PagePamplona() {
         </div>
       </nav>
       <section className="max-w-4xl mx-auto px-6 pt-16 pb-12">
-        <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6"><span>ðŸ“ Atendiendo Pamplona y Navarra</span></div>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea para empresas y autÃ³nomos de Pamplona</h1>
-        <p className="text-zinc-400 text-lg leading-relaxed mb-8">Navarra tiene rÃ©gimen fiscal propio y un tejido empresarial fuerte en automociÃ³n (VW Pamplona), alimentaciÃ³n, energÃ­a y construcciÃ³n. Saldea automatiza tus cobros con IA. Tu software de facturaciÃ³n se encarga del rÃ©gimen foral.</p>
+        <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6"><span>📍 Atendiendo Pamplona y Navarra</span></div>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea para empresas y autónomos de Pamplona</h1>
+        <p className="text-zinc-400 text-lg leading-relaxed mb-8">Navarra tiene régimen fiscal propio y un tejido empresarial fuerte en automoción (VW Pamplona), alimentación, energía y construcción. Saldea automatiza tus cobros con IA. Tu software de facturación se encarga del régimen foral.</p>
         <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Sectores navarros donde encaja Saldea</h2>
         <ul className="space-y-2 text-zinc-300 mb-8">
-          <li>ðŸš— <strong>AutomociÃ³n</strong> (VW Navarra y proveedores)</li>
-          <li>ðŸŒ± <strong>Agroalimentario</strong> y conservas</li>
-          <li>âš¡ <strong>Renovables</strong> y empresas energÃ©ticas</li>
-          <li>ðŸ“Š <strong>AsesorÃ­as y gestorÃ­as</strong> de Pamplona, Tudela, Estella</li>
-          <li>ðŸ—ï¸ <strong>ConstrucciÃ³n</strong> e ingenierÃ­a</li>
+          <li>🚗 <strong>Automoción</strong> (VW Navarra y proveedores)</li>
+          <li>🌱 <strong>Agroalimentario</strong> y conservas</li>
+          <li>⚡ <strong>Renovables</strong> y empresas energéticas</li>
+          <li>📊 <strong>Asesorías y gestorías</strong> de Pamplona, Tudela, Estella</li>
+          <li>🏗️ <strong>Construcción</strong> e ingeniería</li>
         </ul>
-        <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por quÃ© encaja en Navarra</h2>
+        <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por qué encaja en Navarra</h2>
         <ul className="space-y-3 text-zinc-300 mb-8">
-          <li>âœ“ <strong>Compatible con rÃ©gimen foral</strong> (tu software de facturaciÃ³n se encarga)</li>
-          <li>âœ“ Industria con cadenas largas y plazos extensos</li>
-          <li>âœ“ Cumple Ley 3/2004</li>
-          <li>âœ“ 1 mes gratis sin tarjeta</li>
+          <li>✓ <strong>Compatible con régimen foral</strong> (tu software de facturación se encarga)</li>
+          <li>✓ Industria con cadenas largas y plazos extensos</li>
+          <li>✓ Cumple Ley 3/2004</li>
+          <li>✓ 1 mes gratis sin tarjeta</li>
         </ul>
         <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">
           <h2 className="text-2xl font-bold mb-2">Empieza desde Pamplona</h2>
-          <p className="text-zinc-400 mb-6">5 min. 0â‚¬ hasta el dÃ­a 31.</p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis â†’</Link>
+          <p className="text-zinc-400 mb-6">5 min. 0€ hasta el día 31.</p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
         </div>
       </section>
       <MarketingFooter />
