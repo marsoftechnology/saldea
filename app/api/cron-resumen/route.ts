@@ -53,16 +53,16 @@ export async function GET(req: NextRequest) {
       const orgId = conf.org_id
       if (!orgId) continue
       // Estadísticas del periodo — scope por org (no por user)
-      const [emailsCount, cobradasRes, vencidasRes, respuestasRes, pendientesRes] = await Promise.all([
+      const [emailsCount, pagosRes, vencidasRes, respuestasRes, pendientesRes] = await Promise.all([
         supabase.from('logs_email')
           .select('id', { count: 'exact', head: true })
           .gte('enviado_at', desdeISO)
           .eq('estado', 'enviado')
           .eq('org_id', orgId),
-        supabase.from('facturas')
-          .select('id, importe, numero, cliente:clientes(nombre)')
+        supabase.from('pagos')
+          .select('importe, factura_id, factura:facturas(estado)')
           .eq('org_id', orgId)
-          .eq('estado', 'cobrada'),
+          .gte('created_at', desdeISO),
         supabase.from('facturas')
           .select('id, importe, numero, fecha_vencimiento, cliente:clientes(nombre)')
           .eq('org_id', orgId)
@@ -79,16 +79,23 @@ export async function GET(req: NextRequest) {
       ])
 
       const numEmails = emailsCount.count ?? 0
-      const cobradas = cobradasRes.data ?? []
+      const pagos = pagosRes.data ?? []
       const vencidas = vencidasRes.data ?? []
       const respuestas = respuestasRes.data ?? []
       const pendientes = pendientesRes.data ?? []
       const totalPendiente = pendientes.reduce((s, f) => s + Number(f.importe), 0)
-      const totalCobrado = cobradas.reduce((s, f) => s + Number(f.importe), 0)
+      // Cobrado en el periodo = suma de pagos registrados + facturas únicas ya cobradas con pago reciente
+      const totalCobrado = pagos.reduce((s, p) => s + Number(p.importe), 0)
+      const facturasCobradasEnPeriodo = new Set(
+        pagos
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .filter(p => (p.factura as any)?.estado === 'cobrada')
+          .map(p => p.factura_id)
+      ).size
 
       const periodoTexto = tipo === 'semanal' ? 'esta semana' : 'ayer'
       const asunto = tipo === 'semanal'
-        ? `📊 Tu resumen semanal de Saldea — ${cobradas.length} cobradas, ${totalPendiente.toFixed(0)}€ pendiente`
+        ? `📊 Tu resumen semanal de Saldea — ${facturasCobradasEnPeriodo} cobradas, ${totalPendiente.toFixed(0)}€ pendiente`
         : `📅 Tu resumen diario de Saldea — ${numEmails} recordatorios enviados`
 
       const cuerpo = `Hola ${nombre},
@@ -96,7 +103,7 @@ export async function GET(req: NextRequest) {
 Aquí tienes tu resumen ${tipo === 'semanal' ? 'semanal' : 'diario'} de actividad en Saldea.
 
 📧 Recordatorios enviados ${periodoTexto}: ${numEmails}
-✅ Facturas cobradas: ${cobradas.length} (${formatearEuros(totalCobrado)})
+✅ Cobrado ${periodoTexto}: ${formatearEuros(totalCobrado)} (${facturasCobradasEnPeriodo} facturas cerradas)
 ⏳ Facturas pendientes: ${pendientes.length} (${formatearEuros(totalPendiente)})
 🚨 Facturas vencidas activas: ${vencidas.length}
 
