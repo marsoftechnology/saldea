@@ -45,7 +45,7 @@ export default async function CobradoPage({
           {importeFormateado ? ` por ${importeFormateado}` : ''}.
         </p>
         <p className="text-zinc-500 text-sm mb-8">No recibirás más recordatorios por esta factura.</p>
-        <div className="bg-sky-500/100/10 border border-sky-500/20 rounded-xl p-5 text-sm text-sky-300">
+        <div className="bg-sky-500/10 border border-sky-500/20 rounded-xl p-5 text-sm text-sky-300">
           Gestión de cobros automatizada por <strong>Saldea</strong> · <a href="https://marsof.es" style={{ color: '#0284c7' }}>marsof.es</a>
         </div>
       </div>
