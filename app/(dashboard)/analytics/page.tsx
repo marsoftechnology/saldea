@@ -17,9 +17,14 @@ export default async function AnalyticsPage() {
 
   const facturaIds = facturas?.map(f => f.id) ?? []
 
-  const { data: logs } = facturaIds.length > 0
-    ? await supabase.from('logs_email').select('id, asunto, enviado_at, factura_id').in('factura_id', facturaIds).order('enviado_at', { ascending: false }).limit(15)
-    : { data: [] }
+  const [{ data: logs }, { count: totalLogs }] = await Promise.all([
+    facturaIds.length > 0
+      ? supabase.from('logs_email').select('id, asunto, enviado_at, factura_id').in('factura_id', facturaIds).order('enviado_at', { ascending: false }).limit(15)
+      : Promise.resolve({ data: [] as Array<{ id: string; asunto: string; enviado_at: string; factura_id: string }> }),
+    facturaIds.length > 0
+      ? supabase.from('logs_email').select('*', { count: 'exact', head: true }).in('factura_id', facturaIds).eq('estado', 'enviado')
+      : Promise.resolve({ count: 0 }),
+  ])
 
   // Sumar todos los pagos de la org para reflejar cobros reales (incluyendo parciales)
   const { data: pagosUser } = await supabase
@@ -81,24 +86,24 @@ export default async function AnalyticsPage() {
 
       {/* Tarjetas resumen */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 border border-white/5 shadow-sm">
+        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 shadow-sm">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Total facturado</p>
           <p className="text-xl font-bold text-zinc-100">{formatearEuros(importeTotal)}</p>
           <p className="text-xs text-zinc-500 mt-1">{todas.length} facturas</p>
         </div>
-        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 border border-white/5 shadow-sm">
+        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 shadow-sm">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Cobrado</p>
           <p className="text-xl font-bold text-sky-400">{formatearEuros(importeCobrado)}</p>
           <p className="text-xs text-zinc-500 mt-1">{cobradas.length} facturas</p>
         </div>
-        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 border border-white/5 shadow-sm">
+        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 shadow-sm">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Pendiente</p>
           <p className="text-xl font-bold text-amber-300">{formatearEuros(importePendiente + importeVencido + importeParcialPendiente)}</p>
           <p className="text-xs text-zinc-500 mt-1">{pendientes.length + vencidas.length + parciales.length} facturas</p>
         </div>
-        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 border border-white/5 shadow-sm">
+        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 shadow-sm">
           <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Recordatorios</p>
-          <p className="text-xl font-bold text-zinc-100">{logs?.length ?? 0}</p>
+          <p className="text-xl font-bold text-zinc-100">{totalLogs ?? 0}</p>
           <p className="text-xs text-zinc-500 mt-1">emails enviados</p>
         </div>
       </div>
@@ -176,7 +181,7 @@ export default async function AnalyticsPage() {
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl">
         <div className="flex items-center justify-between p-6 border-b border-white/5">
           <h2 className="font-semibold text-zinc-100">Últimos recordatorios enviados</h2>
-          <span className="text-xs text-zinc-500">{logs?.length ?? 0} en total</span>
+          <span className="text-xs text-zinc-500">{totalLogs ?? 0} en total</span>
         </div>
         {logs && logs.length > 0 ? (
           <div className="divide-y divide-white/5">
