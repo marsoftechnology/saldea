@@ -108,7 +108,7 @@ ${respuestas.slice(0, 5).map(r => {
 ` : ''}
 
 Echa un vistazo al dashboard para más detalles:
-https://marsof.es/dashboard
+${process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'}/dashboard
 
 — Saldea
 `
