@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: 'Saldea <hola@marsof.es>',
       to: user.email,
-      reply_to: 'carlosgc@marsof.es',
+      replyTo: 'carlosgc@marsof.es',
       subject: '¡Bienvenido a Saldea! · Empieza aquí',
       html,
     })
