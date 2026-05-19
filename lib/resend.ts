@@ -89,7 +89,7 @@ export async function enviarEmail(params: {
       from: desde ?? fromDefault,
       to: para,
       subject: asunto,
-      reply_to: facturaId ? `cobros+${facturaId}@marsof.es` : undefined,
+      replyTo: facturaId ? `cobros+${facturaId}@marsof.es` : undefined,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           ${logoHTML}
