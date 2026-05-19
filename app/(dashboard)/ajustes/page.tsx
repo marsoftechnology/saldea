@@ -116,6 +116,17 @@ export default function AjustesPage() {
       if (data.configuracion?.modo_vacaciones_hasta) setModoVacacionesHasta(data.configuracion.modo_vacaciones_hasta)
       if (typeof data.configuracion?.aprender_historial === 'boolean') setAprenderHistorial(data.configuracion.aprender_historial)
       setCargando(false)
+
+      // Auto-abrir checkout si el usuario llegó desde /registro?plan=anio
+      if (data.configuracion?.plan !== 'pro') {
+        const params = new URLSearchParams(window.location.search)
+        const autocheckout = params.get('autocheckout')
+        if (autocheckout === 'anio' || autocheckout === 'mes') {
+          setIntervaloPago(autocheckout)
+          setMostrarPago(true)
+          window.history.replaceState({}, '', window.location.pathname + '#plan')
+        }
+      }
     }
     cargar()
   }, [])

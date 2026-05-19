@@ -49,7 +49,10 @@ export default function RegistroPage() {
       body: JSON.stringify({ nombre, empresa }),
     }).catch(() => {})
 
-    router.push('/dashboard')
+    // Si el usuario llegó desde el pricing con ?plan=anio, llevarle directo al checkout anual
+    const params = new URLSearchParams(window.location.search)
+    const plan = params.get('plan')
+    router.push(plan === 'anio' ? '/ajustes?autocheckout=anio#plan' : '/dashboard')
   }
 
   return (
