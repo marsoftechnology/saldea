@@ -46,7 +46,8 @@ export default function EnviarRecordatorioButton({
       setResultado('Email enviado correctamente')
       router.refresh()
     } else {
-      setResultado('Error al enviar el email')
+      const data = await res.json().catch(() => ({}))
+      setResultado(data?.error ?? 'Error al enviar el email')
     }
 
     setCargando(false)

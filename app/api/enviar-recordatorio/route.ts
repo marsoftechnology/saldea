@@ -6,6 +6,7 @@ import { generarPDFFactura } from '@/lib/pdf'
 import { diasVencida, formatearEuros, formatearFecha } from '@/lib/utils'
 import { renderizarPlantilla } from '@/lib/recordatorios'
 import { getActiveOrg } from '@/lib/auth-org'
+import { getOrgPlan, LIMITES_FREE } from '@/lib/plan'
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,6 +27,26 @@ export async function POST(req: NextRequest) {
       .single()
 
     if (!factura) return NextResponse.json({ error: 'Factura no encontrada' }, { status: 404 })
+
+    // Tope de emails mensuales para plan Free
+    const planOrg = await getOrgPlan(org.org_id, supabase)
+    if (planOrg === 'free') {
+      const primerDia = new Date()
+      primerDia.setUTCDate(1)
+      primerDia.setUTCHours(0, 0, 0, 0)
+      const { count } = await supabase
+        .from('logs_email')
+        .select('*', { count: 'exact', head: true })
+        .eq('org_id', org.org_id)
+        .eq('estado', 'enviado')
+        .gte('enviado_at', primerDia.toISOString())
+      if ((count ?? 0) >= LIMITES_FREE.emailsMes) {
+        return NextResponse.json({
+          error: `Has alcanzado el límite de ${LIMITES_FREE.emailsMes} emails/mes del plan gratuito. Sube a Pro para envíos ilimitados.`,
+          codigo: 'LIMITE_EMAILS_MES',
+        }, { status: 403 })
+      }
+    }
 
     // Calcular importe ya pagado (parcial o total) — la IA mencionará el pendiente
     const { data: pagosFactura } = await supabase

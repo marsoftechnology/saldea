@@ -354,10 +354,10 @@ export default function NuevaFacturaPage() {
           </div>
         </div>
 
-        <div className="bg-sky-500/100/10 border border-sky-500/20 rounded-lg p-4">
+        <div className="bg-sky-500/10 border border-sky-500/20 rounded-lg p-4">
           <p className="text-sm text-sky-300 font-medium mb-1">
             📧 {maxRecEfectivo} recordatorio{maxRecEfectivo === 1 ? '' : 's'} automático{maxRecEfectivo === 1 ? '' : 's'}
-            {hayOverride && <span className="ml-1 text-xs font-normal bg-sky-200 text-sky-200 px-2 py-0.5 rounded-full">solo esta factura</span>}
+            {hayOverride && <span className="ml-1 text-xs font-normal bg-sky-200 text-sky-900 px-2 py-0.5 rounded-full">solo esta factura</span>}
           </p>
           <p className="text-xs text-sky-400">
             {diasPreview.map((d, i) => `Día ${d}: ${tonosPreview[i]}`).join(' · ')}
