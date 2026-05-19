@@ -82,6 +82,30 @@ export async function GET(req: NextRequest) {
     return cfg
   }
 
+  // Cache de nombre de org para evitar re-consultar en cada iteración
+  const orgNombreCache = new Map<string, string>()
+  async function getOrgNombre(orgId: string): Promise<string> {
+    if (orgNombreCache.has(orgId)) return orgNombreCache.get(orgId)!
+    const { data } = await supabase.from('organizations').select('name').eq('id', orgId).maybeSingle()
+    const nombre = data?.name || 'Tu empresa'
+    orgNombreCache.set(orgId, nombre)
+    return nombre
+  }
+
+  // Cache de config completa por org (plantillas, firma, logo, etc.)
+  type OrgFullConfig = Record<string, string | null>
+  const orgFullConfigCache = new Map<string, OrgFullConfig | null>()
+  async function getOrgFullConfig(orgId: string, tono: string): Promise<OrgFullConfig | null> {
+    if (orgFullConfigCache.has(orgId)) return orgFullConfigCache.get(orgId)!
+    const { data } = await supabase
+      .from('configuraciones_usuario')
+      .select(`plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias`)
+      .eq('org_id', orgId)
+      .maybeSingle()
+    orgFullConfigCache.set(orgId, data as OrgFullConfig | null)
+    return data as OrgFullConfig | null
+  }
+
   const primerDiaMes = new Date()
   primerDiaMes.setUTCDate(1)
   primerDiaMes.setUTCHours(0, 0, 0, 0)
@@ -149,13 +173,8 @@ export async function GET(req: NextRequest) {
     }
 
     try {
-      // Nombre de empresa: nombre de la org
-      const { data: orgData } = await supabase
-        .from('organizations')
-        .select('name')
-        .eq('id', factura.org_id)
-        .maybeSingle()
-      const nombreEmpresa = orgData?.name || 'Tu empresa'
+      // Nombre de empresa: nombre de la org (cacheado)
+      const nombreEmpresa = await getOrgNombre(factura.org_id)
 
       // Plan Free → forzamos siempre tono amigable (sin escalado)
       let tonoFinal = pendiente.tono as 'amigable' | 'firme' | 'formal' | 'extremo'
@@ -164,13 +183,7 @@ export async function GET(req: NextRequest) {
         tonosForzadosFree++
       }
 
-      const { data: config } = await supabase
-        .from('configuraciones_usuario')
-        .select(`plantilla_${tonoFinal}, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias`)
-        .eq('org_id', factura.org_id)
-        .maybeSingle()
-
-      const configMap = config as Record<string, string | null> | null
+      const configMap = await getOrgFullConfig(factura.org_id, tonoFinal)
       const plantillaUsuario = configMap?.[`plantilla_${tonoFinal}`]?.trim()
       const firmaUsuario = configMap?.firma?.trim()
       const logoUrl = configMap?.logo_url ?? null
