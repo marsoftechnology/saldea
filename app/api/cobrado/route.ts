@@ -23,24 +23,28 @@ export async function GET(req: NextRequest) {
       return NextResponse.redirect(new URL(`/cobrado?ya=1&num=${factura.numero}`, req.url))
     }
 
-    // Calcular cuánto se ha pagado ya y registrar el restante
+    // Idempotencia: si ya hay un pago de confirmación del cliente, no duplicar
+    const NOTAS_CONFIRM = 'Confirmado por el cliente desde el email'
     const { data: pagosPrevios } = await supabase
       .from('pagos')
-      .select('importe')
+      .select('importe, notas')
       .eq('factura_id', facturaId)
 
-    const yaPagado = (pagosPrevios ?? []).reduce((s, p) => s + Number(p.importe), 0)
-    const pendiente = Math.max(0, Number(factura.importe) - yaPagado)
+    const yaConfirmado = pagosPrevios?.some(p => p.notas === NOTAS_CONFIRM)
+    if (!yaConfirmado) {
+      const yaPagado = (pagosPrevios ?? []).reduce((s, p) => s + Number(p.importe), 0)
+      const pendiente = Math.max(0, Number(factura.importe) - yaPagado)
 
-    if (pendiente > 0) {
-      await supabase.from('pagos').insert({
-        factura_id: facturaId,
-        user_id: factura.user_id,
-        org_id: factura.org_id,
-        importe: Math.round(pendiente * 100) / 100,
-        metodo: 'otro',
-        notas: 'Confirmado por el cliente desde el email',
-      })
+      if (pendiente > 0) {
+        await supabase.from('pagos').insert({
+          factura_id: facturaId,
+          user_id: factura.user_id,
+          org_id: factura.org_id,
+          importe: Math.round(pendiente * 100) / 100,
+          metodo: 'otro',
+          notas: NOTAS_CONFIRM,
+        })
+      }
     }
 
     await recalcularEstadoFactura(supabase, facturaId)
