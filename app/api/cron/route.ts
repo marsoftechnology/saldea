@@ -95,7 +95,7 @@ export async function GET(req: NextRequest) {
   // Cache de config completa por org (plantillas, firma, logo, etc.)
   type OrgFullConfig = Record<string, string | null>
   const orgFullConfigCache = new Map<string, OrgFullConfig | null>()
-  async function getOrgFullConfig(orgId: string, tono: string): Promise<OrgFullConfig | null> {
+  async function getOrgFullConfig(orgId: string): Promise<OrgFullConfig | null> {
     if (orgFullConfigCache.has(orgId)) return orgFullConfigCache.get(orgId)!
     const { data } = await supabase
       .from('configuraciones_usuario')
@@ -183,7 +183,7 @@ export async function GET(req: NextRequest) {
         tonosForzadosFree++
       }
 
-      const configMap = await getOrgFullConfig(factura.org_id, tonoFinal)
+      const configMap = await getOrgFullConfig(factura.org_id)
       const plantillaUsuario = configMap?.[`plantilla_${tonoFinal}`]?.trim()
       const firmaUsuario = configMap?.firma?.trim()
       const logoUrl = configMap?.logo_url ?? null
