@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase'
 import { computarDiasRecordatorios, parsearDiasPersonalizados, type Patron, type TonoPreset } from '@/lib/recordatorios'
 import { PagoModal } from '@/app/components/PagoModal'
 import StripeConnectSection from './StripeConnectSection'
+import HoldedSection from './HoldedSection'
 
 export default function AjustesPage() {
   const [nombre, setNombre] = useState('')
@@ -344,6 +345,9 @@ export default function AjustesPage() {
 
       {/* Stripe Connect: cobros automáticos */}
       <StripeConnectSection />
+
+      {/* Holded: importar facturas */}
+      <HoldedSection />
 
       <form onSubmit={guardar} className="space-y-3">
 
