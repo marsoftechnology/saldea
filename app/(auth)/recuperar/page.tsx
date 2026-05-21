@@ -16,9 +16,9 @@ export default function RecuperarPage() {
     setCargando(true)
 
     const supabase = createClient()
-    const origin = typeof window !== 'undefined' ? window.location.origin : ''
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? window.location.origin
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${origin}/restablecer`,
+      redirectTo: `${appUrl}/restablecer`,
     })
 
     if (error) {

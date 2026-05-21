@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
 import Papa from 'papaparse'
 
@@ -21,6 +21,14 @@ export default function ImportarPage() {
   const [cargando, setCargando] = useState(false)
   const [resultado, setResultado] = useState<Resultado | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [plan, setPlan] = useState<'free' | 'pro' | null>(null)
+
+  useEffect(() => {
+    fetch('/api/configuracion')
+      .then(r => r.json())
+      .then(data => setPlan(data?.configuracion?.plan === 'pro' ? 'pro' : 'free'))
+      .catch(() => setPlan(null))
+  }, [])
 
   function onArchivoSeleccionado(e: React.ChangeEvent<HTMLInputElement>) {
     const archivo = e.target.files?.[0]
@@ -87,6 +95,25 @@ export default function ImportarPage() {
         <p className="text-zinc-400 text-sm mt-1">Carga clientes y facturas en masa desde una hoja de cálculo</p>
       </div>
 
+      {/* Banner plan Free */}
+      {plan === 'free' && (
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 mb-6 flex items-start gap-3">
+          <span className="text-xl shrink-0">🔒</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-amber-300">Función exclusiva del plan Pro</p>
+            <p className="text-xs text-amber-200/70 mt-0.5">
+              La importación masiva desde CSV requiere el plan Pro. Con el plan Free puedes añadir clientes y facturas de uno en uno.
+            </p>
+          </div>
+          <Link
+            href="/ajustes#plan"
+            className="shrink-0 text-xs font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 px-3 py-1.5 rounded-lg transition-colors"
+          >
+            Ver plan Pro →
+          </Link>
+        </div>
+      )}
+
       {/* Instrucciones */}
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 mb-6">
         <h2 className="font-semibold text-zinc-100 mb-2 text-sm">Formato del CSV</h2>
@@ -115,7 +142,8 @@ export default function ImportarPage() {
             type="file"
             accept=".csv"
             onChange={onArchivoSeleccionado}
-            className="block w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-sky-500/10 file:text-sky-300 hover:file:bg-sky-500/20 cursor-pointer"
+            disabled={plan === 'free'}
+            className="block w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-sky-500/10 file:text-sky-300 hover:file:bg-sky-500/20 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </label>
       </div>

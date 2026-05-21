@@ -10,11 +10,21 @@ import { getOrgPlan, LIMITES_FREE } from '@/lib/plan'
 
 export async function POST(req: NextRequest) {
   try {
-    const { facturaId, tono } = await req.json()
-
+    // Auth primero: el parsing del body no debe enmascarar un 401
     const org = await getActiveOrg()
     if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
     if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite enviar recordatorios' }, { status: 403 })
+
+    // Parsear body con manejo de error explícito
+    let facturaId: string, tono: string
+    try {
+      const body = await req.json()
+      facturaId = body?.facturaId
+      tono = body?.tono
+    } catch {
+      return NextResponse.json({ error: 'Body JSON inválido' }, { status: 400 })
+    }
+    if (!facturaId) return NextResponse.json({ error: 'facturaId requerido' }, { status: 400 })
 
     const supabase = await createServerSupabaseClient()
     const user = org.user

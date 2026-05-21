@@ -2,10 +2,26 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 /**
+ * Rutas protegidas: requieren sesión activa.
+ * Coincide con el grupo (dashboard) de Next.js.
+ */
+const RUTAS_PROTEGIDAS = [
+  '/dashboard',
+  '/facturas',
+  '/clientes',
+  '/analytics',
+  '/importar',
+  '/equipo',
+  '/ajustes',
+  '/bienvenida',
+  '/pago-completado',
+]
+
+/**
  * Middleware de Supabase SSR.
- * Se ejecuta en cada request y refresca el access token si ha expirado
- * usando el refresh token almacenado en cookies. Sin esto, la sesión
- * caduca al cabo de 1 hora y el usuario pierde la sesión al recargar.
+ * 1. Refresca el access token en cada request (evita caducidad de sesión).
+ * 2. Redirige a /login si el usuario no está autenticado e intenta acceder
+ *    a una ruta protegida del dashboard.
  */
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
@@ -32,7 +48,19 @@ export async function middleware(request: NextRequest) {
 
   // IMPORTANTE: No añadir lógica entre createServerClient y getUser().
   // getUser() refresca el token si ha expirado y escribe las nuevas cookies.
-  await supabase.auth.getUser()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Redirigir a /login si el usuario no está autenticado y accede a ruta protegida
+  const { pathname } = request.nextUrl
+  const esRutaProtegida = RUTAS_PROTEGIDAS.some(
+    ruta => pathname === ruta || pathname.startsWith(ruta + '/')
+  )
+
+  if (esRutaProtegida && !user) {
+    const loginUrl = request.nextUrl.clone()
+    loginUrl.pathname = '/login'
+    return NextResponse.redirect(loginUrl)
+  }
 
   return supabaseResponse
 }
