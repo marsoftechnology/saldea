@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const session = await (stripe.checkout.sessions.create as any)({
-      ui_mode: 'embedded',
+      ui_mode: 'embedded_page',
       mode: 'subscription',
       line_items: [{ price: priceId, quantity: 1 }],
       // Identificación del usuario+org para el webhook /api/stripe-webhook
