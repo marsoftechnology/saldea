@@ -35,6 +35,63 @@
   /* white → oscuro para text-white sobre fondos claros */
   --color-white: #18181b;
   --color-black: #ffffff;
+
+  /* ── Shades pastel (-200/-300) → tonos oscuros para legibilidad ──
+     En oscuro, text-amber-300 sobre bg-amber-500/10 es perfecto.
+     En claro, ese mismo amber-300 es invisible sobre fondo claro.
+     Solución: en claro, los -200/-300 apuntan a los -700/-800 originales. */
+
+  --color-amber-200: #b45309;    /* era #fde68a → ahora amber-700 */
+  --color-amber-300: #92400e;    /* era #fcd34d → ahora amber-800 */
+  --color-amber-400: #b45309;
+
+  --color-sky-200: #0369a1;      /* sky-700 */
+  --color-sky-300: #075985;      /* sky-800 */
+  --color-sky-400: #0284c7;      /* sky-600 (botones siguen sky-500) */
+
+  --color-emerald-200: #047857;  /* emerald-700 */
+  --color-emerald-300: #065f46;  /* emerald-800 */
+  --color-emerald-400: #059669;
+
+  --color-rose-200: #be123c;     /* rose-700 */
+  --color-rose-300: #9f1239;     /* rose-800 */
+  --color-rose-400: #e11d48;
+
+  --color-violet-200: #6d28d9;
+  --color-violet-300: #5b21b6;
+  --color-violet-400: #7c3aed;
+
+  --color-indigo-200: #4338ca;
+  --color-indigo-300: #3730a3;
+  --color-indigo-400: #4f46e5;
+
+  --color-blue-200: #1d4ed8;
+  --color-blue-300: #1e40af;
+  --color-blue-400: #2563eb;
+
+  --color-red-200: #b91c1c;
+  --color-red-300: #991b1b;
+  --color-red-400: #dc2626;
+
+  --color-green-200: #15803d;
+  --color-green-300: #166534;
+  --color-green-400: #16a34a;
+
+  --color-purple-200: #7e22ce;
+  --color-purple-300: #6b21a8;
+  --color-purple-400: #9333ea;
+
+  --color-pink-200: #be185d;
+  --color-pink-300: #9d174d;
+  --color-pink-400: #db2777;
+
+  --color-orange-200: #c2410c;
+  --color-orange-300: #9a3412;
+  --color-orange-400: #ea580c;
+
+  --color-teal-200: #0f766e;
+  --color-teal-300: #115e59;
+  --color-teal-400: #0d9488;
 }
 
 @theme inline {
