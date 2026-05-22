@@ -7,6 +7,7 @@ import { diasVencida, formatearEuros, formatearFecha } from '@/lib/utils'
 import { renderizarPlantilla } from '@/lib/recordatorios'
 import { getActiveOrg } from '@/lib/auth-org'
 import { getOrgPlan, LIMITES_FREE } from '@/lib/plan'
+import { checkRateLimit } from '@/lib/rate-limit'
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,6 +15,15 @@ export async function POST(req: NextRequest) {
     const org = await getActiveOrg()
     if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
     if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite enviar recordatorios' }, { status: 403 })
+
+    // Rate limit anti-abuso: máx 30 envíos por org por hora
+    const rl = checkRateLimit({ key: org.org_id, ventana: '1h', max: 30 })
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: `Has hecho demasiados envíos esta hora. Inténtalo en ${Math.ceil((rl.retryAfter ?? 60) / 60)} min.` },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfter ?? 60) } },
+      )
+    }
 
     // Parsear body con manejo de error explícito
     let facturaId: string, tono: string

@@ -67,9 +67,16 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
             <h1 className="text-2xl font-bold text-zinc-100">Factura {factura.numero}</h1>
             <p className="text-zinc-400 text-sm mt-1">{cliente?.nombre}{cliente?.empresa ? ` — ${cliente.empresa}` : ''}</p>
           </div>
-          <span className={`text-sm font-medium px-3 py-1.5 rounded-full border ${colorEstado(factura.estado)}`}>
-            {etiquetaEstado(factura.estado)}
-          </span>
+          <div className="flex flex-col items-end gap-1">
+            <span className={`text-sm font-medium px-3 py-1.5 rounded-full border ${colorEstado(factura.estado)}`}>
+              {etiquetaEstado(factura.estado)}
+            </span>
+            {factura.estado === 'cobrada' && factura.fecha_cobro && (
+              <span className="text-xs text-zinc-500">
+                Cobrada el {formatearFecha(factura.fecha_cobro)}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 

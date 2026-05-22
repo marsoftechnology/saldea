@@ -5,6 +5,7 @@ import { getActiveOrg } from '@/lib/auth-org'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { createServiceRoleClient } from '@/lib/supabase-service'
 import { getOrgPlan, contarAsientosOrg, limiteMiembrosOrg, LIMITES_PRO } from '@/lib/plan'
+import { checkRateLimit } from '@/lib/rate-limit'
 
 const LIMITES_PRO_MIEMBROS = LIMITES_PRO.miembrosEquipo
 
@@ -20,6 +21,15 @@ export async function POST(req: NextRequest) {
   if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
   if (org.role !== 'owner' && org.role !== 'admin') {
     return NextResponse.json({ error: 'Solo owner/admin pueden invitar miembros' }, { status: 403 })
+  }
+
+  // Rate limit anti-abuso de invitaciones: 10 por org/hora
+  const rl = checkRateLimit({ key: 'invitar:' + org.org_id, ventana: '1h', max: 10 })
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: `Has enviado demasiadas invitaciones esta hora. Espera ${Math.ceil((rl.retryAfter ?? 60) / 60)} min.` },
+      { status: 429, headers: { 'Retry-After': String(rl.retryAfter ?? 60) } },
+    )
   }
 
   const body = await req.json()
