@@ -24,6 +24,18 @@ const RUTAS_PROTEGIDAS = [
  *    a una ruta protegida del dashboard.
  */
 export async function middleware(request: NextRequest) {
+  // ── Fallback de auth: si llega un ?code=xxx a la raíz o a rutas no-auth,
+  // significa que Supabase cayó al Site URL en vez de respetar el redirectTo.
+  // Lo redirigimos al callback correcto para recuperar contraseña.
+  const codeParam = request.nextUrl.searchParams.get('code')
+  const isAuthCallback = request.nextUrl.pathname.startsWith('/auth/')
+  if (codeParam && !isAuthCallback) {
+    const callbackUrl = request.nextUrl.clone()
+    callbackUrl.pathname = '/auth/callback'
+    callbackUrl.searchParams.set('next', '/restablecer')
+    return NextResponse.redirect(callbackUrl)
+  }
+
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
