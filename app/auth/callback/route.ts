@@ -1,20 +1,12 @@
 import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
 import { NextResponse, type NextRequest } from 'next/server'
 
 /**
  * Ruta de callback de Supabase Auth (flujo PKCE).
  *
- * Supabase redirige aquí después de que el usuario hace clic en un enlace de:
- *   - Confirmación de registro
- *   - Recuperación de contraseña
- *   - Magic link
- *   - Cambio de email
- *
- * URL esperada: /auth/callback?code=xxx&next=/ruta-destino
- *
- * 1. Intercambia el code por una sesión (supabase.auth.exchangeCodeForSession)
- * 2. Redirige al usuario a `next` (por defecto /dashboard)
+ * IMPORTANTE: las cookies de sesión deben adjuntarse directamente
+ * a la respuesta redirect — no usar cookies() de next/headers aquí,
+ * o se pierden en la redirección.
  */
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
@@ -22,7 +14,9 @@ export async function GET(request: NextRequest) {
   const next = searchParams.get('next') ?? '/dashboard'
 
   if (code) {
-    const cookieStore = await cookies()
+    // Creamos la respuesta de redirect ANTES de llamar a supabase,
+    // para poder inyectar las cookies de sesión directamente en ella.
+    const response = NextResponse.redirect(`${origin}${next}`)
 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -30,11 +24,12 @@ export async function GET(request: NextRequest) {
       {
         cookies: {
           getAll() {
-            return cookieStore.getAll()
+            return request.cookies.getAll()
           },
           setAll(cookiesToSet) {
+            // Escribir las cookies de sesión en el redirect response
             cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
+              response.cookies.set(name, value, options)
             )
           },
         },
@@ -44,13 +39,12 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
 
     if (!error) {
-      // Redirigir a la ruta destino (ej: /restablecer para recovery)
-      return NextResponse.redirect(`${origin}${next}`)
+      return response
     }
 
     console.error('[auth/callback] Error intercambiando código:', error.message)
   }
 
-  // Si falta el código o hubo error, redirigir al login con aviso
+  // Sin código o con error → login con aviso
   return NextResponse.redirect(`${origin}/login?error=link_expirado`)
 }

@@ -12,29 +12,30 @@ export default function RestablecerPage() {
   const [error, setError] = useState('')
   const [cargando, setCargando] = useState(false)
   const [sesionLista, setSesionLista] = useState(false)
+  const [verificando, setVerificando] = useState(true)
   const [completado, setCompletado] = useState(false)
 
-  // El enlace de Supabase trae un hash con access_token; el SDK lo procesa solo
-  // y emite el evento PASSWORD_RECOVERY. Esperamos a tener sesión antes de mostrar el formulario.
   useEffect(() => {
     const supabase = createClient()
-    let cancelado = false
 
+    // Con el flujo PKCE + /auth/callback, la sesión ya está establecida
+    // cuando el usuario llega aquí. getSession() debería devolverla de inmediato.
     supabase.auth.getSession().then(({ data }) => {
-      if (!cancelado && data.session) setSesionLista(true)
+      if (data.session) {
+        setSesionLista(true)
+      }
+      setVerificando(false)
     })
 
+    // Fallback: escuchar eventos por si el SDK aún procesa algo
     const { data: sub } = supabase.auth.onAuthStateChange((event) => {
-      if (cancelado) return
       if (event === 'PASSWORD_RECOVERY' || event === 'SIGNED_IN') {
         setSesionLista(true)
+        setVerificando(false)
       }
     })
 
-    return () => {
-      cancelado = true
-      sub.subscription.unsubscribe()
-    }
+    return () => sub.subscription.unsubscribe()
   }, [])
 
   async function handleSubmit(e: React.FormEvent) {
@@ -74,16 +75,28 @@ export default function RestablecerPage() {
     )
   }
 
-  if (!sesionLista) {
+  if (verificando) {
     return (
       <>
         <h1 className="text-2xl font-bold text-white mb-2 tracking-tight">Verificando enlace…</h1>
-        <p className="text-zinc-400 text-sm">
-          Si esto tarda más de unos segundos, el enlace puede haber caducado.{' '}
-          <Link href="/recuperar" className="text-sky-400 hover:text-sky-300 underline">
-            Solicita otro
-          </Link>.
+        <p className="text-zinc-400 text-sm">Un momento por favor.</p>
+      </>
+    )
+  }
+
+  if (!sesionLista) {
+    return (
+      <>
+        <h1 className="text-2xl font-bold text-white mb-2 tracking-tight">Enlace inválido o caducado</h1>
+        <p className="text-zinc-400 text-sm mb-6">
+          Este enlace ya no es válido. Los enlaces de recuperación caducan en 1 hora y solo se pueden usar una vez.
         </p>
+        <Link
+          href="/recuperar"
+          className="block w-full text-center bg-sky-500 text-zinc-900 py-3 rounded-lg font-bold hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20"
+        >
+          Solicitar nuevo enlace
+        </Link>
       </>
     )
   }
