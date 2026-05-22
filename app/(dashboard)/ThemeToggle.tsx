@@ -7,22 +7,20 @@ export default function ThemeToggle() {
   const [montado, setMontado] = useState(false)
 
   useEffect(() => {
-    const guardado = localStorage.getItem('saldea_theme')
-    setTema(guardado === 'light' ? 'light' : 'dark')
+    // Leer el tema actual de data-theme (lo puso el script inline del <head>)
+    const actual = document.documentElement.getAttribute('data-theme')
+    setTema(actual === 'light' ? 'light' : 'dark')
     setMontado(true)
   }, [])
 
   function cambiar() {
     const nuevo = tema === 'dark' ? 'light' : 'dark'
+    document.documentElement.setAttribute('data-theme', nuevo)
     localStorage.setItem('saldea_theme', nuevo)
-    // Recargamos para que Tailwind v4 + color-mix() respeten las nuevas variables
-    // (sin recarga, color-mix queda cacheado y algunos colores no se invierten).
-    // El script inline del <head> aplica el tema antes del primer paint → no hay flash.
-    window.location.reload()
+    setTema(nuevo)
   }
 
   if (!montado) {
-    // Skeleton para evitar mismatch SSR/CSR
     return <div className="h-9" />
   }
 

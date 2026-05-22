@@ -231,9 +231,14 @@ const schemaSoftware = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Script inline que aplica el tema antes del primer paint (sin flash).
+  // Lee localStorage.saldea_theme y setea data-theme="light|dark" en <html>.
+  const themeScript = `(function(){try{var t=localStorage.getItem('saldea_theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`
+
   return (
-    <html lang="es" className="h-full">
+    <html lang="es" className="h-full" data-theme="dark" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganizacion) }}
