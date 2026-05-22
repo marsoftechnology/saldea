@@ -18,7 +18,8 @@ export default function RecuperarPage() {
     const supabase = createClient()
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? window.location.origin
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${appUrl}/restablecer`,
+      // /auth/callback intercambia el código PKCE y luego redirige a /restablecer
+      redirectTo: `${appUrl}/auth/callback?next=/restablecer`,
     })
 
     if (error) {
