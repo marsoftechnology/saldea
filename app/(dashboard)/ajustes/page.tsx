@@ -1012,8 +1012,8 @@ export default function AjustesPage() {
                   className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
                 />
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-zinc-300">🧬 Aprender del histórico de cada cliente <span className="ml-1 text-xs bg-amber-100 text-amber-300 px-2 py-0.5 rounded-full font-normal">beta</span></p>
-                  <p className="text-xs text-zinc-400 mt-1">Si activas esto, al crear una factura Saldea analizará el historial del cliente y ajustará automáticamente los días de gracia. Ejemplo: si Pedro suele pagar 8 días tarde, la primera factura le mandará el primer recordatorio el día 10, no el día 3.</p>
+                  <p className="text-sm font-medium text-zinc-300">🧬 Aprender del histórico de cada cliente</p>
+                  <p className="text-xs text-zinc-400 mt-1">Si activas esto, al crear una factura Saldea analizará el historial del cliente y ajustará automáticamente los días de gracia. Ejemplo: si Pedro suele pagar 8 días tarde, la primera factura le mandará el primer recordatorio el día 6, no el día 3. Necesita al menos 2 facturas cobradas del mismo cliente para activarse.</p>
                 </div>
               </label>
             </div>

@@ -142,22 +142,25 @@ export default function NuevaFacturaPage() {
       if (configChk?.aprender_historial) {
         const { data: cobradas } = await supabase
           .from('facturas')
-          .select('fecha_vencimiento, created_at')
+          .select('fecha_vencimiento, fecha_cobro')
           .eq('org_id', orgId)
           .eq('cliente_id', form.cliente_id)
           .eq('estado', 'cobrada')
+          .not('fecha_cobro', 'is', null)
           .limit(20)
         if (cobradas && cobradas.length >= 2) {
-          // Estimar retraso medio (días entre vencimiento y created_at de la cobrada-marcada)
-          // Aproximación: si created_at > fecha_vencimiento → tarde
+          // Retraso real = días entre fecha_vencimiento y fecha_cobro
           const retrasos = cobradas.map(f => {
             const v = new Date(f.fecha_vencimiento + 'T00:00:00Z').getTime()
-            const c = new Date(f.created_at).getTime()
-            return Math.max(0, Math.round((c - v) / (24 * 3600 * 1000)))
+            const c = new Date(f.fecha_cobro!).getTime()
+            return Math.round((c - v) / (24 * 3600 * 1000))
           }).filter(d => d >= 0 && d <= 60)
-          if (retrasos.length > 0) {
-            const media = retrasos.reduce((a, b) => a + b, 0) / retrasos.length
-            ajusteExtra = Math.min(15, Math.max(0, Math.round(media) - 2))
+          if (retrasos.length >= 2) {
+            // Usar mediana (más robusta a outliers que la media)
+            const ordenados = [...retrasos].sort((a, b) => a - b)
+            const mediana = ordenados[Math.floor(ordenados.length / 2)]
+            // Adelantar el primer recordatorio: si suele pagar 8 días tarde, mandar al día 6
+            ajusteExtra = Math.min(15, Math.max(0, mediana - 2))
           }
         }
       }

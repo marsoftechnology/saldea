@@ -33,7 +33,7 @@ export async function recalcularEstadoFactura(
 ): Promise<string | null> {
   const { data: factura } = await supabase
     .from('facturas')
-    .select('id, importe, estado, fecha_vencimiento')
+    .select('id, importe, estado, fecha_vencimiento, fecha_cobro')
     .eq('id', facturaId)
     .maybeSingle()
 
@@ -42,8 +42,9 @@ export async function recalcularEstadoFactura(
 
   const { data: pagos } = await supabase
     .from('pagos')
-    .select('importe')
+    .select('importe, fecha, created_at')
     .eq('factura_id', facturaId)
+    .order('fecha', { ascending: false })
 
   const totalPagado = (pagos ?? []).reduce((s, p) => s + Number(p.importe), 0)
   const importeFactura = Number(factura.importe)
@@ -66,8 +67,28 @@ export async function recalcularEstadoFactura(
     nuevoEstado = fechaVenc < hoy ? 'vencida' : 'pendiente'
   }
 
-  if (nuevoEstado !== factura.estado) {
-    await supabase.from('facturas').update({ estado: nuevoEstado }).eq('id', facturaId)
+  // ── Mantener fecha_cobro coherente ──
+  // Al pasar a 'cobrada' guardamos la fecha del pago que la completó.
+  // Si baja de 'cobrada' a otro estado (ej: usuario elimina un pago), la limpiamos.
+  const cambioEstado = nuevoEstado !== factura.estado
+  const update: Record<string, unknown> = {}
+
+  if (cambioEstado) update.estado = nuevoEstado
+
+  if (nuevoEstado === 'cobrada' && !factura.fecha_cobro) {
+    // Usar la fecha del último pago (la que completó la factura)
+    const ultimoPago = pagos?.[0]
+    const fechaCobro = ultimoPago?.fecha
+      ? new Date(ultimoPago.fecha).toISOString()
+      : ultimoPago?.created_at ?? new Date().toISOString()
+    update.fecha_cobro = fechaCobro
+  } else if (nuevoEstado !== 'cobrada' && factura.fecha_cobro) {
+    update.fecha_cobro = null
   }
+
+  if (Object.keys(update).length > 0) {
+    await supabase.from('facturas').update(update).eq('id', facturaId)
+  }
+
   return nuevoEstado
 }
