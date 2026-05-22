@@ -14,7 +14,10 @@ export default function ThemeToggle() {
   }, [])
 
   function cambiar() {
-    const nuevo = tema === 'dark' ? 'light' : 'dark'
+    // Leer del DOM (no del state React) para evitar stale closures
+    // si se hace clic dos veces antes del re-render.
+    const actual = document.documentElement.getAttribute('data-theme')
+    const nuevo = actual === 'dark' ? 'light' : 'dark'
     document.documentElement.setAttribute('data-theme', nuevo)
     localStorage.setItem('saldea_theme', nuevo)
     setTema(nuevo)
