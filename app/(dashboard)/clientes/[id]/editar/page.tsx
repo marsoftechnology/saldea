@@ -15,13 +15,14 @@ export default function EditarClientePage() {
   const [error, setError] = useState('')
   const [eliminando, setEliminando] = useState(false)
   const [form, setForm] = useState({ nombre: '', email: '', telefono: '', empresa: '' })
+  const [whatsappOptIn, setWhatsappOptIn] = useState(false)
+  const [whatsappOptInAt, setWhatsappOptInAt] = useState<string | null>(null)
 
   useEffect(() => {
     async function cargar() {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) { router.push('/login'); return }
-      // RLS scope a la org del usuario — no necesitamos filtrar por user_id
       const { data: cliente } = await supabase
         .from('clientes')
         .select('*')
@@ -34,6 +35,8 @@ export default function EditarClientePage() {
         telefono: cliente.telefono ?? '',
         empresa: cliente.empresa ?? '',
       })
+      setWhatsappOptIn(!!cliente.whatsapp_opt_in_at)
+      setWhatsappOptInAt(cliente.whatsapp_opt_in_at ?? null)
       setCargandoInicial(false)
     }
     cargar()
@@ -53,6 +56,12 @@ export default function EditarClientePage() {
       email: form.email,
       telefono: form.telefono || null,
       empresa: form.empresa || null,
+      // Si activa el opt-in, preservar la fecha original (o poner ahora si es nuevo)
+      // Si lo desactiva, borrar
+      whatsapp_opt_in_at: whatsappOptIn
+        ? (whatsappOptInAt ?? new Date().toISOString())
+        : null,
+      whatsapp_opt_in_source: whatsappOptIn ? 'manual' : null,
     }).eq('id', clienteId)
     if (errUpd) {
       setError('Error al actualizar. Inténtalo de nuevo.')
@@ -108,13 +117,56 @@ export default function EditarClientePage() {
             className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
           />
         </div>
+
+        {/* Teléfono + opt-in WhatsApp */}
         <div>
-          <label className="block text-sm font-medium text-zinc-300 mb-1">Teléfono</label>
+          <label className="block text-sm font-medium text-zinc-300 mb-1">
+            Teléfono
+          </label>
           <input
             name="telefono" value={form.telefono} onChange={handleChange}
-            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+            placeholder="+34 600 000 000"
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
           />
         </div>
+
+        {/* Opt-in WhatsApp: solo visible si hay teléfono */}
+        {form.telefono.trim() && (
+          <label className="flex items-start gap-3 cursor-pointer group">
+            <div className="relative mt-0.5 flex-shrink-0">
+              <input
+                type="checkbox"
+                checked={whatsappOptIn}
+                onChange={e => setWhatsappOptIn(e.target.checked)}
+                className="sr-only"
+              />
+              <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                whatsappOptIn
+                  ? 'bg-emerald-500 border-emerald-500'
+                  : 'border-white/20 group-hover:border-white/40'
+              }`}>
+                {whatsappOptIn && (
+                  <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-zinc-200">
+                💬 Activar recordatorios por WhatsApp
+              </p>
+              <p className="text-xs text-zinc-500 mt-0.5">
+                El cliente acepta recibir recordatorios automáticos de cobro por WhatsApp en este número.
+                {whatsappOptIn && whatsappOptInAt && (
+                  <span className="text-emerald-400 ml-1">
+                    Activo desde {new Date(whatsappOptInAt).toLocaleDateString('es-ES')}.
+                  </span>
+                )}
+              </p>
+            </div>
+          </label>
+        )}
 
         {error && (
           <div className="bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm px-4 py-3 rounded-lg">{error}</div>

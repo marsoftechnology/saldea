@@ -11,6 +11,7 @@ export default function NuevoClientePage() {
   const [cargando, setCargando] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({ nombre: '', email: '', telefono: '', empresa: '' })
+  const [whatsappOptIn, setWhatsappOptIn] = useState(false)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -40,10 +41,11 @@ export default function NuevoClientePage() {
       email: form.email,
       telefono: form.telefono || null,
       empresa: form.empresa || null,
+      whatsapp_opt_in_at: whatsappOptIn ? new Date().toISOString() : null,
+      whatsapp_opt_in_source: whatsappOptIn ? 'manual' : null,
     })
 
     if (error) {
-      // Detectar error de límite del plan Free (lanzado por trigger Postgres)
       if (error.message?.includes('PLAN_LIMIT_CLIENTES')) {
         setError('Has llegado al límite de 10 clientes del plan Free. Sube a Pro desde Ajustes para añadir clientes ilimitados.')
       } else {
@@ -102,16 +104,50 @@ export default function NuevoClientePage() {
           />
         </div>
 
+        {/* Teléfono + opt-in WhatsApp */}
         <div>
           <label className="block text-sm font-medium text-zinc-300 mb-1">Teléfono (opcional)</label>
           <input
             name="telefono"
             value={form.telefono}
             onChange={handleChange}
-            placeholder="600 000 000"
+            placeholder="+34 600 000 000"
             className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
           />
         </div>
+
+        {/* Opt-in WhatsApp: solo visible si hay teléfono */}
+        {form.telefono.trim() && (
+          <label className="flex items-start gap-3 cursor-pointer group">
+            <div className="relative mt-0.5 flex-shrink-0">
+              <input
+                type="checkbox"
+                checked={whatsappOptIn}
+                onChange={e => setWhatsappOptIn(e.target.checked)}
+                className="sr-only"
+              />
+              <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                whatsappOptIn
+                  ? 'bg-emerald-500 border-emerald-500'
+                  : 'border-white/20 group-hover:border-white/40'
+              }`}>
+                {whatsappOptIn && (
+                  <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-zinc-200">
+                💬 Activar recordatorios por WhatsApp
+              </p>
+              <p className="text-xs text-zinc-500 mt-0.5">
+                El cliente acepta recibir recordatorios automáticos de cobro por WhatsApp en este número.
+              </p>
+            </div>
+          </label>
+        )}
 
         {error && (
           <div className="bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm px-4 py-3 rounded-lg">{error}</div>
