@@ -19,10 +19,13 @@ export async function POST(req: NextRequest) {
   formData.forEach((value, key) => { params[key] = String(value) })
 
   // Validar firma Twilio
+  // Construir la URL exacta que Twilio usó para firmar: proto + host + path
   const signature = req.headers.get('x-twilio-signature') ?? ''
-  const url = `${process.env.NEXT_PUBLIC_APP_URL}/api/whatsapp-inbound`
+  const proto = req.headers.get('x-forwarded-proto') ?? 'https'
+  const host = req.headers.get('host') ?? (process.env.NEXT_PUBLIC_APP_URL ?? '').replace(/^https?:\/\//, '')
+  const url = `${proto}://${host}/api/whatsapp-inbound`
   if (!validarFirmaTwilio({ signature, url, body: params })) {
-    console.warn('[whatsapp-inbound] Firma inválida')
+    console.warn('[whatsapp-inbound] Firma inválida', { url, signaturePresent: !!signature })
     return NextResponse.json({ error: 'Firma inválida' }, { status: 403 })
   }
 
