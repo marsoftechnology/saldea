@@ -1,6 +1,7 @@
 export type Cliente = {
   id: string
   user_id: string
+  org_id: string
   nombre: string
   email: string
   telefono: string | null
@@ -12,6 +13,8 @@ export type Cliente = {
   tono_preset_override: string | null
   pausar_recordatorios: boolean | null
   notas_cliente: string | null
+  whatsapp_opt_in_at: string | null
+  whatsapp_opt_in_source: string | null
 }
 
 export type EstadoFactura = 'pendiente' | 'vencida' | 'cobrada' | 'cancelada' | 'parcialmente_cobrada'

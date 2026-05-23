@@ -37,6 +37,10 @@ export default function NuevaFacturaPage() {
     link_pago: '',
   })
 
+  // WhatsApp inline prompt
+  const [waPhone, setWaPhone] = useState('')
+  const [waOptIn, setWaOptIn] = useState(false)
+
   useEffect(() => {
     async function cargar() {
       const supabase = createClient()
@@ -57,6 +61,22 @@ export default function NuevaFacturaPage() {
     }
     cargar()
   }, [])
+
+  // Derived: client currently selected and whether to show WA prompt
+  const clienteSeleccionado = clientes.find(c => c.id === form.cliente_id) ?? null
+  const mostrarPromptWa = !!clienteSeleccionado && !clienteSeleccionado.whatsapp_opt_in_at
+
+  // Reset WA fields whenever the selected client changes
+  useEffect(() => {
+    if (clienteSeleccionado) {
+      setWaPhone(clienteSeleccionado.telefono ?? '')
+      setWaOptIn(false)
+    } else {
+      setWaPhone('')
+      setWaOptIn(false)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form.cliente_id])
 
   const maxRecEfectivo = maxRecFactura ?? maxRecGlobal
   const patronEfectivo = patronFactura ?? patronGlobal
@@ -175,6 +195,22 @@ export default function NuevaFacturaPage() {
     }))
     await supabase.from('recordatorios').insert(recordatorios)
 
+    // Guardar teléfono y/o opt-in WhatsApp si el usuario lo indicó en el prompt inline
+    if (mostrarPromptWa) {
+      const phoneGuardar = waPhone.trim()
+      const updates: Record<string, unknown> = {}
+      if (phoneGuardar && phoneGuardar !== (clienteSeleccionado?.telefono ?? '')) {
+        updates.telefono = phoneGuardar
+      }
+      if (waOptIn) {
+        updates.whatsapp_opt_in_at = new Date().toISOString()
+        updates.whatsapp_opt_in_source = 'invoice_creation'
+      }
+      if (Object.keys(updates).length > 0) {
+        await supabase.from('clientes').update(updates).eq('id', form.cliente_id)
+      }
+    }
+
     router.push(`/facturas/${factura.id}`)
   }
 
@@ -212,6 +248,67 @@ export default function NuevaFacturaPage() {
             </p>
           )}
         </div>
+
+        {/* Prompt WhatsApp contextual: solo cuando el cliente seleccionado no tiene opt-in */}
+        {mostrarPromptWa && (
+          <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-4 space-y-3">
+            <div>
+              <p className="text-sm font-medium text-emerald-300">💬 Recordatorios por WhatsApp</p>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                {clienteSeleccionado?.telefono
+                  ? 'Este cliente tiene teléfono pero no tiene activados los recordatorios por WhatsApp.'
+                  : 'Añade el número de WhatsApp para que reciba recordatorios directamente en su móvil.'}
+              </p>
+            </div>
+
+            {/* Input de teléfono: solo si el cliente no tiene ninguno */}
+            {!clienteSeleccionado?.telefono && (
+              <div>
+                <label className="block text-xs text-zinc-400 mb-1">Número de WhatsApp (opcional)</label>
+                <input
+                  type="tel"
+                  value={waPhone}
+                  onChange={e => setWaPhone(e.target.value)}
+                  placeholder="+34 600 000 000"
+                  className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 bg-transparent focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/30"
+                />
+              </div>
+            )}
+
+            {/* Checkbox opt-in: visible cuando hay teléfono (propio o recién escrito) */}
+            {(waPhone.trim() || clienteSeleccionado?.telefono) && (
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <div className="relative mt-0.5 flex-shrink-0">
+                  <input
+                    type="checkbox"
+                    checked={waOptIn}
+                    onChange={e => setWaOptIn(e.target.checked)}
+                    className="sr-only"
+                  />
+                  <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                    waOptIn
+                      ? 'bg-emerald-500 border-emerald-500'
+                      : 'border-white/20 group-hover:border-white/40'
+                  }`}>
+                    {waOptIn && (
+                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-zinc-200">
+                    El cliente acepta recibir recordatorios por WhatsApp
+                  </p>
+                  <p className="text-xs text-zinc-500 mt-0.5">
+                    Confirma que el cliente ha dado su consentimiento explícito.
+                  </p>
+                </div>
+              </label>
+            )}
+          </div>
+        )}
 
         <div className="grid grid-cols-2 gap-3">
           <div>
