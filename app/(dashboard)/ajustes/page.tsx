@@ -7,6 +7,7 @@ import { computarDiasRecordatorios, parsearDiasPersonalizados, type Patron, type
 import { PagoModal } from '@/app/components/PagoModal'
 import StripeConnectSection from './StripeConnectSection'
 import HoldedSection from './HoldedSection'
+import { PushNotificationsSection } from './PushNotificationsSection'
 
 export default function AjustesPage() {
   const [nombre, setNombre] = useState('')
@@ -43,6 +44,10 @@ export default function AjustesPage() {
   const [modoVacaciones, setModoVacaciones] = useState(false)
   const [modoVacacionesHasta, setModoVacacionesHasta] = useState('')
   const [aprenderHistorial, setAprenderHistorial] = useState(false)
+  const [pausarSiResponde, setPausarSiResponde] = useState(true)
+  const [detectarDisputa, setDetectarDisputa] = useState(true)
+  const [detectarVacaciones, setDetectarVacaciones] = useState(true)
+  const [diasViaJudicial, setDiasViaJudicial] = useState(0)
   const [plan, setPlan] = useState<'free' | 'pro'>('free')
   const [intervaloPago, setIntervaloPago] = useState<'mes' | 'anio'>('mes')
   const [mostrarPago, setMostrarPago] = useState(false)
@@ -116,6 +121,10 @@ export default function AjustesPage() {
       if (typeof data.configuracion?.modo_vacaciones === 'boolean') setModoVacaciones(data.configuracion.modo_vacaciones)
       if (data.configuracion?.modo_vacaciones_hasta) setModoVacacionesHasta(data.configuracion.modo_vacaciones_hasta)
       if (typeof data.configuracion?.aprender_historial === 'boolean') setAprenderHistorial(data.configuracion.aprender_historial)
+      if (typeof data.configuracion?.pausar_si_responde === 'boolean') setPausarSiResponde(data.configuracion.pausar_si_responde)
+      if (typeof data.configuracion?.detectar_disputa === 'boolean') setDetectarDisputa(data.configuracion.detectar_disputa)
+      if (typeof data.configuracion?.detectar_vacaciones_cliente === 'boolean') setDetectarVacaciones(data.configuracion.detectar_vacaciones_cliente)
+      if (typeof data.configuracion?.dias_via_judicial === 'number') setDiasViaJudicial(data.configuracion.dias_via_judicial)
       setCargando(false)
 
       // Auto-abrir checkout si el usuario llegó desde /registro?plan=anio
@@ -186,6 +195,10 @@ export default function AjustesPage() {
             modo_vacaciones: modoVacaciones,
             modo_vacaciones_hasta: modoVacacionesHasta || null,
             aprender_historial: aprenderHistorial,
+            pausar_si_responde: pausarSiResponde,
+            detectar_disputa: detectarDisputa,
+            detectar_vacaciones_cliente: detectarVacaciones,
+            dias_via_judicial: diasViaJudicial,
           }),
         }),
       ])
@@ -828,10 +841,57 @@ export default function AjustesPage() {
               </label>
             </div>
 
-            <div className="mt-6 pt-6 border-t border-white/5 text-xs text-zinc-500 space-y-1">
-              <p>⏸️ <strong className="text-zinc-400">Detectar respuestas y pausar</strong> — próximamente</p>
-              <p>⚠️ <strong className="text-zinc-400">Detectar disputas y avisarme</strong> — próximamente</p>
-              <p>🏖️ <strong className="text-zinc-400">Detectar vacaciones del cliente</strong> — próximamente</p>
+            <div className="mt-6 pt-6 border-t border-white/5 space-y-5">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={pausarSiResponde}
+                  onChange={e => setPausarSiResponde(e.target.checked)}
+                  className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
+                />
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-zinc-300">⏸️ Pausar recordatorios si el cliente responde</p>
+                  <p className="text-xs text-zinc-400 mt-1">
+                    {pausarSiResponde
+                      ? 'Si el cliente te contesta por email, Saldea pausa automáticamente los recordatorios unos días para que tú puedas gestionar la conversación.'
+                      : 'Los recordatorios continuarán aunque el cliente responda. Gestiona las pausas de forma manual.'}
+                  </p>
+                </div>
+              </label>
+
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={detectarDisputa}
+                  onChange={e => setDetectarDisputa(e.target.checked)}
+                  className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
+                />
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-zinc-300">⚠️ Detectar disputas y avisarme</p>
+                  <p className="text-xs text-zinc-400 mt-1">
+                    {detectarDisputa
+                      ? 'Cuando un cliente cuestione la factura o exprese rechazo, recibirás una alerta push y se marcará la factura como "en disputa". Los recordatorios se pausan 30 días.'
+                      : 'Las respuestas de disputa se registrarán como correo genérico, sin marcar la factura ni enviarte alerta.'}
+                  </p>
+                </div>
+              </label>
+
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={detectarVacaciones}
+                  onChange={e => setDetectarVacaciones(e.target.checked)}
+                  className="mt-0.5 w-4 h-4 accent-sky-600 cursor-pointer"
+                />
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-zinc-300">🏖️ Detectar respuestas automáticas de vacaciones</p>
+                  <p className="text-xs text-zinc-400 mt-1">
+                    {detectarVacaciones
+                      ? 'Si el cliente está de vacaciones, Saldea lo detecta y pausa los recordatorios hasta su vuelta, evitando spam innecesario.'
+                      : 'Las respuestas de tipo "fuera de la oficina" se tratarán como emails normales.'}
+                  </p>
+                </div>
+              </label>
             </div>
           </div>
         </details>
@@ -910,9 +970,38 @@ export default function AjustesPage() {
               </div>
             </div>
 
-            <div className="pt-6 border-t border-white/5 text-xs text-zinc-500 space-y-1">
+            {/* Vía judicial */}
+            <div className="pt-6 border-t border-white/5">
+              <p className="text-sm font-medium text-zinc-300">⚖️ Pasar a vía judicial al día X</p>
+              <p className="text-xs text-zinc-400 mt-1 mb-4">
+                {diasViaJudicial === 0
+                  ? 'Desactivado. Saldea no escalará facturas a vía judicial automáticamente.'
+                  : `A los ${diasViaJudicial} días de vencida, recibirás un email de alerta y una notificación push para que contemples acciones legales. La factura se marcará como "vía judicial pendiente".`}
+              </p>
+              <input
+                type="range"
+                min={0}
+                max={180}
+                step={1}
+                value={diasViaJudicial}
+                onChange={e => {
+                  const v = parseInt(e.target.value)
+                  // Saltar de 0 a 30 (mínimo activo)
+                  if (v > 0 && v < 30) setDiasViaJudicial(30)
+                  else setDiasViaJudicial(v)
+                }}
+                className="w-full accent-sky-600"
+              />
+              <div className="flex justify-between text-xs text-zinc-500 mt-1">
+                <span>Desactivado</span>
+                <span>30 días</span>
+                <span>90 días</span>
+                <span>180 días</span>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-white/5 text-xs text-zinc-500">
               <p>📜 <strong className="text-zinc-400">Burofax automático al día X</strong> — próximamente</p>
-              <p>⚖️ <strong className="text-zinc-400">Pasar a vía judicial al día X</strong> — próximamente</p>
             </div>
           </div>
         </details>
@@ -956,8 +1045,9 @@ export default function AjustesPage() {
               </div>
             </label>
 
-            <div className="pt-4 border-t border-white/5 text-xs text-zinc-500 space-y-1">
-              <p>🔔 <strong className="text-zinc-400">Alertas instantáneas push</strong> — próximamente (requiere app móvil o navegador con permisos)</p>
+            <div className="pt-4 border-t border-white/5">
+              <p className="text-sm font-medium text-zinc-300 mb-3">🔔 Alertas push instantáneas</p>
+              <PushNotificationsSection />
             </div>
           </div>
         </details>

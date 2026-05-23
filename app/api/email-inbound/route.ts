@@ -97,6 +97,17 @@ export async function POST(req: NextRequest) {
     })
   }
 
+  // Leer flags de configuración de la org
+  const { data: config } = await supabase
+    .from('configuraciones_usuario')
+    .select('pausar_si_responde, detectar_disputa, detectar_vacaciones_cliente')
+    .eq('org_id', factura.org_id)
+    .maybeSingle()
+
+  const pausarSiResponde = config?.pausar_si_responde !== false  // default true
+  const detectarDisputa  = config?.detectar_disputa  !== false  // default true
+  const detectarVacaciones = config?.detectar_vacaciones_cliente !== false  // default true
+
   // Plan Pro: clasificar con Claude
   let clasificacion: {
     categoria: CategoriaRespuesta
@@ -123,40 +134,78 @@ export async function POST(req: NextRequest) {
   let pausarHasta: Date | null = null
   let nuevoEstado: string | null = null
   let notas: string = clasificacion.resumen
+  let marcarDisputa = false
 
   switch (clasificacion.categoria) {
     case 'pago_confirmado':
       // No marcamos directamente como cobrada (necesita confirmación humana)
       // Pero pausamos 7 días para no acosar mientras el usuario verifica
-      pausarHasta = new Date(hoy.getTime() + 7 * 24 * 3600 * 1000)
+      if (pausarSiResponde) {
+        pausarHasta = new Date(hoy.getTime() + 7 * 24 * 3600 * 1000)
+      }
       notas = `🟢 PAGO CONFIRMADO por el cliente. Verifica en tu cuenta bancaria y marca como cobrada manualmente. — ${clasificacion.resumen}`
       break
     case 'disputa':
-      pausarHasta = new Date(hoy.getTime() + 30 * 24 * 3600 * 1000)
-      notas = `🟡 DISPUTA del cliente. Recordatorios pausados 30 días, contacta tú con él. — ${clasificacion.resumen}`
+      if (detectarDisputa) {
+        if (pausarSiResponde) {
+          pausarHasta = new Date(hoy.getTime() + 30 * 24 * 3600 * 1000)
+        }
+        notas = `🟡 DISPUTA del cliente. Recordatorios pausados 30 días, contacta tú con él. — ${clasificacion.resumen}`
+        marcarDisputa = true
+      } else {
+        // Detectar disputas desactivado: tratar como respuesta genérica
+        if (pausarSiResponde) {
+          pausarHasta = new Date(hoy.getTime() + 3 * 24 * 3600 * 1000)
+        }
+        notas = `📬 Cliente respondió. Pausado 3 días — revisa qué dice. — ${clasificacion.resumen}`
+      }
       break
     case 'vacaciones': {
-      const hastaStr = clasificacion.vacacionesHasta
-      if (hastaStr && /^\d{4}-\d{2}-\d{2}$/.test(hastaStr)) {
-        pausarHasta = new Date(hastaStr + 'T00:00:00Z')
+      if (detectarVacaciones) {
+        const hastaStr = clasificacion.vacacionesHasta
+        if (pausarSiResponde) {
+          if (hastaStr && /^\d{4}-\d{2}-\d{2}$/.test(hastaStr)) {
+            pausarHasta = new Date(hastaStr + 'T00:00:00Z')
+          } else {
+            pausarHasta = new Date(hoy.getTime() + 14 * 24 * 3600 * 1000)
+          }
+        }
+        notas = `🏖️ Cliente de vacaciones. Pausado hasta ${pausarHasta ? pausarHasta.toISOString().split('T')[0] : 'sin fecha'}. — ${clasificacion.resumen}`
       } else {
-        pausarHasta = new Date(hoy.getTime() + 14 * 24 * 3600 * 1000)
+        // Detectar vacaciones desactivado: tratar como respuesta genérica
+        if (pausarSiResponde) {
+          pausarHasta = new Date(hoy.getTime() + 3 * 24 * 3600 * 1000)
+        }
+        notas = `📬 Cliente respondió. Pausado 3 días — revisa qué dice. — ${clasificacion.resumen}`
       }
-      notas = `🏖️ Cliente de vacaciones. Pausado hasta ${pausarHasta.toISOString().split('T')[0]}. — ${clasificacion.resumen}`
       break
     }
     case 'pidiendo_plazos':
-      pausarHasta = new Date(hoy.getTime() + 5 * 24 * 3600 * 1000)
+      if (pausarSiResponde) {
+        pausarHasta = new Date(hoy.getTime() + 5 * 24 * 3600 * 1000)
+      }
       notas = `💳 El cliente pide fraccionamiento o más tiempo. Pausado 5 días — responde tú con la propuesta. — ${clasificacion.resumen}`
       break
     case 'otro':
     default:
-      pausarHasta = new Date(hoy.getTime() + 3 * 24 * 3600 * 1000)
+      if (pausarSiResponde) {
+        pausarHasta = new Date(hoy.getTime() + 3 * 24 * 3600 * 1000)
+      }
       notas = `📬 Cliente respondió. Pausado 3 días — revisa qué dice. — ${clasificacion.resumen}`
       break
   }
 
-  // Guardar la respuesta y aplicar pausa
+  // Guardar la respuesta y aplicar pausa / flags
+  const facturasUpdate: Record<string, unknown> = {}
+  if (pausarHasta) {
+    facturasUpdate.pausada_hasta = pausarHasta.toISOString().split('T')[0]
+    facturasUpdate.notas_internas = notas
+  }
+  if (marcarDisputa) {
+    facturasUpdate.disputa = true
+    facturasUpdate.pausar_recordatorios = true
+  }
+
   await Promise.all([
     supabase.from('respuestas_clientes').insert({
       factura_id: factura.id,
@@ -170,21 +219,46 @@ export async function POST(req: NextRequest) {
       confianza: clasificacion.confianza,
       resumen: clasificacion.resumen,
     }),
-    pausarHasta
-      ? supabase.from('facturas').update({
-          pausada_hasta: pausarHasta.toISOString().split('T')[0],
-          notas_internas: notas,
-        }).eq('id', factura.id)
+    Object.keys(facturasUpdate).length > 0
+      ? supabase.from('facturas').update(facturasUpdate).eq('id', factura.id)
       : Promise.resolve(),
     nuevoEstado
       ? supabase.from('facturas').update({ estado: nuevoEstado }).eq('id', factura.id)
       : Promise.resolve(),
   ])
 
+  // Notificaciones push (fire-and-forget)
+  let pushPayload: { title: string; body: string; url: string } | null = null
+  if (clasificacion.categoria === 'disputa' && detectarDisputa) {
+    pushPayload = {
+      title: '🚨 Disputa detectada',
+      body: `Factura ${factura.numero} — ${clasificacion.resumen.substring(0, 80)}`,
+      url: `/facturas/${factura.id}`,
+    }
+  } else if (clasificacion.categoria === 'pago_confirmado') {
+    pushPayload = {
+      title: '💰 Pago confirmado por el cliente',
+      body: `Factura ${factura.numero} — Verifica en tu cuenta bancaria`,
+      url: `/facturas/${factura.id}`,
+    }
+  }
+  if (pushPayload) {
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://app.marsof.es'
+    fetch(`${appUrl}/api/push/send`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-saldea-secret': process.env.PUSH_INTERNAL_SECRET ?? '',
+      },
+      body: JSON.stringify({ org_id: factura.org_id, ...pushPayload }),
+    }).catch(() => {})
+  }
+
   return NextResponse.json({
     ok: true,
     facturaId: factura.id,
     categoria: clasificacion.categoria,
     pausarHasta: pausarHasta?.toISOString().split('T')[0] ?? null,
+    marcarDisputa,
   })
 }

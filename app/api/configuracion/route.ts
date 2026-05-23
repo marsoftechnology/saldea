@@ -146,6 +146,19 @@ export async function PATCH(req: NextRequest) {
   }
   if (typeof body.aprender_historial === 'boolean') campos.aprender_historial = body.aprender_historial
 
+  // ── Features: detección de respuestas ──────────────────────────────────────
+  if (typeof body.pausar_si_responde === 'boolean') campos.pausar_si_responde = body.pausar_si_responde
+  if (typeof body.detectar_disputa === 'boolean') campos.detectar_disputa = body.detectar_disputa
+  if (typeof body.detectar_vacaciones_cliente === 'boolean') campos.detectar_vacaciones_cliente = body.detectar_vacaciones_cliente
+
+  // ── Feature: vía judicial ──────────────────────────────────────────────────
+  if (typeof body.dias_via_judicial === 'number') {
+    if (body.dias_via_judicial !== 0 && (body.dias_via_judicial < 30 || body.dias_via_judicial > 180)) {
+      return NextResponse.json({ error: 'dias_via_judicial debe ser 0 (desactivado) o entre 30 y 180' }, { status: 400 })
+    }
+    campos.dias_via_judicial = body.dias_via_judicial
+  }
+
   if (Object.keys(campos).length === 0) {
     return NextResponse.json({ error: 'No hay cambios que guardar' }, { status: 400 })
   }
