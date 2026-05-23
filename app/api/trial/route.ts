@@ -1,0 +1,38 @@
+import { NextResponse } from 'next/server'
+import { getActiveOrg } from '@/lib/auth-org'
+import { createServiceRoleClient } from '@/lib/supabase-service'
+
+export const TRIAL_DAYS = 15
+
+export async function GET() {
+  const org = await getActiveOrg()
+  if (!org) return NextResponse.json({ error: 'no_auth' }, { status: 401 })
+
+  const admin = createServiceRoleClient()
+
+  const [{ data: orgData }, { data: config }] = await Promise.all([
+    admin.from('organizations').select('created_at').eq('id', org.org_id).maybeSingle(),
+    admin.from('configuraciones_usuario').select('plan').eq('org_id', org.org_id).maybeSingle(),
+  ])
+
+  const plan: 'free' | 'pro' = config?.plan === 'pro' ? 'pro' : 'free'
+
+  // Si ya es Pro, no hay trial que gestionar
+  if (plan === 'pro') {
+    return NextResponse.json({ plan: 'pro', trialExpired: false, trialDaysRemaining: null })
+  }
+
+  const trialStart = orgData?.created_at ? new Date(orgData.created_at) : new Date()
+  const trialExpiresAt = new Date(trialStart.getTime() + TRIAL_DAYS * 24 * 60 * 60 * 1000)
+  const now = new Date()
+  const msRemaining = trialExpiresAt.getTime() - now.getTime()
+  const trialDaysRemaining = Math.max(0, Math.ceil(msRemaining / (1000 * 60 * 60 * 24)))
+  const trialExpired = now >= trialExpiresAt
+
+  return NextResponse.json({
+    plan,
+    trialExpired,
+    trialDaysRemaining,
+    trialExpiresAt: trialExpiresAt.toISOString(),
+  })
+}

@@ -66,18 +66,24 @@ export async function GET(req: NextRequest) {
   let enviados = 0
   let omitidosPorLimite = 0
 
-  // Cache de configuración + plan por org para no re-consultar
-  const configCache = new Map<string, { max_emails_mes: number; plan: Plan }>()
-  async function getOrgConfig(orgId: string): Promise<{ max_emails_mes: number; plan: Plan }> {
+  const TRIAL_DAYS = 15
+
+  // Cache de configuración + plan + trial por org para no re-consultar
+  const configCache = new Map<string, { max_emails_mes: number; plan: Plan; trialActive: boolean }>()
+  async function getOrgConfig(orgId: string): Promise<{ max_emails_mes: number; plan: Plan; trialActive: boolean }> {
     if (configCache.has(orgId)) return configCache.get(orgId)!
-    const { data } = await supabase
-      .from('configuraciones_usuario')
-      .select('max_emails_mes, plan')
-      .eq('org_id', orgId)
-      .maybeSingle()
+    const [{ data: cfgData }, { data: orgData }] = await Promise.all([
+      supabase.from('configuraciones_usuario').select('max_emails_mes, plan').eq('org_id', orgId).maybeSingle(),
+      supabase.from('organizations').select('created_at').eq('id', orgId).maybeSingle(),
+    ])
+    const plan = (cfgData?.plan === 'pro' ? 'pro' : 'free') as Plan
+    const trialStart = orgData?.created_at ? new Date(orgData.created_at) : null
+    const trialExpiresAt = trialStart ? new Date(trialStart.getTime() + TRIAL_DAYS * 24 * 60 * 60 * 1000) : null
+    const trialActive = plan === 'free' && !!trialExpiresAt && new Date() < trialExpiresAt
     const cfg = {
-      max_emails_mes: data?.max_emails_mes ?? 5,
-      plan: (data?.plan === 'pro' ? 'pro' : 'free') as Plan,
+      max_emails_mes: cfgData?.max_emails_mes ?? 5,
+      plan,
+      trialActive,
     }
     configCache.set(orgId, cfg)
     return cfg
@@ -154,11 +160,12 @@ export async function GET(req: NextRequest) {
     const pendiente = recordatorios.find(r => !r.enviado && dias >= r.dias_offset)
     if (!pendiente) continue
 
-    // Comprobar plan de la org
-    const { max_emails_mes: maxMes, plan: planUsuario } = await getOrgConfig(factura.org_id)
+    // Comprobar plan de la org (trialActive = Free con prueba activa → tratado como Pro)
+    const { max_emails_mes: maxMes, plan: planUsuario, trialActive } = await getOrgConfig(factura.org_id)
+    const esPro = planUsuario === 'pro' || trialActive
 
-    // Free: tope global de 30 emails/mes
-    if (planUsuario === 'free') {
+    // Free (sin trial): tope global de 30 emails/mes
+    if (!esPro) {
       const enviadosOrg = await emailsOrgEsteMes(factura.org_id)
       if (enviadosOrg >= LIMITES_FREE.emailsMes) {
         omitidosFreeTopeMensual++
@@ -166,7 +173,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    // Tope mensual por cliente (config del usuario, distinto del límite Free global)
+    // Tope mensual por cliente (config del usuario — se respeta también en trial)
     const enviadosCliente = await emailsEnviadosEsteMes(factura.cliente_id)
     if (enviadosCliente >= maxMes) {
       omitidosPorLimite++
@@ -177,9 +184,9 @@ export async function GET(req: NextRequest) {
       // Nombre de empresa: nombre de la org (cacheado)
       const nombreEmpresa = await getOrgNombre(factura.org_id)
 
-      // Plan Free → forzamos siempre tono amigable (sin escalado)
+      // Plan Free sin trial → forzamos tono amigable; con trial o Pro → tono libre
       let tonoFinal = pendiente.tono as 'amigable' | 'firme' | 'formal' | 'extremo'
-      if (planUsuario === 'free' && tonoFinal !== 'amigable') {
+      if (!esPro && tonoFinal !== 'amigable') {
         tonoFinal = 'amigable'
         tonosForzadosFree++
       }

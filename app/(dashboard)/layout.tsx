@@ -8,6 +8,13 @@ import { cn } from '@/lib/utils'
 import { Logo } from '@/app/components/Logo'
 import OrgSwitcher from './OrgSwitcher'
 import ThemeToggle from './ThemeToggle'
+import TrialPaywall from './TrialPaywall'
+
+type TrialStatus = {
+  plan: 'free' | 'pro'
+  trialExpired: boolean
+  trialDaysRemaining: number | null
+}
 
 const navegacion = [
   { href: '/dashboard', label: 'Inicio', icono: '📊' },
@@ -22,11 +29,20 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname()
   const router = useRouter()
   const [menuAbierto, setMenuAbierto] = useState(false)
+  const [trial, setTrial] = useState<TrialStatus | null>(null)
 
   // Cerrar el menú al cambiar de ruta (mobile UX)
   useEffect(() => {
     setMenuAbierto(false)
   }, [pathname])
+
+  // Cargar estado del trial
+  useEffect(() => {
+    fetch('/api/trial')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => d && setTrial(d))
+      .catch(() => {})
+  }, [])
 
   async function cerrarSesion() {
     const supabase = createClient()
@@ -125,6 +141,32 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           })}
         </nav>
 
+        {/* Badge de trial — solo para usuarios Free en prueba */}
+        {trial && trial.plan === 'free' && !trial.trialExpired && trial.trialDaysRemaining !== null && (
+          <div className={cn(
+            'mx-3 mb-1 px-3 py-2.5 rounded-xl border text-xs',
+            trial.trialDaysRemaining <= 3
+              ? 'bg-rose-500/10 border-rose-500/25 text-rose-300'
+              : trial.trialDaysRemaining <= 7
+                ? 'bg-amber-500/10 border-amber-500/25 text-amber-300'
+                : 'bg-sky-500/10 border-sky-500/20 text-sky-300'
+          )}>
+            <p className="font-semibold">
+              {trial.trialDaysRemaining === 0
+                ? '🔴 Prueba: último día'
+                : trial.trialDaysRemaining === 1
+                  ? '🟡 Prueba: 1 día restante'
+                  : `⏳ Prueba: ${trial.trialDaysRemaining} días`}
+            </p>
+            <Link
+              href="/ajustes#plan"
+              className="underline underline-offset-2 opacity-80 hover:opacity-100 mt-0.5 block"
+            >
+              Activar Pro →
+            </Link>
+          </div>
+        )}
+
         <div className="p-3 border-t border-white/5 space-y-1">
           <Link
             href="/ajustes"
@@ -153,6 +195,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <main className="flex-1 overflow-y-auto pt-14 md:pt-0">
         {children}
       </main>
+
+      {/* Paywall obligatorio cuando el trial ha expirado */}
+      {trial?.trialExpired && <TrialPaywall />}
     </div>
   )
 }
