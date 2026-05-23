@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { generarMensajeRecordatorio } from '@/lib/anthropic'
 import { enviarEmail } from '@/lib/resend'
+import { enviarWhatsApp } from '@/lib/twilio'
 import { generarPDFFactura } from '@/lib/pdf'
 import { diasVencida, formatearEuros, formatearFecha } from '@/lib/utils'
 import { renderizarPlantilla, esFestivoNacionalES } from '@/lib/recordatorios'
@@ -92,6 +93,16 @@ export async function GET(req: NextRequest) {
     return nombre
   }
 
+  // Cache de add-on WhatsApp por org
+  const orgAddonCache = new Map<string, boolean>()
+  async function getOrgAddon(orgId: string): Promise<boolean> {
+    if (orgAddonCache.has(orgId)) return orgAddonCache.get(orgId)!
+    const { data } = await supabase.from('organizations').select('addon_whatsapp_active').eq('id', orgId).maybeSingle()
+    const addon = data?.addon_whatsapp_active ?? false
+    orgAddonCache.set(orgId, addon)
+    return addon
+  }
+
   // Cache de config completa por org (plantillas, firma, logo, etc.)
   type OrgFullConfig = Record<string, string | null>
   const orgFullConfigCache = new Map<string, OrgFullConfig | null>()
@@ -144,7 +155,7 @@ export async function GET(req: NextRequest) {
   let tonosForzadosFree = 0
 
   for (const factura of facturasPendientes) {
-    const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; pausar_recordatorios?: boolean | null }
+    const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; pausar_recordatorios?: boolean | null; telefono?: string | null; whatsapp_opt_in_at?: string | null }
     // Si el cliente tiene los recordatorios pausados, saltar
     if (cliente?.pausar_recordatorios) continue
     const dias = diasVencida(factura.fecha_vencimiento)
@@ -171,6 +182,8 @@ export async function GET(req: NextRequest) {
       omitidosPorLimite++
       continue
     }
+
+    const addonWhatsapp = await getOrgAddon(factura.org_id)
 
     try {
       // Nombre de empresa: nombre de la org (cacheado)
@@ -288,18 +301,56 @@ export async function GET(req: NextRequest) {
         }
       }
 
-      const enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null })
+      // Decidir canal: WhatsApp (tono formal + opt-in + add-on) o email (default)
+      const usarWhatsApp =
+        tonoFinal === 'formal' &&
+        !!cliente.whatsapp_opt_in_at &&
+        !!cliente.telefono &&
+        addonWhatsapp
+      console.log('[cron] whatsapp check:', { tonoFinal, whatsappOptIn: !!cliente.whatsapp_opt_in_at, telefono: cliente.telefono, addonWhatsapp, usarWhatsApp, twilio_sid_set: !!process.env.TWILIO_ACCOUNT_SID, twilio_token_set: !!process.env.TWILIO_AUTH_TOKEN })
+
+      let enviado = false
+      let waSid: string | undefined
+
+      if (usarWhatsApp) {
+        const waResult = await enviarWhatsApp({
+          para: cliente.telefono!,
+          cuerpo: `${nombreEmpresa}:\n\n${cuerpo}`,
+          facturaId: factura.id,
+        })
+        enviado = waResult.enviado
+        waSid = waResult.messageSid
+        // Fallback a email si WhatsApp falla
+        if (!enviado) {
+          enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null })
+        }
+      } else {
+        enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null })
+      }
 
       if (enviado) {
         await Promise.all([
-          supabase.from('logs_email').insert({
-            factura_id: factura.id,
-            cliente_id: factura.cliente_id,
-            org_id: factura.org_id,
-            asunto,
-            cuerpo,
-            estado: 'enviado',
-          }),
+          // Log según canal: WhatsApp → mensajes_whatsapp, Email → logs_email
+          usarWhatsApp && waSid
+            ? supabase.from('mensajes_whatsapp').insert({
+                factura_id: factura.id,
+                recordatorio_id: pendiente.id,
+                cliente_id: factura.cliente_id,
+                org_id: factura.org_id,
+                twilio_message_sid: waSid,
+                to_number: cliente.telefono!,
+                cuerpo,
+                tono: tonoFinal,
+                estado: 'enviado',
+              })
+            : supabase.from('logs_email').insert({
+                factura_id: factura.id,
+                cliente_id: factura.cliente_id,
+                org_id: factura.org_id,
+                asunto,
+                cuerpo,
+                estado: 'enviado',
+              }),
           supabase.from('recordatorios')
             .update({ enviado: true, enviado_at: new Date().toISOString(), mensaje_preview: cuerpo.substring(0, 200) })
             .eq('id', pendiente.id),
@@ -309,9 +360,11 @@ export async function GET(req: NextRequest) {
             : Promise.resolve(),
         ])
         enviados++
-        // Actualizar contadores en caché (acabamos de enviar uno)
-        emailsClienteMes.set(factura.cliente_id, (emailsClienteMes.get(factura.cliente_id) ?? 0) + 1)
-        emailsOrgMes.set(factura.org_id, (emailsOrgMes.get(factura.org_id) ?? 0) + 1)
+        // Actualizar contadores de email solo si se usó email (no WhatsApp)
+        if (!(usarWhatsApp && waSid)) {
+          emailsClienteMes.set(factura.cliente_id, (emailsClienteMes.get(factura.cliente_id) ?? 0) + 1)
+          emailsOrgMes.set(factura.org_id, (emailsOrgMes.get(factura.org_id) ?? 0) + 1)
+        }
       }
     } catch (e) {
       console.error(`Error procesando factura ${factura.id}:`, e)
