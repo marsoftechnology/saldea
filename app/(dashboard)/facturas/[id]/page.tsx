@@ -8,6 +8,7 @@ import LinkPagoEditor from './LinkPagoEditor'
 import PdfPropioUploader from './PdfPropioUploader'
 import PagosSection from './PagosSection'
 import WhatsAppRecordatorioButton from './WhatsAppRecordatorioButton'
+import WhatsAppEnviarFacturaButton from './WhatsAppEnviarFacturaButton'
 import { getActiveOrg } from '@/lib/auth-org'
 
 export default async function FacturaDetallePage({ params }: { params: Promise<{ id: string }> }) {
@@ -44,15 +45,16 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
     .order('fecha', { ascending: false })
 
   const dias = diasVencida(factura.fecha_vencimiento)
-  const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; telefono: string | null }
+  const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; telefono: string | null; whatsapp_opt_in_at: string | null }
 
   // Empresa emisora para el mensaje de WhatsApp: nombre de la org
   const { data: orgData } = await supabase
     .from('organizations')
-    .select('name')
+    .select('name, addon_whatsapp_active')
     .eq('id', org.org_id)
     .maybeSingle()
   const empresaEmisor = orgData?.name || 'tu empresa'
+  const addonWhatsapp = !!orgData?.addon_whatsapp_active
   const totalPagado = (pagos ?? []).reduce((s, p) => s + Number(p.importe), 0)
   const pendienteFactura = Math.max(0, Number(factura.importe) - totalPagado)
 
@@ -109,6 +111,12 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
             <EnviarRecordatorioButton facturaId={factura.id} clienteEmail={cliente?.email} diasVencida={dias} />
           </div>
         )}
+
+        <WhatsAppEnviarFacturaButton
+          facturaId={factura.id}
+          clienteConOptin={!!cliente?.whatsapp_opt_in_at && !!cliente?.telefono}
+          addonActivo={addonWhatsapp}
+        />
       </div>
 
       {/* Pagos recibidos (parciales o completos) */}

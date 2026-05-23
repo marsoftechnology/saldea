@@ -40,6 +40,7 @@ export default function NuevaFacturaPage() {
   // WhatsApp inline prompt
   const [waPhone, setWaPhone] = useState('')
   const [waOptIn, setWaOptIn] = useState(false)
+  const [enviarWaAlCrear, setEnviarWaAlCrear] = useState(false)
 
   useEffect(() => {
     async function cargar() {
@@ -71,9 +72,11 @@ export default function NuevaFacturaPage() {
     if (clienteSeleccionado) {
       setWaPhone(clienteSeleccionado.telefono ?? '')
       setWaOptIn(false)
+      setEnviarWaAlCrear(false)
     } else {
       setWaPhone('')
       setWaOptIn(false)
+      setEnviarWaAlCrear(false)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.cliente_id])
@@ -211,6 +214,19 @@ export default function NuevaFacturaPage() {
       }
     }
 
+    // Enviar factura por WhatsApp si el usuario lo pidió
+    const tieneOptin = !!(clienteSeleccionado?.whatsapp_opt_in_at) || waOptIn
+    if (enviarWaAlCrear && tieneOptin) {
+      // Llamada best-effort: si falla, el usuario puede reintentarlo desde el detalle
+      try {
+        await fetch('/api/whatsapp-factura-enviar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ facturaId: factura.id }),
+        })
+      } catch { /* ignorar — puede reintentar desde el detalle */ }
+    }
+
     router.push(`/facturas/${factura.id}`)
   }
 
@@ -249,15 +265,15 @@ export default function NuevaFacturaPage() {
           )}
         </div>
 
-        {/* Prompt WhatsApp contextual: solo cuando el cliente seleccionado no tiene opt-in */}
+        {/* Prompt WhatsApp contextual: cuando el cliente no tiene opt-in todavía */}
         {mostrarPromptWa && (
           <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-4 space-y-3">
             <div>
-              <p className="text-sm font-medium text-emerald-300">💬 Recordatorios por WhatsApp</p>
+              <p className="text-sm font-medium text-emerald-300">💬 WhatsApp</p>
               <p className="text-xs text-zinc-400 mt-0.5">
                 {clienteSeleccionado?.telefono
-                  ? 'Este cliente tiene teléfono pero no tiene activados los recordatorios por WhatsApp.'
-                  : 'Añade el número de WhatsApp para que reciba recordatorios directamente en su móvil.'}
+                  ? 'Este cliente tiene teléfono pero no tiene activados los mensajes por WhatsApp.'
+                  : 'Añade el número de WhatsApp para enviarle la factura y recordatorios automáticos.'}
               </p>
             </div>
 
@@ -275,7 +291,7 @@ export default function NuevaFacturaPage() {
               </div>
             )}
 
-            {/* Checkbox opt-in: visible cuando hay teléfono (propio o recién escrito) */}
+            {/* Checkbox opt-in: visible cuando hay teléfono */}
             {(waPhone.trim() || clienteSeleccionado?.telefono) && (
               <label className="flex items-start gap-3 cursor-pointer group">
                 <div className="relative mt-0.5 flex-shrink-0">
@@ -299,7 +315,7 @@ export default function NuevaFacturaPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-zinc-200">
-                    El cliente acepta recibir recordatorios por WhatsApp
+                    El cliente acepta recibir mensajes por WhatsApp
                   </p>
                   <p className="text-xs text-zinc-500 mt-0.5">
                     Confirma que el cliente ha dado su consentimiento explícito.
@@ -307,7 +323,73 @@ export default function NuevaFacturaPage() {
                 </div>
               </label>
             )}
+
+            {/* Checkbox "enviar factura ahora": visible cuando waOptIn acaba de marcarse */}
+            {waOptIn && (waPhone.trim() || clienteSeleccionado?.telefono) && (
+              <label className="flex items-start gap-3 cursor-pointer group pt-1 border-t border-emerald-500/10">
+                <div className="relative mt-0.5 flex-shrink-0">
+                  <input
+                    type="checkbox"
+                    checked={enviarWaAlCrear}
+                    onChange={e => setEnviarWaAlCrear(e.target.checked)}
+                    className="sr-only"
+                  />
+                  <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                    enviarWaAlCrear
+                      ? 'bg-emerald-500 border-emerald-500'
+                      : 'border-white/20 group-hover:border-white/40'
+                  }`}>
+                    {enviarWaAlCrear && (
+                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-zinc-200">
+                    Enviar la factura por WhatsApp al guardar
+                  </p>
+                  <p className="text-xs text-zinc-500 mt-0.5">
+                    Le llegará un mensaje con el importe, la fecha de vencimiento y el link de pago (si lo añades).
+                  </p>
+                </div>
+              </label>
+            )}
           </div>
+        )}
+
+        {/* Enviar factura por WA si el cliente ya tenía opt-in (sin necesitar el prompt de arriba) */}
+        {!mostrarPromptWa && clienteSeleccionado && (
+          <label className="flex items-start gap-3 cursor-pointer group bg-emerald-500/5 border border-emerald-500/20 rounded-lg px-4 py-3">
+            <div className="relative mt-0.5 flex-shrink-0">
+              <input
+                type="checkbox"
+                checked={enviarWaAlCrear}
+                onChange={e => setEnviarWaAlCrear(e.target.checked)}
+                className="sr-only"
+              />
+              <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                enviarWaAlCrear
+                  ? 'bg-emerald-500 border-emerald-500'
+                  : 'border-white/20 group-hover:border-white/40'
+              }`}>
+                {enviarWaAlCrear && (
+                  <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-zinc-200">
+                💬 Enviar factura por WhatsApp al guardar
+              </p>
+              <p className="text-xs text-zinc-500 mt-0.5">
+                Le llegará la factura con importe, vencimiento y link de pago al guardar.
+              </p>
+            </div>
+          </label>
         )}
 
         <div className="grid grid-cols-2 gap-3">
