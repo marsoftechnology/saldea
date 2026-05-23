@@ -1,11 +1,21 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { CookieBanner } from './components/CookieBanner'
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'
 
+// Viewport separado (requerido por Next.js 13+ para themeColor)
+export const viewport: Viewport = {
+  themeColor: '#0ea5e9',
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
+  viewportFit: 'cover', // Para notch en iPhone
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
+  applicationName: 'Saldea',
   title: {
     default: 'Marsof — Software español para automatizar tu negocio',
     template: '%s | Marsof',
@@ -78,6 +88,15 @@ export const metadata: Metadata = {
   verification: {
     // Anadir cuando se de de alta Google Search Console
     // google: 'codigo-de-verificacion-aqui',
+  },
+  // PWA — comportamiento en iOS (Safari no lee el manifest para estos)
+  appleWebApp: {
+    capable: true,
+    title: 'Saldea',
+    statusBarStyle: 'black-translucent',
+  },
+  formatDetection: {
+    telephone: false,
   },
 }
 
@@ -239,6 +258,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" className="h-full" data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* PWA: icono para iOS (Safari ignora el manifest para apple-touch-icon) */}
+        <link rel="apple-touch-icon" href="/images/saldea/logo-mark.png" />
+        {/* PWA: color de la barra de título en móviles al abrir desde home screen */}
+        <meta name="mobile-web-app-capable" content="yes" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganizacion) }}
