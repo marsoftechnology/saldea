@@ -82,12 +82,25 @@ Devuelve SOLO un JSON con este formato exacto, sin texto adicional:
   const respuesta = await getAnthropic().messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 1024,
+    tools: [{
+      name: 'email_recordatorio',
+      description: 'Genera el email de recordatorio de cobro con asunto y cuerpo',
+      input_schema: {
+        type: 'object' as const,
+        properties: {
+          asunto: { type: 'string', description: 'Asunto del email' },
+          cuerpo: { type: 'string', description: 'Cuerpo del email en texto plano, con saltos de línea reales' },
+        },
+        required: ['asunto', 'cuerpo'],
+      },
+    }],
+    tool_choice: { type: 'tool', name: 'email_recordatorio' },
     messages: [{ role: 'user', content: prompt }],
   })
 
-  const texto = respuesta.content[0].type === 'text' ? respuesta.content[0].text : ''
-  const limpio = texto.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/, '').trim()
-  return JSON.parse(limpio)
+  const toolUse = respuesta.content.find(c => c.type === 'tool_use')
+  if (!toolUse || toolUse.type !== 'tool_use') throw new Error('No tool_use response from Claude')
+  return toolUse.input as { asunto: string; cuerpo: string }
 }
 
 export type CategoriaRespuesta = 'pago_confirmado' | 'disputa' | 'vacaciones' | 'pidiendo_plazos' | 'otro'
