@@ -196,6 +196,13 @@ export async function GET(req: NextRequest) {
         tonosForzadosFree++
       }
 
+      // Decidir canal aquí (antes de generar el mensaje) para ajustar el prompt
+      const usarWhatsApp =
+        tonoFinal === 'formal' &&
+        !!cliente.whatsapp_opt_in_at &&
+        !!cliente.telefono &&
+        addonWhatsapp
+
       const configMap = await getOrgFullConfig(factura.org_id)
       const plantillaUsuario = configMap?.[`plantilla_${tonoFinal}`]?.trim()
       const firmaUsuario = configMap?.firma?.trim()
@@ -254,7 +261,8 @@ export async function GET(req: NextRequest) {
           recargoMoraPct,
           descuentoProntoPagoPct,
           descuentoProntoPagoDias,
-          tieneLinkPago: !!factura.link_pago,
+          // En WhatsApp no hay botón renderizado: se añade el link crudo después
+          tieneLinkPago: !usarWhatsApp && !!factura.link_pago,
           importePagado,
         })
         asunto = gen.asunto
@@ -301,21 +309,19 @@ export async function GET(req: NextRequest) {
         }
       }
 
-      // Decidir canal: WhatsApp (tono formal + opt-in + add-on) o email (default)
-      const usarWhatsApp =
-        tonoFinal === 'formal' &&
-        !!cliente.whatsapp_opt_in_at &&
-        !!cliente.telefono &&
-        addonWhatsapp
-      console.log('[cron] whatsapp check:', { tonoFinal, whatsappOptIn: !!cliente.whatsapp_opt_in_at, telefono: cliente.telefono, addonWhatsapp, usarWhatsApp, twilio_sid_set: !!process.env.TWILIO_ACCOUNT_SID, twilio_token_set: !!process.env.TWILIO_AUTH_TOKEN })
-
       let enviado = false
       let waSid: string | undefined
+      // Cuerpo real enviado por WhatsApp (incluye link de pago como texto plano)
+      let cuerpoEnviadoWA = ''
 
       if (usarWhatsApp) {
+        // Añadir el link de pago directamente al cuerpo del WhatsApp (no hay botón HTML)
+        cuerpoEnviadoWA = factura.link_pago
+          ? `${nombreEmpresa}:\n\n${cuerpo}\n\n💳 Pagar ahora: ${factura.link_pago}`
+          : `${nombreEmpresa}:\n\n${cuerpo}`
         const waResult = await enviarWhatsApp({
           para: cliente.telefono!,
-          cuerpo: `${nombreEmpresa}:\n\n${cuerpo}`,
+          cuerpo: cuerpoEnviadoWA,
           facturaId: factura.id,
         })
         enviado = waResult.enviado
@@ -339,7 +345,7 @@ export async function GET(req: NextRequest) {
                 org_id: factura.org_id,
                 twilio_message_sid: waSid,
                 to_number: cliente.telefono!,
-                cuerpo,
+                cuerpo: cuerpoEnviadoWA || cuerpo,
                 tono: tonoFinal,
                 estado: 'enviado',
               })
