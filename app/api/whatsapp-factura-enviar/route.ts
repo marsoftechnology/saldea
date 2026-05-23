@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'no_optin', mensaje: 'El cliente no tiene activados los recordatorios por WhatsApp.' }, { status: 400 })
   }
 
-  // Comprobar addon en la org
+  // Obtener nombre de la org
   const admin = createAdminClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
@@ -53,18 +53,11 @@ export async function POST(req: NextRequest) {
 
   const { data: orgData } = await admin
     .from('organizations')
-    .select('name, addon_whatsapp_active')
+    .select('name')
     .eq('id', factura.org_id)
     .maybeSingle()
 
-  if (!orgData?.addon_whatsapp_active) {
-    return NextResponse.json({
-      error: 'addon_inactive',
-      mensaje: 'El envío automático por WhatsApp requiere tener el addon activo. Actívalo en Ajustes.',
-    }, { status: 403 })
-  }
-
-  const nombreEmpresa = orgData.name || 'Tu proveedor'
+  const nombreEmpresa = orgData?.name || 'Tu proveedor'
   const nombrePila = cliente.nombre.split(' ')[0]
 
   // Construir mensaje de notificación de factura

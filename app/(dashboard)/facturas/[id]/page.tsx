@@ -50,11 +50,10 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
   // Empresa emisora para el mensaje de WhatsApp: nombre de la org
   const { data: orgData } = await supabase
     .from('organizations')
-    .select('name, addon_whatsapp_active')
+    .select('name')
     .eq('id', org.org_id)
     .maybeSingle()
   const empresaEmisor = orgData?.name || 'tu empresa'
-  const addonWhatsapp = !!orgData?.addon_whatsapp_active
   const totalPagado = (pagos ?? []).reduce((s, p) => s + Number(p.importe), 0)
   const pendienteFactura = Math.max(0, Number(factura.importe) - totalPagado)
 
@@ -115,7 +114,6 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
         <WhatsAppEnviarFacturaButton
           facturaId={factura.id}
           clienteConOptin={!!cliente?.whatsapp_opt_in_at && !!cliente?.telefono}
-          addonActivo={addonWhatsapp}
         />
       </div>
 

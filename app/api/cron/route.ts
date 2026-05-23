@@ -93,16 +93,6 @@ export async function GET(req: NextRequest) {
     return nombre
   }
 
-  // Cache de add-on WhatsApp por org
-  const orgAddonCache = new Map<string, boolean>()
-  async function getOrgAddon(orgId: string): Promise<boolean> {
-    if (orgAddonCache.has(orgId)) return orgAddonCache.get(orgId)!
-    const { data } = await supabase.from('organizations').select('addon_whatsapp_active').eq('id', orgId).maybeSingle()
-    const addon = data?.addon_whatsapp_active ?? false
-    orgAddonCache.set(orgId, addon)
-    return addon
-  }
-
   // Cache de config completa por org (plantillas, firma, logo, etc.)
   type OrgFullConfig = Record<string, string | null>
   const orgFullConfigCache = new Map<string, OrgFullConfig | null>()
@@ -183,8 +173,6 @@ export async function GET(req: NextRequest) {
       continue
     }
 
-    const addonWhatsapp = await getOrgAddon(factura.org_id)
-
     try {
       // Nombre de empresa: nombre de la org (cacheado)
       const nombreEmpresa = await getOrgNombre(factura.org_id)
@@ -200,8 +188,7 @@ export async function GET(req: NextRequest) {
       const usarWhatsApp =
         tonoFinal === 'formal' &&
         !!cliente.whatsapp_opt_in_at &&
-        !!cliente.telefono &&
-        addonWhatsapp
+        !!cliente.telefono
 
       const configMap = await getOrgFullConfig(factura.org_id)
       const plantillaUsuario = configMap?.[`plantilla_${tonoFinal}`]?.trim()

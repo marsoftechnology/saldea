@@ -6,16 +6,13 @@ interface Props {
   facturaId: string
   /** El cliente tiene teléfono + whatsapp_opt_in_at */
   clienteConOptin: boolean
-  /** La org tiene addon_whatsapp_active */
-  addonActivo: boolean
 }
 
-export default function WhatsAppEnviarFacturaButton({ facturaId, clienteConOptin, addonActivo }: Props) {
+export default function WhatsAppEnviarFacturaButton({ facturaId, clienteConOptin }: Props) {
   const [estado, setEstado] = useState<'idle' | 'enviando' | 'ok' | 'error'>('idle')
   const [mensajeError, setMensajeError] = useState('')
 
-  // Solo mostramos este botón cuando se puede usar el envío automático
-  if (!clienteConOptin || !addonActivo) return null
+  if (!clienteConOptin) return null
 
   async function handleEnviar() {
     if (estado === 'enviando' || estado === 'ok') return
