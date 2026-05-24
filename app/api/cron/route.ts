@@ -76,7 +76,7 @@ export async function GET(req: NextRequest) {
       supabase.from('configuraciones_usuario').select('max_emails_mes, plan').eq('org_id', orgId).maybeSingle(),
       supabase.from('organizations').select('created_at').eq('id', orgId).maybeSingle(),
     ])
-    const plan = (cfgData?.plan === 'pro' ? 'pro' : 'free') as Plan
+    const plan = (cfgData?.plan === 'max' ? 'max' : cfgData?.plan === 'pro' ? 'pro' : 'free') as Plan
     const trialStart = orgData?.created_at ? new Date(orgData.created_at) : null
     const trialExpiresAt = trialStart ? new Date(trialStart.getTime() + TRIAL_DAYS * 24 * 60 * 60 * 1000) : null
     const trialActive = plan === 'free' && !!trialExpiresAt && new Date() < trialExpiresAt
@@ -162,7 +162,7 @@ export async function GET(req: NextRequest) {
 
     // Comprobar plan de la org (trialActive = Free con prueba activa → tratado como Pro)
     const { max_emails_mes: maxMes, plan: planUsuario, trialActive } = await getOrgConfig(factura.org_id)
-    const esPro = planUsuario === 'pro' || trialActive
+    const esPro = planUsuario === 'pro' || planUsuario === 'max' || trialActive
 
     // Free (sin trial): tope global de 30 emails/mes
     if (!esPro) {

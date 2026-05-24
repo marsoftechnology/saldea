@@ -48,7 +48,7 @@ export default async function DashboardPage() {
     supabase.from('configuraciones_usuario').select('plan').eq('org_id', org.org_id).maybeSingle(),
   ])
 
-  const plan = (configPlan?.plan === 'pro' ? 'pro' : 'free') as 'free' | 'pro'
+  const plan = (configPlan?.plan === 'max' ? 'max' : configPlan?.plan === 'pro' ? 'pro' : 'free') as 'free' | 'pro' | 'max'
   const facturasActivas = (todasFacturas ?? []).filter(f => f.estado === 'pendiente' || f.estado === 'vencida').length
   const numClientes = clientes?.length ?? 0
   const cercaDelLimite = plan === 'free' && (
@@ -75,7 +75,9 @@ export default async function DashboardPage() {
           <div className="flex items-center gap-3">
             <h1 className="text-2xl font-bold text-white tracking-tight">Panel de control</h1>
             <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${
-              plan === 'pro'
+              plan === 'max'
+                ? 'bg-amber-500/10 text-amber-300 border border-amber-500/30'
+                : plan === 'pro'
                 ? 'bg-sky-500/10 text-sky-300 border border-sky-500/30'
                 : 'bg-zinc-800/60 text-zinc-400 border border-white/10'
             }`}>

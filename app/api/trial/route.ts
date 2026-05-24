@@ -15,11 +15,12 @@ export async function GET() {
     admin.from('configuraciones_usuario').select('plan').eq('org_id', org.org_id).maybeSingle(),
   ])
 
-  const plan: 'free' | 'pro' = config?.plan === 'pro' ? 'pro' : 'free'
+  const rawPlan = config?.plan
+  const plan: 'free' | 'pro' | 'max' = rawPlan === 'max' ? 'max' : rawPlan === 'pro' ? 'pro' : 'free'
 
-  // Si ya es Pro, no hay trial que gestionar
-  if (plan === 'pro') {
-    return NextResponse.json({ plan: 'pro', trialExpired: false, trialDaysRemaining: null })
+  // Si ya es Pro o Max, no hay trial que gestionar
+  if (plan === 'pro' || plan === 'max') {
+    return NextResponse.json({ plan, trialExpired: false, trialDaysRemaining: null })
   }
 
   const trialStart = orgData?.created_at ? new Date(orgData.created_at) : new Date()
