@@ -155,10 +155,10 @@ export default function MarsofPage() {
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { num: 3, label: 'apps en desarrollo activo', suffix: '' },
               { num: 100, label: 'hecho en España', suffix: '%' },
-              { num: 0, label: 'permanencia en ninguna app', suffix: '€' },
-              { num: 100, label: 'datos en servidores europeos', suffix: '%' },
+              { num: 0, label: 'permanencia · cancela cuando quieras', suffix: '€' },
+              { num: 100, label: 'datos en servidores europeos · RGPD', suffix: '%' },
+              { num: 0, label: 'comisión sobre tus cobros', suffix: '€' },
             ].map((s, i) => (
               <Reveal key={i} effect="fade-up" delay={i * 80}>
                 <p className="text-4xl md:text-5xl font-bold text-white tracking-tight">
