@@ -1,14 +1,12 @@
 import { NextRequest } from 'next/server'
-import { createServerComponentClient } from '@/lib/supabase-server'
-import { getActiveOrg } from '@/lib/get-active-org'
+import { getActiveOrg } from '@/lib/auth-org'
 import { gcDisponible, listarInstituciones } from '@/lib/gocardless'
 
 const H = { 'Content-Type': 'application/json' }
 
 export async function GET(req: NextRequest) {
-  const supabase = await createServerComponentClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
+  const org = await getActiveOrg()
+  if (!org) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
 
   if (!gcDisponible()) {
     return new Response(

@@ -1,8 +1,7 @@
 import { NextRequest } from 'next/server'
-import { createServerComponentClient } from '@/lib/supabase-server'
 import { createServiceRoleClient } from '@/lib/supabase-service'
-import { getActiveOrg } from '@/lib/get-active-org'
-import { gcDisponible, obtenerTransacciones, obtenerCuenta } from '@/lib/gocardless'
+import { getActiveOrg } from '@/lib/auth-org'
+import { gcDisponible, obtenerTransacciones } from '@/lib/gocardless'
 
 const H = { 'Content-Type': 'application/json' }
 
@@ -12,16 +11,13 @@ const H = { 'Content-Type': 'application/json' }
  * y las cruza con facturas pendientes (conciliación automática).
  */
 export async function POST(req: NextRequest) {
-  const supabase = await createServerComponentClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
+  const org = await getActiveOrg()
+  if (!org) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
+  const orgId = org.org_id
 
   if (!gcDisponible()) {
     return new Response(JSON.stringify({ error: 'GoCardless no configurado' }), { status: 503, headers: H })
   }
-
-  const orgId = await getActiveOrg(supabase, user.id)
-  if (!orgId) return new Response(JSON.stringify({ error: 'Org no encontrada' }), { status: 400, headers: H })
 
   const admin = createServiceRoleClient()
 
@@ -150,15 +146,12 @@ export async function POST(req: NextRequest) {
 
 /** DELETE /api/banco/sync — desconecta (revoca) una conexión bancaria */
 export async function DELETE(req: NextRequest) {
-  const supabase = await createServerComponentClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
+  const org = await getActiveOrg()
+  if (!org) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
+  const orgId = org.org_id
 
   const { conexion_id } = await req.json().catch(() => ({}))
   if (!conexion_id) return new Response(JSON.stringify({ error: 'conexion_id requerido' }), { status: 400, headers: H })
-
-  const orgId = await getActiveOrg(supabase, user.id)
-  if (!orgId) return new Response(JSON.stringify({ error: 'Org no encontrada' }), { status: 400, headers: H })
 
   const admin = createServiceRoleClient()
   await admin

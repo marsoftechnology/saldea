@@ -1,17 +1,13 @@
 import { NextRequest } from 'next/server'
-import { createServerComponentClient } from '@/lib/supabase-server'
 import { createServiceRoleClient } from '@/lib/supabase-service'
-import { getActiveOrg } from '@/lib/get-active-org'
+import { getActiveOrg } from '@/lib/auth-org'
 
 const H = { 'Content-Type': 'application/json' }
 
 export async function GET(req: NextRequest) {
-  const supabase = await createServerComponentClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
-
-  const orgId = await getActiveOrg(supabase, user.id)
-  if (!orgId) return new Response(JSON.stringify({ conexiones: [] }), { status: 200, headers: H })
+  const org = await getActiveOrg()
+  if (!org) return new Response(JSON.stringify({ conexiones: [] }), { status: 200, headers: H })
+  const orgId = org.org_id
 
   const admin = createServiceRoleClient()
   const { data } = await admin
