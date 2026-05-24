@@ -8,6 +8,8 @@ import { PagoModal } from '@/app/components/PagoModal'
 import StripeConnectSection from './StripeConnectSection'
 import HoldedSection from './HoldedSection'
 import { PushNotificationsSection } from './PushNotificationsSection'
+import ApiKeysSection from './ApiKeysSection'
+import QuipuSection from './QuipuSection'
 
 export default function AjustesPage() {
   const [nombre, setNombre] = useState('')
@@ -411,6 +413,12 @@ export default function AjustesPage() {
 
       {/* Holded: importar facturas */}
       <HoldedSection />
+
+      {/* Quipu: importar facturas */}
+      <QuipuSection />
+
+      {/* API Keys: acceso REST externo */}
+      <ApiKeysSection />
 
       <form onSubmit={guardar} className="space-y-3">
 

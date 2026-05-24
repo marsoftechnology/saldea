@@ -9,6 +9,7 @@ import { Logo } from '@/app/components/Logo'
 import OrgSwitcher from './OrgSwitcher'
 import ThemeToggle from './ThemeToggle'
 import TrialPaywall from './TrialPaywall'
+import InstallPrompt from '@/app/components/InstallPrompt'
 
 type TrialStatus = {
   plan: 'free' | 'pro'
@@ -198,6 +199,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Paywall obligatorio cuando el trial ha expirado */}
       {trial?.trialExpired && <TrialPaywall />}
+
+      {/* Banner de instalación PWA en móvil */}
+      <InstallPrompt />
     </div>
   )
 }

@@ -2,18 +2,18 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Saldea — Cobro automático de facturas',
+    name: 'Saldea — Cobros automáticos',
     short_name: 'Saldea',
-    description: 'IA que automatiza el cobro de tus facturas impagadas',
+    description: 'Persigue el cobro de tus facturas con IA',
     start_url: '/dashboard',
     scope: '/',
     display: 'standalone',
     orientation: 'portrait-primary',
-    background_color: '#0a0a0b',
-    theme_color: '#0ea5e9',
-    lang: 'es',
+    background_color: '#09090b',
+    theme_color: '#09090b',
+    lang: 'es-ES',
     dir: 'ltr',
-    categories: ['business', 'finance', 'productivity'],
+    categories: ['business', 'finance'],
     icons: [
       {
         src: '/images/saldea/logo-mark.png',

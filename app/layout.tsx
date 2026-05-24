@@ -6,7 +6,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'
 
 // Viewport separado (requerido por Next.js 13+ para themeColor)
 export const viewport: Viewport = {
-  themeColor: '#0ea5e9',
+  themeColor: '#09090b',
   width: 'device-width',
   initialScale: 1,
   minimumScale: 1,
@@ -260,8 +260,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {/* PWA: icono para iOS (Safari ignora el manifest para apple-touch-icon) */}
         <link rel="apple-touch-icon" href="/images/saldea/logo-mark.png" />
-        {/* PWA: color de la barra de título en móviles al abrir desde home screen */}
+        {/* PWA: meta tags para instalación en móviles */}
         <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Saldea" />
+        <meta name="theme-color" content="#09090b" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganizacion) }}
