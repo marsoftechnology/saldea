@@ -41,7 +41,7 @@ export async function GET() {
   ]
 
   const filas = (facturas ?? []).map(f => {
-    const cliente = f.cliente as { nombre: string; email: string; empresa: string | null } | null
+    const cliente = f.cliente as unknown as { nombre: string; email: string; empresa: string | null } | null
     const pagado = pagosPorFactura.get(f.id) ?? 0
     const importe = Number(f.importe)
     const pendiente = Math.max(0, importe - pagado)

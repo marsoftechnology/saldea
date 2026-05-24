@@ -206,14 +206,14 @@ export default async function DashboardPage() {
               ...(pagosRecientes ?? []).map(p => ({
                 tipo: 'pago' as const,
                 fecha: p.fecha,
-                nombre: ((p.factura as { cliente: { nombre: string } | null } | null)?.cliente?.nombre) ?? '—',
+                nombre: ((p.factura as unknown as { cliente: { nombre: string } | null } | null)?.cliente?.nombre) ?? '—',
                 importe: Number(p.importe),
-                numero: (p.factura as { numero: string } | null)?.numero ?? '',
+                numero: (p.factura as unknown as { numero: string } | null)?.numero ?? '',
               })),
               ...(respuestasRecientes ?? []).map(r => ({
                 tipo: 'respuesta' as const,
                 fecha: r.created_at,
-                nombre: (r.cliente as { nombre: string } | null)?.nombre ?? '—',
+                nombre: (r.cliente as unknown as { nombre: string } | null)?.nombre ?? '—',
                 categoria: r.categoria ?? 'otro',
                 resumen: r.resumen ?? '',
               })),
