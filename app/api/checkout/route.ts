@@ -19,26 +19,35 @@ export async function POST(req: NextRequest) {
     }
     const user = org.user
 
-    // Intervalo (mes/año). Por defecto mes (compatible con llamadas viejas).
+    // Intervalo + planTipo. Por defecto mes / pro (compatible con llamadas viejas).
     let interval: 'mes' | 'anio' = 'mes'
+    let planTipo: 'pro' | 'max' = 'pro'
     try {
       const body = await req.json().catch(() => ({}))
       if (body?.interval === 'anio' || body?.interval === 'year') interval = 'anio'
+      if (body?.planTipo === 'max') planTipo = 'max'
     } catch {}
 
     const stripe = getStripe()
-    const priceMensual = process.env.STRIPE_PRICE_ID
-    const priceAnual = process.env.STRIPE_PRICE_ID_ANNUAL
-    if (!priceMensual) throw new Error('STRIPE_PRICE_ID no configurada')
 
-    const priceId = interval === 'anio' && priceAnual ? priceAnual : priceMensual
-
-    // Solo el plan mensual lleva trial de 30 días (1 mes gratis). El anual va directo al cobro
-    // (asumimos que el usuario ya conoce el producto si compra un año entero).
-    const subscriptionData: Record<string, unknown> = {
-      metadata: { user_id: user.id, org_id: org.org_id, interval },
+    // Seleccionar el Price ID correcto según plan + intervalo
+    let priceId: string | undefined
+    if (planTipo === 'max') {
+      priceId = interval === 'anio'
+        ? (process.env.STRIPE_MAX_PRICE_ID_ANNUAL ?? process.env.STRIPE_MAX_PRICE_ID)
+        : process.env.STRIPE_MAX_PRICE_ID
+    } else {
+      priceId = interval === 'anio'
+        ? (process.env.STRIPE_PRICE_ID_ANNUAL ?? process.env.STRIPE_PRICE_ID)
+        : process.env.STRIPE_PRICE_ID
     }
-    if (interval === 'mes') {
+    if (!priceId) throw new Error(`Price ID no configurado para plan ${planTipo} / ${interval}`)
+
+    // Solo el plan mensual Pro lleva trial de 30 días. Max y anual van directo al cobro.
+    const subscriptionData: Record<string, unknown> = {
+      metadata: { user_id: user.id, org_id: org.org_id, interval, planTipo },
+    }
+    if (interval === 'mes' && planTipo === 'pro') {
       subscriptionData.trial_period_days = 30
     }
 
@@ -50,11 +59,11 @@ export async function POST(req: NextRequest) {
       // Identificación del usuario+org para el webhook /api/stripe-webhook
       client_reference_id: user.id,
       customer_email: user.email,
-      metadata: { user_id: user.id, org_id: org.org_id, interval },
+      metadata: { user_id: user.id, org_id: org.org_id, interval, planTipo },
       subscription_data: subscriptionData,
-      // Forzar captura de tarjeta aunque sea trial (en mensual)
+      // Forzar captura de tarjeta aunque sea trial
       payment_method_collection: 'always',
-      return_url: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'}/pago-completado?session_id={CHECKOUT_SESSION_ID}`,
+      return_url: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://app.marsof.es'}/pago-completado?session_id={CHECKOUT_SESSION_ID}`,
     })
 
     return NextResponse.json({ clientSecret: session.client_secret })

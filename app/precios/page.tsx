@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Precios de Saldea: 49€/mes o 499€/año · 1 mes gratis | Saldea',
-  description: 'Precios transparentes de Saldea: plan Free, Pro Mensual (49€) y Pro Anual (499€, ahorras 89€). 1 mes gratis sin tarjeta. Cancela en 1 clic.',
+  title: 'Precios de Saldea: Free, Pro (49€/mes) y Max (99€/mes) | Saldea',
+  description: 'Precios transparentes de Saldea: plan Free, Pro (49€/mes) y Max (99€/mes, con burofax automático). 1 mes gratis sin tarjeta. Cancela en 1 clic.',
   alternates: { canonical: 'https://marsof.es/precios' },
   keywords: [
     'precio saldea',
@@ -53,6 +53,22 @@ const schemaProduct = {
       availability: 'https://schema.org/InStock',
       description: 'Ahorras 89€ respecto al mensual',
     },
+    {
+      '@type': 'Offer',
+      name: 'Plan Max Mensual',
+      price: '99',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      description: 'Todo Pro + 3 burofax/mes + email dominio propio + 25 miembros',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Plan Max Anual',
+      price: '1000',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      description: 'Plan Max anual, ahorras 188€ (2 meses)',
+    },
   ],
 }
 
@@ -77,12 +93,13 @@ export default function PagePrecios() {
             <p className="text-zinc-400 text-lg">Sin permanencia. Sin sorpresas. Cancela en 1 clic.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+            {/* Free */}
+            <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-5">
               <p className="text-zinc-400 text-sm mb-1">Free</p>
-              <p className="text-4xl font-bold text-zinc-100 mb-1">0€<span className="text-base text-zinc-500">/mes</span></p>
-              <p className="text-zinc-500 text-sm mb-6">Para probar sin compromiso</p>
-              <ul className="space-y-2 text-zinc-300 text-sm mb-8">
+              <p className="text-3xl font-bold text-zinc-100 mb-1">0€<span className="text-sm text-zinc-500">/mes</span></p>
+              <p className="text-zinc-500 text-xs mb-5">Para probar sin compromiso</p>
+              <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
                 <li>✓ 3 facturas activas</li>
                 <li>✓ 10 clientes</li>
                 <li>✓ 30 emails/mes</li>
@@ -91,40 +108,58 @@ export default function PagePrecios() {
                 <li className="text-zinc-500">✗ Sin Stripe Connect</li>
                 <li className="text-zinc-500">✗ Sin IA en respuestas</li>
               </ul>
-              <Link href="/registro" className="block w-full text-center bg-zinc-800 text-zinc-200 py-3 rounded-lg font-bold hover:bg-zinc-700 transition-colors">Empezar gratis</Link>
+              <Link href="/registro" className="block w-full text-center bg-zinc-800 text-zinc-200 py-2.5 rounded-lg font-bold text-sm hover:bg-zinc-700 transition-colors">Empezar gratis</Link>
             </div>
 
-            <div className="bg-gradient-to-br from-sky-500/20 to-transparent border-2 border-sky-500/50 rounded-2xl p-6 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-500 text-zinc-900 text-xs font-bold px-3 py-1 rounded-full">MÁS POPULAR</div>
+            {/* Pro Mensual */}
+            <div className="bg-gradient-to-br from-sky-500/20 to-transparent border-2 border-sky-500/50 rounded-2xl p-5 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-500 text-zinc-900 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">MÁS POPULAR</div>
               <p className="text-sky-400 text-sm mb-1 font-semibold">Pro Mensual</p>
-              <p className="text-4xl font-bold text-zinc-100 mb-1">49€<span className="text-base text-zinc-500">/mes</span></p>
-              <p className="text-zinc-500 text-sm mb-6">1 mes gratis sin tarjeta</p>
-              <ul className="space-y-2 text-zinc-300 text-sm mb-8">
+              <p className="text-3xl font-bold text-zinc-100 mb-1">49€<span className="text-sm text-zinc-500">/mes</span></p>
+              <p className="text-zinc-500 text-xs mb-5">1 mes gratis sin tarjeta</p>
+              <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
                 <li>✓ Facturas ilimitadas</li>
                 <li>✓ Clientes ilimitados</li>
                 <li>✓ Emails ilimitados</li>
-                <li>✓ 4 tonos (amable, firme, formal, extremo)</li>
+                <li>✓ 4 tonos de IA</li>
                 <li>✓ Hasta 10 miembros</li>
                 <li>✓ IA Claude para respuestas</li>
-                <li>✓ Stripe Connect (cobros automáticos)</li>
-                <li>✓ Adjuntos PDF en emails</li>
-                <li>✓ Soporte prioritario</li>
+                <li>✓ Stripe Connect</li>
+                <li>✓ Adjuntos PDF</li>
               </ul>
-              <Link href="/registro?plan=mes" className="block w-full text-center bg-sky-500 text-zinc-900 py-3 rounded-lg font-bold hover:bg-sky-400 transition-colors">Probar 1 mes gratis</Link>
+              <Link href="/registro?plan=mes" className="block w-full text-center bg-sky-500 text-zinc-900 py-2.5 rounded-lg font-bold text-sm hover:bg-sky-400 transition-colors">Probar 1 mes gratis</Link>
             </div>
 
-            <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
+            {/* Pro Anual */}
+            <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-5">
               <p className="text-emerald-400 text-sm mb-1 font-semibold">Pro Anual</p>
-              <p className="text-4xl font-bold text-zinc-100 mb-1">499€<span className="text-base text-zinc-500">/año</span></p>
-              <p className="text-emerald-400 text-sm mb-6 font-semibold">Ahorras 89€ (15%)</p>
-              <ul className="space-y-2 text-zinc-300 text-sm mb-8">
-                <li>✓ Todo lo del plan Pro Mensual</li>
-                <li>✓ Equivalente a 41,58€/mes</li>
-                <li>✓ Cobro único, sin renovación automática</li>
-                <li>✓ Si cancelas antes, devolución proporcional</li>
+              <p className="text-3xl font-bold text-zinc-100 mb-1">499€<span className="text-sm text-zinc-500">/año</span></p>
+              <p className="text-emerald-400 text-xs mb-5 font-semibold">Ahorras 89€ (≈ 2 meses)</p>
+              <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
+                <li>✓ Todo lo del plan Pro</li>
+                <li>✓ 41,58€/mes equivalente</li>
+                <li>✓ Cobro único, sin renovación</li>
+                <li>✓ Devolución proporcional</li>
                 <li>✓ Soporte premium</li>
               </ul>
-              <Link href="/registro?plan=anio" className="block w-full text-center bg-zinc-800 text-zinc-100 border border-emerald-500/30 py-3 rounded-lg font-bold hover:bg-zinc-700 transition-colors">Pagar 499€ y empezar</Link>
+              <Link href="/registro?plan=anio" className="block w-full text-center bg-zinc-800 text-zinc-100 border border-emerald-500/30 py-2.5 rounded-lg font-bold text-sm hover:bg-zinc-700 transition-colors">Pagar 499€ y empezar</Link>
+            </div>
+
+            {/* Max */}
+            <div className="bg-gradient-to-br from-amber-500/20 to-transparent border-2 border-amber-500/50 rounded-2xl p-5 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-zinc-900 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">MÁXIMA POTENCIA</div>
+              <p className="text-amber-400 text-sm mb-1 font-semibold">Max</p>
+              <p className="text-3xl font-bold text-zinc-100 mb-1">99€<span className="text-sm text-zinc-500">/mes</span></p>
+              <p className="text-amber-400 text-xs mb-5">o 1.000€/año (ahorra 2 meses)</p>
+              <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
+                <li>✓ Todo lo del plan Pro</li>
+                <li className="text-amber-300">✓ 3 burofax/mes incluidos</li>
+                <li className="text-amber-300">✓ Email desde tu dominio</li>
+                <li className="text-amber-300">✓ Hasta 25 miembros</li>
+                <li>✓ Soporte VIP prioritario</li>
+                <li className="text-zinc-500">🔜 API access</li>
+              </ul>
+              <Link href="/registro?plan=max-mes" className="block w-full text-center bg-amber-500 text-zinc-900 py-2.5 rounded-lg font-bold text-sm hover:bg-amber-400 transition-colors">Empezar con Max →</Link>
             </div>
           </div>
 
@@ -151,7 +186,11 @@ export default function PagePrecios() {
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
               <h3 className="font-bold text-zinc-100 mb-3">👥 ¿Plan empresa / despacho?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">Si eres una gestoría con +10 miembros o un despacho grande, escríbenos a <a href="mailto:hola@marsof.es" className="text-sky-400 underline">hola@marsof.es</a> para hablar de un plan personalizado.</p>
+              <p className="text-zinc-400 text-sm leading-relaxed">El plan Max incluye hasta 25 miembros. Si necesitas más, escríbenos a <a href="mailto:hola@marsof.es" className="text-sky-400 underline">hola@marsof.es</a> para un plan personalizado.</p>
+            </div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
+              <h3 className="font-bold text-zinc-100 mb-3">📜 ¿Qué es un burofax?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">El burofax es un documento con validez legal que certifica la entrega de una reclamación al deudor. El plan Max incluye 3 al mes y a partir del 4º son 6€/ud. Saldea lo gestiona por ti: tú decides cuándo enviarlo.</p>
             </div>
           </div>
 

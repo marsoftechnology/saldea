@@ -1,6 +1,6 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
-export type Plan = 'free' | 'pro'
+export type Plan = 'free' | 'pro' | 'max'
 
 export const LIMITES_FREE = {
   facturasActivas: 3,
@@ -11,7 +11,12 @@ export const LIMITES_FREE = {
 } as const
 
 export const LIMITES_PRO = {
-  miembrosEquipo: 10, // Pro: hasta 10 miembros incluidos. Más allá → pedir custom plan.
+  miembrosEquipo: 10, // Pro: hasta 10 miembros incluidos.
+} as const
+
+export const LIMITES_MAX = {
+  miembrosEquipo: 25, // Max: hasta 25 miembros + burofax + dominio propio.
+  burofaxMes: 3,      // 3 burofax/mes incluidos, a partir del 4º son 6€/ud.
 } as const
 
 function getServiceClient(): SupabaseClient {
@@ -29,6 +34,7 @@ export async function getUserPlan(userId: string, supabase?: SupabaseClient): Pr
     .select('plan')
     .eq('user_id', userId)
     .maybeSingle()
+  if (data?.plan === 'max') return 'max'
   return (data?.plan === 'pro' ? 'pro' : 'free')
 }
 
@@ -40,6 +46,7 @@ export async function getOrgPlan(orgId: string, supabase?: SupabaseClient): Prom
     .select('plan')
     .eq('org_id', orgId)
     .maybeSingle()
+  if (data?.plan === 'max') return 'max'
   return (data?.plan === 'pro' ? 'pro' : 'free')
 }
 
@@ -57,6 +64,7 @@ export async function contarAsientosOrg(orgId: string, supabase?: SupabaseClient
 
 /** Límite de miembros (miembros + invitaciones pendientes) según el plan de la org. */
 export function limiteMiembrosOrg(plan: Plan): number {
+  if (plan === 'max') return LIMITES_MAX.miembrosEquipo
   return plan === 'pro' ? LIMITES_PRO.miembrosEquipo : LIMITES_FREE.miembrosEquipo
 }
 

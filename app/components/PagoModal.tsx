@@ -7,7 +7,7 @@ import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 const stripePromise = publishableKey ? loadStripe(publishableKey) : null
 
-export function PagoModal({ onClose, interval = 'mes' }: { onClose: () => void; interval?: 'mes' | 'anio' }) {
+export function PagoModal({ onClose, interval = 'mes', planTipo = 'pro' }: { onClose: () => void; interval?: 'mes' | 'anio'; planTipo?: 'pro' | 'max' }) {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function PagoModal({ onClose, interval = 'mes' }: { onClose: () => void; 
     const res = await fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ interval }),
+      body: JSON.stringify({ interval, planTipo }),
     })
     if (!res.ok) {
       setError('Error al conectar con el sistema de pago')
@@ -27,12 +27,18 @@ export function PagoModal({ onClose, interval = 'mes' }: { onClose: () => void; 
     }
     const { clientSecret } = await res.json()
     return clientSecret as string
-  }, [interval])
+  }, [interval, planTipo])
 
-  const titulo = interval === 'anio' ? 'Plan Pro — 499€/año' : 'Plan Pro — 49€/mes'
-  const tagline = interval === 'anio'
-    ? 'Cobro único · sin permanencia · no se renueva sin tu permiso'
-    : '1 mes gratis · sin permanencia · cancela cuando quieras'
+  const titulo = planTipo === 'max'
+    ? (interval === 'anio' ? 'Plan Max — 1.000€/año' : 'Plan Max — 99€/mes')
+    : (interval === 'anio' ? 'Plan Pro — 499€/año' : 'Plan Pro — 49€/mes')
+  const tagline = planTipo === 'max'
+    ? (interval === 'anio'
+      ? 'Cobro único · ahorra 2 meses · no se renueva sin tu permiso'
+      : 'Sin permanencia · cancela cuando quieras')
+    : (interval === 'anio'
+      ? 'Cobro único · sin permanencia · no se renueva sin tu permiso'
+      : '1 mes gratis · sin permanencia · cancela cuando quieras')
 
   return (
     <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={onClose}>

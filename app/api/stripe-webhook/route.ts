@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
+import type { Plan } from '@/lib/plan'
 
 export const runtime = 'nodejs'
 
@@ -17,8 +18,19 @@ function getSupabase() {
   )
 }
 
+/** Detecta si una suscripción de Stripe corresponde al plan Max según los Price IDs configurados. */
+function esMaxPlan(sub: Stripe.Subscription): boolean {
+  const maxMes = process.env.STRIPE_MAX_PRICE_ID
+  const maxAnio = process.env.STRIPE_MAX_PRICE_ID_ANNUAL
+  if (!maxMes && !maxAnio) return false
+  return sub.items.data.some(item => {
+    const priceId = typeof item.price === 'string' ? item.price : item.price?.id
+    return (maxMes && priceId === maxMes) || (maxAnio && priceId === maxAnio)
+  })
+}
+
 async function updateUser(userId: string, fields: {
-  plan?: 'free' | 'pro'
+  plan?: Plan
   stripe_customer_id?: string | null
   stripe_subscription_id?: string | null
 }) {
@@ -56,8 +68,10 @@ export async function POST(req: NextRequest) {
         const session = event.data.object as Stripe.Checkout.Session
         const userId = session.client_reference_id ?? session.metadata?.user_id
         if (userId) {
+          // Detectar si es Max por el planTipo pasado en metadata del checkout
+          const planTipo: Plan = session.metadata?.planTipo === 'max' ? 'max' : 'pro'
           await updateUser(userId, {
-            plan: 'pro',
+            plan: planTipo,
             stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer?.id ?? null,
             stripe_subscription_id: typeof session.subscription === 'string' ? session.subscription : session.subscription?.id ?? null,
           })
@@ -71,8 +85,10 @@ export async function POST(req: NextRequest) {
         const userId = (sub.metadata as any)?.user_id
         if (!userId) break
         const activo = sub.status === 'active' || sub.status === 'trialing'
+        const esMax = esMaxPlan(sub)
+        const planActivo: Plan = esMax ? 'max' : 'pro'
         await updateUser(userId, {
-          plan: activo ? 'pro' : 'free',
+          plan: activo ? planActivo : 'free',
           stripe_customer_id: typeof sub.customer === 'string' ? sub.customer : sub.customer?.id ?? null,
           stripe_subscription_id: sub.id,
         })

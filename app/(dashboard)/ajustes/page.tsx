@@ -48,7 +48,8 @@ export default function AjustesPage() {
   const [detectarDisputa, setDetectarDisputa] = useState(true)
   const [detectarVacaciones, setDetectarVacaciones] = useState(true)
   const [diasViaJudicial, setDiasViaJudicial] = useState(0)
-  const [plan, setPlan] = useState<'free' | 'pro'>('free')
+  const [plan, setPlan] = useState<'free' | 'pro' | 'max'>('free')
+  const [planSeleccionado, setPlanSeleccionado] = useState<'pro' | 'max'>('pro')
   const [intervaloPago, setIntervaloPago] = useState<'mes' | 'anio'>('mes')
   const [mostrarPago, setMostrarPago] = useState(false)
   const [abriendoPortal, setAbriendoPortal] = useState(false)
@@ -86,7 +87,8 @@ export default function AjustesPage() {
       }
       const res = await fetch('/api/configuracion')
       const data = await res.json()
-      if (data.configuracion?.plan === 'pro') setPlan('pro')
+      if (data.configuracion?.plan === 'max') setPlan('max')
+      else if (data.configuracion?.plan === 'pro') setPlan('pro')
       if (data.configuracion?.max_recordatorios) {
         setMaxRecordatorios(data.configuracion.max_recordatorios)
       }
@@ -277,23 +279,29 @@ export default function AjustesPage() {
                 <div className="flex items-center gap-2">
                   <h2 className="text-base font-semibold text-zinc-100">Plan y suscripción</h2>
                   <span className={`text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide ${
-                    plan === 'pro' ? 'bg-sky-500/20 text-sky-300' : 'bg-gray-100 text-zinc-400'
+                    plan === 'max' ? 'bg-amber-500/20 text-amber-300' : plan === 'pro' ? 'bg-sky-500/20 text-sky-300' : 'bg-gray-100 text-zinc-400'
                   }`}>{plan}</span>
                 </div>
                 <p className="text-xs text-zinc-400 mt-1">
-                  {plan === 'pro'
+                  {plan === 'max'
+                    ? 'Tienes el plan Max activo. Burofax automáticos, dominio propio y hasta 25 miembros.'
+                    : plan === 'pro'
                     ? 'Tienes el plan Pro activo. Gracias por confiar en Saldea.'
                     : 'Plan Free · 3 facturas activas, 10 clientes, 30 emails/mes, 1 tono.'}
                 </p>
               </div>
             </div>
-            {plan === 'pro' && (
+            {(plan === 'pro' || plan === 'max') && (
               <div className="flex flex-col items-end gap-1">
                 <button
                   type="button"
                   onClick={abrirPortal}
                   disabled={abriendoPortal}
-                  className="text-sm font-bold text-sky-300 bg-sky-500/10 border border-sky-500/30 hover:bg-sky-500/20 px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
+                  className={`text-sm font-bold px-4 py-2 rounded-lg transition-colors disabled:opacity-50 ${
+                    plan === 'max'
+                      ? 'text-amber-300 bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20'
+                      : 'text-sky-300 bg-sky-500/10 border border-sky-500/30 hover:bg-sky-500/20'
+                  }`}
                 >
                   {abriendoPortal ? 'Abriendo...' : 'Gestionar suscripción →'}
                 </button>
@@ -309,52 +317,70 @@ export default function AjustesPage() {
 
           {plan === 'free' && (
             <div className="border-t border-white/5 pt-4">
-              <p className="text-sm font-medium text-zinc-300 mb-3">Sube a Pro</p>
-              <div className="flex flex-wrap items-center gap-3 mb-4">
-                <button
-                  type="button"
-                  onClick={() => setIntervaloPago('mes')}
+              {/* Selector Pro / Max */}
+              <div className="flex gap-2 mb-4">
+                <button type="button" onClick={() => setPlanSeleccionado('pro')}
+                  className={`flex-1 py-2 rounded-lg text-sm font-semibold border-2 transition-colors ${
+                    planSeleccionado === 'pro' ? 'bg-sky-500/10 border-sky-500 text-sky-300' : 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:border-white/20'
+                  }`}>Pro</button>
+                <button type="button" onClick={() => setPlanSeleccionado('max')}
+                  className={`flex-1 py-2 rounded-lg text-sm font-semibold border-2 transition-colors ${
+                    planSeleccionado === 'max' ? 'bg-amber-500/10 border-amber-500 text-amber-300' : 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:border-white/20'
+                  }`}>Max</button>
+              </div>
+
+              {planSeleccionado === 'max' && (
+                <div className="text-xs text-zinc-400 mb-3 bg-amber-500/5 border border-amber-500/20 rounded-lg px-3 py-2 space-y-0.5">
+                  <p>✓ Todo lo del plan Pro</p>
+                  <p>✓ 3 burofax/mes incluidos (+ 6€/ud extra)</p>
+                  <p>✓ Email desde tu propio dominio</p>
+                  <p>✓ Hasta 25 miembros de equipo</p>
+                </div>
+              )}
+
+              <p className="text-sm font-medium text-zinc-300 mb-3">
+                {planSeleccionado === 'max' ? 'Sube a Max' : 'Sube a Pro'}
+              </p>
+              <div className="flex flex-wrap gap-3 mb-4">
+                <button type="button" onClick={() => setIntervaloPago('mes')}
                   className={`px-4 py-2.5 rounded-lg text-sm font-semibold border-2 transition-colors ${
                     intervaloPago === 'mes'
-                      ? 'bg-sky-500/10 border-sky-500 text-sky-300'
+                      ? (planSeleccionado === 'max' ? 'bg-amber-500/10 border-amber-500 text-amber-300' : 'bg-sky-500/10 border-sky-500 text-sky-300')
                       : 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:border-white/20'
-                  }`}
-                >
-                  Mensual · 49€/mes
-                  <span className="block text-[10px] text-sky-400 font-bold mt-0.5">1 mes gratis</span>
+                  }`}>
+                  {planSeleccionado === 'pro' ? 'Mensual · 49€/mes' : 'Mensual · 99€/mes'}
+                  {planSeleccionado === 'pro' && <span className="block text-[10px] text-sky-400 font-bold mt-0.5">1 mes gratis</span>}
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setIntervaloPago('anio')}
-                  className={`px-4 py-2.5 rounded-lg text-sm font-semibold border-2 transition-colors flex items-center gap-2 ${
+                <button type="button" onClick={() => setIntervaloPago('anio')}
+                  className={`px-4 py-2.5 rounded-lg text-sm font-semibold border-2 transition-colors ${
                     intervaloPago === 'anio'
-                      ? 'bg-sky-500/10 border-sky-500 text-sky-300'
+                      ? (planSeleccionado === 'max' ? 'bg-amber-500/10 border-amber-500 text-amber-300' : 'bg-sky-500/10 border-sky-500 text-sky-300')
                       : 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:border-white/20'
-                  }`}
-                >
-                  <div className="flex flex-col items-start">
-                    <span>Anual · 499€/año</span>
-                    <span className="text-[10px] text-sky-400 font-bold">Ahorra 89€ (casi 2 meses)</span>
-                  </div>
+                  }`}>
+                  {planSeleccionado === 'pro' ? 'Anual · 499€/año' : 'Anual · 1.000€/año'}
+                  <span className={`block text-[10px] font-bold mt-0.5 ${planSeleccionado === 'max' ? 'text-amber-400' : 'text-sky-400'}`}>
+                    {planSeleccionado === 'pro' ? 'Ahorra 89€' : 'Ahorra 188€ (2 meses)'}
+                  </span>
                 </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setMostrarPago(true)}
-                className="bg-sky-500 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-sky-400 transition-colors"
-              >
-                {intervaloPago === 'mes' ? 'Empezar 1 mes gratis →' : 'Pagar 499€ y empezar →'}
+              <button type="button" onClick={() => setMostrarPago(true)}
+                className={`text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors ${
+                  planSeleccionado === 'max' ? 'bg-amber-500 hover:bg-amber-400' : 'bg-sky-500 hover:bg-sky-400'
+                }`}>
+                {planSeleccionado === 'pro'
+                  ? (intervaloPago === 'mes' ? 'Empezar 1 mes gratis →' : 'Pagar 499€ y empezar →')
+                  : (intervaloPago === 'mes' ? 'Empezar con Max →' : 'Pagar 1.000€ y empezar →')}
               </button>
               <p className="text-xs text-zinc-500 mt-3">
-                {intervaloPago === 'mes'
-                  ? 'Se requiere tarjeta. El primer cobro se realiza el día 31. Cancela en 1 clic antes y no pagas nada.'
-                  : 'Cobro único de 499€. Sin permanencia. No se renueva sin tu permiso.'}
+                {intervaloPago === 'mes' && planSeleccionado === 'pro'
+                  ? 'Se requiere tarjeta. El primer cobro el día 31. Cancela en 1 clic antes y no pagas nada.'
+                  : 'Cobro único. Sin permanencia. No se renueva sin tu permiso.'}
               </p>
             </div>
           )}
         </div>
       </div>
-      {mostrarPago && <PagoModal onClose={() => setMostrarPago(false)} interval={intervaloPago} />}
+      {mostrarPago && <PagoModal onClose={() => setMostrarPago(false)} interval={intervaloPago} planTipo={planSeleccionado} />}
 
       {/* Stripe Connect: cobros automáticos */}
       <StripeConnectSection />
