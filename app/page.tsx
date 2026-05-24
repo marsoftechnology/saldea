@@ -155,9 +155,9 @@ export default function MarsofPage() {
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { num: 100, label: 'hecho en España', suffix: '%' },
+              { num: 47, label: 'días de retraso medio en cobros B2B en España', suffix: '' },
+              { num: 100, label: 'hecho en España · datos en Europa', suffix: '%' },
               { num: 0, label: 'permanencia · cancela cuando quieras', suffix: '€' },
-              { num: 100, label: 'datos en servidores europeos · RGPD', suffix: '%' },
               { num: 0, label: 'comisión sobre tus cobros', suffix: '€' },
             ].map((s, i) => (
               <Reveal key={i} effect="fade-up" delay={i * 80}>
