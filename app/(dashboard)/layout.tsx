@@ -24,6 +24,7 @@ const navegacion = [
   { href: '/facturas', label: 'Facturas', icono: '📄' },
   { href: '/clientes', label: 'Clientes', icono: '👥' },
   { href: '/analytics', label: 'Informes', icono: '📈' },
+  { href: '/banco', label: 'Banco', icono: '🏦' },
   { href: '/importar', label: 'Importar CSV', icono: '📥' },
   { href: '/equipo', label: 'Equipo', icono: '🤝' },
 ]

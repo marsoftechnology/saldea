@@ -88,6 +88,7 @@ const comparativa = [
   { feature: 'Plantillas en 4 idiomas', saldea: true, manual: false, otros: 'A veces' },
   { feature: 'PDF de factura adjunto', saldea: true, manual: false, otros: true },
   { feature: 'Emails con tu logo, firma y empresa', saldea: true, manual: 'Si te acuerdas', otros: 'A veces' },
+  { feature: 'Conciliación bancaria automática', saldea: '✅ Plan Max', manual: false, otros: false },
   { feature: 'Tiempo dedicado a perseguir cobros', saldea: '0h/mes', manual: '5-10h/mes por moroso', otros: '2-4h/mes' },
   { feature: 'Coste', saldea: '49€/mes o 499€/año', manual: '0€ (tu tiempo)', otros: '100-1.000€/mes' },
 ]

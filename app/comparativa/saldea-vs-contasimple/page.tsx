@@ -43,7 +43,8 @@ export default function PageVsContasimple() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios IA</td><td className="py-2 px-4">✅ Claude</td><td className="py-2 px-4">❌</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">Básico</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Plan gratis</td><td className="py-2 px-4">3 facturas</td><td className="py-2 px-4">Ilimitado</td></tr>
-                <tr><td className="py-2 px-4">Plan Pro</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">~10-20€/mes</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Plan Pro</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">~10-20€/mes</td></tr>
+                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">✅ Plan Max (GoCardless)</td><td className="py-2 px-4">❌</td></tr>
               </tbody>
             </table>
           </div>
@@ -65,6 +66,7 @@ export default function PageVsContasimple() {
             <li>✓ Tu cliente paga tarde habitualmente</li>
             <li>✓ Tienes facturas vencidas pendientes</li>
             <li>✓ Dedicas tiempo a reclamar manualmente</li>
+            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): conecta tu banco vía GoCardless y Saldea cruza cada pago recibido con sus facturas automáticamente.</li>
           </ul>
         </section>
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
