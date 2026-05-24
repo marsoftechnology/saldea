@@ -60,20 +60,13 @@ export async function loginAdmin(usernameInput: string, passwordInput: string): 
     return false
   }
 
-  // DEBUG TEMPORAL — borrar tras verificar
-  console.log('[admin-debug] usernameOk.length:', usernameOk.length, '| usernameInput.length:', usernameInput.length)
-  console.log('[admin-debug] hash.length:', hash.length, '| hash prefix:', hash.slice(0, 7))
-
   // Comparar usuario en tiempo constante
   const a = Buffer.from(usernameInput || '')
   const b = Buffer.from(usernameOk)
-  const usernameMatch = a.length === b.length && timingSafeEqual(a, b)
-  console.log('[admin-debug] usernameMatch:', usernameMatch)
-  if (!usernameMatch) return false
+  if (a.length !== b.length || !timingSafeEqual(a, b)) return false
 
   // Comparar password con bcrypt
   const ok = await bcrypt.compare(passwordInput || '', hash)
-  console.log('[admin-debug] bcryptMatch:', ok)
   if (!ok) return false
 
   const token = crearToken()
