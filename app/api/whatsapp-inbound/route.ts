@@ -160,6 +160,16 @@ export async function POST(req: NextRequest) {
       break
   }
 
+  // Auto-reply: confirmación automática al deudor según categoría
+  const autoReplies: Record<string, string> = {
+    pago_confirmado: '✅ Hemos recibido tu confirmación. Verificaremos el pago y no recibirás más recordatorios por esta factura. ¡Gracias!',
+    disputa: '📋 Hemos recibido tu mensaje. Alguien de nuestro equipo se pondrá en contacto contigo para resolverlo. Mientras tanto, pausamos los recordatorios.',
+    vacaciones: '🏖️ Entendido, reanudaremos el contacto cuando vuelvas. ¡Que descanses!',
+    pidiendo_plazos: '💳 Hemos recibido tu solicitud. Nuestro equipo te contactará en breve para acordar un plan de pago.',
+    otro: '📩 Hemos recibido tu mensaje. Gracias por responder.',
+  }
+  const replyText = autoReplies[clasificacion.categoria] ?? autoReplies.otro
+
   await Promise.all([
     supabase.from('respuestas_clientes').insert({
       factura_id: factura.id,
@@ -180,6 +190,10 @@ export async function POST(req: NextRequest) {
           notas_internas: notas,
         }).eq('id', factura.id)
       : Promise.resolve(),
+    // Enviar confirmación automática al deudor (fire-and-forget, no bloquea)
+    enviarWhatsApp({ para: telefono, cuerpo: replyText }).catch(e =>
+      console.error('[whatsapp-inbound] auto-reply failed:', e)
+    ),
   ])
 
   return NextResponse.json({

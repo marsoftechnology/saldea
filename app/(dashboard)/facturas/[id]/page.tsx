@@ -6,6 +6,7 @@ import EnviarRecordatorioButton from './EnviarRecordatorioButton'
 import NotasInternasEditor from './NotasInternasEditor'
 import LinkPagoEditor from './LinkPagoEditor'
 import PdfPropioUploader from './PdfPropioUploader'
+import PortalClienteLink from './PortalClienteLink'
 import PagosSection from './PagosSection'
 import WhatsAppRecordatorioButton from './WhatsAppRecordatorioButton'
 import WhatsAppEnviarFacturaButton from './WhatsAppEnviarFacturaButton'
@@ -156,6 +157,11 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
         numeroFactura={factura.numero}
         pdfPathInicial={factura.pdf_propio_path ?? null}
       />
+
+      {/* Portal del cliente — URL pública para que el deudor vea y pague la factura */}
+      {factura.estado !== 'cobrada' && factura.estado !== 'cancelada' && (
+        <PortalClienteLink facturaId={factura.id} />
+      )}
 
       {/* Link de pago */}
       <LinkPagoEditor facturaId={factura.id} linkInicial={factura.link_pago ?? null} />

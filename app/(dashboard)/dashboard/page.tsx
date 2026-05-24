@@ -41,11 +41,13 @@ export default async function DashboardPage() {
   }
   const totalPagado = Array.from(pagosPorFactura.values()).reduce((s, v) => s + v, 0)
 
-  const [{ data: facturas }, { data: clientes }, { count: logsCount }, { data: configPlan }] = await Promise.all([
+  const [{ data: facturas }, { data: clientes }, { count: logsCount }, { data: configPlan }, { data: pagosRecientes }, { data: respuestasRecientes }] = await Promise.all([
     supabase.from('facturas').select('*, cliente:clientes(nombre, empresa)').eq('org_id', org.org_id).order('created_at', { ascending: false }).limit(5),
     supabase.from('clientes').select('id').eq('org_id', org.org_id),
     supabase.from('logs_email').select('id', { count: 'exact', head: true }).eq('org_id', org.org_id),
     supabase.from('configuraciones_usuario').select('plan').eq('org_id', org.org_id).maybeSingle(),
+    supabase.from('pagos').select('id, importe, fecha, factura_id, factura:facturas(numero, cliente:clientes(nombre))').eq('org_id', org.org_id).order('fecha', { ascending: false }).limit(5),
+    supabase.from('respuestas_clientes').select('id, categoria, resumen, created_at, cliente:clientes(nombre)').eq('org_id', org.org_id).order('created_at', { ascending: false }).limit(5),
   ])
 
   const plan = (configPlan?.plan === 'max' ? 'max' : configPlan?.plan === 'pro' ? 'pro' : 'free') as 'free' | 'pro' | 'max'
@@ -151,38 +153,110 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
-      {/* Últimas facturas */}
-      <div className="bg-zinc-900/40 border border-white/10 rounded-xl overflow-hidden">
-        <div className="flex items-center justify-between p-6 border-b border-white/5">
-          <h2 className="font-semibold text-white">Últimas facturas</h2>
-          <Link href="/facturas" className="text-sm text-sky-400 hover:text-sky-300 transition-colors">Ver todas →</Link>
+      {/* Grid: últimas facturas + actividad reciente */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        {/* Últimas facturas */}
+        <div className="bg-zinc-900/40 border border-white/10 rounded-xl overflow-hidden">
+          <div className="flex items-center justify-between p-5 border-b border-white/5">
+            <h2 className="font-semibold text-white text-sm">Últimas facturas</h2>
+            <Link href="/facturas" className="text-xs text-sky-400 hover:text-sky-300 transition-colors">Ver todas →</Link>
+          </div>
+
+          {facturas && facturas.length > 0 ? (
+            <div className="divide-y divide-white/5">
+              {facturas.map(factura => (
+                <Link key={factura.id} href={`/facturas/${factura.id}`} className="flex items-center justify-between p-4 hover:bg-white/[0.03] transition-colors">
+                  <div>
+                    <p className="text-sm font-medium text-zinc-100">{(factura.cliente as { nombre: string })?.nombre}</p>
+                    <p className="text-xs text-zinc-500">Factura {factura.numero} · Vence {formatearFecha(factura.fecha_vencimiento)}</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-semibold text-zinc-100">{formatearEuros(factura.importe)}</span>
+                    <span className={`text-xs font-medium px-2 py-1 rounded-full border ${colorEstado(factura.estado)}`}>
+                      {etiquetaEstado(factura.estado)}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="p-10 text-center">
+              <p className="text-zinc-500 text-sm mb-3">Aún no tienes facturas</p>
+              <Link href="/facturas/nueva" className="text-sky-400 text-sm font-medium hover:underline">
+                Crear tu primera factura →
+              </Link>
+            </div>
+          )}
         </div>
 
-        {facturas && facturas.length > 0 ? (
-          <div className="divide-y divide-white/5">
-            {facturas.map(factura => (
-              <Link key={factura.id} href={`/facturas/${factura.id}`} className="flex items-center justify-between p-4 hover:bg-white/[0.03] transition-colors">
-                <div>
-                  <p className="text-sm font-medium text-zinc-100">{(factura.cliente as { nombre: string })?.nombre}</p>
-                  <p className="text-xs text-zinc-500">Factura {factura.numero} · Vence {formatearFecha(factura.fecha_vencimiento)}</p>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-semibold text-zinc-100">{formatearEuros(factura.importe)}</span>
-                  <span className={`text-xs font-medium px-2 py-1 rounded-full border ${colorEstado(factura.estado)}`}>
-                    {etiquetaEstado(factura.estado)}
-                  </span>
-                </div>
-              </Link>
-            ))}
+        {/* Actividad reciente */}
+        <div className="bg-zinc-900/40 border border-white/10 rounded-xl overflow-hidden">
+          <div className="flex items-center justify-between p-5 border-b border-white/5">
+            <h2 className="font-semibold text-white text-sm">Actividad reciente</h2>
+            <Link href="/analytics" className="text-xs text-sky-400 hover:text-sky-300 transition-colors">Ver informes →</Link>
           </div>
-        ) : (
-          <div className="p-12 text-center">
-            <p className="text-zinc-500 text-sm mb-4">Aún no tienes facturas</p>
-            <Link href="/facturas/nueva" className="text-sky-400 text-sm font-medium hover:underline">
-              Crear tu primera factura →
-            </Link>
-          </div>
-        )}
+
+          {(() => {
+            type EventoActividad =
+              | { tipo: 'pago'; fecha: string; nombre: string; importe: number; numero: string }
+              | { tipo: 'respuesta'; fecha: string; nombre: string; categoria: string; resumen: string }
+
+            const eventos: EventoActividad[] = [
+              ...(pagosRecientes ?? []).map(p => ({
+                tipo: 'pago' as const,
+                fecha: p.fecha,
+                nombre: ((p.factura as { cliente: { nombre: string } | null } | null)?.cliente?.nombre) ?? '—',
+                importe: Number(p.importe),
+                numero: (p.factura as { numero: string } | null)?.numero ?? '',
+              })),
+              ...(respuestasRecientes ?? []).map(r => ({
+                tipo: 'respuesta' as const,
+                fecha: r.created_at,
+                nombre: (r.cliente as { nombre: string } | null)?.nombre ?? '—',
+                categoria: r.categoria ?? 'otro',
+                resumen: r.resumen ?? '',
+              })),
+            ].sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()).slice(0, 8)
+
+            const iconoCat: Record<string, string> = {
+              pago_confirmado: '🟢', disputa: '🟡', vacaciones: '🏖️', pidiendo_plazos: '💳', otro: '💬',
+            }
+
+            if (eventos.length === 0) {
+              return (
+                <div className="p-10 text-center">
+                  <p className="text-zinc-500 text-sm">La actividad aparecerá aquí</p>
+                  <p className="text-zinc-600 text-xs mt-1">Pagos recibidos, respuestas de clientes…</p>
+                </div>
+              )
+            }
+
+            return (
+              <div className="divide-y divide-white/5">
+                {eventos.map((ev, i) => (
+                  <div key={i} className="flex items-start gap-3 p-4">
+                    <span className="text-lg mt-0.5 shrink-0">
+                      {ev.tipo === 'pago' ? '💰' : iconoCat[ev.categoria] ?? '💬'}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-zinc-100 truncate">{ev.nombre}</p>
+                      {ev.tipo === 'pago' ? (
+                        <p className="text-xs text-zinc-400">Pago de {formatearEuros(ev.importe)} · Factura {ev.numero}</p>
+                      ) : (
+                        <p className="text-xs text-zinc-400 truncate">{ev.resumen || ev.categoria}</p>
+                      )}
+                    </div>
+                    <span className="text-xs text-zinc-600 shrink-0 mt-0.5">
+                      {new Date(ev.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )
+          })()}
+        </div>
+
       </div>
     </div>
   )

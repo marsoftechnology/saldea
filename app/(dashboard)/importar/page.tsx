@@ -15,6 +15,70 @@ const EJEMPLO_CSV = `nombre,email,empresa,factura_numero,importe,fecha_vencimien
 Juan García,juan@empresa.com,Empresa SA,001,1500,2026-06-30,Diseño web
 María López,maria@tech.com,,002,800,2026-07-15,Consultoría`
 
+const GUIAS: Record<string, { nombre: string; pasos: string[]; columnas: string }> = {
+  holded: {
+    nombre: 'Holded',
+    pasos: [
+      'Ve a Ventas → Facturas en Holded.',
+      'Haz clic en "Exportar" (arriba a la derecha) → selecciona CSV.',
+      'En el CSV de Holded renombra las columnas: "Nombre cliente" → nombre, "Email" → email, "Empresa" → empresa, "Número" → factura_numero, "Total" → importe, "Fecha vencimiento" → fecha_vencimiento, "Concepto" → descripcion.',
+      'Asegúrate de que las fechas están en formato AAAA-MM-DD (por ejemplo 2026-06-30).',
+    ],
+    columnas: 'Nombre cliente, Email, Empresa, Número, Total, Fecha vencimiento, Concepto',
+  },
+  quipu: {
+    nombre: 'Quipu',
+    pasos: [
+      'Ve a Facturación → Facturas emitidas en Quipu.',
+      'Usa el botón "Exportar" → CSV.',
+      'Renombra: "Cliente" → nombre, "Email cliente" → email, "Razón social" → empresa, "Número factura" → factura_numero, "Total" → importe, "Fecha vencimiento" → fecha_vencimiento, "Descripción" → descripcion.',
+      'Formatea las fechas como AAAA-MM-DD. Quipu las exporta como DD/MM/AAAA, cámbialas en Excel con la función TEXTO(A1,"AAAA-MM-DD").',
+    ],
+    columnas: 'Cliente, Email cliente, Razón social, Número factura, Total, Fecha vencimiento, Descripción',
+  },
+  anfix: {
+    nombre: 'Anfix',
+    pasos: [
+      'Ve a Facturación → Facturas en Anfix.',
+      'Exporta a Excel/CSV desde el menú superior.',
+      'Renombra las columnas al formato de Saldea: nombre, email, empresa, factura_numero, importe, fecha_vencimiento, descripcion.',
+      'Convierte las fechas: Anfix usa formato DD/MM/AAAA, cámbialas a AAAA-MM-DD.',
+    ],
+    columnas: 'Nombre cliente, Email, CIF/empresa, Número, Importe total, Fecha vto, Concepto',
+  },
+  billin: {
+    nombre: 'Billin',
+    pasos: [
+      'Ve a Facturas → Listado en Billin.',
+      'Exporta con el botón CSV/Excel del listado.',
+      'Renombra al formato Saldea: nombre, email, empresa, factura_numero, importe, fecha_vencimiento, descripcion.',
+      'Fechas en formato AAAA-MM-DD.',
+    ],
+    columnas: 'Cliente, Email, Empresa, Ref. factura, Total, Vencimiento, Descripción',
+  },
+  sage: {
+    nombre: 'Sage 50 / ContaPlus',
+    pasos: [
+      'En Sage 50 ve a Facturación → Informes → Listado de facturas emitidas.',
+      'Exporta a CSV desde el menú Imprimir → Exportar.',
+      'El CSV de Sage puede tener muchas columnas; elimina las que no necesitas y deja: nombre cliente, email, empresa/CIF, número factura, total factura, fecha vencimiento, concepto.',
+      'Renombra a: nombre, email, empresa, factura_numero, importe, fecha_vencimiento, descripcion.',
+    ],
+    columnas: 'Nombre cliente, Email, Empresa, Número factura, Total, Fecha vencimiento, Concepto',
+  },
+  excel: {
+    nombre: 'Excel / hoja propia',
+    pasos: [
+      'Crea una hoja con estas 7 columnas exactas en la primera fila: nombre, email, empresa, factura_numero, importe, fecha_vencimiento, descripcion.',
+      'Rellena los datos. "empresa" y "descripcion" son opcionales (pueden ir vacías).',
+      'Las fechas deben estar en formato AAAA-MM-DD (por ejemplo 2026-06-30).',
+      'El importe debe ser un número decimal con punto: 1500.00, no "1.500,00€".',
+      'Guarda como CSV (Archivo → Guardar como → CSV UTF-8).',
+    ],
+    columnas: 'nombre, email, empresa, factura_numero, importe, fecha_vencimiento, descripcion',
+  },
+}
+
 export default function ImportarPage() {
   const inputRef = useRef<HTMLInputElement>(null)
   const [filas, setFilas] = useState<Record<string, string>[]>([])
@@ -22,6 +86,7 @@ export default function ImportarPage() {
   const [resultado, setResultado] = useState<Resultado | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [plan, setPlan] = useState<'free' | 'pro' | null>(null)
+  const [software, setSoftware] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('/api/configuracion')
@@ -114,10 +179,47 @@ export default function ImportarPage() {
         </div>
       )}
 
-      {/* Instrucciones */}
+      {/* Selector de software */}
+      <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 mb-4">
+        <h2 className="font-semibold text-zinc-100 mb-3 text-sm">¿Desde qué software importas?</h2>
+        <div className="flex flex-wrap gap-2">
+          {Object.entries(GUIAS).map(([key, g]) => (
+            <button
+              key={key}
+              onClick={() => setSoftware(software === key ? null : key)}
+              className={`text-sm px-3 py-1.5 rounded-lg border transition-colors ${
+                software === key
+                  ? 'bg-sky-500/20 border-sky-500/40 text-sky-300'
+                  : 'bg-zinc-900/60 border-white/10 text-zinc-400 hover:text-zinc-200 hover:border-white/20'
+              }`}
+            >
+              {g.nombre}
+            </button>
+          ))}
+        </div>
+
+        {software && GUIAS[software] && (
+          <div className="mt-4 border-t border-white/5 pt-4">
+            <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
+              Guía para {GUIAS[software].nombre}
+            </p>
+            <ol className="space-y-2">
+              {GUIAS[software].pasos.map((paso, i) => (
+                <li key={i} className="flex gap-3 text-sm text-zinc-300">
+                  <span className="w-5 h-5 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs shrink-0 font-bold mt-0.5">
+                    {i + 1}
+                  </span>
+                  <span>{paso}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+      </div>
+
+      {/* Instrucciones formato */}
       <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 mb-6">
-        <h2 className="font-semibold text-zinc-100 mb-2 text-sm">Formato del CSV</h2>
-        <p className="text-zinc-400 text-sm mb-3">El archivo debe tener estas columnas (en este orden):</p>
+        <h2 className="font-semibold text-zinc-100 mb-2 text-sm">Columnas requeridas en el CSV</h2>
         <div className="flex flex-wrap gap-2 mb-3">
           {COLUMNAS.map(c => (
             <span key={c} className={`text-xs px-2 py-1 rounded font-mono ${c === 'empresa' || c === 'descripcion' ? 'bg-zinc-800 text-zinc-400' : 'bg-sky-500/20 text-sky-300'}`}>
