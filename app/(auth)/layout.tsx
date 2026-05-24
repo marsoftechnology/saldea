@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Logo } from '@/app/components/Logo'
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,14 +17,14 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </div>
 
       <div className="w-full max-w-md">
-        <div className="flex flex-col items-center mb-8 gap-4">
-          <Logo variant="mark" size="md" href="/" />
-          <Link href="/" className="inline-flex items-baseline gap-2">
-            <span className="text-3xl font-bold tracking-tight bg-gradient-to-r from-sky-300 via-sky-400 to-sky-500 bg-clip-text text-transparent">
+        {/* Saldea brand — sin logo de Marsof */}
+        <div className="flex flex-col items-center mb-8 gap-2">
+          <Link href="/saldea" className="inline-flex items-center gap-3">
+            <span className="text-4xl font-bold tracking-tight bg-gradient-to-r from-sky-300 via-sky-400 to-sky-500 bg-clip-text text-transparent">
               Saldea
             </span>
-            <span className="text-xs text-zinc-500">by Marsof</span>
           </Link>
+          <p className="text-zinc-500 text-xs">Cobro automático de facturas con IA</p>
         </div>
 
         <div className="rounded-2xl bg-gradient-to-br from-sky-500/20 via-white/5 to-transparent p-[1px] shadow-2xl shadow-sky-500/10">
@@ -35,7 +34,11 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         <p className="text-center text-xs text-zinc-600 mt-6">
-          1 mes gratis · cancela en 1 clic · sin permanencia
+          15 días gratis · cancela en 1 clic · sin permanencia
+        </p>
+        <p className="text-center text-xs text-zinc-700 mt-2">
+          Saldea es un producto de{' '}
+          <Link href="/" className="hover:text-zinc-500 transition-colors">Marsof Technology</Link>
         </p>
       </div>
     </div>

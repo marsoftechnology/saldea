@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Reveal } from './saldea/Reveal'
 import { Counter } from './saldea/Counter'
 import { Logo } from './components/Logo'
@@ -94,7 +93,7 @@ export default function MarsofPage() {
               Acceder
             </Link>
             <Link href="/saldea" className="bg-white text-zinc-900 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-zinc-100 transition-colors">
-              Probar Saldea →
+              Ver productos →
             </Link>
           </div>
         </div>
@@ -111,7 +110,7 @@ export default function MarsofPage() {
         <Reveal effect="fade-up">
           <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
-            Construido para autónomos y pymes españolas
+            Empresa tecnológica española · micro-SaaS con IA
           </div>
         </Reveal>
 
@@ -133,21 +132,21 @@ export default function MarsofPage() {
 
         <Reveal effect="fade-up" delay={240}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/saldea"
-              className="group inline-flex items-center gap-2 bg-sky-500 text-white px-7 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5"
-            >
-              Empezar con Saldea
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </Link>
             <a
               href="#productos"
+              className="group inline-flex items-center gap-2 bg-sky-500 text-white px-7 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5"
+            >
+              Ver nuestros productos
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+            <Link
+              href="/sobre-marsof"
               className="inline-flex items-center gap-2 text-zinc-300 hover:text-white font-medium px-2 py-4 transition-colors"
             >
-              Ver todos los productos
-            </a>
+              Sobre Marsof Technology
+            </Link>
           </div>
-          <p className="text-zinc-500 text-sm mt-5">15 días gratis · sin permanencia</p>
+          <p className="text-zinc-500 text-sm mt-5">Software hecho en España · datos en Europa · sin permanencia</p>
         </Reveal>
       </section>
 
@@ -156,10 +155,10 @@ export default function MarsofPage() {
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { num: 10, label: 'horas ahorradas al mes', suffix: 'h' },
-              { num: 3, label: 'apps en desarrollo', suffix: '' },
+              { num: 3, label: 'apps en desarrollo activo', suffix: '' },
               { num: 100, label: 'hecho en España', suffix: '%' },
-              { num: 0, label: 'permanencia · cancela cuando quieras', suffix: '€' },
+              { num: 0, label: 'permanencia en ninguna app', suffix: '€' },
+              { num: 100, label: 'datos en servidores europeos', suffix: '%' },
             ].map((s, i) => (
               <Reveal key={i} effect="fade-up" delay={i * 80}>
                 <p className="text-4xl md:text-5xl font-bold text-white tracking-tight">
@@ -254,66 +253,6 @@ export default function MarsofPage() {
         </div>
       </section>
 
-      {/* Saldea preview con screenshot */}
-      <section className="py-20 border-y border-white/5 bg-black/20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center">
-            <Reveal effect="slide-left">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-sky-300 bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full">
-                Producto destacado
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-5 mb-5 tracking-tight">
-                Saldea: cobra tus facturas sin perseguir a nadie
-              </h2>
-              <p className="text-zinc-400 text-lg leading-relaxed mb-6">
-                IA que escribe y manda los recordatorios por ti.
-                Escala el tono con los días, entiende las respuestas de tus clientes
-                y pausa cuando se confirma el pago.
-              </p>
-              <ul className="space-y-3 text-zinc-300 mb-8">
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> 5 tonos de cordial a último aviso legal</li>
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Detecta automáticamente respuestas del cliente</li>
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Importación masiva CSV + plantillas 4 idiomas</li>
-              </ul>
-              <Link
-                href="/saldea"
-                className="inline-flex items-center gap-2 bg-sky-500 text-zinc-900 px-6 py-3 rounded-xl font-bold hover:bg-sky-400 transition-all hover:-translate-y-0.5"
-              >
-                Empezar 15 días gratis →
-              </Link>
-            </Reveal>
-            <Reveal effect="slide-right" delay={150}>
-              <div className="relative">
-                <div className="absolute inset-0 bg-sky-500/15 blur-3xl -z-10 rounded-3xl" />
-                <div className="rounded-xl bg-gradient-to-br from-sky-500/30 via-white/10 to-transparent p-[1px] shadow-2xl shadow-sky-500/10">
-                  <div className="rounded-xl bg-zinc-900 overflow-hidden">
-                    <div className="flex items-center gap-2 px-4 py-3 bg-zinc-950/80 border-b border-white/5">
-                      <div className="flex gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-rose-500/60" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-sky-500/60" />
-                      </div>
-                      <div className="flex-1 flex justify-center">
-                        <div className="bg-zinc-800/80 text-zinc-500 text-xs px-3 py-1 rounded-md font-mono">
-                          marsof.es/dashboard
-                        </div>
-                      </div>
-                    </div>
-                    <Image
-                      src="/images/saldea/dashboard.png"
-                      alt="Panel de control de Saldea con stats de cobros"
-                      width={1534}
-                      height={691}
-                      className="w-full h-auto block"
-                    />
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* Misión */}
       <section id="mision" className="py-28">
         <div className="max-w-5xl mx-auto px-6">
@@ -353,18 +292,19 @@ export default function MarsofPage() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.15),transparent_60%)]" />
               <div className="relative">
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight">
-                  Empieza hoy, sin riesgos
+                  ¿Tienes una factura sin cobrar ahora mismo?
                 </h2>
                 <p className="text-zinc-300 mb-10 text-lg max-w-xl mx-auto">
-                  Prueba Saldea gratis durante 15 días. Cancela en 1 clic antes y no pagas nada.
+                  Saldea, nuestro primer producto, lo resuelve solo. Pruébalo 15 días gratis.
                 </p>
                 <Link
                   href="/saldea"
                   className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-2xl shadow-sky-500/20"
                 >
-                  Empezar con Saldea
+                  Probar Saldea gratis
                   <span>→</span>
                 </Link>
+                <p className="text-zinc-600 text-xs mt-4">15 días gratis · sin permanencia · cancela en 1 clic</p>
               </div>
             </div>
           </Reveal>
