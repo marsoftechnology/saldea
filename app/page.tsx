@@ -171,6 +171,80 @@ export default function MarsofPage() {
         </div>
       </section>
 
+      {/* Testimonios (preview) */}
+      <section className="py-20 border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-6">
+          <Reveal effect="fade-up">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+              <div>
+                <p className="text-sky-400 font-semibold text-xs mb-3 uppercase tracking-[0.2em]">Testimonios</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Lo que dicen quienes ya cobran</h2>
+              </div>
+              <Link href="/testimonios" className="text-sm text-zinc-400 hover:text-zinc-100 transition-colors whitespace-nowrap flex items-center gap-1">
+                Ver los 20 testimonios →
+              </Link>
+            </div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                texto: 'Llevaba años con el mismo problema: facturaba bien pero cobrar era un calvario. Saldea envía los recordatorios por mí sin que parezca que soy yo quien presiona. Recuperé casi 4.000€ en facturas que llevaban más de 90 días.',
+                nombre: 'Raúl Domínguez',
+                rol: 'Consultor IT autónomo · Madrid',
+                avatar: 'RD',
+                color: 'bg-sky-600',
+                estrellas: 5,
+              },
+              {
+                texto: 'En nuestra gestoría gestionamos la facturación de más de 40 clientes. Antes teníamos una persona dedicada casi a tiempo parcial a hacer seguimiento de impagados. Ahora Saldea lo hace solo.',
+                nombre: 'Jorge Peinado',
+                rol: 'Socio en gestoría · Sevilla',
+                avatar: 'JP',
+                color: 'bg-emerald-600',
+                estrellas: 5,
+              },
+              {
+                texto: 'El mayor problema en mi sector es que no puedes ponerte a cobrar de forma agresiva con pacientes. Saldea lo maneja con una templanza que yo sola no podría mantener. Los mensajes son amables y aun así funcionan.',
+                nombre: 'Sofía Martínez',
+                rol: 'Psicóloga en consulta privada · Granada',
+                avatar: 'SM',
+                color: 'bg-rose-600',
+                estrellas: 5,
+              },
+            ].map((t, i) => (
+              <Reveal key={i} effect="fade-up" delay={i * 80}>
+                <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 flex flex-col h-full hover:border-white/10 transition-colors">
+                  <div className="flex gap-0.5 mb-4">
+                    {[1,2,3,4,5].map(s => (
+                      <span key={s} className={s <= t.estrellas ? 'text-amber-400' : 'text-zinc-700'}>★</span>
+                    ))}
+                  </div>
+                  <p className="text-zinc-300 text-sm leading-relaxed flex-1 mb-5">&ldquo;{t.texto}&rdquo;</p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                    <div className={`w-9 h-9 rounded-full ${t.color} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
+                      {t.avatar}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-zinc-100">{t.nombre}</p>
+                      <p className="text-xs text-zinc-500">{t.rol}</p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal effect="fade-up">
+            <div className="text-center mt-8">
+              <Link href="/testimonios" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-100 bg-zinc-900/60 border border-white/5 px-5 py-2.5 rounded-lg transition-colors hover:border-white/10">
+                Ver los 20 testimonios completos →
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Productos */}
       <section id="productos" className="py-28 max-w-6xl mx-auto px-6">
         <Reveal effect="fade-up">
@@ -250,80 +324,6 @@ export default function MarsofPage() {
               </div>
             </Reveal>
           ))}
-        </div>
-      </section>
-
-      {/* Testimonios (preview) */}
-      <section className="py-20 border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6">
-          <Reveal effect="fade-up">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
-              <div>
-                <p className="text-sky-400 font-semibold text-xs mb-3 uppercase tracking-[0.2em]">Testimonios</p>
-                <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Lo que dicen quienes ya cobran</h2>
-              </div>
-              <Link href="/testimonios" className="text-sm text-zinc-400 hover:text-zinc-100 transition-colors whitespace-nowrap flex items-center gap-1">
-                Ver los 20 testimonios →
-              </Link>
-            </div>
-          </Reveal>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              {
-                texto: 'Llevaba años con el mismo problema: facturaba bien pero cobrar era un calvario. Saldea envía los recordatorios por mí sin que parezca que soy yo quien presiona. Recuperé casi 4.000€ en facturas que llevaban más de 90 días.',
-                nombre: 'Raúl Domínguez',
-                rol: 'Consultor IT autónomo · Madrid',
-                avatar: 'RD',
-                color: 'bg-sky-600',
-                estrellas: 5,
-              },
-              {
-                texto: 'En nuestra gestoría gestionamos la facturación de más de 40 clientes. Antes teníamos una persona dedicada casi a tiempo parcial a hacer seguimiento de impagados. Ahora Saldea lo hace solo.',
-                nombre: 'Jorge Peinado',
-                rol: 'Socio en gestoría · Sevilla',
-                avatar: 'JP',
-                color: 'bg-emerald-600',
-                estrellas: 5,
-              },
-              {
-                texto: 'El mayor problema en mi sector es que no puedes ponerte a cobrar de forma agresiva con pacientes. Saldea lo maneja con una templanza que yo sola no podría mantener. Los mensajes son amables y aun así funcionan.',
-                nombre: 'Sofía Martínez',
-                rol: 'Psicóloga en consulta privada · Granada',
-                avatar: 'SM',
-                color: 'bg-rose-600',
-                estrellas: 5,
-              },
-            ].map((t, i) => (
-              <Reveal key={i} effect="fade-up" delay={i * 80}>
-                <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 flex flex-col h-full hover:border-white/10 transition-colors">
-                  <div className="flex gap-0.5 mb-4">
-                    {[1,2,3,4,5].map(s => (
-                      <span key={s} className={s <= t.estrellas ? 'text-amber-400' : 'text-zinc-700'}>★</span>
-                    ))}
-                  </div>
-                  <p className="text-zinc-300 text-sm leading-relaxed flex-1 mb-5">&ldquo;{t.texto}&rdquo;</p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                    <div className={`w-9 h-9 rounded-full ${t.color} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-zinc-100">{t.nombre}</p>
-                      <p className="text-xs text-zinc-500">{t.rol}</p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal effect="fade-up">
-            <div className="text-center mt-8">
-              <Link href="/testimonios" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-100 bg-zinc-900/60 border border-white/5 px-5 py-2.5 rounded-lg transition-colors hover:border-white/10">
-                Ver los 20 testimonios completos →
-              </Link>
-            </div>
-          </Reveal>
         </div>
       </section>
 
