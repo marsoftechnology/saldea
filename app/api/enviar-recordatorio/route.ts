@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite enviar recordatorios' }, { status: 403 })
 
     // Rate limit anti-abuso: máx 30 envíos por org por hora
-    const rl = checkRateLimit({ key: org.org_id, ventana: '1h', max: 30 })
+    const rl = await checkRateLimit({ key: org.org_id, ventana: '1h', max: 30 })
     if (!rl.allowed) {
       return NextResponse.json(
         { error: `Has hecho demasiados envíos esta hora. Inténtalo en ${Math.ceil((rl.retryAfter ?? 60) / 60)} min.` },

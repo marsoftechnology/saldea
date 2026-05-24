@@ -35,6 +35,7 @@ export default async function AdminInicioPage() {
   const hoy = new Date()
   const yearActual = hoy.getUTCFullYear()
   const mesActual = hoy.getUTCMonth()
+  const hace30 = new Date(hoy.getTime() - 30 * 24 * 3600 * 1000)
 
   // Pedimos todo en paralelo
   const [
@@ -42,6 +43,7 @@ export default async function AdminInicioPage() {
     mesAnterior,
     esteAno,
     lifetime,
+    ultimos30,
     subs,
     porMes,
     eventos,
@@ -53,6 +55,7 @@ export default async function AdminInicioPage() {
       : periodoMes(yearActual, mesActual - 1)),
     sumaIngresos(periodoAno(yearActual)),
     sumaIngresos(), // todo el lifetime
+    sumaIngresos({ inicio: hace30, fin: hoy }),
     suscripcionesActivas(),
     ingresosPorMes(12),
     eventosRecientes(10),
@@ -63,6 +66,11 @@ export default async function AdminInicioPage() {
   const arrCentimos = mrrCentimos * 12
   const subsActivas = subs.filter(s => s.estado === 'active' || s.estado === 'trialing').length
   const subsTrialing = subs.filter(s => s.estado === 'trialing').length
+  const subsMensuales = subs.filter(s => s.intervalo === 'month' && (s.estado === 'active' || s.estado === 'trialing'))
+  const subsAnuales = subs.filter(s => s.intervalo === 'year' && (s.estado === 'active' || s.estado === 'trialing'))
+  const subsCancelaPendiente = subs.filter(s => s.cancelaAlFinal && s.estado === 'active')
+  const hace30Unix = Math.floor(hace30.getTime() / 1000)
+  const subsNuevas30 = subs.filter(s => s.altaUnix >= hace30Unix).length
 
   // Variación vs mes anterior
   const variacion = mesAnterior.brutoCentimos > 0
@@ -144,6 +152,56 @@ export default async function AdminInicioPage() {
         </div>
       </div>
 
+      {/* Desglose lifetime + mezcla de planes */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        {/* Lifetime bruto / comisión / neto */}
+        <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-5">
+          <h2 className="text-sm font-semibold text-zinc-100 mb-4">💸 Lifetime detallado</h2>
+          <div className="space-y-2 text-sm">
+            <Linea label="Bruto cobrado" valor={formatEuros(lifetime.brutoCentimos)} />
+            <Linea label="Comisión Stripe" valor={`− ${formatEuros(lifetime.comisionCentimos, { decimales: true })}`} textColor="text-rose-300" />
+            <div className="border-t border-white/5 pt-2 mt-2">
+              <Linea label="Neto en tu banco" valor={formatEuros(lifetime.netoCentimos)} bold textColor="text-emerald-300" />
+            </div>
+            <p className="text-[10px] text-zinc-600 pt-1">
+              {((lifetime.comisionCentimos / Math.max(1, lifetime.brutoCentimos)) * 100).toFixed(2)}% comisión efectiva ·
+              Últimos 30d: <span className="text-zinc-400">{formatEuros(ultimos30.brutoCentimos)}</span> ({ultimos30.numPagos} pagos)
+            </p>
+          </div>
+        </div>
+
+        {/* Mezcla de planes */}
+        <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-5">
+          <h2 className="text-sm font-semibold text-zinc-100 mb-4">📊 Mezcla de planes</h2>
+          {subsActivas === 0 ? (
+            <p className="text-xs text-zinc-500">Aún no hay suscriptores.</p>
+          ) : (
+            <div className="space-y-3 text-sm">
+              <div>
+                <div className="flex items-baseline justify-between text-xs mb-1">
+                  <span className="text-zinc-300">Mensual</span>
+                  <span className="text-zinc-400">{subsMensuales.length} · {formatEuros(subsMensuales.reduce((s, x) => s + x.precioCentimos, 0))}/mes</span>
+                </div>
+                <Bar pct={subsMensuales.length / Math.max(1, subsActivas) * 100} color="bg-sky-500" />
+              </div>
+              <div>
+                <div className="flex items-baseline justify-between text-xs mb-1">
+                  <span className="text-zinc-300">Anual</span>
+                  <span className="text-zinc-400">{subsAnuales.length} · {formatEuros(subsAnuales.reduce((s, x) => s + x.precioCentimos, 0))}/año</span>
+                </div>
+                <Bar pct={subsAnuales.length / Math.max(1, subsActivas) * 100} color="bg-emerald-500" />
+              </div>
+              <p className="text-[10px] text-zinc-600 pt-1">
+                Nuevas (30d): <span className={subsNuevas30 > 0 ? 'text-emerald-300' : 'text-zinc-500'}>{subsNuevas30}</span>
+                {subsCancelaPendiente.length > 0 && (
+                  <span className="text-amber-300 ml-2">⚠ {subsCancelaPendiente.length} cancela{subsCancelaPendiente.length === 1 ? '' : 'n'} al final del periodo</span>
+                )}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* Desglose por producto */}
       <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">Productos Marsof Technology</h2>
       <div className="bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden mb-8">
@@ -219,6 +277,23 @@ export default async function AdminInicioPage() {
           </ul>
         )}
       </div>
+    </div>
+  )
+}
+
+function Linea({ label, valor, bold, textColor }: { label: string; valor: string; bold?: boolean; textColor?: string }) {
+  return (
+    <div className="flex items-baseline justify-between">
+      <span className="text-zinc-400">{label}</span>
+      <span className={`${bold ? 'font-bold text-base' : ''} ${textColor ?? 'text-zinc-100'}`}>{valor}</span>
+    </div>
+  )
+}
+
+function Bar({ pct, color }: { pct: number; color: string }) {
+  return (
+    <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+      <div className={`h-full ${color} transition-all`} style={{ width: `${Math.max(2, pct)}%` }} />
     </div>
   )
 }

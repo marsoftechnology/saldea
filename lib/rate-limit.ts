@@ -1,14 +1,18 @@
 /**
- * Rate limiter en memoria — sencillo, sin dependencias externas.
+ * Rate limiter respaldado por Upstash Redis (funciona en Vercel serverless
+ * con múltiples instancias). Si UPSTASH_REDIS_REST_URL no está configurado,
+ * cae al contador en memoria — útil en desarrollo local.
  *
- * Para una sola instancia de Vercel funciona perfecto. Si en el futuro
- * Saldea escala a múltiples instancias, conviene migrar a Upstash Redis
- * (drop-in replacement con el mismo API).
+ * Setup en producción:
+ *   1. Crear una base en Upstash (upstash.com) → Redis
+ *   2. Añadir UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN en Vercel
  *
- * Uso:
- *   const limited = checkRateLimit({ key: org.org_id, ventana: '1h', max: 10 })
- *   if (limited) return NextResponse.json({ error: '...' }, { status: 429 })
+ * Uso (igual que antes, solo añadir await):
+ *   const rl = await checkRateLimit({ key: org_id, ventana: '1h', max: 30 })
+ *   if (!rl.allowed) return NextResponse.json({ error: '...' }, { status: 429 })
  */
+
+import { Redis } from '@upstash/redis'
 
 type Ventana = '1m' | '5m' | '1h' | '1d'
 
@@ -19,6 +23,70 @@ const VENTANAS_MS: Record<Ventana, number> = {
   '1d': 24 * 60 * 60_000,
 }
 
+export interface RateLimitResult {
+  allowed: boolean
+  remaining: number
+  resetAt: number    // unix ms
+  retryAfter?: number // segundos hasta poder reintentar
+}
+
+// ─── Upstash Redis ────────────────────────────────────────────────────────────
+
+let _redis: Redis | null = null
+
+function getRedis(): Redis | null {
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null
+  }
+  if (!_redis) {
+    _redis = Redis.fromEnv()
+  }
+  return _redis
+}
+
+async function checkRateLimitRedis({
+  key,
+  ventana,
+  max,
+}: {
+  key: string
+  ventana: Ventana
+  max: number
+}): Promise<RateLimitResult> {
+  const redis = getRedis()!
+  const now = Date.now()
+  const ventanaMs = VENTANAS_MS[ventana]
+  const redisKey = `saldea:rl:${ventana}:${key}`
+
+  // INCR atómico: crea la clave si no existe (empieza en 0 y devuelve 1)
+  const count = await redis.incr(redisKey)
+
+  // Solo en la primera petición de la ventana establecemos el TTL
+  if (count === 1) {
+    await redis.pexpire(redisKey, ventanaMs)
+  }
+
+  if (count > max) {
+    // Tiempo restante hasta que expire la ventana
+    const ttlMs = await redis.pttl(redisKey)
+    const espera = ttlMs > 0 ? ttlMs : ventanaMs
+    return {
+      allowed: false,
+      remaining: 0,
+      resetAt: now + espera,
+      retryAfter: Math.ceil(espera / 1000),
+    }
+  }
+
+  return {
+    allowed: true,
+    remaining: max - count,
+    resetAt: now + ventanaMs,
+  }
+}
+
+// ─── Fallback en memoria (desarrollo local / sin Upstash) ─────────────────────
+
 interface Bucket {
   count: number
   resetAt: number
@@ -26,8 +94,7 @@ interface Bucket {
 
 const buckets = new Map<string, Bucket>()
 
-// Limpieza periódica (cada 5 min) para evitar memory leaks
-let cleanupTimer: NodeJS.Timeout | null = null
+let cleanupTimer: ReturnType<typeof setInterval> | null = null
 function ensureCleanup() {
   if (cleanupTimer) return
   cleanupTimer = setInterval(() => {
@@ -36,22 +103,10 @@ function ensureCleanup() {
       if (v.resetAt < now) buckets.delete(k)
     }
   }, 5 * 60_000)
-  // Evita bloquear el process en Node
   cleanupTimer.unref?.()
 }
 
-export interface RateLimitResult {
-  allowed: boolean
-  remaining: number
-  resetAt: number  // unix ms
-  retryAfter?: number // segundos hasta poder reintentar
-}
-
-/**
- * Comprueba y consume 1 unidad de un bucket de rate limit.
- * @returns RateLimitResult con .allowed=false si se ha excedido el límite
- */
-export function checkRateLimit({
+function checkRateLimitMemory({
   key,
   ventana,
   max,
@@ -68,7 +123,6 @@ export function checkRateLimit({
   const existing = buckets.get(fullKey)
 
   if (!existing || existing.resetAt < now) {
-    // Primera petición o ventana expirada
     buckets.set(fullKey, { count: 1, resetAt: now + ventanaMs })
     return { allowed: true, remaining: max - 1, resetAt: now + ventanaMs }
   }
@@ -86,9 +140,34 @@ export function checkRateLimit({
   return { allowed: true, remaining: max - existing.count, resetAt: existing.resetAt }
 }
 
+// ─── API pública ──────────────────────────────────────────────────────────────
+
+/**
+ * Comprueba y consume 1 unidad de un bucket de rate limit.
+ * Usa Upstash Redis si está configurado; en caso contrario, memoria local.
+ */
+export async function checkRateLimit({
+  key,
+  ventana,
+  max,
+}: {
+  key: string
+  ventana: Ventana
+  max: number
+}): Promise<RateLimitResult> {
+  if (getRedis()) {
+    try {
+      return await checkRateLimitRedis({ key, ventana, max })
+    } catch (err) {
+      // Si Redis falla, no bloqueamos el tráfico — caemos a memoria
+      console.error('[rate-limit] Redis error, usando memoria:', err)
+    }
+  }
+  return checkRateLimitMemory({ key, ventana, max })
+}
+
 /**
  * Devuelve un identificador de cliente útil para rate limit basado en IP.
- * En Vercel/Next.js, headers.get('x-forwarded-for') da la IP real.
  */
 export function getClientIp(req: Request): string {
   const fwd = req.headers.get('x-forwarded-for')

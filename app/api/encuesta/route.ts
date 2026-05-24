@@ -120,7 +120,7 @@ const MAX_SCORE = 180
 export async function POST(req: NextRequest) {
   // Rate limit: máx 3 encuestas por IP por hora para evitar spam al buzón de Carlos
   const ip = getClientIp(req)
-  const rl = checkRateLimit({ key: `encuesta:${ip}`, ventana: '1h', max: 3 })
+  const rl = await checkRateLimit({ key: `encuesta:${ip}`, ventana: '1h', max: 3 })
   if (!rl.allowed) {
     return NextResponse.json(
       { error: 'Demasiadas solicitudes. Inténtalo de nuevo más tarde.' },

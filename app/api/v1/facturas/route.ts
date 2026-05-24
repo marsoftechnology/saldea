@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Rate limit: 1000 llamadas por hora por key
-  const rl = checkRateLimit({ key: auth.keyId, ventana: '1h', max: 1000 })
+  const rl = await checkRateLimit({ key: auth.keyId, ventana: '1h', max: 1000 })
   if (!rl.allowed) {
     return new Response(
       JSON.stringify({ error: 'Rate limit excedido. Intenta de nuevo más tarde.' }),

@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Rate limit anti-abuso de invitaciones: 10 por org/hora
-  const rl = checkRateLimit({ key: 'invitar:' + org.org_id, ventana: '1h', max: 10 })
+  const rl = await checkRateLimit({ key: 'invitar:' + org.org_id, ventana: '1h', max: 10 })
   if (!rl.allowed) {
     return NextResponse.json(
       { error: `Has enviado demasiadas invitaciones esta hora. Espera ${Math.ceil((rl.retryAfter ?? 60) / 60)} min.` },
