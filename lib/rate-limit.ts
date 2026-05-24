@@ -1,11 +1,11 @@
 /**
  * Rate limiter respaldado por Upstash Redis (funciona en Vercel serverless
- * con múltiples instancias). Si UPSTASH_REDIS_REST_URL no está configurado,
+ * con múltiples instancias). Si no hay credenciales Redis configuradas,
  * cae al contador en memoria — útil en desarrollo local.
  *
- * Setup en producción:
- *   1. Crear una base en Upstash (upstash.com) → Redis
- *   2. Añadir UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN en Vercel
+ * Variables de entorno aceptadas (cualquiera de las dos):
+ *   - UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN  (Upstash directo)
+ *   - KV_REST_API_URL / KV_REST_API_TOKEN                (integración Vercel)
  *
  * Uso (igual que antes, solo añadir await):
  *   const rl = await checkRateLimit({ key: org_id, ventana: '1h', max: 30 })
@@ -35,12 +35,10 @@ export interface RateLimitResult {
 let _redis: Redis | null = null
 
 function getRedis(): Redis | null {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return null
-  }
-  if (!_redis) {
-    _redis = Redis.fromEnv()
-  }
+  const url   = process.env.UPSTASH_REDIS_REST_URL   ?? process.env.KV_REST_API_URL
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN
+  if (!url || !token) return null
+  if (!_redis) _redis = new Redis({ url, token })
   return _redis
 }
 
