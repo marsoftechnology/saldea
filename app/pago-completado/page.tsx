@@ -9,13 +9,13 @@ export default function PagoCompletadoPage() {
         </div>
         <h1 className="text-3xl font-bold text-zinc-100 mb-4">¡Pago completado!</h1>
         <p className="text-zinc-400 mb-8">
-          Tu suscripción al Plan Pro de Saldea está activa. Ahora tienes acceso a todas las funciones.
+          Tu suscripción a Saldea está activa. Ya tienes acceso a todas las funciones de tu plan.
         </p>
         <Link
-          href="/dashboard"
+          href="/ajustes"
           className="inline-block bg-sky-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-sky-400 transition-colors"
         >
-          Ir al panel →
+          Ver mi plan →
         </Link>
       </div>
     </div>
