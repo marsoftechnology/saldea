@@ -706,10 +706,15 @@ export default function BienvenidaPage() {
             </div>
           </div>
 
-          <div className="bg-zinc-900/40 border border-white/5 rounded-xl p-4 space-y-2 text-sm text-zinc-400">
-            <p className="flex gap-2"><span className="text-sky-400 shrink-0">1.</span>Regístrate gratis en <strong className="text-zinc-300">bankaccountdata.gocardless.com</strong></p>
-            <p className="flex gap-2"><span className="text-sky-400 shrink-0">2.</span>Añade las claves en Vercel: <code className="text-zinc-300 text-xs bg-zinc-800 px-1.5 py-0.5 rounded">GOCARDLESS_SECRET_ID</code> y <code className="text-zinc-300 text-xs bg-zinc-800 px-1.5 py-0.5 rounded">GOCARDLESS_SECRET_KEY</code></p>
-            <p className="flex gap-2"><span className="text-sky-400 shrink-0">3.</span>Ve a <strong className="text-zinc-300">🏦 Banco</strong> en el panel y elige tu banco</p>
+          <div className="bg-sky-500/10 border border-sky-500/20 rounded-xl p-4 flex items-start gap-3">
+            <span className="text-sky-400 text-lg shrink-0">🔜</span>
+            <div>
+              <p className="text-sm font-semibold text-sky-300">Próximamente disponible</p>
+              <p className="text-xs text-sky-300/70 mt-1 leading-relaxed">
+                Estamos integrando la mejor solución de Open Banking para bancos españoles.
+                Cuando esté listo lo verás en <strong className="text-sky-300">🏦 Banco</strong> en la barra lateral.
+              </p>
+            </div>
           </div>
         </div>
 

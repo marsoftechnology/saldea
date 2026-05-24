@@ -23,7 +23,7 @@ const featuresMax = [
   '3 burofax de reclamación / mes incluidos',
   'Extras de burofax a 6 € / unidad',
   'Email desde tu dominio propio (Resend)',
-  'Conciliación bancaria automática (GoCardless)',
+  'Conciliación bancaria automática (próximamente)',
   'Hasta 25 miembros de equipo',
   'Soporte VIP prioritario',
 ]

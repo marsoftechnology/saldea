@@ -55,7 +55,7 @@ export default function PageVsBillin() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">✅ nativo</td><td className="py-2 px-4">Parcial</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Plan gratis</td><td className="py-2 px-4">Limitado (3 facturas)</td><td className="py-2 px-4">Sí (con límites)</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Plan Pro</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">~15-30€/mes</td></tr>
-                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">✅ Plan Max (GoCardless)</td><td className="py-2 px-4">❌</td></tr>
+                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">🔜 Próximamente</td><td className="py-2 px-4">❌</td></tr>
               </tbody>
             </table>
           </div>
@@ -81,7 +81,7 @@ export default function PageVsBillin() {
             <li>✓ Más de 5 facturas/mes</li>
             <li>✓ Dedicas tiempo a perseguir cobros manualmente</li>
             <li>✓ Tienes facturas vencidas pendientes ahora mismo</li>
-            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): conecta tu banco vía GoCardless y Saldea cruza cada pago recibido con sus facturas automáticamente.</li>
+            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes (próximamente).</li>
           </ul>
         </section>
 

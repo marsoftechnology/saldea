@@ -72,7 +72,7 @@ export default function PageVsQuipu() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">Pasarela básica</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Precio entry</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">19€/mes</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Trial gratis</td><td className="py-2 px-4">15 días sin tarjeta</td><td className="py-2 px-4">15 días con tarjeta</td></tr>
-                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">✅ Plan Max (GoCardless)</td><td className="py-2 px-4">❌</td></tr>
+                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">🔜 Próximamente</td><td className="py-2 px-4">❌</td></tr>
               </tbody>
             </table>
           </div>
@@ -99,7 +99,7 @@ export default function PageVsQuipu() {
             <li>✓ Dedicas más de 2 horas/semana a reclamar cobros</li>
             <li>✓ Quieres que la IA escale el tono sin que tú lo redactes</li>
             <li>✓ Tienes 5+ facturas vencidas pendientes ahora mismo</li>
-            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): conecta tu banco vía GoCardless y Saldea cruza cada pago recibido con sus facturas automáticamente.</li>
+            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes (próximamente).</li>
           </ul>
         </section>
 
