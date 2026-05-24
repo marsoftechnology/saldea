@@ -358,30 +358,154 @@ export default function MarsofPage() {
         </div>
       </section>
 
-      {/* CTA final */}
-      <section className="py-28">
-        <div className="max-w-3xl mx-auto px-6 text-center">
+      {/* Visión — sección inversores */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Fondo dramático */}
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-sky-950/20 to-black/60" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] rounded-full bg-sky-500/10 blur-3xl" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6">
+
+          {/* Titular principal */}
+          <Reveal effect="fade-up">
+            <div className="text-center mb-20">
+              <p className="text-sky-400 font-semibold text-xs mb-5 uppercase tracking-[0.3em]">Visión · 2025–2035</p>
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.0] mb-8 max-w-5xl mx-auto">
+                Construyendo la empresa<br />
+                <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-sky-500 bg-clip-text text-transparent">
+                  tecnológica más grande
+                </span>
+                <br />de España.
+              </h2>
+              <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+                Marsof no es una empresa de software más. Es la base desde la que construiremos
+                el ecosistema tecnológico español más ambicioso de la próxima década.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Frase de impacto */}
           <Reveal effect="scale">
-            <div className="relative rounded-3xl bg-gradient-to-br from-sky-500/20 via-sky-500/10 to-transparent border border-sky-500/30 p-12 md:p-16 overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.15),transparent_60%)]" />
+            <div className="relative rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur p-10 md:p-14 mb-20 text-center overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,165,233,0.08),transparent_70%)]" />
+              <blockquote className="relative text-2xl md:text-3xl font-bold text-white leading-snug max-w-4xl mx-auto">
+                &ldquo;Cada gran empresa tecnológica empezó resolviendo un solo problema.
+                Nosotros empezamos con los cobros.
+                El resto está por construir.&rdquo;
+              </blockquote>
+              <p className="relative text-zinc-500 text-sm mt-6 font-medium">Carlos Gálvez Carrillo · Fundador, Marsof Technology</p>
+            </div>
+          </Reveal>
+
+          {/* Sectores futuros */}
+          <Reveal effect="fade-up">
+            <p className="text-center text-sky-400 font-semibold text-xs mb-10 uppercase tracking-[0.3em]">Sectores en el roadmap</p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+            {[
+              {
+                icono: '💡',
+                fase: 'Hoy',
+                sector: 'Micro-SaaS financiero',
+                desc: 'Automatizamos cobros, contratos y nóminas para autónomos y pymes españolas con IA. Saldea es el primero de una familia de productos.',
+                estado: 'activo',
+              },
+              {
+                icono: '🎓',
+                fase: 'Próximo',
+                sector: 'Educación digital',
+                desc: 'Plataformas de formación profesional y aprendizaje adaptativo para el mercado español. La educación necesita la mejor tecnología posible.',
+                estado: 'proximo',
+              },
+              {
+                icono: '🏥',
+                fase: 'Próximo',
+                sector: 'Salud y bienestar',
+                desc: 'Gestión de consultas, historial clínico digital y automatización para centros médicos, fisioterapeutas y psicólogos.',
+                estado: 'proximo',
+              },
+              {
+                icono: '🏗️',
+                fase: 'Futuro',
+                sector: 'Infraestructura tech',
+                desc: 'Herramientas de desarrollo, servicios cloud y plataformas de IA soberanas con servidores en Europa y enfoque en privacidad.',
+                estado: 'futuro',
+              },
+              {
+                icono: '🌍',
+                fase: 'Futuro',
+                sector: 'Expansión LATAM',
+                desc: 'Llevar el modelo de micro-SaaS especializado a los 400 millones de hispanohablantes que comparten normativa, idioma y cultura empresarial.',
+                estado: 'futuro',
+              },
+              {
+                icono: '🤖',
+                fase: 'Futuro',
+                sector: 'IA aplicada',
+                desc: 'Modelos de inteligencia artificial especializados en el contexto legal, fiscal y lingüístico español. IA que entiende España.',
+                estado: 'futuro',
+              },
+            ].map((s, i) => (
+              <Reveal key={s.sector} effect="fade-up" delay={i * 70}>
+                <div className={`h-full rounded-2xl p-7 flex flex-col border transition-colors hover:-translate-y-0.5 transition-transform ${
+                  s.estado === 'activo'
+                    ? 'bg-sky-500/10 border-sky-500/30 hover:border-sky-500/50'
+                    : s.estado === 'proximo'
+                    ? 'bg-zinc-900/50 border-white/10 hover:border-white/20'
+                    : 'bg-zinc-900/30 border-white/5 hover:border-white/10'
+                }`}>
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-3xl">{s.icono}</span>
+                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${
+                      s.estado === 'activo'
+                        ? 'bg-sky-500 text-zinc-900'
+                        : s.estado === 'proximo'
+                        ? 'bg-zinc-800 text-zinc-400 border border-white/10'
+                        : 'bg-zinc-900 text-zinc-600 border border-white/5'
+                    }`}>
+                      {s.fase}
+                    </span>
+                  </div>
+                  <h3 className={`text-lg font-bold mb-3 ${s.estado === 'activo' ? 'text-sky-200' : 'text-zinc-100'}`}>
+                    {s.sector}
+                  </h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed flex-1">{s.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* CTA inversores */}
+          <Reveal effect="scale">
+            <div className="relative rounded-3xl bg-gradient-to-br from-zinc-900 via-zinc-900/80 to-zinc-900/60 border border-white/10 p-10 md:p-14 text-center overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(14,165,233,0.12),transparent_60%)]" />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent" />
               <div className="relative">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight">
-                  ¿Tienes una factura sin cobrar ahora mismo?
-                </h2>
-                <p className="text-zinc-300 mb-10 text-lg max-w-xl mx-auto">
-                  Saldea, nuestro primer producto, lo resuelve solo. Pruébalo 15 días gratis.
+                <p className="text-sky-400 font-semibold text-xs mb-4 uppercase tracking-[0.3em]">Para inversores</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-5 tracking-tight">
+                  ¿Quieres ser parte de esto?
+                </h3>
+                <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+                  Estamos en la fase más temprana y más emocionante. Si compartes la visión de construir
+                  tecnología española de impacto real, hablemos.
                 </p>
-                <Link
-                  href="/saldea"
+                <a
+                  href="mailto:hola@marsof.es?subject=Inversión en Marsof Technology"
                   className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-2xl shadow-sky-500/20"
                 >
-                  Probar Saldea gratis
+                  Contactar con el fundador
                   <span>→</span>
-                </Link>
-                <p className="text-zinc-600 text-xs mt-4">15 días gratis · sin permanencia · cancela en 1 clic</p>
+                </a>
+                <p className="text-zinc-600 text-xs mt-5">
+                  Marsof Technology · Fundada 2024 · Hecha en España
+                </p>
               </div>
             </div>
           </Reveal>
+
         </div>
       </section>
 
