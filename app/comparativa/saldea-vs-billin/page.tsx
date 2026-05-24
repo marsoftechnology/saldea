@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../../components/MarketingFooter'
 
@@ -17,7 +17,7 @@ export default function PageVsBillin() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
           </div>
         </div>
       </nav>
@@ -85,7 +85,7 @@ export default function PageVsBillin() {
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Conecta Billin + Saldea hoy</h3>
-          <p className="text-zinc-300 mb-5">Importa CSV desde Billin. Saldea persigue. <strong>1 mes gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Importa CSV desde Billin. Saldea persigue. <strong>15 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>
         </aside>
       </article>

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
@@ -61,7 +61,7 @@ export default function PageHuelva() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
             </div>
           </div>
         </nav>
@@ -126,7 +126,7 @@ export default function PageHuelva() {
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold mb-2">¿Eres autónomo o gestoría en Huelva?</h2>
-            <p className="text-zinc-400 mb-6">Prueba Saldea 1 mes gratis. Si te encaja, pagas. Si no, cancelas. Cero permanencia.</p>
+            <p className="text-zinc-400 mb-6">Prueba Saldea 15 días gratis. Si te encaja, pagas. Si no, cancelas. Cero permanencia.</p>
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
           </div>
         </section>

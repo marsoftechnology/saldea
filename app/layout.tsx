@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next'
+﻿import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { CookieBanner } from './components/CookieBanner'
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     default: 'Marsof — Software español para automatizar tu negocio',
     template: '%s | Marsof',
   },
-  description: 'Marsof Technology, empresa española de software con sede en Niebla (Huelva). Desarrolla Saldea, IA que automatiza el cobro de facturas para autónomos y pymes. 1 mes gratis.',
+  description: 'Marsof Technology, empresa española de software con sede en Niebla (Huelva). Desarrolla Saldea, IA que automatiza el cobro de facturas para autónomos y pymes. 15 días gratis.',
   keywords: [
     'Marsof',
     'Marsof Technology',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: APP_URL,
     title: 'Marsof — Software español para automatizar tu negocio',
-    description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 1 mes gratis.',
+    description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 15 días gratis.',
     images: [
       {
         url: '/opengraph-image',
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@marsof_es',
     title: 'Marsof — Software español para automatizar tu negocio',
-    description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 1 mes gratis.',
+    description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 15 días gratis.',
     images: ['/opengraph-image'],
   },
   robots: {

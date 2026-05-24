@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -83,7 +83,7 @@ export default function PageEcommerce() {
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea para ecommerce B2B y suscripciones</h3>
-          <p className="text-zinc-300 mb-5">Si tu ecommerce factura a empresas con plazos aplazados, o tienes SEPA devueltos por gestionar, Saldea automatiza la recuperación. <strong>1 mes gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Si tu ecommerce factura a empresas con plazos aplazados, o tienes SEPA devueltos por gestionar, Saldea automatiza la recuperación. <strong>15 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>
         </aside>
       </div>

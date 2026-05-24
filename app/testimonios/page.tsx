@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
@@ -17,13 +17,13 @@ export default function PageTestimonios() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link></div>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link></div>
         </div>
       </nav>
 
       <section className="max-w-3xl mx-auto px-6 py-16">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Testimonios y casos de éxito</h1>
-        <p className="text-zinc-400 text-lg mb-12">Saldea acaba de lanzarse en mayo de 2026. Esta página irá creciendo con las historias reales de nuestros primeros usuarios. Si quieres ser uno de ellos, prueba 1 mes gratis y nos cuentas.</p>
+        <p className="text-zinc-400 text-lg mb-12">Saldea acaba de lanzarse en mayo de 2026. Esta página irá creciendo con las historias reales de nuestros primeros usuarios. Si quieres ser uno de ellos, prueba 15 días gratis y nos cuentas.</p>
 
         <div className="bg-zinc-900/40 border border-sky-500/30 rounded-2xl p-8 mb-12 text-center">
           <p className="text-5xl mb-4">🎯</p>
@@ -51,7 +51,7 @@ export default function PageTestimonios() {
 
         <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-2">Prueba Saldea y conviértete en el siguiente caso</h2>
-          <p className="text-zinc-400 mb-6">1 mes gratis sin tarjeta. Si funciona, hablamos.</p>
+          <p className="text-zinc-400 mb-6">15 días gratis. Si funciona, hablamos.</p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
         </div>
       </section>

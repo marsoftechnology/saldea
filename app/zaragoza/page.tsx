@@ -1,10 +1,10 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea en Zaragoza: software de cobros para empresas aragonesas',
-  description: 'Software de cobros automáticos con IA para autónomos, gestorías y pymes de Zaragoza y Aragón. Cumple Ley 3/2004. 1 mes gratis.',
+  description: 'Software de cobros automáticos con IA para autónomos, gestorías y pymes de Zaragoza y Aragón. Cumple Ley 3/2004. 15 días gratis.',
   alternates: { canonical: 'https://marsof.es/zaragoza' },
   keywords: ['software cobros Zaragoza', 'gestoría Zaragoza', 'autónomo Zaragoza', 'Saldea Zaragoza', 'pyme Aragón'],
   openGraph: { title: 'Saldea en Zaragoza', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
@@ -26,7 +26,7 @@ export default function PageZaragoza() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
             </div>
           </div>
         </nav>
@@ -48,7 +48,7 @@ export default function PageZaragoza() {
             <li>✓ Empresas con <strong>cadenas de subcontratación</strong> donde la morosidad se transmite</li>
             <li>✓ <strong>Cumple Ley 3/2004</strong></li>
             <li>✓ <strong>Soporte en español</strong> peninsular</li>
-            <li>✓ <strong>1 mes gratis</strong> sin tarjeta</li>
+            <li>✓ <strong>15 días gratis</strong> sin tarjeta</li>
           </ul>
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">
             <h2 className="text-2xl font-bold mb-2">Empieza desde Zaragoza</h2>

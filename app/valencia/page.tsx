@@ -1,10 +1,10 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea en Valencia: software de cobros para autónomos y pymes valencianas',
-  description: 'Saldea automatiza el cobro de facturas para autónomos, gestorías y pymes de Valencia, Alicante y Castellón. IA, Ley 3/2004, RGPD. 1 mes gratis.',
+  description: 'Saldea automatiza el cobro de facturas para autónomos, gestorías y pymes de Valencia, Alicante y Castellón. IA, Ley 3/2004, RGPD. 15 días gratis.',
   alternates: { canonical: 'https://marsof.es/valencia' },
   keywords: ['software cobros Valencia', 'gestoría Valencia', 'autónomo Valencia facturas', 'Saldea Valencia', 'cobros pyme Comunidad Valenciana', 'morosos Valencia'],
   openGraph: { title: 'Saldea en Valencia', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
@@ -26,7 +26,7 @@ export default function PageValencia() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">1 mes gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
             </div>
           </div>
         </nav>
@@ -54,7 +54,7 @@ export default function PageValencia() {
             <li>✓ <strong>IA que escala el tono</strong> sin perder cliente</li>
             <li>✓ <strong>Cumple Ley 3/2004</strong> y Veri*factu</li>
             <li>✓ <strong>Soporte en español</strong> peninsular</li>
-            <li>✓ <strong>1 mes gratis</strong> sin tarjeta</li>
+            <li>✓ <strong>15 días gratis</strong> sin tarjeta</li>
           </ul>
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">

@@ -52,7 +52,7 @@ export default function TerminosPage() {
         </p>
         <ul className="list-disc list-inside space-y-1 text-zinc-400 ml-2">
           <li><strong className="text-zinc-200">Plan Free:</strong> gratuito con limitaciones (hasta 3 facturas activas, 10 clientes, 30 emails/mes, 1 tono y <strong className="text-zinc-100">1 único miembro</strong> en la organización).</li>
-          <li><strong className="text-zinc-200">Plan Pro Mensual:</strong> 49 €/mes con periodo de prueba gratuito de 30 días. Se requiere tarjeta. El primer cobro se realiza el día 31 si no se cancela antes. Incluye <strong className="text-zinc-100">hasta 10 miembros</strong> de equipo.</li>
+          <li><strong className="text-zinc-200">Plan Pro Mensual:</strong> 49 €/mes con periodo de prueba gratuito de 15 días. Se requiere tarjeta. El primer cobro se realiza 15 días después del registro si no se cancela antes. Incluye <strong className="text-zinc-100">hasta 10 miembros</strong> de equipo.</li>
           <li><strong className="text-zinc-200">Plan Pro Anual:</strong> 499 €/año, cobro al instante, sin periodo de prueba. Mismas funcionalidades que Pro Mensual.</li>
         </ul>
         <p>

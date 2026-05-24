@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
@@ -96,7 +96,7 @@ export default function PagePrensa() {
 
         <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-2">¿Quieres probar Saldea para tu artículo?</h2>
-          <p className="text-zinc-400 mb-6">1 mes gratis. Te damos acceso completo para que veas cómo funciona.</p>
+          <p className="text-zinc-400 mb-6">15 días gratis. Te damos acceso completo para que veas cómo funciona.</p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar →</Link>
         </div>
       </section>

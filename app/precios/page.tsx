@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Precios de Saldea — 49€/mes o 499€/año',
-    description: '15 días gratis sin tarjeta. Cancela cuando quieras.',
+    description: '15 días gratis. Cancela cuando quieras.',
     type: 'website',
     locale: 'es_ES',
   },

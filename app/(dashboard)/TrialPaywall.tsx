@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useCallback } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
@@ -76,7 +76,7 @@ export default function TrialPaywall() {
                 }`}
               >
                 <span className="block font-bold">49€/mes</span>
-                <span className="block text-xs opacity-75 mt-0.5">1 mes gratis al empezar</span>
+                <span className="block text-xs opacity-75 mt-0.5">15 días gratis al empezar</span>
               </button>
 
               <button
@@ -125,7 +125,7 @@ export default function TrialPaywall() {
                 {intervalo === 'anio' ? 'Plan Pro — 499€/año' : 'Plan Pro — 49€/mes'}
               </p>
               <p className="text-xs text-gray-400 mt-0.5">
-                {intervalo === 'anio' ? 'Sin permanencia · cobro único' : '1 mes gratis · cancela cuando quieras'}
+                {intervalo === 'anio' ? 'Sin permanencia · cobro único' : '15 días gratis · cancela cuando quieras'}
               </p>
             </div>
             <button

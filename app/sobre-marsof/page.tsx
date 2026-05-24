@@ -208,7 +208,7 @@ export default function PageSobreMarsof() {
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold mb-2">Prueba Saldea, nuestro primer producto</h2>
-            <p className="text-zinc-400 mb-6">1 mes gratis sin tarjeta. Cancela en 1 clic.</p>
+            <p className="text-zinc-400 mb-6">15 días gratis. Cancela en 1 clic.</p>
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
           </div>
         </section>

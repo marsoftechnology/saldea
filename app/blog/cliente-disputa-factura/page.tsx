@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -71,7 +71,7 @@ export default function Page() {
         </section>
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea detecta disputas y pausa el envío</h3>
-          <p className="text-zinc-300 mb-5">La IA reconoce cuando el cliente responde "no estoy conforme" y pausa los recordatorios para que TÚ gestiones la disputa. <strong>1 mes gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">La IA reconoce cuando el cliente responde "no estoy conforme" y pausa los recordatorios para que TÚ gestiones la disputa. <strong>15 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>
         </aside>
       </div>

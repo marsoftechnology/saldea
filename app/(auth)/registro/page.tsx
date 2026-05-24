@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -59,7 +59,7 @@ export default function RegistroPage() {
     <>
       <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1 rounded-full text-xs font-medium mb-5">
         <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
-        1 mes gratis
+        15 días gratis
       </div>
       <h1 className="text-2xl font-bold text-white mb-2 tracking-tight">Crea tu cuenta</h1>
       <p className="text-zinc-400 text-sm mb-8">Empieza a cobrar hoy. Tarjeta requerida solo para el trial mensual.</p>
