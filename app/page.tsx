@@ -359,149 +359,165 @@ export default function MarsofPage() {
       </section>
 
       {/* Visión — sección inversores */}
-      <section className="py-32 relative overflow-hidden">
-        {/* Fondo dramático */}
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-sky-950/20 to-black/60" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] rounded-full bg-sky-500/10 blur-3xl" />
+      <section className="py-32 relative overflow-hidden bg-black/40">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_40%_at_50%_0%,rgba(14,165,233,0.07),transparent)]" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6">
 
-          {/* Titular principal */}
+          {/* Encabezado + subtítulo alineado a la izquierda */}
           <Reveal effect="fade-up">
-            <div className="text-center mb-20">
-              <p className="text-sky-400 font-semibold text-xs mb-5 uppercase tracking-[0.3em]">Visión · 2025–2035</p>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.0] mb-8 max-w-5xl mx-auto">
-                Construyendo la empresa<br />
-                <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-sky-500 bg-clip-text text-transparent">
-                  tecnológica más grande
-                </span>
-                <br />de España.
+            <div className="mb-20">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-px w-10 bg-sky-500" />
+                <p className="text-sky-400 font-semibold text-xs uppercase tracking-[0.3em]">Visión 2025–2035</p>
+              </div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-white mb-7 max-w-4xl">
+                Construyendo el ecosistema<br />
+                tecnológico más ambicioso<br />
+                <span className="text-zinc-500">de España.</span>
               </h2>
-              <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-                Marsof no es una empresa de software más. Es la base desde la que construiremos
-                el ecosistema tecnológico español más ambicioso de la próxima década.
+              <p className="text-zinc-400 text-lg max-w-2xl leading-relaxed">
+                Marsof es hoy una empresa de micro-SaaS. En 2035 será la referencia tecnológica española:
+                software, educación, salud e inteligencia artificial, construidos aquí.
               </p>
             </div>
           </Reveal>
 
-          {/* Frase de impacto */}
-          <Reveal effect="scale">
-            <div className="relative rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur p-10 md:p-14 mb-20 text-center overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,165,233,0.08),transparent_70%)]" />
-              <blockquote className="relative text-2xl md:text-3xl font-bold text-white leading-snug max-w-4xl mx-auto">
-                &ldquo;Cada gran empresa tecnológica empezó resolviendo un solo problema.
-                Nosotros empezamos con los cobros.
-                El resto está por construir.&rdquo;
-              </blockquote>
-              <p className="relative text-zinc-500 text-sm mt-6 font-medium">Carlos Gálvez Carrillo · Fundador, Marsof Technology</p>
+          {/* Cita editorial — sin caja, solo tipografía */}
+          <Reveal effect="fade-up">
+            <div className="border-l-2 border-sky-500 pl-8 mb-24">
+              <p className="text-xl md:text-2xl font-medium text-zinc-100 leading-snug max-w-3xl">
+                &ldquo;Cada gran empresa tecnológica empezó resolviendo un solo problema bien.
+                Nosotros empezamos con los cobros. El resto está por construir.&rdquo;
+              </p>
+              <p className="text-zinc-500 text-sm mt-4">Carlos Gálvez Carrillo · Fundador, Marsof Technology</p>
             </div>
           </Reveal>
 
-          {/* Sectores futuros */}
-          <Reveal effect="fade-up">
-            <p className="text-center text-sky-400 font-semibold text-xs mb-10 uppercase tracking-[0.3em]">Sectores en el roadmap</p>
-          </Reveal>
+          {/* Timeline de fases */}
+          <div className="relative mb-24">
+            {/* Línea vertical — solo desktop */}
+            <div className="hidden lg:block absolute left-[168px] top-2 bottom-2 w-px bg-gradient-to-b from-sky-500 via-zinc-700 to-zinc-800/0" />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
             {[
               {
-                icono: '💡',
-                fase: 'Hoy',
-                sector: 'Micro-SaaS financiero',
-                desc: 'Automatizamos cobros, contratos y nóminas para autónomos y pymes españolas con IA. Saldea es el primero de una familia de productos.',
-                estado: 'activo',
+                año: '2024–2025',
+                label: 'Fase I',
+                titulo: 'Micro-SaaS financiero',
+                desc: 'Saldea automatiza cobros de facturas con IA. Contrak gestiona contratos. Nómixa simplifica nóminas. Tres apps, tres problemas universales para autónomos y pymes españolas.',
+                activo: true,
               },
               {
-                icono: '🎓',
-                fase: 'Próximo',
-                sector: 'Educación digital',
-                desc: 'Plataformas de formación profesional y aprendizaje adaptativo para el mercado español. La educación necesita la mejor tecnología posible.',
-                estado: 'proximo',
+                año: '2026–2027',
+                label: 'Fase II',
+                titulo: 'Educación y salud digital',
+                desc: 'Plataformas de formación profesional adaptativa y software de gestión para clínicas, fisioterapeutas y psicólogos. Dos sectores masivos con digitalización pendiente.',
+                activo: false,
               },
               {
-                icono: '🏥',
-                fase: 'Próximo',
-                sector: 'Salud y bienestar',
-                desc: 'Gestión de consultas, historial clínico digital y automatización para centros médicos, fisioterapeutas y psicólogos.',
-                estado: 'proximo',
+                año: '2028–2030',
+                label: 'Fase III',
+                titulo: 'Infraestructura cloud soberana',
+                desc: 'Servicios cloud con datos en España, herramientas para desarrolladores y modelos de IA entrenados sobre el marco legal y fiscal español. Soberanía tecnológica real.',
+                activo: false,
               },
               {
-                icono: '🏗️',
-                fase: 'Futuro',
-                sector: 'Infraestructura tech',
-                desc: 'Herramientas de desarrollo, servicios cloud y plataformas de IA soberanas con servidores en Europa y enfoque en privacidad.',
-                estado: 'futuro',
+                año: '2030–2035',
+                label: 'Fase IV',
+                titulo: 'Expansión LATAM e IA aplicada',
+                desc: '400 millones de hispanohablantes. Modelos de inteligencia artificial especializados en el contexto jurídico, fiscal y cultural de España e Hispanoamérica.',
+                activo: false,
               },
-              {
-                icono: '🌍',
-                fase: 'Futuro',
-                sector: 'Expansión LATAM',
-                desc: 'Llevar el modelo de micro-SaaS especializado a los 400 millones de hispanohablantes que comparten normativa, idioma y cultura empresarial.',
-                estado: 'futuro',
-              },
-              {
-                icono: '🤖',
-                fase: 'Futuro',
-                sector: 'IA aplicada',
-                desc: 'Modelos de inteligencia artificial especializados en el contexto legal, fiscal y lingüístico español. IA que entiende España.',
-                estado: 'futuro',
-              },
-            ].map((s, i) => (
-              <Reveal key={s.sector} effect="fade-up" delay={i * 70}>
-                <div className={`h-full rounded-2xl p-7 flex flex-col border transition-colors hover:-translate-y-0.5 transition-transform ${
-                  s.estado === 'activo'
-                    ? 'bg-sky-500/10 border-sky-500/30 hover:border-sky-500/50'
-                    : s.estado === 'proximo'
-                    ? 'bg-zinc-900/50 border-white/10 hover:border-white/20'
-                    : 'bg-zinc-900/30 border-white/5 hover:border-white/10'
-                }`}>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-3xl">{s.icono}</span>
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${
-                      s.estado === 'activo'
-                        ? 'bg-sky-500 text-zinc-900'
-                        : s.estado === 'proximo'
-                        ? 'bg-zinc-800 text-zinc-400 border border-white/10'
-                        : 'bg-zinc-900 text-zinc-600 border border-white/5'
-                    }`}>
-                      {s.fase}
-                    </span>
+            ].map((fase, i) => (
+              <Reveal key={fase.label} effect="fade-up" delay={i * 80}>
+                <div className="relative flex gap-8 lg:gap-16 items-start mb-8 last:mb-0">
+                  {/* Año — columna fija desktop */}
+                  <div className="hidden lg:block w-[140px] flex-shrink-0 text-right pt-[18px]">
+                    <p className="text-zinc-600 text-xs font-mono tabular-nums">{fase.año}</p>
                   </div>
-                  <h3 className={`text-lg font-bold mb-3 ${s.estado === 'activo' ? 'text-sky-200' : 'text-zinc-100'}`}>
-                    {s.sector}
-                  </h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed flex-1">{s.desc}</p>
+
+                  {/* Punto en la línea */}
+                  <div className="hidden lg:flex absolute left-[161px] top-[18px] w-5 h-5 items-center justify-center z-10">
+                    <div className={`w-3 h-3 rounded-full border-2 transition-all ${
+                      fase.activo
+                        ? 'bg-sky-400 border-sky-400 shadow-[0_0_14px_rgba(56,189,248,0.7)]'
+                        : 'bg-zinc-950 border-zinc-600'
+                    }`} />
+                  </div>
+
+                  {/* Tarjeta de contenido */}
+                  <div className={`flex-1 rounded-2xl p-7 border transition-colors ${
+                    fase.activo
+                      ? 'bg-sky-500/[0.06] border-sky-500/20'
+                      : 'bg-zinc-900/30 border-white/5 hover:border-white/10'
+                  }`}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${
+                        fase.activo ? 'bg-sky-500 text-zinc-900' : 'bg-zinc-800/80 text-zinc-400'
+                      }`}>
+                        {fase.label}
+                      </span>
+                      <span className="lg:hidden text-zinc-600 text-xs font-mono">{fase.año}</span>
+                    </div>
+                    <h3 className={`text-lg font-bold mb-2 ${fase.activo ? 'text-white' : 'text-zinc-200'}`}>
+                      {fase.titulo}
+                    </h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed">{fase.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          {/* CTA inversores */}
+          {/* Métricas de credibilidad */}
+          <Reveal effect="fade-up">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-20">
+              {[
+                { valor: '3', label: 'productos en desarrollo', sub: '2024–2025' },
+                { valor: '4', label: 'fases de crecimiento', sub: '2025–2035' },
+                { valor: '100%', label: 'bootstrapped · sin deuda', sub: 'desde el inicio' },
+                { valor: 'ES', label: 'datos en Europa · cumple RGPD', sub: 'servidores europeos' },
+              ].map((m, i) => (
+                <div key={i} className="border border-white/5 rounded-xl p-5 text-center bg-zinc-900/20 hover:border-white/10 transition-colors">
+                  <p className="text-3xl font-bold text-white mb-1 tracking-tight">{m.valor}</p>
+                  <p className="text-zinc-400 text-xs leading-tight mb-1">{m.label}</p>
+                  <p className="text-zinc-600 text-[10px]">{m.sub}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* CTA inversores — layout en dos columnas */}
           <Reveal effect="scale">
-            <div className="relative rounded-3xl bg-gradient-to-br from-zinc-900 via-zinc-900/80 to-zinc-900/60 border border-white/10 p-10 md:p-14 text-center overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(14,165,233,0.12),transparent_60%)]" />
+            <div className="relative rounded-2xl overflow-hidden border border-white/8">
+              <div className="absolute inset-0 bg-zinc-900/80" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent" />
-              <div className="relative">
-                <p className="text-sky-400 font-semibold text-xs mb-4 uppercase tracking-[0.3em]">Para inversores</p>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-5 tracking-tight">
-                  ¿Quieres ser parte de esto?
-                </h3>
-                <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                  Estamos en la fase más temprana y más emocionante. Si compartes la visión de construir
-                  tecnología española de impacto real, hablemos.
-                </p>
-                <a
-                  href="mailto:carlosgc@marsof.es?subject=Inversión en Marsof Technology"
-                  className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-2xl shadow-sky-500/20"
-                >
-                  Contactar con el fundador
-                  <span>→</span>
-                </a>
-                <p className="text-zinc-600 text-xs mt-5">
-                  Marsof Technology · Fundada 2024 · Hecha en España
-                </p>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_0%_50%,rgba(14,165,233,0.06),transparent)]" />
+
+              <div className="relative grid md:grid-cols-[1fr_auto] gap-8 p-10 md:p-14 items-center">
+                <div>
+                  <p className="text-sky-400 font-semibold text-xs mb-3 uppercase tracking-[0.3em]">Para inversores</p>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight leading-[1.1]">
+                    ¿Quieres construir<br className="hidden md:block" /> esto con nosotros?
+                  </h3>
+                  <p className="text-zinc-400 max-w-md leading-relaxed text-sm md:text-base">
+                    Buscamos inversores que entiendan la oportunidad de construir tecnología española de referencia.
+                    Si compartes esa visión, escríbenos — respondemos en 24 horas.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 md:items-end shrink-0">
+                  <a
+                    href="mailto:carlosgc@marsof.es?subject=Inversión en Marsof Technology"
+                    className="inline-flex items-center gap-2 bg-white text-zinc-900 px-7 py-3.5 rounded-xl font-bold text-sm hover:bg-zinc-100 transition-all hover:-translate-y-0.5 whitespace-nowrap shadow-lg shadow-black/30"
+                  >
+                    Hablar con el fundador →
+                  </a>
+                  <p className="text-zinc-600 text-xs text-center md:text-right">carlosgc@marsof.es</p>
+                </div>
               </div>
             </div>
           </Reveal>
