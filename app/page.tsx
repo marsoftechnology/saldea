@@ -493,7 +493,7 @@ export default function MarsofPage() {
                   tecnología española de impacto real, hablemos.
                 </p>
                 <a
-                  href="mailto:hola@marsof.es?subject=Inversión en Marsof Technology"
+                  href="mailto:carlosgc@marsof.es?subject=Inversión en Marsof Technology"
                   className="inline-flex items-center gap-2 bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all hover:-translate-y-0.5 shadow-2xl shadow-sky-500/20"
                 >
                   Contactar con el fundador
