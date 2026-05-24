@@ -9,6 +9,7 @@ import PdfPropioUploader from './PdfPropioUploader'
 import PagosSection from './PagosSection'
 import WhatsAppRecordatorioButton from './WhatsAppRecordatorioButton'
 import WhatsAppEnviarFacturaButton from './WhatsAppEnviarFacturaButton'
+import BurofaxButton from './BurofaxButton'
 import { getActiveOrg } from '@/lib/auth-org'
 
 export default async function FacturaDetallePage({ params }: { params: Promise<{ id: string }> }) {
@@ -48,12 +49,13 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
   const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; telefono: string | null; whatsapp_opt_in_at: string | null }
 
   // Empresa emisora para el mensaje de WhatsApp: nombre de la org
-  const { data: orgData } = await supabase
-    .from('organizations')
-    .select('name')
-    .eq('id', org.org_id)
-    .maybeSingle()
+  // Plan de la org (para mostrar botón burofax)
+  const [{ data: orgData }, { data: cfgPlan }] = await Promise.all([
+    supabase.from('organizations').select('name').eq('id', org.org_id).maybeSingle(),
+    supabase.from('configuraciones_usuario').select('plan').eq('org_id', org.org_id).maybeSingle(),
+  ])
   const empresaEmisor = orgData?.name || 'tu empresa'
+  const planOrg = cfgPlan?.plan === 'max' ? 'max' : cfgPlan?.plan === 'pro' ? 'pro' : 'free'
   const totalPagado = (pagos ?? []).reduce((s, p) => s + Number(p.importe), 0)
   const pendienteFactura = Math.max(0, Number(factura.importe) - totalPagado)
 
@@ -109,6 +111,14 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
           <div className="mt-6 pt-6 border-t border-white/5 flex gap-3">
             <EnviarRecordatorioButton facturaId={factura.id} clienteEmail={cliente?.email} diasVencida={dias} />
           </div>
+        )}
+
+        {/* Burofax automático — solo plan Max */}
+        {planOrg === 'max' && factura.estado !== 'cobrada' && factura.estado !== 'cancelada' && (
+          <BurofaxButton
+            facturaId={factura.id}
+            burofaxEnviadoAt={factura.burofax_enviado_at ?? null}
+          />
         )}
 
         <WhatsAppEnviarFacturaButton

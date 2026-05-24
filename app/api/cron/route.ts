@@ -106,7 +106,7 @@ export async function GET(req: NextRequest) {
     if (orgFullConfigCache.has(orgId)) return orgFullConfigCache.get(orgId)!
     const { data } = await supabase
       .from('configuraciones_usuario')
-      .select(`plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias`)
+      .select(`plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias, resend_api_key, email_from_dominio, email_from_nombre`)
       .eq('org_id', orgId)
       .maybeSingle()
     orgFullConfigCache.set(orgId, data as OrgFullConfig | null)
@@ -308,6 +308,14 @@ export async function GET(req: NextRequest) {
       // Cuerpo real enviado por WhatsApp (incluye link de pago como texto plano)
       let cuerpoEnviadoWA = ''
 
+      // Plan Max: custom Resend key + from address
+      const resendApiKey = configMap?.resend_api_key ?? null
+      const emailFromDominio = configMap?.email_from_dominio ?? null
+      const emailFromNombre = configMap?.email_from_nombre ?? null
+      const fromAddress = emailFromDominio
+        ? `${emailFromNombre ? emailFromNombre.replace(/["<>]/g, '').trim() : nombreEmpresa} <${emailFromDominio}>`
+        : null
+
       if (usarWhatsApp) {
         // Añadir el link de pago directamente al cuerpo del WhatsApp (no hay botón HTML)
         cuerpoEnviadoWA = factura.link_pago
@@ -322,10 +330,10 @@ export async function GET(req: NextRequest) {
         waSid = waResult.messageSid
         // Fallback a email si WhatsApp falla
         if (!enviado) {
-          enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null })
+          enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null, resendApiKey, fromAddress })
         }
       } else {
-        enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null })
+        enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null, resendApiKey, fromAddress })
       }
 
       if (enviado) {

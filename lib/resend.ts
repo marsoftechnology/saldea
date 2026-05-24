@@ -36,9 +36,12 @@ export async function enviarEmail(params: {
   idioma?: Idioma | null
   adjuntos?: Array<{ nombre: string; contenido: Uint8Array | Buffer; tipo?: string }>
   linkPago?: string | null
+  // Plan Max: Resend API key y dirección de envío propios de la org
+  resendApiKey?: string | null
+  fromAddress?: string | null
 }): Promise<boolean> {
   try {
-    const { para, asunto, cuerpo, desde, nombreEmpresa, facturaId, logoUrl, colorPrimario, idioma, adjuntos, linkPago } = params
+    const { para, asunto, cuerpo, desde, nombreEmpresa, facturaId, logoUrl, colorPrimario, idioma, adjuntos, linkPago, resendApiKey, fromAddress } = params
     const color = colorPrimario && /^#[0-9a-fA-F]{6}$/.test(colorPrimario) ? colorPrimario : '#0284c7'
     const i = (idioma && idioma in T ? idioma : 'es') as Idioma
     const t = T[i]
@@ -84,9 +87,13 @@ export async function enviarEmail(params: {
       ? `${nombreLimpio} <cobros@marsof.es>`
       : 'Saldea <cobros@marsof.es>'
 
+    // Plan Max: dominio propio → usar Resend API key y from address de la org
+    const resendClient = resendApiKey ? new Resend(resendApiKey) : getResend()
+    const fromFinal = desde ?? fromAddress ?? fromDefault
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const payload: any = {
-      from: desde ?? fromDefault,
+      from: fromFinal,
       to: para,
       subject: asunto,
       replyTo: facturaId ? `cobros+${facturaId}@marsof.es` : undefined,
@@ -112,7 +119,7 @@ export async function enviarEmail(params: {
       }))
     }
 
-    await getResend().emails.send(payload)
+    await resendClient.emails.send(payload)
     return true
   } catch (error) {
     console.error('Error enviando email:', error)

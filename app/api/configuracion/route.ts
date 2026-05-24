@@ -159,6 +159,20 @@ export async function PATCH(req: NextRequest) {
     campos.dias_via_judicial = body.dias_via_judicial
   }
 
+  // ── Plan Max: dominio de email propio ──────────────────────────────────────
+  if ('resend_api_key' in body) {
+    const v = body.resend_api_key
+    campos.resend_api_key = typeof v === 'string' && v.trim() ? v.trim() : null
+  }
+  if ('email_from_dominio' in body) {
+    const v = body.email_from_dominio
+    campos.email_from_dominio = typeof v === 'string' && v.trim() ? v.trim() : null
+  }
+  if ('email_from_nombre' in body) {
+    const v = body.email_from_nombre
+    campos.email_from_nombre = typeof v === 'string' && v.trim() ? v.trim() : null
+  }
+
   if (Object.keys(campos).length === 0) {
     return NextResponse.json({ error: 'No hay cambios que guardar' }, { status: 400 })
   }

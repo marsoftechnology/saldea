@@ -49,6 +49,13 @@ export default function AjustesPage() {
   const [detectarVacaciones, setDetectarVacaciones] = useState(true)
   const [diasViaJudicial, setDiasViaJudicial] = useState(0)
   const [plan, setPlan] = useState<'free' | 'pro' | 'max'>('free')
+  // Plan Max: dominio propio de email
+  const [resendApiKey, setResendApiKey] = useState('')
+  const [emailFromDominio, setEmailFromDominio] = useState('')
+  const [emailFromNombre, setEmailFromNombre] = useState('')
+  // Plan Max: uso de burofaxes
+  const [burofaxUsados, setBurofaxUsados] = useState(0)
+  const [burofaxLimite, setBurofaxLimite] = useState(3)
   const [planSeleccionado, setPlanSeleccionado] = useState<'pro' | 'max'>('pro')
   const [intervaloPago, setIntervaloPago] = useState<'mes' | 'anio'>('mes')
   const [mostrarPago, setMostrarPago] = useState(false)
@@ -127,6 +134,20 @@ export default function AjustesPage() {
       if (typeof data.configuracion?.detectar_disputa === 'boolean') setDetectarDisputa(data.configuracion.detectar_disputa)
       if (typeof data.configuracion?.detectar_vacaciones_cliente === 'boolean') setDetectarVacaciones(data.configuracion.detectar_vacaciones_cliente)
       if (typeof data.configuracion?.dias_via_judicial === 'number') setDiasViaJudicial(data.configuracion.dias_via_judicial)
+      if (data.configuracion?.resend_api_key) setResendApiKey(data.configuracion.resend_api_key)
+      if (data.configuracion?.email_from_dominio) setEmailFromDominio(data.configuracion.email_from_dominio)
+      if (data.configuracion?.email_from_nombre) setEmailFromNombre(data.configuracion.email_from_nombre)
+      // Cargar uso de burofax si plan Max
+      if (data.configuracion?.plan === 'max') {
+        try {
+          const usoRes = await fetch('/api/burofax/uso')
+          if (usoRes.ok) {
+            const usoData = await usoRes.json()
+            setBurofaxUsados(usoData.usados ?? 0)
+            setBurofaxLimite(usoData.limite ?? 3)
+          }
+        } catch { /* ignorar */ }
+      }
       setCargando(false)
 
       // Auto-abrir checkout si el usuario llegó desde /registro?plan=anio
@@ -201,6 +222,9 @@ export default function AjustesPage() {
             detectar_disputa: detectarDisputa,
             detectar_vacaciones_cliente: detectarVacaciones,
             dias_via_judicial: diasViaJudicial,
+            resend_api_key: resendApiKey || null,
+            email_from_dominio: emailFromDominio || null,
+            email_from_nombre: emailFromNombre || null,
           }),
         }),
       ])
@@ -766,6 +790,55 @@ export default function AjustesPage() {
               </div>
             </div>
 
+            {/* Email dominio propio — solo plan Max */}
+            {plan === 'max' && (
+              <div className="mt-6 pt-6 border-t border-white/5">
+                <div className="flex items-center gap-2 mb-1">
+                  <label className="block text-sm font-medium text-amber-200">📧 Email desde tu propio dominio</label>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 uppercase">Max</span>
+                </div>
+                <p className="text-xs text-zinc-400 mb-4 leading-relaxed">
+                  Conecta tu propia cuenta de Resend para que los emails salgan desde <strong>tu dominio</strong> (ej. <code className="text-amber-300 bg-amber-500/10 px-1 rounded">cobros@tuempresa.com</code>).
+                  Necesitas crear una API Key en <a href="https://resend.com/api-keys" target="_blank" rel="noopener noreferrer" className="text-sky-400 underline">resend.com/api-keys</a> y verificar tu dominio allí primero.
+                </p>
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-xs font-medium text-zinc-400 mb-1">API Key de Resend</label>
+                    <input
+                      type="password"
+                      value={resendApiKey}
+                      onChange={e => setResendApiKey(e.target.value)}
+                      placeholder="re_xxxxxxxxxxxxxxxxxxxx"
+                      className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 font-mono"
+                    />
+                    <p className="text-xs text-zinc-500 mt-1">Se guarda cifrado. Deja vacío para usar el dominio de Saldea.</p>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-zinc-400 mb-1">Email de envío</label>
+                    <input
+                      type="email"
+                      value={emailFromDominio}
+                      onChange={e => setEmailFromDominio(e.target.value)}
+                      placeholder="cobros@tuempresa.com"
+                      className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                    />
+                    <p className="text-xs text-zinc-500 mt-1">El dominio debe estar verificado en tu cuenta de Resend.</p>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-zinc-400 mb-1">Nombre del remitente</label>
+                    <input
+                      type="text"
+                      value={emailFromNombre}
+                      onChange={e => setEmailFromNombre(e.target.value)}
+                      placeholder="Mi Empresa S.L."
+                      className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                    />
+                    <p className="text-xs text-zinc-500 mt-1">Aparece como «Nombre del remitente» en el cliente de correo. Si lo dejas vacío, usa el nombre de tu empresa.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="mt-6 pt-6 border-t border-white/5">
               <label className="block text-sm font-medium text-zinc-300 mb-1">🌐 Idioma de los emails</label>
               <p className="text-xs text-zinc-400 mb-3">Idioma en que la IA escribirá los emails generados automáticamente. Las plantillas personalizadas se respetan tal cual estén.</p>
@@ -1026,8 +1099,25 @@ export default function AjustesPage() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/5 text-xs text-zinc-500">
-              <p>📜 <strong className="text-zinc-400">Burofax automático al día X</strong> — próximamente</p>
+            {/* Burofax: muestra uso si es Max, o teaser si no lo es */}
+            <div className="pt-4 border-t border-white/5">
+              {plan === 'max' ? (
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-amber-200">📜 Burofax automático</p>
+                    <p className="text-xs text-zinc-400 mt-0.5">Cartas fehacientes de reclamación desde la ficha de factura.</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-lg font-bold text-amber-300">{burofaxUsados}/{burofaxLimite}</p>
+                    <p className="text-xs text-zinc-500">este mes</p>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-xs text-zinc-500">
+                  📜 <strong className="text-zinc-400">Burofax automático</strong> — exclusivo plan{' '}
+                  <span className="text-amber-400">Max</span>
+                </p>
+              )}
             </div>
           </div>
         </details>
