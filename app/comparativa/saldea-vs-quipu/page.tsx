@@ -71,7 +71,7 @@ export default function PageVsQuipu() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Cita Ley 3/2004 + intereses</td><td className="py-2 px-4">✅ automático</td><td className="py-2 px-4">❌</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">Pasarela básica</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Precio entry</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">19€/mes</td></tr>
-                <tr><td className="py-2 px-4">Trial gratis</td><td className="py-2 px-4">30 días sin tarjeta</td><td className="py-2 px-4">15 días con tarjeta</td></tr>
+                <tr><td className="py-2 px-4">Trial gratis</td><td className="py-2 px-4">15 días sin tarjeta</td><td className="py-2 px-4">15 días con tarjeta</td></tr>
               </tbody>
             </table>
           </div>

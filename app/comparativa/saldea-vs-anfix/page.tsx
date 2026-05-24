@@ -68,7 +68,7 @@ export default function PageVsAnfix() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Detección respuestas</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">❌</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">Pasarela</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Precio para gestoría</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">~99€/mes según clientes</td></tr>
-                <tr><td className="py-2 px-4">Trial</td><td className="py-2 px-4">30 días sin tarjeta</td><td className="py-2 px-4">15 días</td></tr>
+                <tr><td className="py-2 px-4">Trial</td><td className="py-2 px-4">15 días sin tarjeta</td><td className="py-2 px-4">15 días</td></tr>
               </tbody>
             </table>
           </div>

@@ -10,7 +10,6 @@ import { formatearEuros, formatearFecha } from '@/lib/utils'
  *
  * Requisitos:
  *   - El cliente debe tener teléfono + whatsapp_opt_in_at
- *   - La organización debe tener addon_whatsapp_active = true
  */
 export async function POST(req: NextRequest) {
   // Autenticar usuario
