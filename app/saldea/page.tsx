@@ -81,10 +81,14 @@ const comparativa = [
   { feature: 'Escalado de tono con IA', saldea: true, manual: false, otros: false },
   { feature: 'Detecta respuestas del cliente', saldea: true, manual: false, otros: false },
   { feature: 'Pausa automática si paga / disputa', saldea: true, manual: false, otros: false },
+  { feature: 'Portal de pago con tarjeta', saldea: true, manual: false, otros: false },
+  { feature: 'Integración Holded / Quipu / Anfix', saldea: true, manual: false, otros: false },
+  { feature: 'Recordatorios por WhatsApp', saldea: true, manual: false, otros: false },
+  { feature: 'Burofax digital en 1 clic', saldea: true, manual: false, otros: false },
   { feature: 'Plantillas en 4 idiomas', saldea: true, manual: false, otros: 'A veces' },
   { feature: 'PDF de factura adjunto', saldea: true, manual: false, otros: true },
   { feature: 'Emails con tu logo, firma y empresa', saldea: true, manual: 'Si te acuerdas', otros: 'A veces' },
-  { feature: 'Tiempo dedicado a perseguir cobros', saldea: '0h/mes', manual: '5-10h/mes por cliente', otros: '2-4h/mes' },
+  { feature: 'Tiempo dedicado a perseguir cobros', saldea: '0h/mes', manual: '5-10h/mes por moroso', otros: '2-4h/mes' },
   { feature: 'Coste', saldea: '49€/mes o 499€/año', manual: '0€ (tu tiempo)', otros: '100-1.000€/mes' },
 ]
 
@@ -98,7 +102,7 @@ const faqs = [
   { p: '¿Mensual o anual: cuál me conviene?', r: 'Si todavía estás validando si Saldea encaja contigo, empieza con el mensual (15 días gratis, sales cuando quieras). Si ya lo conoces o tienes claro que vas a usarlo más de 10 meses al año, el anual te ahorra 89€ (~15%).' },
   { p: '¿Puedo importar mis facturas actuales?', r: 'Sí. Importa tus facturas desde un CSV en segundos. La plantilla está disponible en el panel.' },
   { p: '¿Qué pasa con la privacidad de mis clientes?', r: 'Saldea cumple RGPD. Los datos están en servidores europeos (Supabase, Vercel) cifrados. Ningún dato se vende ni se usa para entrenar modelos de IA.' },
-  { p: '¿Hay integración con mi software de facturación?', r: 'Próximamente: Holded, FacturaDirecta, Quaderno, Sage. Mientras tanto, puedes importar las facturas exportadas a CSV desde cualquiera de esos sistemas.' },
+  { p: '¿Hay integración con mi software de facturación?', r: 'Sí. Ya disponibles: Holded, Quipu y Anfix. Conectas en 1 clic y Saldea importa tus facturas vencidas automáticamente. Para otros programas puedes importar exportando a CSV desde tu software.' },
 ]
 
 export default function SaldeaPage() {
@@ -227,7 +231,7 @@ export default function SaldeaPage() {
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { num: 10, label: 'horas ahorradas al mes', suffix: 'h' },
+              { num: 10, label: 'ahorradas por cada moroso', suffix: 'h' },
               { num: 5, label: 'tonos: de cordial a legal', suffix: '' },
               { num: 4, label: 'idiomas: ES · CA · EN · PT', suffix: '' },
               { num: 5, label: 'min. para empezar', prefix: '<', suffix: '' },
@@ -316,7 +320,7 @@ export default function SaldeaPage() {
               <ul className="space-y-3 text-zinc-300">
                 <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Crea facturas una a una desde el panel</li>
                 <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Importa CSV con cientos de facturas de golpe</li>
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Plantilla con el formato exacto disponible</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Sincroniza automáticamente con Holded, Quipu o Anfix</li>
               </ul>
             </Reveal>
             <Reveal effect="slide-right" delay={150}>
@@ -358,7 +362,8 @@ export default function SaldeaPage() {
               <ul className="space-y-3 text-zinc-300">
                 <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Estado de cada factura en tiempo real</li>
                 <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Tasa de cobro y total pendiente al día</li>
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Saldea pausa los recordatorios automáticamente cuando detecta pago o respuesta</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Portal de pago: tu cliente paga con tarjeta en 1 clic desde el email</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Saldea pausa los recordatorios automáticamente cuando detecta pago</li>
               </ul>
             </Reveal>
             <Reveal effect="slide-right" delay={150}>
@@ -423,6 +428,38 @@ export default function SaldeaPage() {
             </div>
           </Reveal>
 
+          {/* Integraciones — fila ancha */}
+          <Reveal effect="fade-up" className="md:col-span-2">
+            <div className="bg-gradient-to-br from-sky-500/5 via-transparent to-sky-500/5 border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
+              <div className="flex items-center gap-2 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+                Integraciones nativas
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Sincroniza tus facturas automáticamente</h3>
+              <p className="text-zinc-400 leading-relaxed mb-5">
+                Conecta tu software de facturación en 1 clic. Saldea importa las facturas vencidas y empieza a cobrarlas sin que hagas nada más.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {['Holded', 'Quipu', 'Anfix', 'CSV manual'].map((s) => (
+                  <span key={s} className="inline-flex items-center gap-1.5 text-xs font-semibold bg-zinc-800/80 border border-white/10 text-zinc-300 px-3 py-1.5 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />{s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Portal de pago */}
+          <Reveal effect="fade-up" delay={100}>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
+              <div className="text-3xl mb-4">💳</div>
+              <h3 className="text-lg font-bold text-white mb-2">Portal de pago</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Cada email incluye un enlace de pago. Tu cliente hace clic y paga con tarjeta en 30 segundos, sin login ni trámites.
+              </p>
+            </div>
+          </Reveal>
+
           <Reveal effect="fade-up">
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
               <div className="text-3xl mb-4">🌍</div>
@@ -443,29 +480,49 @@ export default function SaldeaPage() {
             </div>
           </Reveal>
 
-          <Reveal effect="fade-up" delay={200} className="md:col-span-1">
+          <Reveal effect="fade-up" delay={200}>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
-              <div className="text-3xl mb-4">⚖️</div>
-              <h3 className="text-lg font-bold text-white mb-2">Recargo + descuento</h3>
+              <div className="text-3xl mb-4">📱</div>
+              <h3 className="text-lg font-bold text-white mb-2">WhatsApp</h3>
               <p className="text-zinc-400 text-sm leading-relaxed">
-                Configura recargo de mora a partir del día X y descuento por pronto pago. Saldea los aplica en el mensaje automáticamente.
+                Envía recordatorios por WhatsApp además del email. Llega por el canal donde tu cliente sí lee.
               </p>
             </div>
           </Reveal>
 
-          <Reveal effect="fade-up" delay={300} className="md:col-span-2">
+          {/* Burofax + Importación masiva */}
+          <Reveal effect="fade-up" delay={100} className="md:col-span-2">
+            <div className="grid sm:grid-cols-2 gap-5 h-full">
+              <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 hover:border-sky-500/30 transition-colors">
+                <div className="text-3xl mb-4">📮</div>
+                <h3 className="text-lg font-bold text-white mb-2">Burofax digital</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed">
+                  Último recurso antes del juzgado. Envía un burofax certificado con 1 clic desde el panel, sin ir a correos.
+                </p>
+              </div>
+              <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 hover:border-sky-500/30 transition-colors">
+                <div className="text-3xl mb-4">⚖️</div>
+                <h3 className="text-lg font-bold text-white mb-2">Recargo + descuento</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed">
+                  Configura recargo de mora a partir del día X y descuento por pronto pago. Saldea los aplica automáticamente.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal effect="fade-up" delay={200} className="md:col-span-1">
             <div className="bg-gradient-to-br from-sky-500/5 via-transparent to-sky-500/5 border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
               <div className="flex items-center gap-2 text-zinc-500 text-xs font-semibold uppercase tracking-wider mb-4">
                 Importación masiva
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Sube cientos de facturas en segundos</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Sube facturas en segundos</h3>
               <p className="text-zinc-400 leading-relaxed mb-4">
-                Exporta tus facturas desde Holded, FacturaDirecta, Quaderno o cualquier programa a CSV. Súbelo a Saldea y empieza a cobrarlas todas a la vez.
+                Exporta a CSV desde cualquier programa y súbelo de golpe.
               </p>
               <div className="bg-black/40 border border-white/5 rounded-lg p-4 font-mono text-xs text-zinc-400 overflow-x-auto">
-                <div>nombre,email,empresa,factura,importe,vencimiento</div>
-                <div className="text-sky-300">Pedro García,pedro@taller.com,Taller SL,2026-014,1250.00,2026-04-30</div>
-                <div className="text-sky-300">María López,maria@tech.com,Tech SA,2026-015,800.00,2026-05-12</div>
+                <div>nombre,email,factura,importe,vencimiento</div>
+                <div className="text-sky-300">Pedro García,pedro@...,F-014,1250.00,2026-04-30</div>
+                <div className="text-sky-300">María López,maria@...,F-015,800.00,2026-05-12</div>
                 <div className="text-zinc-600">...</div>
               </div>
             </div>
