@@ -10,6 +10,8 @@ import HoldedSection from './HoldedSection'
 import { PushNotificationsSection } from './PushNotificationsSection'
 import ApiKeysSection from './ApiKeysSection'
 import QuipuSection from './QuipuSection'
+import AnfixSection from './AnfixSection'
+import { WhatsAppInboundInfo } from './WhatsAppInboundInfo'
 
 export default function AjustesPage() {
   const [nombre, setNombre] = useState('')
@@ -417,8 +419,14 @@ export default function AjustesPage() {
       {/* Quipu: importar facturas */}
       <QuipuSection />
 
+      {/* Anfix: importar facturas */}
+      <AnfixSection />
+
       {/* API Keys: acceso REST externo */}
       <ApiKeysSection />
+
+      {/* WhatsApp inbound: configurar webhook Twilio para recibir respuestas */}
+      <WhatsAppInboundInfo />
 
       <form onSubmit={guardar} className="space-y-3">
 

@@ -4,6 +4,7 @@ import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
 import ClienteOverridesEditor from './ClienteOverridesEditor'
 import WhatsAppButton from './WhatsAppButton'
+import PortalClienteLink from './PortalClienteLink'
 import { getActiveOrg } from '@/lib/auth-org'
 
 export default async function ClienteDetallePage({ params }: { params: Promise<{ id: string }> }) {
@@ -110,6 +111,14 @@ export default async function ClienteDetallePage({ params }: { params: Promise<{
           <p className="text-2xl font-bold text-zinc-100">{formatearEuros(totalPendiente)}</p>
         </div>
       </div>
+
+      {/* Portal del cliente — enlace compartible */}
+      {cliente.portal_token && (
+        <PortalClienteLink
+          token={cliente.portal_token}
+          clienteNombre={cliente.nombre}
+        />
+      )}
 
       {/* Preferencias del cliente (overrides) */}
       <ClienteOverridesEditor cliente={cliente} />
