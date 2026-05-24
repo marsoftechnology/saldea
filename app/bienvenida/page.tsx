@@ -8,7 +8,7 @@ type Patron = 'agresivo' | 'normal' | 'suave'
 type TonoPreset = 'cordial' | 'firme' | 'contundente' | 'personalizado'
 type Software = 'holded' | 'quipu' | 'anfix' | 'csv' | 'manual'
 
-const TOTAL_PASOS = 8
+const TOTAL_PASOS = 9
 
 // Ejemplos de email reales para cada tono
 const EJEMPLOS_TONO: Record<TonoPreset, { asunto: string; cuerpo: string }> = {
@@ -670,6 +670,63 @@ export default function BienvenidaPage() {
     )
   }
 
+  function renderPasoBanco() {
+    return (
+      <>
+        <div className="text-center mb-8">
+          <div className="text-5xl mb-4">🏦</div>
+          <h1 className="text-2xl font-bold text-zinc-100">Conciliación bancaria automática</h1>
+          <p className="text-zinc-400 mt-2">Conecta tu banco y Saldea marcará las facturas como cobradas en cuanto detecte el ingreso — sin que toques nada.</p>
+        </div>
+
+        <div className="space-y-4 mb-8">
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { icono: '🔍', titulo: 'Detección automática', desc: 'Cruza cada ingreso bancario con tus facturas pendientes' },
+              { icono: '✅', titulo: 'Factura cobrada sola', desc: 'La factura pasa a «cobrada» sin que toques nada' },
+              { icono: '🔒', titulo: 'Solo lectura PSD2', desc: 'Acceso de lectura únicamente, nunca puede mover tu dinero' },
+              { icono: '🏦', titulo: '+2.000 bancos', desc: 'CaixaBank, BBVA, Santander, ING, Sabadell y muchos más' },
+            ].map(b => (
+              <div key={b.titulo} className="bg-zinc-900/40 border border-white/10 rounded-xl p-4">
+                <div className="text-2xl mb-2">{b.icono}</div>
+                <p className="text-sm font-semibold text-zinc-200">{b.titulo}</p>
+                <p className="text-xs text-zinc-400 mt-1">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 flex items-start gap-3">
+            <span className="text-amber-400 text-xl shrink-0">⭐</span>
+            <div>
+              <p className="text-sm font-semibold text-amber-300">Exclusivo del Plan Max</p>
+              <p className="text-xs text-amber-300/70 mt-1 leading-relaxed">
+                Usa GoCardless Open Banking (gratuito). Una vez completes la configuración inicial,
+                conéctalo desde <strong className="text-amber-300">🏦 Banco</strong> en la barra lateral.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-zinc-900/40 border border-white/5 rounded-xl p-4 space-y-2 text-sm text-zinc-400">
+            <p className="flex gap-2"><span className="text-sky-400 shrink-0">1.</span>Regístrate gratis en <strong className="text-zinc-300">bankaccountdata.gocardless.com</strong></p>
+            <p className="flex gap-2"><span className="text-sky-400 shrink-0">2.</span>Añade las claves en Vercel: <code className="text-zinc-300 text-xs bg-zinc-800 px-1.5 py-0.5 rounded">GOCARDLESS_SECRET_ID</code> y <code className="text-zinc-300 text-xs bg-zinc-800 px-1.5 py-0.5 rounded">GOCARDLESS_SECRET_KEY</code></p>
+            <p className="flex gap-2"><span className="text-sky-400 shrink-0">3.</span>Ve a <strong className="text-zinc-300">🏦 Banco</strong> en el panel y elige tu banco</p>
+          </div>
+        </div>
+
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={avanzar}
+            className="flex-1 bg-sky-500 hover:bg-sky-400 text-white font-semibold py-3 px-6 rounded-xl transition-colors"
+          >
+            Entendido, continuar →
+          </button>
+          <BotonSaltar />
+        </div>
+      </>
+    )
+  }
+
   function renderPaso5() {
     return (
       <>
@@ -776,13 +833,14 @@ export default function BienvenidaPage() {
   }
 
   function renderPaso7() {
-    const cosas: Array<[string, string, boolean]> = [
-      ['👤', 'Tu empresa configurada', !!(nombre || empresa)],
-      ['🎨', 'Imagen de marca', !!(logoUrl || colorPrimario !== '#0284c7')],
-      ['✉️', 'Tono y frecuencia', true],
-      ['📦', 'Software conectado', softwareConectado],
-      ['💳', 'Stripe para cobros online', stripeConectado],
-      ['📱', 'WhatsApp habilitado', false],
+    const cosas: Array<[string, string, boolean, string]> = [
+      ['👤', 'Tu empresa configurada', !!(nombre || empresa), '/ajustes'],
+      ['🎨', 'Imagen de marca', !!(logoUrl || colorPrimario !== '#0284c7'), '/ajustes'],
+      ['✉️', 'Tono y frecuencia', true, '/ajustes'],
+      ['📦', 'Software conectado', softwareConectado, '/ajustes'],
+      ['💳', 'Stripe para cobros online', stripeConectado, '/ajustes'],
+      ['🏦', 'Conciliación bancaria (Plan Max)', false, '/banco'],
+      ['📱', 'WhatsApp habilitado', false, '/ajustes'],
     ]
 
     return (
@@ -794,7 +852,7 @@ export default function BienvenidaPage() {
         </div>
 
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 mb-6 space-y-2">
-          {cosas.map(([icono, label, hecho]) => (
+          {cosas.map(([icono, label, hecho, href]) => (
             <div key={label} className="flex items-center gap-3">
               <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${hecho ? 'bg-emerald-500/20 text-emerald-400' : 'bg-zinc-800 text-zinc-500'}`}>
                 {hecho ? '✓' : '–'}
@@ -804,7 +862,7 @@ export default function BienvenidaPage() {
                 <span className={hecho ? 'text-zinc-200' : 'text-zinc-500'}>{label}</span>
               </span>
               {!hecho && (
-                <a href="/ajustes" className="ml-auto text-xs text-sky-400 hover:text-sky-300">Configurar →</a>
+                <a href={href} className="ml-auto text-xs text-sky-400 hover:text-sky-300">Configurar →</a>
               )}
             </div>
           ))}
@@ -835,6 +893,7 @@ export default function BienvenidaPage() {
     renderPaso2,
     renderPaso3,
     renderPaso4,
+    renderPasoBanco,
     renderPaso5,
     renderPaso6,
     renderPaso7,
@@ -846,6 +905,7 @@ export default function BienvenidaPage() {
     'Cómo cobrar',
     'Integraciones',
     'Cobros online',
+    'Banco',
     'WhatsApp',
     'Primera factura',
     '¡Todo listo!',
