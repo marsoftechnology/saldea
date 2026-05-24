@@ -20,7 +20,6 @@ const nav = [
 const navOperativo = [
   { href: '/admin/usuarios', label: 'Usuarios', icono: '👥' },
   { href: '/admin/organizaciones', label: 'Organizaciones', icono: '🏛️' },
-  { href: '/admin/facturas', label: 'Facturas de clientes', icono: '📄' },
 ]
 
 export default async function AdminLayoutProtegido({ children }: { children: React.ReactNode }) {
