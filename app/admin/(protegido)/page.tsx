@@ -144,39 +144,48 @@ export default async function AdminInicioPage() {
         </div>
       </div>
 
-      {/* Desglose por app */}
-      <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">Apps</h2>
-      <div className="space-y-3 mb-8">
-        <div className="bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden">
-          <div className="p-5 border-b border-white/5 flex items-center justify-between gap-4 flex-wrap">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl">💼</span>
-              <div>
-                <h3 className="text-base font-bold text-zinc-100">Saldea</h3>
-                <p className="text-xs text-zinc-500">Cobro automático de facturas con IA · marsof.es</p>
-              </div>
-            </div>
-            <Link
-              href="/admin/saldea"
-              className="text-xs text-sky-400 hover:text-sky-300 border border-sky-500/30 hover:bg-sky-500/10 px-3 py-1.5 rounded-lg"
-            >
-              Detalle financiero →
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5">
-            {/* En el futuro, cuando haya más apps, estos números se filtrarán por app */}
-            <SubMetric label="Este mes" valor={formatEuros(esteMes.brutoCentimos)} />
-            <SubMetric label="Este año" valor={formatEuros(esteAno.brutoCentimos)} />
-            <SubMetric label="MRR" valor={formatEuros(mrrCentimos)} />
-            <SubMetric label="Suscriptores" valor={String(subsActivas)} />
-          </div>
-        </div>
-
-        {/* Placeholder de futuras apps */}
-        <div className="bg-zinc-900/20 border border-dashed border-white/10 rounded-2xl p-6 text-center">
-          <p className="text-zinc-500 text-sm">🧪 Cuando lances la siguiente app de Marsof aparecerá aquí</p>
-          <p className="text-zinc-600 text-xs mt-1">Cada app tendrá su propia fila con sus métricas</p>
-        </div>
+      {/* Desglose por producto */}
+      <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">Productos Marsof Technology</h2>
+      <div className="bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden mb-8">
+        <table className="w-full text-sm">
+          <thead className="bg-zinc-900/60 border-b border-white/5 text-[10px] uppercase tracking-wider text-zinc-500">
+            <tr>
+              <th className="text-left px-5 py-3">Producto</th>
+              <th className="text-right px-5 py-3">Este mes</th>
+              <th className="text-right px-5 py-3">Este año</th>
+              <th className="text-right px-5 py-3">MRR</th>
+              <th className="text-right px-5 py-3">Suscriptores</th>
+              <th className="text-left px-5 py-3">Estado</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-white/5">
+            <tr className="hover:bg-white/[0.02]">
+              <td className="px-5 py-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">💼</span>
+                  <div>
+                    <p className="text-sm font-semibold text-zinc-100">Saldea</p>
+                    <p className="text-xs text-zinc-500">Cobro automático de facturas con IA</p>
+                  </div>
+                </div>
+              </td>
+              <td className="px-5 py-4 text-right text-zinc-100 font-semibold">{formatEuros(esteMes.brutoCentimos)}</td>
+              <td className="px-5 py-4 text-right text-zinc-300">{formatEuros(esteAno.brutoCentimos)}</td>
+              <td className="px-5 py-4 text-right text-sky-300 font-semibold">{formatEuros(mrrCentimos)}</td>
+              <td className="px-5 py-4 text-right text-zinc-300">{subsActivas}</td>
+              <td className="px-5 py-4">
+                <span className="text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                  🟢 Activa
+                </span>
+              </td>
+            </tr>
+            <tr className="bg-zinc-900/20">
+              <td colSpan={6} className="px-5 py-3 text-xs text-zinc-600 italic text-center">
+                🧪 Aquí aparecerá cada nueva app que lances — una fila por producto
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       {/* Eventos recientes */}
@@ -235,11 +244,3 @@ function KPI({
   )
 }
 
-function SubMetric({ label, valor }: { label: string; valor: string }) {
-  return (
-    <div className="bg-zinc-900/40 p-4">
-      <p className="text-[10px] text-zinc-500 uppercase tracking-wider mb-1">{label}</p>
-      <p className="text-lg font-bold text-zinc-100">{valor}</p>
-    </div>
-  )
-}
