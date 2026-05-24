@@ -493,11 +493,14 @@ export default function SaldeaPage() {
           {/* Burofax + Importación masiva */}
           <Reveal effect="fade-up" delay={100} className="md:col-span-2">
             <div className="grid sm:grid-cols-2 gap-5 h-full">
-              <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 hover:border-sky-500/30 transition-colors">
-                <div className="text-3xl mb-4">📮</div>
+              <div className="bg-zinc-900/40 border border-amber-500/20 rounded-2xl p-8 hover:border-amber-500/40 transition-colors">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-3xl">📮</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wide bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full">Plan Max</span>
+                </div>
                 <h3 className="text-lg font-bold text-white mb-2">Burofax digital</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">
-                  Último recurso antes del juzgado. Envía un burofax certificado con 1 clic desde el panel, sin ir a correos.
+                  Último recurso antes del juzgado. 3 burofax/mes incluidos en Max, extras a 6€/ud. Envíalo en 1 clic, sin ir a correos.
                 </p>
               </div>
               <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 hover:border-sky-500/30 transition-colors">
