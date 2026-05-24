@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { enviarEmail } from '@/lib/resend'
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit'
 
 const PUNTOS: Record<string, number> = {
   // Q1 - Stack tecnológico
@@ -117,6 +118,16 @@ const PREGUNTAS = [
 const MAX_SCORE = 180
 
 export async function POST(req: NextRequest) {
+  // Rate limit: máx 3 encuestas por IP por hora para evitar spam al buzón de Carlos
+  const ip = getClientIp(req)
+  const rl = checkRateLimit({ key: `encuesta:${ip}`, ventana: '1h', max: 3 })
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: 'Demasiadas solicitudes. Inténtalo de nuevo más tarde.' },
+      { status: 429, headers: { 'Retry-After': String(rl.retryAfter ?? 3600) } },
+    )
+  }
+
   const body = await req.json() as {
     nombre: string
     email: string

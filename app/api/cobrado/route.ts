@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceRoleClient } from '@/lib/supabase-service'
 import { recalcularEstadoFactura } from '@/lib/pagos'
+import { verificarTokenCobrado } from '@/lib/cobrado-token'
 
 export async function GET(req: NextRequest) {
   const facturaId = req.nextUrl.searchParams.get('id')
   if (!facturaId) return NextResponse.redirect(new URL('/', req.url))
+
+  // Verificar token HMAC para evitar que cualquiera marque facturas como pagadas
+  const token = req.nextUrl.searchParams.get('t')
+  if (!verificarTokenCobrado(facturaId, token)) {
+    return NextResponse.redirect(new URL('/cobrado?error=token', req.url))
+  }
 
   try {
     const supabase = createServiceRoleClient()

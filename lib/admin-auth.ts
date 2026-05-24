@@ -73,10 +73,10 @@ export async function loginAdmin(usernameInput: string, passwordInput: string): 
   const store = await cookies()
   store.set(COOKIE_NAME, token, {
     httpOnly: true,
-    sameSite: 'lax',
+    sameSite: 'strict',
     secure: process.env.NODE_ENV === 'production',
     maxAge: MAX_AGE_SECONDS,
-    path: '/',
+    path: '/admin',
   })
   return true
 }

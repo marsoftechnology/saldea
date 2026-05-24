@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+import { generarTokenCobrado } from '@/lib/cobrado-token'
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
@@ -67,7 +68,7 @@ export async function enviarEmail(params: {
 
     const botonPago = facturaId ? `
       <div style="margin: ${linkPagoValido ? '8px' : '32px'} 0; text-align: center;">
-        <a href="${APP_URL}/api/cobrado?id=${facturaId}"
+        <a href="${APP_URL}/api/cobrado?id=${facturaId}&t=${generarTokenCobrado(facturaId)}"
            style="display: inline-block; ${linkPagoValido ? 'background-color: transparent; color: #666; border: 1px solid #ccc;' : `background-color: ${color}; color: white;`} padding: ${linkPagoValido ? '10px 24px' : '14px 32px'}; border-radius: 8px; text-decoration: none; font-weight: ${linkPagoValido ? 'normal' : 'bold'}; font-size: ${linkPagoValido ? '13px' : '15px'};">
           ${t.boton}
         </a>
