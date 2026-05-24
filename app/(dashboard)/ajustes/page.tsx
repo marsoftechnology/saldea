@@ -377,7 +377,7 @@ export default function AjustesPage() {
                       : 'bg-zinc-900/80 border-white/10 text-zinc-300 hover:border-white/20'
                   }`}>
                   {planSeleccionado === 'pro' ? 'Mensual · 49€/mes' : 'Mensual · 99€/mes'}
-                  {planSeleccionado === 'pro' && <span className="block text-[10px] text-sky-400 font-bold mt-0.5">1 mes gratis</span>}
+                  {planSeleccionado === 'pro' && <span className="block text-[10px] text-sky-400 font-bold mt-0.5">15 días gratis</span>}
                 </button>
                 <button type="button" onClick={() => setIntervaloPago('anio')}
                   className={`px-4 py-2.5 rounded-lg text-sm font-semibold border-2 transition-colors ${
@@ -396,12 +396,12 @@ export default function AjustesPage() {
                   planSeleccionado === 'max' ? 'bg-amber-500 hover:bg-amber-400' : 'bg-sky-500 hover:bg-sky-400'
                 }`}>
                 {planSeleccionado === 'pro'
-                  ? (intervaloPago === 'mes' ? 'Empezar 1 mes gratis →' : 'Pagar 499€ y empezar →')
+                  ? (intervaloPago === 'mes' ? 'Empezar 15 días gratis →' : 'Pagar 499€ y empezar →')
                   : (intervaloPago === 'mes' ? 'Empezar con Max →' : 'Pagar 1.000€ y empezar →')}
               </button>
               <p className="text-xs text-zinc-500 mt-3">
                 {intervaloPago === 'mes' && planSeleccionado === 'pro'
-                  ? 'Se requiere tarjeta. El primer cobro el día 31. Cancela en 1 clic antes y no pagas nada.'
+                  ? 'Se requiere tarjeta. El primer cobro (49€) se realiza 15 días después de tu registro. Cancela en 1 clic antes y no pagas nada.'
                   : 'Cobro único. Sin permanencia. No se renueva sin tu permiso.'}
               </p>
             </div>

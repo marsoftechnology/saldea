@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getActiveOrg } from '@/lib/auth-org'
+import { TRIAL_DAYS } from '@/app/api/trial/route'
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY
@@ -43,12 +44,12 @@ export async function POST(req: NextRequest) {
     }
     if (!priceId) throw new Error(`Price ID no configurado para plan ${planTipo} / ${interval}`)
 
-    // Solo el plan mensual Pro lleva trial de 30 días. Max y anual van directo al cobro.
+    // Solo el plan mensual Pro lleva trial. Max y anual van directo al cobro.
     const subscriptionData: Record<string, unknown> = {
       metadata: { user_id: user.id, org_id: org.org_id, interval, planTipo },
     }
     if (interval === 'mes' && planTipo === 'pro') {
-      subscriptionData.trial_period_days = 30
+      subscriptionData.trial_period_days = TRIAL_DAYS
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

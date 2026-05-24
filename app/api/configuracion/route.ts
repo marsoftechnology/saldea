@@ -159,6 +159,11 @@ export async function PATCH(req: NextRequest) {
     campos.dias_via_judicial = body.dias_via_judicial
   }
 
+  // ── Onboarding ─────────────────────────────────────────────────────────────
+  if (typeof body.onboarding_completado === 'boolean') {
+    campos.onboarding_completado = body.onboarding_completado
+  }
+
   // ── Plan Max: dominio de email propio ──────────────────────────────────────
   if ('resend_api_key' in body) {
     const v = body.resend_api_key

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import { validarFirmaTwilio } from '@/lib/twilio'
+import { validarFirmaTwilio, enviarWhatsApp } from '@/lib/twilio'
 import { clasificarRespuestaCliente, type CategoriaRespuesta } from '@/lib/anthropic'
 import { diasVencida } from '@/lib/utils'
 import { getUserPlan } from '@/lib/plan'

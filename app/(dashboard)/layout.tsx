@@ -17,6 +17,8 @@ type TrialStatus = {
   trialDaysRemaining: number | null
 }
 
+type OnboardingStatus = { completado: boolean }
+
 const navegacion = [
   { href: '/dashboard', label: 'Inicio', icono: '📊' },
   { href: '/facturas', label: 'Facturas', icono: '📄' },
@@ -31,6 +33,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const router = useRouter()
   const [menuAbierto, setMenuAbierto] = useState(false)
   const [trial, setTrial] = useState<TrialStatus | null>(null)
+  const [onboarding, setOnboarding] = useState<OnboardingStatus | null>(null)
 
   // Cerrar el menú al cambiar de ruta (mobile UX)
   useEffect(() => {
@@ -44,6 +47,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       .then(d => d && setTrial(d))
       .catch(() => {})
   }, [])
+
+  // Comprobar onboarding — redirigir a /bienvenida si no está completado
+  useEffect(() => {
+    fetch('/api/onboarding/estado')
+      .then(r => r.ok ? r.json() : { completado: true })
+      .then((d: OnboardingStatus) => {
+        setOnboarding(d)
+        if (!d.completado) {
+          router.push('/bienvenida')
+        }
+      })
+      .catch(() => setOnboarding({ completado: true }))
+  }, [router])
 
   async function cerrarSesion() {
     const supabase = createClient()
@@ -199,6 +215,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Paywall obligatorio cuando el trial ha expirado */}
       {trial?.trialExpired && <TrialPaywall />}
+
+      {/* Pantalla de carga mientras verificamos onboarding (evita flash) */}
+      {onboarding === null && (
+        <div className="fixed inset-0 bg-[#0a0a0b]/80 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-sky-500 border-t-transparent rounded-full animate-spin" />
+        </div>
+      )}
 
       {/* Banner de instalación PWA en móvil */}
       <InstallPrompt />

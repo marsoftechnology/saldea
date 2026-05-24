@@ -33,11 +33,11 @@ export function PricingSection() {
       <div className="text-center mb-12">
         <p className="text-sky-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">Precios</p>
         <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
-          {esMensual ? 'Empieza gratis 1 mes' : 'Ahorra casi 2 meses pagando al año'}
+          {esMensual ? 'Empieza gratis 15 días' : 'Ahorra casi 2 meses pagando al año'}
         </h2>
         <p className="text-zinc-400">
           {esMensual
-            ? 'Sin cobro durante 30 días. Cancela antes y no pagas nada. Sin permanencia.'
+            ? 'Sin cobro durante 15 días. Cancela antes y no pagas nada. Sin permanencia.'
             : 'Pago único anual, sin permanencia. Cancela cuando quieras y no se renueva.'}
         </p>
       </div>
@@ -83,7 +83,7 @@ export function PricingSection() {
       <div className="relative rounded-3xl bg-gradient-to-br from-sky-500/30 via-white/5 to-transparent p-[1px] shadow-2xl shadow-sky-500/10">
         <div className="relative bg-zinc-950/90 backdrop-blur-xl rounded-3xl p-8 md:p-10">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-500 text-zinc-900 text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide">
-            {esMensual ? '1 mes gratis' : 'Ahorra 89€'}
+            {esMensual ? '15 días gratis' : 'Ahorra 89€'}
           </div>
 
           <div className="text-center mb-8 mt-2">
@@ -124,11 +124,11 @@ export function PricingSection() {
             href={`/registro?plan=${intervalo}`}
             className="block w-full text-center bg-sky-500 text-zinc-900 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5"
           >
-            {esMensual ? 'Empezar 1 mes gratis →' : 'Pagar 499€ y empezar →'}
+            {esMensual ? 'Empezar 15 días gratis →' : 'Pagar 499€ y empezar →'}
           </Link>
           <p className="text-center text-xs text-zinc-500 mt-4">
             {esMensual
-              ? 'Se requiere tarjeta. El primer cobro (49€) se realiza el día 31. Cancela en 1 clic antes y no pagas nada.'
+              ? 'Se requiere tarjeta. El primer cobro (49€) se realiza 15 días después de tu registro. Cancela en 1 clic antes y no pagas nada.'
               : 'Cobro único de 499€. Sin permanencia: cancela cuando quieras y no se renueva en 12 meses. ¿No estás seguro? Empieza con el mensual.'}
           </p>
         </div>
