@@ -139,6 +139,9 @@ export default function SaldeaPage() {
             <a href="#precios" className="hidden md:block text-sm text-zinc-400 hover:text-zinc-200 font-medium px-3 py-2 transition-colors">
               Precios
             </a>
+            <Link href="/testimonios" className="hidden md:block text-sm text-zinc-400 hover:text-zinc-200 font-medium px-3 py-2 transition-colors">
+              Testimonios
+            </Link>
 <Link href="/login" className="text-sm text-zinc-400 hover:text-zinc-200 font-medium px-3 py-2 transition-colors">
               Acceder
             </Link>

@@ -28,6 +28,7 @@ export default function MarketingFooter() {
               <li><Link href="/saldea" className="text-zinc-400 hover:text-zinc-100 transition-colors">Saldea</Link></li>
               <li><Link href="/gestorias" className="text-zinc-400 hover:text-zinc-100 transition-colors">Para gestorías</Link></li>
               <li><Link href="/autonomos" className="text-zinc-400 hover:text-zinc-100 transition-colors">Para autónomos</Link></li>
+              <li><Link href="/testimonios" className="text-zinc-400 hover:text-zinc-100 transition-colors">Testimonios</Link></li>
               <li><Link href="/preguntas-frecuentes" className="text-zinc-400 hover:text-zinc-100 transition-colors">Preguntas frecuentes</Link></li>
             </ul>
           </div>
