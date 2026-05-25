@@ -6,7 +6,7 @@
 -- ── banco_conexiones ──────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS banco_conexiones (
   id               uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  org_id           uuid NOT NULL REFERENCES orgs(id) ON DELETE CASCADE,
+  org_id           uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
   requisition_id   text NOT NULL UNIQUE,
   institution_id   text NOT NULL,
   institution_name text,
@@ -30,7 +30,7 @@ CREATE POLICY "miembros gestionan banco_conexiones" ON banco_conexiones
 -- ── banco_transacciones ───────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS banco_transacciones (
   id               uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  org_id           uuid NOT NULL REFERENCES orgs(id) ON DELETE CASCADE,
+  org_id           uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
   conexion_id      uuid NOT NULL REFERENCES banco_conexiones(id) ON DELETE CASCADE,
   account_id       text NOT NULL,
   transaction_id   text NOT NULL,
