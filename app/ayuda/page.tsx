@@ -65,10 +65,10 @@ export default function AyudaPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="mailto:soporte@marsof.es"
+                  href="mailto:carlosgc@marsof.es"
                   className="bg-sky-500 hover:bg-sky-400 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
                 >
-                  ✉️ soporte@marsof.es
+                  ✉️ carlosgc@marsof.es
                 </a>
                 <Link
                   href="/contacto"

@@ -65,7 +65,7 @@ export default function PageHosteleria() {
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea para proveedores de hostelería</h3>
-          <p className="text-zinc-300 mb-5">Recordatorios automáticos por cliente, escala el tono según tipo de hotel/restaurante. <strong>15 días gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Recordatorios automáticos por cliente, escala el tono según tipo de hotel/restaurante. <strong>30 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>
         </aside>
       </div>

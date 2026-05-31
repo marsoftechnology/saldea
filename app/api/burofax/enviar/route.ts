@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
     // Para MVP: bloqueamos hasta implementar cobro de extras
     if (usados >= limite) {
       return NextResponse.json({
-        error: `Has usado ${usados}/${limite} burofax gratuitos este mes. Los adicionales cuestan 6€/ud. Contáctanos en hola@marsof.es para activarlos.`,
+        error: `Has usado ${usados}/${limite} burofax gratuitos este mes. Los adicionales cuestan 6€/ud. Contáctanos en carlosgc@marsof.es para activarlos.`,
         codigo: 'LIMITE_BUROFAX_MES',
         usados,
         limite,

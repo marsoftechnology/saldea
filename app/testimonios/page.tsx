@@ -240,7 +240,7 @@ export default function PageTestimonios() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">
-            15 días gratis
+            30 días gratis
           </Link>
         </div>
       </nav>
@@ -292,7 +292,7 @@ export default function PageTestimonios() {
         {/* CTA final */}
         <div className="mt-16 bg-gradient-to-br from-sky-500/10 to-transparent border border-sky-500/20 rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-3">¿Quieres ser el siguiente caso de éxito?</h2>
-          <p className="text-zinc-400 mb-6 max-w-lg mx-auto">Prueba Saldea 15 días gratis. Sin tarjeta. Si no funciona, no hay nada que cancelar.</p>
+          <p className="text-zinc-400 mb-6 max-w-lg mx-auto">Prueba Saldea 30 días gratis. Sin tarjeta. Si no funciona, no hay nada que cancelar.</p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-8 py-3 rounded-lg hover:bg-sky-400 transition-colors">
             Empezar gratis →
           </Link>

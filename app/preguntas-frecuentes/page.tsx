@@ -53,8 +53,8 @@ const categorias = [
   {
     titulo: 'Saldea: cómo funciona',
     preguntas: [
-      { p: '¿Cuánto cuesta Saldea?', r: '49€/mes o 499€/año (ahorras 89€). 15 días de prueba gratis. Se requiere tarjeta.' },
-      { p: '¿Necesito poner tarjeta para empezar?', r: 'Sí, pero no se cobra nada durante los primeros 15 días. Puedes cancelar en 1 clic antes y no pagas.' },
+      { p: '¿Cuánto cuesta Saldea?', r: '49€/mes o 499€/año (ahorras 89€). 30 días de prueba gratis. Se requiere tarjeta.' },
+      { p: '¿Necesito poner tarjeta para empezar?', r: 'Sí, pero no se cobra nada durante los primeros 30 días. Puedes cancelar en 1 clic antes y no pagas.' },
       { p: '¿Cómo importa Saldea mis facturas?', r: 'Manual una a una, CSV o conectando con tu software de facturación.' },
       { p: '¿Saldea manda los emails desde mi dominio?', r: 'Sí. Configuras tu remitente y los emails salen como si los mandaras tú personalmente.' },
       { p: '¿La IA escribe los emails sola?', r: 'Sí. Claude (Anthropic) genera el texto adaptado al tono que elijas (amable, firme, formal, extremo) y a los datos de la factura.' },
@@ -78,7 +78,7 @@ const categorias = [
       { p: '¿Cómo cancelo Saldea?', r: 'Desde tu panel de ajustes, en 1 clic. Sin llamadas, sin trámites, sin permanencia.' },
       { p: '¿Hay permanencia mínima?', r: 'No. Puedes cancelar cualquier mes y dejas de pagar al instante.' },
       { p: '¿Qué pasa con mis datos si cancelo?', r: 'Te exportamos todo en CSV y se eliminan a los 30 días de la cancelación (salvo lo que requiera Hacienda).' },
-      { p: '¿Cómo es el soporte?', r: 'En español, por email a soporte@marsof.es. Respuesta media: 24h laborables.' },
+      { p: '¿Cómo es el soporte?', r: 'En español, por email a carlosgc@marsof.es. Respuesta media: 24h laborables.' },
     ],
   },
 ]
@@ -102,14 +102,14 @@ export default function PageFAQ() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 días gratis</Link>
             </div>
           </div>
         </nav>
 
         <section className="max-w-3xl mx-auto px-6 py-16">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Preguntas frecuentes</h1>
-          <p className="text-zinc-400 text-lg mb-12">Las respuestas a las dudas más comunes sobre cobros, morosos y cómo funciona Saldea. Si no encuentras tu pregunta, escríbenos a <a href="mailto:soporte@marsof.es" className="text-sky-400 underline">soporte@marsof.es</a>.</p>
+          <p className="text-zinc-400 text-lg mb-12">Las respuestas a las dudas más comunes sobre cobros, morosos y cómo funciona Saldea. Si no encuentras tu pregunta, escríbenos a <a href="mailto:carlosgc@marsof.es" className="text-sky-400 underline">carlosgc@marsof.es</a>.</p>
 
           {categorias.map((cat) => (
             <div key={cat.titulo} className="mb-12">
@@ -130,7 +130,7 @@ export default function PageFAQ() {
 
           <div className="mt-12 bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold mb-2">¿Listo para automatizar tus cobros?</h2>
-            <p className="text-zinc-400 mb-6">15 días gratis. Con tarjeta. Cancela en 1 clic.</p>
+            <p className="text-zinc-400 mb-6">30 días gratis. Con tarjeta. Cancela en 1 clic.</p>
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
           </div>
         </section>

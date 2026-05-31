@@ -69,7 +69,7 @@ export default function PageSoftwareComparativa() {
           <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para quién:</strong> autónomos, gestorías y pymes españolas que quieren AUTOMATIZAR todo el proceso de cobro sin perder personalización.</p>
           <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo bueno:</strong> única herramienta del mercado español con IA que <strong>escala el tono progresivamente</strong> (amable → firme → formal) y <strong>detecta respuestas reales</strong> (paga, dispute, promesa). Integración Stripe Connect nativa.</p>
           <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> lanzada en 2026, comunidad aún pequeña.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Precio:</strong> 49€/mes (49€) o 499€/año. 15 días gratis.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Precio:</strong> 49€/mes (49€) o 499€/año. 30 días gratis.</p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">2. Holded — ERP completo</h2>
           <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para quién:</strong> empresas medianas que quieren factura + contabilidad + RRHH + CRM en una sola herramienta.</p>
@@ -97,7 +97,7 @@ export default function PageSoftwareComparativa() {
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Pruébalo tú mismo</h3>
-          <p className="text-zinc-300 mb-5">15 días gratis. Se requiere tarjeta. Cancela en 1 clic. Sin permanencia.</p>
+          <p className="text-zinc-300 mb-5">30 días gratis. Se requiere tarjeta. Cancela en 1 clic. Sin permanencia.</p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>
         </aside>
 

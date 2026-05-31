@@ -4,7 +4,7 @@ import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea para gestorías y asesorías: cobra las facturas de tus clientes sin perseguir',
-  description: 'Software de gestión de cobros pensado para gestorías y asesorías españolas. Automatiza los recordatorios de tus clientes con IA. 15 días gratis.',
+  description: 'Software de gestión de cobros pensado para gestorías y asesorías españolas. Automatiza los recordatorios de tus clientes con IA. 30 días gratis.',
   alternates: { canonical: 'https://marsof.es/gestorias' },
   keywords: [
     'software gestoría cobros',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Saldea para gestorías: cobra las facturas de tus clientes sin perseguir',
-    description: 'Automatiza los recordatorios de tus clientes con IA. 15 días gratis.',
+    description: 'Automatiza los recordatorios de tus clientes con IA. 30 días gratis.',
     type: 'website',
     locale: 'es_ES',
   },
@@ -29,7 +29,7 @@ export default function PageGestorias() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 días gratis</Link>
           </div>
         </div>
       </nav>
@@ -46,9 +46,9 @@ export default function PageGestorias() {
           Saldea es la IA que persigue a los morosos de tus clientes 24/7. Mensajes personalizados que escalan en tono, detección automática de respuestas, y todo cumpliendo la Ley 3/2004.
         </p>
         <Link href="/registro" className="inline-flex items-center gap-2 bg-sky-500 text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/30">
-          Empezar 15 días gratis →
+          Empezar 30 días gratis →
         </Link>
-        <p className="text-xs text-zinc-500 mt-4">15 días gratis · Con tarjeta · Sin permanencia</p>
+        <p className="text-xs text-zinc-500 mt-4">30 días gratis · Con tarjeta · Sin permanencia</p>
       </section>
 
       <section className="max-w-4xl mx-auto px-6 py-12">
@@ -122,8 +122,8 @@ export default function PageGestorias() {
             <li>✓ Datos en servidores europeos (RGPD)</li>
             <li>✓ Soporte en español</li>
           </ul>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all">Empezar 15 días gratis →</Link>
-          <p className="text-xs text-zinc-500 mt-4">15 días gratis. Se requiere tarjeta. Cancela cuando quieras.</p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all">Empezar 30 días gratis →</Link>
+          <p className="text-xs text-zinc-500 mt-4">30 días gratis. Se requiere tarjeta. Cancela cuando quieras.</p>
         </div>
       </section>
 
@@ -153,7 +153,7 @@ export default function PageGestorias() {
         <div className="bg-gradient-to-br from-sky-500/20 to-transparent border border-sky-500/30 rounded-3xl p-10">
           <h2 className="text-3xl font-bold mb-4">Tu gestoría se merece esto</h2>
           <p className="text-zinc-300 mb-6">Deja de perder horas reclamando facturas de tus clientes. Que lo haga la IA.</p>
-          <Link href="/registro" className="inline-block bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all">Empezar 15 días gratis →</Link>
+          <Link href="/registro" className="inline-block bg-white text-zinc-900 px-8 py-4 rounded-xl font-bold text-base hover:bg-zinc-100 transition-all">Empezar 30 días gratis →</Link>
         </div>
       </section>
       <MarketingFooter />

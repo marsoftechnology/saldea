@@ -43,7 +43,7 @@ export default function Error({
             Volver al panel
           </Link>
           <a
-            href="mailto:soporte@marsof.es"
+            href="mailto:carlosgc@marsof.es"
             className="text-zinc-400 hover:text-zinc-100 px-4 py-2.5 rounded-lg text-sm transition-colors"
           >
             Contactar soporte

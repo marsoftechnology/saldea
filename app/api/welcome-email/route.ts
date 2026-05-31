@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
 
         <hr style="margin: 32px 0 20px 0; border: none; border-top: 1px solid #e2e8f0;" />
         <p style="color: #94a3b8; font-size: 12px; line-height: 1.5; margin: 0;">
-          Saldea es un producto de Marsof Technology · Niebla, Huelva (España)<br/>
+          Saldea es un producto de Marsof Technology · Huelva, España<br/>
           ¿No te has registrado? Ignora este email.
         </p>
       </div>
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
 
     const resend = new Resend(apiKey)
     await resend.emails.send({
-      from: 'Saldea <hola@marsof.es>',
+      from: 'Saldea <carlosgc@marsof.es>',
       to: user.email,
       replyTo: 'carlosgc@marsof.es',
       subject: '¡Bienvenido a Saldea! · Empieza aquí',

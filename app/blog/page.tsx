@@ -339,7 +339,7 @@ export default function BlogIndex() {
         <div className="mt-16 bg-zinc-900/30 border border-white/10 rounded-2xl p-8 text-center">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">¿Quieres dejar de perseguir cobros?</h3>
           <p className="text-zinc-400 mb-5">
-            Saldea automatiza los recordatorios con IA. Pruébalo 15 días gratis, sin compromiso.
+            Saldea automatiza los recordatorios con IA. Pruébalo 30 días gratis, sin compromiso.
           </p>
           <Link
             href="/registro"

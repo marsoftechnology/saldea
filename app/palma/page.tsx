@@ -4,7 +4,7 @@ import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea en Palma de Mallorca: software de cobros para autónomos baleares',
-  description: 'Software con IA para automatizar el cobro de facturas en Palma de Mallorca, Ibiza, Menorca. Para hostelería, servicios y autónomos. 15 días gratis.',
+  description: 'Software con IA para automatizar el cobro de facturas en Palma de Mallorca, Ibiza, Menorca. Para hostelería, servicios y autónomos. 30 días gratis.',
   alternates: { canonical: 'https://marsof.es/palma' },
   keywords: ['software cobros Palma', 'gestoría Mallorca', 'autónomo Baleares', 'Saldea Mallorca', 'pyme Islas Baleares'],
   openGraph: { title: 'Saldea en Palma de Mallorca', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
@@ -19,7 +19,7 @@ export default function PagePalma() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link></div>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 días gratis</Link></div>
         </div>
       </nav>
       <section className="max-w-4xl mx-auto px-6 pt-16 pb-12">
@@ -39,11 +39,11 @@ export default function PagePalma() {
           <li>✓ La <strong>estacionalidad</strong> hace crítico cobrar a tiempo en temporada alta</li>
           <li>✓ Cumple Ley 3/2004</li>
           <li>✓ Soporte en español peninsular</li>
-          <li>✓ 15 días gratis</li>
+          <li>✓ 30 días gratis</li>
         </ul>
         <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">
           <h2 className="text-2xl font-bold mb-2">Empieza desde Palma</h2>
-          <p className="text-zinc-400 mb-6">5 min para activarlo. 15 días gratis.</p>
+          <p className="text-zinc-400 mb-6">5 min para activarlo. 30 días gratis.</p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
         </div>
       </section>

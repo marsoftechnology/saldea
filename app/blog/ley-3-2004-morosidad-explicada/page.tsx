@@ -179,7 +179,7 @@ export default function PageLey32004() {
           <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-zinc-100 mb-2">Automatiza el cumplimiento de la Ley 3/2004</h3>
             <p className="text-zinc-300 mb-5">
-              Saldea manda los recordatorios en plazo, cita la Ley 3/2004 automáticamente y calcula los intereses + 40€ por factura impagada. 15 días gratis.
+              Saldea manda los recordatorios en plazo, cita la Ley 3/2004 automáticamente y calcula los intereses + 40€ por factura impagada. 30 días gratis.
             </p>
             <Link
               href="/registro"

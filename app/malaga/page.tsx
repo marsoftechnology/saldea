@@ -4,7 +4,7 @@ import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea en Málaga: software de cobros para autónomos y pymes malagueñas',
-  description: 'Software español con IA para automatizar el cobro de facturas. Para autónomos, gestorías, empresas tecnológicas y turísticas de Málaga. 15 días gratis.',
+  description: 'Software español con IA para automatizar el cobro de facturas. Para autónomos, gestorías, empresas tecnológicas y turísticas de Málaga. 30 días gratis.',
   alternates: { canonical: 'https://marsof.es/malaga' },
   keywords: ['software cobros Málaga', 'gestoría Málaga', 'autónomo Málaga facturas', 'Saldea Málaga', 'pyme Costa del Sol', 'morosos Málaga'],
   openGraph: { title: 'Saldea en Málaga', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
@@ -26,7 +26,7 @@ export default function PageMalaga() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 días gratis</Link>
             </div>
           </div>
         </nav>
@@ -45,11 +45,11 @@ export default function PageMalaga() {
           </ul>
           <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por qué encaja en Málaga</h2>
           <ul className="space-y-3 text-zinc-300 mb-8">
-            <li>✓ <strong>Empresa hermana en Andalucía</strong>: Marsof está en Niebla (Huelva), conocemos el ecosistema andaluz</li>
+            <li>✓ <strong>Empresa hermana en Andalucía</strong>: Marsof es andaluza, conocemos el ecosistema andaluz</li>
             <li>✓ <strong>IA en castellano</strong> que entiende el contexto español</li>
             <li>✓ <strong>Cumple Ley 3/2004 y Veri*factu</strong></li>
             <li>✓ <strong>Soporte cercano</strong> en horario peninsular</li>
-            <li>✓ <strong>15 días gratis</strong> sin tarjeta</li>
+            <li>✓ <strong>30 días gratis</strong> sin tarjeta</li>
           </ul>
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">
             <h2 className="text-2xl font-bold mb-2">Empieza desde Málaga</h2>

@@ -76,7 +76,7 @@ export default function TrialPaywall() {
                 }`}
               >
                 <span className="block font-bold">49€/mes</span>
-                <span className="block text-xs opacity-75 mt-0.5">15 días gratis al empezar</span>
+                <span className="block text-xs opacity-75 mt-0.5">30 días gratis al empezar</span>
               </button>
 
               <button
@@ -110,7 +110,7 @@ export default function TrialPaywall() {
 
             <p className="text-center text-xs text-zinc-500 mt-4">
               Sin permanencia · cancela cuando quieras ·{' '}
-              <a href="mailto:hola@marsof.es" className="text-zinc-400 hover:text-zinc-200 underline underline-offset-2">
+              <a href="mailto:carlosgc@marsof.es" className="text-zinc-400 hover:text-zinc-200 underline underline-offset-2">
                 ¿Dudas?
               </a>
             </p>
@@ -125,7 +125,7 @@ export default function TrialPaywall() {
                 {intervalo === 'anio' ? 'Plan Pro — 499€/año' : 'Plan Pro — 49€/mes'}
               </p>
               <p className="text-xs text-gray-400 mt-0.5">
-                {intervalo === 'anio' ? 'Sin permanencia · cobro único' : '15 días gratis · cancela cuando quieras'}
+                {intervalo === 'anio' ? 'Sin permanencia · cobro único' : '30 días gratis · cancela cuando quieras'}
               </p>
             </div>
             <button

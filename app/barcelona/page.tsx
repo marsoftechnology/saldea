@@ -4,7 +4,7 @@ import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea a Barcelona: software de cobros amb IA per autònoms i empreses',
-  description: 'Saldea automatitza el cobrament de factures per a autònoms, gestories i pimes de Barcelona i Catalunya. IA, Llei 3/2004, RGPD. 15 días gratis.',
+  description: 'Saldea automatitza el cobrament de factures per a autònoms, gestories i pimes de Barcelona i Catalunya. IA, Llei 3/2004, RGPD. 30 días gratis.',
   alternates: { canonical: 'https://marsof.es/barcelona' },
   keywords: ['software cobros Barcelona', 'gestoría Barcelona', 'autónomo Barcelona facturas', 'Saldea Barcelona', 'cobrament factures Barcelona', 'asesoría Cataluña'],
   openGraph: { title: 'Saldea en Barcelona', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
@@ -26,7 +26,7 @@ export default function PageBarcelona() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 días gratis</Link>
             </div>
           </div>
         </nav>
@@ -54,7 +54,7 @@ export default function PageBarcelona() {
             <li>✓ <strong>Plantillas adaptables</strong>: puedes configurar los recordatorios en catalán si lo necesitas</li>
             <li>✓ <strong>Cumplimiento RGPD</strong> con servidores europeos</li>
             <li>✓ <strong>Soporte en español</strong> en horario peninsular</li>
-            <li>✓ <strong>15 días gratis</strong> sin tarjeta para que pruebes</li>
+            <li>✓ <strong>30 días gratis</strong> sin tarjeta para que pruebes</li>
           </ul>
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">

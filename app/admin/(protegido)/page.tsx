@@ -10,6 +10,67 @@ import {
   periodoAno,
 } from '@/lib/admin-stripe'
 import MonthlyChart from './MonthlyChart'
+import { createServiceRoleClient } from '@/lib/supabase-service'
+
+// ─── Visitas web ────────────────────────────────────────────────────────────
+
+interface VisitasStats {
+  hoy: number
+  semana: number
+  mes: number
+  topRutas: { ruta: string; visitas: number }[]
+}
+
+async function obtenerVisitas(): Promise<VisitasStats> {
+  try {
+    const supabase = createServiceRoleClient()
+    const ahora = new Date()
+    const inicioHoy = new Date(ahora)
+    inicioHoy.setUTCHours(0, 0, 0, 0)
+    const inicioSemana = new Date(ahora.getTime() - 7 * 24 * 3600 * 1000)
+    const inicioMes = new Date(ahora.getTime() - 30 * 24 * 3600 * 1000)
+
+    const [resHoy, resSemana, resMes, resTop] = await Promise.all([
+      supabase
+        .from('visitas_web')
+        .select('id', { count: 'exact', head: true })
+        .gte('created_at', inicioHoy.toISOString()),
+      supabase
+        .from('visitas_web')
+        .select('id', { count: 'exact', head: true })
+        .gte('created_at', inicioSemana.toISOString()),
+      supabase
+        .from('visitas_web')
+        .select('id', { count: 'exact', head: true })
+        .gte('created_at', inicioMes.toISOString()),
+      supabase
+        .from('visitas_web')
+        .select('ruta')
+        .gte('created_at', inicioMes.toISOString())
+        .order('created_at', { ascending: false })
+        .limit(500),
+    ])
+
+    // Contar manualmente por ruta (no hay RPC todavía)
+    const conteo: Record<string, number> = {}
+    for (const row of resTop.data ?? []) {
+      conteo[row.ruta] = (conteo[row.ruta] ?? 0) + 1
+    }
+    const topRutas = Object.entries(conteo)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 6)
+      .map(([ruta, visitas]) => ({ ruta, visitas }))
+
+    return {
+      hoy: resHoy.count ?? 0,
+      semana: resSemana.count ?? 0,
+      mes: resMes.count ?? 0,
+      topRutas,
+    }
+  } catch {
+    return { hoy: 0, semana: 0, mes: 0, topRutas: [] }
+  }
+}
 
 function formatEuros(centimos: number, opciones?: { decimales?: boolean }): string {
   return new Intl.NumberFormat('es-ES', {
@@ -48,6 +109,7 @@ export default async function AdminInicioPage() {
     porMes,
     eventos,
     balance,
+    visitas,
   ] = await Promise.all([
     sumaIngresos(periodoMes(yearActual, mesActual)),
     sumaIngresos(mesActual === 0
@@ -60,6 +122,7 @@ export default async function AdminInicioPage() {
     ingresosPorMes(12),
     eventosRecientes(10),
     obtenerBalance().catch(() => ({ disponibleCentimos: 0, pendienteCentimos: 0, divisa: 'EUR' })),
+    obtenerVisitas(),
   ])
 
   const mrrCentimos = Math.round(calcularMRR(subs))
@@ -276,6 +339,47 @@ export default async function AdminInicioPage() {
             ))}
           </ul>
         )}
+      </div>
+
+      {/* Contador de visitas web */}
+      <div className="mt-8">
+        <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">Visitas al sitio web</h2>
+        <div className="grid grid-cols-3 gap-3 mb-4">
+          <KPI label="Hoy" valor={String(visitas.hoy)} sub="visitas únicas de página" />
+          <KPI label="Últimos 7 días" valor={String(visitas.semana)} sub="visitas únicas de página" />
+          <KPI label="Últimos 30 días" valor={String(visitas.mes)} sub="visitas únicas de página" />
+        </div>
+        <div className="bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden">
+          <div className="px-5 py-3 border-b border-white/5 flex items-baseline justify-between">
+            <h3 className="text-sm font-semibold text-zinc-100">🌐 Páginas más visitadas</h3>
+            <span className="text-[10px] text-zinc-600">Últimos 30 días</span>
+          </div>
+          {visitas.topRutas.length === 0 ? (
+            <div className="px-5 py-6 text-center text-zinc-600 text-xs">
+              Todavía no hay visitas registradas. El contador empieza a funcionar<br />
+              en cuanto la tabla <code className="text-zinc-500">visitas_web</code> esté creada en Supabase.
+            </div>
+          ) : (
+            <ul className="divide-y divide-white/5">
+              {visitas.topRutas.map(({ ruta, visitas: n }, i) => {
+                const maxVisitas = visitas.topRutas[0]?.visitas ?? 1
+                const pct = Math.max(4, Math.round((n / maxVisitas) * 100))
+                return (
+                  <li key={ruta} className="flex items-center gap-4 px-5 py-3">
+                    <span className="text-[10px] text-zinc-600 w-4 shrink-0">{i + 1}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-zinc-200 font-mono truncate">{ruta}</p>
+                      <div className="mt-1 h-1 bg-zinc-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-violet-500 rounded-full" style={{ width: `${pct}%` }} />
+                      </div>
+                    </div>
+                    <span className="text-xs font-semibold text-zinc-300 shrink-0">{n}</span>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   )

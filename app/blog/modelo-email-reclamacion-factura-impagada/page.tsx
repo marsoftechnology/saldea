@@ -287,9 +287,9 @@ export default function ArticuloPage() {
           </p>
 
           <div className="bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-zinc-100 mb-2">Prueba Saldea 15 días gratis</h3>
+            <h3 className="text-xl font-bold text-zinc-100 mb-2">Prueba Saldea 30 días gratis</h3>
             <p className="text-zinc-300 mb-5">
-              Plan Pro completo durante 15 días. Cancela antes y no pagas nada.
+              Plan Pro completo durante 30 días. Cancela antes y no pagas nada.
             </p>
             <Link
               href="/registro"
@@ -304,7 +304,7 @@ export default function ArticuloPage() {
         <footer className="mt-16 pt-8 border-t border-white/10 text-sm text-zinc-400">
           <p>
             ¿Te ha resultado útil este artículo? Cuéntanoslo en{' '}
-            <a href="mailto:hola@marsof.es" className="text-sky-300 hover:underline">hola@marsof.es</a>.
+            <a href="mailto:carlosgc@marsof.es" className="text-sky-300 hover:underline">carlosgc@marsof.es</a>.
           </p>
         </footer>
       </article>

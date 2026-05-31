@@ -13,7 +13,7 @@ const apps = [
     descripcion: 'Cobro automático de facturas con IA. Envía recordatorios que escalan en tono hasta que te paguen.',
     icono: '💰',
     estado: 'disponible' as const,
-    precio: '15 días gratis · luego 49€/mes o 499€/año',
+    precio: '30 días gratis · luego 49€/mes o 499€/año',
     href: '/saldea',
     etiqueta: 'Disponible ahora',
   },

@@ -29,7 +29,7 @@ export default function PagePrensa() {
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Quiénes somos en 1 párrafo</h2>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-10">
           <p className="text-zinc-300 leading-relaxed">
-            <strong>Marsof Technology</strong> es una empresa española de software fundada en 2026 en Niebla (Huelva). Desarrolla <strong>Saldea</strong>, una IA que automatiza el cobro de facturas impagadas para autónomos, gestorías y pymes en España. Lo hace combinando recordatorios escalados con Claude (IA de Anthropic) y Stripe Connect para cobros automáticos. Cumple Ley 3/2004 y RGPD con datos en servidores europeos.
+            <strong>Marsof Technology</strong> es una empresa española de software fundada en 2026 con sede en Huelva. Desarrolla <strong>Saldea</strong>, una IA que automatiza el cobro de facturas impagadas para autónomos, gestorías y pymes en España. Lo hace combinando recordatorios escalados con Claude (IA de Anthropic) y Stripe Connect para cobros automáticos. Cumple Ley 3/2004 y RGPD con datos en servidores europeos.
           </p>
         </div>
 
@@ -40,8 +40,8 @@ export default function PagePrensa() {
             <p className="text-xs text-zinc-500 mt-1">Fundación</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 text-center">
-            <p className="text-2xl font-bold text-sky-400">Niebla</p>
-            <p className="text-xs text-zinc-500 mt-1">Huelva, España</p>
+            <p className="text-2xl font-bold text-sky-400">Huelva</p>
+            <p className="text-xs text-zinc-500 mt-1">Andalucía, España</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 text-center">
             <p className="text-2xl font-bold text-sky-400">B2B SaaS</p>
@@ -58,9 +58,9 @@ export default function PagePrensa() {
           <h3 className="font-bold text-zinc-100 text-lg mb-2">Carlos Gálvez Carrillo</h3>
           <p className="text-zinc-400 text-sm mb-3">Fundador y CEO de Marsof Technology</p>
           <p className="text-zinc-300 leading-relaxed text-sm mb-3">
-            Carlos es vecino de Niebla (Huelva) y emprendedor con experiencia en el sector financiero y la asesoría a cooperativas agroalimentarias. La idea de Saldea nació al ver cómo gestorías y autónomos perdían entre 3 y 5 horas semanales reclamando facturas a clientes morosos. Combinó esa experiencia con su interés por la inteligencia artificial y construyó Saldea en 2026.
+            Más de una década de carrera en finanzas corporativas, análisis de inversión y consultoría de negocio. Ha asesorado a empresas de distintos tamaños en estructuración financiera, optimización de operaciones y estrategia de crecimiento. Esa visión transversal del tejido empresarial español le llevó a identificar una oportunidad clara: las pymes necesitan software diseñado para su realidad, no adaptaciones de herramientas extranjeras. Fundó Marsof Technology en 2026 para construirlo.
           </p>
-          <p className="text-zinc-500 text-xs">Contacto directo: <a href="mailto:carlos@marsof.es" className="text-sky-400 hover:underline">carlos@marsof.es</a></p>
+          <p className="text-zinc-500 text-xs">Contacto directo: <a href="mailto:carlosgc@marsof.es" className="text-sky-400 hover:underline">carlosgc@marsof.es</a></p>
         </div>
 
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Mensajes clave para artículos</h2>
@@ -83,20 +83,20 @@ export default function PagePrensa() {
 
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Recursos descargables</h2>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-10">
-          <p className="text-zinc-300 mb-3">Si necesitas logos, capturas, vídeo demo o más material, escríbenos a <a href="mailto:prensa@marsof.es" className="text-sky-400 hover:underline">prensa@marsof.es</a> y te enviamos el kit completo en 24h.</p>
+          <p className="text-zinc-300 mb-3">Si necesitas logos, capturas, vídeo demo o más material, escríbenos a <a href="mailto:hola@marsof.es" className="text-sky-400 hover:underline">hola@marsof.es</a> y te enviamos el kit completo en 24h.</p>
           <p className="text-zinc-400 text-sm">Disponible: logos PNG/SVG, capturas de producto, vídeo demo 90 segundos, foto del fundador.</p>
         </div>
 
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Contacto para prensa</h2>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-10">
-          <p className="text-zinc-300 mb-2"><strong>Email:</strong> <a href="mailto:prensa@marsof.es" className="text-sky-400 hover:underline">prensa@marsof.es</a></p>
+          <p className="text-zinc-300 mb-2"><strong>Email:</strong> <a href="mailto:hola@marsof.es" className="text-sky-400 hover:underline">hola@marsof.es</a></p>
           <p className="text-zinc-300 mb-2"><strong>Respuesta:</strong> menos de 24 horas en días laborables</p>
           <p className="text-zinc-300"><strong>Idiomas:</strong> español</p>
         </div>
 
         <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-2">¿Quieres probar Saldea para tu artículo?</h2>
-          <p className="text-zinc-400 mb-6">15 días gratis. Te damos acceso completo para que veas cómo funciona.</p>
+          <p className="text-zinc-400 mb-6">30 días gratis. Te damos acceso completo para que veas cómo funciona.</p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar →</Link>
         </div>
       </section>

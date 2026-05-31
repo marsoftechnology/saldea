@@ -4,7 +4,7 @@ import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Precios de Saldea: Free, Pro (49€/mes) y Max (99€/mes) | Saldea',
-  description: 'Precios transparentes de Saldea: plan Free, Pro (49€/mes o 499€/año) y Max (99€/mes o 1.000€/año, con burofax incluido). 15 días gratis en Pro. Cancela en 1 clic.',
+  description: 'Precios transparentes de Saldea: plan Free, Pro (49€/mes o 499€/año) y Max (99€/mes o 1.000€/año, con burofax incluido). 30 días gratis en Pro. Cancela en 1 clic.',
   alternates: { canonical: 'https://marsof.es/precios' },
   keywords: [
     'precio saldea',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Precios de Saldea — 49€/mes o 499€/año',
-    description: '15 días gratis. Cancela cuando quieras.',
+    description: '30 días gratis. Cancela cuando quieras.',
     type: 'website',
     locale: 'es_ES',
   },
@@ -82,7 +82,7 @@ export default function PagePrecios() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 días gratis</Link>
             </div>
           </div>
         </nav>
@@ -116,7 +116,7 @@ export default function PagePrecios() {
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-500 text-zinc-900 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">MÁS POPULAR</div>
               <p className="text-sky-400 text-sm mb-1 font-semibold">Pro Mensual</p>
               <p className="text-3xl font-bold text-zinc-100 mb-1">49€<span className="text-sm text-zinc-500">/mes</span></p>
-              <p className="text-zinc-500 text-xs mb-5">15 días gratis · se requiere tarjeta</p>
+              <p className="text-zinc-500 text-xs mb-5">30 días gratis · se requiere tarjeta</p>
               <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
                 <li>✓ Facturas ilimitadas</li>
                 <li>✓ Clientes ilimitados</li>
@@ -127,7 +127,7 @@ export default function PagePrecios() {
                 <li>✓ Stripe Connect</li>
                 <li>✓ Adjuntos PDF</li>
               </ul>
-              <Link href="/registro?plan=mes" className="block w-full text-center bg-sky-500 text-zinc-900 py-2.5 rounded-lg font-bold text-sm hover:bg-sky-400 transition-colors">Probar 15 días gratis</Link>
+              <Link href="/registro?plan=mes" className="block w-full text-center bg-sky-500 text-zinc-900 py-2.5 rounded-lg font-bold text-sm hover:bg-sky-400 transition-colors">Probar 30 días gratis</Link>
             </div>
 
             {/* Pro Anual */}
@@ -166,7 +166,7 @@ export default function PagePrecios() {
           <div className="grid md:grid-cols-2 gap-6 mb-16">
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
               <h3 className="font-bold text-zinc-100 mb-3">💳 ¿Hay que poner tarjeta?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">Sí en el plan Pro mensual, pero NO se cobra nada hasta que pasen 15 días desde tu registro. Puedes cancelar antes en 1 clic y no pagas nada. En el anual y en el Max mensual el cobro es inmediato.</p>
+              <p className="text-zinc-400 text-sm leading-relaxed">Sí en el plan Pro mensual, pero NO se cobra nada hasta que pasen 30 días desde tu registro. Puedes cancelar antes en 1 clic y no pagas nada. En el anual y en el Max mensual el cobro es inmediato.</p>
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
               <h3 className="font-bold text-zinc-100 mb-3">⛔ ¿Hay permanencia?</h3>
@@ -186,7 +186,7 @@ export default function PagePrecios() {
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
               <h3 className="font-bold text-zinc-100 mb-3">👥 ¿Plan empresa / despacho?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">El plan Max incluye hasta 25 miembros. Si necesitas más, escríbenos a <a href="mailto:hola@marsof.es" className="text-sky-400 underline">hola@marsof.es</a> para un plan personalizado.</p>
+              <p className="text-zinc-400 text-sm leading-relaxed">El plan Max incluye hasta 25 miembros. Si necesitas más, escríbenos a <a href="mailto:carlosgc@marsof.es" className="text-sky-400 underline">carlosgc@marsof.es</a> para un plan personalizado.</p>
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
               <h3 className="font-bold text-zinc-100 mb-3">📜 ¿Qué es un burofax?</h3>
@@ -196,8 +196,8 @@ export default function PagePrecios() {
 
           <div className="text-center">
             <h2 className="text-2xl font-bold text-zinc-100 mb-3">¿Sigues con dudas?</h2>
-            <p className="text-zinc-400 mb-6">Tienes 15 días para probarlo sin coste en el plan Pro. Si no te encaja, cancela en 1 clic.</p>
-            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-8 py-4 rounded-xl hover:bg-sky-400 transition-colors">Empezar 15 días gratis →</Link>
+            <p className="text-zinc-400 mb-6">Tienes 30 días para probarlo sin coste en el plan Pro. Si no te encaja, cancela en 1 clic.</p>
+            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-8 py-4 rounded-xl hover:bg-sky-400 transition-colors">Empezar 30 días gratis →</Link>
           </div>
         </section>
 

@@ -162,7 +162,7 @@ DNI/CIF: ___________________`}
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Cuando el presupuesto pase a factura, conecta Saldea</h3>
-          <p className="text-zinc-300 mb-5">Tu factura con todos los datos correctos + Saldea = cobros automáticos sin trabajo manual. <strong>15 días gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Tu factura con todos los datos correctos + Saldea = cobros automáticos sin trabajo manual. <strong>30 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>
         </aside>
       </div>

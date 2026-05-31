@@ -28,7 +28,7 @@ export default function PageVsAnfix() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">15 días gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 días gratis</Link>
           </div>
         </div>
       </nav>
@@ -68,7 +68,7 @@ export default function PageVsAnfix() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Detección respuestas</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">❌</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">Pasarela</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Precio para gestoría</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">~99€/mes según clientes</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Trial</td><td className="py-2 px-4">15 días sin tarjeta</td><td className="py-2 px-4">15 días</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Trial</td><td className="py-2 px-4">30 días con tarjeta</td><td className="py-2 px-4">15 días</td></tr>
                 <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">🔜 Próximamente</td><td className="py-2 px-4">❌</td></tr>
               </tbody>
             </table>
@@ -98,7 +98,7 @@ export default function PageVsAnfix() {
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Pruébalo con uno de tus clientes</h3>
-          <p className="text-zinc-300 mb-5">Coge el cliente que más facturas vencidas tiene. Importa sus facturas en Saldea. En 30 días sabrás si tu gestoría puede vender esto como servicio premium. <strong>15 días gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Coge el cliente que más facturas vencidas tiene. Importa sus facturas en Saldea. En 30 días sabrás si tu gestoría puede vender esto como servicio premium. <strong>30 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>
         </aside>
       </article>

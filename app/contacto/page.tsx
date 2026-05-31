@@ -4,7 +4,7 @@ import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Contacto | Marsof Technology',
-  description: 'Contacta con Marsof Technology. Soporte de Saldea, ventas, prensa, alianzas. Email, formulario y dirección en Niebla, Huelva.',
+  description: 'Contacta con Marsof Technology. Soporte de Saldea, ventas, prensa, alianzas. Email, formulario y dirección en Huelva.',
   alternates: { canonical: 'https://marsof.es/contacto' },
   keywords: [
     'Marsof contacto',
@@ -48,21 +48,21 @@ const contactos = [
     icono: '🤝',
     titulo: 'Alianzas y partners',
     desc: 'Gestorías que quieren ofrecer Saldea a sus clientes, integradores, revendedores.',
-    email: 'partners@marsof.es',
+    email: 'hola@marsof.es',
     respuesta: '3-5 días laborables',
   },
   {
     icono: '📰',
     titulo: 'Prensa y medios',
     desc: 'Periodistas, podcasts, eventos. Tenemos kit de prensa preparado.',
-    email: 'prensa@marsof.es',
+    email: 'hola@marsof.es',
     respuesta: '24h laborables',
   },
   {
     icono: '⚖️',
     titulo: 'Legal y privacidad',
     desc: 'Cuestiones RGPD, ejercicio de derechos, solicitudes legales.',
-    email: 'legal@marsof.es',
+    email: 'soporte@marsof.es',
     respuesta: '72h máximo (RGPD)',
   },
 ]
@@ -88,7 +88,7 @@ export default function PageContacto() {
 
           <div className="space-y-4 mb-16">
             {contactos.map((c) => (
-              <a key={c.email} href={`mailto:${c.email}`} className="block bg-zinc-900/40 border border-white/10 rounded-2xl p-6 hover:border-sky-500/40 transition-colors">
+              <a key={c.titulo} href={`mailto:${c.email}`} className="block bg-zinc-900/40 border border-white/10 rounded-2xl p-6 hover:border-sky-500/40 transition-colors">
                 <div className="flex items-start gap-5">
                   <div className="text-3xl">{c.icono}</div>
                   <div className="flex-1">
@@ -108,7 +108,7 @@ export default function PageContacto() {
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-12">
             <ul className="space-y-2 text-zinc-300">
               <li><strong>Razón social:</strong> Marsof Technology</li>
-              <li><strong>Sede:</strong> Niebla, Huelva (España)</li>
+              <li><strong>Sede:</strong> Huelva, España</li>
               <li><strong>Web:</strong> <a href="https://marsof.es" className="text-sky-400 hover:underline">https://marsof.es</a></li>
               <li><strong>Fundador:</strong> Carlos Gálvez Carrillo</li>
               <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/marsof" className="text-sky-400 hover:underline">linkedin.com/company/marsof</a></li>
@@ -120,7 +120,7 @@ export default function PageContacto() {
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
             <h2 className="text-xl font-bold mb-2">¿Quieres probar Saldea antes de hablar?</h2>
-            <p className="text-zinc-400 mb-5">15 días gratis. La forma más rápida de saber si te encaja.</p>
+            <p className="text-zinc-400 mb-5">30 días gratis. La forma más rápida de saber si te encaja.</p>
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
           </div>
         </section>

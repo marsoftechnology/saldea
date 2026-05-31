@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getActiveOrg } from '@/lib/auth-org'
 import { createServiceRoleClient } from '@/lib/supabase-service'
 
-export const TRIAL_DAYS = 15
+export const TRIAL_DAYS = 30
 
 export async function GET() {
   const org = await getActiveOrg()

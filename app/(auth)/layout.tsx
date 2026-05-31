@@ -34,7 +34,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         <p className="text-center text-xs text-zinc-600 mt-6">
-          15 días gratis · cancela en 1 clic · sin permanencia
+          30 días gratis · cancela en 1 clic · sin permanencia
         </p>
         <p className="text-center text-xs text-zinc-700 mt-2">
           Saldea es un producto de{' '}

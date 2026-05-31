@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
         const userId = (sub.metadata as any)?.user_id
         if (!userId) break
         const activo = sub.status === 'active' || sub.status === 'trialing'
-        const esMax = esMaxPlan(sub)
+        const esMax = esMaxPlan(sub) || (sub.metadata as any)?.planTipo === 'max'
         const planActivo: Plan = esMax ? 'max' : 'pro'
         await updateUser(userId, {
           plan: activo ? planActivo : 'free',
