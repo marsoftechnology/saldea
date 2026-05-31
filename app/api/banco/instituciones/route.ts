@@ -1,32 +1,26 @@
 import { NextRequest } from 'next/server'
 import { getActiveOrg } from '@/lib/auth-org'
-import { gcDisponible, listarInstituciones } from '@/lib/gocardless'
+import { seDisponible } from '@/lib/saltedge'
 
 const H = { 'Content-Type': 'application/json' }
 
+/**
+ * GET /api/banco/instituciones
+ * Salt Edge muestra su propio selector de banco en el widget.
+ * Este endpoint simplemente confirma que la integración está activa.
+ */
 export async function GET(req: NextRequest) {
   const org = await getActiveOrg()
   if (!org) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
 
-  if (!gcDisponible()) {
+  if (!seDisponible()) {
     return new Response(
-      JSON.stringify({ error: 'Conciliación bancaria no configurada. Añade GOCARDLESS_SECRET_ID y GOCARDLESS_SECRET_KEY.' }),
+      JSON.stringify({
+        error: 'Conciliación bancaria no configurada. Añade SALTEDGE_APP_ID y SALTEDGE_SECRET en las variables de entorno.',
+      }),
       { status: 503, headers: H }
     )
   }
 
-  try {
-    const instituciones = await listarInstituciones('ES')
-    // Filtramos para devolver solo los campos necesarios
-    const lista = instituciones.map(i => ({
-      id: i.id,
-      name: i.name,
-      bic: i.bic,
-      logo: i.logo,
-    }))
-    return new Response(JSON.stringify({ instituciones: lista }), { status: 200, headers: H })
-  } catch (err) {
-    console.error('[banco/instituciones]', err)
-    return new Response(JSON.stringify({ error: 'Error al obtener bancos' }), { status: 500, headers: H })
-  }
+  return new Response(JSON.stringify({ ok: true }), { status: 200, headers: H })
 }

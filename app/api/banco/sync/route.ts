@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { createServiceRoleClient } from '@/lib/supabase-service'
 import { getActiveOrg } from '@/lib/auth-org'
-import { gcDisponible, obtenerTransacciones } from '@/lib/gocardless'
+import { seDisponible, obtenerTransacciones } from '@/lib/saltedge'
 
 const H = { 'Content-Type': 'application/json' }
 
@@ -15,8 +15,8 @@ export async function POST(req: NextRequest) {
   if (!org) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
   const orgId = org.org_id
 
-  if (!gcDisponible()) {
-    return new Response(JSON.stringify({ error: 'GoCardless no configurado' }), { status: 503, headers: H })
+  if (!seDisponible()) {
+    return new Response(JSON.stringify({ error: 'Conciliación bancaria no configurada' }), { status: 503, headers: H })
   }
 
   const admin = createServiceRoleClient()
@@ -38,17 +38,17 @@ export async function POST(req: NextRequest) {
   for (const conexion of conexiones) {
     for (const accountId of (conexion.account_ids ?? [])) {
       try {
-        const { transactions } = await obtenerTransacciones(accountId)
-        const booked = transactions.booked ?? []
+        const transacciones = await obtenerTransacciones(accountId)
 
-        for (const tx of booked) {
-          const txId = tx.transactionId ?? tx.internalTransactionId ?? `${tx.bookingDate}-${tx.transactionAmount.amount}`
-          const amount = parseFloat(tx.transactionAmount.amount)
+        for (const tx of transacciones) {
+          // Solo transacciones confirmadas e ingresos (amount > 0)
+          if (tx.status !== 'posted') continue
+          if (tx.amount <= 0) continue
 
-          // Solo importes positivos (cobros) son relevantes para conciliación
-          if (amount <= 0) continue
-
-          const remittance = tx.remittanceInformationUnstructured ?? tx.remittanceInformationStructured ?? ''
+          const txId = tx.id
+          const amount = tx.amount
+          const remittance = tx.description ?? ''
+          const bookingDate = tx.made_on
 
           // Insertar o ignorar si ya existe
           const { data: inserted, error: insErr } = await admin
@@ -58,11 +58,11 @@ export async function POST(req: NextRequest) {
               conexion_id: conexion.id,
               account_id: accountId,
               transaction_id: txId,
-              booking_date: tx.bookingDate,
+              booking_date: bookingDate,
               amount,
-              currency: tx.transactionAmount.currency,
-              creditor_name: tx.creditorName,
-              debtor_name: tx.debtorName,
+              currency: tx.currency_code,
+              creditor_name: tx.extra?.payee ?? null,
+              debtor_name: tx.extra?.payer ?? null,
               remittance_info: remittance,
               raw: tx,
             }, { onConflict: 'account_id,transaction_id', ignoreDuplicates: true })
@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
                 await admin.from('pagos').insert({
                   factura_id: facturaMatch.id,
                   importe: amount,
-                  fecha_pago: tx.bookingDate,
+                  fecha_pago: bookingDate,
                   metodo: 'transferencia',
                   notas: `Conciliación automática · ${remittance}`.trim().slice(0, 255),
                 })

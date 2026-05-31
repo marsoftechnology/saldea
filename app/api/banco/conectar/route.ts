@@ -1,49 +1,44 @@
 import { NextRequest } from 'next/server'
 import { createServiceRoleClient } from '@/lib/supabase-service'
 import { getActiveOrg } from '@/lib/auth-org'
-import { gcDisponible, crearRequisicion } from '@/lib/gocardless'
+import { seDisponible, crearSesionConexion } from '@/lib/saltedge'
 
 const H = { 'Content-Type': 'application/json' }
 
+/**
+ * POST /api/banco/conectar
+ * Crea una sesión Salt Edge y devuelve la URL del widget de conexión bancaria.
+ * El usuario es redirigido al widget de Salt Edge (selector de banco integrado).
+ * Tras autorizar, Salt Edge redirige a /api/banco/callback?connection_id=xxx&org_id=xxx
+ */
 export async function POST(req: NextRequest) {
   const org = await getActiveOrg()
   if (!org) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
   const orgId = org.org_id
 
-  if (!gcDisponible()) {
+  if (!seDisponible()) {
     return new Response(JSON.stringify({ error: 'Conciliación bancaria no configurada' }), { status: 503, headers: H })
   }
 
-  const body = await req.json().catch(() => ({}))
-  const { institution_id } = body
-  if (!institution_id) {
-    return new Response(JSON.stringify({ error: 'institution_id requerido' }), { status: 400, headers: H })
-  }
-
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://app.marsof.es'
-  const redirectUrl = `${appUrl}/api/banco/callback`
-  const reference = `${orgId}-${Date.now()}`
+  // Incluimos org_id en el return_to para identificar la organización en el callback
+  const returnToUrl = `${appUrl}/api/banco/callback?org_id=${orgId}`
 
   try {
-    const requisicion = await crearRequisicion({ institutionId: institution_id, redirectUrl, reference })
+    const connectUrl = await crearSesionConexion(orgId, returnToUrl)
 
-    // Guardamos la requisición en la base de datos
+    // Guardamos un registro pendiente (connection_id llegará en el callback)
     const admin = createServiceRoleClient()
-    const { error } = await admin.from('banco_conexiones').insert({
+    await admin.from('banco_conexiones').insert({
       org_id: orgId,
-      requisition_id: requisicion.id,
-      institution_id,
+      requisition_id: `pending-${Date.now()}`, // placeholder hasta recibir connection_id
+      institution_id: 'saltedge',
       status: 'pendiente',
     })
 
-    if (error) {
-      console.error('[banco/conectar] DB insert error:', error)
-      return new Response(JSON.stringify({ error: 'Error al guardar conexión' }), { status: 500, headers: H })
-    }
-
-    return new Response(JSON.stringify({ link: requisicion.link }), { status: 200, headers: H })
+    return new Response(JSON.stringify({ link: connectUrl }), { status: 200, headers: H })
   } catch (err) {
     console.error('[banco/conectar]', err)
-    return new Response(JSON.stringify({ error: 'Error al crear conexión con el banco' }), { status: 500, headers: H })
+    return new Response(JSON.stringify({ error: 'Error al crear conexión bancaria' }), { status: 500, headers: H })
   }
 }

@@ -1,74 +1,72 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceRoleClient } from '@/lib/supabase-service'
-import { obtenerRequisicion } from '@/lib/gocardless'
+import { obtenerConexion, obtenerCuentas } from '@/lib/saltedge'
 
 /**
- * GoCardless redirige aquí tras la autenticación bancaria del usuario.
- * URL: /api/banco/callback?ref=<reference>
+ * Salt Edge redirige aquí tras la autorización bancaria del usuario.
+ * URL: /api/banco/callback?org_id=<orgId>&connection_id=<id>
+ *   o: /api/banco/callback?org_id=<orgId>&error=<code>
  */
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl
-  const ref = searchParams.get('ref')
-  const error = searchParams.get('error')
+  const orgId = searchParams.get('org_id')
+  const connectionId = searchParams.get('connection_id')
+  const errorCode = searchParams.get('error')
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://app.marsof.es'
 
-  if (error) {
+  if (!orgId) {
+    return NextResponse.redirect(`${appUrl}/banco?error=referencia_invalida`)
+  }
+
+  if (errorCode) {
     return NextResponse.redirect(`${appUrl}/banco?error=banco_rechazado`)
   }
 
-  if (!ref) {
-    return NextResponse.redirect(`${appUrl}/banco?error=referencia_invalida`)
+  if (!connectionId) {
+    return NextResponse.redirect(`${appUrl}/banco?info=pendiente`)
   }
 
   const admin = createServiceRoleClient()
 
-  // Buscamos la conexión por referencia (formato orgId-timestamp)
-  const orgId = ref.split('-').slice(0, 5).join('-') // uuid tiene 5 segmentos
-  const { data: conexion, error: dbErr } = await admin
-    .from('banco_conexiones')
-    .select('*')
-    .eq('org_id', orgId)
-    .eq('status', 'pendiente')
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .maybeSingle()
-
-  if (dbErr || !conexion) {
-    console.error('[banco/callback] conexión no encontrada para ref:', ref, dbErr)
-    return NextResponse.redirect(`${appUrl}/banco?error=conexion_no_encontrada`)
-  }
-
   try {
-    // Consultamos el estado real de la requisición en GoCardless
-    const requisicion = await obtenerRequisicion(conexion.requisition_id)
+    // Verificamos el estado real de la conexión en Salt Edge
+    const conexionSE = await obtenerConexion(connectionId)
 
-    if (requisicion.status === 'LN' || requisicion.status === 'GA') {
-      // Acceso concedido — guardamos los account IDs
+    if (conexionSE.status === 'active') {
+      // Obtenemos las cuentas de la conexión
+      const cuentas = await obtenerCuentas(connectionId)
+      const accountIds = cuentas.map(c => c.id)
+
+      // Actualizamos el registro pendiente de esta organización
       await admin
         .from('banco_conexiones')
         .update({
+          requisition_id: connectionId,         // reutilizamos esta columna para el connection_id
+          institution_id: conexionSE.provider_name ?? conexionSE.provider_code ?? 'saltedge',
           status: 'activa',
-          account_ids: requisicion.accounts,
+          account_ids: accountIds,
           updated_at: new Date().toISOString(),
         })
-        .eq('id', conexion.id)
+        .eq('org_id', orgId)
+        .eq('status', 'pendiente')
 
       return NextResponse.redirect(`${appUrl}/banco?exito=banco_conectado`)
     }
 
-    if (requisicion.status === 'RJ' || requisicion.status === 'ER') {
+    if (conexionSE.status === 'inactive' || conexionSE.status === 'disabled') {
       await admin
         .from('banco_conexiones')
         .update({ status: 'error' })
-        .eq('id', conexion.id)
+        .eq('org_id', orgId)
+        .eq('status', 'pendiente')
       return NextResponse.redirect(`${appUrl}/banco?error=banco_rechazado`)
     }
 
-    // Cualquier otro estado — redirigimos con estado pendiente
+    // Estado desconocido o deleted
     return NextResponse.redirect(`${appUrl}/banco?info=pendiente`)
   } catch (err) {
-    console.error('[banco/callback] error GoCardless:', err)
+    console.error('[banco/callback] error Salt Edge:', err)
     return NextResponse.redirect(`${appUrl}/banco?error=error_conexion`)
   }
 }
