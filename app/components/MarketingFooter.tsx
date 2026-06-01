@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import WhatsAppWidget from './WhatsAppWidget'
+import ScrollToTop from './ScrollToTop'
 
 /**
  * Footer reutilizable para todas las paginas publicas (marketing).
@@ -11,6 +12,7 @@ export default function MarketingFooter() {
   return (
     <>
     <WhatsAppWidget />
+    <ScrollToTop />
     <footer className="border-t border-white/5 bg-black/30 mt-20">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
