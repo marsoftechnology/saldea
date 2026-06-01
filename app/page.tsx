@@ -83,9 +83,9 @@ export default function MarsofPage() {
             <a href="#productos" className="text-zinc-400 hover:text-zinc-200 transition-colors">Productos</a>
             <Link href="/sobre-marsof" className="text-zinc-400 hover:text-zinc-200 transition-colors">Sobre Marsof</Link>
             <Link href="/blog" className="text-zinc-400 hover:text-zinc-200 transition-colors">Blog</Link>
-            <Link href="/ofertas" className="text-zinc-400 hover:text-zinc-200 transition-colors flex items-center gap-1.5">
-              Ofertas
-              <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+            <Link href="/diagnostico" className="text-zinc-400 hover:text-zinc-200 transition-colors flex items-center gap-1.5">
+              Diagnóstico gratis
+              <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
             </Link>
           </div>
           <div className="flex items-center gap-2">
