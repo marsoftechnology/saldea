@@ -3,10 +3,8 @@
 import { useState } from 'react'
 
 const OPCIONES = [
-  { label: 'Dudas sobre Saldea', texto: 'Hola, tengo una duda sobre Saldea' },
-  { label: 'Ayuda con la configuración', texto: 'Hola, necesito ayuda para configurar Saldea' },
-  { label: 'Quiero una demo', texto: 'Hola, me gustaría ver una demo de Saldea' },
-  { label: 'Otra consulta', texto: 'Hola, tengo una consulta para Marsof Technology' },
+  { label: 'Inversiones', texto: 'Hola, me gustaría obtener información sobre inversiones en Marsof Technology' },
+  { label: 'Ayuda', texto: 'Hola, necesito ayuda con Saldea' },
 ]
 
 const WaIcon = ({ className }: { className?: string }) => (
