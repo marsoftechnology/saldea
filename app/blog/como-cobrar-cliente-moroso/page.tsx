@@ -141,7 +141,7 @@ export default function PageCobrarMoroso() {
             </ul>
           </section>
 
-          <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
+          <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-zinc-100 mb-2">Automatiza este proceso completo con Saldea</h3>
             <p className="text-zinc-300 mb-5">
               Saldea ejecuta automáticamente los pasos 1 a 5 con IA: manda recordatorios escalados, detecta respuestas, pausa cuando el cliente paga y te avisa solo si hay algo importante. <strong>30 días gratis.</strong>

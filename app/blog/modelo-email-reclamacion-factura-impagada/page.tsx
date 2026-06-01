@@ -286,7 +286,7 @@ export default function ArticuloPage() {
             <strong>Saldea</strong> hace exactamente eso por ti: importas tus facturas, configuras tu tono, y la IA se encarga del resto. Detecta cuando el cliente paga o discute, escala el tono según los días de retraso, y solo te avisa cuando hay algo importante.
           </p>
 
-          <div className="bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
+          <div className="bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-zinc-100 mb-2">Prueba Saldea 30 días gratis</h3>
             <p className="text-zinc-300 mb-5">
               Plan Pro completo durante 30 días. Cancela antes y no pagas nada.

@@ -105,7 +105,7 @@ export default function PageSepa() {
           </ol>
         </section>
 
-        <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
+        <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">¿Y si el SEPA falla? Saldea persigue</h3>
           <p className="text-zinc-300 mb-5">Si el cobro SEPA se devuelve, Saldea entra en acción con emails escalados y cita Ley 3/2004 automáticamente. <strong>30 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>

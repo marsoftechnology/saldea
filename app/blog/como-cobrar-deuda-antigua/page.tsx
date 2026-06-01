@@ -56,7 +56,7 @@ export default function Page() {
           </ul>
           <p className="text-zinc-300 leading-relaxed mb-4">Apunta como gasto fiscal "crédito incobrable" y olvídate. Mejor para tu salud mental.</p>
         </section>
-        <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
+        <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea calcula intereses acumulados automáticamente</h3>
           <p className="text-zinc-300 mb-5">Carga la factura antigua, indica fecha vencimiento. Saldea calcula intereses + 40€ y genera el email de reclamación. <strong>30 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>

@@ -62,7 +62,7 @@ export default function Page() {
           </ul>
           <p className="text-zinc-300 leading-relaxed mb-4">Si ves 2-3 señales: declina el proyecto. Mejor perder uno que cobrar la mitad y comerse el resto.</p>
         </section>
-        <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
+        <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea automatiza las medidas 7, 9 y 10</h3>
           <p className="text-zinc-300 mb-5">SEPA, Stripe Connect y recordatorios pre-vencimiento. Las medidas 1-6 las pones tú en el contrato. <strong>30 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>

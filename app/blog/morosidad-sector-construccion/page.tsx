@@ -84,7 +84,7 @@ export default function PageConstruccion() {
           <p className="text-zinc-300 leading-relaxed mb-4">Si ves 2-3 señales, <strong>aplica el protocolo</strong>: ralentiza, exige cobros pendientes antes de seguir y considera suspender la obra según contrato.</p>
         </section>
 
-        <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
+        <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea automatiza la reclamación en construcción</h3>
           <p className="text-zinc-300 mb-5">Importa tus certificaciones, configura los plazos legales y deja que la IA persiga el cobro. Cita automáticamente la Ley 9/2017 si es obra pública o Ley 3/2004 si es B2B. <strong>30 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>

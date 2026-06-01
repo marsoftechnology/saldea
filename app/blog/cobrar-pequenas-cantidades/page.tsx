@@ -52,7 +52,7 @@ export default function Page() {
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">La mejor estrategia: automatizar</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Si reclamar a mano cuesta tu tiempo, una herramienta automatizada cambia la ecuación. Vale la pena reclamar HASTA pequeñas cantidades porque tu inversión es solo la suscripción mensual.</p>
         </section>
-        <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
+        <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea reclama pequeñas cantidades sin coste extra</h3>
           <p className="text-zinc-300 mb-5">Suscripción fija 49€/mes. Reclama 1 factura o 100. Mismo coste. Recupera deudas que antes asumías como pérdida. <strong>30 días gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>

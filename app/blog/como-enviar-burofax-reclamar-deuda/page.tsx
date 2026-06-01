@@ -124,7 +124,7 @@ Atentamente,
             <p className="text-zinc-300 leading-relaxed mb-4">Aunque el deudor no recoja el burofax, <strong>se considera entregado a efectos legales</strong> si Correos ha intentado entregarlo y dejado aviso. Esto basta para iniciar el procedimiento monitorio posterior.</p>
           </section>
 
-          <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
+          <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-zinc-100 mb-2">Antes del burofax, prueba con Saldea</h3>
             <p className="text-zinc-300 mb-5">Muchos clientes pagan en cuanto reciben un recordatorio firme automático. Saldea manda emails escalados con IA. Si tras 30 días no paga, ya tienes pruebas listas para el burofax. <strong>30 días gratis.</strong></p>
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis →</Link>
