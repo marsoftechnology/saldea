@@ -175,10 +175,6 @@ export default function DiagnosticoPage() {
           {/* ── PASO 0: Intro ── */}
           {step === 0 && (
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-8">
-                <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
-                Solo para gestorías y asesorías
-              </div>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
                 ¿Cuántas horas perdéis al mes<br className="hidden md:block" /> en tareas que podría<br className="hidden md:block" />
                 <span className="text-sky-400"> hacer una máquina?</span>
