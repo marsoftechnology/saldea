@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Prescripción de deudas comerciales en España: ¿a los 5 años? | Saldea',
+  title: 'Prescripción de deudas comerciales en España: ¿a los 5 años? | Marsof',
   description: 'Cuándo prescribe una deuda en España, cómo interrumpir la prescripción y cómo aprovecharla a tu favor como acreedor.',
   alternates: { canonical: 'https://marsof.es/blog/deuda-prescripcion-5-anos' },
   keywords: ['prescripción deuda 5 años', 'plazo prescripción factura', 'interrumpir prescripción deuda', 'cuándo prescribe deuda comercial'],
@@ -67,3 +67,4 @@ export default function Page() {
     </article>
   )
 }
+

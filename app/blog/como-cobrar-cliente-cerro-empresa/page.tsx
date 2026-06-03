@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a un cliente que cerró su empresa | Saldea',
+  title: 'Cómo cobrar a un cliente que cerró su empresa | Marsof',
   description: 'Tu cliente cerró la empresa o entró en concurso. ¿Puedes cobrar? Sí, en ciertos casos. Te explico cómo y cuándo.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-cliente-cerro-empresa' },
   keywords: ['cliente cerró empresa', 'cobrar empresa cerrada', 'cliente quebrado', 'cliente concurso acreedores'],
@@ -73,3 +73,4 @@ export default function Page() {
     </article>
   )
 }
+

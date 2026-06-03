@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo medir el DSO (Days Sales Outstanding) en una pyme | Saldea',
+  title: 'Cómo medir el DSO (Days Sales Outstanding) en una pyme | Marsof',
   description: 'Cálculo paso a paso del DSO, valores ideales por sector y cómo reducirlo. El KPI que separa pymes solventes de pymes en problemas.',
   alternates: { canonical: 'https://marsof.es/blog/como-medir-dso-pyme' },
   keywords: ['DSO pyme', 'days sales outstanding', 'medir DSO', 'KPI cobros', 'periodo medio cobro', 'reducir DSO'],
@@ -86,3 +86,4 @@ export default function PageDSO() {
     </article>
   )
 }
+

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Frases para cobrar a un cliente sin parecer pesado | Saldea',
+  title: 'Frases para cobrar a un cliente sin parecer pesado | Marsof',
   description: 'Las 15 frases que usan los autónomos profesionales para reclamar pagos sin agobiar. Resultado: cobras igual sin perder el cliente.',
   alternates: { canonical: 'https://marsof.es/blog/frases-cobrar-sin-parecer-pesado' },
   keywords: ['frases cobrar sin parecer pesado', 'cómo cobrar sin agobiar', 'frases recordar pago educado', 'frases cobro profesional'],
@@ -81,3 +81,4 @@ export default function Page() {
     </article>
   )
 }
+

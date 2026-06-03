@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo pedir un anticipo a un cliente sin incomodarlo | Saldea',
+  title: 'Cómo pedir un anticipo a un cliente sin incomodarlo | Marsof',
   description: 'Estrategias para pedir anticipos sin generar fricción. Cuánto pedir, cómo justificarlo y frases exactas. Filtra clientes problemáticos.',
   alternates: { canonical: 'https://marsof.es/blog/como-pedir-anticipo-cliente' },
   keywords: ['pedir anticipo cliente', 'cómo justificar anticipo', 'porcentaje anticipo autónomo', 'cobrar por adelantado'],
@@ -102,3 +102,4 @@ export default function Page() {
     </article>
   )
 }
+

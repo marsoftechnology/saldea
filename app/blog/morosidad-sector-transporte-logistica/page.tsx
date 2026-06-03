@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad en transporte y logística 2026: plazos y soluciones | Saldea',
+  title: 'Morosidad en transporte y logística 2026: plazos y soluciones | Marsof',
   description: 'Cómo cobrar a clientes en el sector del transporte y logística. Plazos legales especiales, cargas y descargas, y la Ley 15/2009 de transporte.',
   alternates: { canonical: 'https://marsof.es/blog/morosidad-sector-transporte-logistica' },
   keywords: ['morosidad transporte', 'cobros transportistas', 'ley 15/2009 transporte', 'transportista factura', 'logistica cobros'],
@@ -64,3 +64,4 @@ export default function PageTransporte() {
     </article>
   )
 }
+

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo evitar impagos con un cliente nuevo: 10 medidas | Saldea',
+  title: 'Cómo evitar impagos con un cliente nuevo: 10 medidas | Marsof',
   description: 'Las 10 medidas concretas para minimizar el riesgo de impago al trabajar con un cliente nuevo. Verificación, contrato, anticipo y más.',
   alternates: { canonical: 'https://marsof.es/blog/como-evitar-impagos-nuevo-cliente' },
   keywords: ['evitar impagos cliente nuevo', 'protegerse moroso', 'verificar cliente antes contratar', 'medidas anti-moroso'],
@@ -71,3 +71,4 @@ export default function Page() {
     </article>
   )
 }
+

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo escribir un email firme pero amable para cobrar | Saldea',
+  title: 'Cómo escribir un email firme pero amable para cobrar | Marsof',
   description: 'La fórmula exacta para escribir emails firmes pero educados al reclamar facturas. Estructura, palabras clave y plantilla completa.',
   alternates: { canonical: 'https://marsof.es/blog/como-escribir-email-firme-pero-amable' },
   keywords: ['email firme cobrar', 'email reclamación amable', 'email serio sin agresivo', 'tono email moroso', 'escribir email cobro profesional'],
@@ -101,3 +101,4 @@ Un saludo,
     </article>
   )
 }
+

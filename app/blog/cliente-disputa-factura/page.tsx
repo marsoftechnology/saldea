@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cliente que dispute la factura: cómo defender tu cobro | Saldea',
+  title: 'Cliente que dispute la factura: cómo defender tu cobro | Marsof',
   description: 'El cliente dice "no estoy conforme" para evitar pagar. Cómo distinguir disputa legítima de excusa y cómo defender tu factura.',
   alternates: { canonical: 'https://marsof.es/blog/cliente-disputa-factura' },
   keywords: ['cliente disputa factura', 'cliente no conforme', 'reclamar disputa factura', 'cobrar con disputa'],
@@ -78,3 +78,4 @@ export default function Page() {
     </article>
   )
 }
+

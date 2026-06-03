@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad sector sanitario 2026: cobrar a clínicas y proveedores médicos | Saldea',
+  title: 'Morosidad sector sanitario 2026: cobrar a clínicas y proveedores médicos | Marsof',
   description: 'Cómo cobrar facturas a clínicas privadas, mutuas, residencias y proveedores médicos. Plazos reales, peculiaridades del sector y soluciones.',
   alternates: { canonical: 'https://marsof.es/blog/morosidad-sector-sanitario' },
   keywords: ['cobrar clinica', 'mutua paga tarde', 'cobros sector salud', 'residencias mayores cobros', 'proveedor medico facturas'],
@@ -73,3 +73,4 @@ export default function PageSanitario() {
     </article>
   )
 }
+

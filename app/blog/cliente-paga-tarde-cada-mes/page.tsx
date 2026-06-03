@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cliente que paga pero llega tarde cada mes: cómo educarlo | Saldea',
+  title: 'Cliente que paga pero llega tarde cada mes: cómo educarlo | Marsof',
   description: 'Tu cliente paga, pero siempre con 30-60 días de retraso. Cómo cambiar el patrón sin perder el cliente.',
   alternates: { canonical: 'https://marsof.es/blog/cliente-paga-tarde-cada-mes' },
   keywords: ['cliente paga tarde', 'educar cliente pago tiempo', 'cliente retraso habitual', 'cambiar patrón moroso'],
@@ -69,3 +69,4 @@ export default function Page() {
     </article>
   )
 }
+

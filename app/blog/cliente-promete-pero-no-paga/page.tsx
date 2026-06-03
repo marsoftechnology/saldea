@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cliente que promete pagar pero no paga: 5 reglas para gestionarlo | Saldea',
+  title: 'Cliente que promete pagar pero no paga: 5 reglas para gestionarlo | Marsof',
   description: 'La excusa más común: "te pago la semana que viene". Cómo cortar la dinámica y conseguir un pago real.',
   alternates: { canonical: 'https://marsof.es/blog/cliente-promete-pero-no-paga' },
   keywords: ['cliente promete no paga', 'cliente da excusas pago', 'siempre dice mañana paga', 'romper dinámica moroso'],
@@ -59,3 +59,4 @@ export default function Page() {
     </article>
   )
 }
+

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar honorarios impagados (consultores, abogados, médicos) | Saldea',
+  title: 'Cómo cobrar honorarios impagados (consultores, abogados, médicos) | Marsof',
   description: 'Plan específico para cobrar honorarios profesionales. Consultores, abogados, médicos, arquitectos. Particularidades legales y trucos.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-honorarios-impagados' },
   keywords: ['cobrar honorarios', 'honorarios impagados', 'consultor cobrar', 'abogado cobrar honorarios', 'jura de cuentas'],
@@ -71,3 +71,4 @@ export default function Page() {
     </article>
   )
 }
+

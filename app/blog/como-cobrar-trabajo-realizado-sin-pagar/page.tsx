@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar un trabajo ya realizado que el cliente no paga | Saldea',
+  title: 'Cómo cobrar un trabajo ya realizado que el cliente no paga | Marsof',
   description: 'Has entregado el trabajo y ahora no paga. Plan de actuación: pruebas, recordatorios, burofax y vía legal. Recuperar el dinero paso a paso.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-trabajo-realizado-sin-pagar' },
   keywords: ['cobrar trabajo realizado', 'entregue y no pagan', 'cliente no paga trabajo hecho', 'recuperar dinero trabajo'],
@@ -73,3 +73,4 @@ export default function Page() {
     </article>
   )
 }
+

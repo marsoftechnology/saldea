@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a una empresa grande sin ser pequeño | Saldea',
+  title: 'Cómo cobrar a una empresa grande sin ser pequeño | Marsof',
   description: 'Las grandes empresas pagan a 90-120 días por sistema. Te explico cómo navegar sus procesos y reducir tu DSO con ellas.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-empresa-grande' },
   keywords: ['cobrar empresa grande', 'cobrar multinacional', 'departamento pagos', 'cobrar a corporativos'],
@@ -85,3 +85,4 @@ export default function Page() {
     </article>
   )
 }
+

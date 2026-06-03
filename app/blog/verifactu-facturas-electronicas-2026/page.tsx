@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Veri*factu y facturas electrónicas en España 2026: guía clara | Saldea',
+  title: 'Veri*factu y facturas electrónicas en España 2026: guía clara | Marsof',
   description: 'Qué es Veri*factu, a quién obliga, plazos, sanciones por incumplimiento y cómo adaptar tu facturación. Real Decreto 1007/2023 explicado simple.',
   alternates: { canonical: 'https://marsof.es/blog/verifactu-facturas-electronicas-2026' },
   keywords: [
@@ -126,3 +126,4 @@ export default function PageVerifactu() {
     </article>
   )
 }
+

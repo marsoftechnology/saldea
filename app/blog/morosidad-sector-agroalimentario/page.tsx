@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad sector agroalimentario 2026: cobrar a cadenas y mayoristas | Saldea',
+  title: 'Morosidad sector agroalimentario 2026: cobrar a cadenas y mayoristas | Marsof',
   description: 'Cómo cobrar a cadenas de supermercados y mayoristas en el sector agroalimentario. Ley de la Cadena Alimentaria, plazos legales y cláusulas.',
   alternates: { canonical: 'https://marsof.es/blog/morosidad-sector-agroalimentario' },
   keywords: ['cobrar agroalimentario', 'ley cadena alimentaria', 'cobrar supermercados', 'productor frutas cobros', 'cooperativa cobros'],
@@ -81,3 +81,4 @@ export default function PageAgro() {
     </article>
   )
 }
+

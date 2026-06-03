@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Factura electrónica B2B obligatoria en España: fechas y guía | Saldea',
+  title: 'Factura electrónica B2B obligatoria en España: fechas y guía | Marsof',
   description: 'La Ley Crea y Crece obliga a usar factura electrónica entre empresas en España. Fechas exactas, multas y cómo prepararte. Guía 2026.',
   alternates: { canonical: 'https://marsof.es/blog/factura-electronica-b2b-obligatoria-espana' },
   keywords: [
@@ -125,3 +125,4 @@ export default function PageFacturaBB() {
     </article>
   )
 }
+

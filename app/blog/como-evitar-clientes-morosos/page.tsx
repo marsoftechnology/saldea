@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo evitar clientes morosos: 8 reglas antes de firmar | Saldea',
+  title: 'Cómo evitar clientes morosos: 8 reglas antes de firmar | Marsof',
   description: 'Más vale prevenir que reclamar. 8 reglas prácticas para detectar a un cliente moroso antes de empezar a trabajar con él y blindar tu facturación.',
   alternates: { canonical: 'https://marsof.es/blog/como-evitar-clientes-morosos' },
   keywords: [
@@ -95,3 +95,4 @@ export default function PageEvitarMorosos() {
     </article>
   )
 }
+

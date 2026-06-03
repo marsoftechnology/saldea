@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cuándo mandar un burofax a un cliente moroso (2026) | Saldea',
+  title: 'Cuándo mandar un burofax a un cliente moroso (2026) | Marsof',
   description: 'Los 4 momentos exactos donde el burofax tiene máximo efecto. Cuánto cuesta, cómo redactarlo y por qué muchos pagan tras recibirlo.',
   alternates: { canonical: 'https://marsof.es/blog/cuando-mandar-burofax-cliente' },
   keywords: ['cuándo mandar burofax', 'momento burofax moroso', 'burofax efectivo', 'cuándo enviar burofax', 'plazo burofax cliente'],
@@ -85,3 +85,4 @@ export default function Page() {
     </article>
   )
 }
+

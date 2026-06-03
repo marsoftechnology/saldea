@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo calcular los intereses de demora de una factura impagada (2026) | Saldea',
+  title: 'Cómo calcular los intereses de demora de una factura impagada (2026) | Marsof',
   description: 'Fórmula exacta para calcular los intereses de demora según Ley 3/2004 con ejemplos reales y tipo de interés actualizado a 2026.',
   alternates: { canonical: 'https://marsof.es/blog/calcular-intereses-demora-factura-impagada' },
   keywords: [
@@ -122,3 +122,4 @@ export default function PageIntereses() {
     </>
   )
 }
+

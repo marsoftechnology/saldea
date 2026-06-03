@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a un cliente sin que se enfade (guía 2026) | Saldea',
+  title: 'Cómo cobrar a un cliente sin que se enfade (guía 2026) | Marsof',
   description: 'La técnica probada para reclamar facturas impagadas sin perder al cliente. 7 pasos psicológicos, plantillas y errores típicos. Mantén la relación comercial intacta.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-cliente-sin-enfadarlo' },
   keywords: [
@@ -153,3 +153,4 @@ export default function PageCobrarSinEnfadar() {
     </>
   )
 }
+

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Modelo de presupuesto para autónomos (plantilla gratis 2026) | Saldea',
+  title: 'Modelo de presupuesto para autónomos (plantilla gratis 2026) | Marsof',
   description: 'Plantilla de presupuesto profesional para autónomos. Estructura, qué incluir, cómo hacer que te lo aprueben antes y cláusulas que evitan impagos.',
   alternates: { canonical: 'https://marsof.es/blog/modelo-presupuesto-autonomo' },
   keywords: [
@@ -169,3 +169,4 @@ DNI/CIF: ___________________`}
     </article>
   )
 }
+

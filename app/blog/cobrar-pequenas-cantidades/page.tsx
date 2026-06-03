@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '¿Merece la pena cobrar deudas pequeñas? Análisis y opciones | Saldea',
+  title: '¿Merece la pena cobrar deudas pequeñas? Análisis y opciones | Marsof',
   description: 'Cuánto cuesta realmente reclamar una deuda de 100€, 300€ o 500€. Cuándo merece la pena y cuándo asumirlo como gasto.',
   alternates: { canonical: 'https://marsof.es/blog/cobrar-pequenas-cantidades' },
   keywords: ['cobrar pequeñas cantidades', 'reclamar deuda pequeña', 'merece pena cobrar poco', 'monitorio importes bajos'],
@@ -61,3 +61,4 @@ export default function Page() {
     </article>
   )
 }
+

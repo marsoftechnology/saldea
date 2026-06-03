@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a un amigo que es cliente sin perder la amistad | Saldea',
+  title: 'Cómo cobrar a un amigo que es cliente sin perder la amistad | Marsof',
   description: 'Cobrar a amigos y conocidos es lo más incómodo. Aquí las reglas para mantener la amistad y recuperar el dinero al mismo tiempo.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-amigo-cliente' },
   keywords: ['cobrar amigo cliente', 'cobrar a conocido', 'cobrar a familiar', 'separar amistad negocio'],
@@ -67,3 +67,4 @@ export default function Page() {
     </article>
   )
 }
+

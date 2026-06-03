@@ -2,8 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Blog · Cómo cobrar mejor tus facturas | Saldea',
-  description: 'Guías prácticas y plantillas para autónomos y pymes españolas: reclamar facturas, evitar morosos, automatizar cobros.',
+  title: 'Blog · Cómo cobrar mejor tus facturas | Marsof',
+  description: 'Guías prácticas y plantillas para autónomos y pymes españolas: reclamar facturas, evitar morosos, automatizar cobros. Por Marsof.',
   alternates: { canonical: 'https://marsof.es/blog' },
 }
 
@@ -294,7 +294,7 @@ export default function BlogIndex() {
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link href="/saldea" className="text-sm text-zinc-500 hover:text-zinc-400 transition-colors">Saldea</Link>
+            <Link href="/" className="text-sm text-zinc-500 hover:text-zinc-400 transition-colors">Marsof</Link>
             <span className="text-zinc-600">/</span>
             <span className="text-zinc-100 font-semibold">Blog</span>
           </div>
@@ -310,7 +310,7 @@ export default function BlogIndex() {
       </nav>
 
       <section className="max-w-3xl mx-auto px-6 pt-16 pb-20">
-        <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 mb-4">Blog de Saldea</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 mb-4">Blog de Marsof</h1>
         <p className="text-xl text-zinc-400 mb-12">
           Guías prácticas para que autónomos y pymes españolas cobren antes y mejor.
         </p>

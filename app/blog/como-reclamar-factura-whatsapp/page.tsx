@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo reclamar una factura por WhatsApp educadamente 2026 | Saldea',
+  title: 'Cómo reclamar una factura por WhatsApp educadamente 2026 | Marsof',
   description: 'Guía para reclamar pagos por WhatsApp sin parecer agresivo. Mensajes listos, horarios correctos y errores a evitar. Tono profesional.',
   alternates: { canonical: 'https://marsof.es/blog/como-reclamar-factura-whatsapp' },
   keywords: ['reclamar factura whatsapp', 'whatsapp cobrar cliente', 'mensaje whatsapp moroso', 'whatsapp recordar pago', 'cobrar por whatsapp educadamente'],
@@ -81,3 +81,4 @@ export default function Page() {
     </article>
   )
 }
+

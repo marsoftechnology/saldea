@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad en hostelería y restauración 2026: cobrar a hoteles | Saldea',
+  title: 'Morosidad en hostelería y restauración 2026: cobrar a hoteles | Marsof',
   description: 'Cómo cobrar facturas a hoteles, restaurantes y empresas de hostelería en España. Plazos reales, cláusulas clave y herramientas que funcionan.',
   alternates: { canonical: 'https://marsof.es/blog/morosidad-sector-hosteleria' },
   keywords: ['cobrar hosteleria', 'morosos hoteles', 'facturas restaurante impagadas', 'proveedor hosteleria cobros', 'cobrar a hoteles'],
@@ -72,3 +72,4 @@ export default function PageHosteleria() {
     </article>
   )
 }
+

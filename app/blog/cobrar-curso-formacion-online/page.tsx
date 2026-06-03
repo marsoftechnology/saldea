@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar cursos y formación online sin impagos | Saldea',
+  title: 'Cómo cobrar cursos y formación online sin impagos | Marsof',
   description: 'Estrategias específicas para formadores online: pre-pago, fraccionamiento, suspensión de acceso, recordatorios automáticos.',
   alternates: { canonical: 'https://marsof.es/blog/cobrar-curso-formacion-online' },
   keywords: ['cobrar curso online', 'formación impagos', 'cobrar formación empresa', 'plataforma cursos cobro'],
@@ -56,3 +56,4 @@ export default function Page() {
     </article>
   )
 }
+

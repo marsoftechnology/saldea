@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a clientes como diseñador o freelance creativo | Saldea',
+  title: 'Cómo cobrar a clientes como diseñador o freelance creativo | Marsof',
   description: 'Estrategias específicas para diseñadores, ilustradores y creativos. Cláusula de propiedad intelectual, anticipos y archivos fuente.',
   alternates: { canonical: 'https://marsof.es/blog/cobrar-disenador-creativo' },
   keywords: ['cobrar diseñador freelance', 'cobrar diseño gráfico', 'cobrar ilustrador', 'cobrar trabajo creativo'],
@@ -78,3 +78,4 @@ con las consecuencias legales correspondientes.`}
     </article>
   )
 }
+

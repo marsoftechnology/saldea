@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Ratio de liquidez para pymes: cómo calcularlo y mejorarlo | Saldea',
+  title: 'Ratio de liquidez para pymes: cómo calcularlo y mejorarlo | Marsof',
   description: 'Qué es el ratio de liquidez, fórmula, valores ideales en España y cómo mejorarlo cobrando antes. Guía práctica para pymes y autónomos.',
   alternates: { canonical: 'https://marsof.es/blog/ratio-liquidez-pyme-2026' },
   keywords: ['ratio liquidez', 'ratio liquidez pyme', 'calcular liquidez', 'ratio tesoreria', 'salud financiera pyme'],
@@ -90,3 +90,4 @@ export default function PageLiquidez() {
     </article>
   )
 }
+

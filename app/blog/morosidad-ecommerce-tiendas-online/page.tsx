@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad en ecommerce 2026: chargebacks, devoluciones y SEPA | Saldea',
+  title: 'Morosidad en ecommerce 2026: chargebacks, devoluciones y SEPA | Marsof',
   description: 'Cómo gestionar impagos en tiendas online: chargebacks, SEPA devuelto, fraude y proveedores que tardan en cobrar. Estrategias para ecommerce.',
   alternates: { canonical: 'https://marsof.es/blog/morosidad-ecommerce-tiendas-online' },
   keywords: ['morosidad ecommerce', 'chargeback tienda online', 'sepa devuelto ecommerce', 'fraude pagos online', 'cobros ecommerce'],
@@ -90,3 +90,4 @@ export default function PageEcommerce() {
     </article>
   )
 }
+

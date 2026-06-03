@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo enviar un burofax para reclamar una deuda (guía 2026) | Saldea',
+  title: 'Cómo enviar un burofax para reclamar una deuda (guía 2026) | Marsof',
   description: 'Paso a paso para mandar un burofax legal en España: contenido, coste, dónde enviarlo y modelo gratis. Útil antes del procedimiento monitorio.',
   alternates: { canonical: 'https://marsof.es/blog/como-enviar-burofax-reclamar-deuda' },
   keywords: [
@@ -138,3 +138,4 @@ Atentamente,
     </>
   )
 }
+

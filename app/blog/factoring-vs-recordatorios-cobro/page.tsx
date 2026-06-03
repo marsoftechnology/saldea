@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Factoring vs recordatorios de cobro: cuál te interesa más | Saldea',
+  title: 'Factoring vs recordatorios de cobro: cuál te interesa más | Marsof',
   description: 'Comparativa entre el factoring (adelanto de facturas con coste) y los sistemas de recordatorios automáticos. Qué cuesta cada uno y cuándo conviene cada uno.',
   alternates: { canonical: 'https://marsof.es/blog/factoring-vs-recordatorios-cobro' },
   keywords: [
@@ -110,3 +110,4 @@ export default function PageFactoring() {
     </article>
   )
 }
+

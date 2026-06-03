@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Domiciliación SEPA: cómo cobrar automáticamente cada mes | Saldea',
+  title: 'Domiciliación SEPA: cómo cobrar automáticamente cada mes | Marsof',
   description: 'Cómo funciona la domiciliación SEPA para autónomos y empresas: mandato, plazos, devoluciones y cómo reduce la morosidad hasta un 70%.',
   alternates: { canonical: 'https://marsof.es/blog/domiciliacion-sepa-cobros-automaticos' },
   keywords: ['domiciliacion sepa', 'cobro automatico sepa', 'mandato sepa', 'cobrar por sepa', 'recibo domiciliado autonomo'],
@@ -114,3 +114,4 @@ export default function PageSepa() {
     </article>
   )
 }
+

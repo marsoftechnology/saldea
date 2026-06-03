@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Procedimiento monitorio: cómo reclamar una deuda sin abogado | Saldea',
+  title: 'Procedimiento monitorio: cómo reclamar una deuda sin abogado | Marsof',
   description: 'Guía completa del procedimiento monitorio en España: cómo presentar la demanda, plazos, coste y cuándo se necesita abogado. Actualizado 2026.',
   alternates: { canonical: 'https://marsof.es/blog/procedimiento-monitorio-reclamar-deuda' },
   keywords: [
@@ -121,3 +121,4 @@ export default function PageMonitorio() {
     </>
   )
 }
+

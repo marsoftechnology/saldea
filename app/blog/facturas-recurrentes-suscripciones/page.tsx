@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Facturas recurrentes para suscripciones: guía 2026 | Saldea',
+  title: 'Facturas recurrentes para suscripciones: guía 2026 | Marsof',
   description: 'Cómo gestionar facturas recurrentes en suscripciones SaaS, alquileres, mantenimientos. Automatización, cumplimiento fiscal y reducción de impagos.',
   alternates: { canonical: 'https://marsof.es/blog/facturas-recurrentes-suscripciones' },
   keywords: [
@@ -100,3 +100,4 @@ export default function PageRecurrentes() {
     </article>
   )
 }
+

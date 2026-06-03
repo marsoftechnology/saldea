@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar sin contrato firmado: las pruebas que valen | Saldea',
+  title: 'Cómo cobrar sin contrato firmado: las pruebas que valen | Marsof',
   description: 'Aunque no tengas contrato escrito, puedes cobrar. Las pruebas que aceptan los jueces: emails, presupuestos, WhatsApp, transferencias previas.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-sin-contrato-firmado' },
   keywords: ['cobrar sin contrato', 'cobrar trabajo informal', 'pruebas sin contrato', 'reclamar sin papeles'],
@@ -73,3 +73,4 @@ export default function Page() {
     </article>
   )
 }
+

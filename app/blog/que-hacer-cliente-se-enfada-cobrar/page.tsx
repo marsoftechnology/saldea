@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Qué hacer si un cliente se enfada cuando le reclamas el pago | Saldea',
+  title: 'Qué hacer si un cliente se enfada cuando le reclamas el pago | Marsof',
   description: 'Cómo gestionar la reacción emocional de un cliente que se molesta al recibir un recordatorio. Mantén la calma, recupera el cobro, conserva la relación.',
   alternates: { canonical: 'https://marsof.es/blog/que-hacer-cliente-se-enfada-cobrar' },
   keywords: ['cliente se enfada cobrar', 'gestionar enfado cliente moroso', 'cliente molesto reclamación', 'qué hacer cliente agresivo'],
@@ -93,3 +93,4 @@ export default function Page() {
     </article>
   )
 }
+

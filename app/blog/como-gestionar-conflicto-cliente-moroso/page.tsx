@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo gestionar el conflicto con un cliente moroso | Saldea',
+  title: 'Cómo gestionar el conflicto con un cliente moroso | Marsof',
   description: 'Las 5 fases del conflicto con un moroso y cómo desescalar cada una. Mantén la cabeza fría, recupera el cobro y conserva tu salud mental.',
   alternates: { canonical: 'https://marsof.es/blog/como-gestionar-conflicto-cliente-moroso' },
   keywords: ['conflicto cliente moroso', 'desescalar conflicto cobro', 'gestión emocional moroso', 'estrés cobro impagados'],
@@ -88,3 +88,4 @@ export default function Page() {
     </article>
   )
 }
+

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo decirle a un cliente que no vas a trabajar más con él | Saldea',
+  title: 'Cómo decirle a un cliente que no vas a trabajar más con él | Marsof',
   description: 'Cómo cortar relación con un cliente moroso sin dramas. Frases exactas, momento adecuado y cómo proteger los cobros pendientes.',
   alternates: { canonical: 'https://marsof.es/blog/decir-no-trabajar-cliente-moroso' },
   keywords: ['cortar cliente moroso', 'no trabajar más cliente', 'rescindir cliente impago', 'despedir cliente moroso'],
@@ -79,3 +79,4 @@ export default function Page() {
     </article>
   )
 }
+

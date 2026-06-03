@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a un cliente extranjero: SEPA, Wise y reclamaciones | Saldea',
+  title: 'Cómo cobrar a un cliente extranjero: SEPA, Wise y reclamaciones | Marsof',
   description: 'Métodos de pago, divisas, marco legal y reclamación internacional. Todo lo que necesitas para cobrar a clientes fuera de España.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-cliente-extranjero' },
   keywords: ['cobrar cliente extranjero', 'cobrar a UK', 'cobrar internacional', 'SEPA UE', 'Wise cobros'],
@@ -60,3 +60,4 @@ export default function Page() {
     </article>
   )
 }
+

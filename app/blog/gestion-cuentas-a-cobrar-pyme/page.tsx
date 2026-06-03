@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Gestión de cuentas a cobrar para pymes: guía completa 2026 | Saldea',
+  title: 'Gestión de cuentas a cobrar para pymes: guía completa 2026 | Marsof',
   description: 'Cómo gestionar las cuentas a cobrar de tu pyme: clasificación de clientes, KPIs, antigüedad de saldos, política de crédito y automatización. Práctico.',
   alternates: { canonical: 'https://marsof.es/blog/gestion-cuentas-a-cobrar-pyme' },
   keywords: [
@@ -127,3 +127,4 @@ export default function PageCuentasCobrar() {
     </article>
   )
 }
+

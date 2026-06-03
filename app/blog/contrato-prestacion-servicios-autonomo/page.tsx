@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Modelo contrato prestación de servicios autónomo (gratis 2026) | Saldea',
+  title: 'Modelo contrato prestación de servicios autónomo (gratis 2026) | Marsof',
   description: 'Plantilla gratis de contrato de prestación de servicios para autónomos en España. Cláusulas antimorosos, Ley 3/2004 y protección legal. Listo para usar.',
   alternates: { canonical: 'https://marsof.es/blog/contrato-prestacion-servicios-autonomo' },
   keywords: [
@@ -139,3 +139,4 @@ _____________                          _____________
     </article>
   )
 }
+

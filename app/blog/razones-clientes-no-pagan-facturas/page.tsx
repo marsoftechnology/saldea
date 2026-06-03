@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '7 razones por las que tus clientes no te pagan (y qué hacer) | Saldea',
+  title: '7 razones por las que tus clientes no te pagan (y qué hacer) | Marsof',
   description: 'Las 7 razones más comunes por las que tus clientes pagan tarde o no pagan, ordenadas por frecuencia. Y la solución concreta para cada una.',
   alternates: { canonical: 'https://marsof.es/blog/razones-clientes-no-pagan-facturas' },
   keywords: [
@@ -96,3 +96,4 @@ export default function PageRazones() {
     </article>
   )
 }
+

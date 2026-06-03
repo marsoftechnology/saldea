@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Psicología de precios en SaaS B2B: cómo cobrar más sin perder clientes | Saldea',
+  title: 'Psicología de precios en SaaS B2B: cómo cobrar más sin perder clientes | Marsof',
   description: 'Cómo poner precio a tu SaaS B2B: anclajes, precio psicológico (49 vs 50), tres planes, value-based pricing y errores típicos. Guía 2026.',
   alternates: { canonical: 'https://marsof.es/blog/psicologia-precios-saas-b2b' },
   keywords: ['psicologia precios SaaS', 'precio software B2B', 'value based pricing', 'precio psicologico', 'pricing SaaS estrategia'],
@@ -79,3 +79,4 @@ export default function PagePrecios() {
     </article>
   )
 }
+

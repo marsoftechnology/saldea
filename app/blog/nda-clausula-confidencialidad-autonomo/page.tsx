@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'NDA y cláusula de confidencialidad para autónomos | Saldea',
+  title: 'NDA y cláusula de confidencialidad para autónomos | Marsof',
   description: 'Plantilla gratis de NDA (acuerdo confidencialidad) para autónomos y consultores en España. Cuándo usarlo, qué incluir y errores típicos.',
   alternates: { canonical: 'https://marsof.es/blog/nda-clausula-confidencialidad-autonomo' },
   keywords: ['NDA autónomo', 'acuerdo confidencialidad', 'cláusula confidencialidad', 'modelo NDA España', 'confidencialidad freelance'],
@@ -84,3 +84,4 @@ El incumplimiento de esta cláusula dará derecho a la parte afectada a reclamar
     </article>
   )
 }
+

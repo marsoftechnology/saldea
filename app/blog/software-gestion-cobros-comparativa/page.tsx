@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Mejor software de gestión de cobros 2026: comparativa España | Saldea',
+  title: 'Mejor software de gestión de cobros 2026: comparativa España | Marsof',
   description: 'Comparamos 7 herramientas para automatizar el cobro de facturas en España: precios, funciones, integración con Stripe, IA y soporte. Análisis honesto 2026.',
   alternates: { canonical: 'https://marsof.es/blog/software-gestion-cobros-comparativa' },
   keywords: [
@@ -108,3 +108,4 @@ export default function PageSoftwareComparativa() {
     </article>
   )
 }
+

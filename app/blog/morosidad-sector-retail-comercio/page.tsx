@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad en retail y comercio 2026: cobrar a tiendas y minoristas | Saldea',
+  title: 'Morosidad en retail y comercio 2026: cobrar a tiendas y minoristas | Marsof',
   description: 'Cómo cobrar facturas a tiendas, comercios y minoristas. Plazos, estacionalidad y estrategias específicas para proveedores de retail.',
   alternates: { canonical: 'https://marsof.es/blog/morosidad-sector-retail-comercio' },
   keywords: ['cobrar tiendas', 'morosidad retail', 'comercio impagos', 'proveedor retail', 'cobrar minoristas'],
@@ -71,3 +71,4 @@ export default function PageRetail() {
     </article>
   )
 }
+

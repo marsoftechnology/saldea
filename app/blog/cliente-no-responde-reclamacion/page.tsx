@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cliente que no responde a la reclamación: qué hacer | Saldea',
+  title: 'Cliente que no responde a la reclamación: qué hacer | Marsof',
   description: 'Silencio absoluto del cliente moroso. Cómo escalar, romper la inercia y forzar la respuesta sin acosar.',
   alternates: { canonical: 'https://marsof.es/blog/cliente-no-responde-reclamacion' },
   keywords: ['cliente no responde', 'cliente ignora reclamación', 'cliente desaparecido moroso', 'silencio cliente moroso'],
@@ -54,3 +54,4 @@ export default function Page() {
     </article>
   )
 }
+

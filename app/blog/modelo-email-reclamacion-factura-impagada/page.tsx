@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Modelo de email de reclamación de factura impagada (4 plantillas 2026) | Saldea',
+  title: 'Modelo de email de reclamación de factura impagada (4 plantillas 2026) | Marsof',
   description: 'Plantillas gratis de email para reclamar facturas impagadas: tono amable, firme, formal y burofax. Adaptadas a la legislación española y RGPD. Copia y usa.',
   alternates: { canonical: 'https://marsof.es/blog/modelo-email-reclamacion-factura-impagada' },
   openGraph: {
@@ -333,3 +333,4 @@ export default function ArticuloPage() {
     </div>
   )
 }
+

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Plazos de pago entre empresas en España 2026 (Ley 3/2004) | Saldea',
+  title: 'Plazos de pago entre empresas en España 2026 (Ley 3/2004) | Marsof',
   description: 'Guía completa de los plazos máximos legales de pago en España: B2B (60 días), Administración (30 días), perecederos y excepciones. Actualizado 2026.',
   alternates: { canonical: 'https://marsof.es/blog/plazos-pago-entre-empresas-espana' },
   keywords: [
@@ -114,3 +114,4 @@ export default function PagePlazos() {
     </>
   )
 }
+

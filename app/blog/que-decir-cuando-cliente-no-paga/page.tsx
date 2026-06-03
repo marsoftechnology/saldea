@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Qué decir cuando un cliente no paga: 12 frases que funcionan | Saldea',
+  title: 'Qué decir cuando un cliente no paga: 12 frases que funcionan | Marsof',
   description: 'Las 12 frases exactas que usan los profesionales para reclamar cobros sin perder al cliente. Email, llamada y WhatsApp. Plantillas listas.',
   alternates: { canonical: 'https://marsof.es/blog/que-decir-cuando-cliente-no-paga' },
   keywords: ['qué decir cliente no paga', 'frases reclamar pago', 'cómo dirigirse moroso', 'palabras exactas cobrar', 'qué escribir cliente moroso'],
@@ -78,3 +78,4 @@ export default function Page() {
     </article>
   )
 }
+

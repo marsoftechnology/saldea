@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar una deuda antigua de hace meses o años | Saldea',
+  title: 'Cómo cobrar una deuda antigua de hace meses o años | Marsof',
   description: 'Estrategias para reactivar y cobrar facturas vencidas hace meses. Prescripción, monitorio y cuándo soltar.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-deuda-antigua' },
   keywords: ['cobrar deuda antigua', 'reclamar factura meses', 'cobrar después tiempo', 'cobrar después años'],
@@ -65,3 +65,4 @@ export default function Page() {
     </article>
   )
 }
+

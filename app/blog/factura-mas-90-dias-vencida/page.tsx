@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Factura con más de 90 días vencida: plan de recuperación | Saldea',
+  title: 'Factura con más de 90 días vencida: plan de recuperación | Marsof',
   description: 'Tu factura lleva 3+ meses vencida. Plan de acción inmediato: documentación, burofax, monitorio y cuándo soltar.',
   alternates: { canonical: 'https://marsof.es/blog/factura-mas-90-dias-vencida' },
   keywords: ['factura 90 días vencida', 'factura 3 meses', 'cobrar factura antigua', 'recuperar factura vieja'],
@@ -80,3 +80,4 @@ export default function Page() {
     </article>
   )
 }
+

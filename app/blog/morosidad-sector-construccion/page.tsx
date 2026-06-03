@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad en el sector construcción 2026: análisis y soluciones | Saldea',
+  title: 'Morosidad en el sector construcción 2026: análisis y soluciones | Marsof',
   description: 'Por qué la construcción es el sector más afectado por la morosidad en España. Plazos reales de pago, causas y cómo proteger tu empresa.',
   alternates: { canonical: 'https://marsof.es/blog/morosidad-sector-construccion' },
   keywords: ['morosidad construccion', 'cobrar construccion', 'impagos obra', 'morosos obra construccion', 'cobros sector construccion'],
@@ -93,3 +93,4 @@ export default function PageConstruccion() {
     </article>
   )
 }
+

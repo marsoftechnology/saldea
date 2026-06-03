@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad en formación y consultoría 2026: cobrar a empresas | Saldea',
+  title: 'Morosidad en formación y consultoría 2026: cobrar a empresas | Marsof',
   description: 'Cómo cobrar facturas a empresas por servicios de formación y consultoría. Plazos reales, retainer mensual y estrategias específicas del sector.',
   alternates: { canonical: 'https://marsof.es/blog/morosidad-sector-formacion' },
   keywords: ['cobrar formacion empresa', 'morosos consultoria', 'cobrar empresa formacion', 'consultor cobros', 'retainer consultoria'],
@@ -75,3 +75,4 @@ export default function PageFormacion() {
     </article>
   )
 }
+

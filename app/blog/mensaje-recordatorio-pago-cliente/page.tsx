@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Mensaje de recordatorio de pago al cliente: 8 ejemplos | Saldea',
+  title: 'Mensaje de recordatorio de pago al cliente: 8 ejemplos | Marsof',
   description: 'Mensajes listos para copiar y pegar para recordar el pago a un cliente. Por email, WhatsApp y SMS. Tonos amable, firme y formal.',
   alternates: { canonical: 'https://marsof.es/blog/mensaje-recordatorio-pago-cliente' },
   keywords: ['mensaje recordatorio pago', 'mensaje cobrar cliente', 'sms recordatorio factura', 'whatsapp recordar pago', 'plantilla recordatorio'],
@@ -75,3 +75,4 @@ export default function Page() {
     </article>
   )
 }
+

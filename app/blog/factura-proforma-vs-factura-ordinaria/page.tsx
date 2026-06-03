@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Factura proforma vs factura ordinaria: diferencias 2026 | Saldea',
+  title: 'Factura proforma vs factura ordinaria: diferencias 2026 | Marsof',
   description: 'Qué es una factura proforma, cuándo usarla, diferencias legales con la factura ordinaria y plantilla gratis. Guía clara para autónomos y empresas.',
   alternates: { canonical: 'https://marsof.es/blog/factura-proforma-vs-factura-ordinaria' },
   keywords: [
@@ -130,3 +130,4 @@ Se emitirá factura ordinaria tras la aceptación.`}
     </article>
   )
 }
+

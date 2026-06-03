@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a la Administración Pública en España (2026) | Saldea',
+  title: 'Cómo cobrar a la Administración Pública en España (2026) | Marsof',
   description: 'Plazos reales, marco legal y trucos para cobrar más rápido a Ayuntamientos, Diputaciones y Comunidades Autónomas. Ley 9/2017 y monitorio.',
   alternates: { canonical: 'https://marsof.es/blog/como-cobrar-administracion-publica' },
   keywords: ['cobrar administración pública', 'cobrar ayuntamiento', 'morosidad sector público', 'ley 9/2017 contratos'],
@@ -76,3 +76,4 @@ export default function Page() {
     </article>
   )
 }
+
