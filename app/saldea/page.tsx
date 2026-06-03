@@ -39,7 +39,7 @@ function BrowserFrame({ src, alt, url, priority = false }: { src: string; alt: s
 
 export const metadata: Metadata = {
   title: 'Saldea — Software de cobros con IA para autónomos y pymes',
-  description: 'Automatiza el cobro de tus facturas impagadas con IA. Recordatorios que escalan en tono, detección de respuestas, Stripe Connect. 49€/mes · 30 días gratis.',
+  description: 'Automatiza el cobro de tus facturas impagadas con IA. Recordatorios por email y WhatsApp que escalan en tono, detección de respuestas, conciliación bancaria automática y Stripe Connect. 49€/mes · 30 días gratis.',
   alternates: { canonical: 'https://marsof.es/saldea' },
   keywords: [
     'software cobros',
@@ -88,7 +88,9 @@ const comparativa = [
   { feature: 'Plantillas en 4 idiomas', saldea: true, manual: false, otros: 'A veces' },
   { feature: 'PDF de factura adjunto', saldea: true, manual: false, otros: true },
   { feature: 'Emails con tu logo, firma y empresa', saldea: true, manual: 'Si te acuerdas', otros: 'A veces' },
-  { feature: 'Conciliación bancaria automática', saldea: '🔜 Próximamente', manual: false, otros: false },
+  { feature: 'Conciliación bancaria automática', saldea: true, manual: false, otros: false },
+  { feature: 'Notificaciones push en tiempo real', saldea: true, manual: false, otros: false },
+  { feature: 'API REST pública con claves de API', saldea: true, manual: false, otros: false },
   { feature: 'Tiempo dedicado a perseguir cobros', saldea: '0h/mes', manual: '5-10h/mes por moroso', otros: '2-4h/mes' },
   { feature: 'Coste', saldea: '49€/mes o 499€/año', manual: '0€ (tu tiempo)', otros: '100-1.000€/mes' },
 ]
@@ -104,6 +106,8 @@ const faqs = [
   { p: '¿Puedo importar mis facturas actuales?', r: 'Sí. Importa tus facturas desde un CSV en segundos. La plantilla está disponible en el panel.' },
   { p: '¿Qué pasa con la privacidad de mis clientes?', r: 'Saldea cumple RGPD. Los datos están en servidores europeos (Supabase, Vercel) cifrados. Ningún dato se vende ni se usa para entrenar modelos de IA.' },
   { p: '¿Hay integración con mi software de facturación?', r: 'Sí. Ya disponibles: Holded, Quipu y Anfix. Conectas en 1 clic y Saldea importa tus facturas vencidas automáticamente. Para otros programas puedes importar exportando a CSV desde tu software.' },
+  { p: '¿Qué es la conciliación bancaria automática?', r: 'Conectas tu cuenta bancaria mediante Open Banking (compatible con más de 2.000 bancos europeos, sin compartir usuario ni contraseña) y Saldea detecta automáticamente cuando entra un pago de uno de tus clientes. Marca la factura como cobrada y pausa los recordatorios al instante. Disponible en el plan Max.' },
+  { p: '¿Tiene Saldea API para integrarlo con otros sistemas?', r: 'Sí. El plan Pro incluye acceso a la API REST pública con claves de API desde tu panel. Puedes listar, crear y actualizar facturas y clientes desde cualquier sistema externo o automatización (Zapier, Make, etc.).' },
 ]
 
 export default function SaldeaPage() {
@@ -532,6 +536,37 @@ export default function SaldeaPage() {
                 <div className="text-sky-300">María López,maria@...,F-015,800.00,2026-05-12</div>
                 <div className="text-zinc-600">...</div>
               </div>
+            </div>
+          </Reveal>
+
+          {/* Conciliación bancaria — fila nueva */}
+          <Reveal effect="fade-up" className="md:col-span-2">
+            <div className="bg-gradient-to-br from-emerald-500/10 via-transparent to-sky-500/5 border border-emerald-500/20 rounded-2xl p-8 h-full hover:border-emerald-500/30 transition-colors">
+              <div className="flex items-center gap-2 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                Open Banking · Ya disponible
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Conciliación bancaria automática</h3>
+              <p className="text-zinc-400 leading-relaxed mb-5">
+                Conecta tu banco y Saldea detecta el ingreso automáticamente. Marca la factura como cobrada y pausa los recordatorios sin que toques nada. Compatible con más de 2.000 bancos europeos vía Open Banking.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {['Más de 2.000 bancos', 'Detección automática', 'Sin reconciliación manual', 'Plan Max'].map((s) => (
+                  <span key={s} className="inline-flex items-center gap-1.5 text-xs font-semibold bg-emerald-900/30 border border-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />{s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal effect="fade-up" delay={100}>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
+              <div className="text-3xl mb-4">🔔</div>
+              <h3 className="text-lg font-bold text-white mb-2">Notificaciones push</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Recibe una notificación en tu móvil o PC en el momento en que un cliente paga o responde. Sin abrir la app.
+              </p>
             </div>
           </Reveal>
         </div>

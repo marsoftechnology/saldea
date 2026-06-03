@@ -14,6 +14,8 @@ const featuresPro = [
   'Plantillas en 4 idiomas (ES / CA / EN / PT)',
   'Descuento por pronto pago + recargo de mora',
   'Portal de pago: tu cliente paga con tarjeta en 1 clic',
+  'Notificaciones push cuando el cliente paga o responde',
+  'API REST pública con claves de API',
   'Hasta 10 miembros de equipo',
   'Soporte prioritario por email',
 ]
@@ -23,7 +25,7 @@ const featuresMax = [
   '3 burofax de reclamación / mes incluidos',
   'Extras de burofax a 6 € / unidad',
   'Email desde tu dominio propio (Resend)',
-  'Conciliación bancaria automática (próximamente)',
+  'Conciliación bancaria automática (Open Banking)',
   'Hasta 25 miembros de equipo',
   'Soporte VIP prioritario',
 ]
