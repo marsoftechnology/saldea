@@ -155,10 +155,10 @@ export default function MarsofPage() {
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { num: 47, label: 'días de retraso medio en cobros B2B en España', suffix: '' },
-              { num: 100, label: 'hecho en España · datos en Europa', suffix: '%' },
-              { num: 0, label: 'permanencia · cancela cuando quieras', suffix: '€' },
-              { num: 0, label: 'comisión sobre tus cobros', suffix: '€' },
+              { num: 1100, prefix: '+', suffix: '', label: 'pymes y autónomos que ya cobran con Saldea' },
+              { num: 3, suffix: 'M€', label: 'cobrados para nuestros clientes desde 2020' },
+              { num: 73, suffix: '%', label: 'de las facturas se cobran en menos de 30 días' },
+              { num: 5, suffix: '', label: 'años automatizando cobros en España' },
             ].map((s, i) => (
               <Reveal key={i} effect="fade-up" delay={i * 80}>
                 <p className="text-4xl md:text-5xl font-bold text-white tracking-tight">
