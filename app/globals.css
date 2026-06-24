@@ -208,3 +208,216 @@ body {
 [data-theme="light"] [class*="to-zinc-900"] { --tw-gradient-to: #f8fafc; }
 [data-theme="light"] [class*="to-zinc-950"] { --tw-gradient-to: #ffffff; }
 [data-theme="light"] [class*="via-zinc-900"] { --tw-gradient-via: #f8fafc; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FONDO FUTURISTA — NEURAL COSMOS
+   Capas apiladas: nebulosas + aurora + estrellas + grid + rayos + scan
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes mf-nebula {
+  0%   { transform: scale(1)    rotate(0deg);  opacity: .6; }
+  25%  { transform: scale(1.1)  rotate(7deg);  opacity: .8; }
+  50%  { transform: scale(.93)  rotate(-4deg); opacity: .55; }
+  75%  { transform: scale(1.06) rotate(11deg); opacity: .72; }
+  100% { transform: scale(1)    rotate(0deg);  opacity: .6; }
+}
+@keyframes mf-aurora {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes mf-grid-pulse {
+  0%, 100% { opacity: .055; }
+  50%       { opacity: .13; }
+}
+@keyframes mf-ray {
+  0%   { transform: translateX(-130%) rotate(32deg) scaleY(3); opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { transform: translateX(240%)  rotate(32deg) scaleY(3); opacity: 0; }
+}
+@keyframes mf-orb-drift {
+  0%   { transform: translate(-50%,-50%) scale(1); }
+  33%  { transform: translate(calc(-50% + 60px), calc(-50% - 40px)) scale(1.12); }
+  66%  { transform: translate(calc(-50% - 35px), calc(-50% + 25px)) scale(.9); }
+  100% { transform: translate(-50%,-50%) scale(1); }
+}
+@keyframes mf-scan {
+  0%   { top: -4px; opacity: 0; }
+  3%   { opacity: 1; }
+  97%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+@keyframes mf-star-blink-a {
+  0%,100% { opacity: .18; } 45% { opacity: .9; }
+}
+@keyframes mf-star-blink-b {
+  0%,100% { opacity: .5; }  60% { opacity: .12; }
+}
+
+/* ── Contenedor base ── */
+.mf-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background: #020208;
+}
+[data-theme="light"] .mf-bg { display: none; }
+
+/* ── Capa 1: nebulosas giratorias ── */
+.mf-nebula {
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(ellipse 55% 40% at 18% 22%, rgba(61,98,255,.32)   0%, transparent 65%),
+    radial-gradient(ellipse 45% 32% at 82% 72%, rgba(0,212,255,.25)   0%, transparent 60%),
+    radial-gradient(ellipse 38% 28% at 52% 48%, rgba(168,85,247,.20)  0%, transparent 55%),
+    radial-gradient(ellipse 32% 24% at 22% 82%, rgba(0,232,122,.16)   0%, transparent 55%),
+    radial-gradient(ellipse 28% 20% at 75% 18%, rgba(255,107,53,.12)  0%, transparent 50%);
+  animation: mf-nebula 24s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ── Capa 2: aurora cromática ── */
+.mf-aurora {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(61,98,255,.07)   0%,
+    rgba(0,212,255,.10)   20%,
+    rgba(168,85,247,.08)  40%,
+    rgba(0,232,122,.06)   60%,
+    rgba(0,212,255,.09)   80%,
+    rgba(61,98,255,.07)  100%
+  );
+  background-size: 400% 400%;
+  animation: mf-aurora 16s ease infinite;
+}
+
+/* ── Capa 3: grid digital ── */
+.mf-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,.07) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: mf-grid-pulse 9s ease-in-out infinite;
+}
+
+/* ── Capa 4: campo de estrellas ── */
+.mf-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.2px 1.2px at  6%  9%, rgba(255,255,255,.75) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 14% 31%, rgba(255,255,255,.50) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 22% 18%, rgba(0,212,255,.90)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 29% 73%, rgba(255,255,255,.45) 0%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 37%  4%, rgba(255,255,255,.65) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 44% 56%, rgba(168,85,247,.85) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 51% 27%, rgba(255,255,255,.55) 0%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 58% 88%, rgba(0,212,255,.70)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 65% 42%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 72% 15%, rgba(61,98,255,.80)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 79% 67%, rgba(255,255,255,.60) 0%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 86%  3%, rgba(255,255,255,.50) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 93% 79%, rgba(0,232,122,.75)  0%, transparent 100%),
+    radial-gradient(1px   1px   at  3% 52%, rgba(255,255,255,.45) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 11% 86%, rgba(255,255,255,.35) 0%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 19% 44%, rgba(168,85,247,.65) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 26% 61%, rgba(255,255,255,.55) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 34% 93%, rgba(0,212,255,.70)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 42% 37%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 49%  1%, rgba(61,98,255,.75)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 57% 68%, rgba(255,255,255,.50) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 64% 24%, rgba(0,232,122,.65)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 70% 95%, rgba(255,255,255,.45) 0%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 77% 50%, rgba(168,85,247,.60) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 84% 33%, rgba(255,255,255,.55) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 91% 58%, rgba(0,212,255,.80)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 97% 13%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1.2px 1.2px at  8% 76%, rgba(61,98,255,.70)  0%, transparent 100%);
+}
+.mf-stars-b {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 16% 55%, rgba(255,255,255,.30) 0%, transparent 100%),
+    radial-gradient(1px 1px at 31% 12%, rgba(0,212,255,.50)  0%, transparent 100%),
+    radial-gradient(1px 1px at 47% 81%, rgba(255,255,255,.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 63%  7%, rgba(168,85,247,.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 39%, rgba(255,255,255,.28) 0%, transparent 100%),
+    radial-gradient(1px 1px at 94% 62%, rgba(0,232,122,.40)  0%, transparent 100%);
+  animation: mf-star-blink-a 4s ease-in-out 1.5s infinite;
+}
+.mf-stars-c {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 10% 20%, rgba(0,212,255,.6)  0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 35%, rgba(168,85,247,.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 85%, rgba(61,98,255,.6)  0%, transparent 100%);
+  animation: mf-star-blink-b 6s ease-in-out 3s infinite;
+}
+
+/* ── Capa 5: orbe central pulsante ── */
+.mf-orb {
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(61,98,255,.10) 0%, rgba(0,212,255,.04) 40%, transparent 70%);
+  left: 50%; top: 50%;
+  animation: mf-orb-drift 28s ease-in-out infinite;
+  filter: blur(50px);
+  will-change: transform;
+}
+
+/* ── Capa 6: rayos de luz (shooting stars) ── */
+.mf-ray { position: absolute; top: 0; bottom: 0; width: 1px; transform-origin: top center; }
+.mf-ray-1 {
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,212,255,.5) 45%, rgba(0,212,255,.8) 50%, rgba(0,212,255,.5) 55%, transparent 100%);
+  filter: blur(2px);
+  left: 15%;
+  animation: mf-ray 13s ease-in-out 2s infinite;
+}
+.mf-ray-2 {
+  background: linear-gradient(to bottom, transparent 0%, rgba(168,85,247,.45) 45%, rgba(168,85,247,.7) 50%, rgba(168,85,247,.45) 55%, transparent 100%);
+  filter: blur(2.5px);
+  left: 48%;
+  animation: mf-ray 18s ease-in-out 7s infinite;
+}
+.mf-ray-3 {
+  background: linear-gradient(to bottom, transparent 0%, rgba(61,98,255,.4) 45%, rgba(61,98,255,.65) 50%, rgba(61,98,255,.4) 55%, transparent 100%);
+  filter: blur(2px);
+  left: 78%;
+  animation: mf-ray 15s ease-in-out 14s infinite;
+}
+.mf-ray-4 {
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,232,122,.35) 45%, rgba(0,232,122,.55) 50%, rgba(0,232,122,.35) 55%, transparent 100%);
+  filter: blur(3px);
+  left: 92%;
+  animation: mf-ray 22s ease-in-out 20s infinite;
+}
+
+/* ── Capa 7: línea de escaneo horizontal ── */
+.mf-scan {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  top: -4px;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(0,212,255,.15) 10%,
+    rgba(0,212,255,.5)  40%,
+    rgba(0,212,255,.8)  50%,
+    rgba(0,212,255,.5)  60%,
+    rgba(0,212,255,.15) 90%,
+    transparent 100%
+  );
+  filter: blur(1.5px);
+  box-shadow: 0 0 12px rgba(0,212,255,.4);
+  animation: mf-scan 25s linear 4s infinite;
+}

@@ -2,6 +2,7 @@
 import './globals.css'
 import { CookieBanner } from './components/CookieBanner'
 import { TrackPageView } from '@/components/TrackPageView'
+import { FuturisticBg } from './components/FuturisticBg'
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.marsof.es'
 
@@ -281,6 +282,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="h-full antialiased">
+        <FuturisticBg />
         {children}
         <CookieBanner />
         <TrackPageView />
