@@ -118,6 +118,12 @@
   .nav-links { display:flex; align-items:center; gap:34px; list-style:none; }
   .nav-links a { color:rgba(238,238,248,.5); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .25s; }
   .nav-links a:hover { color:var(--white); }
+  .nav-right { display:flex; align-items:center; gap:14px; }
+  .nav-toggle { display:none; flex-direction:column; justify-content:center; gap:5px; width:42px; height:42px; padding:9px; background:none; border:none; cursor:pointer; }
+  .nav-toggle span { display:block; width:100%; height:2px; border-radius:2px; background:var(--white); transition:transform .3s, opacity .3s; }
+  nav.open .nav-toggle span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  nav.open .nav-toggle span:nth-child(2) { opacity:0; }
+  nav.open .nav-toggle span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
   /* HERO */
   .hero { min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:130px 24px 100px; position:relative; overflow:hidden; }
@@ -375,7 +381,16 @@
   }
   @media(max-width:768px) {
     nav { padding:0 20px; }
-    .nav-links { display:none; }
+    .nav-toggle { display:flex; }
+    .nav-links {
+      position:fixed; top:70px; left:0; right:0; flex-direction:column; align-items:stretch; gap:0;
+      background:rgba(2,2,8,.97); backdrop-filter:blur(32px); border-bottom:1px solid var(--border);
+      padding:8px 0 14px; opacity:0; transform:translateY(-12px); pointer-events:none;
+      transition:opacity .3s ease, transform .3s ease;
+    }
+    nav.open .nav-links { opacity:1; transform:translateY(0); pointer-events:auto; }
+    .nav-links li { width:100%; }
+    .nav-links a { display:block; padding:15px 24px; font-size:1.05rem; }
     .wrap { padding:60px 20px; }
     .future-top,.future-cards { padding-left:20px; padding-right:20px; }
     .foot-grid { grid-template-columns:1fr 1fr; padding:44px 20px 32px; }
@@ -407,7 +422,10 @@
       <li><a href="/blog">Blog</a></li>
       <li><a href="mailto:carlos@marsof.es">Habla con nosotros</a></li>
     </ul>
-    <a href="/saldea" class="btn btn-fill btn-sm">Productos <span class="arr">&rarr;</span></a>
+    <div class="nav-right">
+      <a href="/saldea" class="btn btn-fill btn-sm">Productos <span class="arr">&rarr;</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -685,6 +703,18 @@
   function chkNav(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', chkNav, {passive:true});
   chkNav();
+
+  /* MENU MOVIL (hamburguesa) */
+  var navToggle = document.getElementById('navToggle');
+  if(navToggle){
+    navToggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('.nav-links a').forEach(function(a){
+      a.addEventListener('click', function(){ nav.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); });
+    });
+  }
 
   /* VIDEO */
   var bgVid = document.getElementById('bg-video');
