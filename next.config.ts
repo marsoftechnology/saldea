@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
     return {
       beforeFiles: [
         { source: '/', destination: '/marsof-home.html' },
+        { source: '/sobre-marsof', destination: '/sobre-marsof.html' },
       ],
     }
   },
