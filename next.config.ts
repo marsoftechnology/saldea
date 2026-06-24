@@ -18,6 +18,13 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: '/', destination: '/marsof-home.html' },
+      ],
+    }
+  },
 }
 
 // Wrap con Sentry para:
