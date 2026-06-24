@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Marsof Technology — Firma tecnológica disruptiva nacida para cambiar el mundo</title>
-  <meta name="description" content="Conoce Marsof Technology: quiénes somos, nuestra misión de des-robotizar a los humanos, nuestro ecosistema de productos IA y la gran visión hacia la neurociencia y biotecnología.">
+  <title>Sobre Marsof Technology — Automatización inteligente nacida en España</title>
+  <meta name="description" content="Conoce Marsof Technology: quiénes somos, por qué existimos, nuestro ecosistema de productos con IA y la visión a largo plazo hacia la neurociencia y biotecnología.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://www.marsof.es/sobre-marsof">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.marsof.es/sobre-marsof">
   <meta property="og:site_name" content="Marsof Technology">
-  <meta property="og:title" content="Sobre Marsof Technology — Firma tecnológica disruptiva">
-  <meta property="og:description" content="Nacimos para demostrar que la tecnología es sinónimo de libertad y evolución humana.">
+  <meta property="og:title" content="Sobre Marsof Technology — Automatización inteligente nacida en España">
+  <meta property="og:description" content="Nacimos con una misión concreta: que los empresarios españoles dejen de ser los robots de su propia empresa.">
   <meta property="og:image" content="https://www.marsof.es/og-image.png">
   <meta property="og:locale" content="es_ES">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sobre Marsof Technology">
-  <meta name="twitter:description" content="Nacimos para demostrar que la tecnología es sinónimo de libertad y evolución humana.">
+  <meta name="twitter:description" content="Nacimos con una misión concreta: que los empresarios españoles dejen de ser los robots de su propia empresa.">
   <meta name="twitter:image" content="https://www.marsof.es/og-image.png">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Marsof Technology","url":"https://www.marsof.es","logo":"https://www.marsof.es/og-image.png","description":"Firma tecnológica disruptiva especializada en automatización inteligente de procesos mediante IA.","foundingDate":"2026","founders":[{"@type":"Person","name":"Carlos Gálvez Carrillo","jobTitle":"Fundador y CEO"}],"address":{"@type":"PostalAddress","addressLocality":"Huelva","addressCountry":"ES"}}
+  {"@context":"https://schema.org","@type":"Organization","name":"Marsof Technology","url":"https://www.marsof.es","logo":"https://www.marsof.es/og-image.png","description":"Firma tecnológica especializada en automatización inteligente de procesos mediante IA para pymes y autónomos españoles.","foundingDate":"2026","founders":[{"@type":"Person","name":"Carlos Gálvez Carrillo","jobTitle":"Fundador y CEO"}],"address":{"@type":"PostalAddress","addressLocality":"Huelva","addressCountry":"ES"}}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,6 +196,24 @@
   }
   .sp-card span { color:var(--cyan); -webkit-text-fill-color:var(--cyan); }
 
+  /* STATS */
+  .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:80px; border-radius:24px; overflow:hidden; }
+  .stat-card {
+    background:var(--card); border:1px solid var(--border);
+    padding:48px 36px; text-align:center; position:relative;
+    transition:background .3s;
+  }
+  .stat-card:hover { background:rgba(255,255,255,.05); }
+  .stat-num {
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(2.8rem,5vw,4rem); font-weight:800;
+    letter-spacing:-2px; line-height:1; margin-bottom:12px;
+  }
+  .stat-label { font-size:.82rem; color:rgba(238,238,248,.38); line-height:1.6; max-width:180px; margin:0 auto; }
+  .stat-cyan .stat-num { color:var(--cyan); }
+  .stat-blue .stat-num { color:var(--blue-l); }
+  .stat-bio .stat-num  { color:var(--bio); }
+
   /* ECOSISTEMA */
   .eco-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:64px; }
   .eco-card {
@@ -219,6 +237,8 @@
   .eco-examples { margin-top:20px; display:flex; flex-direction:column; gap:9px; }
   .eco-example { font-size:.82rem; color:rgba(238,238,248,.38); display:flex; align-items:flex-start; gap:8px; }
   .eco-example::before { content:'→'; color:var(--cyan); flex-shrink:0; margin-top:1px; }
+  .eco-price { margin-top:24px; padding-top:24px; border-top:1px solid var(--border); display:flex; gap:14px; }
+  .eco-price-pill { background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.15); border-radius:100px; padding:6px 16px; font-size:.78rem; font-weight:600; color:var(--cyan); }
 
   /* VISIÓN / ICEBERG */
   .vision-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-top:80px; }
@@ -286,7 +306,7 @@
 
   /* RESPONSIVE */
   @media(max-width:1024px) {
-    .identity-grid,.sp-body,.eco-grid,.vision-grid,.open-grid { grid-template-columns:1fr; }
+    .identity-grid,.sp-body,.eco-grid,.vision-grid,.open-grid,.stats-grid { grid-template-columns:1fr; }
     .foot-grid { grid-template-columns:1fr 1fr; }
     .id-mar { border-radius:24px 24px 0 0; }
     .id-sof { border-radius:0 0 24px 24px; }
@@ -311,6 +331,8 @@
     .compare-table thead tr th,.compare-table tbody tr td { padding:14px 16px; }
     .cta-section { padding:80px 0 100px; }
     .foot-grid { grid-template-columns:1fr; }
+    .stats-grid { grid-template-columns:1fr; }
+    .eco-price { flex-wrap:wrap; }
   }
   </style>
 </head>
@@ -349,7 +371,7 @@
       <div class="pre-tag">Firma tecnológica · Huelva, España · Fundada 2026</div>
       <h1 class="hero-title">Sobre <span class="gtext">Marsof</span></h1>
       <blockquote class="hero-quote">
-        "La mayoría de las agencias de software venden código frío en trajes grises. Nosotros nacimos de forma 100% orgánica para demostrar que la tecnología es sinónimo de libertad y evolución humana."
+        "España tiene millones de empresarios que trabajan más horas que nadie gestionando cosas que no deberían gestionar. Nosotros nacimos para cambiar eso, empezando por los problemas más costosos y más ignorados."
       </blockquote>
     </div>
   </section>
@@ -359,19 +381,19 @@
     <div class="ticker">
       <span class="ticker-item"><span class="ticker-dot"></span>Marsof Technology</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Ingeniería Empática</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Des-robotizar humanos</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Libertad empresarial</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Automatización real</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Pymes · Autónomos</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Hecho en España</span>
       <span class="ticker-item"><span class="ticker-dot"></span>IA aplicada</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Innovación abierta</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Sin burocracia</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Neurociencia · 2035+</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Marsof Technology</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Ingeniería Empática</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Des-robotizar humanos</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Libertad empresarial</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Automatización real</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Pymes · Autónomos</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Hecho en España</span>
       <span class="ticker-item"><span class="ticker-dot"></span>IA aplicada</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Innovación abierta</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Sin burocracia</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Neurociencia · 2035+</span>
     </div>
   </div>
@@ -379,37 +401,53 @@
   <!-- ¿QUÉ SIGNIFICA MARSOF? -->
   <section>
     <div class="wrap">
-      <p class="sec-pre rv">Identidad</p>
-      <h2 class="sec-title rv">¿Qué significa <span class="gtext">Marsof</span>?</h2>
-      <p class="sec-sub rv">Nuestra identidad define el alcance real de lo que construimos.</p>
+      <p class="sec-pre rv">El nombre lo dice todo</p>
+      <h2 class="sec-title rv">¿Qué es <span class="gtext">Marsof</span>?</h2>
+      <p class="sec-sub rv">Dos palabras. Una ambición sin techo.</p>
       <div class="identity-grid">
         <div class="identity-card id-mar rv">
           <span class="id-letter">MAR</span>
-          <div class="id-word">— Del Mar</div>
-          <p class="id-desc">Evoca la inmensidad, el océano, lo gigante y todo aquello que carece de límites espaciales o de imaginación.</p>
+          <div class="id-word">— Del mar</div>
+          <p class="id-desc">El mar no tiene paredes. No entiende de límites ni de fronteras artificiales. Es la metáfora exacta del alcance que perseguimos: soluciones que escalan tanto como las necesidades del mercado lo exijan.</p>
         </div>
         <div class="identity-card id-sof rv">
           <span class="id-letter">SOF</span>
-          <div class="id-word">— De Software</div>
-          <p class="id-desc">La herramienta de ingeniería con la que crearemos soluciones de una magnitud tal que el mercado actual aún no es capaz de concebir.</p>
+          <div class="id-word">— De software</div>
+          <p class="id-desc">El código es el lenguaje con el que reescribimos procesos que llevan décadas sin cambiar. No hacemos software por hacerlo — cada línea existe para eliminar fricción, recuperar tiempo y liberar potencial humano.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SUPERPODER -->
+  <!-- EL PROBLEMA REAL -->
   <section>
     <div class="wrap">
-      <p class="sec-pre rv">Nuestro superpoder</p>
-      <h2 class="sp-big rv">"Des-robotizar<br>a los humanos"</h2>
+      <p class="sec-pre rv">Por qué existimos</p>
+      <h2 class="sp-big rv">El problema<br><span class="gtext">tiene nombre</span></h2>
       <div class="sp-body">
         <div class="sp-text rv">
-          <p>En el tejido empresarial actual, miles de pymes y autónomos consumen su jornada en tareas administrativas pesadas y repetitivas. Sin darse cuenta, <strong>se han convertido en los robots de su propia estructura.</strong></p>
-          <p>Marsof rompe este esquema mediante la <strong>Ingeniería Empática</strong>. No implementamos tecnología para distanciar al cliente, sino para devolverle su tiempo.</p>
-          <p>Al delegar las tareas mecánicas en agentes inteligentes de IA, los líderes recuperan la capacidad de pensar, diseñar estrategias, escalar ventas y, fundamentalmente, vivir.</p>
+          <p>En España hay más de <strong>4,5 millones de pymes y autónomos</strong>. La mayoría tienen algo en común: dedican una parte desproporcionada de su semana a tareas mecánicas que no aportan ningún valor real al negocio.</p>
+          <p>Perseguir pagos impagados. Enviar recordatorios manuales. Introducir datos en cuatro plataformas distintas. Responder las mismas preguntas por WhatsApp, email y teléfono al mismo tiempo. <strong>Ese no es el trabajo para el que montaron su empresa.</strong></p>
+          <p>La tecnología lleva años resolviendo estos problemas en las grandes corporaciones. Marsof nació para llevar esa misma potencia a quienes más la necesitan: los que no tienen un equipo de IT, ni presupuesto para consultoras, ni tiempo para aprender.</p>
         </div>
         <div class="sp-card rv">
-          "No vendemos líneas de código.<br><br>Proporcionamos <span>libertad</span>."
+          "La automatización no es un lujo reservado a las grandes empresas.<br><br>Es una <span>necesidad urgente</span> para cualquiera que quiera seguir siendo competitivo."
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-grid rv">
+        <div class="stat-card stat-cyan">
+          <div class="stat-num">+4,5M</div>
+          <div class="stat-label">Empresas en España expuestas a problemas de morosidad y gestión manual</div>
+        </div>
+        <div class="stat-card stat-blue">
+          <div class="stat-num">85+</div>
+          <div class="stat-label">Días de media que tarda en cobrarse una factura vencida en España</div>
+        </div>
+        <div class="stat-card stat-bio">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Horas al día que trabaja un agente de IA — sin vacaciones, sin errores, sin esperas</div>
         </div>
       </div>
     </div>
@@ -419,31 +457,36 @@
   <section>
     <div class="wrap">
       <p class="sec-pre rv">Ecosistema operativo</p>
-      <h2 class="sec-title rv">El motor <span class="gtext">recurrente</span></h2>
-      <p class="sec-sub rv">Dos grandes pilares de automatización para impactar en cualquier perfil de negocio de manera ágil y sostenible.</p>
+      <h2 class="sec-title rv">Lo que <span class="gtext">construimos</span></h2>
+      <p class="sec-sub rv">Dos ejes de automatización diseñados para adaptarse a cualquier tipo de negocio, desde la startup hasta la empresa consolidada.</p>
       <div class="eco-grid">
         <div class="eco-card rv">
           <div class="eco-num">01</div>
           <div class="eco-icon eco-icon-blue">🤖</div>
-          <div class="eco-tag eco-tag-blue">IA Avanzada</div>
-          <div class="eco-title">Desarrollos y Proyectos a Medida</div>
-          <p class="eco-desc">Analizamos los cuellos de botella específicos de cualquier organización para estructurar un presupuesto cerrado. No existen límites de escala o presupuesto.</p>
+          <div class="eco-tag eco-tag-blue">Proyectos a medida</div>
+          <div class="eco-title">Automatización personalizada con IA</div>
+          <p class="eco-desc">Cada negocio tiene sus propios cuellos de botella. Los identificamos, los priorizamos por impacto económico real y los eliminamos. Presupuesto cerrado, sin sorpresas.</p>
           <div class="eco-examples">
-            <div class="eco-example">Agentes que responden WhatsApps en lenguaje natural</div>
-            <div class="eco-example">Lectura y extracción automática de facturas en PDF</div>
-            <div class="eco-example">Gestión de listas de espera en clínicas médicas</div>
+            <div class="eco-example">Agentes de WhatsApp que responden como un humano, sin descanso</div>
+            <div class="eco-example">Lectura, clasificación y registro automático de facturas en PDF</div>
+            <div class="eco-example">Gestión de citas y listas de espera en clínicas y centros médicos</div>
+            <div class="eco-example">Integración de datos entre plataformas sin intervención manual</div>
           </div>
         </div>
         <div class="eco-card rv">
           <div class="eco-num">02</div>
           <div class="eco-icon eco-icon-cyan">💼</div>
           <div class="eco-tag eco-tag-cyan">SaaS · Disponible ahora</div>
-          <div class="eco-title">Saldea — Gestor de cobros con IA</div>
-          <p class="eco-desc">Nuestra plataforma en la nube para resolver de forma definitiva los problemas de flujo de caja. Contacta, recuerda y recupera facturas impagadas de forma autónoma las 24h.</p>
+          <div class="eco-title">Saldea — Cobros automáticos con IA</div>
+          <p class="eco-desc">El primer producto de nuestra cartera. Una plataforma en la nube que detecta facturas vencidas y actúa de forma autónoma: contacta al deudor, escala el tono si es necesario y lo registra todo, sin que muevas un dedo.</p>
           <div class="eco-examples">
-            <div class="eco-example">Automatización total sin intervención humana</div>
-            <div class="eco-example">Escalada progresiva del tono de comunicación</div>
-            <div class="eco-example">Cumplimiento íntegro de la Ley 3/2004</div>
+            <div class="eco-example">Recordatorios automáticos por email y otros canales</div>
+            <div class="eco-example">Escalada progresiva del mensaje según días de retraso</div>
+            <div class="eco-example">100% conforme a la Ley 3/2004 de morosidad comercial</div>
+          </div>
+          <div class="eco-price">
+            <span class="eco-price-pill">Pro — 49 €/mes</span>
+            <span class="eco-price-pill">Max — 99 €/mes</span>
           </div>
         </div>
       </div>
@@ -454,12 +497,12 @@
   <section>
     <div class="wrap">
       <p class="sec-pre rv">La gran visión</p>
-      <h2 class="sec-title rv">El iceberg <span class="gtext">tecnológico</span></h2>
+      <h2 class="sec-title rv">Solo la punta <span class="gtext">del iceberg</span></h2>
       <div class="vision-grid">
         <div class="vision-text rv">
-          <p>Es fundamental comprender que las automatizaciones de negocios y los productos SaaS que comercializamos hoy son <strong>solo la punta del iceberg</strong>.</p>
-          <p>Constituyen nuestro motor de ingresos orgánico y recurrente para financiar un ecosistema científico de mayor envergadura.</p>
-          <p>El destino final de Marsof Technology se orienta hacia la investigación y el desarrollo de productos disruptivos enfocados en la <strong>Neurociencia y la Biotecnología</strong>. Concebimos la tecnología como el método definitivo para cambiar el mundo, diseñando herramientas capaces de proteger y asistir a los seres humanos incluso en sus momentos de mayor vulnerabilidad.</p>
+          <p>Saldea y los proyectos a medida que hacemos hoy son el primer capítulo de algo considerablemente más grande. No son el destino — son el motor que financia el viaje.</p>
+          <p>Cada suscripción, cada proyecto cerrado, cada empresa que recupera su tiempo gracias a nuestros sistemas contribuye a construir la infraestructura técnica y el músculo financiero necesarios para lo que viene después.</p>
+          <p>El destino final apunta hacia la <strong>intersección entre tecnología, biología y neurociencia</strong>. Herramientas que no solo optimizan empresas, sino que protegen vidas humanas, asisten en momentos críticos de salud y amplían la capacidad cognitiva de las personas. Eso es lo que queremos construir antes de 2035.</p>
         </div>
         <div class="vision-timeline rv">
           <div class="vt-item">
@@ -467,8 +510,8 @@
             <div class="vt-dot vt-dot-blue">HOY</div>
             <div class="vt-content">
               <div class="vt-label">Fase actual</div>
-              <div class="vt-title">Automatización Inteligente</div>
-              <div class="vt-desc">Saldea, proyectos a medida con IA. Motor de ingresos recurrente que financia la visión completa.</div>
+              <div class="vt-title">IA aplicada a negocios</div>
+              <div class="vt-desc">Saldea y automatización a medida para pymes. Motor de ingresos recurrente que financia las fases siguientes.</div>
             </div>
           </div>
           <div class="vt-item">
@@ -477,7 +520,7 @@
             <div class="vt-content">
               <div class="vt-label">Fase 2</div>
               <div class="vt-title">Biotecnología</div>
-              <div class="vt-desc">Herramientas para proteger y asistir a los seres humanos en sus momentos de mayor vulnerabilidad médica o social.</div>
+              <div class="vt-desc">Herramientas digitales para la salud: detección temprana, asistencia en situaciones de vulnerabilidad médica y social.</div>
             </div>
           </div>
           <div class="vt-item">
@@ -485,7 +528,7 @@
             <div class="vt-content">
               <div class="vt-label">Fase 3</div>
               <div class="vt-title">Neurociencia</div>
-              <div class="vt-desc">Investigación y desarrollo de productos disruptivos que redefinen la relación entre tecnología y mente humana.</div>
+              <div class="vt-desc">Investigación y productos en la frontera entre mente humana y tecnología. Redefinir lo que significa asistir a las personas.</div>
             </div>
           </div>
         </div>
@@ -493,30 +536,30 @@
     </div>
   </section>
 
-  <!-- INNOVACIÓN ABIERTA -->
+  <!-- FILOSOFÍA -->
   <section>
     <div class="wrap">
       <div class="open-grid">
         <div>
-          <p class="sec-pre rv">Filosofía</p>
-          <h2 class="sec-title rv">Innovación <span class="gtext">abierta</span></h2>
+          <p class="sec-pre rv">Cómo trabajamos</p>
+          <h2 class="sec-title rv">Sin comités.<br><span class="gtext">Sin teatro.</span></h2>
           <div class="open-text rv">
-            <p>En Marsof no creemos en la innovación cerrada o corporativa. Somos defensores de la voz del usuario.</p>
-            <p>Contamos con un modelo donde escuchamos activamente las ideas de nuestra comunidad: <strong>si una propuesta tiene el potencial de mejorar el mundo</strong>, tenemos la infraestructura técnica y la determinación para materializarla.</p>
+            <p>Nos alejamos deliberadamente del modelo tradicional de la consultora tecnológica: presentaciones interminables, proyectos que duran años y costes que se multiplican sin control.</p>
+            <p>En Marsof todo el mundo habla directamente con quien toma decisiones. <strong>Si una idea tiene potencial real</strong>, tenemos la capacidad técnica y la determinación para convertirla en un producto funcional en semanas, no en trimestres.</p>
           </div>
         </div>
         <div class="open-cards rv">
           <div class="open-card">
-            <div class="open-card-title">Escuchamos</div>
-            <div class="open-card-desc">Cada idea de la comunidad entra en nuestro pipeline de evaluación con criterios técnicos y de impacto real.</div>
+            <div class="open-card-title">Escuchamos de verdad</div>
+            <div class="open-card-desc">Cada conversación con un cliente es una sesión de descubrimiento. No asumimos que sabemos — preguntamos hasta entender el problema real.</div>
           </div>
           <div class="open-card">
-            <div class="open-card-title">Evaluamos</div>
-            <div class="open-card-desc">Si el potencial de mejora es real, lo priorizamos. Sin burocracia, sin comités eternos.</div>
+            <div class="open-card-title">Ejecutamos rápido</div>
+            <div class="open-card-desc">La velocidad es una ventaja competitiva. Cuando validamos una solución, la implementamos con urgencia, no con burocracia.</div>
           </div>
           <div class="open-card">
-            <div class="open-card-title">Construimos</div>
-            <div class="open-card-desc">Tenemos la infraestructura técnica para pasar de idea a producto en semanas, no en años.</div>
+            <div class="open-card-title">Medimos el impacto</div>
+            <div class="open-card-desc">Una automatización que no libera tiempo ni recupera dinero no nos interesa. El éxito se mide en horas devueltas y euros recuperados.</div>
           </div>
         </div>
       </div>
@@ -526,31 +569,31 @@
   <!-- COMPARATIVA -->
   <section>
     <div class="wrap">
-      <p class="sec-pre rv">La diferencia</p>
-      <h2 class="sec-title rv">Tradicional <span class="gtext">vs</span> Marsof</h2>
+      <p class="sec-pre rv">La diferencia real</p>
+      <h2 class="sec-title rv">Lo de siempre <span class="gtext">vs</span> Marsof</h2>
       <table class="compare-table rv">
         <thead>
           <tr>
-            <th>Gestión Tradicional / Competencia</th>
+            <th>El enfoque habitual</th>
             <th>Con Marsof Technology</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Burocracia corporativa, rigidez y procesos lentos.</td>
-            <td>Agilidad radical, enfoque orgánico y cercanía real.</td>
+            <td>Proyectos de meses con presupuestos abiertos que crecen solos.</td>
+            <td>Presupuesto cerrado desde el inicio, entrega en semanas.</td>
           </tr>
           <tr>
-            <td>Uso de la IA enfocado en el reemplazo de personal.</td>
-            <td>Uso de la IA enfocado en el empoderamiento humano.</td>
+            <td>IA como herramienta para reducir plantilla y recortar costes.</td>
+            <td>IA como amplificador: el mismo equipo hace diez veces más.</td>
           </tr>
           <tr>
-            <td>Venta de software estándar y horas de consultoría.</td>
-            <td>Venta de tiempo libre, optimización y libertad empresarial.</td>
+            <td>Software genérico que obliga a adaptar el negocio al sistema.</td>
+            <td>Automatización construida sobre cómo funciona tu negocio, no al revés.</td>
           </tr>
           <tr>
-            <td>Modelos de desarrollo cerrados y restrictivos.</td>
-            <td>Innovación abierta impulsada por la fuerza del esfuerzo y la comunidad.</td>
+            <td>Soporte técnico por tickets con tiempos de respuesta de 72h.</td>
+            <td>Acceso directo a quien construyó la solución, sin intermediarios.</td>
           </tr>
         </tbody>
       </table>
@@ -562,9 +605,9 @@
     <div class="orb cta-orb-1"></div>
     <div class="orb cta-orb-2"></div>
     <div class="cta-inner">
-      <p class="cta-quote rv">Con dedicación, visión y la tecnología adecuada, ningún objetivo es inalcanzable.</p>
-      <h2 class="cta-big rv">El futuro es libre.</h2>
-      <h2 class="cta-sub rv">El futuro es <span class="gtext">Marsof Technology.</span></h2>
+      <p class="cta-quote rv">Hoy recuperas tiempo. Mañana escalas. Pasado mañana, cambiamos el mundo juntos.</p>
+      <h2 class="cta-big rv">Esto acaba de</h2>
+      <h2 class="cta-sub rv"><span class="gtext">empezar.</span></h2>
       <div class="cta-btns rv">
         <a href="/saldea" class="btn btn-fill btn-lg">Ver Saldea <span class="arr">→</span></a>
         <a href="mailto:carlos@marsof.es" class="btn btn-aurora btn-lg">Habla con nosotros <span class="arr">→</span></a>
@@ -578,7 +621,7 @@
       <div class="foot-grid">
         <div class="foot-brand">
           <img src="/assets/logo_transparent.png" alt="Marsof Technology" style="height:52px;width:auto;">
-          <p>Firma tecnológica disruptiva. Automatización inteligente hoy, neurociencia y biotecnología mañana.</p>
+          <p>Automatización inteligente para pymes españolas. Hoy IA, mañana neurociencia y biotecnología.</p>
         </div>
         <div class="foot-col">
           <h5>Empresa</h5>
@@ -598,7 +641,7 @@
       </div>
       <div class="foot-bottom">
         <span class="foot-copy">© 2026 Marsof Technology · Huelva, España.</span>
-        <span class="foot-copy">El futuro es libre.</span>
+        <span class="foot-copy">Esto acaba de empezar.</span>
       </div>
     </div>
   </footer>
