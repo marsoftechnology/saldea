@@ -15,6 +15,7 @@ export type Cliente = {
   notas_cliente: string | null
   whatsapp_opt_in_at: string | null
   whatsapp_opt_in_source: string | null
+  idioma: 'es' | 'ca' | 'en' | 'pt' | null
 }
 
 export type EstadoFactura = 'pendiente' | 'vencida' | 'cobrada' | 'cancelada' | 'parcialmente_cobrada'

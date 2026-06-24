@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
       .eq('factura_id', facturaId)
     const importePagado = (pagosFactura ?? []).reduce((s, p) => s + Number(p.importe), 0)
 
-    const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null }
+    const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; idioma?: string | null }
 
     // Nombre de empresa: nombre de la org (fallback al user_metadata para compatibilidad)
     const { data: orgData } = await supabase
@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
         diasVencida: dias,
         tono: tonoFinal,
         nombreEmpresa,
-        idioma: (config?.idioma ?? 'es') as 'es'|'ca'|'en'|'pt',
+        idioma: (cliente.idioma ?? config?.idioma ?? 'es') as 'es'|'ca'|'en'|'pt',
         ofrecerPagoPlazos,
         variarTextos: config?.variar_textos === true,
         recargoMoraPct: recargoActivo ? Number(config?.recargo_mora_pct ?? 0) : 0,
@@ -185,7 +185,7 @@ export async function POST(req: NextRequest) {
       ? `${emailFromNombre ? emailFromNombre.replace(/["<>]/g, '').trim() : nombreEmpresa} <${emailFromDominio}>`
       : null
 
-    const enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId, adjuntos, logoUrl: config?.logo_url, colorPrimario: config?.color_primario, idioma: config?.idioma as 'es'|'ca'|'en'|'pt' | undefined, nombreEmpresa, linkPago: factura.link_pago ?? null, resendApiKey, fromAddress })
+    const enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId, adjuntos, logoUrl: config?.logo_url, colorPrimario: config?.color_primario, idioma: (cliente.idioma ?? config?.idioma ?? 'es') as 'es'|'ca'|'en'|'pt', nombreEmpresa, linkPago: factura.link_pago ?? null, resendApiKey, fromAddress })
 
     if (enviado) {
       await Promise.all([

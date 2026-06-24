@@ -14,7 +14,7 @@ export default function EditarClientePage() {
   const [cargandoInicial, setCargandoInicial] = useState(true)
   const [error, setError] = useState('')
   const [eliminando, setEliminando] = useState(false)
-  const [form, setForm] = useState({ nombre: '', email: '', telefono: '', empresa: '' })
+  const [form, setForm] = useState({ nombre: '', email: '', telefono: '', empresa: '', idioma: '' })
   const [whatsappOptIn, setWhatsappOptIn] = useState(false)
   const [whatsappOptInAt, setWhatsappOptInAt] = useState<string | null>(null)
 
@@ -34,6 +34,7 @@ export default function EditarClientePage() {
         email: cliente.email,
         telefono: cliente.telefono ?? '',
         empresa: cliente.empresa ?? '',
+        idioma: cliente.idioma ?? '',
       })
       setWhatsappOptIn(!!cliente.whatsapp_opt_in_at)
       setWhatsappOptInAt(cliente.whatsapp_opt_in_at ?? null)
@@ -42,7 +43,7 @@ export default function EditarClientePage() {
     cargar()
   }, [clienteId, router])
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
@@ -56,8 +57,7 @@ export default function EditarClientePage() {
       email: form.email,
       telefono: form.telefono || null,
       empresa: form.empresa || null,
-      // Si activa el opt-in, preservar la fecha original (o poner ahora si es nuevo)
-      // Si lo desactiva, borrar
+      idioma: form.idioma || null,
       whatsapp_opt_in_at: whatsappOptIn
         ? (whatsappOptInAt ?? new Date().toISOString())
         : null,
@@ -116,6 +116,23 @@ export default function EditarClientePage() {
             name="empresa" value={form.empresa} onChange={handleChange}
             className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
           />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-zinc-300 mb-1">Idioma de los emails</label>
+          <select
+            name="idioma"
+            value={form.idioma}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
+          >
+            <option value="">Usar el idioma de la organización</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="ca">🏴󠁥󠁳󠁣󠁴󠁿 Català</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="pt">🇵🇹 Português</option>
+          </select>
+          <p className="text-xs text-zinc-500 mt-1">Si lo dejas vacío, Saldea usará el idioma configurado en Ajustes.</p>
         </div>
 
         {/* Teléfono + opt-in WhatsApp */}

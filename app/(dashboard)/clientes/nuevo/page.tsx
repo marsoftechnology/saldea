@@ -10,10 +10,10 @@ export default function NuevoClientePage() {
   const router = useRouter()
   const [cargando, setCargando] = useState(false)
   const [error, setError] = useState('')
-  const [form, setForm] = useState({ nombre: '', email: '', telefono: '', empresa: '' })
+  const [form, setForm] = useState({ nombre: '', email: '', telefono: '', empresa: '', idioma: '' })
   const [whatsappOptIn, setWhatsappOptIn] = useState(false)
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
@@ -41,6 +41,7 @@ export default function NuevoClientePage() {
       email: form.email,
       telefono: form.telefono || null,
       empresa: form.empresa || null,
+      idioma: form.idioma || null,
       whatsapp_opt_in_at: whatsappOptIn ? new Date().toISOString() : null,
       whatsapp_opt_in_source: whatsappOptIn ? 'manual' : null,
     })
@@ -102,6 +103,23 @@ export default function NuevoClientePage() {
             placeholder="Empresa S.L."
             className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
           />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-zinc-300 mb-1">Idioma de los emails (opcional)</label>
+          <select
+            name="idioma"
+            value={form.idioma}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-white/10 rounded-lg text-zinc-100 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
+          >
+            <option value="">Usar el idioma de la organización</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="ca">🏴󠁥󠁳󠁣󠁴󠁿 Català</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="pt">🇵🇹 Português</option>
+          </select>
+          <p className="text-xs text-zinc-500 mt-1">Si lo dejas vacío, Saldea usará el idioma configurado en Ajustes.</p>
         </div>
 
         {/* Teléfono + opt-in WhatsApp */}

@@ -151,7 +151,7 @@ export async function GET(req: NextRequest) {
   let tonosForzadosFree = 0
 
   for (const factura of facturasPendientes) {
-    const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; pausar_recordatorios?: boolean | null; telefono?: string | null; whatsapp_opt_in_at?: string | null }
+    const cliente = factura.cliente as { nombre: string; email: string; empresa: string | null; pausar_recordatorios?: boolean | null; telefono?: string | null; whatsapp_opt_in_at?: string | null; idioma?: string | null }
     // Si el cliente tiene los recordatorios pausados, saltar
     if (cliente?.pausar_recordatorios) continue
     const dias = diasVencida(factura.fecha_vencimiento)
@@ -202,7 +202,7 @@ export async function GET(req: NextRequest) {
       const firmaUsuario = configMap?.firma?.trim()
       const logoUrl = configMap?.logo_url ?? null
       const colorPrimario = configMap?.color_primario ?? null
-      const idiomaUsuario = (configMap?.idioma ?? 'es') as 'es'|'ca'|'en'|'pt'
+      const idiomaFinal = (cliente.idioma ?? configMap?.idioma ?? 'es') as 'es'|'ca'|'en'|'pt'
       const umbralPlazos = configMap?.ofrecer_pago_plazos_dia ? parseInt(String(configMap.ofrecer_pago_plazos_dia), 10) : 0
       const ofrecerPagoPlazos = umbralPlazos > 0 && dias >= umbralPlazos
       const variarTextos = configMap?.variar_textos === 'true' || (configMap?.variar_textos as unknown) === true
@@ -249,7 +249,7 @@ export async function GET(req: NextRequest) {
           diasVencida: dias,
           tono: tonoFinal,
           nombreEmpresa,
-          idioma: idiomaUsuario,
+          idioma: idiomaFinal,
           ofrecerPagoPlazos,
           variarTextos,
           recargoMoraPct,
@@ -330,10 +330,10 @@ export async function GET(req: NextRequest) {
         waSid = waResult.messageSid
         // Fallback a email si WhatsApp falla
         if (!enviado) {
-          enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null, resendApiKey, fromAddress })
+          enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaFinal, nombreEmpresa, linkPago: factura.link_pago ?? null, resendApiKey, fromAddress })
         }
       } else {
-        enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaUsuario, nombreEmpresa, linkPago: factura.link_pago ?? null, resendApiKey, fromAddress })
+        enviado = await enviarEmail({ para: cliente.email, asunto, cuerpo, facturaId: factura.id, adjuntos, logoUrl, colorPrimario, idioma: idiomaFinal, nombreEmpresa, linkPago: factura.link_pago ?? null, resendApiKey, fromAddress })
       }
 
       if (enviado) {
