@@ -36,9 +36,8 @@
     --neuro:  #a855f7;
     --white:  #eeeef8;
     --muted:  #6b6b8d;
-    --border: rgba(255,255,255,0.06);
-    --glass:  rgba(4,4,16,0.82);
-    --card:   rgba(255,255,255,0.035);
+    --border: rgba(255,255,255,0.08);
+    --card:   rgba(255,255,255,0.03);
     --gtext:  linear-gradient(110deg, #6d87ff 0%, #00d4ff 55%, #00e87a 100%);
   }
 
@@ -47,16 +46,16 @@
   ::-webkit-scrollbar-track { background:#020208; }
   ::-webkit-scrollbar-thumb { background:linear-gradient(to bottom,var(--blue),var(--cyan)); border-radius:2px; }
 
-  #bg-overlay { position:fixed; inset:0; z-index:1; pointer-events:none; background:rgba(2,2,8,.55); }
+  #bg-overlay { position:fixed; inset:0; z-index:1; pointer-events:none; background:rgba(2,2,8,.5); }
   #page { position:relative; z-index:2; }
 
-  /* BOTONES */
+  /* ─── BOTONES ─── */
   .btn {
     position:relative; overflow:hidden;
     display:inline-flex; align-items:center; gap:9px;
     text-decoration:none; cursor:pointer; border:none;
     font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:.9rem;
-    border-radius:100px; padding:13px 28px; letter-spacing:.1px;
+    border-radius:100px; padding:13px 28px; letter-spacing:.2px;
     transition:transform .35s cubic-bezier(.23,1,.32,1), box-shadow .35s ease, background .3s ease;
     will-change:transform; -webkit-font-smoothing:antialiased;
   }
@@ -65,29 +64,31 @@
   .btn > *, .btn span { position:relative; z-index:1; }
   .arr { display:inline-flex; align-items:center; transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
   .btn:hover .arr { transform:translateX(5px) scale(1.15); }
-  .btn:active { transform:scale(.95) translateY(2px)!important; transition:transform .1s ease!important; }
-  .btn-fill { background:linear-gradient(135deg,var(--blue),#2a4ee0); color:#fff; box-shadow:0 4px 24px rgba(61,98,255,.35); }
-  .btn-fill::after { background:rgba(255,255,255,1); }
+  .btn:active { transform:scale(.96) translateY(2px)!important; transition:transform .1s ease!important; }
+
+  .btn-fill { background:linear-gradient(135deg,var(--blue) 0%,#2a4ee0 100%); color:#fff; box-shadow:0 4px 24px rgba(61,98,255,.38); }
   .btn-fill::before { content:''; position:absolute; top:0; left:-110%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent); transform:skewX(-18deg); z-index:1; pointer-events:none; transition:left 0s; }
   .btn-fill:hover::before { left:150%; transition:left .55s ease; }
+  .btn-fill::after { background:rgba(255,255,255,1); }
   .btn-fill:hover { background:linear-gradient(135deg,var(--blue-l),var(--blue)); color:#fff; transform:translateY(-5px) scale(1.03); box-shadow:0 22px 56px rgba(61,98,255,.55), 0 0 0 1px rgba(61,98,255,.3); }
-  .btn-aurora { background:rgba(255,255,255,.05); color:var(--white); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(8px); }
-  .btn-aurora:hover { transform:translateY(-5px) scale(1.03); box-shadow:0 16px 44px rgba(61,98,255,.22), 0 0 0 1px rgba(61,98,255,.2); border-color:rgba(61,98,255,.35); }
-  .btn-sm { padding:9px 20px; font-size:.82rem; }
-  .btn-lg { padding:17px 40px; font-size:1rem; letter-spacing:.3px; }
 
-  /* NAV */
+  .btn-aurora { background:rgba(255,255,255,.05); color:var(--white); border:1px solid rgba(255,255,255,.15); backdrop-filter:blur(8px); }
+  .btn-aurora:hover { transform:translateY(-5px) scale(1.03); box-shadow:0 16px 44px rgba(61,98,255,.22), 0 0 0 1px rgba(61,98,255,.22); border-color:rgba(61,98,255,.4); }
+  .btn-sm { padding:9px 20px; font-size:.82rem; }
+  .btn-lg { padding:17px 42px; font-size:1rem; letter-spacing:.3px; }
+
+  /* ─── NAV ─── */
   nav {
     position:fixed; top:0; left:0; right:0; z-index:300; height:70px;
     display:flex; align-items:center; justify-content:space-between;
-    padding:0 52px; transition:background .5s,border-color .5s;
+    padding:0 52px; transition:background .5s, border-color .5s;
     border-bottom:1px solid transparent;
   }
   nav.scrolled { background:rgba(2,2,8,.97); border-bottom-color:var(--border); }
   .nav-logo { display:flex; align-items:center; text-decoration:none; transition:opacity .2s; }
-  .nav-logo:hover { opacity:.85; }
+  .nav-logo:hover { opacity:.82; }
   .nav-links { display:flex; align-items:center; gap:34px; list-style:none; }
-  .nav-links a { color:rgba(238,238,248,.5); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .25s; }
+  .nav-links a { color:rgba(238,238,248,.48); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .25s; }
   .nav-links a:hover, .nav-links a.active { color:var(--white); }
   .nav-left { display:flex; align-items:center; gap:10px; }
   .nav-right { display:flex; align-items:center; gap:14px; }
@@ -97,189 +98,187 @@
   nav.open .nav-toggle span:nth-child(2) { opacity:0; }
   nav.open .nav-toggle span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
-  /* LAYOUT */
+  /* ─── LAYOUT ─── */
   .wrap { max-width:1100px; margin:0 auto; padding:0 52px; }
-  section { padding:120px 0; }
-
-  /* ORBS */
+  section { padding:110px 0; }
+  .sec-accent { display:block; width:36px; height:3px; background:linear-gradient(90deg,var(--cyan),var(--blue-l)); border-radius:2px; margin-bottom:20px; }
   .orb { position:absolute; border-radius:50%; filter:blur(110px); pointer-events:none; }
 
-  /* ANIMACIONES */
-  @keyframes fadein  { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes titlein { from{opacity:0;transform:translateY(36px) scale(.97)} to{opacity:1;transform:none} }
+  /* ─── ANIMACIONES ─── */
+  @keyframes fadein  { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes titlein { from{opacity:0;transform:translateY(32px) scale(.97)} to{opacity:1;transform:none} }
   @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.7)} }
   @keyframes ticker   { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-  /* GRADIENT TEXT */
   .gtext { background:var(--gtext); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
-  /* HERO */
+  /* ─── SECTION HEADERS ─── */
+  .sec-pre { font-size:.68rem; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(--cyan); margin-bottom:12px; }
+  .sec-title { font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,4.5vw,3.3rem); font-weight:800; letter-spacing:-2px; line-height:1.08; margin-bottom:22px; }
+  .sec-sub { font-size:1rem; color:rgba(238,238,248,.48); max-width:580px; line-height:1.78; }
+
+  /* ─── HERO ─── */
   .hero {
     min-height:100vh; display:flex; align-items:center; justify-content:center;
     text-align:center; padding:130px 24px 80px; position:relative; overflow:hidden;
   }
-  .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:260px; background:linear-gradient(to bottom,transparent,#020208); pointer-events:none; z-index:1; }
-  .hero-orb-1 { width:700px;height:700px; background:rgba(61,98,255,.12); top:-150px;left:-200px; }
-  .hero-orb-2 { width:500px;height:500px; background:rgba(0,212,255,.07); bottom:-50px;right:-100px; }
-  .hero-orb-3 { width:350px;height:350px; background:rgba(168,85,247,.07); top:30%;left:55%; }
-  .hero-inner { position:relative; z-index:2; max-width:900px; }
+  .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:280px; background:linear-gradient(to bottom,transparent,#020208); pointer-events:none; z-index:1; }
+  .hero-orb-1 { width:680px;height:680px; background:rgba(61,98,255,.13); top:-120px;left:-180px; }
+  .hero-orb-2 { width:480px;height:480px; background:rgba(0,212,255,.07); bottom:-60px;right:-100px; }
+  .hero-orb-3 { width:320px;height:320px; background:rgba(168,85,247,.08); top:28%;left:56%; }
+  .hero-inner { position:relative; z-index:2; max-width:880px; }
 
   .pre-tag {
     display:inline-flex; align-items:center; gap:8px;
-    background:rgba(61,98,255,.08); border:1px solid rgba(61,98,255,.2);
+    background:rgba(61,98,255,.08); border:1px solid rgba(61,98,255,.22);
     color:var(--cyan); padding:6px 18px; border-radius:100px;
-    font-size:.72rem; font-weight:600; letter-spacing:3px; text-transform:uppercase;
-    margin-bottom:28px; animation:fadein .8s ease both;
+    font-size:.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+    margin-bottom:30px; animation:fadein .8s ease both;
   }
   .pre-tag::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px var(--cyan); animation:pulse-dot 2s ease infinite; }
 
   .hero-title {
     font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(3.2rem,7vw,6.5rem); font-weight:800;
+    font-size:clamp(3.2rem,7vw,6.8rem); font-weight:800;
     letter-spacing:-4px; line-height:1.02; margin-bottom:32px;
     animation:titlein 1s cubic-bezier(.16,1,.3,1) .2s both;
   }
-
   .hero-lead {
-    font-size:clamp(1.05rem,2.2vw,1.3rem);
-    color:rgba(238,238,248,.6); max-width:720px; margin:0 auto;
-    line-height:1.8; animation:fadein 1s ease .5s both;
+    font-size:clamp(1rem,2vw,1.18rem); color:rgba(238,238,248,.52);
+    max-width:660px; margin:0 auto; line-height:1.82;
+    animation:fadein 1s ease .5s both;
   }
 
-  /* TICKER */
+  /* ─── TICKER ─── */
   .ticker-wrap { overflow:hidden; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:14px 0; }
-  .ticker { display:flex; gap:0; white-space:nowrap; animation:ticker 36s linear infinite; }
-  .ticker-item { display:inline-flex; align-items:center; gap:18px; padding:0 28px; font-size:.7rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(238,238,248,.18); }
+  .ticker { display:flex; white-space:nowrap; animation:ticker 38s linear infinite; }
+  .ticker-item { display:inline-flex; align-items:center; gap:18px; padding:0 28px; font-size:.68rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(238,238,248,.16); }
   .ticker-dot { width:4px; height:4px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
 
-  /* SECTION HEADERS */
-  .sec-pre { font-size:.7rem; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--cyan); margin-bottom:14px; }
-  .sec-title { font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,4.5vw,3.4rem); font-weight:800; letter-spacing:-2px; line-height:1.1; margin-bottom:24px; }
-  .sec-sub { font-size:1.05rem; color:rgba(238,238,248,.5); max-width:620px; line-height:1.75; }
-
-  /* ORIGEN — texto + callout lateral */
-  .origen-grid { display:grid; grid-template-columns:3fr 2fr; gap:72px; align-items:start; margin-top:64px; }
-  .origen-text p { font-size:1.05rem; color:rgba(238,238,248,.6); line-height:1.9; margin-bottom:22px; }
-  .origen-text strong { color:var(--white); }
+  /* ─── SECCIÓN ORIGEN ─── */
+  .sec-origen { position:relative; overflow:hidden; }
+  .sec-origen::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 70% at 80% 40%, rgba(61,98,255,.05), transparent 70%); pointer-events:none; }
+  .origen-grid { display:grid; grid-template-columns:3fr 2fr; gap:72px; align-items:start; margin-top:60px; }
+  .origen-text p { font-size:1.02rem; color:rgba(238,238,248,.58); line-height:1.9; margin-bottom:22px; }
+  .origen-text strong { color:var(--white); font-weight:600; }
   .origen-callout {
-    background:rgba(61,98,255,.05); border:1px solid rgba(61,98,255,.18);
-    border-radius:24px; padding:44px 36px; position:sticky; top:100px;
+    background:rgba(10,12,38,.85); border:1px solid rgba(61,98,255,.22);
+    border-radius:24px; padding:44px 38px; position:sticky; top:100px;
+    box-shadow:0 0 60px rgba(61,98,255,.06), inset 0 1px 0 rgba(255,255,255,.06);
   }
-  .origen-callout-pre { font-size:.65rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--cyan); margin-bottom:20px; }
-  .origen-callout-quote {
-    font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:700;
-    line-height:1.6; color:var(--white); font-style:italic;
-  }
+  .origen-callout::before { content:''; position:absolute; top:-1px; left:20px; right:20px; height:1px; background:linear-gradient(90deg,transparent,rgba(0,212,255,.5),transparent); }
+  .origen-callout-pre { font-size:.64rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--cyan); margin-bottom:22px; }
+  .origen-callout-quote { font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700; line-height:1.62; color:var(--white); font-style:italic; }
   .origen-callout-quote span { color:var(--cyan); -webkit-text-fill-color:var(--cyan); }
 
-  /* MANIFIESTO */
-  .manifiesto-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:64px; border-radius:24px; overflow:hidden; }
+  /* ─── MANIFIESTO ─── */
+  .sec-manifiesto { background:rgba(255,255,255,.012); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .manifiesto-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:60px; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,.09); }
   .belief-card {
-    background:rgba(5,5,22,.88); border:1px solid rgba(255,255,255,.07);
+    background:rgba(7,8,26,.9); border:none;
     padding:52px 44px; position:relative; overflow:hidden;
-    transition:background .4s, border-color .4s, box-shadow .4s, transform .4s cubic-bezier(.23,1,.32,1);
+    transition:background .4s, box-shadow .4s, transform .4s cubic-bezier(.23,1,.32,1);
   }
+  .belief-card + .belief-card { border-left:1px solid rgba(255,255,255,.06); }
+  .manifiesto-grid .belief-card:nth-child(3),
+  .manifiesto-grid .belief-card:nth-child(4) { border-top:1px solid rgba(255,255,255,.06); }
   .belief-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(61,98,255,.07) 0%,transparent 55%); opacity:0; transition:opacity .4s; pointer-events:none; }
-  .belief-card:hover { background:rgba(10,10,38,.95); border-color:rgba(61,98,255,.32); box-shadow:0 14px 52px rgba(61,98,255,.13), inset 0 1px 0 rgba(255,255,255,.07); transform:translateY(-4px); }
+  .belief-card:hover { background:rgba(12,14,44,.98); box-shadow:inset 0 0 60px rgba(61,98,255,.07); transform:translateY(-3px); }
   .belief-card:hover::before { opacity:1; }
-  .belief-num {
-    font-family:'Space Grotesk',sans-serif; font-size:5rem; font-weight:800;
-    letter-spacing:-4px; opacity:.04; position:absolute; top:16px; left:28px; line-height:1;
-    pointer-events:none;
-  }
-  .belief-text {
-    font-family:'Space Grotesk',sans-serif; font-size:clamp(1.1rem,2vw,1.35rem);
-    font-weight:700; line-height:1.45; color:var(--white); position:relative; z-index:1;
-  }
+  .belief-num { font-family:'Space Grotesk',sans-serif; font-size:5rem; font-weight:800; letter-spacing:-4px; opacity:.05; position:absolute; top:14px; left:26px; line-height:1; pointer-events:none; }
+  .belief-text { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.08rem,1.9vw,1.3rem); font-weight:700; line-height:1.48; color:rgba(238,238,248,.88); position:relative; z-index:1; }
   .belief-text .hl { color:var(--cyan); -webkit-text-fill-color:var(--cyan); }
 
-  /* BRECHA */
-  .brecha-wrap { max-width:760px; margin:0 auto; text-align:center; }
-  .brecha-big {
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(2rem,4.5vw,3.6rem); font-weight:800;
-    letter-spacing:-2px; line-height:1.12; margin-bottom:28px;
-  }
-  .brecha-body p { font-size:1.05rem; color:rgba(238,238,248,.55); line-height:1.9; margin-bottom:20px; }
-  .brecha-body strong { color:var(--white); }
-  .brecha-divider { width:1px; height:80px; background:linear-gradient(to bottom, var(--cyan), transparent); margin:48px auto; }
+  /* ─── BRECHA CINEMATIC ─── */
+  .sec-brecha { position:relative; overflow:hidden; text-align:center; }
+  .brecha-orb { width:700px;height:700px; background:rgba(61,98,255,.06); top:50%;left:50%; transform:translate(-50%,-50%); }
+  .brecha-inner { position:relative; z-index:2; max-width:780px; margin:0 auto; }
+  .brecha-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.16); color:var(--cyan); padding:5px 16px; border-radius:100px; font-size:.68rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:36px; }
+  .brecha-big { font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,5vw,3.8rem); font-weight:800; letter-spacing:-2px; line-height:1.1; margin-bottom:32px; }
+  .brecha-body p { font-size:1.02rem; color:rgba(238,238,248,.52); line-height:1.9; margin-bottom:20px; max-width:640px; margin-left:auto; margin-right:auto; }
+  .brecha-body strong { color:var(--white); font-weight:600; }
+  .brecha-rule { width:1px; height:72px; background:linear-gradient(to bottom,var(--cyan),transparent); margin:48px auto 0; }
 
-  /* CÓMO TRABAJAMOS — 3 principios horizontales */
-  .principios { display:flex; flex-direction:column; gap:0; margin-top:64px; border-radius:24px; overflow:hidden; border:1px solid var(--border); }
+  /* ─── PRINCIPIOS ─── */
+  .sec-principios { background:rgba(255,255,255,.012); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .principios { display:flex; flex-direction:column; margin-top:60px; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,.1); }
   .principio {
-    display:grid; grid-template-columns:80px 1fr;
-    align-items:start; gap:36px; padding:44px 48px;
-    border-bottom:1px solid var(--border);
+    display:grid; grid-template-columns:72px 1fr; align-items:start; gap:36px;
+    padding:44px 48px; border-bottom:1px solid rgba(255,255,255,.07);
     position:relative; overflow:hidden;
-    transition:background .35s, padding-left .3s;
+    transition:background .3s;
   }
-  .principio::before { content:''; position:absolute; left:0; top:28px; bottom:28px; width:2px; border-radius:2px; background:linear-gradient(to bottom,var(--cyan),transparent); opacity:0; transition:opacity .35s; }
   .principio:last-child { border-bottom:none; }
+  .principio::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:0 2px 2px 0; background:linear-gradient(to bottom,var(--cyan),transparent); opacity:0; transition:opacity .35s; }
   .principio:hover { background:rgba(255,255,255,.025); }
   .principio:hover::before { opacity:1; }
-  .principio-num {
-    font-family:'Space Grotesk',sans-serif; font-size:3.5rem; font-weight:800;
-    letter-spacing:-3px; line-height:1; color:var(--border);
-    transition:color .3s;
-  }
-  .principio:hover .principio-num { color:rgba(0,212,255,.25); }
-  .principio-title { font-family:'Space Grotesk',sans-serif; font-size:1.2rem; font-weight:700; margin-bottom:10px; }
-  .principio-desc { font-size:.95rem; color:rgba(238,238,248,.48); line-height:1.75; }
+  .principio-num { font-family:'Space Grotesk',sans-serif; font-size:2.8rem; font-weight:800; letter-spacing:-2px; line-height:1; color:rgba(255,255,255,.07); transition:color .3s; }
+  .principio:hover .principio-num { color:rgba(0,212,255,.22); }
+  .principio-title { font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:10px; color:var(--white); }
+  .principio-desc { font-size:.93rem; color:rgba(238,238,248,.46); line-height:1.78; }
 
-  /* LA APUESTA — sección de largo plazo */
-  .apuesta-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:64px; }
-  .apuesta-text p { font-size:1.05rem; color:rgba(238,238,248,.58); line-height:1.9; margin-bottom:22px; }
-  .apuesta-text strong { color:var(--white); }
-  .apuesta-visual { display:flex; flex-direction:column; gap:16px; }
+  /* ─── APUESTA ─── */
+  .sec-apuesta { position:relative; overflow:hidden; }
+  .apuesta-orb-1 { width:500px;height:500px; background:rgba(0,232,122,.04); top:-80px;right:-120px; }
+  .apuesta-orb-2 { width:400px;height:400px; background:rgba(168,85,247,.05); bottom:-60px;left:-80px; }
+  .apuesta-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:60px; }
+  .apuesta-text p { font-size:1.02rem; color:rgba(238,238,248,.56); line-height:1.9; margin-bottom:22px; }
+  .apuesta-text strong { color:var(--white); font-weight:600; }
+  .apuesta-visual { display:flex; flex-direction:column; gap:14px; }
   .apuesta-item {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:20px; padding:28px 32px;
-    display:grid; grid-template-columns:56px 1fr; gap:20px; align-items:center;
-    transition:border-color .3s, transform .3s;
+    background:rgba(8,10,28,.9); border:1px solid rgba(255,255,255,.1);
+    border-radius:18px; padding:26px 30px;
+    display:grid; grid-template-columns:52px 1fr; gap:18px; align-items:center;
+    transition:border-color .35s, transform .35s cubic-bezier(.23,1,.32,1), box-shadow .35s;
   }
-  .apuesta-item:hover { border-color:rgba(61,98,255,.28); transform:translateX(8px); box-shadow:0 8px 36px rgba(61,98,255,.1); }
-  .apuesta-icon { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
-  .ai-blue  { background:rgba(61,98,255,.1); }
-  .ai-bio   { background:rgba(0,232,122,.08); }
-  .ai-neuro { background:rgba(168,85,247,.08); }
-  .apuesta-item-title { font-family:'Space Grotesk',sans-serif; font-size:.95rem; font-weight:700; margin-bottom:5px; }
-  .apuesta-item-desc { font-size:.82rem; color:rgba(238,238,248,.38); line-height:1.6; }
+  .apuesta-item:hover { border-color:rgba(61,98,255,.3); transform:translateX(8px); box-shadow:0 8px 36px rgba(61,98,255,.1); }
+  .apuesta-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
+  .ai-blue  { background:rgba(61,98,255,.12); border:1px solid rgba(61,98,255,.2); }
+  .ai-bio   { background:rgba(0,232,122,.08); border:1px solid rgba(0,232,122,.18); }
+  .ai-neuro { background:rgba(168,85,247,.08); border:1px solid rgba(168,85,247,.18); }
+  .apuesta-item-title { font-family:'Space Grotesk',sans-serif; font-size:.93rem; font-weight:700; margin-bottom:5px; color:var(--white); }
+  .apuesta-item-desc { font-size:.8rem; color:rgba(238,238,248,.36); line-height:1.62; }
 
-  /* CARTA FINAL */
-  .carta-section { padding:120px 0 160px; position:relative; overflow:hidden; }
-  .carta-orb-1 { width:600px;height:600px; background:rgba(61,98,255,.08); top:-100px;left:-150px; }
-  .carta-orb-2 { width:400px;height:400px; background:rgba(168,85,247,.07); bottom:0;right:-100px; }
-  .carta-inner { max-width:720px; margin:0 auto; position:relative; z-index:2; }
-  .carta-text p { font-size:1.08rem; color:rgba(238,238,248,.58); line-height:1.95; margin-bottom:22px; }
-  .carta-text strong { color:var(--white); }
-  .carta-firma {
-    margin-top:48px; padding-top:36px; border-top:1px solid var(--border);
-    display:flex; flex-direction:column; gap:4px;
+  /* ─── CARTA ─── */
+  .sec-carta { background:rgba(255,255,255,.012); border-top:1px solid var(--border); position:relative; overflow:hidden; padding-bottom:160px; }
+  .carta-orb-1 { width:600px;height:600px; background:rgba(61,98,255,.07); top:-80px;left:-160px; }
+  .carta-orb-2 { width:400px;height:400px; background:rgba(168,85,247,.06); bottom:40px;right:-100px; }
+  .carta-glass {
+    max-width:760px; margin:60px auto 0;
+    background:rgba(6,8,24,.92); border:1px solid rgba(255,255,255,.1);
+    border-radius:28px; padding:64px 72px; position:relative; z-index:2;
+    box-shadow:0 32px 80px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.07);
   }
-  .carta-firma-nombre { font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700; color:var(--white); }
-  .carta-firma-cargo { font-size:.85rem; color:var(--muted); }
-  .carta-btns { display:flex; gap:16px; flex-wrap:wrap; margin-top:56px; }
+  .carta-glass::before { content:''; position:absolute; top:-1px; left:40px; right:40px; height:1px; background:linear-gradient(90deg,transparent,rgba(61,98,255,.6),transparent); }
+  .carta-text p { font-size:1.04rem; color:rgba(238,238,248,.56); line-height:1.95; margin-bottom:22px; }
+  .carta-text strong { color:var(--white); font-weight:600; }
+  .carta-firma { margin-top:44px; padding-top:32px; border-top:1px solid rgba(255,255,255,.07); display:flex; flex-direction:column; gap:4px; }
+  .carta-firma-nombre { font-family:'Space Grotesk',sans-serif; font-size:1.02rem; font-weight:700; color:var(--white); }
+  .carta-firma-cargo { font-size:.82rem; color:var(--muted); }
+  .carta-btns { display:flex; gap:16px; flex-wrap:wrap; margin-top:48px; }
 
-  /* FOOTER */
+  /* ─── FOOTER ─── */
   .foot { border-top:1px solid var(--border); padding:52px 0; }
-  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
-  .foot-brand p { font-size:.85rem; color:var(--muted); line-height:1.7; margin-top:14px; max-width:280px; }
-  .foot-col h5 { font-family:'Space Grotesk',sans-serif; font-size:.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
-  .foot-col a { display:block; font-size:.85rem; color:rgba(238,238,248,.45); text-decoration:none; margin-bottom:10px; transition:color .2s; }
+  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:44px; }
+  .foot-brand p { font-size:.84rem; color:var(--muted); line-height:1.72; margin-top:14px; max-width:280px; }
+  .foot-col h5 { font-family:'Space Grotesk',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
+  .foot-col a { display:block; font-size:.84rem; color:rgba(238,238,248,.42); text-decoration:none; margin-bottom:10px; transition:color .2s; }
   .foot-col a:hover { color:var(--white); }
-  .foot-bottom { border-top:1px solid var(--border); padding-top:28px; display:flex; align-items:center; justify-content:space-between; }
-  .foot-copy { font-size:.78rem; color:var(--muted); }
+  .foot-bottom { border-top:1px solid var(--border); padding-top:26px; display:flex; align-items:center; justify-content:space-between; }
+  .foot-copy { font-size:.76rem; color:var(--muted); }
 
-  /* REVEAL */
-  .rv { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  /* ─── REVEAL ─── */
+  .rv { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
   .rv.visible { opacity:1; transform:none; }
 
-  /* RESPONSIVE */
+  /* ─── RESPONSIVE ─── */
   @media(max-width:1024px) {
     .origen-grid, .apuesta-inner { grid-template-columns:1fr; }
     .manifiesto-grid { grid-template-columns:1fr; }
     .foot-grid { grid-template-columns:1fr 1fr; }
     .origen-callout { position:static; }
+    .belief-card + .belief-card { border-left:none; border-top:1px solid rgba(255,255,255,.06); }
+    .carta-glass { padding:48px 44px; }
   }
   @media(max-width:768px) {
     nav { padding:0 20px; }
@@ -295,18 +294,19 @@
     nav.open .nav-links { opacity:1; transform:translateY(0); pointer-events:auto; }
     .nav-links li { width:100%; }
     .nav-links a { display:block; padding:15px 24px; font-size:1.05rem; }
-    .principio { grid-template-columns:1fr; gap:12px; padding:32px 24px; }
-    .principio-num { font-size:2.2rem; }
-    .apuesta-item { grid-template-columns:1fr; gap:12px; }
-    .carta-section { padding:80px 0 100px; }
+    .principio { grid-template-columns:1fr; gap:10px; padding:32px 24px; }
+    .principio-num { font-size:2rem; }
+    .apuesta-item { grid-template-columns:1fr; gap:10px; }
+    .carta-glass { padding:36px 28px; border-radius:20px; }
+    .carta-btns { flex-direction:column; }
     .foot-grid { grid-template-columns:1fr; }
+    .sec-carta { padding-bottom:100px; }
   }
   </style>
 </head>
 <body>
 
 <div id="bg-overlay"></div>
-
 <div id="page">
 
   <!-- NAV -->
@@ -338,7 +338,8 @@
       <div class="pre-tag">Marsof Technology · Fundada 2026</div>
       <h1 class="hero-title">El <span class="gtext">corazón</span><br>de Marsof</h1>
       <p class="hero-lead">
-        Los productos los puedes ver en la home. Esta página es otra cosa: es la historia de por qué existe Marsof, qué creemos y a dónde vamos cuando nadie está mirando.
+        Quiénes somos, qué creemos y adónde vamos.<br>
+        Una empresa construida sobre una convicción, no sobre una tendencia.
       </p>
     </div>
   </section>
@@ -362,15 +363,16 @@
   </div>
 
   <!-- EL ORIGEN -->
-  <section>
+  <section class="sec-origen">
     <div class="wrap">
+      <span class="sec-accent rv"></span>
       <p class="sec-pre rv">El origen</p>
       <h2 class="sec-title rv">La pregunta que<br>lo <span class="gtext">empezó todo</span></h2>
       <div class="origen-grid">
         <div class="origen-text rv">
           <p>¿Por qué las grandes empresas tienen equipos enteros para automatizar sus procesos mientras el resto del tejido empresarial sigue haciéndolo todo a mano?</p>
           <p>Esa pregunta no es nueva. Pero la respuesta que encontramos al analizarla sí lo era: <strong>el problema no era tecnológico</strong>. La tecnología ya existía y era extraordinariamente capaz. El problema era que nadie la había empaquetado pensando en quien realmente la necesita.</p>
-          <p>Las soluciones disponibles en el mercado estaban diseñadas para empresas con departamentos de IT, consultoras contratadas y presupuestos que no tienen nada que ver con la realidad de una gestoría, una clínica familiar o un autónomo que lleva 20 años en su sector.</p>
+          <p>Las soluciones disponibles estaban diseñadas para empresas con departamentos de IT, consultoras contratadas y presupuestos que no tienen nada que ver con la realidad de una gestoría, una clínica familiar o un autónomo que lleva 20 años en su sector.</p>
           <p>Marsof nació de esa brecha. No de una oportunidad de negocio identificada en un Excel. De una convicción: <strong>hay millones de empresas en España con problemas serios, herramientas mediocres y ningún proveedor tecnológico que las trate con la seriedad que merecen.</strong></p>
         </div>
         <div class="origen-callout rv">
@@ -382,8 +384,9 @@
   </section>
 
   <!-- MANIFIESTO -->
-  <section>
+  <section class="sec-manifiesto">
     <div class="wrap">
+      <span class="sec-accent rv"></span>
       <p class="sec-pre rv">Lo que creemos</p>
       <h2 class="sec-title rv">Sin matices.<br><span class="gtext">Sin rodeos.</span></h2>
       <p class="sec-sub rv">Cuatro convicciones que definen cada decisión que tomamos.</p>
@@ -408,25 +411,27 @@
     </div>
   </section>
 
-  <!-- LA BRECHA QUE ATACAMOS -->
-  <section>
+  <!-- BRECHA -->
+  <section class="sec-brecha">
+    <div class="orb brecha-orb"></div>
     <div class="wrap">
-      <div class="brecha-wrap">
-        <p class="sec-pre rv" style="text-align:center;">Por qué ahora</p>
+      <div class="brecha-inner">
+        <div class="brecha-tag rv">Por qué ahora</div>
         <h2 class="brecha-big rv">El momento era este.<br><span class="gtext">No había otro.</span></h2>
         <div class="brecha-body rv">
           <p>Durante décadas, automatizar procesos complejos requería proyectos de meses, equipos técnicos internos y presupuestos que solo se podían justificar en grandes empresas. Era la regla implícita del mercado.</p>
           <p>Eso cambió. <strong>La inteligencia artificial generativa rompió esa barrera de entrada</strong> de forma tan drástica que lo que antes costaba cientos de miles de euros ahora se puede construir en semanas por una fracción del precio, con resultados más precisos y sin depender de infraestructura masiva.</p>
-          <p>Marsof existe en 2026 porque en 2026 era por primera vez posible hacer esto bien. No antes. El timing no es casualidad — es la condición que hizo que este proyecto tuviera sentido.</p>
+          <p>Marsof existe en 2026 porque en 2026 era, por primera vez, posible hacer esto bien. El timing no es casualidad — es la condición que hizo que este proyecto tuviera sentido.</p>
         </div>
-        <div class="brecha-divider"></div>
+        <div class="brecha-rule rv"></div>
       </div>
     </div>
   </section>
 
-  <!-- CÓMO TRABAJAMOS -->
-  <section>
+  <!-- PRINCIPIOS -->
+  <section class="sec-principios">
     <div class="wrap">
+      <span class="sec-accent rv"></span>
       <p class="sec-pre rv">Nuestra forma de operar</p>
       <h2 class="sec-title rv">Tres principios que<br><span class="gtext">no negociamos</span></h2>
       <div class="principios rv">
@@ -448,23 +453,26 @@
           <div class="principio-num">03</div>
           <div>
             <div class="principio-title">Velocidad como ventaja competitiva real</div>
-            <p class="principio-desc">No tenemos comités de aprobación, ni procesos de revisión de tres semanas. Cuando una idea vale la pena, la ejecutamos. La velocidad de respuesta no es marketing — es la diferencia entre que algo ocurra o no ocurra.</p>
+            <p class="principio-desc">No tenemos comités de aprobación ni procesos de revisión de tres semanas. Cuando una idea vale la pena, la ejecutamos. La velocidad de respuesta no es marketing — es la diferencia entre que algo ocurra o no ocurra.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LA APUESTA DE LARGO PLAZO -->
-  <section>
+  <!-- APUESTA -->
+  <section class="sec-apuesta">
+    <div class="orb apuesta-orb-1"></div>
+    <div class="orb apuesta-orb-2"></div>
     <div class="wrap">
+      <span class="sec-accent rv"></span>
       <p class="sec-pre rv">La apuesta de largo plazo</p>
       <h2 class="sec-title rv">Por qué el futuro<br>no termina en <span class="gtext">el software</span></h2>
       <div class="apuesta-inner">
         <div class="apuesta-text rv">
           <p>El mercado de la automatización empresarial es enorme y lo aprovecharemos al máximo. Pero hay una convicción más profunda que guía a Marsof: <strong>los problemas más importantes que enfrenta la humanidad no son de gestión ni de eficiencia operativa</strong>. Son biológicos. Son cognitivos. Son humanos en el sentido más literal.</p>
           <p>Creemos que la tecnología — bien aplicada, con precisión y sin pretensiones — es la herramienta más poderosa que existe para atacar esos problemas. No la única, pero sí la más escalable.</p>
-          <p>Por eso, todo lo que construimos hoy tiene una función doble: resolver un problema real ahora mismo, y financiar la investigación y el desarrollo de algo considerablemente más difícil. <strong>Cada factura que Saldea cobra automáticamente es un paso más en esa dirección.</strong></p>
+          <p>Por eso, todo lo que construimos hoy tiene una función doble: resolver un problema real ahora mismo y financiar la investigación de algo considerablemente más difícil. <strong>Cada cliente que confía en Marsof es un paso más en esa dirección.</strong></p>
         </div>
         <div class="apuesta-visual rv">
           <div class="apuesta-item">
@@ -493,24 +501,25 @@
     </div>
   </section>
 
-  <!-- CARTA DEL FUNDADOR / CTA -->
-  <section class="carta-section">
+  <!-- CARTA -->
+  <section class="sec-carta">
     <div class="orb carta-orb-1"></div>
     <div class="orb carta-orb-2"></div>
     <div class="wrap">
-      <div class="carta-inner">
-        <p class="sec-pre rv">Una última cosa</p>
-        <div class="carta-text rv">
+      <div class="carta-glass rv">
+        <span class="sec-accent"></span>
+        <p class="sec-pre">Una última cosa</p>
+        <div class="carta-text">
           <p>Marsof es una empresa joven con una idea que, dicha en voz alta, suena más grande de lo que parece: que la tecnología bien hecha puede cambiar la vida de millones de personas.</p>
-          <p>No lo decimos como slogan. Lo decimos porque es la razón por la que esto existe. <strong>Si solo quisiéramos construir un negocio rentable, habría caminos más cómodos que este.</strong></p>
-          <p>Elegimos este porque creemos que el trabajo tiene que importar más allá del balance. Y porque cada empresa que confía en nosotros nos da la oportunidad de demostrar que se puede hacer tecnología de primer nivel desde aquí, con los valores correctos, sin necesidad de imitar a nadie.</p>
-          <p>Si eso te resuena — como cliente, como colaborador, como inversor o simplemente como alguien que piensa parecido — nos encantaría que lo conocieras de primera mano.</p>
+          <p>No lo decimos como eslogan. Lo decimos porque es la razón por la que esto existe. <strong>Si solo quisiéramos construir un negocio rentable, habría caminos más cómodos que este.</strong></p>
+          <p>Elegimos este porque creemos que el trabajo tiene que importar más allá del balance. Y porque cada empresa que confía en nosotros nos da la oportunidad de demostrar que se puede hacer tecnología de primer nivel desde España, con los valores correctos, sin necesidad de imitar a nadie.</p>
+          <p>Si eso te resuena — como cliente, como colaborador, como inversor o simplemente como alguien que piensa parecido — nos encantaría conocerte.</p>
         </div>
-        <div class="carta-firma rv">
+        <div class="carta-firma">
           <span class="carta-firma-nombre">Carlos Gálvez Carrillo</span>
           <span class="carta-firma-cargo">Fundador y CEO, Marsof Technology · 2026</span>
         </div>
-        <div class="carta-btns rv">
+        <div class="carta-btns">
           <a href="/saldea" class="btn btn-fill btn-lg">Ver nuestros productos <span class="arr">→</span></a>
           <a href="mailto:carlos@marsof.es" class="btn btn-aurora btn-lg">Habla con nosotros <span class="arr">→</span></a>
         </div>
@@ -524,7 +533,7 @@
       <div class="foot-grid">
         <div class="foot-brand">
           <img src="/assets/logo_transparent.png" alt="Marsof Technology" style="height:52px;width:auto;">
-          <p>Automatización inteligente para pymes españolas. Hoy software, mañana biotecnología y neurociencia.</p>
+          <p>Automatización inteligente para empresas españolas. Hoy software, mañana biotecnología y neurociencia.</p>
         </div>
         <div class="foot-col">
           <h5>Empresa</h5>
@@ -553,7 +562,6 @@
 
 <script>
   var nav = document.getElementById('nav');
-
   function chkNav(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', chkNav, {passive:true});
   chkNav();
@@ -569,14 +577,15 @@
     });
   }
 
+  // REVEAL ON SCROLL
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
     });
-  }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+  }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){ obs.observe(el); });
 
-  // MAGNETIC BUTTONS — follow cursor on large CTAs
+  // MAGNETIC BUTTONS — large CTAs follow cursor
   document.querySelectorAll('.btn-lg').forEach(function(btn){
     btn.addEventListener('mousemove', function(e){
       var r = btn.getBoundingClientRect();
