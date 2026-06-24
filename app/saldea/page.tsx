@@ -8,17 +8,19 @@ import { Counter } from './Counter'
 // Marco "browser window" reutilizable para envolver screenshots del producto
 function BrowserFrame({ src, alt, url, priority = false }: { src: string; alt: string; url: string; priority?: boolean }) {
   return (
-    <div className="rounded-xl md:rounded-2xl bg-gradient-to-br from-sky-500/30 via-white/10 to-transparent p-[1px] shadow-2xl shadow-sky-500/10">
-      <div className="rounded-xl md:rounded-2xl bg-zinc-900 overflow-hidden">
+    <div className="relative rounded-xl md:rounded-2xl p-[1.5px]" style={{background:'linear-gradient(135deg,rgba(6,182,212,0.9) 0%,rgba(99,102,241,0.6) 40%,rgba(168,85,247,0.5) 70%,rgba(6,182,212,0.4) 100%)', boxShadow:'0 0 40px rgba(6,182,212,0.4), 0 0 80px rgba(6,182,212,0.12), 0 0 0 1px rgba(6,182,212,0.08), 0 24px 60px rgba(0,0,0,0.6)'}}>
+      {/* Glow ambient detrás */}
+      <div className="absolute -inset-4 rounded-2xl -z-10" style={{background:'radial-gradient(ellipse at 50% 60%, rgba(6,182,212,0.18) 0%, rgba(99,102,241,0.10) 50%, transparent 80%)', filter:'blur(20px)'}} />
+      <div className="rounded-xl md:rounded-2xl bg-zinc-950 overflow-hidden">
         {/* Barra superior tipo navegador */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-zinc-950/80 border-b border-white/5">
+        <div className="flex items-center gap-2 px-4 py-3 border-b" style={{background:'rgba(3,3,15,0.95)', borderColor:'rgba(6,182,212,0.15)'}}>
           <div className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/60" />
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
-            <span className="w-2.5 h-2.5 rounded-full bg-sky-500/60" />
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full" style={{background:'rgba(6,182,212,0.7)', boxShadow:'0 0 6px rgba(6,182,212,0.8)'}} />
           </div>
           <div className="flex-1 flex justify-center">
-            <div className="bg-zinc-800/80 text-zinc-500 text-xs px-3 py-1 rounded-md font-mono">
+            <div className="text-zinc-500 text-xs px-3 py-1 rounded-md font-mono border" style={{background:'rgba(6,182,212,0.04)', borderColor:'rgba(6,182,212,0.12)'}}>
               {url}
             </div>
           </div>
@@ -31,6 +33,7 @@ function BrowserFrame({ src, alt, url, priority = false }: { src: string; alt: s
           height={691}
           priority={priority}
           className="w-full h-auto block"
+          style={{filter:'brightness(1.04) saturate(1.1)'}}
         />
       </div>
     </div>
@@ -112,22 +115,7 @@ const faqs = [
 
 export default function SaldeaPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0b] text-zinc-100 antialiased overflow-x-hidden">
-
-      {/* Decoración de fondo: glow verde animado */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-sky-500/10 blur-3xl" />
-        <div className="absolute top-[60%] right-[-10%] w-[600px] h-[600px] rounded-full bg-sky-600/5 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(14,165,233,0.08),transparent_50%)]" />
-        {/* Grid pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }}
-        />
-      </div>
+    <div className="min-h-screen bg-transparent text-zinc-100 antialiased overflow-x-hidden" style={{backgroundImage:'radial-gradient(rgba(6,182,212,0.045) 1px, transparent 1px)', backgroundSize:'36px 36px'}}>
 
       {/* Navbar */}
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/5">
@@ -161,10 +149,14 @@ export default function SaldeaPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative max-w-6xl mx-auto px-6 pt-20 pb-16 text-center">
+      <section className="relative max-w-6xl mx-auto px-6 pt-20 pb-16 text-center overflow-hidden">
+        {/* Orbs atmosféricos */}
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full pointer-events-none -z-10" style={{background:'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', filter:'blur(40px)'}} />
+        <div className="absolute -top-20 -right-40 w-[500px] h-[500px] rounded-full pointer-events-none -z-10" style={{background:'radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 70%)', filter:'blur(40px)'}} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full pointer-events-none -z-10" style={{background:'radial-gradient(ellipse, rgba(6,182,212,0.06) 0%, transparent 65%)', filter:'blur(60px)'}} />
         <Reveal effect="fade-up">
-          <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-7">
-            <span className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 px-4 py-2 rounded-full text-xs font-semibold mb-7 backdrop-blur-sm" style={{boxShadow:'0 0 24px rgba(34,211,238,0.15)'}}>
+            <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{boxShadow:'0 0 8px rgba(34,211,238,0.8)'}} />
             30 días gratis · cancela en 1 clic
           </div>
         </Reveal>
@@ -172,7 +164,7 @@ export default function SaldeaPage() {
         <Reveal effect="fade-up" delay={80}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.0] tracking-tight mb-6 max-w-4xl mx-auto" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
             Cobra tus facturas<br />
-            <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-sky-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent" style={{filter:'drop-shadow(0 0 40px rgba(99,102,241,0.4))'}}>
               sin perseguir
             </span>{' '}
             a nadie.
@@ -191,7 +183,8 @@ export default function SaldeaPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
             <Link
               href="/registro?plan=mes"
-              className="group relative inline-flex items-center gap-2 bg-sky-500 text-white px-7 py-4 rounded-xl font-bold text-base hover:bg-sky-400 transition-all w-full sm:w-auto justify-center shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 hover:-translate-y-0.5"
+              className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-7 py-4 rounded-xl font-bold text-base hover:from-cyan-400 hover:to-blue-500 transition-all w-full sm:w-auto justify-center hover:-translate-y-0.5"
+              style={{boxShadow:'0 0 30px rgba(6,182,212,0.4), 0 4px 20px rgba(6,182,212,0.3)'}}
             >
               Empezar 30 días gratis
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -211,8 +204,8 @@ export default function SaldeaPage() {
         {/* Screenshot real del dashboard en un browser-frame */}
         <Reveal effect="fade-up" delay={400}>
           <div className="relative mt-16 max-w-5xl mx-auto">
-            {/* Glow detrás de la imagen */}
-            <div className="absolute inset-0 bg-sky-500/20 blur-3xl -z-10 rounded-3xl" />
+            {/* Glow neon detrás de la imagen */}
+            <div className="absolute -inset-6 -z-10 rounded-3xl" style={{background:'radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.25) 0%, rgba(99,102,241,0.12) 50%, transparent 80%)', filter:'blur(30px)'}} />
             <BrowserFrame
               src="/images/saldea/dashboard.png"
               alt="Panel de control de Saldea con stats de facturas por cobrar, cobradas, tasa de cobro y recordatorios enviados"
@@ -221,7 +214,7 @@ export default function SaldeaPage() {
             />
 
             {/* Mini notif flotante "respuesta detectada" */}
-            <div className="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 bg-zinc-900 border border-white/10 rounded-xl p-3 shadow-2xl shadow-black/50 max-w-[260px] hidden md:block">
+            <div className="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 bg-zinc-900/80 backdrop-blur-md border border-cyan-500/25 rounded-xl p-3 shadow-2xl shadow-black/50 max-w-[260px] hidden md:block" style={{boxShadow:'0 0 20px rgba(6,182,212,0.1), 0 8px 32px rgba(0,0,0,0.5)'}}>
               <div className="flex items-start gap-2.5">
                 <span className="w-8 h-8 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center flex-shrink-0 font-bold">✓</span>
                 <div className="text-left">
@@ -235,7 +228,7 @@ export default function SaldeaPage() {
       </section>
 
       {/* Stats con counter */}
-      <section className="border-y border-white/5 bg-black/30 backdrop-blur">
+      <section className="border-y border-cyan-500/10 bg-black/30 backdrop-blur">
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -245,7 +238,7 @@ export default function SaldeaPage() {
               { num: 5, label: 'min. para empezar', prefix: '<', suffix: '' },
             ].map((s, i) => (
               <Reveal key={i} effect="fade-up" delay={i * 80}>
-                <p className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                <p className="text-4xl md:text-5xl font-bold text-cyan-300 tracking-tight" style={{textShadow:'0 0 30px rgba(34,211,238,0.5)'}}>
                   <Counter to={s.num} prefix={s.prefix} suffix={s.suffix} />
                 </p>
                 <p className="text-sm text-zinc-500 mt-2">{s.label}</p>
@@ -281,7 +274,7 @@ export default function SaldeaPage() {
           </Reveal>
 
           <Reveal effect="slide-right">
-            <div className="relative bg-gradient-to-br from-sky-500/10 via-sky-500/5 to-transparent border border-sky-500/20 rounded-3xl p-8 md:p-10">
+            <div className="relative rounded-3xl p-8 md:p-10" style={{background:'linear-gradient(135deg,rgba(6,182,212,0.09) 0%,rgba(99,102,241,0.06) 60%,transparent 100%)', border:'1px solid rgba(6,182,212,0.3)', boxShadow:'0 0 40px rgba(6,182,212,0.1), 0 0 80px rgba(6,182,212,0.04), inset 0 1px 0 rgba(6,182,212,0.15)'}}>
               <p className="text-sky-400 font-semibold text-xs mb-4 uppercase tracking-[0.2em]">La solución</p>
               <h3 className="text-2xl font-bold text-white mb-6 leading-tight">
                 Saldea lo hace por ti, con el tono exacto
@@ -398,9 +391,9 @@ export default function SaldeaPage() {
 
         <div className="grid md:grid-cols-3 gap-5">
           <Reveal effect="fade-up" className="md:col-span-2">
-            <div className="bg-gradient-to-br from-sky-500/10 to-transparent border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
+            <div className="relative rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1" style={{background:'linear-gradient(135deg,rgba(6,182,212,0.07) 0%,rgba(99,102,241,0.04) 100%)', border:'1px solid rgba(6,182,212,0.25)', boxShadow:'0 0 30px rgba(6,182,212,0.08), inset 0 1px 0 rgba(6,182,212,0.1)'}}>
               <div className="flex items-center gap-2 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400" style={{boxShadow:'0 0 6px rgba(6,182,212,0.8)'}} />
                 IA Premium
               </div>
               <h3 className="text-2xl font-bold text-white mb-3">5 tonos que escalan solos</h3>
@@ -427,7 +420,7 @@ export default function SaldeaPage() {
           </Reveal>
 
           <Reveal effect="fade-up" delay={100}>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
+            <div className="rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1" style={{background:'rgba(6,6,20,0.8)', border:'1px solid rgba(255,255,255,0.08)', boxShadow:'inset 0 1px 0 rgba(255,255,255,0.05)'}}>
               <div className="text-3xl mb-4">📬</div>
               <h3 className="text-lg font-bold text-white mb-2">Detecta respuestas</h3>
               <p className="text-zinc-400 text-sm leading-relaxed">
