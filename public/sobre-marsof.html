@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Marsof Technology — Automatización inteligente nacida en España</title>
-  <meta name="description" content="Conoce Marsof Technology: quiénes somos, por qué existimos, nuestro ecosistema de productos con IA y la visión a largo plazo hacia la neurociencia y biotecnología.">
+  <title>Sobre Marsof Technology — Qué somos, en qué creemos y a dónde vamos</title>
+  <meta name="description" content="La historia detrás de Marsof Technology: por qué existimos, en qué creemos y cuál es la misión que nos mueve más allá de los productos.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://www.marsof.es/sobre-marsof">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.marsof.es/sobre-marsof">
   <meta property="og:site_name" content="Marsof Technology">
-  <meta property="og:title" content="Sobre Marsof Technology — Automatización inteligente nacida en España">
-  <meta property="og:description" content="Nacimos con una misión concreta: que los empresarios españoles dejen de ser los robots de su propia empresa.">
+  <meta property="og:title" content="Sobre Marsof Technology — Qué somos y en qué creemos">
+  <meta property="og:description" content="La historia detrás de Marsof: por qué nacimos, qué creemos y la misión que nos mueve más allá de los productos.">
   <meta property="og:image" content="https://www.marsof.es/og-image.png">
   <meta property="og:locale" content="es_ES">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sobre Marsof Technology">
-  <meta name="twitter:description" content="Nacimos con una misión concreta: que los empresarios españoles dejen de ser los robots de su propia empresa.">
+  <meta name="twitter:description" content="La historia, los valores y la misión que mueven a Marsof Technology.">
   <meta name="twitter:image" content="https://www.marsof.es/og-image.png">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Marsof Technology","url":"https://www.marsof.es","logo":"https://www.marsof.es/og-image.png","description":"Firma tecnológica especializada en automatización inteligente de procesos mediante IA para pymes y autónomos españoles.","foundingDate":"2026","founders":[{"@type":"Person","name":"Carlos Gálvez Carrillo","jobTitle":"Fundador y CEO"}],"address":{"@type":"PostalAddress","addressLocality":"Huelva","addressCountry":"ES"}}
+  {"@context":"https://schema.org","@type":"Organization","name":"Marsof Technology","url":"https://www.marsof.es","logo":"https://www.marsof.es/og-image.png","description":"Firma tecnológica especializada en automatización inteligente para pymes españolas.","foundingDate":"2026","founders":[{"@type":"Person","name":"Carlos Gálvez Carrillo","jobTitle":"Fundador y CEO"}],"address":{"@type":"PostalAddress","addressLocality":"Huelva","addressCountry":"ES"}}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,7 +107,6 @@
   @keyframes titlein { from{opacity:0;transform:translateY(36px) scale(.97)} to{opacity:1;transform:none} }
   @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.7)} }
   @keyframes ticker   { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-  @keyframes aurora-shift { from{background-position:0% 50%} to{background-position:-400% 50%} }
 
   /* GRADIENT TEXT */
   .gtext { background:var(--gtext); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
@@ -134,22 +133,20 @@
 
   .hero-title {
     font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(3.5rem,8vw,7.5rem); font-weight:800;
-    letter-spacing:-4px; line-height:1.02; margin-bottom:28px;
+    font-size:clamp(3.2rem,7vw,6.5rem); font-weight:800;
+    letter-spacing:-4px; line-height:1.02; margin-bottom:32px;
     animation:titlein 1s cubic-bezier(.16,1,.3,1) .2s both;
   }
 
-  .hero-quote {
-    font-size:clamp(1rem,2vw,1.2rem); font-style:italic;
-    color:rgba(238,238,248,.55); max-width:680px; margin:0 auto;
-    line-height:1.75; border-left:2px solid var(--cyan);
-    padding-left:24px; text-align:left;
-    animation:fadein 1s ease .5s both;
+  .hero-lead {
+    font-size:clamp(1.05rem,2.2vw,1.3rem);
+    color:rgba(238,238,248,.6); max-width:720px; margin:0 auto;
+    line-height:1.8; animation:fadein 1s ease .5s both;
   }
 
   /* TICKER */
   .ticker-wrap { overflow:hidden; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:14px 0; }
-  .ticker { display:flex; gap:0; white-space:nowrap; animation:ticker 32s linear infinite; }
+  .ticker { display:flex; gap:0; white-space:nowrap; animation:ticker 36s linear infinite; }
   .ticker-item { display:inline-flex; align-items:center; gap:18px; padding:0 28px; font-size:.7rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(238,238,248,.18); }
   .ticker-dot { width:4px; height:4px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
 
@@ -158,137 +155,103 @@
   .sec-title { font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,4.5vw,3.4rem); font-weight:800; letter-spacing:-2px; line-height:1.1; margin-bottom:24px; }
   .sec-sub { font-size:1.05rem; color:rgba(238,238,248,.5); max-width:620px; line-height:1.75; }
 
-  /* IDENTITY */
-  .identity-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; border-radius:24px; overflow:hidden; margin-top:64px; }
-  .identity-card { padding:64px 52px; position:relative; overflow:hidden; }
-  .id-mar { background:rgba(61,98,255,.06); border:1px solid rgba(61,98,255,.12); border-radius:24px 0 0 24px; }
-  .id-sof { background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.12); border-radius:0 24px 24px 0; }
-  .id-letter {
-    font-family:'Space Grotesk',sans-serif; font-size:clamp(5rem,12vw,10rem);
-    font-weight:800; letter-spacing:-6px; line-height:1;
-    display:block; margin-bottom:16px;
+  /* ORIGEN — texto + callout lateral */
+  .origen-grid { display:grid; grid-template-columns:3fr 2fr; gap:72px; align-items:start; margin-top:64px; }
+  .origen-text p { font-size:1.05rem; color:rgba(238,238,248,.6); line-height:1.9; margin-bottom:22px; }
+  .origen-text strong { color:var(--white); }
+  .origen-callout {
+    background:rgba(61,98,255,.05); border:1px solid rgba(61,98,255,.18);
+    border-radius:24px; padding:44px 36px; position:sticky; top:100px;
   }
-  .id-mar .id-letter { color:var(--blue); text-shadow:0 0 80px rgba(61,98,255,.5); }
-  .id-sof .id-letter { color:var(--cyan); text-shadow:0 0 80px rgba(0,212,255,.5); }
-  .id-word { font-size:.72rem; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
-  .id-desc { font-size:1.05rem; color:rgba(238,238,248,.65); line-height:1.7; }
+  .origen-callout-pre { font-size:.65rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--cyan); margin-bottom:20px; }
+  .origen-callout-quote {
+    font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:700;
+    line-height:1.6; color:var(--white); font-style:italic;
+  }
+  .origen-callout-quote span { color:var(--cyan); -webkit-text-fill-color:var(--cyan); }
 
-  /* SUPERPODER */
-  .sp-big {
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(2.4rem,5vw,4.8rem); font-weight:800;
-    letter-spacing:-3px; line-height:1.1; margin-bottom:16px;
-  }
-  .sp-body { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:80px; }
-  .sp-text p { font-size:1rem; color:rgba(238,238,248,.6); line-height:1.85; margin-bottom:20px; }
-  .sp-text strong { color:var(--white); }
-  .sp-card {
-    background:rgba(61,98,255,.05); border:1px solid rgba(61,98,255,.15);
-    border-radius:24px; padding:48px 40px;
-    font-family:'Space Grotesk',sans-serif; font-size:1.25rem;
-    font-weight:600; color:var(--white); line-height:1.65; font-style:italic;
-    position:relative; overflow:hidden;
-  }
-  .sp-card::before {
-    content:''; position:absolute; inset:0; border-radius:inherit;
-    background:linear-gradient(135deg,rgba(61,98,255,.08),rgba(0,212,255,.05));
-    pointer-events:none;
-  }
-  .sp-card span { color:var(--cyan); -webkit-text-fill-color:var(--cyan); }
-
-  /* STATS */
-  .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:80px; border-radius:24px; overflow:hidden; }
-  .stat-card {
+  /* MANIFIESTO */
+  .manifiesto-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:64px; border-radius:24px; overflow:hidden; }
+  .belief-card {
     background:var(--card); border:1px solid var(--border);
-    padding:48px 36px; text-align:center; position:relative;
+    padding:52px 44px; position:relative; overflow:hidden;
     transition:background .3s;
   }
-  .stat-card:hover { background:rgba(255,255,255,.05); }
-  .stat-num {
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(2.8rem,5vw,4rem); font-weight:800;
-    letter-spacing:-2px; line-height:1; margin-bottom:12px;
+  .belief-card:hover { background:rgba(255,255,255,.055); }
+  .belief-num {
+    font-family:'Space Grotesk',sans-serif; font-size:5rem; font-weight:800;
+    letter-spacing:-4px; opacity:.04; position:absolute; top:16px; left:28px; line-height:1;
+    pointer-events:none;
   }
-  .stat-label { font-size:.82rem; color:rgba(238,238,248,.38); line-height:1.6; max-width:180px; margin:0 auto; }
-  .stat-cyan .stat-num { color:var(--cyan); }
-  .stat-blue .stat-num { color:var(--blue-l); }
-  .stat-bio .stat-num  { color:var(--bio); }
+  .belief-text {
+    font-family:'Space Grotesk',sans-serif; font-size:clamp(1.1rem,2vw,1.35rem);
+    font-weight:700; line-height:1.45; color:var(--white); position:relative; z-index:1;
+  }
+  .belief-text .hl { color:var(--cyan); -webkit-text-fill-color:var(--cyan); }
 
-  /* ECOSISTEMA */
-  .eco-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:64px; }
-  .eco-card {
-    background:var(--card); border:1px solid var(--border); border-radius:24px;
-    padding:48px 40px; position:relative; overflow:hidden;
+  /* BRECHA */
+  .brecha-wrap { max-width:760px; margin:0 auto; text-align:center; }
+  .brecha-big {
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(2rem,4.5vw,3.6rem); font-weight:800;
+    letter-spacing:-2px; line-height:1.12; margin-bottom:28px;
+  }
+  .brecha-body p { font-size:1.05rem; color:rgba(238,238,248,.55); line-height:1.9; margin-bottom:20px; }
+  .brecha-body strong { color:var(--white); }
+  .brecha-divider { width:1px; height:80px; background:linear-gradient(to bottom, var(--cyan), transparent); margin:48px auto; }
+
+  /* CÓMO TRABAJAMOS — 3 principios horizontales */
+  .principios { display:flex; flex-direction:column; gap:0; margin-top:64px; border-radius:24px; overflow:hidden; border:1px solid var(--border); }
+  .principio {
+    display:grid; grid-template-columns:80px 1fr;
+    align-items:start; gap:36px; padding:44px 48px;
+    border-bottom:1px solid var(--border);
+    transition:background .3s;
+  }
+  .principio:last-child { border-bottom:none; }
+  .principio:hover { background:rgba(255,255,255,.02); }
+  .principio-num {
+    font-family:'Space Grotesk',sans-serif; font-size:3.5rem; font-weight:800;
+    letter-spacing:-3px; line-height:1; color:var(--border);
+    transition:color .3s;
+  }
+  .principio:hover .principio-num { color:rgba(0,212,255,.25); }
+  .principio-title { font-family:'Space Grotesk',sans-serif; font-size:1.2rem; font-weight:700; margin-bottom:10px; }
+  .principio-desc { font-size:.95rem; color:rgba(238,238,248,.48); line-height:1.75; }
+
+  /* LA APUESTA — sección de largo plazo */
+  .apuesta-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:64px; }
+  .apuesta-text p { font-size:1.05rem; color:rgba(238,238,248,.58); line-height:1.9; margin-bottom:22px; }
+  .apuesta-text strong { color:var(--white); }
+  .apuesta-visual { display:flex; flex-direction:column; gap:16px; }
+  .apuesta-item {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:20px; padding:28px 32px;
+    display:grid; grid-template-columns:56px 1fr; gap:20px; align-items:center;
     transition:border-color .3s, transform .3s;
   }
-  .eco-card:hover { border-color:rgba(255,255,255,.12); transform:translateY(-6px); }
-  .eco-num {
-    font-family:'Space Grotesk',sans-serif; font-size:4.5rem; font-weight:800;
-    letter-spacing:-3px; opacity:.05; position:absolute; top:20px; right:28px; line-height:1;
+  .apuesta-item:hover { border-color:rgba(255,255,255,.1); transform:translateX(6px); }
+  .apuesta-icon { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
+  .ai-blue  { background:rgba(61,98,255,.1); }
+  .ai-bio   { background:rgba(0,232,122,.08); }
+  .ai-neuro { background:rgba(168,85,247,.08); }
+  .apuesta-item-title { font-family:'Space Grotesk',sans-serif; font-size:.95rem; font-weight:700; margin-bottom:5px; }
+  .apuesta-item-desc { font-size:.82rem; color:rgba(238,238,248,.38); line-height:1.6; }
+
+  /* CARTA FINAL */
+  .carta-section { padding:120px 0 160px; position:relative; overflow:hidden; }
+  .carta-orb-1 { width:600px;height:600px; background:rgba(61,98,255,.08); top:-100px;left:-150px; }
+  .carta-orb-2 { width:400px;height:400px; background:rgba(168,85,247,.07); bottom:0;right:-100px; }
+  .carta-inner { max-width:720px; margin:0 auto; position:relative; z-index:2; }
+  .carta-text p { font-size:1.08rem; color:rgba(238,238,248,.58); line-height:1.95; margin-bottom:22px; }
+  .carta-text strong { color:var(--white); }
+  .carta-firma {
+    margin-top:48px; padding-top:36px; border-top:1px solid var(--border);
+    display:flex; flex-direction:column; gap:4px;
   }
-  .eco-icon { width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:24px; }
-  .eco-icon-blue { background:rgba(61,98,255,.12); }
-  .eco-icon-cyan { background:rgba(0,212,255,.1); }
-  .eco-tag { display:inline-block; font-size:.64rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:100px; margin-bottom:16px; }
-  .eco-tag-blue { background:rgba(61,98,255,.12); color:var(--blue-l); }
-  .eco-tag-cyan { background:rgba(0,212,255,.1); color:var(--cyan); }
-  .eco-title { font-family:'Space Grotesk',sans-serif; font-size:1.3rem; font-weight:700; margin-bottom:14px; }
-  .eco-desc { font-size:.95rem; color:rgba(238,238,248,.55); line-height:1.75; }
-  .eco-examples { margin-top:20px; display:flex; flex-direction:column; gap:9px; }
-  .eco-example { font-size:.82rem; color:rgba(238,238,248,.38); display:flex; align-items:flex-start; gap:8px; }
-  .eco-example::before { content:'→'; color:var(--cyan); flex-shrink:0; margin-top:1px; }
-  .eco-price { margin-top:24px; padding-top:24px; border-top:1px solid var(--border); display:flex; gap:14px; }
-  .eco-price-pill { background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.15); border-radius:100px; padding:6px 16px; font-size:.78rem; font-weight:600; color:var(--cyan); }
-
-  /* VISIÓN / ICEBERG */
-  .vision-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-top:80px; }
-  .vision-text p { font-size:1rem; color:rgba(238,238,248,.55); line-height:1.85; margin-bottom:20px; }
-  .vision-text strong { color:var(--white); }
-  .vision-timeline { display:flex; flex-direction:column; gap:0; }
-  .vt-item { display:flex; gap:24px; position:relative; }
-  .vt-line { position:absolute; left:19px; top:44px; bottom:-8px; width:1px; background:linear-gradient(to bottom, rgba(255,255,255,.08), transparent); }
-  .vt-dot {
-    width:40px; height:40px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    font-size:.68rem; font-weight:700; flex-shrink:0; margin-top:2px; letter-spacing:.5px;
-  }
-  .vt-dot-blue  { background:rgba(61,98,255,.15); border:1px solid rgba(61,98,255,.3); color:var(--blue-l); }
-  .vt-dot-bio   { background:rgba(0,232,122,.1);  border:1px solid rgba(0,232,122,.25); color:var(--bio); }
-  .vt-dot-neuro { background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.25); color:var(--neuro); }
-  .vt-content { padding-bottom:44px; }
-  .vt-label { font-size:.64rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
-  .vt-title { font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:8px; }
-  .vt-desc { font-size:.9rem; color:rgba(238,238,248,.42); line-height:1.65; }
-
-  /* INNOVACIÓN ABIERTA */
-  .open-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:64px; }
-  .open-text p { font-size:1rem; color:rgba(238,238,248,.55); line-height:1.85; margin-bottom:20px; }
-  .open-text strong { color:var(--white); }
-  .open-cards { display:flex; flex-direction:column; gap:14px; }
-  .open-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px 28px; transition:border-color .3s; }
-  .open-card:hover { border-color:rgba(0,212,255,.2); }
-  .open-card-title { font-family:'Space Grotesk',sans-serif; font-size:.9rem; font-weight:700; color:var(--cyan); margin-bottom:6px; }
-  .open-card-desc { font-size:.85rem; color:rgba(238,238,248,.4); line-height:1.65; }
-
-  /* COMPARATIVA */
-  .compare-table { width:100%; border-collapse:separate; border-spacing:0; margin-top:64px; border-radius:20px; overflow:hidden; border:1px solid var(--border); }
-  .compare-table thead tr th { padding:20px 32px; font-family:'Space Grotesk',sans-serif; font-size:.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; text-align:left; }
-  .compare-table thead tr th:first-child { background:rgba(255,255,255,.025); color:var(--muted); }
-  .compare-table thead tr th:last-child { background:rgba(61,98,255,.1); color:var(--cyan); }
-  .compare-table tbody tr td { padding:22px 32px; font-size:.92rem; border-top:1px solid var(--border); vertical-align:top; line-height:1.6; }
-  .compare-table tbody tr td:first-child { background:rgba(255,255,255,.01); color:rgba(238,238,248,.38); }
-  .compare-table tbody tr td:last-child { background:rgba(61,98,255,.04); color:var(--white); }
-  .compare-table tbody tr:hover td:last-child { background:rgba(61,98,255,.08); }
-
-  /* CTA FINAL */
-  .cta-section { padding:120px 0 160px; text-align:center; position:relative; overflow:hidden; }
-  .cta-orb-1 { width:600px;height:600px; background:rgba(61,98,255,.08); top:-100px;left:-150px; }
-  .cta-orb-2 { width:400px;height:400px; background:rgba(168,85,247,.07); bottom:0;right:-100px; }
-  .cta-inner { position:relative; z-index:2; max-width:820px; margin:0 auto; }
-  .cta-quote { font-size:clamp(1rem,2vw,1.15rem); color:rgba(238,238,248,.38); margin-bottom:56px; font-style:italic; line-height:1.8; }
-  .cta-big { font-family:'Space Grotesk',sans-serif; font-size:clamp(2.5rem,6vw,5.5rem); font-weight:800; letter-spacing:-3px; line-height:1.08; margin-bottom:10px; }
-  .cta-sub { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.8rem,4vw,3.5rem); font-weight:800; letter-spacing:-2px; margin-bottom:56px; }
-  .cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .carta-firma-nombre { font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700; color:var(--white); }
+  .carta-firma-cargo { font-size:.85rem; color:var(--muted); }
+  .carta-btns { display:flex; gap:16px; flex-wrap:wrap; margin-top:56px; }
 
   /* FOOTER */
   .foot { border-top:1px solid var(--border); padding:52px 0; }
@@ -306,10 +269,10 @@
 
   /* RESPONSIVE */
   @media(max-width:1024px) {
-    .identity-grid,.sp-body,.eco-grid,.vision-grid,.open-grid,.stats-grid { grid-template-columns:1fr; }
+    .origen-grid, .apuesta-inner { grid-template-columns:1fr; }
+    .manifiesto-grid { grid-template-columns:1fr; }
     .foot-grid { grid-template-columns:1fr 1fr; }
-    .id-mar { border-radius:24px 24px 0 0; }
-    .id-sof { border-radius:0 0 24px 24px; }
+    .origen-callout { position:static; }
   }
   @media(max-width:768px) {
     nav { padding:0 20px; }
@@ -325,14 +288,11 @@
     nav.open .nav-links { opacity:1; transform:translateY(0); pointer-events:auto; }
     .nav-links li { width:100%; }
     .nav-links a { display:block; padding:15px 24px; font-size:1.05rem; }
-    .identity-card { padding:40px 28px; }
-    .sp-big { letter-spacing:-1px; }
-    .compare-table { font-size:.82rem; }
-    .compare-table thead tr th,.compare-table tbody tr td { padding:14px 16px; }
-    .cta-section { padding:80px 0 100px; }
+    .principio { grid-template-columns:1fr; gap:12px; padding:32px 24px; }
+    .principio-num { font-size:2.2rem; }
+    .apuesta-item { grid-template-columns:1fr; gap:12px; }
+    .carta-section { padding:80px 0 100px; }
     .foot-grid { grid-template-columns:1fr; }
-    .stats-grid { grid-template-columns:1fr; }
-    .eco-price { flex-wrap:wrap; }
   }
   </style>
 </head>
@@ -368,167 +328,157 @@
     <div class="orb hero-orb-2"></div>
     <div class="orb hero-orb-3"></div>
     <div class="hero-inner">
-      <div class="pre-tag">Firma tecnológica · Huelva, España · Fundada 2026</div>
-      <h1 class="hero-title">Sobre <span class="gtext">Marsof</span></h1>
-      <blockquote class="hero-quote">
-        "España tiene millones de empresarios que trabajan más horas que nadie gestionando cosas que no deberían gestionar. Nosotros nacimos para cambiar eso, empezando por los problemas más costosos y más ignorados."
-      </blockquote>
+      <div class="pre-tag">La empresa · La misión · El porqué</div>
+      <h1 class="hero-title">El <span class="gtext">corazón</span><br>de Marsof</h1>
+      <p class="hero-lead">
+        Los productos los puedes ver en la home. Esta página es otra cosa: es la historia de por qué existe Marsof, qué creemos y a dónde vamos cuando nadie está mirando.
+      </p>
     </div>
   </section>
 
   <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker">
-      <span class="ticker-item"><span class="ticker-dot"></span>Marsof Technology</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Ingeniería Empática</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Automatización real</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Pymes · Autónomos</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Hecho en España</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>IA aplicada</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Sin burocracia</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Neurociencia · 2035+</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Marsof Technology</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Ingeniería Empática</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Automatización real</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Pymes · Autónomos</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Hecho en España</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>IA aplicada</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Sin burocracia</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Neurociencia · 2035+</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Fundada con convicción</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Sin inversores externos</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Huelva, España</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Una empresa con alma</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Tecnología con propósito</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>2026 — ∞</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Fundada con convicción</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Sin inversores externos</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Huelva, España</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Una empresa con alma</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Tecnología con propósito</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>2026 — ∞</span>
     </div>
   </div>
 
-  <!-- ¿QUÉ SIGNIFICA MARSOF? -->
+  <!-- EL ORIGEN -->
   <section>
     <div class="wrap">
-      <p class="sec-pre rv">El nombre lo dice todo</p>
-      <h2 class="sec-title rv">¿Qué es <span class="gtext">Marsof</span>?</h2>
-      <p class="sec-sub rv">Dos palabras. Una ambición sin techo.</p>
-      <div class="identity-grid">
-        <div class="identity-card id-mar rv">
-          <span class="id-letter">MAR</span>
-          <div class="id-word">— Del mar</div>
-          <p class="id-desc">El mar no tiene paredes. No entiende de límites ni de fronteras artificiales. Es la metáfora exacta del alcance que perseguimos: soluciones que escalan tanto como las necesidades del mercado lo exijan.</p>
+      <p class="sec-pre rv">El origen</p>
+      <h2 class="sec-title rv">La pregunta que<br>lo <span class="gtext">empezó todo</span></h2>
+      <div class="origen-grid">
+        <div class="origen-text rv">
+          <p>¿Por qué las grandes empresas tienen equipos enteros para automatizar sus procesos mientras el resto del tejido empresarial sigue haciéndolo todo a mano?</p>
+          <p>Esa pregunta no es nueva. Pero la respuesta que encontramos al analizarla sí lo era: <strong>el problema no era tecnológico</strong>. La tecnología ya existía y era extraordinariamente capaz. El problema era que nadie la había empaquetado pensando en quien realmente la necesita.</p>
+          <p>Las soluciones disponibles en el mercado estaban diseñadas para empresas con departamentos de IT, consultoras contratadas y presupuestos que no tienen nada que ver con la realidad de una gestoría, una clínica familiar o un autónomo que lleva 20 años en su sector.</p>
+          <p>Marsof nació de esa brecha. No de una oportunidad de negocio identificada en un Excel. De una convicción: <strong>hay millones de empresas en España con problemas serios, herramientas mediocres y ningún proveedor tecnológico que las trate con la seriedad que merecen.</strong></p>
         </div>
-        <div class="identity-card id-sof rv">
-          <span class="id-letter">SOF</span>
-          <div class="id-word">— De software</div>
-          <p class="id-desc">El código es el lenguaje con el que reescribimos procesos que llevan décadas sin cambiar. No hacemos software por hacerlo — cada línea existe para eliminar fricción, recuperar tiempo y liberar potencial humano.</p>
+        <div class="origen-callout rv">
+          <div class="origen-callout-pre">Lo que vimos</div>
+          <p class="origen-callout-quote">"La tecnología llevaba años resolviendo los problemas de las <span>grandes empresas</span>. Nadie se había preocupado de los demás."</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EL PROBLEMA REAL -->
+  <!-- MANIFIESTO -->
   <section>
     <div class="wrap">
-      <p class="sec-pre rv">Por qué existimos</p>
-      <h2 class="sp-big rv">El problema<br><span class="gtext">tiene nombre</span></h2>
-      <div class="sp-body">
-        <div class="sp-text rv">
-          <p>En España hay más de <strong>4,5 millones de pymes y autónomos</strong>. La mayoría tienen algo en común: dedican una parte desproporcionada de su semana a tareas mecánicas que no aportan ningún valor real al negocio.</p>
-          <p>Perseguir pagos impagados. Enviar recordatorios manuales. Introducir datos en cuatro plataformas distintas. Responder las mismas preguntas por WhatsApp, email y teléfono al mismo tiempo. <strong>Ese no es el trabajo para el que montaron su empresa.</strong></p>
-          <p>La tecnología lleva años resolviendo estos problemas en las grandes corporaciones. Marsof nació para llevar esa misma potencia a quienes más la necesitan: los que no tienen un equipo de IT, ni presupuesto para consultoras, ni tiempo para aprender.</p>
+      <p class="sec-pre rv">Lo que creemos</p>
+      <h2 class="sec-title rv">Sin matices.<br><span class="gtext">Sin rodeos.</span></h2>
+      <p class="sec-sub rv">Cuatro convicciones que definen cada decisión que tomamos.</p>
+      <div class="manifiesto-grid rv">
+        <div class="belief-card">
+          <div class="belief-num">01</div>
+          <p class="belief-text">La automatización no es un lujo corporativo. Es un <span class="hl">derecho de cualquier empresario</span>, tenga dos empleados o doscientos.</p>
         </div>
-        <div class="sp-card rv">
-          "La automatización no es un lujo reservado a las grandes empresas.<br><br>Es una <span>necesidad urgente</span> para cualquiera que quiera seguir siendo competitivo."
+        <div class="belief-card">
+          <div class="belief-num">02</div>
+          <p class="belief-text">La IA más poderosa es la que <span class="hl">no se nota</span>. La que trabaja sola, no falla y deja vivir a las personas.</p>
         </div>
-      </div>
-
-      <!-- STATS -->
-      <div class="stats-grid rv">
-        <div class="stat-card stat-cyan">
-          <div class="stat-num">+4,5M</div>
-          <div class="stat-label">Empresas en España expuestas a problemas de morosidad y gestión manual</div>
+        <div class="belief-card">
+          <div class="belief-num">03</div>
+          <p class="belief-text">Vender horas de consultoría es el modelo antiguo. Nosotros vendemos <span class="hl">resultados medibles</span>: tiempo recuperado, dinero cobrado.</p>
         </div>
-        <div class="stat-card stat-blue">
-          <div class="stat-num">85+</div>
-          <div class="stat-label">Días de media que tarda en cobrarse una factura vencida en España</div>
-        </div>
-        <div class="stat-card stat-bio">
-          <div class="stat-num">24/7</div>
-          <div class="stat-label">Horas al día que trabaja un agente de IA — sin vacaciones, sin errores, sin esperas</div>
+        <div class="belief-card">
+          <div class="belief-num">04</div>
+          <p class="belief-text">El verdadero trabajo de un empresario es <span class="hl">pensar, crear y crecer</span>. No gestionar lo que una máquina puede gestionar mejor.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ECOSISTEMA -->
+  <!-- LA BRECHA QUE ATACAMOS -->
   <section>
     <div class="wrap">
-      <p class="sec-pre rv">Ecosistema operativo</p>
-      <h2 class="sec-title rv">Lo que <span class="gtext">construimos</span></h2>
-      <p class="sec-sub rv">Dos ejes de automatización diseñados para adaptarse a cualquier tipo de negocio, desde la startup hasta la empresa consolidada.</p>
-      <div class="eco-grid">
-        <div class="eco-card rv">
-          <div class="eco-num">01</div>
-          <div class="eco-icon eco-icon-blue">🤖</div>
-          <div class="eco-tag eco-tag-blue">Proyectos a medida</div>
-          <div class="eco-title">Automatización personalizada con IA</div>
-          <p class="eco-desc">Cada negocio tiene sus propios cuellos de botella. Los identificamos, los priorizamos por impacto económico real y los eliminamos. Presupuesto cerrado, sin sorpresas.</p>
-          <div class="eco-examples">
-            <div class="eco-example">Agentes de WhatsApp que responden como un humano, sin descanso</div>
-            <div class="eco-example">Lectura, clasificación y registro automático de facturas en PDF</div>
-            <div class="eco-example">Gestión de citas y listas de espera en clínicas y centros médicos</div>
-            <div class="eco-example">Integración de datos entre plataformas sin intervención manual</div>
+      <div class="brecha-wrap">
+        <p class="sec-pre rv" style="text-align:center;">Por qué ahora</p>
+        <h2 class="brecha-big rv">El momento era este.<br><span class="gtext">No había otro.</span></h2>
+        <div class="brecha-body rv">
+          <p>Durante décadas, automatizar procesos complejos requería proyectos de meses, equipos técnicos internos y presupuestos que solo se podían justificar en grandes empresas. Era la regla implícita del mercado.</p>
+          <p>Eso cambió. <strong>La inteligencia artificial generativa rompió esa barrera de entrada</strong> de forma tan drástica que lo que antes costaba cientos de miles de euros ahora se puede construir en semanas por una fracción del precio, con resultados más precisos y sin depender de infraestructura masiva.</p>
+          <p>Marsof existe en 2026 porque en 2026 era por primera vez posible hacer esto bien. No antes. El timing no es casualidad — es la condición que hizo que este proyecto tuviera sentido.</p>
+        </div>
+        <div class="brecha-divider"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <section>
+    <div class="wrap">
+      <p class="sec-pre rv">Nuestra forma de operar</p>
+      <h2 class="sec-title rv">Tres principios que<br><span class="gtext">no negociamos</span></h2>
+      <div class="principios rv">
+        <div class="principio">
+          <div class="principio-num">01</div>
+          <div>
+            <div class="principio-title">Presupuesto cerrado desde el minuto uno</div>
+            <p class="principio-desc">Cuando llegamos a un acuerdo con un cliente, el precio no cambia. No existen "imprevistos" que inflen la factura final. Si algo es difícil de prever, lo prevemos nosotros antes de firmar.</p>
           </div>
         </div>
-        <div class="eco-card rv">
-          <div class="eco-num">02</div>
-          <div class="eco-icon eco-icon-cyan">💼</div>
-          <div class="eco-tag eco-tag-cyan">SaaS · Disponible ahora</div>
-          <div class="eco-title">Saldea — Cobros automáticos con IA</div>
-          <p class="eco-desc">El primer producto de nuestra cartera. Una plataforma en la nube que detecta facturas vencidas y actúa de forma autónoma: contacta al deudor, escala el tono si es necesario y lo registra todo, sin que muevas un dedo.</p>
-          <div class="eco-examples">
-            <div class="eco-example">Recordatorios automáticos por email y otros canales</div>
-            <div class="eco-example">Escalada progresiva del mensaje según días de retraso</div>
-            <div class="eco-example">100% conforme a la Ley 3/2004 de morosidad comercial</div>
+        <div class="principio">
+          <div class="principio-num">02</div>
+          <div>
+            <div class="principio-title">Acceso directo, sin capas de intermediarios</div>
+            <p class="principio-desc">El cliente habla directamente con quien construye su solución. No existe un account manager que traslada mensajes a un equipo que no conoces. La información no se pierde ni se distorsiona en el camino.</p>
           </div>
-          <div class="eco-price">
-            <span class="eco-price-pill">Pro — 49 €/mes</span>
-            <span class="eco-price-pill">Max — 99 €/mes</span>
+        </div>
+        <div class="principio">
+          <div class="principio-num">03</div>
+          <div>
+            <div class="principio-title">Velocidad como ventaja competitiva real</div>
+            <p class="principio-desc">No tenemos comités de aprobación, ni procesos de revisión de tres semanas. Cuando una idea vale la pena, la ejecutamos. La velocidad de respuesta no es marketing — es la diferencia entre que algo ocurra o no ocurra.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LA GRAN VISIÓN -->
+  <!-- LA APUESTA DE LARGO PLAZO -->
   <section>
     <div class="wrap">
-      <p class="sec-pre rv">La gran visión</p>
-      <h2 class="sec-title rv">Solo la punta <span class="gtext">del iceberg</span></h2>
-      <div class="vision-grid">
-        <div class="vision-text rv">
-          <p>Saldea y los proyectos a medida que hacemos hoy son el primer capítulo de algo considerablemente más grande. No son el destino — son el motor que financia el viaje.</p>
-          <p>Cada suscripción, cada proyecto cerrado, cada empresa que recupera su tiempo gracias a nuestros sistemas contribuye a construir la infraestructura técnica y el músculo financiero necesarios para lo que viene después.</p>
-          <p>El destino final apunta hacia la <strong>intersección entre tecnología, biología y neurociencia</strong>. Herramientas que no solo optimizan empresas, sino que protegen vidas humanas, asisten en momentos críticos de salud y amplían la capacidad cognitiva de las personas. Eso es lo que queremos construir antes de 2035.</p>
+      <p class="sec-pre rv">La apuesta de largo plazo</p>
+      <h2 class="sec-title rv">Por qué el futuro<br>no termina en <span class="gtext">el software</span></h2>
+      <div class="apuesta-inner">
+        <div class="apuesta-text rv">
+          <p>El mercado de la automatización empresarial es enorme y lo aprovecharemos al máximo. Pero hay una convicción más profunda que guía a Marsof: <strong>los problemas más importantes que enfrenta la humanidad no son de gestión ni de eficiencia operativa</strong>. Son biológicos. Son cognitivos. Son humanos en el sentido más literal.</p>
+          <p>Creemos que la tecnología — bien aplicada, con precisión y sin pretensiones — es la herramienta más poderosa que existe para atacar esos problemas. No la única, pero sí la más escalable.</p>
+          <p>Por eso, todo lo que construimos hoy tiene una función doble: resolver un problema real ahora mismo, y financiar la investigación y el desarrollo de algo considerablemente más difícil. <strong>Cada factura que Saldea cobra automáticamente es un paso más en esa dirección.</strong></p>
         </div>
-        <div class="vision-timeline rv">
-          <div class="vt-item">
-            <div class="vt-line"></div>
-            <div class="vt-dot vt-dot-blue">HOY</div>
-            <div class="vt-content">
-              <div class="vt-label">Fase actual</div>
-              <div class="vt-title">IA aplicada a negocios</div>
-              <div class="vt-desc">Saldea y automatización a medida para pymes. Motor de ingresos recurrente que financia las fases siguientes.</div>
+        <div class="apuesta-visual rv">
+          <div class="apuesta-item">
+            <div class="apuesta-icon ai-blue">⚡</div>
+            <div>
+              <div class="apuesta-item-title">Ahora — Automatización inteligente</div>
+              <div class="apuesta-item-desc">Saldea y proyectos a medida. Motor de ingresos recurrente que financia lo que viene.</div>
             </div>
           </div>
-          <div class="vt-item">
-            <div class="vt-line"></div>
-            <div class="vt-dot vt-dot-bio">2030</div>
-            <div class="vt-content">
-              <div class="vt-label">Fase 2</div>
-              <div class="vt-title">Biotecnología</div>
-              <div class="vt-desc">Herramientas digitales para la salud: detección temprana, asistencia en situaciones de vulnerabilidad médica y social.</div>
+          <div class="apuesta-item">
+            <div class="apuesta-icon ai-bio">🧬</div>
+            <div>
+              <div class="apuesta-item-title">Fase 2 — Biotecnología</div>
+              <div class="apuesta-item-desc">Herramientas para asistir a personas en sus momentos de mayor vulnerabilidad médica y física.</div>
             </div>
           </div>
-          <div class="vt-item">
-            <div class="vt-dot vt-dot-neuro">2035</div>
-            <div class="vt-content">
-              <div class="vt-label">Fase 3</div>
-              <div class="vt-title">Neurociencia</div>
-              <div class="vt-desc">Investigación y productos en la frontera entre mente humana y tecnología. Redefinir lo que significa asistir a las personas.</div>
+          <div class="apuesta-item">
+            <div class="apuesta-icon ai-neuro">🧠</div>
+            <div>
+              <div class="apuesta-item-title">Fase 3 — Neurociencia</div>
+              <div class="apuesta-item-desc">Productos que amplían la capacidad humana y redefinen la relación entre tecnología y mente.</div>
             </div>
           </div>
         </div>
@@ -536,81 +486,27 @@
     </div>
   </section>
 
-  <!-- FILOSOFÍA -->
-  <section>
+  <!-- CARTA DEL FUNDADOR / CTA -->
+  <section class="carta-section">
+    <div class="orb carta-orb-1"></div>
+    <div class="orb carta-orb-2"></div>
     <div class="wrap">
-      <div class="open-grid">
-        <div>
-          <p class="sec-pre rv">Cómo trabajamos</p>
-          <h2 class="sec-title rv">Sin comités.<br><span class="gtext">Sin teatro.</span></h2>
-          <div class="open-text rv">
-            <p>Nos alejamos deliberadamente del modelo tradicional de la consultora tecnológica: presentaciones interminables, proyectos que duran años y costes que se multiplican sin control.</p>
-            <p>En Marsof todo el mundo habla directamente con quien toma decisiones. <strong>Si una idea tiene potencial real</strong>, tenemos la capacidad técnica y la determinación para convertirla en un producto funcional en semanas, no en trimestres.</p>
-          </div>
+      <div class="carta-inner">
+        <p class="sec-pre rv">Una última cosa</p>
+        <div class="carta-text rv">
+          <p>Marsof es una empresa joven fundada en Huelva con una idea que, dicha en voz alta, suena más grande de lo que parece: que la tecnología bien hecha puede cambiar la vida de millones de personas.</p>
+          <p>No lo decimos como slogan. Lo decimos porque es la razón por la que esto existe. <strong>Si solo quisiéramos construir un negocio rentable, habría caminos más cómodos que este.</strong></p>
+          <p>Elegimos este porque creemos que el trabajo tiene que importar más allá del balance. Y porque cada empresa que confía en nosotros nos da la oportunidad de demostrar que se puede hacer tecnología de primer nivel desde aquí, con los valores correctos, sin necesidad de imitar a nadie.</p>
+          <p>Si eso te resuena — como cliente, como colaborador, como inversor o simplemente como alguien que piensa parecido — nos encantaría que lo conocieras de primera mano.</p>
         </div>
-        <div class="open-cards rv">
-          <div class="open-card">
-            <div class="open-card-title">Escuchamos de verdad</div>
-            <div class="open-card-desc">Cada conversación con un cliente es una sesión de descubrimiento. No asumimos que sabemos — preguntamos hasta entender el problema real.</div>
-          </div>
-          <div class="open-card">
-            <div class="open-card-title">Ejecutamos rápido</div>
-            <div class="open-card-desc">La velocidad es una ventaja competitiva. Cuando validamos una solución, la implementamos con urgencia, no con burocracia.</div>
-          </div>
-          <div class="open-card">
-            <div class="open-card-title">Medimos el impacto</div>
-            <div class="open-card-desc">Una automatización que no libera tiempo ni recupera dinero no nos interesa. El éxito se mide en horas devueltas y euros recuperados.</div>
-          </div>
+        <div class="carta-firma rv">
+          <span class="carta-firma-nombre">Carlos Gálvez Carrillo</span>
+          <span class="carta-firma-cargo">Fundador, Marsof Technology · Huelva, 2026</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPARATIVA -->
-  <section>
-    <div class="wrap">
-      <p class="sec-pre rv">La diferencia real</p>
-      <h2 class="sec-title rv">Lo de siempre <span class="gtext">vs</span> Marsof</h2>
-      <table class="compare-table rv">
-        <thead>
-          <tr>
-            <th>El enfoque habitual</th>
-            <th>Con Marsof Technology</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Proyectos de meses con presupuestos abiertos que crecen solos.</td>
-            <td>Presupuesto cerrado desde el inicio, entrega en semanas.</td>
-          </tr>
-          <tr>
-            <td>IA como herramienta para reducir plantilla y recortar costes.</td>
-            <td>IA como amplificador: el mismo equipo hace diez veces más.</td>
-          </tr>
-          <tr>
-            <td>Software genérico que obliga a adaptar el negocio al sistema.</td>
-            <td>Automatización construida sobre cómo funciona tu negocio, no al revés.</td>
-          </tr>
-          <tr>
-            <td>Soporte técnico por tickets con tiempos de respuesta de 72h.</td>
-            <td>Acceso directo a quien construyó la solución, sin intermediarios.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-section">
-    <div class="orb cta-orb-1"></div>
-    <div class="orb cta-orb-2"></div>
-    <div class="cta-inner">
-      <p class="cta-quote rv">Hoy recuperas tiempo. Mañana escalas. Pasado mañana, cambiamos el mundo juntos.</p>
-      <h2 class="cta-big rv">Esto acaba de</h2>
-      <h2 class="cta-sub rv"><span class="gtext">empezar.</span></h2>
-      <div class="cta-btns rv">
-        <a href="/saldea" class="btn btn-fill btn-lg">Ver Saldea <span class="arr">→</span></a>
-        <a href="mailto:carlos@marsof.es" class="btn btn-aurora btn-lg">Habla con nosotros <span class="arr">→</span></a>
+        <div class="carta-btns rv">
+          <a href="/saldea" class="btn btn-fill btn-lg">Ver nuestros productos <span class="arr">→</span></a>
+          <a href="mailto:carlos@marsof.es" class="btn btn-aurora btn-lg">Habla con nosotros <span class="arr">→</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -621,7 +517,7 @@
       <div class="foot-grid">
         <div class="foot-brand">
           <img src="/assets/logo_transparent.png" alt="Marsof Technology" style="height:52px;width:auto;">
-          <p>Automatización inteligente para pymes españolas. Hoy IA, mañana neurociencia y biotecnología.</p>
+          <p>Automatización inteligente para pymes españolas. Hoy software, mañana biotecnología y neurociencia.</p>
         </div>
         <div class="foot-col">
           <h5>Empresa</h5>
@@ -641,7 +537,7 @@
       </div>
       <div class="foot-bottom">
         <span class="foot-copy">© 2026 Marsof Technology · Huelva, España.</span>
-        <span class="foot-copy">Esto acaba de empezar.</span>
+        <span class="foot-copy">Tecnología con propósito.</span>
       </div>
     </div>
   </footer>
@@ -651,12 +547,10 @@
 <script>
   var nav = document.getElementById('nav');
 
-  // NAV SCROLL
   function chkNav(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', chkNav, {passive:true});
   chkNav();
 
-  // HAMBURGER
   var navToggle = document.getElementById('navToggle');
   if(navToggle){
     navToggle.addEventListener('click', function(){
@@ -668,7 +562,6 @@
     });
   }
 
-  // REVEAL ON SCROLL
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
