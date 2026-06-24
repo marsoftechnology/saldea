@@ -290,7 +290,7 @@ const articulos = [
 
 export default function BlogIndex() {
   return (
-    <div className="min-h-screen bg-[#0a0a0b] text-zinc-100">
+    <div className="min-h-screen bg-transparent text-zinc-100">
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -320,7 +320,7 @@ export default function BlogIndex() {
             <Link
               key={a.slug}
               href={`/blog/${a.slug}`}
-              className="block border border-white/10 rounded-xl p-8 hover:border-sky-500/40 transition-all"
+              className="block border border-white/10 rounded-xl p-8 hover:border-sky-500/40 transition-all bg-zinc-900/40 backdrop-blur-sm hover:bg-zinc-900/60"
             >
               <div className="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">
                 {a.categoria}
@@ -336,7 +336,7 @@ export default function BlogIndex() {
           ))}
         </div>
 
-        <div className="mt-16 bg-zinc-900/30 border border-white/10 rounded-2xl p-8 text-center">
+        <div className="mt-16 bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">¿Quieres dejar de perseguir cobros?</h3>
           <p className="text-zinc-400 mb-5">
             Saldea automatiza los recordatorios con IA. Pruébalo 30 días gratis, sin compromiso.
