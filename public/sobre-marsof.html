@@ -19,7 +19,7 @@
   <meta name="twitter:description" content="La historia, los valores y la misión que mueven a Marsof Technology.">
   <meta name="twitter:image" content="https://www.marsof.es/og-image.png">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Marsof Technology","url":"https://www.marsof.es","logo":"https://www.marsof.es/og-image.png","description":"Firma tecnológica especializada en automatización inteligente para pymes españolas.","foundingDate":"2026","founders":[{"@type":"Person","name":"Carlos Gálvez Carrillo","jobTitle":"Fundador y CEO"}],"address":{"@type":"PostalAddress","addressLocality":"Huelva","addressCountry":"ES"}}
+  {"@context":"https://schema.org","@type":"Organization","name":"Marsof Technology","url":"https://www.marsof.es","logo":"https://www.marsof.es/og-image.png","description":"Firma tecnológica especializada en automatización inteligente para pymes españolas.","foundingDate":"2026","founders":[{"@type":"Person","name":"Carlos Gálvez Carrillo","jobTitle":"Fundador y CEO"}],"address":{"@type":"PostalAddress","addressCountry":"ES"}}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,13 +66,15 @@
   .arr { display:inline-flex; align-items:center; transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
   .btn:hover .arr { transform:translateX(5px) scale(1.15); }
   .btn:active { transform:scale(.95) translateY(2px)!important; transition:transform .1s ease!important; }
-  .btn-fill { background:var(--blue); color:#fff; box-shadow:0 4px 20px rgba(61,98,255,.3); }
+  .btn-fill { background:linear-gradient(135deg,var(--blue),#2a4ee0); color:#fff; box-shadow:0 4px 24px rgba(61,98,255,.35); }
   .btn-fill::after { background:rgba(255,255,255,1); }
-  .btn-fill:hover { background:var(--blue-l); color:#fff; transform:translateY(-4px) scale(1.03); box-shadow:0 20px 52px rgba(61,98,255,.5); }
-  .btn-aurora { background:rgba(255,255,255,.06); color:var(--white); border:1px solid rgba(255,255,255,.12); }
-  .btn-aurora:hover { transform:translateY(-4px) scale(1.03); box-shadow:0 12px 40px rgba(61,98,255,.2); }
+  .btn-fill::before { content:''; position:absolute; top:0; left:-110%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent); transform:skewX(-18deg); z-index:1; pointer-events:none; transition:left 0s; }
+  .btn-fill:hover::before { left:150%; transition:left .55s ease; }
+  .btn-fill:hover { background:linear-gradient(135deg,var(--blue-l),var(--blue)); color:#fff; transform:translateY(-5px) scale(1.03); box-shadow:0 22px 56px rgba(61,98,255,.55), 0 0 0 1px rgba(61,98,255,.3); }
+  .btn-aurora { background:rgba(255,255,255,.05); color:var(--white); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(8px); }
+  .btn-aurora:hover { transform:translateY(-5px) scale(1.03); box-shadow:0 16px 44px rgba(61,98,255,.22), 0 0 0 1px rgba(61,98,255,.2); border-color:rgba(61,98,255,.35); }
   .btn-sm { padding:9px 20px; font-size:.82rem; }
-  .btn-lg { padding:16px 36px; font-size:1rem; }
+  .btn-lg { padding:17px 40px; font-size:1rem; letter-spacing:.3px; }
 
   /* NAV */
   nav {
@@ -173,11 +175,13 @@
   /* MANIFIESTO */
   .manifiesto-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:64px; border-radius:24px; overflow:hidden; }
   .belief-card {
-    background:var(--card); border:1px solid var(--border);
+    background:rgba(5,5,22,.88); border:1px solid rgba(255,255,255,.07);
     padding:52px 44px; position:relative; overflow:hidden;
-    transition:background .3s;
+    transition:background .4s, border-color .4s, box-shadow .4s, transform .4s cubic-bezier(.23,1,.32,1);
   }
-  .belief-card:hover { background:rgba(255,255,255,.055); }
+  .belief-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(61,98,255,.07) 0%,transparent 55%); opacity:0; transition:opacity .4s; pointer-events:none; }
+  .belief-card:hover { background:rgba(10,10,38,.95); border-color:rgba(61,98,255,.32); box-shadow:0 14px 52px rgba(61,98,255,.13), inset 0 1px 0 rgba(255,255,255,.07); transform:translateY(-4px); }
+  .belief-card:hover::before { opacity:1; }
   .belief-num {
     font-family:'Space Grotesk',sans-serif; font-size:5rem; font-weight:800;
     letter-spacing:-4px; opacity:.04; position:absolute; top:16px; left:28px; line-height:1;
@@ -206,10 +210,13 @@
     display:grid; grid-template-columns:80px 1fr;
     align-items:start; gap:36px; padding:44px 48px;
     border-bottom:1px solid var(--border);
-    transition:background .3s;
+    position:relative; overflow:hidden;
+    transition:background .35s, padding-left .3s;
   }
+  .principio::before { content:''; position:absolute; left:0; top:28px; bottom:28px; width:2px; border-radius:2px; background:linear-gradient(to bottom,var(--cyan),transparent); opacity:0; transition:opacity .35s; }
   .principio:last-child { border-bottom:none; }
-  .principio:hover { background:rgba(255,255,255,.02); }
+  .principio:hover { background:rgba(255,255,255,.025); }
+  .principio:hover::before { opacity:1; }
   .principio-num {
     font-family:'Space Grotesk',sans-serif; font-size:3.5rem; font-weight:800;
     letter-spacing:-3px; line-height:1; color:var(--border);
@@ -230,7 +237,7 @@
     display:grid; grid-template-columns:56px 1fr; gap:20px; align-items:center;
     transition:border-color .3s, transform .3s;
   }
-  .apuesta-item:hover { border-color:rgba(255,255,255,.1); transform:translateX(6px); }
+  .apuesta-item:hover { border-color:rgba(61,98,255,.28); transform:translateX(8px); box-shadow:0 8px 36px rgba(61,98,255,.1); }
   .apuesta-icon { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
   .ai-blue  { background:rgba(61,98,255,.1); }
   .ai-bio   { background:rgba(0,232,122,.08); }
@@ -328,7 +335,7 @@
     <div class="orb hero-orb-2"></div>
     <div class="orb hero-orb-3"></div>
     <div class="hero-inner">
-      <div class="pre-tag">La empresa · La misión · El porqué</div>
+      <div class="pre-tag">Marsof Technology · Fundada 2026</div>
       <h1 class="hero-title">El <span class="gtext">corazón</span><br>de Marsof</h1>
       <p class="hero-lead">
         Los productos los puedes ver en la home. Esta página es otra cosa: es la historia de por qué existe Marsof, qué creemos y a dónde vamos cuando nadie está mirando.
@@ -341,13 +348,13 @@
     <div class="ticker">
       <span class="ticker-item"><span class="ticker-dot"></span>Fundada con convicción</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Sin inversores externos</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Huelva, España</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>España · 2026</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Una empresa con alma</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Tecnología con propósito</span>
       <span class="ticker-item"><span class="ticker-dot"></span>2026 — ∞</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Fundada con convicción</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Sin inversores externos</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Huelva, España</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>España · 2026</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Una empresa con alma</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Tecnología con propósito</span>
       <span class="ticker-item"><span class="ticker-dot"></span>2026 — ∞</span>
@@ -494,14 +501,14 @@
       <div class="carta-inner">
         <p class="sec-pre rv">Una última cosa</p>
         <div class="carta-text rv">
-          <p>Marsof es una empresa joven fundada en Huelva con una idea que, dicha en voz alta, suena más grande de lo que parece: que la tecnología bien hecha puede cambiar la vida de millones de personas.</p>
+          <p>Marsof es una empresa joven con una idea que, dicha en voz alta, suena más grande de lo que parece: que la tecnología bien hecha puede cambiar la vida de millones de personas.</p>
           <p>No lo decimos como slogan. Lo decimos porque es la razón por la que esto existe. <strong>Si solo quisiéramos construir un negocio rentable, habría caminos más cómodos que este.</strong></p>
           <p>Elegimos este porque creemos que el trabajo tiene que importar más allá del balance. Y porque cada empresa que confía en nosotros nos da la oportunidad de demostrar que se puede hacer tecnología de primer nivel desde aquí, con los valores correctos, sin necesidad de imitar a nadie.</p>
           <p>Si eso te resuena — como cliente, como colaborador, como inversor o simplemente como alguien que piensa parecido — nos encantaría que lo conocieras de primera mano.</p>
         </div>
         <div class="carta-firma rv">
           <span class="carta-firma-nombre">Carlos Gálvez Carrillo</span>
-          <span class="carta-firma-cargo">Fundador, Marsof Technology · Huelva, 2026</span>
+          <span class="carta-firma-cargo">Fundador y CEO, Marsof Technology · 2026</span>
         </div>
         <div class="carta-btns rv">
           <a href="/saldea" class="btn btn-fill btn-lg">Ver nuestros productos <span class="arr">→</span></a>
@@ -536,7 +543,7 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span class="foot-copy">© 2026 Marsof Technology · Huelva, España.</span>
+        <span class="foot-copy">© 2026 Marsof Technology · España.</span>
         <span class="foot-copy">Tecnología con propósito.</span>
       </div>
     </div>
@@ -568,6 +575,21 @@
     });
   }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){ obs.observe(el); });
+
+  // MAGNETIC BUTTONS — follow cursor on large CTAs
+  document.querySelectorAll('.btn-lg').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var x = (e.clientX - r.left - r.width  / 2) * 0.24;
+      var y = (e.clientY - r.top  - r.height / 2) * 0.28;
+      btn.style.transform  = 'translate(' + x + 'px,' + y + 'px) scale(1.04)';
+      btn.style.transition = 'transform .12s ease';
+    });
+    btn.addEventListener('mouseleave', function(){
+      btn.style.transform  = '';
+      btn.style.transition = 'transform .55s cubic-bezier(.23,1,.32,1)';
+    });
+  });
 </script>
 
 </body>
