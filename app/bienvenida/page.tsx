@@ -300,51 +300,61 @@ export default function BienvenidaPage() {
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-zinc-200 mb-1">🖼️ Logo de tu empresa</h3>
             <p className="text-xs text-zinc-500 mb-4">PNG, JPG o WEBP — máx. 2 MB</p>
-            <div className="flex items-center gap-4">
-              {logoUrl
-                // eslint-disable-next-line @next/next/no-img-element
-                ? <img src={logoUrl} alt="Logo" className="h-16 max-w-[120px] object-contain border border-white/10 rounded-lg p-2 bg-zinc-900/40" />
-                : <div className="w-16 h-16 border-2 border-dashed border-white/10 rounded-lg flex items-center justify-center text-zinc-600 text-xs text-center">Sin logo</div>
-              }
-              <div className="space-y-2">
-                <label className="inline-block bg-sky-500/10 border border-sky-500/30 text-sky-300 px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer hover:bg-sky-500/20 transition-colors">
-                  {subiendoLogo ? 'Subiendo...' : logoUrl ? 'Cambiar' : 'Subir logo'}
-                  <input type="file" accept="image/png,image/jpeg,image/webp" onChange={subirLogo} disabled={subiendoLogo} className="hidden" />
-                </label>
-                {logoUrl && (
-                  <button type="button" onClick={() => setLogoUrl(null)} className="block text-xs text-zinc-500 hover:text-rose-400 transition-colors">
-                    Quitar logo
-                  </button>
-                )}
-              </div>
-            </div>
+            <label className={`block w-full rounded-xl border-2 border-dashed cursor-pointer transition-colors ${subiendoLogo ? 'opacity-60 cursor-not-allowed' : 'hover:border-sky-500/40 hover:bg-sky-500/[0.03]'} ${logoUrl ? 'border-white/10 p-4' : 'border-white/10 p-10'}`}>
+              {logoUrl ? (
+                <div className="flex flex-col items-center gap-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={logoUrl} alt="Logo" className="h-24 max-w-[220px] object-contain" />
+                  <span className="text-xs text-sky-400 font-medium">{subiendoLogo ? 'Subiendo...' : 'Clic para cambiar logo'}</span>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center gap-3 text-center">
+                  <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-2xl">
+                    {subiendoLogo ? '⏳' : '⬆️'}
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-zinc-300">{subiendoLogo ? 'Subiendo...' : 'Haz clic para subir tu logo'}</p>
+                    <p className="text-xs text-zinc-500 mt-1">PNG, JPG o WEBP — máx. 2 MB</p>
+                  </div>
+                </div>
+              )}
+              <input type="file" accept="image/png,image/jpeg,image/webp" onChange={subirLogo} disabled={subiendoLogo} className="hidden" />
+            </label>
+            {logoUrl && (
+              <button type="button" onClick={() => setLogoUrl(null)} className="mt-2 text-xs text-zinc-500 hover:text-rose-400 transition-colors w-full text-center">
+                Quitar logo
+              </button>
+            )}
           </div>
 
           {/* Color */}
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-zinc-200 mb-1">🎨 Color principal</h3>
             <p className="text-xs text-zinc-500 mb-4">Se usará en el botón de pago de los emails y en los detalles del PDF</p>
-            <div className="flex items-center gap-4 mb-3">
+            <div className="flex items-center gap-4 mb-4">
               <input
                 type="color"
                 value={colorPrimario}
                 onChange={e => setColorPrimario(e.target.value)}
-                className="w-14 h-14 rounded-lg border border-white/10 cursor-pointer"
+                className="w-12 h-12 rounded-lg border border-white/10 cursor-pointer shrink-0"
               />
-              <div>
-                <input
-                  type="text"
-                  value={colorPrimario}
-                  onChange={e => setColorPrimario(e.target.value)}
-                  placeholder="#0284c7"
-                  className="w-28 px-3 py-2 bg-zinc-900/60 border border-white/10 rounded-lg text-sm text-zinc-100 font-mono focus:outline-none focus:ring-2 focus:ring-sky-500/40"
-                />
+              <input
+                type="text"
+                value={colorPrimario}
+                onChange={e => setColorPrimario(e.target.value)}
+                placeholder="#0284c7"
+                className="w-28 px-3 py-2 bg-zinc-900/60 border border-white/10 rounded-lg text-sm text-zinc-100 font-mono focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+              />
+              <div className="flex-1 flex justify-end">
+                <div className="px-4 py-2 rounded-lg text-white text-sm font-semibold" style={{ backgroundColor: colorPrimario }}>
+                  Pagar factura →
+                </div>
               </div>
             </div>
             <div className="flex gap-2 flex-wrap">
               {['#0284c7','#2563eb','#7c3aed','#dc2626','#ea580c','#059669','#0891b2'].map(c => (
                 <button key={c} type="button" onClick={() => setColorPrimario(c)}
-                  className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${colorPrimario === c ? 'border-white scale-110' : 'border-white/10'}`}
+                  className={`w-9 h-9 rounded-full border-2 transition-transform hover:scale-110 ${colorPrimario === c ? 'border-white scale-110' : 'border-transparent'}`}
                   style={{ backgroundColor: c }} />
               ))}
             </div>
