@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
+import ThemeToggleIcon from '@/app/components/ThemeToggleIcon'
 
 type Patron = 'agresivo' | 'normal' | 'suave'
 type TonoPreset = 'cordial' | 'firme' | 'contundente' | 'personalizado'
@@ -1133,16 +1134,19 @@ export default function BienvenidaPage() {
           <span className="text-lg font-bold bg-gradient-to-r from-sky-300 to-sky-500 bg-clip-text text-transparent">Saldea</span>
           <span className="text-[10px] text-zinc-600 uppercase tracking-wider">Configuración inicial</span>
         </div>
-        <a
-          href="/dashboard"
-          onClick={e => {
-            e.preventDefault()
-            completarOnboarding()
-          }}
-          className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
-        >
-          Saltar todo y ir al dashboard →
-        </a>
+        <div className="flex items-center gap-3">
+          <ThemeToggleIcon />
+          <a
+            href="/dashboard"
+            onClick={e => {
+              e.preventDefault()
+              completarOnboarding()
+            }}
+            className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          >
+            Saltar todo y ir al dashboard →
+          </a>
+        </div>
       </header>
 
       {/* Progress bar */}
