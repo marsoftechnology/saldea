@@ -59,7 +59,7 @@ export async function GET(
   // Info de la org (nombre empresa + logo)
   const { data: cfg } = await supabase
     .from('configuraciones_usuario')
-    .select('nombre_empresa, logo_url, color_primario')
+    .select('nombre_empresa, logo_url, color_primario, iban, titular_cuenta')
     .eq('org_id', cliente.org_id)
     .maybeSingle()
 
@@ -72,6 +72,8 @@ export async function GET(
       nombreEmpresa: cfg?.nombre_empresa ?? null,
       logoUrl: cfg?.logo_url ?? null,
       colorPrimario: cfg?.color_primario ?? '#0284c7',
+      iban: cfg?.iban ?? null,
+      titularCuenta: cfg?.titular_cuenta ?? null,
     },
     facturas: facturasConPendiente,
     totalPendiente: facturasConPendiente.reduce((s, f) => s + f.pendiente, 0),

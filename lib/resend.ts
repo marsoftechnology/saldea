@@ -37,12 +37,15 @@ export async function enviarEmail(params: {
   idioma?: Idioma | null
   adjuntos?: Array<{ nombre: string; contenido: Uint8Array | Buffer; tipo?: string }>
   linkPago?: string | null
+  iban?: string | null
+  titularCuenta?: string | null
+  numeroFactura?: string | null
   // Plan Max: Resend API key y dirección de envío propios de la org
   resendApiKey?: string | null
   fromAddress?: string | null
 }): Promise<boolean> {
   try {
-    const { para, asunto, cuerpo, desde, nombreEmpresa, facturaId, logoUrl, colorPrimario, idioma, adjuntos, linkPago, resendApiKey, fromAddress } = params
+    const { para, asunto, cuerpo, desde, nombreEmpresa, facturaId, logoUrl, colorPrimario, idioma, adjuntos, linkPago, iban, titularCuenta, numeroFactura, resendApiKey, fromAddress } = params
     const color = colorPrimario && /^#[0-9a-fA-F]{6}$/.test(colorPrimario) ? colorPrimario : '#0284c7'
     const i = (idioma && idioma in T ? idioma : 'es') as Idioma
     const t = T[i]
@@ -63,6 +66,15 @@ export async function enviarEmail(params: {
           ${t.botonPagar}
         </a>
         <p style="color: #999; font-size: 11px; margin-top: 8px;">${t.botonPagarNota}</p>
+      </div>
+    ` : ''
+
+    const bloqueIban = iban ? `
+      <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 16px; margin: 20px 0;">
+        <p style="font-size: 11px; color: #888; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.05em;">Transferencia bancaria</p>
+        <p style="font-size: 15px; font-family: monospace; color: #333; margin: 0; letter-spacing: 0.08em;">${escaparHtml(iban)}</p>
+        ${titularCuenta ? `<p style="font-size: 12px; color: #666; margin: 6px 0 0;">Titular: ${escaparHtml(titularCuenta)}</p>` : ''}
+        ${numeroFactura ? `<p style="font-size: 11px; color: #999; margin: 4px 0 0;">Concepto: Factura ${escaparHtml(numeroFactura)}</p>` : ''}
       </div>
     ` : ''
 
@@ -103,6 +115,7 @@ export async function enviarEmail(params: {
           ${logoHTML}
           ${cuerpo.replace(/\n/g, '<br/>')}
           ${botonPagar}
+          ${bloqueIban}
           ${botonPago}
           <hr style="margin-top: 40px; border: none; border-top: 1px solid #eee;" />
           <p style="color: #999; font-size: 12px; margin-top: 20px;">

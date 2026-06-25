@@ -178,6 +178,16 @@ export async function PATCH(req: NextRequest) {
     campos.email_from_nombre = typeof v === 'string' && v.trim() ? v.trim() : null
   }
 
+  // ── Transferencia bancaria (IBAN) ──────────────────────────────────────────
+  if ('iban' in body) {
+    const v = body.iban
+    campos.iban = typeof v === 'string' && v.trim() ? v.trim().toUpperCase().replace(/\s/g, '') : null
+  }
+  if ('titular_cuenta' in body) {
+    const v = body.titular_cuenta
+    campos.titular_cuenta = typeof v === 'string' && v.trim() ? v.trim() : null
+  }
+
   if (Object.keys(campos).length === 0) {
     return NextResponse.json({ error: 'No hay cambios que guardar' }, { status: 400 })
   }

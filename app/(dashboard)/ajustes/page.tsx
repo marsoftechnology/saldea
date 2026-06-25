@@ -57,6 +57,9 @@ export default function AjustesPage() {
   const [resendApiKey, setResendApiKey] = useState('')
   const [emailFromDominio, setEmailFromDominio] = useState('')
   const [emailFromNombre, setEmailFromNombre] = useState('')
+  // Transferencia bancaria
+  const [iban, setIban] = useState('')
+  const [titularCuenta, setTitularCuenta] = useState('')
   // Plan Max: uso de burofaxes
   const [burofaxUsados, setBurofaxUsados] = useState(0)
   const [burofaxLimite, setBurofaxLimite] = useState(3)
@@ -141,6 +144,8 @@ export default function AjustesPage() {
       if (data.configuracion?.resend_api_key) setResendApiKey(data.configuracion.resend_api_key)
       if (data.configuracion?.email_from_dominio) setEmailFromDominio(data.configuracion.email_from_dominio)
       if (data.configuracion?.email_from_nombre) setEmailFromNombre(data.configuracion.email_from_nombre)
+      if (data.configuracion?.iban) setIban(data.configuracion.iban)
+      if (data.configuracion?.titular_cuenta) setTitularCuenta(data.configuracion.titular_cuenta)
       // Cargar uso de burofax si plan Max
       if (data.configuracion?.plan === 'max') {
         try {
@@ -229,6 +234,8 @@ export default function AjustesPage() {
             resend_api_key: resendApiKey || null,
             email_from_dominio: emailFromDominio || null,
             email_from_nombre: emailFromNombre || null,
+            iban: iban || null,
+            titular_cuenta: titularCuenta || null,
           }),
         }),
       ])
@@ -878,6 +885,53 @@ export default function AjustesPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </details>
+
+        {/* Datos bancarios — IBAN para transferencia */}
+        <details className="bg-zinc-900/40 border border-white/10 rounded-xl overflow-hidden group">
+          <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-zinc-900/30 transition-colors">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🏦</span>
+              <div>
+                <h2 className="text-base font-semibold text-zinc-100">Datos bancarios</h2>
+                <p className="text-xs text-zinc-500">IBAN para que tus clientes puedan pagarte por transferencia</p>
+              </div>
+            </div>
+            <span className="text-zinc-500 text-sm transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <div className="px-5 pb-5 pt-1 space-y-4">
+            <p className="text-xs text-zinc-400 leading-relaxed">
+              Si lo rellenas, tus clientes verán los datos de transferencia en el portal de facturas y en los emails de recordatorio, junto al botón de pago con tarjeta (si tienes Stripe conectado).
+            </p>
+            <div>
+              <label className="block text-sm font-medium text-zinc-300 mb-1">IBAN</label>
+              <input
+                type="text"
+                value={iban}
+                onChange={e => setIban(e.target.value.toUpperCase().replace(/\s/g, ''))}
+                placeholder="ES91 2100 0418 4502 0005 1332"
+                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 font-mono"
+              />
+              <p className="text-xs text-zinc-500 mt-1">Se guarda sin espacios y en mayúsculas. Empieza por el código de país (ej. ES, DE, FR...).</p>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-300 mb-1">Titular de la cuenta</label>
+              <input
+                type="text"
+                value={titularCuenta}
+                onChange={e => setTitularCuenta(e.target.value)}
+                placeholder="Tu Empresa S.L."
+                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+              />
+            </div>
+            {iban && (
+              <div className="bg-zinc-900/60 border border-white/10 rounded-lg p-4">
+                <p className="text-[11px] text-zinc-500 uppercase tracking-wide mb-2">Vista previa en el portal del cliente</p>
+                <p className="font-mono text-sm text-zinc-200">{iban}</p>
+                {titularCuenta && <p className="text-xs text-zinc-400 mt-1">Titular: {titularCuenta}</p>}
+              </div>
+            )}
           </div>
         </details>
 

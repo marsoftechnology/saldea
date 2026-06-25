@@ -15,7 +15,7 @@ interface FacturaPortal {
 
 interface PortalData {
   cliente: { nombre: string; empresa: string | null }
-  org: { nombreEmpresa: string | null; logoUrl: string | null; colorPrimario: string }
+  org: { nombreEmpresa: string | null; logoUrl: string | null; colorPrimario: string; iban: string | null; titularCuenta: string | null }
   facturas: FacturaPortal[]
   totalPendiente: number
 }
@@ -158,7 +158,7 @@ export default async function PortalClientePage(
                         className="flex-1 text-center text-white text-sm font-semibold px-4 py-2 rounded-lg transition-opacity hover:opacity-90"
                         style={{ backgroundColor: color }}
                       >
-                        💳 Pagar ahora
+                        💳 Pagar con tarjeta
                       </a>
                     )}
                     <a
@@ -168,6 +168,17 @@ export default async function PortalClientePage(
                       ✓ Ya he pagado
                     </a>
                   </div>
+                  {/* Datos para transferencia bancaria */}
+                  {org.iban && (
+                    <div className="mt-3 bg-zinc-800/60 border border-white/10 rounded-lg px-4 py-3">
+                      <p className="text-[11px] text-zinc-500 uppercase tracking-wide mb-1.5">Transferencia bancaria</p>
+                      <p className="font-mono text-sm text-zinc-200 tracking-wider">{org.iban}</p>
+                      {org.titularCuenta && (
+                        <p className="text-xs text-zinc-400 mt-1">Titular: {org.titularCuenta}</p>
+                      )}
+                      <p className="text-[11px] text-zinc-500 mt-1.5">Concepto: Factura {f.numero}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
