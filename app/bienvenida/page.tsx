@@ -63,6 +63,10 @@ export default function BienvenidaPage() {
   const [softwareConectado, setSoftwareConectado] = useState(false)
   const [msgSoftware, setMsgSoftware] = useState('')
 
+  // Paso 4 — IBAN
+  const [iban, setIban] = useState('')
+  const [titularCuenta, setTitularCuenta] = useState('')
+
   // Paso 5 — Stripe (conectado externamente)
   const [stripeConectado, setStripeConectado] = useState(false)
 
@@ -622,60 +626,93 @@ export default function BienvenidaPage() {
   }
 
   function renderPaso4() {
+    async function guardarYAvanzar() {
+      if (iban.trim()) {
+        await fetch('/api/configuracion', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            iban: iban.trim().toUpperCase().replace(/\s/g, ''),
+            titular_cuenta: titularCuenta.trim() || null,
+          }),
+        })
+      }
+      avanzar()
+    }
+
     return (
       <>
         <div className="text-center mb-8">
           <div className="text-5xl mb-4">💳</div>
-          <h1 className="text-2xl font-bold text-zinc-100">Cobros online con Stripe</h1>
-          <p className="text-zinc-400 mt-2">Tus clientes podrán pagar directamente con tarjeta desde el email de recordatorio. Sin necesidad de que te escriban ni esperes transferencias.</p>
+          <h1 className="text-2xl font-bold text-zinc-100">Métodos de cobro</h1>
+          <p className="text-zinc-400 mt-2">Configura cómo quieres que tus clientes te paguen. Puedes usar uno o los dos a la vez.</p>
         </div>
 
         <div className="space-y-4 mb-8">
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { icono: '⚡', titulo: 'Pago inmediato', desc: 'El cliente paga en el momento con tarjeta o banco' },
-              { icono: '🔗', titulo: 'Link de pago', desc: 'Cada factura tiene su URL única de pago' },
-              { icono: '🤖', titulo: 'Automático', desc: 'Saldea marca la factura como cobrada solo' },
-              { icono: '💰', titulo: 'Sin comisión extra', desc: 'Solo las fees estándar de Stripe (~1.4% + 0.25€)' },
-            ].map(b => (
-              <div key={b.titulo} className="bg-zinc-900/40 border border-white/10 rounded-xl p-4">
-                <div className="text-2xl mb-2">{b.icono}</div>
-                <p className="text-sm font-semibold text-zinc-200">{b.titulo}</p>
-                <p className="text-xs text-zinc-400 mt-1">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-
+          {/* Stripe */}
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5">
-            <p className="text-sm font-semibold text-zinc-200 mb-3">Cómo conectar Stripe:</p>
-            <ol className="space-y-2 text-sm text-zinc-400">
-              <li className="flex gap-2"><span className="text-sky-400 font-bold shrink-0">1.</span>Pulsa el botón de abajo — serás redirigido a Stripe</li>
-              <li className="flex gap-2"><span className="text-sky-400 font-bold shrink-0">2.</span>Inicia sesión en Stripe (o crea cuenta gratuita en segundos)</li>
-              <li className="flex gap-2"><span className="text-sky-400 font-bold shrink-0">3.</span>Autoriza a Saldea para crear links de pago en tu cuenta</li>
-              <li className="flex gap-2"><span className="text-sky-400 font-bold shrink-0">4.</span>Listo — tus próximas facturas tendrán botón de pago automático</li>
-            </ol>
-
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-lg">🔗</span>
+              <p className="text-sm font-semibold text-zinc-200">Pago con tarjeta — Stripe</p>
+              {stripeConectado && <span className="ml-auto text-xs text-emerald-400 font-medium">✓ Conectado</span>}
+            </div>
+            <p className="text-xs text-zinc-400 mb-3">Tus clientes pagan con tarjeta desde el email. Saldea marca la factura como cobrada automáticamente.</p>
             {!stripeConectado ? (
               <a
                 href="/api/stripe-connect/start"
                 onClick={() => setStripeConectado(true)}
-                className="mt-4 inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
+                className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm"
               >
-                🔗 Conectar mi cuenta de Stripe
+                🔗 Conectar Stripe
               </a>
             ) : (
-              <div className="mt-4 flex items-center gap-2 text-emerald-400 text-sm font-medium">
-                <span>✓</span>
-                <span>Stripe conectado — las facturas tendrán botón de pago</span>
-              </div>
+              <p className="text-xs text-emerald-400">Las facturas tendrán botón de pago automático</p>
             )}
+          </div>
+
+          {/* Separador */}
+          <div className="flex items-center gap-3">
+            <div className="flex-1 h-px bg-white/10" />
+            <span className="text-xs text-zinc-500">y / o</span>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
+
+          {/* IBAN */}
+          <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-lg">🏦</span>
+              <p className="text-sm font-semibold text-zinc-200">Transferencia bancaria — IBAN</p>
+            </div>
+            <p className="text-xs text-zinc-400 mb-4">Tus clientes verán tu IBAN en el portal y en los emails para poder hacer una transferencia.</p>
+            <div className="space-y-3">
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1">IBAN <span className="text-zinc-600">(opcional)</span></label>
+                <input
+                  type="text"
+                  value={iban}
+                  onChange={e => setIban(e.target.value.toUpperCase().replace(/\s/g, ''))}
+                  placeholder="ES91210004184502000513..."
+                  className="w-full px-3 py-2.5 bg-zinc-900/60 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 font-mono"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1">Titular de la cuenta <span className="text-zinc-600">(opcional)</span></label>
+                <input
+                  type="text"
+                  value={titularCuenta}
+                  onChange={e => setTitularCuenta(e.target.value)}
+                  placeholder="Tu Empresa S.L."
+                  className="w-full px-3 py-2.5 bg-zinc-900/60 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="flex gap-3">
           <button
             type="button"
-            onClick={avanzar}
+            onClick={guardarYAvanzar}
             className="flex-1 bg-sky-500 hover:bg-sky-400 text-white font-semibold py-3 px-6 rounded-xl transition-colors"
           >
             Continuar →
