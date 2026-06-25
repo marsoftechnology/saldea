@@ -16,7 +16,7 @@ export const LIMITES_PRO = {
 
 export const LIMITES_MAX = {
   miembrosEquipo: 25, // Max: hasta 25 miembros + burofax + dominio propio.
-  burofaxMes: 3,      // 3 burofax/mes incluidos, a partir del 4º son 6€/ud.
+  // burofax: pago por uso — 6€/ud vía Stripe + lleida.net, sin límite mensual.
 } as const
 
 function getServiceClient(): SupabaseClient {

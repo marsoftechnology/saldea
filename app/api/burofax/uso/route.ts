@@ -1,15 +1,13 @@
 import { NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { getActiveOrg } from '@/lib/auth-org'
-import { LIMITES_MAX } from '@/lib/plan'
 
 export async function GET() {
   const org = await getActiveOrg()
   if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
   const supabase = await createServerSupabaseClient()
-
-  const mesActual = new Date().toISOString().slice(0, 7) // YYYY-MM
+  const mesActual = new Date().toISOString().slice(0, 7)
 
   const { count } = await supabase
     .from('burofaxes')
@@ -18,9 +16,5 @@ export async function GET() {
     .eq('mes', mesActual)
     .eq('estado', 'enviado')
 
-  return NextResponse.json({
-    usados: count ?? 0,
-    limite: LIMITES_MAX.burofaxMes,
-    mes: mesActual,
-  })
+  return NextResponse.json({ usados: count ?? 0, mes: mesActual })
 }

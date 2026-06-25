@@ -24,7 +24,7 @@ export default function BurofaxButton({
       })
       const data = await res.json()
       if (res.ok) {
-        setResultado({ ok: true, mensaje: `✓ Burofax enviado (${data.usados}/${data.limite} este mes)` })
+        setResultado({ ok: true, mensaje: '✓ Burofax electrónico enviado correctamente' })
         setConfirmando(false)
       } else {
         setResultado({ ok: false, mensaje: data.error || 'Error al enviar el burofax' })
@@ -53,9 +53,9 @@ export default function BurofaxButton({
     <div className="mt-4 pt-4 border-t border-white/5">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-medium text-amber-200">📜 Burofax de reclamación</p>
+          <p className="text-sm font-medium text-amber-200">📜 Burofax electrónico</p>
           <p className="text-xs text-zinc-400 mt-0.5">
-            Envía una carta fehaciente de reclamación de deuda con validez legal.
+            Requerimiento fehaciente de pago con validez legal certificada vía lleida.net.
             {burofaxEnviadoAt && (
               <span className="block text-amber-300/70 mt-0.5">
                 Ya enviado el {new Date(burofaxEnviadoAt).toLocaleDateString('es-ES')}
@@ -74,7 +74,10 @@ export default function BurofaxButton({
           </button>
         ) : (
           <div className="flex flex-col items-end gap-2">
-            <p className="text-xs text-zinc-300 text-right">¿Confirmas el envío?<br />Se usará 1 burofax del mes.</p>
+            <p className="text-xs text-zinc-300 text-right">
+              ¿Confirmas el envío?<br />
+              <span className="text-amber-300 font-semibold">Se cargarán 6€ en tu tarjeta.</span>
+            </p>
             <div className="flex gap-2">
               <button
                 type="button"
@@ -89,7 +92,7 @@ export default function BurofaxButton({
                 disabled={enviando}
                 className="text-xs font-bold text-amber-900 bg-amber-400 hover:bg-amber-300 px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
               >
-                {enviando ? 'Enviando...' : 'Confirmar'}
+                {enviando ? 'Procesando...' : 'Confirmar — 6€'}
               </button>
             </div>
           </div>
