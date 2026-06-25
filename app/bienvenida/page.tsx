@@ -8,7 +8,7 @@ type Patron = 'agresivo' | 'normal' | 'suave'
 type TonoPreset = 'cordial' | 'firme' | 'contundente' | 'personalizado'
 type Software = 'holded' | 'quipu' | 'anfix' | 'csv' | 'manual'
 
-const TOTAL_PASOS = 9
+const TOTAL_PASOS = 10
 
 // Ejemplos de email reales para cada tono
 const EJEMPLOS_TONO: Record<TonoPreset, { asunto: string; cuerpo: string }> = {
@@ -82,6 +82,11 @@ export default function BienvenidaPage() {
 
   // Paso 5 — Stripe (conectado externamente)
   const [stripeConectado, setStripeConectado] = useState(false)
+
+  // Paso Claude API Key — obligatorio
+  const [claudeKeyOnboarding, setClaudeKeyOnboarding] = useState('')
+  const [validandoClaudeKey, setValidandoClaudeKey] = useState(false)
+  const [claudeKeyError, setClaudeKeyError] = useState<string | null>(null)
 
   function avanzar() {
     setError(null)
@@ -390,6 +395,130 @@ export default function BienvenidaPage() {
         <div className="flex gap-3">
           <BotonContinuar onClick={async () => { await guardarImagen(); avanzar() }} />
           <BotonSaltar />
+        </div>
+      </>
+    )
+  }
+
+  function renderPasoClaudeKey() {
+    async function verificarYGuardar() {
+      const key = claudeKeyOnboarding.trim()
+      if (!key) {
+        setClaudeKeyError('Introduce tu API Key para continuar')
+        return
+      }
+      if (!key.startsWith('sk-ant-')) {
+        setClaudeKeyError('La clave debe empezar por sk-ant- (cópiala tal cual de console.anthropic.com)')
+        return
+      }
+      setValidandoClaudeKey(true)
+      setClaudeKeyError(null)
+      try {
+        const res = await fetch('/api/claude/validar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key }),
+        })
+        const data = await res.json()
+        if (!data.ok) {
+          setClaudeKeyError(data.error || 'Clave incorrecta. Comprueba que la has copiado bien.')
+          return
+        }
+        await fetch('/api/configuracion', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ claude_api_key: key }),
+        })
+        avanzar()
+      } catch {
+        setClaudeKeyError('Error de conexión. Inténtalo de nuevo.')
+      } finally {
+        setValidandoClaudeKey(false)
+      }
+    }
+
+    return (
+      <>
+        <div className="text-center mb-8">
+          <div className="text-5xl mb-4">🤖</div>
+          <h1 className="text-2xl font-bold text-zinc-100">Conecta tu IA de Claude</h1>
+          <p className="text-zinc-400 mt-2">Saldea usa Claude para redactar los emails de cobro. Necesitas tu propia clave API para que los costes vayan a tu cuenta, no a la nuestra.</p>
+        </div>
+
+        <div className="bg-sky-500/10 border border-sky-500/20 rounded-xl p-4 mb-6">
+          <p className="text-sm text-sky-300 font-semibold mb-1">¿Por qué necesito esto?</p>
+          <p className="text-xs text-sky-300/70 leading-relaxed">
+            Cada email que Saldea redacta consume tokens de Claude. Con tu clave API propia, pagas directamente a Anthropic — con total transparencia y sin margen. Suele costar menos de <strong className="text-sky-300">0,01 € por email</strong>.
+          </p>
+        </div>
+
+        <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 mb-6">
+          <p className="text-sm font-semibold text-zinc-200 mb-4">Cómo obtener tu API Key — 3 pasos:</p>
+          <ol className="space-y-5">
+            <li className="flex gap-3">
+              <span className="w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+              <div>
+                <p className="text-sm text-zinc-200 font-medium">Ve a console.anthropic.com</p>
+                <p className="text-xs text-zinc-400 mt-0.5">Si no tienes cuenta, créala — solo necesitas email y tarjeta para añadir saldo.</p>
+                <a
+                  href="https://console.anthropic.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-1.5 text-xs text-sky-400 hover:text-sky-300 font-medium transition-colors"
+                >
+                  Abrir console.anthropic.com ↗
+                </a>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+              <div>
+                <p className="text-sm text-zinc-200 font-medium">Menú lateral → «API Keys»</p>
+                <p className="text-xs text-zinc-400 mt-0.5">En el panel de la consola, haz clic en <strong className="text-zinc-300">API Keys</strong> en el menú izquierdo.</p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
+              <div>
+                <p className="text-sm text-zinc-200 font-medium">«Create Key» → ponle nombre → copia y pega aquí</p>
+                <p className="text-xs text-zinc-400 mt-0.5">Dale un nombre como <em className="text-zinc-300">«Saldea»</em>. La clave siempre empieza por <code className="text-sky-400 bg-sky-500/10 px-1 py-0.5 rounded font-mono text-[11px]">sk-ant-api03-</code>.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-zinc-300 mb-1.5">
+            API Key de Claude <span className="text-sky-400">*</span>
+          </label>
+          <input
+            type="password"
+            value={claudeKeyOnboarding}
+            onChange={e => { setClaudeKeyOnboarding(e.target.value); setClaudeKeyError(null) }}
+            placeholder="sk-ant-api03-..."
+            className="w-full px-4 py-3 bg-zinc-900/60 border border-white/10 rounded-xl text-zinc-100 placeholder-zinc-600 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40"
+            autoComplete="off"
+            spellCheck={false}
+          />
+          <p className="text-xs text-zinc-500 mt-1.5">Se guarda cifrada. Solo Saldea la usa para generar tus emails de cobro.</p>
+        </div>
+
+        {claudeKeyError && (
+          <div className="bg-rose-500/10 border border-rose-500/20 rounded-xl px-4 py-3 mb-4">
+            <p className="text-rose-400 text-sm">{claudeKeyError}</p>
+          </div>
+        )}
+
+        <div className="flex flex-col gap-2">
+          <button
+            type="button"
+            onClick={verificarYGuardar}
+            disabled={validandoClaudeKey || !claudeKeyOnboarding.trim()}
+            className="w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-3 px-6 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {validandoClaudeKey ? '⏳ Verificando clave...' : 'Verificar y continuar →'}
+          </button>
+          <p className="text-center text-xs text-zinc-600">Este paso es obligatorio — sin la API Key, Saldea no puede generar emails</p>
         </div>
       </>
     )
@@ -911,6 +1040,7 @@ export default function BienvenidaPage() {
   function renderPaso7() {
     const cosas: Array<[string, string, boolean, string]> = [
       ['👤', 'Tu empresa configurada', !!(nombre || empresa), '/ajustes'],
+      ['🤖', 'API Key de Claude', !!claudeKeyOnboarding, '/ajustes'],
       ['🎨', 'Imagen de marca', !!(logoUrl || colorPrimario !== '#0284c7'), '/ajustes'],
       ['✉️', 'Tono y frecuencia', true, '/ajustes'],
       ['📦', 'Software conectado', softwareConectado, '/ajustes'],
@@ -965,6 +1095,7 @@ export default function BienvenidaPage() {
 
   const pasos = [
     renderPaso0,
+    renderPasoClaudeKey,
     renderPaso1,
     renderPaso2,
     renderPaso3,
@@ -977,6 +1108,7 @@ export default function BienvenidaPage() {
 
   const titulos = [
     'Tu empresa',
+    'IA de Saldea',
     'Imagen de marca',
     'Cómo cobrar',
     'Integraciones',
