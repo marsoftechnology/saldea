@@ -1309,23 +1309,22 @@ export default function AjustesPage() {
           </div>
         </details>
 
-        {/* Bloques próximos — cada uno como acordeón deshabilitado */}
-        {[
-          { icono: '🏦', titulo: 'Conciliación bancaria', desc: 'Conecta tu banco y marca facturas pagadas solas' },
-        ].map((b, i) => (
-          <div key={i} className="bg-zinc-900/30 rounded-xl border border-dashed border-white/10 overflow-hidden">
-            <div className="flex items-center justify-between p-5">
-              <div className="flex items-center gap-3">
-                <span className="text-xl opacity-50">{b.icono}</span>
-                <div>
-                  <h2 className="text-base font-semibold text-zinc-400">{b.titulo}</h2>
-                  <p className="text-xs text-zinc-500">{b.desc}</p>
-                </div>
+        {/* Conciliación bancaria */}
+        <a href="/banco" className="block bg-zinc-900/40 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors group">
+          <div className="flex items-center justify-between p-5">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🏦</span>
+              <div>
+                <h2 className="text-base font-semibold text-zinc-100">Conciliación bancaria</h2>
+                <p className="text-xs text-zinc-500">Conecta tu banco y marca facturas pagadas solas</p>
               </div>
-              <span className="text-xs uppercase tracking-wide text-zinc-500 font-medium bg-gray-100 px-2 py-1 rounded">Próximamente</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold px-2 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">⭐ Plan Max</span>
+              <span className="text-zinc-500 text-sm group-hover:text-zinc-300 transition-colors">→</span>
             </div>
           </div>
-        ))}
+        </a>
 
         {mensaje && (
           <div className={`px-4 py-3 rounded-lg text-sm ${
