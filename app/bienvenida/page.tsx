@@ -651,7 +651,7 @@ export default function BienvenidaPage() {
 
             {!stripeConectado ? (
               <a
-                href="/api/stripe-connect"
+                href="/api/stripe-connect/start"
                 onClick={() => setStripeConectado(true)}
                 className="mt-4 inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
               >
