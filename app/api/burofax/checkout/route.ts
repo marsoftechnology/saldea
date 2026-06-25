@@ -6,7 +6,8 @@ import Stripe from 'stripe'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://app.marsof.es'
 
 function getStripe() {
-  return new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2026-04-22.dahlia' as Parameters<typeof Stripe>[1]['apiVersion'] })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2026-04-22.dahlia' as any })
 }
 
 export async function POST(req: NextRequest) {
