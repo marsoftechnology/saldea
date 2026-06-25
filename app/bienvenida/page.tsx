@@ -1002,6 +1002,15 @@ export default function BienvenidaPage() {
       {/* Step content */}
       <main className="flex-1 px-6 py-8 overflow-y-auto">
         <div className="max-w-lg mx-auto">
+          {paso > 0 && (
+            <button
+              type="button"
+              onClick={retroceder}
+              className="mb-6 flex items-center gap-1.5 text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
+            >
+              ← Paso anterior
+            </button>
+          )}
           {pasos[paso]?.()}
         </div>
       </main>
