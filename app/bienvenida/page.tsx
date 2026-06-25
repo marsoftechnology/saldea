@@ -1136,16 +1136,18 @@ export default function BienvenidaPage() {
         </div>
         <div className="flex items-center gap-3">
           <ThemeToggleIcon />
-          <a
-            href="/dashboard"
-            onClick={e => {
-              e.preventDefault()
-              completarOnboarding()
-            }}
-            className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
-          >
-            Saltar todo y ir al dashboard →
-          </a>
+          {paso > 1 && (
+            <a
+              href="/dashboard"
+              onClick={e => {
+                e.preventDefault()
+                completarOnboarding()
+              }}
+              className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+            >
+              Saltar todo y ir al dashboard →
+            </a>
+          )}
         </div>
       </header>
 
