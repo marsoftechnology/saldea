@@ -22,6 +22,7 @@ function BancoPageInner() {
   const searchParams = useSearchParams()
   const router = useRouter()
 
+  const [plan, setPlan] = useState<string | null>(null)
   const [conexiones, setConexiones] = useState<Conexion[]>([])
   const [loadingConexiones, setLoadingConexiones] = useState(true)
 
@@ -61,6 +62,13 @@ function BancoPageInner() {
       router.replace('/banco')
     }
   }, [searchParams, router])
+
+  useEffect(() => {
+    fetch('/api/configuracion')
+      .then(r => r.json())
+      .then(d => setPlan(d.configuracion?.plan ?? 'free'))
+      .catch(() => setPlan('free'))
+  }, [])
 
   const cargarConexiones = useCallback(async () => {
     setLoadingConexiones(true)
@@ -146,6 +154,50 @@ function BancoPageInner() {
     s === 'activa' ? 'Activa' : s === 'pendiente' ? 'Pendiente' : 'Error'
 
   const hayActivas = conexiones.some(c => c.status === 'activa')
+
+  if (plan === null) return <div className="p-8 text-zinc-500 text-sm">Cargando...</div>
+
+  if (plan !== 'max') {
+    return (
+      <div className="p-8 max-w-2xl">
+        <div className="bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden">
+          {/* Banner bloqueado */}
+          <div className="relative p-10 text-center">
+            <div className="text-6xl mb-5">🏦</div>
+            <div className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold px-3 py-1 rounded-full mb-4">
+              ⭐ Exclusivo Plan Max
+            </div>
+            <h1 className="text-2xl font-bold text-zinc-100 mb-3">Conciliación bancaria automática</h1>
+            <p className="text-zinc-400 text-sm leading-relaxed max-w-md mx-auto mb-8">
+              Conecta tu banco y Saldea detectará cada ingreso automáticamente, cruzándolo con tus facturas pendientes.
+              Las facturas se marcan como cobradas solas — sin que toques nada.
+            </p>
+            <div className="grid grid-cols-2 gap-3 max-w-sm mx-auto mb-8 text-left">
+              {[
+                ['🔍', 'Detección automática', 'Cruza ingresos con facturas pendientes'],
+                ['✅', 'Factura cobrada sola', 'Sin intervención manual'],
+                ['🔒', 'Solo lectura PSD2', 'Nunca puede mover tu dinero'],
+                ['🔄', 'Sync cada 4 horas', 'O manual cuando quieras'],
+              ].map(([ico, t, d]) => (
+                <div key={t} className="bg-zinc-800/60 rounded-xl p-3">
+                  <p className="text-lg mb-1">{ico}</p>
+                  <p className="text-xs font-semibold text-zinc-200">{t}</p>
+                  <p className="text-[11px] text-zinc-500 mt-0.5">{d}</p>
+                </div>
+              ))}
+            </div>
+            <a
+              href="/ajustes#plan"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-zinc-900 font-bold px-6 py-3 rounded-xl transition-colors text-sm"
+            >
+              ⭐ Actualizar a Plan Max
+            </a>
+            <p className="text-xs text-zinc-600 mt-3">99€/mes · Cancela cuando quieras</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="p-8 max-w-3xl">

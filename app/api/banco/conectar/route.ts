@@ -16,6 +16,13 @@ export async function POST(req: NextRequest) {
   if (!org) return new Response(JSON.stringify({ error: 'No autenticado' }), { status: 401, headers: H })
   const orgId = org.org_id
 
+  // Solo Plan Max
+  const admin = createServiceRoleClient()
+  const { data: cfg } = await admin.from('configuraciones_usuario').select('plan').eq('org_id', orgId).maybeSingle()
+  if (cfg?.plan !== 'max') {
+    return new Response(JSON.stringify({ error: 'Funcionalidad exclusiva del Plan Max' }), { status: 403, headers: H })
+  }
+
   if (!seDisponible()) {
     return new Response(JSON.stringify({ error: 'Conciliación bancaria no configurada' }), { status: 503, headers: H })
   }
