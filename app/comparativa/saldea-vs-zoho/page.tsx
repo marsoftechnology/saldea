@@ -45,7 +45,7 @@ export default function PageVsZoho() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Contabilidad</td><td className="py-2 px-4">❌</td><td className="py-2 px-4">✅</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Datos en Europa</td><td className="py-2 px-4">✅ Frankfurt</td><td className="py-2 px-4">Multinacional</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Precio</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">~20-200€/mes según plan</td></tr>
-                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">🔜 Próximamente</td><td className="py-2 px-4">❌</td></tr>
+                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">✅ Plan Max</td><td className="py-2 px-4">❌</td></tr>
               </tbody>
             </table>
           </div>
@@ -61,7 +61,7 @@ export default function PageVsZoho() {
             <li>✓ Tu problema son las facturas vencidas, no la contabilidad</li>
             <li>✓ Quieres soporte y producto en español sin desfase horario</li>
             <li>✓ Necesitas que los recordatorios <strong>citen automáticamente la Ley 3/2004</strong></li>
-            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes (próximamente).</li>
+            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El argumento decisivo</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Si tu cliente es español, lo que más le mueve es que el recordatorio cite específicamente la <strong>Ley 3/2004</strong> y los intereses concretos. Zoho no lo hace nativamente. Saldea sí, en cada email. La diferencia se nota en la tasa de cobro real.</p>

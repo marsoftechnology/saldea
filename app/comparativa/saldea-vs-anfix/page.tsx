@@ -69,7 +69,7 @@ export default function PageVsAnfix() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">Pasarela</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Precio para gestoría</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">~99€/mes según clientes</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Trial</td><td className="py-2 px-4">30 días con tarjeta</td><td className="py-2 px-4">15 días</td></tr>
-                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">🔜 Próximamente</td><td className="py-2 px-4">❌</td></tr>
+                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">✅ Plan Max</td><td className="py-2 px-4">❌</td></tr>
               </tbody>
             </table>
           </div>
@@ -92,7 +92,7 @@ export default function PageVsAnfix() {
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Diferencial clave de Saldea</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Lo que NO encuentras en ningún software de gestoría: una IA que <strong>escala el tono progresivamente</strong> (amable → firme → formal con Ley 3/2004 → previo a burofax) y <strong>entiende las respuestas</strong> de los morosos (paga, dispute, promesa, vacaciones).</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes (próximamente).</li>
+            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
         </section>
 

@@ -55,7 +55,7 @@ export default function PageVsSage() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Cloud nativo</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">Parcial (Sage 50 Cloud)</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Setup</td><td className="py-2 px-4">5 minutos</td><td className="py-2 px-4">Semanas + consultor</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Precio</td><td className="py-2 px-4">49€/mes</td><td className="py-2 px-4">~80-300€/mes según módulos</td></tr>
-                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">🔜 Próximamente</td><td className="py-2 px-4">❌</td></tr>
+                <tr><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">✅ Plan Max</td><td className="py-2 px-4">❌</td></tr>
               </tbody>
             </table>
           </div>
@@ -73,7 +73,7 @@ export default function PageVsSage() {
             <li>✓ Eres autónomo o pyme pequeña (1-10 personas)</li>
             <li>✓ Ya tienes facturación en otro sitio (Holded, Quipu, Anfix)</li>
             <li>✓ Tu problema es COBRAR, no llevar contabilidad</li>
-            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes (próximamente).</li>
+            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Usar ambos: Sage + Saldea</h2>

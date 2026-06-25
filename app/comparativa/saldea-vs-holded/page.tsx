@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -69,7 +69,7 @@ export default function PageVsHolded() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">CRM</td><td className="py-2 px-4">Básico (clientes)</td><td className="py-2 px-4">✅ Completo</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Multi-usuario</td><td className="py-2 px-4">10 miembros</td><td className="py-2 px-4">Según plan</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Detecta vacaciones cliente</td><td className="py-2 px-4">✅ Con IA</td><td className="py-2 px-4">❌</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">🔜 Próximamente</td><td className="py-2 px-4">❌</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Conciliación bancaria automática</td><td className="py-2 px-4">✅ Plan Max</td><td className="py-2 px-4">❌</td></tr>
                 <tr><td className="py-2 px-4">Pagos parciales</td><td className="py-2 px-4">✅</td><td className="py-2 px-4">✅</td></tr>
               </tbody>
             </table>
@@ -90,7 +90,7 @@ export default function PageVsHolded() {
             <li>✓ Quieres una IA que <strong>escale el tono</strong> de los recordatorios según los días de retraso.</li>
             <li>✓ Necesitas que el sistema <strong>entienda las respuestas</strong> de tus clientes ("ya te pagué", "espérame al 30").</li>
             <li>✓ Eres autónomo o gestoría con clientes pymes y los recordatorios manuales te ocupan demasiado.</li>
-            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes (próximamente).</li>
+            <li>✓ <strong>Conciliación bancaria automática</strong> (Plan Max): detecta automáticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¿Y si los uso a la vez?</h2>
