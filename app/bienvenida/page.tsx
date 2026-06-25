@@ -72,6 +72,12 @@ export default function BienvenidaPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  function retroceder() {
+    setError(null)
+    setPaso(p => Math.max(p - 1, 0))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   async function guardarPerfil() {
     if (!nombre.trim()) {
       setError('Escribe tu nombre para continuar')
@@ -956,11 +962,23 @@ export default function BienvenidaPage() {
       <div className="px-6 pt-6 pb-2 shrink-0">
         <div className="max-w-lg mx-auto">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs text-zinc-500 font-medium">
-              Paso <span className="text-zinc-300">{paso + 1}</span> de {TOTAL_PASOS}
-              {' · '}
-              <span className="text-zinc-400">{titulos[paso]}</span>
-            </p>
+            <div className="flex items-center gap-3">
+              {paso > 0 && (
+                <button
+                  type="button"
+                  onClick={retroceder}
+                  className="text-zinc-500 hover:text-zinc-200 transition-colors text-sm"
+                  aria-label="Paso anterior"
+                >
+                  ← Atrás
+                </button>
+              )}
+              <p className="text-xs text-zinc-500 font-medium">
+                Paso <span className="text-zinc-300">{paso + 1}</span> de {TOTAL_PASOS}
+                {' · '}
+                <span className="text-zinc-400">{titulos[paso]}</span>
+              </p>
+            </div>
             <p className="text-xs text-zinc-500">{Math.round(((paso + 1) / TOTAL_PASOS) * 100)}%</p>
           </div>
           <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
