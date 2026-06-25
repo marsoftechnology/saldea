@@ -15,6 +15,10 @@
     {
       "path": "/api/cron-nuevo-vencido",
       "schedule": "0 10 * * *"
+    },
+    {
+      "path": "/api/banco/cron-sync",
+      "schedule": "0 */4 * * *"
     }
   ]
 }

@@ -758,19 +758,18 @@ export default function BienvenidaPage() {
             <div>
               <p className="text-sm font-semibold text-amber-300">Exclusivo del Plan Max</p>
               <p className="text-xs text-amber-300/70 mt-1 leading-relaxed">
-                Usa GoCardless Open Banking (gratuito). Una vez completes la configuración inicial,
-                conéctalo desde <strong className="text-amber-300">🏦 Banco</strong> en la barra lateral.
+                Usa Salt Edge Open Banking (PSD2). Una vez termines el onboarding,
+                conéctalo desde <strong className="text-amber-300">🏦 Banco</strong> en la barra lateral — listo en 2 minutos.
               </p>
             </div>
           </div>
 
-          <div className="bg-sky-500/10 border border-sky-500/20 rounded-xl p-4 flex items-start gap-3">
-            <span className="text-sky-400 text-lg shrink-0">🔜</span>
+          <div className="bg-zinc-800/60 border border-white/10 rounded-xl p-4 flex items-start gap-3">
+            <span className="text-sky-400 text-lg shrink-0">🔄</span>
             <div>
-              <p className="text-sm font-semibold text-sky-300">Próximamente disponible</p>
-              <p className="text-xs text-sky-300/70 mt-1 leading-relaxed">
-                Estamos integrando la mejor solución de Open Banking para bancos españoles.
-                Cuando esté listo lo verás en <strong className="text-sky-300">🏦 Banco</strong> en la barra lateral.
+              <p className="text-sm font-semibold text-zinc-200">Sincronización automática cada 4 horas</p>
+              <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
+                Saldea revisa tu banco automáticamente cada 4 horas. También puedes sincronizar en cualquier momento desde <strong className="text-zinc-300">🏦 Banco</strong> con el botón "Sincronizar".
               </p>
             </div>
           </div>
