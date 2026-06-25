@@ -901,9 +901,22 @@ export default function AjustesPage() {
             <span className="text-zinc-500 text-sm transition-transform group-open:rotate-180">▼</span>
           </summary>
           <div className="px-5 pb-5 pt-1 space-y-4">
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Si lo rellenas, tus clientes verán los datos de transferencia en el portal de facturas y en los emails de recordatorio, junto al botón de pago con tarjeta (si tienes Stripe conectado).
-            </p>
+            {/* Aviso de cómo funciona */}
+            <div className="bg-zinc-800/60 border border-white/10 rounded-xl p-4 space-y-2">
+              <p className="text-xs font-semibold text-zinc-300">¿Cómo funciona la transferencia?</p>
+              <div className="flex items-start gap-2 text-xs text-zinc-400">
+                <span className="text-sky-400 shrink-0 mt-0.5">1.</span>
+                <span>Tu cliente ve tu IBAN en el email y en el portal de facturas.</span>
+              </div>
+              <div className="flex items-start gap-2 text-xs text-zinc-400">
+                <span className="text-sky-400 shrink-0 mt-0.5">2.</span>
+                <span>Va a su banco y hace la transferencia. El dinero llega directamente a tu cuenta.</span>
+              </div>
+              <div className="flex items-start gap-2 text-xs text-zinc-400">
+                <span className="text-amber-400 shrink-0 mt-0.5">3.</span>
+                <span><strong className="text-amber-300">Importante:</strong> Saldea no sabe cuándo llega el dinero. Tú o tu cliente tendréis que marcar la factura como cobrada manualmente — o activa la conciliación bancaria (Plan Max) para que se detecte sola.</span>
+              </div>
+            </div>
             <div>
               <label className="block text-sm font-medium text-zinc-300 mb-1">IBAN</label>
               <input

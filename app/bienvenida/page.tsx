@@ -683,7 +683,12 @@ export default function BienvenidaPage() {
               <span className="text-lg">🏦</span>
               <p className="text-sm font-semibold text-zinc-200">Transferencia bancaria — IBAN</p>
             </div>
-            <p className="text-xs text-zinc-400 mb-4">Tus clientes verán tu IBAN en el portal y en los emails para poder hacer una transferencia.</p>
+            <p className="text-xs text-zinc-400 mb-3">Tus clientes verán tu IBAN en el portal y en los emails para poder hacer una transferencia.</p>
+            <div className="bg-zinc-800/60 rounded-lg p-3 mb-4 space-y-1.5">
+              <p className="text-xs font-semibold text-zinc-300">¿Cómo funciona?</p>
+              <p className="text-xs text-zinc-400">✅ El cliente ve tu IBAN → va a su banco → hace la transferencia → el dinero llega a tu cuenta.</p>
+              <p className="text-xs text-amber-300/80">⚠️ Saldea no detecta el ingreso automáticamente. Alguien tendrá que marcar la factura como cobrada (el cliente desde el portal, o tú desde el dashboard).</p>
+            </div>
             <div className="space-y-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-400 mb-1">IBAN <span className="text-zinc-600">(opcional)</span></label>
