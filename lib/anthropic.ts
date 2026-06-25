@@ -1,7 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk'
 
-function getAnthropic() {
-  const apiKey = process.env.CLAUDE_KEY || process.env.ANTHROPIC_API_KEY
+function getAnthropic(clientKey?: string | null) {
+  const apiKey = clientKey || process.env.CLAUDE_KEY || process.env.ANTHROPIC_API_KEY
   return new Anthropic({ apiKey })
 }
 
@@ -21,8 +21,9 @@ export async function generarMensajeRecordatorio(params: {
   descuentoProntoPagoDias?: number
   tieneLinkPago?: boolean
   importePagado?: number
+  claudeApiKey?: string | null
 }): Promise<{ asunto: string; cuerpo: string }> {
-  const { nombreCliente, empresa, numeroFactura, importe, diasVencida, tono, nombreEmpresa, idioma = 'es', ofrecerPagoPlazos = false, variarTextos = false, recargoMoraPct = 0, descuentoProntoPagoPct = 0, descuentoProntoPagoDias = 7, tieneLinkPago = false, importePagado = 0 } = params
+  const { nombreCliente, empresa, numeroFactura, importe, diasVencida, tono, nombreEmpresa, idioma = 'es', ofrecerPagoPlazos = false, variarTextos = false, recargoMoraPct = 0, descuentoProntoPagoPct = 0, descuentoProntoPagoDias = 7, tieneLinkPago = false, importePagado = 0, claudeApiKey } = params
 
   const pendiente = Math.max(0, importe - importePagado)
   const hayPagoParcial = importePagado > 0.005 && pendiente > 0.005
@@ -79,7 +80,7 @@ ${idiomaInstruccion}
 Devuelve SOLO un JSON con este formato exacto, sin texto adicional:
 {"asunto": "...", "cuerpo": "..."}`
 
-  const respuesta = await getAnthropic().messages.create({
+  const respuesta = await getAnthropic(claudeApiKey).messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 1024,
     tools: [{
@@ -112,6 +113,7 @@ export async function clasificarRespuestaCliente(params: {
   numeroFactura: string
   importeEuros: number
   diasVencida: number
+  claudeApiKey?: string | null
 }): Promise<{
   categoria: CategoriaRespuesta
   confianza: 'alta' | 'media' | 'baja'
@@ -143,7 +145,7 @@ Si la categoría es "vacaciones" y puedes extraer una fecha de fin de las vacaci
 Devuelve SOLO un JSON con este formato exacto:
 {"categoria": "...", "confianza": "alta|media|baja", "vacacionesHasta": "YYYY-MM-DD"|null, "resumen": "frase corta describiendo el contenido"}`
 
-  const respuesta = await getAnthropic().messages.create({
+  const respuesta = await getAnthropic(params.claudeApiKey).messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 512,
     messages: [{ role: 'user', content: prompt }],

@@ -53,6 +53,7 @@ export default function AjustesPage() {
   const [detectarVacaciones, setDetectarVacaciones] = useState(true)
   const [diasViaJudicial, setDiasViaJudicial] = useState(0)
   const [plan, setPlan] = useState<'free' | 'pro' | 'max'>('free')
+  const [claudeApiKey, setClaudeApiKey] = useState('')
   // Plan Max: dominio propio de email
   const [resendApiKey, setResendApiKey] = useState('')
   const [emailFromDominio, setEmailFromDominio] = useState('')
@@ -141,6 +142,7 @@ export default function AjustesPage() {
       if (typeof data.configuracion?.detectar_disputa === 'boolean') setDetectarDisputa(data.configuracion.detectar_disputa)
       if (typeof data.configuracion?.detectar_vacaciones_cliente === 'boolean') setDetectarVacaciones(data.configuracion.detectar_vacaciones_cliente)
       if (typeof data.configuracion?.dias_via_judicial === 'number') setDiasViaJudicial(data.configuracion.dias_via_judicial)
+      if (data.configuracion?.claude_api_key) setClaudeApiKey(data.configuracion.claude_api_key)
       if (data.configuracion?.resend_api_key) setResendApiKey(data.configuracion.resend_api_key)
       if (data.configuracion?.email_from_dominio) setEmailFromDominio(data.configuracion.email_from_dominio)
       if (data.configuracion?.email_from_nombre) setEmailFromNombre(data.configuracion.email_from_nombre)
@@ -231,6 +233,7 @@ export default function AjustesPage() {
             detectar_disputa: detectarDisputa,
             detectar_vacaciones_cliente: detectarVacaciones,
             dias_via_judicial: diasViaJudicial,
+            claude_api_key: claudeApiKey || null,
             resend_api_key: resendApiKey || null,
             email_from_dominio: emailFromDominio || null,
             email_from_nombre: emailFromNombre || null,
@@ -1305,6 +1308,39 @@ export default function AjustesPage() {
                   <p className="text-xs text-zinc-400 mt-1">Si activas esto, al crear una factura Saldea analizará el historial del cliente y ajustará automáticamente los días de gracia. Ejemplo: si Pedro suele pagar 8 días tarde, la primera factura le mandará el primer recordatorio el día 6, no el día 3. Necesita al menos 2 facturas cobradas del mismo cliente para activarse.</p>
                 </div>
               </label>
+            </div>
+          </div>
+        </details>
+
+        {/* Inteligencia Artificial — API key propia de Claude */}
+        <details className="bg-zinc-900/40 border border-white/10 rounded-xl overflow-hidden group">
+          <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-zinc-900/30 transition-colors">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🤖</span>
+              <div>
+                <h2 className="text-base font-semibold text-zinc-100">Inteligencia Artificial</h2>
+                <p className="text-xs text-zinc-500">API key de Claude para los emails y clasificación de respuestas</p>
+              </div>
+            </div>
+            <span className="text-zinc-500 text-sm transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <div className="px-5 pb-5 pt-3 space-y-4">
+            <p className="text-xs text-zinc-400 leading-relaxed">
+              Por defecto Saldea usa su propia clave de Claude para generar los emails de cobro y clasificar respuestas de clientes.
+              Si prefieres pagar tú directamente los tokens, introduce aquí tu propia API key de{' '}
+              <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" className="text-sky-400 underline">console.anthropic.com</a>.
+              Si la dejas vacía, Saldea cubre el coste incluido en el plan.
+            </p>
+            <div>
+              <label className="block text-xs font-medium text-zinc-400 mb-1">API key de Anthropic (Claude)</label>
+              <input
+                type="password"
+                value={claudeApiKey}
+                onChange={e => setClaudeApiKey(e.target.value)}
+                placeholder="sk-ant-api03-..."
+                className="w-full px-3 py-2.5 border border-white/10 rounded-lg text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/40 font-mono"
+              />
+              <p className="text-xs text-zinc-500 mt-1">Se guarda cifrado. Deja vacío para usar la clave de Saldea.</p>
             </div>
           </div>
         </details>

@@ -106,7 +106,7 @@ export async function GET(req: NextRequest) {
     if (orgFullConfigCache.has(orgId)) return orgFullConfigCache.get(orgId)!
     const { data } = await supabase
       .from('configuraciones_usuario')
-      .select(`plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias, resend_api_key, email_from_dominio, email_from_nombre`)
+      .select(`plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias, resend_api_key, email_from_dominio, email_from_nombre, claude_api_key`)
       .eq('org_id', orgId)
       .maybeSingle()
     orgFullConfigCache.set(orgId, data as OrgFullConfig | null)
@@ -258,6 +258,7 @@ export async function GET(req: NextRequest) {
           // En WhatsApp no hay botón renderizado: se añade el link crudo después
           tieneLinkPago: !usarWhatsApp && !!factura.link_pago,
           importePagado,
+          claudeApiKey: configMap?.claude_api_key ?? null,
         })
         asunto = gen.asunto
         cuerpo = gen.cuerpo

@@ -178,6 +178,12 @@ export async function PATCH(req: NextRequest) {
     campos.email_from_nombre = typeof v === 'string' && v.trim() ? v.trim() : null
   }
 
+  // ── API key de Claude (el cliente paga sus propios tokens) ────────────────
+  if ('claude_api_key' in body) {
+    const v = body.claude_api_key
+    campos.claude_api_key = typeof v === 'string' && v.trim() ? v.trim() : null
+  }
+
   // ── Transferencia bancaria (IBAN) ──────────────────────────────────────────
   if ('iban' in body) {
     const v = body.iban

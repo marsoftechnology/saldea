@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
 
     const { data: config } = await supabase
       .from('configuraciones_usuario')
-      .select('plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias, resend_api_key, email_from_dominio, email_from_nombre, iban, titular_cuenta')
+      .select('plantilla_amigable, plantilla_firme, plantilla_formal, plantilla_extremo, firma, logo_url, color_primario, idioma, ofrecer_pago_plazos_dia, variar_textos, recargo_mora_activo, recargo_mora_pct, recargo_mora_dia, descuento_pronto_pago_pct, descuento_pronto_pago_dias, resend_api_key, email_from_dominio, email_from_nombre, iban, titular_cuenta, claude_api_key')
       .eq('org_id', org.org_id)
       .maybeSingle()
 
@@ -131,6 +131,7 @@ export async function POST(req: NextRequest) {
         descuentoProntoPagoDias: Number(config?.descuento_pronto_pago_dias ?? 7),
         tieneLinkPago: !!factura.link_pago,
         importePagado,
+        claudeApiKey: config?.claude_api_key ?? null,
       })
       asunto = gen.asunto
       cuerpo = gen.cuerpo

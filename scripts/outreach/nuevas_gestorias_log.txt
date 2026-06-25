@@ -1,0 +1,72 @@
+[info] 137 emails ya existentes — se excluirán duplicados
+
+============================================================
+BUSCANDO NUEVAS GESTORÍAS — TARGET: 350 contactos
+Output: C:\Users\carlo\Desktop\Nueva carpeta\cobrate\scripts\outreach\gestorias_nuevas_2026-05-26.csv
+============================================================
+
+
+--- Madrid ---
+  [  0 total] buscando: gestoria Madrid
+  [  8 total] buscando: asesoria fiscal Madrid
+  [ 16 total] buscando: asesoria laboral Madrid
+  [ 23 total] buscando: asesoria contable Madrid
+
+--- Barcelona ---
+  [ 29 total] buscando: gestoria Barcelona
+  [ 35 total] buscando: asesoria fiscal Barcelona
+  [ 39 total] buscando: asesoria laboral Barcelona
+  [ 43 total] buscando: asesoria contable Barcelona
+
+--- Valencia ---
+  [ 48 total] buscando: gestoria Valencia
+  [ 53 total] buscando: asesoria fiscal Valencia
+  [ 61 total] buscando: asesoria laboral Valencia
+  [ 64 total] buscando: asesoria contable Valencia
+
+--- Sevilla ---
+  [ 66 total] buscando: gestoria Sevilla
+  [ 70 total] buscando: asesoria fiscal Sevilla
+  [ 77 total] buscando: asesoria laboral Sevilla
+  [ 80 total] buscando: asesoria contable Sevilla
+
+--- Málaga ---
+  [ 81 total] buscando: gestoria Málaga
+  [ 87 total] buscando: asesoria fiscal Málaga
+  [ 96 total] buscando: asesoria laboral Málaga
+  [100 total] buscando: asesoria contable Málaga
+
+--- Bilbao ---
+  [101 total] buscando: gestoria Bilbao
+  [106 total] buscando: asesoria fiscal Bilbao
+  [112 total] buscando: asesoria laboral Bilbao
+  [116 total] buscando: asesoria contable Bilbao
+
+--- Zaragoza ---
+  [119 total] buscando: gestoria Zaragoza
+  [124 total] buscando: asesoria fiscal Zaragoza
+  [131 total] buscando: asesoria laboral Zaragoza
+  [136 total] buscando: asesoria contable Zaragoza
+
+--- Murcia ---
+  [139 total] buscando: gestoria Murcia
+  [145 total] buscando: asesoria fiscal Murcia
+  [150 total] buscando: asesoria laboral Murcia
+  [154 total] buscando: asesoria contable Murcia
+
+--- Alicante ---
+  [156 total] buscando: gestoria Alicante
+  [162 total] buscando: asesoria fiscal Alicante
+  [169 total] buscando: asesoria laboral Alicante
+  [172 total] buscando: asesoria contable Alicante
+
+--- Valladolid ---
+  [173 total] buscando: gestoria Valladolid
+  [180 total] buscando: asesoria fiscal Valladolid
+  [186 total] buscando: asesoria laboral Valladolid
+  [190 total] buscando: asesoria contable Valladolid
+
+============================================================
+TOTAL NUEVOS CONTACTOS: 192
+CSV guardado: C:\Users\carlo\Desktop\Nueva carpeta\cobrate\scripts\outreach\gestorias_nuevas_2026-05-26.csv
+============================================================

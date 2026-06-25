@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Outreach gestorias - Marsof</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          background: #0a0a0b; color: #e4e4e7; max-width: 1100px; margin: 0 auto; padding: 28px 22px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  .sub { color: #a1a1aa; margin-bottom: 8px; font-size: 14px; }
+  .summary { background: #18181b; padding: 14px 18px; border-radius: 10px; margin-bottom: 22px;
+              border-left: 3px solid #0ea5e9; font-size: 14px; }
+  .progress { height: 6px; background: #27272a; border-radius: 3px; overflow: hidden; margin-top: 12px; }
+  .progress-bar { height: 100%; background: #10b981; transition: width 0.3s; width: 0%; }
+  .stats { display: flex; gap: 18px; margin-top: 10px; font-size: 13px; color: #a1a1aa; }
+  .reset { margin-left: auto; font-size: 11px; color: #71717a; background: none; border: 1px solid #3f3f46;
+            padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+  .reset:hover { color: #fafafa; }
+
+  .howto { background: #082f49; border: 1px solid #075985; padding: 14px 18px; border-radius: 10px;
+            margin-bottom: 22px; font-size: 13.5px; line-height: 1.6; }
+  .howto strong { color: #7dd3fc; }
+  .howto ol { margin: 6px 0 0 18px; padding: 0; }
+
+  .warning { background: #422006; border: 1px solid #ca8a04; color: #fef3c7;
+               padding: 12px 18px; border-radius: 10px; margin-bottom: 18px; font-size: 13.5px; }
+
+  .card { background: #18181b; border: 1px solid #27272a; border-radius: 12px;
+            padding: 16px 18px; margin-bottom: 10px; transition: all 0.2s; }
+  .card.sent { opacity: 0.5; border-color: #10b981; background: #052e1d; }
+  .card.sent .name::after { content: " · ✓ enviado"; color: #10b981; font-weight: normal; font-size: 13px; }
+  .card.expanded { background: #18181b !important; opacity: 1 !important; }
+  .head { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .num { font-size: 11px; color: #71717a; font-variant-numeric: tabular-nums; }
+  .name { font-size: 16px; font-weight: 600; color: #fafafa; }
+  .meta { font-size: 12.5px; color: #a1a1aa; }
+  .meta a { color: #38bdf8; text-decoration: none; }
+  .btn { display: inline-block; padding: 7px 13px; border-radius: 7px; font-size: 13px; font-weight: 500;
+          text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: all 0.15s; white-space: nowrap; }
+  .btn.primary { background: #0ea5e9; color: #0a0a0b; }
+  .btn.primary:hover { background: #38bdf8; }
+  .btn.ghost { background: transparent; color: #a1a1aa; border-color: #3f3f46; font-size: 12px; padding: 5px 9px; }
+  .btn.ghost:hover { color: #fafafa; border-color: #71717a; }
+  .btn.small { font-size: 11px; padding: 3px 8px; }
+
+  .detail { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid #27272a; }
+  .card.open .detail { display: block; }
+  .field { margin-bottom: 12px; }
+  .label { font-size: 11px; color: #71717a; text-transform: uppercase; letter-spacing: 0.5px;
+            margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .value-box { background: #0a0a0b; padding: 10px 12px; border-radius: 6px; border: 1px solid #27272a;
+                font-family: ui-monospace, "Cascadia Code", monospace; font-size: 12.5px; color: #d4d4d8;
+                white-space: pre-wrap; max-height: 280px; overflow-y: auto; line-height: 1.5;
+                cursor: pointer; transition: border-color 0.15s; }
+  .value-box:hover { border-color: #3f3f46; }
+  .value-box.copied { border-color: #10b981; }
+  .copyhint { color: #10b981; font-size: 10.5px; opacity: 0; transition: opacity 0.15s; }
+  .copyhint.show { opacity: 1; }
+  .footer-actions { display: flex; gap: 8px; align-items: center; margin-top: 4px; }
+</style>
+</head>
+<body>
+  <h1>Outreach gestorías</h1>
+  <p class="sub">Marsof Technology · primer cliente B2B · desde carlosgc@marsof.es</p>
+
+  <div class="summary">
+    <strong>20</strong> gestorías listas · Huelva: 7 · Sevilla: 13
+    <div class="stats">
+      <span><b id="sentCount">0</b> enviadas</span>
+      <span><b>20</b> total</span>
+      <button class="reset" onclick="resetAll()">reset progreso</button>
+    </div>
+    <div class="progress"><div class="progress-bar" id="pBar"></div></div>
+  </div>
+
+  <div class="howto">
+    <strong>Cómo usar (3 pasos por email)</strong>
+    <ol>
+      <li>Click <strong>"Preparar envío"</strong> en una tarjeta — se abre Zoho compose y el cuerpo se copia al portapapeles automáticamente.</li>
+      <li>En Zoho: pega el <strong>email</strong> en "Para" (botón copia abajo), pega el <strong>asunto</strong> en "Asunto", el <strong>cuerpo</strong> ya está copiado → Ctrl+V en el cuerpo.</li>
+      <li>Revisa, personaliza 1 frase, envía. Vuelve aquí y marca como enviado.</li>
+    </ol>
+  </div>
+
+  <div class="warning">
+    ⚠️ <strong>Máximo 8 envíos al día.</strong> Tu dominio tiene &lt;1 mes, 24 emails idénticos te marcan spam.
+    <strong>Personaliza 1 frase por email</strong> (cita algo de su web o cambia el saludo).
+  </div>
+
+  <div id="cards"></div>
+
+<script>
+const DATA = [{"idx": 1, "name": "Gestoria Huelva Juan Fco Botella", "city": "Huelva", "email": "jmsert62@yahoo.es", "subject": "Una idea desde Niebla para Gestoria Huelva Juan Fco Botella", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 2, "name": "Gestoria Crespo Huelva", "city": "Huelva", "email": "gestoriacrespo@gmail.com", "subject": "Una idea desde Niebla para Gestoria Crespo Huelva", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 3, "name": "Gestoria Gabinete Robles", "city": "Huelva", "email": "felisa@gabineterobles.com", "subject": "Una idea desde Niebla para Gestoria Gabinete Robles", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 4, "name": "Espinosa Villaran Gestoria Huelva", "city": "Huelva", "email": "contacto@gestoriaespinosavillaran.es", "subject": "Una idea desde Niebla para Espinosa Villaran Gestoria Huelva", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 5, "name": "Gestoria Del Odiel", "city": "Huelva", "email": "carmenhr@gestoriadelodiel.com", "subject": "Una idea desde Niebla para Gestoria Del Odiel", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 6, "name": "Arpe Asesores Huelva", "city": "Huelva", "email": "info@arpeasesores.es", "subject": "Una idea desde Niebla para Arpe Asesores Huelva", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 7, "name": "Gestoria Siga Bocanegra Huelva", "city": "Huelva", "email": "admin@bocanegragestores.com", "subject": "Una idea desde Niebla para Gestoria Siga Bocanegra Huelva", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 8, "name": "Perdomo Asesores Sevilla", "city": "Sevilla", "email": "jacobo@perdomoasesores.com", "subject": "Una idea desde Niebla para Perdomo Asesores Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 9, "name": "SumaGestion Asesoria Sevilla", "city": "Sevilla", "email": "info@sumagestion.es", "subject": "Una idea desde Niebla para SumaGestion Asesoria Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 10, "name": "GESTASER Asesoria Sevilla", "city": "Sevilla", "email": "asesores@gestasor.com", "subject": "Una idea desde Niebla para GESTASER Asesoria Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 11, "name": "Activa Consultores Sevilla", "city": "Sevilla", "email": "info@activaconsultores.es", "subject": "Una idea desde Niebla para Activa Consultores Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 12, "name": "TAMISE MATOS Asesoria Sevilla", "city": "Sevilla", "email": "tamise@matostitz.es", "subject": "Una idea desde Niebla para TAMISE MATOS Asesoria Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 13, "name": "Servicentro Asesoria Sevilla", "city": "Sevilla", "email": "info@servicioscentralizados.es", "subject": "Una idea desde Niebla para Servicentro Asesoria Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 14, "name": "GesDogma Asesoria Sevilla", "city": "Sevilla", "email": "albertoruiz@gesdogma.com", "subject": "Una idea desde Niebla para GesDogma Asesoria Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 15, "name": "Grupo Garantia Asesores Sevilla", "city": "Sevilla", "email": "info@grupogarantia.es", "subject": "Una idea desde Niebla para Grupo Garantia Asesores Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 16, "name": "IS GESTION Sevilla", "city": "Sevilla", "email": "josemaria@dypgestiondeempresas.es", "subject": "Una idea desde Niebla para IS GESTION Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 17, "name": "GVV Asesores Consultores Sevilla", "city": "Sevilla", "email": "info@consulgvv.es", "subject": "Una idea desde Niebla para GVV Asesores Consultores Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 18, "name": "ARC Gestoria Sevilla", "city": "Sevilla", "email": "asesor@arcgestoria.es", "subject": "Una idea desde Niebla para ARC Gestoria Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 19, "name": "Asesoria De La Torre Forero SL", "city": "Sevilla", "email": "info@delatorreasesor.com", "subject": "Una idea desde Niebla para Asesoria De La Torre Forero SL", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}, {"idx": 20, "name": "GESVAN GESTORIA Sevilla", "city": "Sevilla", "email": "info@gesvangestoria.es", "subject": "Una idea desde Niebla para GESVAN GESTORIA Sevilla", "body": "Hola,\n\nSoy Carlos Gálvez, de Niebla (Huelva). Te escribo en frío porque acabo de lanzar Saldea, un software con IA que persigue las facturas vencidas por ti. Y vosotros sois el tipo de gestoría a la que está pensado.\n\n¿Por qué te escribo a ti?\n\nVuestros clientes (autónomos y pymes) os llaman porque tienen un cliente que no les paga, vosotros tenéis que decirles \"haz tú la reclamación\" porque no entra en el servicio. Y muchas veces vosotros mismos cobráis tarde las cuotas mensuales.\n\nSaldea hace eso solo:\n- Analiza cada factura vencida (días, importe, historial del cliente)\n- Redacta y envía el email de reclamación, escalando en tono si no pagan\n- Detecta si el cliente responde, paga o discute\n- Cumple Ley 3/2004 y RGPD\n\nDos formas en que os puede servir:\n1. Para vuestros propios cobros mensuales (cuotas a clientes)\n2. Como herramienta que ofrecéis a vuestros clientes — vosotros lo activáis, ellos lo usan\n\nOs dejo 1 mes gratis sin tarjeta para probarlo: https://marsof.es/saldea\n\nSi te interesa probarlo o tienes 15 min para una llamada esta semana, dime y nos coordinamos. Si no encaja, no pasa nada — gracias por leer hasta aquí.\n\nUn saludo,\nCarlos Gálvez Carrillo\nFundador y CEO · Marsof Technology"}];
+const KEY = 'outreach-sent-v2';
+const ZOHO_COMPOSE = "https://mail.zoho.eu/zm/#mail/compose";
+
+function getSent() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } }
+function setSent(arr) { localStorage.setItem(KEY, JSON.stringify(arr)); render(); }
+function markSent(idx) {
+  const s = getSent();
+  if (!s.includes(idx)) s.push(idx);
+  setSent(s);
+}
+function unmark(idx) {
+  setSent(getSent().filter(x => x !== idx));
+}
+function resetAll() { if (confirm('Reset todas?')) setSent([]); }
+
+async function copyText(text, el) {
+  try {
+    await navigator.clipboard.writeText(text);
+    if (el) {
+      el.classList.add('copied');
+      const hint = el.parentElement.querySelector('.copyhint');
+      if (hint) hint.classList.add('show');
+      setTimeout(() => {
+        el.classList.remove('copied');
+        if (hint) hint.classList.remove('show');
+      }, 1500);
+    }
+    return true;
+  } catch (e) {
+    alert('No pude copiar al portapapeles: ' + e.message);
+    return false;
+  }
+}
+
+async function prepararEnvio(idx) {
+  const item = DATA.find(x => x.idx === idx);
+  if (!item) return;
+  // 1. copiar el body al portapapeles
+  await navigator.clipboard.writeText(item.body);
+  // 2. abrir Zoho compose (vacío) en nueva pestaña
+  window.open(ZOHO_COMPOSE, '_blank');
+  // 3. expandir la tarjeta para mostrar los campos copiables
+  const card = document.querySelector(`.card[data-idx="${idx}"]`);
+  if (card) card.classList.add('open');
+}
+
+function toggleCard(idx) {
+  const card = document.querySelector(`.card[data-idx="${idx}"]`);
+  if (card) card.classList.toggle('open');
+}
+
+function render() {
+  const sent = getSent();
+  const container = document.getElementById('cards');
+  container.innerHTML = DATA.map(it => {
+    const isSent = sent.includes(it.idx);
+    return `
+      <div class="card ${isSent ? 'sent' : ''}" data-idx="${it.idx}">
+        <div class="head">
+          <div>
+            <div class="num">#${String(it.idx).padStart(2,'0')}</div>
+            <div class="name">${escapeHtml(it.name)}</div>
+            <div class="meta">${escapeHtml(it.city)} · ${escapeHtml(it.email)}</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button class="btn ghost small" onclick="toggleCard(${it.idx})">ver detalles</button>
+            <button class="btn primary" onclick="prepararEnvio(${it.idx})">Preparar envío →</button>
+            ${isSent
+              ? `<button class="btn ghost small" onclick="unmark(${it.idx})">deshacer</button>`
+              : `<button class="btn ghost small" onclick="markSent(${it.idx})">marcar enviado</button>`}
+          </div>
+        </div>
+
+        <div class="detail">
+          <div class="field">
+            <div class="label">
+              Para
+              <span class="copyhint">✓ copiado</span>
+            </div>
+            <div class="value-box" onclick="copyText('${escapeAttr(it.email)}', this)">${escapeHtml(it.email)}</div>
+          </div>
+          <div class="field">
+            <div class="label">
+              Asunto
+              <span class="copyhint">✓ copiado</span>
+            </div>
+            <div class="value-box" onclick="copyText(this.dataset.value, this)" data-value="${escapeAttr(it.subject)}">${escapeHtml(it.subject)}</div>
+          </div>
+          <div class="field">
+            <div class="label">
+              Cuerpo del email (ya está copiado al pulsar "Preparar envío", o haz click aquí)
+              <span class="copyhint">✓ copiado</span>
+            </div>
+            <div class="value-box" onclick="copyText(this.dataset.value, this)" data-value="${escapeAttr(it.body)}">${escapeHtml(it.body)}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('sentCount').textContent = sent.length;
+  document.getElementById('pBar').style.width = (sent.length / DATA.length * 100) + '%';
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function escapeAttr(s) {
+  return String(s).replace(/'/g, "&#39;").replace(/"/g, '&quot;').replace(/\n/g, '&#10;');
+}
+
+render();
+</script>
+</body>
+</html>
