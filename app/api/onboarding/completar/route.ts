@@ -13,14 +13,22 @@ export async function POST() {
 
   const supabase = await createServerSupabaseClient()
 
+  const now = new Date().toISOString()
+
   const { error } = await supabase
     .from('configuraciones_usuario')
     .upsert(
-      { user_id: org.user_id, org_id: org.org_id, onboarding_completado: true, updated_at: new Date().toISOString() },
+      { user_id: org.user_id, org_id: org.org_id, onboarding_completado: true, updated_at: now },
       { onConflict: 'user_id' }
     )
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+  // Marcar la org como onboarding completado (lo que lee el dashboard)
+  await supabase
+    .from('organizations')
+    .update({ onboarding_completado_at: now })
+    .eq('id', org.org_id)
 
   return NextResponse.json({ ok: true })
 }
