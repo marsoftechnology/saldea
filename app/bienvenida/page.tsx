@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
 
@@ -40,6 +40,19 @@ export default function BienvenidaPage() {
   const router = useRouter()
   const [paso, setPaso] = useState(0)
   const [guardando, setGuardando] = useState(false)
+
+  // Restaurar paso al refrescar
+  useEffect(() => {
+    const saved = localStorage.getItem('saldea_onboarding_paso')
+    if (saved) {
+      const n = parseInt(saved, 10)
+      if (!isNaN(n) && n > 0 && n < TOTAL_PASOS) setPaso(n)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('saldea_onboarding_paso', String(paso))
+  }, [paso])
   const [error, setError] = useState<string | null>(null)
 
   // Paso 0 — Tu empresa
@@ -184,6 +197,7 @@ export default function BienvenidaPage() {
   }
 
   async function completarOnboarding() {
+    localStorage.removeItem('saldea_onboarding_paso')
     setGuardando(true)
     try {
       await fetch('/api/onboarding/completar', { method: 'POST' })
