@@ -114,8 +114,8 @@ export default async function FacturaDetallePage({ params }: { params: Promise<{
           </div>
         )}
 
-        {/* Burofax automático — solo plan Max */}
-        {planOrg === 'max' && factura.estado !== 'cobrada' && factura.estado !== 'cancelada' && (
+        {/* Burofax electrónico — plan Pro y Max */}
+        {(planOrg === 'pro' || planOrg === 'max') && factura.estado !== 'cobrada' && factura.estado !== 'cancelada' && (
           <BurofaxButton
             facturaId={factura.id}
             burofaxEnviadoAt={factura.burofax_enviado_at ?? null}
