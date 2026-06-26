@@ -202,7 +202,7 @@ export async function PATCH(req: NextRequest) {
 
   const { error } = await supabase
     .from('configuraciones_usuario')
-    .upsert({ user_id: org.user_id, org_id: org.org_id, ...campos }, { onConflict: 'user_id' })
+    .upsert({ user_id: org.user_id, org_id: org.org_id, ...campos }, { onConflict: 'org_id' })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 

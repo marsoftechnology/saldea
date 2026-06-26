@@ -1,5 +1,10 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
 
+function parseFechaLocal(fecha: string): Date {
+  const [y, m, d] = fecha.split('-').map(Number)
+  return new Date(y, m - 1, d)
+}
+
 export async function generarPDFFactura(params: {
   numero: string
   importe: number
@@ -40,7 +45,7 @@ export async function generarPDFFactura(params: {
   page.drawText(params.clienteEmail, { x: 50, y: cy, size: 10, font: regular, color: gris })
 
   const fechaEmision = new Date().toLocaleDateString('es-ES')
-  const fechaVenc = new Date(params.fechaVencimiento).toLocaleDateString('es-ES')
+  const fechaVenc = parseFechaLocal(params.fechaVencimiento).toLocaleDateString('es-ES')
   page.drawText('FECHA EMISIÓN:', { x: width - 200, y: height - 150, size: 8, font: bold, color: gris })
   page.drawText(fechaEmision, { x: width - 200, y: height - 168, size: 12, font: regular, color: negro })
   page.drawText('VENCIMIENTO:', { x: width - 200, y: height - 198, size: 8, font: bold, color: gris })
@@ -95,7 +100,7 @@ export async function generarPDFBurofax(params: {
 
   const fechaHoy = new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })
   const importeStr = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(params.importe)
-  const vencimientoStr = new Date(params.fechaVencimiento).toLocaleDateString('es-ES')
+  const vencimientoStr = parseFechaLocal(params.fechaVencimiento).toLocaleDateString('es-ES')
 
   // Cabecera roja
   page.drawRectangle({ x: 0, y: height - 90, width, height: 90, color: rojo })

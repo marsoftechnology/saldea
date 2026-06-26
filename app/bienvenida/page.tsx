@@ -11,6 +11,31 @@ type Software = 'holded' | 'quipu' | 'anfix' | 'csv' | 'manual'
 
 const TOTAL_PASOS = 10
 
+function BotonContinuar({ onClick, disabled, guardando }: { onClick: () => void; disabled?: boolean; guardando: boolean }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled || guardando}
+      className="flex-1 bg-sky-500 hover:bg-sky-400 text-white font-semibold py-3 px-6 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {guardando ? 'Guardando...' : 'Guardar y continuar →'}
+    </button>
+  )
+}
+
+function BotonSaltar({ onSaltar }: { onSaltar: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onSaltar}
+      className="text-zinc-500 hover:text-zinc-300 text-sm font-medium py-3 px-4 rounded-xl border border-white/10 hover:border-white/20 transition-colors"
+    >
+      Saltar este paso
+    </button>
+  )
+}
+
 // Ejemplos de email reales para cada tono
 const EJEMPLOS_TONO: Record<TonoPreset, { asunto: string; cuerpo: string }> = {
   cordial: {
@@ -240,35 +265,6 @@ export default function BienvenidaPage() {
   }
 
   // ──────────────────────────────────────────────────────────────────────────
-  // Render helpers
-  // ──────────────────────────────────────────────────────────────────────────
-
-  function BotonContinuar({ onClick, disabled }: { onClick: () => void; disabled?: boolean }) {
-    return (
-      <button
-        type="button"
-        onClick={onClick}
-        disabled={disabled || guardando}
-        className="flex-1 bg-sky-500 hover:bg-sky-400 text-white font-semibold py-3 px-6 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {guardando ? 'Guardando...' : 'Guardar y continuar →'}
-      </button>
-    )
-  }
-
-  function BotonSaltar() {
-    return (
-      <button
-        type="button"
-        onClick={avanzar}
-        className="text-zinc-500 hover:text-zinc-300 text-sm font-medium py-3 px-4 rounded-xl border border-white/10 hover:border-white/20 transition-colors"
-      >
-        Saltar este paso
-      </button>
-    )
-  }
-
-  // ──────────────────────────────────────────────────────────────────────────
   // Pasos
   // ──────────────────────────────────────────────────────────────────────────
 
@@ -310,7 +306,7 @@ export default function BienvenidaPage() {
         {error && <p className="text-rose-400 text-sm mb-4 bg-rose-500/10 border border-rose-500/20 px-4 py-2 rounded-lg">{error}</p>}
 
         <div className="flex gap-3">
-          <BotonContinuar onClick={async () => { if (await guardarPerfil()) avanzar() }} />
+          <BotonContinuar onClick={async () => { if (await guardarPerfil()) avanzar() }} guardando={guardando} />
         </div>
       </>
     )
@@ -394,8 +390,8 @@ export default function BienvenidaPage() {
         {error && <p className="text-rose-400 text-sm mb-4">{error}</p>}
 
         <div className="flex gap-3">
-          <BotonContinuar onClick={async () => { await guardarImagen(); avanzar() }} />
-          <BotonSaltar />
+          <BotonContinuar onClick={async () => { await guardarImagen(); avanzar() }} guardando={guardando} />
+          <BotonSaltar onSaltar={avanzar} />
         </div>
       </>
     )
@@ -610,8 +606,8 @@ export default function BienvenidaPage() {
         </div>
 
         <div className="flex gap-3">
-          <BotonContinuar onClick={async () => { await guardarCobros(); avanzar() }} />
-          <BotonSaltar />
+          <BotonContinuar onClick={async () => { await guardarCobros(); avanzar() }} guardando={guardando} />
+          <BotonSaltar onSaltar={avanzar} />
         </div>
       </>
     )
@@ -763,7 +759,7 @@ export default function BienvenidaPage() {
               Continuar →
             </button>
           )}
-          <BotonSaltar />
+          <BotonSaltar onSaltar={avanzar} />
         </div>
       </>
     )
@@ -866,7 +862,7 @@ export default function BienvenidaPage() {
           >
             Continuar →
           </button>
-          <BotonSaltar />
+          <BotonSaltar onSaltar={avanzar} />
         </div>
       </>
     )
@@ -927,7 +923,7 @@ export default function BienvenidaPage() {
           >
             Entendido, continuar →
           </button>
-          <BotonSaltar />
+          <BotonSaltar onSaltar={avanzar} />
         </div>
       </>
     )

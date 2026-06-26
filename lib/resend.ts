@@ -88,9 +88,16 @@ export async function enviarEmail(params: {
       </div>
     ` : ''
 
-    const logoHTML = logoUrl ? `
+    let logoHtmlSrc: string | null = null
+    if (logoUrl) {
+      try {
+        const u = new URL(logoUrl)
+        if (u.protocol === 'https:') logoHtmlSrc = logoUrl
+      } catch { /* URL inválida */ }
+    }
+    const logoHTML = logoHtmlSrc ? `
       <div style="margin-bottom: 24px;">
-        <img src="${logoUrl}" alt="Logo" style="max-height: 80px; max-width: 200px;" />
+        <img src="${escaparHtml(logoHtmlSrc)}" alt="Logo" style="max-height: 80px; max-width: 200px;" />
       </div>
     ` : ''
 

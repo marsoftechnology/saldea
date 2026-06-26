@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js'
 
@@ -22,8 +22,12 @@ export default function TrialPaywall() {
   const [intervalo, setIntervalo] = useState<'mes' | 'anio'>('anio')
   const [fase, setFase] = useState<'expired' | 'checkout'>('expired')
   const [errorPago, setErrorPago] = useState('')
+  const clientSecretCache = useRef<{ interval: 'mes' | 'anio'; secret: string } | null>(null)
 
   const fetchClientSecret = useCallback(async () => {
+    if (clientSecretCache.current?.interval === intervalo) {
+      return clientSecretCache.current.secret
+    }
     setErrorPago('')
     const res = await fetch('/api/checkout', {
       method: 'POST',
@@ -35,6 +39,7 @@ export default function TrialPaywall() {
       return ''
     }
     const { clientSecret } = await res.json()
+    clientSecretCache.current = { interval: intervalo, secret: clientSecret }
     return clientSecret as string
   }, [intervalo])
 

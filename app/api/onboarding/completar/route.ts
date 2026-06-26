@@ -19,7 +19,7 @@ export async function POST() {
     .from('configuraciones_usuario')
     .upsert(
       { user_id: org.user_id, org_id: org.org_id, onboarding_completado: true, updated_at: now },
-      { onConflict: 'user_id' }
+      { onConflict: 'org_id' }
     )
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

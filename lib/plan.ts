@@ -86,25 +86,17 @@ export function limiteMiembrosOrg(plan: Plan): number {
   return plan === 'pro' ? LIMITES_PRO.miembrosEquipo : LIMITES_FREE.miembrosEquipo
 }
 
-/** Cuántos emails ha mandado este mes el usuario (sumando todas sus facturas). */
-export async function emailsEnviadosEsteMes(userId: string, supabase?: SupabaseClient): Promise<number> {
+/** Cuántos emails ha mandado esta org este mes. */
+export async function emailsEnviadosEsteMes(orgId: string, supabase?: SupabaseClient): Promise<number> {
   const client = supabase ?? getServiceClient()
   const primerDia = new Date()
   primerDia.setUTCDate(1)
   primerDia.setUTCHours(0, 0, 0, 0)
 
-  // logs_email no tiene user_id, así que filtramos por las facturas del usuario.
-  const { data: facturas } = await client
-    .from('facturas')
-    .select('id')
-    .eq('user_id', userId)
-  const ids = (facturas ?? []).map(f => f.id)
-  if (ids.length === 0) return 0
-
   const { count } = await client
     .from('logs_email')
     .select('*', { count: 'exact', head: true })
-    .in('factura_id', ids)
+    .eq('org_id', orgId)
     .eq('estado', 'enviado')
     .gte('enviado_at', primerDia.toISOString())
   return count ?? 0

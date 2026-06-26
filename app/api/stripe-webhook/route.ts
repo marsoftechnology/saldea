@@ -35,9 +35,13 @@ async function updateUser(userId: string, fields: {
   stripe_subscription_id?: string | null
 }) {
   const supabase = getSupabase()
-  await supabase
+  const { error } = await supabase
     .from('configuraciones_usuario')
     .upsert({ user_id: userId, ...fields }, { onConflict: 'user_id' })
+  if (error) {
+    console.error(`[stripe-webhook] upsert failed for user ${userId}:`, error)
+    throw error
+  }
   console.log(`[stripe-webhook] user ${userId} →`, fields)
 }
 
