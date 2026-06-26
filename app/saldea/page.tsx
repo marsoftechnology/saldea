@@ -42,7 +42,7 @@ function BrowserFrame({ src, alt, url, priority = false }: { src: string; alt: s
 
 export const metadata: Metadata = {
   title: 'Saldea — Software de cobros con IA para autónomos y pymes',
-  description: 'Automatiza el cobro de tus facturas impagadas con IA. Recordatorios por email y WhatsApp que escalan en tono, detección de respuestas, conciliación bancaria automática y Stripe Connect. 49€/mes · 30 días gratis.',
+  description: 'Automatiza el cobro de tus facturas impagadas con IA. Recordatorios por email que escalan en tono, detección de respuestas, conciliación bancaria automática y Stripe Connect. 49€/mes · 30 días gratis.',
   alternates: { canonical: 'https://marsof.es/saldea' },
   keywords: [
     'software cobros',
@@ -86,7 +86,7 @@ const comparativa = [
   { feature: 'Pausa automática si paga / disputa', saldea: true, manual: false, otros: false },
   { feature: 'Portal de pago con tarjeta', saldea: true, manual: false, otros: false },
   { feature: 'Integración Holded / Quipu / Anfix', saldea: true, manual: false, otros: false },
-  { feature: 'Recordatorios por WhatsApp', saldea: true, manual: false, otros: false },
+  { feature: 'Recordatorios por WhatsApp (próximamente)', saldea: true, manual: false, otros: false },
   { feature: 'Burofax digital en 1 clic', saldea: true, manual: false, otros: false },
   { feature: 'Plantillas en 4 idiomas', saldea: true, manual: false, otros: 'A veces' },
   { feature: 'PDF de factura adjunto', saldea: true, manual: false, otros: true },
@@ -233,7 +233,7 @@ export default function SaldeaPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { num: 10, label: 'ahorradas por cada moroso', suffix: 'h' },
-              { num: 5, label: 'tonos: de cordial a legal', suffix: '' },
+              { num: 4, label: 'tonos: amigable · firme · formal · extremo', suffix: '' },
               { num: 4, label: 'idiomas: ES · CA · EN · PT', suffix: '' },
               { num: 5, label: 'min. para empezar', prefix: '<', suffix: '' },
             ].map((s, i) => (
@@ -340,7 +340,7 @@ export default function SaldeaPage() {
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-5 tracking-tight">{pasos[1].titulo}</h3>
               <p className="text-zinc-400 text-lg leading-relaxed mb-6">{pasos[1].desc}</p>
               <ul className="space-y-3 text-zinc-300">
-                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> 5 tonos: de cordial a último aviso legal</li>
+                <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> 4 tonos: amigable · firme · formal · extremo</li>
                 <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Frecuencia personalizable (cada cuántos días)</li>
                 <li className="flex items-start gap-3"><span className="text-sky-400 font-bold mt-0.5">✓</span> Tu logo, firma y dominio en cada email</li>
               </ul>
@@ -396,18 +396,18 @@ export default function SaldeaPage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-sky-400" style={{boxShadow:'0 0 6px rgba(6,182,212,0.8)'}} />
                 IA Premium
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3">5 tonos que escalan solos</h3>
+              <h3 className="text-2xl font-bold text-white mb-3">4 tonos que escalan solos</h3>
               <p className="text-zinc-400 leading-relaxed mb-6">
-                De cordial el día 3 a último aviso legal el día 45. La IA elige el tono según los días de retraso y reescribe cada mensaje para que no parezca un bot. Tú no haces nada.
+                De amigable el día 3 a extremo el día 45. La IA elige el tono según los días de retraso y reescribe cada mensaje para que no parezca un bot. Tú no haces nada.
               </p>
               <div className="flex flex-wrap gap-2">
-                {['Cordial', 'Firme', 'Formal', 'Contundente', 'Último aviso legal'].map((t, i) => (
+                {['Amigable', 'Firme', 'Formal', 'Extremo'].map((t, i) => (
                   <span
                     key={t}
                     className={`text-xs font-medium px-3 py-1.5 rounded-full border ${
                       i === 0
                         ? 'bg-sky-500/10 text-sky-300 border-sky-500/30'
-                        : i === 4
+                        : i === 3
                         ? 'bg-rose-500/10 text-rose-300 border-rose-500/30'
                         : 'bg-white/5 text-zinc-400 border-white/10'
                     }`}
@@ -484,7 +484,7 @@ export default function SaldeaPage() {
           <Reveal effect="fade-up" delay={200}>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 h-full hover:border-sky-500/30 transition-colors">
               <div className="text-3xl mb-4">📱</div>
-              <h3 className="text-lg font-bold text-white mb-2">WhatsApp</h3>
+              <h3 className="text-lg font-bold text-white mb-2">WhatsApp <span className="text-xs font-semibold text-amber-400 border border-amber-400/30 bg-amber-500/10 px-2 py-0.5 rounded-full ml-1">Próximamente</span></h3>
               <p className="text-zinc-400 text-sm leading-relaxed">
                 Envía recordatorios por WhatsApp además del email. Llega por el canal donde tu cliente sí lee.
               </p>

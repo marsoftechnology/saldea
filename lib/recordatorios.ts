@@ -113,14 +113,10 @@ export interface VariablesPlantilla {
 }
 
 export function renderizarPlantilla(plantilla: string, vars: VariablesPlantilla): { asunto: string; cuerpo: string } {
-  const sustituida = plantilla
-    .replaceAll('{cliente}', vars.cliente)
-    .replaceAll('{empresa}', vars.empresa)
-    .replaceAll('{factura}', vars.factura)
-    .replaceAll('{importe}', vars.importe)
-    .replaceAll('{vencimiento}', vars.vencimiento)
-    .replaceAll('{dias_vencida}', String(vars.dias_vencida))
-    .replaceAll('{empresa_emisor}', vars.empresa_emisor)
+  const sustituida = plantilla.replace(
+    /{(cliente|empresa|factura|importe|vencimiento|dias_vencida|empresa_emisor)}/g,
+    (_, key) => String((vars as unknown as Record<string, unknown>)[key] ?? `{${key}}`)
+  )
 
   const lineas = sustituida.split('\n')
   const asunto = (lineas[0] ?? '').trim() || 'Recordatorio de pago'

@@ -322,7 +322,7 @@ export default function AjustesPage() {
                 </div>
                 <p className="text-xs text-zinc-400 mt-1">
                   {plan === 'max'
-                    ? 'Tienes el plan Max activo. Burofax automáticos, dominio propio y hasta 25 miembros.'
+                    ? 'Tienes el plan Max activo. Burofax a 6€/ud, dominio propio y hasta 25 miembros.'
                     : plan === 'pro'
                     ? 'Tienes el plan Pro activo. Gracias por confiar en Saldea.'
                     : 'Plan Free · 3 facturas activas, 10 clientes, 30 emails/mes, 1 tono.'}
@@ -370,7 +370,7 @@ export default function AjustesPage() {
               {planSeleccionado === 'max' && (
                 <div className="text-xs text-zinc-400 mb-3 bg-amber-500/5 border border-amber-500/20 rounded-lg px-3 py-2 space-y-0.5">
                   <p>✓ Todo lo del plan Pro</p>
-                  <p>✓ 3 burofax/mes incluidos (+ 6€/ud extra)</p>
+                  <p>✓ Burofax certificado a 6€/ud (sin límite mensual, pago por uso)</p>
                   <p>✓ Email desde tu propio dominio</p>
                   <p>✓ Hasta 25 miembros de equipo</p>
                 </div>
@@ -1190,17 +1190,17 @@ export default function AjustesPage() {
               {plan === 'max' ? (
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-amber-200">📜 Burofax automático</p>
+                    <p className="text-sm font-medium text-amber-200">📜 Burofax certificado · 6€/ud</p>
                     <p className="text-xs text-zinc-400 mt-0.5">Cartas fehacientes de reclamación desde la ficha de factura.</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-bold text-amber-300">{burofaxUsados}/{burofaxLimite}</p>
-                    <p className="text-xs text-zinc-500">este mes</p>
+                    <p className="text-lg font-bold text-amber-300">{burofaxUsados}</p>
+                    <p className="text-xs text-zinc-500">enviados este mes</p>
                   </div>
                 </div>
               ) : (
                 <p className="text-xs text-zinc-500">
-                  📜 <strong className="text-zinc-400">Burofax automático</strong> — exclusivo plan{' '}
+                  📜 <strong className="text-zinc-400">Burofax certificado · 6€/ud</strong> — exclusivo plan{' '}
                   <span className="text-amber-400">Max</span>
                 </p>
               )}

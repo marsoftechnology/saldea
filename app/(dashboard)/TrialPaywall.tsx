@@ -19,7 +19,7 @@ const FEATURES = [
 ]
 
 export default function TrialPaywall() {
-  const [intervalo, setIntervalo] = useState<'mes' | 'anio'>('anio')
+  const [intervalo, setIntervalo] = useState<'mes' | 'anio'>('mes')
   const [fase, setFase] = useState<'expired' | 'checkout'>('expired')
   const [errorPago, setErrorPago] = useState('')
   const clientSecretCache = useRef<{ interval: 'mes' | 'anio'; secret: string } | null>(null)

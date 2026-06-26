@@ -16,6 +16,13 @@ export async function POST(req: NextRequest) {
     if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
     if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite esta acción' }, { status: 403 })
 
+    if (!process.env.LLEIDA_API_KEY || !process.env.LLEIDA_USER) {
+      return NextResponse.json(
+        { error: 'El servicio de burofax no está disponible temporalmente. Contacta con soporte.', codigo: 'BUROFAX_NO_CONFIGURADO' },
+        { status: 503 }
+      )
+    }
+
     const supabase = await createServerSupabaseClient()
 
     const { facturaId, checkoutSessionId } = await req.json()

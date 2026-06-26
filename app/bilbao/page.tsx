@@ -51,7 +51,7 @@ export default function PageBilbao() {
             <li>✓ <strong>IA en castellano</strong></li>
             <li>✓ <strong>Compatible con TicketBAI</strong> (tu software se encarga)</li>
             <li>✓ <strong>Cumple Ley 3/2004</strong></li>
-            <li>✓ <strong>30 días gratis</strong> sin tarjeta</li>
+            <li>✓ <strong>30 días gratis</strong> · cancela antes y no pagas nada</li>
           </ul>
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">
             <h2 className="text-2xl font-bold mb-2">Pruébalo desde Bilbao</h2>

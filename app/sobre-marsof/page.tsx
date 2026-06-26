@@ -275,7 +275,7 @@ export default function PageSobreMarsof() {
             <div className="bg-gradient-to-br from-sky-500/15 via-sky-500/5 to-transparent border border-sky-500/25 rounded-2xl p-10 text-center">
               <h2 className="text-2xl font-bold mb-3">Empieza con Saldea, nuestro primer producto</h2>
               <p className="text-zinc-400 mb-8 max-w-md mx-auto">
-                Automatiza el cobro de tus facturas impagadas. 30 días gratis, sin tarjeta.
+                Automatiza el cobro de tus facturas impagadas. 30 días gratis · cancela antes y no pagas nada.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-7 py-3 rounded-lg hover:bg-sky-400 transition-colors">

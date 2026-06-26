@@ -4,7 +4,7 @@ import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Precios de Saldea: Free, Pro (49€/mes) y Max (99€/mes) | Saldea',
-  description: 'Precios transparentes de Saldea: plan Free, Pro (49€/mes o 499€/año) y Max (99€/mes o 1.000€/año, con burofax incluido). 30 días gratis en Pro. Cancela en 1 clic.',
+  description: 'Precios transparentes de Saldea: plan Free, Pro (49€/mes o 499€/año) y Max (99€/mes o 1.000€/año, con burofax a 6€/ud). 30 días gratis en Pro. Cancela en 1 clic.',
   alternates: { canonical: 'https://marsof.es/precios' },
   keywords: [
     'precio saldea',
@@ -126,6 +126,7 @@ export default function PagePrecios() {
                 <li>✓ IA Claude para respuestas</li>
                 <li>✓ Stripe Connect</li>
                 <li>✓ Adjuntos PDF</li>
+                <li>✓ API REST pública</li>
               </ul>
               <Link href="/registro?plan=mes" className="block w-full text-center bg-sky-500 text-zinc-900 py-2.5 rounded-lg font-bold text-sm hover:bg-sky-400 transition-colors">Probar 30 días gratis</Link>
             </div>
@@ -157,7 +158,6 @@ export default function PagePrecios() {
                 <li className="text-amber-300">✓ Email desde tu dominio</li>
                 <li className="text-amber-300">✓ Hasta 25 miembros</li>
                 <li>✓ Soporte VIP prioritario</li>
-                <li className="text-zinc-500">🔜 API access</li>
               </ul>
               <Link href="/registro?plan=max-mes" className="block w-full text-center bg-amber-500 text-zinc-900 py-2.5 rounded-lg font-bold text-sm hover:bg-amber-400 transition-colors">Empezar con Max →</Link>
             </div>

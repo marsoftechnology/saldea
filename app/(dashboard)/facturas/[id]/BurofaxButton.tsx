@@ -34,7 +34,11 @@ export default function BurofaxButton({
           setEstado('ok')
         } else {
           setEstado('error')
-          setMensaje(data.error || 'Error al enviar el burofax')
+          if (data.codigo === 'BUROFAX_NO_CONFIGURADO') {
+            setMensaje('Servicio temporalmente no disponible')
+          } else {
+            setMensaje(data.error || 'Error al enviar el burofax')
+          }
         }
       })
       .catch(() => {

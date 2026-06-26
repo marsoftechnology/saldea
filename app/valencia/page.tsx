@@ -54,7 +54,7 @@ export default function PageValencia() {
             <li>✓ <strong>IA que escala el tono</strong> sin perder cliente</li>
             <li>✓ <strong>Cumple Ley 3/2004</strong> y Veri*factu</li>
             <li>✓ <strong>Soporte en español</strong> peninsular</li>
-            <li>✓ <strong>30 días gratis</strong> sin tarjeta</li>
+            <li>✓ <strong>30 días gratis</strong> · cancela antes y no pagas nada</li>
           </ul>
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">

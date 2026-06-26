@@ -72,7 +72,7 @@ export default function RegistroPage() {
     // Si el usuario llegó desde el pricing con ?plan=anio, llevarle directo al checkout anual
     const params = new URLSearchParams(window.location.search)
     const plan = params.get('plan')
-    router.push(plan === 'anio' ? '/ajustes?autocheckout=anio#plan' : '/ajustes?autocheckout=mes#plan')
+    router.push('/bienvenida')
   }
 
   return (
@@ -82,7 +82,7 @@ export default function RegistroPage() {
         30 días gratis
       </div>
       <h1 className="text-2xl font-bold text-white mb-2 tracking-tight">Crea tu cuenta</h1>
-      <p className="text-zinc-400 text-sm mb-8">30 días gratis · tu tarjeta no se cargará hasta el día 31.</p>
+      <p className="text-zinc-400 text-sm mb-8">30 días gratis · tu tarjeta no se cargará hasta pasados 30 días desde tu registro.</p>
 
       {/* ── Botón Google ── */}
       <button

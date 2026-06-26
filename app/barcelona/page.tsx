@@ -54,7 +54,7 @@ export default function PageBarcelona() {
             <li>✓ <strong>Plantillas adaptables</strong>: puedes configurar los recordatorios en catalán si lo necesitas</li>
             <li>✓ <strong>Cumplimiento RGPD</strong> con servidores europeos</li>
             <li>✓ <strong>Soporte en español</strong> en horario peninsular</li>
-            <li>✓ <strong>30 días gratis</strong> sin tarjeta para que pruebes</li>
+            <li>✓ <strong>30 días gratis</strong> · cancela antes y no pagas nada</li>
           </ul>
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">

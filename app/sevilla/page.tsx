@@ -93,7 +93,7 @@ export default function PageSevilla() {
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold mb-2">Empieza con 30 días gratis</h2>
-            <p className="text-zinc-400 mb-6">Sin tarjeta. Sin permanencia. Si no encaja con tu negocio en Sevilla, cancelas en 1 clic.</p>
+            <p className="text-zinc-400 mb-6">Cancela antes y no pagas nada. Sin permanencia. Si no encaja con tu negocio en Sevilla, cancelas en 1 clic.</p>
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis →</Link>
           </div>
         </section>
