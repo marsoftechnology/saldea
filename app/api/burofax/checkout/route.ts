@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No se puede enviar burofax a una factura cobrada o cancelada' }, { status: 400 })
     }
 
-    const cliente = factura.cliente as { nombre: string; email: string }
+    const cliente = factura.cliente as unknown as { nombre: string; email: string }
     const stripe = getStripe()
 
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
