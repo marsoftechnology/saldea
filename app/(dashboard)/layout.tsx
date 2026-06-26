@@ -13,7 +13,7 @@ import TrialBanner from '@/app/components/TrialBanner'
 import InstallPrompt from '@/app/components/InstallPrompt'
 
 type TrialStatus = {
-  plan: 'free' | 'pro'
+  plan: 'free' | 'pro' | 'max'
   trialExpired: boolean
   trialDaysRemaining: number | null
 }
@@ -61,7 +61,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         }
       })
       .catch(() => setOnboarding({ completado: true }))
-  }, [router])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function cerrarSesion() {
     const supabase = createClient()

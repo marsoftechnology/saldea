@@ -35,6 +35,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Body JSON inválido' }, { status: 400 })
     }
     if (!facturaId) return NextResponse.json({ error: 'facturaId requerido' }, { status: 400 })
+    const TONOS_VALIDOS = ['amigable', 'firme', 'formal', 'extremo']
+    if (tono && !TONOS_VALIDOS.includes(tono)) {
+      return NextResponse.json({ error: 'Tono inválido' }, { status: 400 })
+    }
 
     const supabase = await createServerSupabaseClient()
     const user = org.user

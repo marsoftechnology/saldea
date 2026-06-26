@@ -19,11 +19,12 @@ export const LIMITES_MAX = {
   // burofax: pago por uso — 6€/ud vía Stripe + lleida.net, sin límite mensual.
 } as const
 
+let _serviceClient: SupabaseClient | null = null
 function getServiceClient(): SupabaseClient {
-  return createClient(
+  return (_serviceClient ??= createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
-  )
+  ))
 }
 
 const TRIAL_DAYS = 30
@@ -35,8 +36,7 @@ async function isOrgInTrial(orgId: string, client: SupabaseClient): Promise<bool
     .eq('id', orgId)
     .maybeSingle()
   if (!data?.created_at) return false
-  const trialEnd = new Date(data.created_at)
-  trialEnd.setDate(trialEnd.getDate() + TRIAL_DAYS)
+  const trialEnd = new Date(new Date(data.created_at).getTime() + TRIAL_DAYS * 24 * 60 * 60 * 1000)
   return new Date() < trialEnd
 }
 

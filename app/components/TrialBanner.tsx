@@ -13,18 +13,24 @@ export default function TrialBanner({ diasRestantes }: { diasRestantes: number }
   const posRef = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
-    if (sessionStorage.getItem('trial_banner_oculto')) {
-      setOculto(true)
-      return
+    try {
+      if (sessionStorage.getItem('trial_banner_oculto')) {
+        setOculto(true)
+        return
+      }
+      const saved = localStorage.getItem('trial_banner_pos')
+      let inicial = { x: window.innerWidth - 320, y: window.innerHeight - 100 }
+      if (saved) {
+        try { inicial = JSON.parse(saved) } catch {}
+      }
+      posRef.current = inicial
+      setPos(inicial)
+    } catch {
+      posRef.current = { x: 20, y: 20 }
+      setPos({ x: 20, y: 20 })
+    } finally {
+      setListo(true)
     }
-    const saved = localStorage.getItem('trial_banner_pos')
-    let inicial = { x: window.innerWidth - 320, y: window.innerHeight - 100 }
-    if (saved) {
-      try { inicial = JSON.parse(saved) } catch {}
-    }
-    posRef.current = inicial
-    setPos(inicial)
-    setListo(true)
   }, [])
 
   function onPointerDown(e: React.PointerEvent) {

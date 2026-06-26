@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
   try {
     const org = await getActiveOrg()
     if (!org) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+    if (org.role === 'readonly') return NextResponse.json({ error: 'Tu rol no permite esta acción' }, { status: 403 })
 
     const supabase = await createServerSupabaseClient()
 
@@ -36,11 +37,21 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'El pago no se ha completado', codigo: 'PAGO_INCOMPLETO' }, { status: 402 })
     }
 
-    if (stripeSession.metadata?.factura_id !== facturaId || stripeSession.metadata?.org_id !== org.org_id) {
+    if (
+      stripeSession.metadata?.factura_id !== facturaId ||
+      stripeSession.metadata?.org_id !== org.org_id ||
+      stripeSession.metadata?.user_id !== org.user_id
+    ) {
       return NextResponse.json({ error: 'La sesión de pago no corresponde a esta factura' }, { status: 400 })
     }
 
-    const stripePaymentIntentId = stripeSession.payment_intent as string
+    const stripePaymentIntentId =
+      typeof stripeSession.payment_intent === 'string'
+        ? stripeSession.payment_intent
+        : (stripeSession.payment_intent as { id?: string } | null)?.id ?? null
+    if (!stripePaymentIntentId) {
+      return NextResponse.json({ error: 'PaymentIntent no disponible' }, { status: 500 })
+    }
 
     // Evitar doble envío si ya existe un burofax con este payment intent
     const { count: yaExiste } = await supabase
@@ -123,7 +134,7 @@ export async function POST(req: NextRequest) {
     // Registrar en Supabase (independientemente del resultado de lleida)
     const mesActual = new Date().toISOString().slice(0, 7)
 
-    await supabase.from('burofaxes').insert({
+    const { error: insertError } = await supabase.from('burofaxes').insert({
       org_id: org.org_id,
       factura_id: factura.id,
       mes: mesActual,
@@ -137,6 +148,11 @@ export async function POST(req: NextRequest) {
       coste_usuario_cents: 600,
       coste_saldea_cents: 300,
     })
+    if (insertError) {
+      if (insertError.code === '23505') return NextResponse.json({ ok: true, mensaje: 'El burofax ya fue enviado' })
+      console.error('Error guardando burofax en BD:', insertError)
+      return NextResponse.json({ error: 'Error al registrar el burofax' }, { status: 500 })
+    }
 
     await supabase
       .from('facturas')

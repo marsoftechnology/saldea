@@ -56,7 +56,10 @@ export async function GET(req: NextRequest) {
 
     await recalcularEstadoFactura(supabase, facturaId)
 
-    return NextResponse.redirect(new URL(`/cobrado?num=${factura.numero}&importe=${factura.importe}`, req.url))
+    return NextResponse.redirect(new URL(
+      `/cobrado?num=${encodeURIComponent(factura.numero)}&importe=${encodeURIComponent(String(factura.importe))}`,
+      req.url
+    ))
   } catch {
     return NextResponse.redirect(new URL('/cobrado?error=1', req.url))
   }

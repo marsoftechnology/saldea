@@ -60,6 +60,7 @@ export async function POST(req: NextRequest) {
       metadata: {
         factura_id: facturaId,
         org_id: org.org_id,
+        user_id: org.user_id,
         tipo: 'burofax',
       },
     }

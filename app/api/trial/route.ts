@@ -23,7 +23,10 @@ export async function GET() {
     return NextResponse.json({ plan, trialExpired: false, trialDaysRemaining: null })
   }
 
-  const trialStart = orgData?.created_at ? new Date(orgData.created_at) : new Date()
+  if (!orgData?.created_at) {
+    return NextResponse.json({ plan, trialExpired: true, trialDaysRemaining: 0 })
+  }
+  const trialStart = new Date(orgData.created_at)
   const trialExpiresAt = new Date(trialStart.getTime() + TRIAL_DAYS * 24 * 60 * 60 * 1000)
   const now = new Date()
   const msRemaining = trialExpiresAt.getTime() - now.getTime()
