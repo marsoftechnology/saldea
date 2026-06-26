@@ -17,16 +17,6 @@ export async function POST(req: NextRequest) {
 
     const supabase = await createServerSupabaseClient()
 
-    const { data: cfg } = await supabase
-      .from('configuraciones_usuario')
-      .select('plan')
-      .eq('org_id', org.org_id)
-      .maybeSingle()
-
-    if (cfg?.plan !== 'max' && cfg?.plan !== 'pro') {
-      return NextResponse.json({ error: 'El burofax requiere plan Pro o Max.', codigo: 'PLAN_INSUFICIENTE' }, { status: 403 })
-    }
-
     const { facturaId, checkoutSessionId } = await req.json()
     if (!facturaId || !checkoutSessionId) {
       return NextResponse.json({ error: 'facturaId y checkoutSessionId requeridos' }, { status: 400 })

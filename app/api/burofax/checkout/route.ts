@@ -24,10 +24,6 @@ export async function POST(req: NextRequest) {
       .eq('org_id', org.org_id)
       .maybeSingle()
 
-    if (cfg?.plan !== 'max' && cfg?.plan !== 'pro') {
-      return NextResponse.json({ error: 'El burofax requiere plan Pro o Max.', codigo: 'PLAN_INSUFICIENTE' }, { status: 403 })
-    }
-
     const { facturaId } = await req.json()
     if (!facturaId) return NextResponse.json({ error: 'facturaId requerido' }, { status: 400 })
 
