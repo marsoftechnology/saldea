@@ -497,7 +497,7 @@ export default function BienvenidaPage() {
             autoComplete="off"
             spellCheck={false}
           />
-          <p className="text-xs text-zinc-500 mt-1.5">Se guarda cifrada. Solo Saldea la usa para generar tus emails de cobro.</p>
+          <p className="text-xs text-zinc-500 mt-1.5">Solo Saldea la usa para generar tus emails de cobro.</p>
         </div>
 
         {claudeKeyError && (

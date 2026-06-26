@@ -207,8 +207,8 @@ export async function POST(req: NextRequest) {
           .eq('factura_id', facturaId)
           .eq('tono', tono)
           .eq('enviado', false),
-        // Solo forzamos 'vencida' si la factura no está cobrada ni parcialmente_cobrada
-        dias > 0 && factura.estado !== 'cobrada' && factura.estado !== 'parcialmente_cobrada'
+        // Solo forzamos 'vencida' si la factura está pendiente (no cobrada, no cancelada)
+        dias > 0 && factura.estado !== 'cobrada' && factura.estado !== 'parcialmente_cobrada' && factura.estado !== 'cancelada'
           ? supabase.from('facturas').update({ estado: 'vencida' }).eq('id', facturaId)
           : Promise.resolve(),
       ])
