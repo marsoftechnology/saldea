@@ -9,6 +9,7 @@ import { Logo } from '@/app/components/Logo'
 import OrgSwitcher from './OrgSwitcher'
 import ThemeToggle from './ThemeToggle'
 import TrialPaywall from './TrialPaywall'
+import TrialBanner from '@/app/components/TrialBanner'
 import InstallPrompt from '@/app/components/InstallPrompt'
 
 type TrialStatus = {
@@ -159,31 +160,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           })}
         </nav>
 
-        {/* Badge de trial — solo para usuarios Free en prueba */}
-        {trial && trial.plan === 'free' && !trial.trialExpired && trial.trialDaysRemaining !== null && (
-          <div className={cn(
-            'mx-3 mb-1 px-3 py-2.5 rounded-xl border text-xs',
-            trial.trialDaysRemaining <= 3
-              ? 'bg-rose-500/10 border-rose-500/25 text-rose-300'
-              : trial.trialDaysRemaining <= 7
-                ? 'bg-amber-500/10 border-amber-500/25 text-amber-300'
-                : 'bg-sky-500/10 border-sky-500/20 text-sky-300'
-          )}>
-            <p className="font-semibold">
-              {trial.trialDaysRemaining === 0
-                ? '🔴 Prueba: último día'
-                : trial.trialDaysRemaining === 1
-                  ? '🟡 Prueba: 1 día restante'
-                  : `⏳ Prueba: ${trial.trialDaysRemaining} días`}
-            </p>
-            <Link
-              href="/ajustes#plan"
-              className="underline underline-offset-2 opacity-80 hover:opacity-100 mt-0.5 block"
-            >
-              Activar Pro →
-            </Link>
-          </div>
-        )}
 
         <div className="p-3 border-t border-white/5 space-y-1">
           <Link
@@ -216,6 +192,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Paywall obligatorio cuando el trial ha expirado */}
       {trial?.trialExpired && <TrialPaywall />}
+
+      {/* Banner flotante y arrastrable durante el trial */}
+      {trial?.plan === 'free' && !trial.trialExpired && trial.trialDaysRemaining !== null && (
+        <TrialBanner diasRestantes={trial.trialDaysRemaining} />
+      )}
 
       {/* Pantalla de carga mientras verificamos onboarding (evita flash) */}
       {onboarding === null && (

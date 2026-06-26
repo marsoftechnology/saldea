@@ -26,19 +26,35 @@ function getServiceClient(): SupabaseClient {
   )
 }
 
-/** Devuelve el plan del usuario. Si no tiene fila en configuraciones_usuario asume 'free'. */
+const TRIAL_DAYS = 30
+
+async function isOrgInTrial(orgId: string, client: SupabaseClient): Promise<boolean> {
+  const { data } = await client
+    .from('organizations')
+    .select('created_at')
+    .eq('id', orgId)
+    .maybeSingle()
+  if (!data?.created_at) return false
+  const trialEnd = new Date(data.created_at)
+  trialEnd.setDate(trialEnd.getDate() + TRIAL_DAYS)
+  return new Date() < trialEnd
+}
+
+/** Devuelve el plan del usuario. Free dentro del trial de 30 días equivale a Max. */
 export async function getUserPlan(userId: string, supabase?: SupabaseClient): Promise<Plan> {
   const client = supabase ?? getServiceClient()
   const { data } = await client
     .from('configuraciones_usuario')
-    .select('plan')
+    .select('plan, org_id')
     .eq('user_id', userId)
     .maybeSingle()
   if (data?.plan === 'max') return 'max'
-  return (data?.plan === 'pro' ? 'pro' : 'free')
+  if (data?.plan === 'pro') return 'pro'
+  if (data?.org_id && await isOrgInTrial(data.org_id, client)) return 'max'
+  return 'free'
 }
 
-/** Devuelve el plan de la organización (heredado de su owner). */
+/** Devuelve el plan de la organización. Free dentro del trial de 30 días equivale a Max. */
 export async function getOrgPlan(orgId: string, supabase?: SupabaseClient): Promise<Plan> {
   const client = supabase ?? getServiceClient()
   const { data } = await client
@@ -47,7 +63,9 @@ export async function getOrgPlan(orgId: string, supabase?: SupabaseClient): Prom
     .eq('org_id', orgId)
     .maybeSingle()
   if (data?.plan === 'max') return 'max'
-  return (data?.plan === 'pro' ? 'pro' : 'free')
+  if (data?.plan === 'pro') return 'pro'
+  if (await isOrgInTrial(orgId, client)) return 'max'
+  return 'free'
 }
 
 /** Cuenta el total de miembros activos + invitaciones pendientes (cuentan ya hacia el límite). */
