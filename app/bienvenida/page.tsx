@@ -274,7 +274,7 @@ export default function BienvenidaPage() {
         <div className="text-center mb-8">
           <div className="text-5xl mb-4">👋</div>
           <h1 className="text-2xl font-bold text-zinc-100">Bienvenido a Saldea</h1>
-          <p className="text-zinc-400 mt-2">Vamos a configurarlo todo en 5 minutos. Empieza contándonos quién eres.</p>
+          <p className="text-zinc-400 mt-2">Vamos a configurarlo todo paso a paso. Empieza contándonos quién eres.</p>
         </div>
 
         <div className="space-y-4 mb-8">
@@ -800,7 +800,6 @@ export default function BienvenidaPage() {
             {!stripeConectado ? (
               <a
                 href="/api/stripe-connect/start"
-                onClick={() => setStripeConectado(true)}
                 className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm"
               >
                 🔗 Conectar Stripe

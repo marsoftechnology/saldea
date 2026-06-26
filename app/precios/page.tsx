@@ -59,7 +59,7 @@ const schemaProduct = {
       price: '99',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
-      description: 'Todo Pro + 3 burofax/mes + email dominio propio + 25 miembros',
+      description: 'Todo Pro + burofax a 6€/ud + email dominio propio + 25 miembros',
     },
     {
       '@type': 'Offer',
@@ -153,7 +153,7 @@ export default function PagePrecios() {
               <p className="text-amber-400 text-xs mb-5">o 1.000€/año (ahorra 2 meses)</p>
               <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
                 <li>✓ Todo lo del plan Pro</li>
-                <li className="text-amber-300">✓ 3 burofax/mes incluidos</li>
+                <li className="text-amber-300">✓ Burofax certificado a 6€/ud (sin límite)</li>
                 <li className="text-amber-300">✓ Email desde tu dominio</li>
                 <li className="text-amber-300">✓ Hasta 25 miembros</li>
                 <li>✓ Soporte VIP prioritario</li>
@@ -190,7 +190,7 @@ export default function PagePrecios() {
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
               <h3 className="font-bold text-zinc-100 mb-3">📜 ¿Qué es un burofax?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">El burofax es un documento con validez legal que certifica la entrega de una reclamación al deudor. El plan Max incluye 3 al mes y a partir del 4º son 6€/ud. Saldea lo gestiona por ti: tú decides cuándo enviarlo.</p>
+              <p className="text-zinc-400 text-sm leading-relaxed">El burofax es un documento con validez legal que certifica la entrega de una reclamación al deudor. El plan Max permite enviar burofax a 6€/unidad sin límite mensual. Saldea lo gestiona por ti: tú decides cuándo enviarlo.</p>
             </div>
           </div>
 

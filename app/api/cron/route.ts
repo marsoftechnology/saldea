@@ -66,7 +66,7 @@ export async function GET(req: NextRequest) {
   let enviados = 0
   let omitidosPorLimite = 0
 
-  const TRIAL_DAYS = 15
+  const TRIAL_DAYS = 30
 
   // Cache de configuración + plan + trial por org para no re-consultar
   const configCache = new Map<string, { max_emails_mes: number; plan: Plan; trialActive: boolean }>()
@@ -80,8 +80,12 @@ export async function GET(req: NextRequest) {
     const trialStart = orgData?.created_at ? new Date(orgData.created_at) : null
     const trialExpiresAt = trialStart ? new Date(trialStart.getTime() + TRIAL_DAYS * 24 * 60 * 60 * 1000) : null
     const trialActive = plan === 'free' && !!trialExpiresAt && new Date() < trialExpiresAt
+    const rawMax = cfgData?.max_emails_mes ?? 5
+    const max_emails_mes = plan === 'free' && !trialActive
+      ? Math.min(rawMax, LIMITES_FREE.emailsMes)
+      : rawMax
     const cfg = {
-      max_emails_mes: cfgData?.max_emails_mes ?? 5,
+      max_emails_mes,
       plan,
       trialActive,
     }

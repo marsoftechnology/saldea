@@ -65,6 +65,18 @@ export default function BurofaxButton({
     }
   }
 
+  // Si ya fue enviado antes de esta sesión, mostrar estado estático sin botón
+  if (burofaxEnviadoAt && estado === 'idle') {
+    return (
+      <div className="mt-4 pt-4 border-t border-white/5">
+        <div className="flex items-center gap-2 text-sm text-amber-300/60">
+          <span>📜</span>
+          <span>Burofax certificado enviado el {new Date(burofaxEnviadoAt).toLocaleDateString('es-ES')}</span>
+        </div>
+      </div>
+    )
+  }
+
   if (estado === 'ok') {
     return (
       <div className="mt-4 pt-4 border-t border-white/5">

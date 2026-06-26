@@ -43,3 +43,5 @@ next-env.d.ts
 .vercel
 
 # Videos en public: comprimidos a tamaño web y versionados en git (se despliegan por git)
+
+.vercel

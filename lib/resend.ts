@@ -120,7 +120,7 @@ export async function enviarEmail(params: {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           ${logoHTML}
-          ${cuerpo.replace(/\n/g, '<br/>')}
+          ${escaparHtml(cuerpo).replace(/\n/g, '<br/>')}
           ${botonPagar}
           ${bloqueIban}
           ${botonPago}

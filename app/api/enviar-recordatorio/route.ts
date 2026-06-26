@@ -52,8 +52,14 @@ export async function POST(req: NextRequest) {
 
     if (!factura) return NextResponse.json({ error: 'Factura no encontrada' }, { status: 404 })
 
-    // Tope de emails mensuales para plan Free
+    // Restricciones de plan Free
     const planOrg = await getOrgPlan(org.org_id, supabase)
+    if (planOrg === 'free' && tono && tono !== 'amigable') {
+      return NextResponse.json({
+        error: 'El plan gratuito solo permite el tono amigable. Actualiza a Pro para usar todos los tonos.',
+        codigo: 'PLAN_REQUERIDO',
+      }, { status: 403 })
+    }
     if (planOrg === 'free') {
       const primerDia = new Date()
       primerDia.setUTCDate(1)

@@ -501,7 +501,7 @@ export default function SaldeaPage() {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Burofax digital</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">
-                  Último recurso antes del juzgado. 3 burofax/mes incluidos en Max, extras a 6€/ud. Envíalo en 1 clic, sin ir a correos.
+                  Último recurso antes del juzgado. Burofax certificado a 6€/unidad, sin límite mensual. Envíalo en 1 clic, sin ir a correos.
                 </p>
               </div>
               <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-8 hover:border-sky-500/30 transition-colors">

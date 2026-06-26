@@ -22,8 +22,7 @@ const featuresPro = [
 
 const featuresMax = [
   'Todo lo del plan Pro',
-  '3 burofax de reclamación / mes incluidos',
-  'Extras de burofax a 6 € / unidad',
+  'Burofax certificado a 6 € / unidad (sin límite mensual)',
   'Email desde tu dominio propio (Resend)',
   'Conciliación bancaria automática (Open Banking)',
   'Hasta 25 miembros de equipo',
