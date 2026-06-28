@@ -10,9 +10,24 @@ export const metadata: Metadata = {
   openGraph: { title: 'Saldea vs Billin: comparativa 2026', description: 'Facturación + cobros automáticos.', type: 'article', locale: 'es_ES' },
 }
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Saldea vs Billin: facturación vs cobros automáticos 2026',
+  description: '¿Saldea o Billin? Comparativa: Billin factura, Saldea cobra automáticamente con IA cuando el cliente no paga.',
+  author: { '@type': 'Organization', name: 'Marsof Technology' },
+  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://marsof.es/og-image.png' } },
+  datePublished: '2026-05-16',
+  dateModified: '2026-05-16',
+  inLanguage: 'es-ES',
+  url: 'https://www.marsof.es/comparativa/saldea-vs-billin',
+}
+
 export default function PageVsBillin() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
@@ -93,5 +108,6 @@ export default function PageVsBillin() {
       </article>
       <MarketingFooter />
     </div>
+  </>
   )
 }

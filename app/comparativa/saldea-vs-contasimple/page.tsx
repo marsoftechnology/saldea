@@ -10,9 +10,24 @@ export const metadata: Metadata = {
   openGraph: { title: 'Saldea vs Contasimple', description: 'Comparativa honesta.', type: 'article', locale: 'es_ES' },
 }
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Saldea vs Contasimple: facturación vs cobros automáticos 2026',
+  description: '¿Saldea o Contasimple? Contasimple gestiona facturas, Saldea las cobra automáticamente con IA.',
+  author: { '@type': 'Organization', name: 'Marsof Technology' },
+  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://marsof.es/og-image.png' } },
+  datePublished: '2026-05-16',
+  dateModified: '2026-05-16',
+  inLanguage: 'es-ES',
+  url: 'https://www.marsof.es/comparativa/saldea-vs-contasimple',
+}
+
 export default function PageVsContasimple() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
@@ -77,5 +92,6 @@ export default function PageVsContasimple() {
       </article>
       <MarketingFooter />
     </div>
+  </>
   )
 }
