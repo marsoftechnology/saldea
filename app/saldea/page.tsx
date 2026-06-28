@@ -114,8 +114,20 @@ const faqs = [
 ]
 
 export default function SaldeaPage() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.p,
+      acceptedAnswer: { '@type': 'Answer', text: f.r },
+    })),
+  }
+
   return (
-    <div className="min-h-screen bg-transparent text-zinc-100 antialiased overflow-x-hidden" style={{backgroundImage:'radial-gradient(rgba(6,182,212,0.045) 1px, transparent 1px)', backgroundSize:'36px 36px'}}>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <div className="min-h-screen bg-transparent text-zinc-100 antialiased overflow-x-hidden" style={{backgroundImage:'radial-gradient(rgba(6,182,212,0.045) 1px, transparent 1px)', backgroundSize:'36px 36px'}}>
 
       {/* Navbar */}
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/5">
@@ -705,5 +717,6 @@ export default function SaldeaPage() {
         </div>
       </footer>
     </div>
+  </>
   )
 }
