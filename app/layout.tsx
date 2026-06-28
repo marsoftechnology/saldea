@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: 'Marsof Technology — Empresa tecnológica española con IA',
     template: '%s | Marsof',
   },
-  description: 'Marsof Technology es una empresa tecnológica española especializada en inteligencia artificial para autónomos, gestorías y pymes. Tecnología innovadora hecha en España.',
+  description: 'Marsof Technology es una empresa tecnológica española especializada en inteligencia artificial para autónomos y pymes. Tecnología innovadora hecha en España.',
   keywords: [
     'Marsof',
     'Marsof Technology',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: APP_URL,
     title: 'Marsof Technology — Empresa tecnológica española con IA',
-    description: 'Empresa tecnológica española especializada en inteligencia artificial para autónomos, gestorías y pymes. Tecnología innovadora hecha en España.',
+    description: 'Empresa tecnológica española especializada en inteligencia artificial para autónomos y pymes. Tecnología innovadora hecha en España.',
     images: [
       {
         url: '/opengraph-image',
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@marsof_es',
     title: 'Marsof Technology — Empresa tecnológica española con IA',
-    description: 'Empresa tecnológica española especializada en inteligencia artificial para autónomos, gestorías y pymes. Tecnología innovadora hecha en España.',
+    description: 'Empresa tecnológica española especializada en inteligencia artificial para autónomos y pymes. Tecnología innovadora hecha en España.',
     images: ['/opengraph-image'],
   },
   robots: {
@@ -118,7 +118,7 @@ const schemaOrganizacion = {
     height: '630',
   },
   image: `${APP_URL}/og-image.png`,
-  description: 'Marsof Technology es una empresa tecnológica española con sede en Huelva, especializada en el desarrollo de soluciones con inteligencia artificial para autónomos, gestorías y pymes.',
+  description: 'Marsof Technology es una empresa tecnológica española con sede en Huelva, especializada en el desarrollo de soluciones con inteligencia artificial para autónomos y pymes.',
   slogan: 'Empresa tecnológica española con inteligencia artificial',
   founder: {
     '@type': 'Person',
