@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
   applicationName: 'Saldea',
   title: {
-    default: 'Marsof — Software español para automatizar tu negocio',
+    default: 'Marsof â€” Software espaÃ±ol para automatizar tu negocio',
     template: '%s | Marsof',
   },
-  description: 'Marsof Technology, empresa española de software con sede en Huelva. Desarrolla Saldea, IA que automatiza el cobro de facturas para autónomos y pymes. 30 días gratis.',
+  description: 'Marsof Technology, empresa espaÃ±ola de software con sede en Huelva. Desarrolla Saldea, IA que automatiza el cobro de facturas para autÃ³nomos y pymes. 30 dÃ­as gratis.',
   keywords: [
     'Marsof',
     'Marsof Technology',
@@ -33,20 +33,20 @@ export const metadata: Metadata = {
     'facturas impagadas',
     'recordatorios de pago',
     'software cobros',
-    'gestión de morosos',
-    'reclamación de deudas',
+    'gestiÃ³n de morosos',
+    'reclamaciÃ³n de deudas',
     'automatizar cobros',
     'ley 3/2004 morosidad',
     'recordatorio factura impagada',
-    'cobrar morosos autónomos',
-    'gestoría cobros clientes',
+    'cobrar morosos autÃ³nomos',
+    'gestorÃ­a cobros clientes',
     'IA cobros',
-    'SaaS cobros España',
+    'SaaS cobros EspaÃ±a',
     'Saldea',
-    'Carlos Gálvez',
+    'Carlos GÃ¡lvez',
   ],
   authors: [{ name: 'Marsof Technology', url: APP_URL }],
-  creator: 'Carlos Gálvez · Marsof Technology',
+  creator: 'Carlos GÃ¡lvez Â· Marsof Technology',
   publisher: 'Marsof Technology',
   category: 'Business',
   alternates: {
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     siteName: 'Marsof',
     locale: 'es_ES',
     url: APP_URL,
-    title: 'Marsof — Software español para automatizar tu negocio',
-    description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 30 días gratis.',
+    title: 'Marsof â€” Software espaÃ±ol para automatizar tu negocio',
+    description: 'Empresa espaÃ±ola de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 30 dÃ­as gratis.',
     images: [
       {
         url: '/opengraph-image',
@@ -72,8 +72,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@marsof_es',
-    title: 'Marsof — Software español para automatizar tu negocio',
-    description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 30 días gratis.',
+    title: 'Marsof â€” Software espaÃ±ol para automatizar tu negocio',
+    description: 'Empresa espaÃ±ola de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 30 dÃ­as gratis.',
     images: ['/opengraph-image'],
   },
   robots: {
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     // Anadir cuando se de de alta Google Search Console
     // google: 'codigo-de-verificacion-aqui',
   },
-  // PWA — comportamiento en iOS (Safari no lee el manifest para estos)
+  // PWA â€” comportamiento en iOS (Safari no lee el manifest para estos)
   appleWebApp: {
     capable: true,
     title: 'Saldea',
@@ -118,18 +118,18 @@ const schemaOrganizacion = {
     height: '630',
   },
   image: `${APP_URL}/og-image.png`,
-  description: 'Marsof Technology es una empresa española de software con sede en Huelva. Desarrolla Saldea, una IA que automatiza el cobro de facturas impagadas para autónomos y pymes.',
-  slogan: 'Software español para automatizar tu negocio',
+  description: 'Marsof Technology es una empresa espaÃ±ola de software con sede en Huelva. Desarrolla Saldea, una IA que automatiza el cobro de facturas impagadas para autÃ³nomos y pymes.',
+  slogan: 'Software espaÃ±ol para automatizar tu negocio',
   founder: {
     '@type': 'Person',
-    name: 'Carlos Gálvez Carrillo',
+    name: 'Carlos GÃ¡lvez Carrillo',
     jobTitle: 'Fundador y CEO',
-    nationality: { '@type': 'Country', name: 'España' },
+    nationality: { '@type': 'Country', name: 'EspaÃ±a' },
   },
   foundingDate: '2026',
   foundingLocation: {
     '@type': 'Place',
-    name: 'Huelva, España',
+    name: 'Huelva, EspaÃ±a',
   },
   address: {
     '@type': 'PostalAddress',
@@ -138,14 +138,14 @@ const schemaOrganizacion = {
     postalCode: '21001',
     addressCountry: 'ES',
   },
-  areaServed: { '@type': 'Country', name: 'España' },
+  areaServed: { '@type': 'Country', name: 'EspaÃ±a' },
   knowsLanguage: 'es-ES',
   knowsAbout: [
     'Software de cobros',
     'Inteligencia Artificial aplicada a negocios',
-    'Automatización de procesos administrativos',
-    'Facturación electrónica',
-    'Gestión de morosidad',
+    'AutomatizaciÃ³n de procesos administrativos',
+    'FacturaciÃ³n electrÃ³nica',
+    'GestiÃ³n de morosidad',
     'Ley 3/2004',
     'SaaS B2B',
     'Stripe Connect',
@@ -206,7 +206,7 @@ const schemaSoftware = {
   applicationSubCategory: 'Accounts Receivable Software',
   operatingSystem: 'Web',
   url: `${APP_URL}/saldea`,
-  description: 'Software SaaS que automatiza el cobro de facturas impagadas con IA. Envía recordatorios personalizados, escala el tono y detecta respuestas de clientes.',
+  description: 'Software SaaS que automatiza el cobro de facturas impagadas con IA. EnvÃ­a recordatorios personalizados, escala el tono y detecta respuestas de clientes.',
   inLanguage: 'es-ES',
   offers: [
     {
@@ -232,16 +232,16 @@ const schemaSoftware = {
         '@type': 'UnitPriceSpecification',
         price: '499',
         priceCurrency: 'EUR',
-        unitText: 'AÑO',
+        unitText: 'AÃ‘O',
       },
       availability: 'https://schema.org/InStock',
       eligibleRegion: { '@type': 'Country', name: 'ES' },
     },
   ],
   featureList: [
-    'Recordatorios automáticos con IA',
+    'Recordatorios automÃ¡ticos con IA',
     'Escalado de tono progresivo',
-    'Detección de respuestas con IA',
+    'DetecciÃ³n de respuestas con IA',
     'Pagos parciales',
     'Stripe Connect para cobros',
     'Multi-usuario',
@@ -262,7 +262,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {/* PWA: icono para iOS (Safari ignora el manifest para apple-touch-icon) */}
         <link rel="apple-touch-icon" href="/images/saldea/logo-mark.png" />
-        {/* PWA: meta tags para instalación en móviles */}
+        {/* PWA: meta tags para instalaciÃ³n en mÃ³viles */}
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

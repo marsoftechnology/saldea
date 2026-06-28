@@ -4,17 +4,17 @@ import MarketingFooter from '../../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea vs Sage 50: comparativa contabilidad y cobros 2026',
-  description: 'Sage 50 es contabilidad cl·sica, Saldea es IA de cobros moderna. An·lisis honesto: precio, funciones, cu·ndo usar cada uno y cu·ndo ambos.',
+  description: 'Sage 50 es contabilidad cl√°sica, Saldea es IA de cobros moderna. An√°lisis honesto: precio, funciones, cu√°ndo usar cada uno y cu√°ndo ambos.',
   alternates: { canonical: 'https://www.marsof.es/comparativa/saldea-vs-sage' },
   keywords: ['saldea vs sage', 'sage 50 cobros', 'alternativa sage', 'sage 50 vs saldea', 'mejor software empresas'],
-  openGraph: { title: 'Saldea vs Sage 50: comparativa 2026', description: 'Contabilidad cl·sica vs cobros con IA.', type: 'article', locale: 'es_ES' },
+  openGraph: { title: 'Saldea vs Sage 50: comparativa 2026', description: 'Contabilidad cl√°sica vs cobros con IA.', type: 'article', locale: 'es_ES' },
 }
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'Saldea vs Sage 50: comparativa contabilidad y cobros 2026',
-  description: 'øSaldea o Sage 50? Sage 50 es contabilidad completa, Saldea automatiza el cobro de facturas impagadas con IA.',
+  description: '¬øSaldea o Sage 50? Sage 50 es contabilidad completa, Saldea automatiza el cobro de facturas impagadas con IA.',
   author: { '@type': 'Organization', name: 'Marsof Technology' },
   publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://www.marsof.es/og-image.png' } },
   datePublished: '2026-05-16',
@@ -32,23 +32,23 @@ export default function PageVsSage() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÌas gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 d√≠as gratis</Link>
           </div>
         </div>
       </nav>
 
       <article className="max-w-3xl mx-auto px-6 py-16">
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ∑ 6 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ¬∑ 6 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea vs Sage 50</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Sage 50 es la herramienta contable cl·sica de empresas espaÒolas. Saldea es la nueva generaciÛn de cobros con IA. No son rivales: son complementarios.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">Sage 50 es la herramienta contable cl√°sica de empresas espa√±olas. Saldea es la nueva generaci√≥n de cobros con IA. No son rivales: son complementarios.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Resumen</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
-            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Sage 50:</strong> ERP contable on-premise/cloud. Lleva contabilidad, facturaciÛn, modelos AEAT, almacÈn, RRHH. Para empresas con departamento financiero.</p>
-            <p className="text-zinc-300"><strong className="text-sky-400">Saldea:</strong> SaaS especializado SOLO en perseguir cobros con IA. Sin contabilidad. Solo recordatorios escalados y detecciÛn de respuestas.</p>
+            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Sage 50:</strong> ERP contable on-premise/cloud. Lleva contabilidad, facturaci√≥n, modelos AEAT, almac√©n, RRHH. Para empresas con departamento financiero.</p>
+            <p className="text-zinc-300"><strong className="text-sky-400">Saldea:</strong> SaaS especializado SOLO en perseguir cobros con IA. Sin contabilidad. Solo recordatorios escalados y detecci√≥n de respuestas.</p>
           </div>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Comparativa funcional</h2>
@@ -56,7 +56,7 @@ export default function PageVsSage() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="bg-sky-500/20">
-                  <th className="py-3 px-4 text-left text-zinc-100">FunciÛn</th>
+                  <th className="py-3 px-4 text-left text-zinc-100">Funci√≥n</th>
                   <th className="py-3 px-4 text-left text-zinc-100">Saldea</th>
                   <th className="py-3 px-4 text-left text-zinc-100">Sage 50</th>
                 </tr>
@@ -69,35 +69,35 @@ export default function PageVsSage() {
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Cloud nativo</td><td className="py-2 px-4">?</td><td className="py-2 px-4">Parcial (Sage 50 Cloud)</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Setup</td><td className="py-2 px-4">5 minutos</td><td className="py-2 px-4">Semanas + consultor</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Precio</td><td className="py-2 px-4">49Ä/mes</td><td className="py-2 px-4">~80-300Ä/mes seg˙n mÛdulos</td></tr>
-                <tr><td className="py-2 px-4">ConciliaciÛn bancaria autom·tica</td><td className="py-2 px-4">? Plan Max</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Precio</td><td className="py-2 px-4">49‚Ç¨/mes</td><td className="py-2 px-4">~80-300‚Ç¨/mes seg√∫n m√≥dulos</td></tr>
+                <tr><td className="py-2 px-4">Conciliaci√≥n bancaria autom√°tica</td><td className="py-2 px-4">? Plan Max</td><td className="py-2 px-4">?</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo elegir Sage 50</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo elegir Sage 50</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
             <li>? Empresa con &gt; 10 empleados y departamento financiero</li>
-            <li>? Necesitas contabilidad analÌtica avanzada</li>
+            <li>? Necesitas contabilidad anal√≠tica avanzada</li>
             <li>? Tu asesor fiscal exige Sage por compatibilidad</li>
-            <li>? Tienes presupuesto para consultor de implantaciÛn</li>
+            <li>? Tienes presupuesto para consultor de implantaci√≥n</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo te basta con Saldea</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo te basta con Saldea</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? Eres autÛnomo o pyme pequeÒa (1-10 personas)</li>
-            <li>? Ya tienes facturaciÛn en otro sitio (Holded, Quipu, Anfix)</li>
+            <li>? Eres aut√≥nomo o pyme peque√±a (1-10 personas)</li>
+            <li>? Ya tienes facturaci√≥n en otro sitio (Holded, Quipu, Anfix)</li>
             <li>? Tu problema es COBRAR, no llevar contabilidad</li>
-            <li>? <strong>ConciliaciÛn bancaria autom·tica</strong> (Plan Max): detecta autom·ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
+            <li>? <strong>Conciliaci√≥n bancaria autom√°tica</strong> (Plan Max): detecta autom√°ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Usar ambos: Sage + Saldea</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si tu empresa ya usa Sage 50 y tiene problema con la morosidad, aÒadir Saldea por 49Ä/mes complementa perfectamente. Tu equipo financiero sigue con Sage para todo lo contable y Saldea automatiza la persecuciÛn de cobros. DivisiÛn clara de tareas.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si tu empresa ya usa Sage 50 y tiene problema con la morosidad, a√±adir Saldea por 49‚Ç¨/mes complementa perfectamente. Tu equipo financiero sigue con Sage para todo lo contable y Saldea automatiza la persecuci√≥n de cobros. Divisi√≥n clara de tareas.</p>
         </section>
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Prueba Saldea junto a Sage</h3>
-          <p className="text-zinc-300 mb-5">Importa las facturas vencidas de Sage en CSV. Saldea las persigue. <strong>30 dÌas gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Importa las facturas vencidas de Sage en CSV. Saldea las persigue. <strong>30 d√≠as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </article>

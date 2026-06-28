@@ -10,11 +10,11 @@ const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 
 const FEATURES = [
   'Facturas y clientes ilimitados',
-  'Recordatorios automáticos por email e IA',
+  'Recordatorios automÃ¡ticos por email e IA',
   'WhatsApp para clientes con consentimiento',
-  'Clasificación automática de respuestas',
+  'ClasificaciÃ³n automÃ¡tica de respuestas',
   'Informes y analytics completos',
-  'Integración Stripe + Holded',
+  'IntegraciÃ³n Stripe + Holded',
   'Soporte prioritario',
 ]
 
@@ -35,7 +35,7 @@ export default function TrialPaywall() {
       body: JSON.stringify({ interval: intervalo }),
     })
     if (!res.ok) {
-      setErrorPago('Error al conectar con el sistema de pago. Inténtalo de nuevo.')
+      setErrorPago('Error al conectar con el sistema de pago. IntÃ©ntalo de nuevo.')
       return ''
     }
     const { clientSecret } = await res.json()
@@ -55,7 +55,7 @@ export default function TrialPaywall() {
             <div className="text-5xl mb-3">?</div>
             <h2 className="text-xl font-bold text-zinc-100">Tu prueba gratuita ha finalizado</h2>
             <p className="text-sm text-zinc-400 mt-1">
-              Activa el plan Pro para seguir usando Saldea sin límites
+              Activa el plan Pro para seguir usando Saldea sin lÃ­mites
             </p>
           </div>
 
@@ -80,8 +80,8 @@ export default function TrialPaywall() {
                     : 'border-white/10 text-zinc-400 hover:border-white/20'
                 }`}
               >
-                <span className="block font-bold">49€/mes</span>
-                <span className="block text-xs opacity-75 mt-0.5">30 días gratis al empezar</span>
+                <span className="block font-bold">49â‚¬/mes</span>
+                <span className="block text-xs opacity-75 mt-0.5">30 dÃ­as gratis al empezar</span>
               </button>
 
               <button
@@ -97,8 +97,8 @@ export default function TrialPaywall() {
                     Recomendado
                   </span>
                 )}
-                <span className="block font-bold">499€/año</span>
-                <span className="block text-xs text-emerald-400 mt-0.5">Ahorra 89€ (2 meses)</span>
+                <span className="block font-bold">499â‚¬/aÃ±o</span>
+                <span className="block text-xs text-emerald-400 mt-0.5">Ahorra 89â‚¬ (2 meses)</span>
               </button>
             </div>
 
@@ -114,23 +114,23 @@ export default function TrialPaywall() {
             </button>
 
             <p className="text-center text-xs text-zinc-500 mt-4">
-              Sin permanencia · cancela cuando quieras ·{' '}
+              Sin permanencia Â· cancela cuando quieras Â·{' '}
               <a href="mailto:carlosgc@marsof.es" className="text-zinc-400 hover:text-zinc-200 underline underline-offset-2">
-                ¿Dudas?
+                Â¿Dudas?
               </a>
             </p>
           </div>
         </div>
       ) : (
-        /* Checkout embebido — blanco para que Stripe se vea bien */
+        /* Checkout embebido â€” blanco para que Stripe se vea bien */
         <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden">
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
             <div>
               <p className="font-semibold text-gray-900">
-                {intervalo === 'anio' ? 'Plan Pro — 499€/año' : 'Plan Pro — 49€/mes'}
+                {intervalo === 'anio' ? 'Plan Pro â€” 499â‚¬/aÃ±o' : 'Plan Pro â€” 49â‚¬/mes'}
               </p>
               <p className="text-xs text-gray-400 mt-0.5">
-                {intervalo === 'anio' ? 'Sin permanencia · cobro único' : '30 días gratis · cancela cuando quieras'}
+                {intervalo === 'anio' ? 'Sin permanencia Â· cobro Ãºnico' : '30 dÃ­as gratis Â· cancela cuando quieras'}
               </p>
             </div>
             <button
@@ -148,7 +148,7 @@ export default function TrialPaywall() {
               </EmbeddedCheckoutProvider>
             ) : (
               <div className="p-8 text-center text-gray-500 text-sm">
-                Stripe no está configurado. Añade{' '}
+                Stripe no estÃ¡ configurado. AÃ±ade{' '}
                 <code className="bg-gray-100 px-1 rounded">NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY</code>{' '}
                 a las variables de entorno.
               </div>

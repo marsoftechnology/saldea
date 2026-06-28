@@ -3,16 +3,16 @@ import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Saldea a Barcelona: software de cobros amb IA per autÚnoms i empreses',
-  description: 'Saldea automatitza el cobrament de factures per a autÚnoms, gestories i pimes de Barcelona i Catalunya. IA, Llei 3/2004, RGPD. 30 dÌas gratis.',
+  title: 'Saldea a Barcelona: software de cobros amb IA per aut√≤noms i empreses',
+  description: 'Saldea automatitza el cobrament de factures per a aut√≤noms, gestories i pimes de Barcelona i Catalunya. IA, Llei 3/2004, RGPD. 30 d√≠as gratis.',
   alternates: { canonical: 'https://www.marsof.es/barcelona' },
-  keywords: ['software cobros Barcelona', 'gestorÌa Barcelona', 'autÛnomo Barcelona facturas', 'Saldea Barcelona', 'cobrament factures Barcelona', 'asesorÌa CataluÒa'],
+  keywords: ['software cobros Barcelona', 'gestor√≠a Barcelona', 'aut√≥nomo Barcelona facturas', 'Saldea Barcelona', 'cobrament factures Barcelona', 'asesor√≠a Catalu√±a'],
   openGraph: { title: 'Saldea en Barcelona', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
 }
 
 const schema = {
   '@context': 'https://schema.org', '@type': 'Service',
-  serviceType: 'Software de cobros autom·ticos con IA',
+  serviceType: 'Software de cobros autom√°ticos con IA',
   provider: { '@id': 'https://marsof.es/#organization' },
   areaServed: { '@type': 'City', name: 'Barcelona' },
 }
@@ -26,40 +26,40 @@ export default function PageBarcelona() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÌas gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 d√≠as gratis</Link>
             </div>
           </div>
         </nav>
 
         <section className="max-w-4xl mx-auto px-6 pt-16 pb-12">
           <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6">
-            <span>?? Atendiendo Barcelona y CataluÒa</span>
+            <span>?? Atendiendo Barcelona y Catalu√±a</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea para autÛnomos y empresas de Barcelona</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed mb-8">Barcelona concentra el mayor n˙mero de pymes tecnolÛgicas y agencias de EspaÒa. Saldea automatiza tus cobros con IA: emails escalados, detecciÛn de respuestas, integraciÛn con Stripe. Pensado para que cobres m·s r·pido y dediques tu tiempo a crecer.</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea para aut√≥nomos y empresas de Barcelona</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed mb-8">Barcelona concentra el mayor n√∫mero de pymes tecnol√≥gicas y agencias de Espa√±a. Saldea automatiza tus cobros con IA: emails escalados, detecci√≥n de respuestas, integraci√≥n con Stripe. Pensado para que cobres m√°s r√°pido y dediques tu tiempo a crecer.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Sectores barceloneses donde m·s encaja Saldea</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Sectores barceloneses donde m√°s encaja Saldea</h2>
           <ul className="space-y-2 text-zinc-300 mb-8">
-            <li>?? <strong>Startups y SaaS</strong> con facturaciÛn recurrente B2B</li>
+            <li>?? <strong>Startups y SaaS</strong> con facturaci√≥n recurrente B2B</li>
             <li>?? <strong>Agencias de marketing y publicidad</strong></li>
-            <li>?? <strong>AsesorÌas y gestorÌas</strong> de Barcelona y ·rea metropolitana</li>
+            <li>?? <strong>Asesor√≠as y gestor√≠as</strong> de Barcelona y √°rea metropolitana</li>
             <li>?? <strong>Consultoras y firmas profesionales</strong></li>
-            <li>?? <strong>Empresas industriales</strong> del VallËs, Baix Llobregat, Maresme</li>
+            <li>?? <strong>Empresas industriales</strong> del Vall√®s, Baix Llobregat, Maresme</li>
             <li>?? <strong>Comercio mayorista</strong> y proveedores</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Detalles importantes para CataluÒa</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Detalles importantes para Catalu√±a</h2>
           <ul className="space-y-3 text-zinc-300 mb-8">
-            <li>? <strong>Compatible con TicketBAI</strong> y Veri*factu (tu software de facturaciÛn se encarga)</li>
-            <li>? <strong>Plantillas adaptables</strong>: puedes configurar los recordatorios en catal·n si lo necesitas</li>
+            <li>? <strong>Compatible con TicketBAI</strong> y Veri*factu (tu software de facturaci√≥n se encarga)</li>
+            <li>? <strong>Plantillas adaptables</strong>: puedes configurar los recordatorios en catal√°n si lo necesitas</li>
             <li>? <strong>Cumplimiento RGPD</strong> con servidores europeos</li>
-            <li>? <strong>Soporte en espaÒol</strong> en horario peninsular</li>
-            <li>? <strong>30 dÌas gratis</strong> ∑ cancela antes y no pagas nada</li>
+            <li>? <strong>Soporte en espa√±ol</strong> en horario peninsular</li>
+            <li>? <strong>30 d√≠as gratis</strong> ¬∑ cancela antes y no pagas nada</li>
           </ul>
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">
             <h2 className="text-2xl font-bold mb-2">Probadlo desde Barcelona</h2>
-            <p className="text-zinc-400 mb-6">5 minutos para activarlo. 1 mes para validar si te encaja. 0Ä hasta entonces.</p>
+            <p className="text-zinc-400 mb-6">5 minutos para activarlo. 1 mes para validar si te encaja. 0‚Ç¨ hasta entonces.</p>
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis ?</Link>
           </div>
         </section>

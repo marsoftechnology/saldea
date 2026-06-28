@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Precios de Saldea: Free, Pro (49Ä/mes) y Max (99Ä/mes) | Saldea',
-  description: 'Precios transparentes de Saldea: plan Free, Pro (49Ä/mes o 499Ä/aÒo) y Max (99Ä/mes o 1.000Ä/aÒo, con burofax a 6Ä/ud). 30 dÌas gratis en Pro. Cancela en 1 clic.',
+  title: 'Precios de Saldea: Free, Pro (49‚Ç¨/mes) y Max (99‚Ç¨/mes) | Saldea',
+  description: 'Precios transparentes de Saldea: plan Free, Pro (49‚Ç¨/mes o 499‚Ç¨/a√±o) y Max (99‚Ç¨/mes o 1.000‚Ç¨/a√±o, con burofax a 6‚Ç¨/ud). 30 d√≠as gratis en Pro. Cancela en 1 clic.',
   alternates: { canonical: 'https://www.marsof.es/precios' },
   keywords: [
     'precio saldea',
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     'precio software cobros',
   ],
   openGraph: {
-    title: 'Precios de Saldea ó 49Ä/mes o 499Ä/aÒo',
-    description: '30 dÌas gratis. Cancela cuando quieras.',
+    title: 'Precios de Saldea ‚Äî 49‚Ç¨/mes o 499‚Ç¨/a√±o',
+    description: '30 d√≠as gratis. Cancela cuando quieras.',
     type: 'website',
     locale: 'es_ES',
   },
@@ -26,7 +26,7 @@ const schemaProduct = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: 'Saldea',
-  description: 'IA que automatiza el cobro de facturas impagadas para autÛnomos y pymes espaÒolas.',
+  description: 'IA que automatiza el cobro de facturas impagadas para aut√≥nomos y pymes espa√±olas.',
   brand: { '@type': 'Brand', name: 'Marsof' },
   offers: [
     {
@@ -51,7 +51,7 @@ const schemaProduct = {
       price: '499',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
-      description: 'Ahorras 89Ä respecto al mensual',
+      description: 'Ahorras 89‚Ç¨ respecto al mensual',
     },
     {
       '@type': 'Offer',
@@ -59,7 +59,7 @@ const schemaProduct = {
       price: '99',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
-      description: 'Todo Pro + burofax a 6Ä/ud + email dominio propio + 25 miembros',
+      description: 'Todo Pro + burofax a 6‚Ç¨/ud + email dominio propio + 25 miembros',
     },
     {
       '@type': 'Offer',
@@ -67,7 +67,7 @@ const schemaProduct = {
       price: '1000',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
-      description: 'Plan Max anual, ahorras 188Ä (2 meses)',
+      description: 'Plan Max anual, ahorras 188‚Ç¨ (2 meses)',
     },
   ],
 }
@@ -82,7 +82,7 @@ export default function PagePrecios() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÌas gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 d√≠as gratis</Link>
             </div>
           </div>
         </nav>
@@ -97,14 +97,14 @@ export default function PagePrecios() {
             {/* Free */}
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-5">
               <p className="text-zinc-400 text-sm mb-1">Free</p>
-              <p className="text-3xl font-bold text-zinc-100 mb-1">0Ä<span className="text-sm text-zinc-500">/mes</span></p>
+              <p className="text-3xl font-bold text-zinc-100 mb-1">0‚Ç¨<span className="text-sm text-zinc-500">/mes</span></p>
               <p className="text-zinc-500 text-xs mb-5">Para probar sin compromiso</p>
               <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
                 <li>? 3 facturas activas</li>
                 <li>? 10 clientes</li>
                 <li>? 30 emails/mes</li>
                 <li>? 1 tono de mensaje</li>
-                <li>? 1 ˙nico miembro</li>
+                <li>? 1 √∫nico miembro</li>
                 <li className="text-zinc-500">? Sin Stripe Connect</li>
                 <li className="text-zinc-500">? Sin IA en respuestas</li>
               </ul>
@@ -113,10 +113,10 @@ export default function PagePrecios() {
 
             {/* Pro Mensual */}
             <div className="bg-gradient-to-br from-sky-500/20 to-transparent border-2 border-sky-500/50 rounded-2xl p-5 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-500 text-zinc-900 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">M¡S POPULAR</div>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sky-500 text-zinc-900 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">M√ÅS POPULAR</div>
               <p className="text-sky-400 text-sm mb-1 font-semibold">Pro Mensual</p>
-              <p className="text-3xl font-bold text-zinc-100 mb-1">49Ä<span className="text-sm text-zinc-500">/mes</span></p>
-              <p className="text-zinc-500 text-xs mb-5">30 dÌas gratis ∑ se requiere tarjeta</p>
+              <p className="text-3xl font-bold text-zinc-100 mb-1">49‚Ç¨<span className="text-sm text-zinc-500">/mes</span></p>
+              <p className="text-zinc-500 text-xs mb-5">30 d√≠as gratis ¬∑ se requiere tarjeta</p>
               <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
                 <li>? Facturas ilimitadas</li>
                 <li>? Clientes ilimitados</li>
@@ -126,35 +126,35 @@ export default function PagePrecios() {
                 <li>? IA Claude para respuestas</li>
                 <li>? Stripe Connect</li>
                 <li>? Adjuntos PDF</li>
-                <li>? API REST p˙blica</li>
+                <li>? API REST p√∫blica</li>
               </ul>
-              <Link href="/registro?plan=mes" className="block w-full text-center bg-sky-500 text-zinc-900 py-2.5 rounded-lg font-bold text-sm hover:bg-sky-400 transition-colors">Probar 30 dÌas gratis</Link>
+              <Link href="/registro?plan=mes" className="block w-full text-center bg-sky-500 text-zinc-900 py-2.5 rounded-lg font-bold text-sm hover:bg-sky-400 transition-colors">Probar 30 d√≠as gratis</Link>
             </div>
 
             {/* Pro Anual */}
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-5">
               <p className="text-emerald-400 text-sm mb-1 font-semibold">Pro Anual</p>
-              <p className="text-3xl font-bold text-zinc-100 mb-1">499Ä<span className="text-sm text-zinc-500">/aÒo</span></p>
-              <p className="text-emerald-400 text-xs mb-5 font-semibold">Ahorras 89Ä (ò 2 meses)</p>
+              <p className="text-3xl font-bold text-zinc-100 mb-1">499‚Ç¨<span className="text-sm text-zinc-500">/a√±o</span></p>
+              <p className="text-emerald-400 text-xs mb-5 font-semibold">Ahorras 89‚Ç¨ (Àú 2 meses)</p>
               <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
                 <li>? Todo lo del plan Pro</li>
-                <li>? 41,58Ä/mes equivalente</li>
-                <li>? Cobro ˙nico, sin renovaciÛn</li>
-                <li>? DevoluciÛn proporcional</li>
+                <li>? 41,58‚Ç¨/mes equivalente</li>
+                <li>? Cobro √∫nico, sin renovaci√≥n</li>
+                <li>? Devoluci√≥n proporcional</li>
                 <li>? Soporte premium</li>
               </ul>
-              <Link href="/registro?plan=anio" className="block w-full text-center bg-zinc-800 text-zinc-100 border border-emerald-500/30 py-2.5 rounded-lg font-bold text-sm hover:bg-zinc-700 transition-colors">Pagar 499Ä y empezar</Link>
+              <Link href="/registro?plan=anio" className="block w-full text-center bg-zinc-800 text-zinc-100 border border-emerald-500/30 py-2.5 rounded-lg font-bold text-sm hover:bg-zinc-700 transition-colors">Pagar 499‚Ç¨ y empezar</Link>
             </div>
 
             {/* Max */}
             <div className="bg-gradient-to-br from-amber-500/20 to-transparent border-2 border-amber-500/50 rounded-2xl p-5 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-zinc-900 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">M¡XIMA POTENCIA</div>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-zinc-900 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">M√ÅXIMA POTENCIA</div>
               <p className="text-amber-400 text-sm mb-1 font-semibold">Max</p>
-              <p className="text-3xl font-bold text-zinc-100 mb-1">99Ä<span className="text-sm text-zinc-500">/mes</span></p>
-              <p className="text-amber-400 text-xs mb-5">o 1.000Ä/aÒo (ahorra 2 meses)</p>
+              <p className="text-3xl font-bold text-zinc-100 mb-1">99‚Ç¨<span className="text-sm text-zinc-500">/mes</span></p>
+              <p className="text-amber-400 text-xs mb-5">o 1.000‚Ç¨/a√±o (ahorra 2 meses)</p>
               <ul className="space-y-1.5 text-zinc-300 text-xs mb-7">
                 <li>? Todo lo del plan Pro</li>
-                <li className="text-amber-300">? Burofax certificado a 6Ä/ud (sin lÌmite)</li>
+                <li className="text-amber-300">? Burofax certificado a 6‚Ç¨/ud (sin l√≠mite)</li>
                 <li className="text-amber-300">? Email desde tu dominio</li>
                 <li className="text-amber-300">? Hasta 25 miembros</li>
                 <li>? Soporte VIP prioritario</li>
@@ -165,39 +165,39 @@ export default function PagePrecios() {
 
           <div className="grid md:grid-cols-2 gap-6 mb-16">
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
-              <h3 className="font-bold text-zinc-100 mb-3">?? øHay que poner tarjeta?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">SÌ en el plan Pro mensual, pero NO se cobra nada hasta que pasen 30 dÌas desde tu registro. Puedes cancelar antes en 1 clic y no pagas nada. En el anual y en el Max mensual el cobro es inmediato.</p>
+              <h3 className="font-bold text-zinc-100 mb-3">?? ¬øHay que poner tarjeta?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">S√≠ en el plan Pro mensual, pero NO se cobra nada hasta que pasen 30 d√≠as desde tu registro. Puedes cancelar antes en 1 clic y no pagas nada. En el anual y en el Max mensual el cobro es inmediato.</p>
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
-              <h3 className="font-bold text-zinc-100 mb-3">? øHay permanencia?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">No. Cancelas cuando quieras desde tu panel de ajustes. Sin llamadas, sin tr·mites, sin justificaciones.</p>
+              <h3 className="font-bold text-zinc-100 mb-3">? ¬øHay permanencia?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">No. Cancelas cuando quieras desde tu panel de ajustes. Sin llamadas, sin tr√°mites, sin justificaciones.</p>
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
-              <h3 className="font-bold text-zinc-100 mb-3">?? øHay coste por cobro?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">Saldea NO se queda ninguna comisiÛn de tus cobros. Las comisiones que paga es Stripe directamente (1,5% + 0,25Ä por cobro europeo) y son por tu cuenta.</p>
+              <h3 className="font-bold text-zinc-100 mb-3">?? ¬øHay coste por cobro?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">Saldea NO se queda ninguna comisi√≥n de tus cobros. Las comisiones que paga es Stripe directamente (1,5% + 0,25‚Ç¨ por cobro europeo) y son por tu cuenta.</p>
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
-              <h3 className="font-bold text-zinc-100 mb-3">???? øIVA incluido?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">El precio mostrado es IVA INCLUIDO. Si eres autÛnomo o empresa con CIF, Saldea emite factura nominal para que puedas deducir el IVA.</p>
+              <h3 className="font-bold text-zinc-100 mb-3">???? ¬øIVA incluido?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">El precio mostrado es IVA INCLUIDO. Si eres aut√≥nomo o empresa con CIF, Saldea emite factura nominal para que puedas deducir el IVA.</p>
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
-              <h3 className="font-bold text-zinc-100 mb-3">?? øCambio de plan?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">Puedes pasar de mensual a anual cuando quieras (te lo prorrateamos). De anual a mensual al final del aÒo. De Free a Pro en el momento.</p>
+              <h3 className="font-bold text-zinc-100 mb-3">?? ¬øCambio de plan?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">Puedes pasar de mensual a anual cuando quieras (te lo prorrateamos). De anual a mensual al final del a√±o. De Free a Pro en el momento.</p>
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
-              <h3 className="font-bold text-zinc-100 mb-3">?? øPlan empresa / despacho?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">El plan Max incluye hasta 25 miembros. Si necesitas m·s, escrÌbenos a <a href="mailto:carlosgc@marsof.es" className="text-sky-400 underline">carlosgc@marsof.es</a> para un plan personalizado.</p>
+              <h3 className="font-bold text-zinc-100 mb-3">?? ¬øPlan empresa / despacho?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">El plan Max incluye hasta 25 miembros. Si necesitas m√°s, escr√≠benos a <a href="mailto:carlosgc@marsof.es" className="text-sky-400 underline">carlosgc@marsof.es</a> para un plan personalizado.</p>
             </div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-2xl p-6">
-              <h3 className="font-bold text-zinc-100 mb-3">?? øQuÈ es un burofax?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">El burofax es un documento con validez legal que certifica la entrega de una reclamaciÛn al deudor. El plan Max permite enviar burofax a 6Ä/unidad sin lÌmite mensual. Saldea lo gestiona por ti: t˙ decides cu·ndo enviarlo.</p>
+              <h3 className="font-bold text-zinc-100 mb-3">?? ¬øQu√© es un burofax?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">El burofax es un documento con validez legal que certifica la entrega de una reclamaci√≥n al deudor. El plan Max permite enviar burofax a 6‚Ç¨/unidad sin l√≠mite mensual. Saldea lo gestiona por ti: t√∫ decides cu√°ndo enviarlo.</p>
             </div>
           </div>
 
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-zinc-100 mb-3">øSigues con dudas?</h2>
-            <p className="text-zinc-400 mb-6">Tienes 30 dÌas para probarlo sin coste en el plan Pro. Si no te encaja, cancela en 1 clic.</p>
-            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-8 py-4 rounded-xl hover:bg-sky-400 transition-colors">Empezar 30 dÌas gratis ?</Link>
+            <h2 className="text-2xl font-bold text-zinc-100 mb-3">¬øSigues con dudas?</h2>
+            <p className="text-zinc-400 mb-6">Tienes 30 d√≠as para probarlo sin coste en el plan Pro. Si no te encaja, cancela en 1 clic.</p>
+            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-8 py-4 rounded-xl hover:bg-sky-400 transition-colors">Empezar 30 d√≠as gratis ?</Link>
           </div>
         </section>
 

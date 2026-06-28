@@ -2,20 +2,20 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'CÛmo cobrar a un cliente sin que se enfade (guÌa 2026) | Marsof',
-  description: 'La tÈcnica probada para reclamar facturas impagadas sin perder al cliente. 7 pasos psicolÛgicos, plantillas y errores tÌpicos. MantÈn la relaciÛn comercial intacta.',
+  title: 'C√≥mo cobrar a un cliente sin que se enfade (gu√≠a 2026) | Marsof',
+  description: 'La t√©cnica probada para reclamar facturas impagadas sin perder al cliente. 7 pasos psicol√≥gicos, plantillas y errores t√≠picos. Mant√©n la relaci√≥n comercial intacta.',
   alternates: { canonical: 'https://www.marsof.es/blog/como-cobrar-cliente-sin-enfadarlo' },
   keywords: [
-    'cÛmo cobrar sin enfadar al cliente',
+    'c√≥mo cobrar sin enfadar al cliente',
     'reclamar factura sin perder cliente',
     'cobrar moroso educadamente',
     'recordatorio amable factura',
-    'comunicaciÛn con moroso',
-    'recuperar cobro manteniendo relaciÛn',
+    'comunicaci√≥n con moroso',
+    'recuperar cobro manteniendo relaci√≥n',
   ],
   openGraph: {
-    title: 'CÛmo cobrar a un cliente sin que se enfade',
-    description: 'La tÈcnica probada que mantiene la relaciÛn comercial intacta.',
+    title: 'C√≥mo cobrar a un cliente sin que se enfade',
+    description: 'La t√©cnica probada que mantiene la relaci√≥n comercial intacta.',
     type: 'article',
     locale: 'es_ES',
   },
@@ -24,16 +24,16 @@ export const metadata: Metadata = {
 const schemaArticulo = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: 'CÛmo cobrar a un cliente sin que se enfade',
-  description: 'MÈtodo probado para reclamar facturas impagadas manteniendo la relaciÛn comercial intacta.',
+  name: 'C√≥mo cobrar a un cliente sin que se enfade',
+  description: 'M√©todo probado para reclamar facturas impagadas manteniendo la relaci√≥n comercial intacta.',
   step: [
-    { '@type': 'HowToStep', name: 'Empieza el dÌa 1 con tono amable', text: 'Asume buena fe. Recordatorio cordial el dÌa siguiente al vencimiento.' },
-    { '@type': 'HowToStep', name: 'Da una salida f·cil', text: 'Frase clave: "Si ya la pagaste, ignora este mensaje".' },
-    { '@type': 'HowToStep', name: 'Pregunta abierta, no acusaciÛn', text: 'øCu·ndo podr·s procesarlo? en lugar de øPor quÈ no has pagado?' },
-    { '@type': 'HowToStep', name: 'Cuantifica sin amenazar', text: 'Cita Ley 3/2004 e intereses como informaciÛn, no como amenaza.' },
-    { '@type': 'HowToStep', name: 'Llamada amistosa antes que email firme', text: 'Una llamada al dÌa 15 humaniza la situaciÛn.' },
+    { '@type': 'HowToStep', name: 'Empieza el d√≠a 1 con tono amable', text: 'Asume buena fe. Recordatorio cordial el d√≠a siguiente al vencimiento.' },
+    { '@type': 'HowToStep', name: 'Da una salida f√°cil', text: 'Frase clave: "Si ya la pagaste, ignora este mensaje".' },
+    { '@type': 'HowToStep', name: 'Pregunta abierta, no acusaci√≥n', text: '¬øCu√°ndo podr√°s procesarlo? en lugar de ¬øPor qu√© no has pagado?' },
+    { '@type': 'HowToStep', name: 'Cuantifica sin amenazar', text: 'Cita Ley 3/2004 e intereses como informaci√≥n, no como amenaza.' },
+    { '@type': 'HowToStep', name: 'Llamada amistosa antes que email firme', text: 'Una llamada al d√≠a 15 humaniza la situaci√≥n.' },
     { '@type': 'HowToStep', name: 'Acepta soluciones intermedias', text: 'Plan de pago, anticipo parcial, fraccionamiento.' },
-    { '@type': 'HowToStep', name: 'Automatiza para evitar escaladas emocionales tuyas', text: 'Un sistema automatizado mantiene tono profesional cuando t˙ ya est·s cansado.' },
+    { '@type': 'HowToStep', name: 'Automatiza para evitar escaladas emocionales tuyas', text: 'Un sistema automatizado mantiene tono profesional cuando t√∫ ya est√°s cansado.' },
   ],
 }
 
@@ -45,87 +45,87 @@ export default function PageCobrarSinEnfadar() {
         <div className="max-w-3xl mx-auto px-6 py-16">
           <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
           <header className="mb-10">
-            <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">PsicologÌa del cobro ∑ 8 min</p>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">CÛmo cobrar a un cliente sin que se enfade</h1>
-            <p className="text-zinc-400 text-lg leading-relaxed">Reclamar facturas impagadas es la conversaciÛn m·s incÛmoda del mundo de los negocios. Esta es la tÈcnica probada para hacerlo sin perder al cliente.</p>
+            <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Psicolog√≠a del cobro ¬∑ 8 min</p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">C√≥mo cobrar a un cliente sin que se enfade</h1>
+            <p className="text-zinc-400 text-lg leading-relaxed">Reclamar facturas impagadas es la conversaci√≥n m√°s inc√≥moda del mundo de los negocios. Esta es la t√©cnica probada para hacerlo sin perder al cliente.</p>
           </header>
 
           <section className="prose prose-invert max-w-none">
-            <p className="text-zinc-300 leading-relaxed text-lg mb-6">El 70% de los autÛnomos prefiere perder dinero que tener una conversaciÛn incÛmoda con un cliente moroso. Y eso es un error caro. La buena noticia: <strong>se puede cobrar SIN que el cliente se enfade</strong> si usas el mÈtodo correcto.</p>
+            <p className="text-zinc-300 leading-relaxed text-lg mb-6">El 70% de los aut√≥nomos prefiere perder dinero que tener una conversaci√≥n inc√≥moda con un cliente moroso. Y eso es un error caro. La buena noticia: <strong>se puede cobrar SIN que el cliente se enfade</strong> si usas el m√©todo correcto.</p>
 
             <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">El principio fundamental</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">La gente no se enfada porque le reclames un cobro. <strong>Se enfada por C”MO se lo reclamas</strong>. Tono acusador, asunciones negativas y presiÛn emocional son lo que rompe relaciones. Tono profesional, asumir buena fe y dar salidas f·ciles las preservan.</p>
+            <p className="text-zinc-300 leading-relaxed mb-4">La gente no se enfada porque le reclames un cobro. <strong>Se enfada por C√ìMO se lo reclamas</strong>. Tono acusador, asunciones negativas y presi√≥n emocional son lo que rompe relaciones. Tono profesional, asumir buena fe y dar salidas f√°ciles las preservan.</p>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 1 ó DÌa 1: el recordatorio que NO molesta</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">El dÌa siguiente al vencimiento, manda un email cordial. Asume buena fe absoluta. El texto clave:</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 1 ‚Äî D√≠a 1: el recordatorio que NO molesta</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">El d√≠a siguiente al vencimiento, manda un email cordial. Asume buena fe absoluta. El texto clave:</p>
             <div className="bg-zinc-900/40 border-l-4 border-sky-500 rounded-r-xl p-5 my-4">
-              <p className="text-zinc-300 text-sm italic">"Hola [nombre], te recuerdo que la factura [X] venciÛ ayer. <strong>Si ya la has pagado en los ˙ltimos dÌas, perdona el toque y por favor ignora este mensaje.</strong> Si no, øcu·ndo podrÌas procesarla? Un saludo."</p>
+              <p className="text-zinc-300 text-sm italic">"Hola [nombre], te recuerdo que la factura [X] venci√≥ ayer. <strong>Si ya la has pagado en los √∫ltimos d√≠as, perdona el toque y por favor ignora este mensaje.</strong> Si no, ¬øcu√°ndo podr√≠as procesarla? Un saludo."</p>
             </div>
-            <p className="text-zinc-300 leading-relaxed mb-4">Esa frase "si ya la pagaste, ignora" es psicolÛgicamente clave. Le das al cliente:</p>
+            <p className="text-zinc-300 leading-relaxed mb-4">Esa frase "si ya la pagaste, ignora" es psicol√≥gicamente clave. Le das al cliente:</p>
             <ul className="space-y-2 text-zinc-300 mb-6">
               <li>? Una salida sin sentirse acusado</li>
               <li>? Tu honestidad (asumes que pudiste no haber visto su pago)</li>
-              <li>? El control de la conversaciÛn</li>
+              <li>? El control de la conversaci√≥n</li>
             </ul>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 2 ó Pregunta abierta, no acusaciÛn</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 2 ‚Äî Pregunta abierta, no acusaci√≥n</h2>
             <p className="text-zinc-300 leading-relaxed mb-4">Compara estas dos preguntas:</p>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
-              <p className="text-rose-400 text-sm mb-2">? "øPor quÈ no has pagado todavÌa?"</p>
-              <p className="text-emerald-400 text-sm">? "øCu·ndo podr·s procesar el pago?"</p>
+              <p className="text-rose-400 text-sm mb-2">? "¬øPor qu√© no has pagado todav√≠a?"</p>
+              <p className="text-emerald-400 text-sm">? "¬øCu√°ndo podr√°s procesar el pago?"</p>
             </div>
-            <p className="text-zinc-300 leading-relaxed mb-4">La primera pregunta es una acusaciÛn que pone al cliente a la defensiva. La segunda asume que va a pagar y solo pregunta cu·ndo. Cambia la conversaciÛn completamente.</p>
+            <p className="text-zinc-300 leading-relaxed mb-4">La primera pregunta es una acusaci√≥n que pone al cliente a la defensiva. La segunda asume que va a pagar y solo pregunta cu√°ndo. Cambia la conversaci√≥n completamente.</p>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 3 ó DÌa 7-14: cuantifica sin amenazar</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">Si no ha respondido, sube el tono pero sin amenazar. Comparte la informaciÛn como dato, no como ultim·tum:</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 3 ‚Äî D√≠a 7-14: cuantifica sin amenazar</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">Si no ha respondido, sube el tono pero sin amenazar. Comparte la informaci√≥n como dato, no como ultim√°tum:</p>
             <div className="bg-zinc-900/40 border-l-4 border-amber-500 rounded-r-xl p-5 my-4">
-              <p className="text-zinc-300 text-sm italic">"Hola [nombre], la factura [X] sigue pendiente. Te aviso por si no la has visto: seg˙n la Ley 3/2004 de morosidad, a partir de ahora se devengan intereses autom·ticos del 12,5% anual y una indemnizaciÛn de 40Ä por costes de cobro. Si me confirmas cu·ndo procesar·s el pago, podemos cerrar esto sin necesidad de cuantificar nada."</p>
+              <p className="text-zinc-300 text-sm italic">"Hola [nombre], la factura [X] sigue pendiente. Te aviso por si no la has visto: seg√∫n la Ley 3/2004 de morosidad, a partir de ahora se devengan intereses autom√°ticos del 12,5% anual y una indemnizaci√≥n de 40‚Ç¨ por costes de cobro. Si me confirmas cu√°ndo procesar√°s el pago, podemos cerrar esto sin necesidad de cuantificar nada."</p>
             </div>
             <p className="text-zinc-300 leading-relaxed mb-4">Has citado la ley. Has cuantificado lo que pierde. Pero has terminado con una oferta de salida limpia. El cliente entiende la seriedad sin sentirse atacado.</p>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 4 ó DÌa 15-20: la llamada que humaniza</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">Si dos emails no funcionan, no insistas con un tercero m·s agresivo. <strong>Llama por telÈfono.</strong> La voz humana cambia todo.</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 4 ‚Äî D√≠a 15-20: la llamada que humaniza</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">Si dos emails no funcionan, no insistas con un tercero m√°s agresivo. <strong>Llama por tel√©fono.</strong> La voz humana cambia todo.</p>
             <p className="text-zinc-300 leading-relaxed mb-4">Apunta el guion:</p>
             <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-              <li>"Hola [nombre], soy [tu nombre] de [empresa]. øTienes 1 minuto?"</li>
-              <li>"Te llamo por la factura [X] que sigue pendiente. øVa todo bien por tu lado?"</li>
-              <li>(Si tiene problema): "Entiendo. øCÛmo podemos resolverlo? øTe ayudarÌa dividirla en 2 pagos?"</li>
-              <li>(Si dice que pagar·): "Perfecto. øTe parece que cuento con el ingreso para el [fecha]?"</li>
+              <li>"Hola [nombre], soy [tu nombre] de [empresa]. ¬øTienes 1 minuto?"</li>
+              <li>"Te llamo por la factura [X] que sigue pendiente. ¬øVa todo bien por tu lado?"</li>
+              <li>(Si tiene problema): "Entiendo. ¬øC√≥mo podemos resolverlo? ¬øTe ayudar√≠a dividirla en 2 pagos?"</li>
+              <li>(Si dice que pagar√°): "Perfecto. ¬øTe parece que cuento con el ingreso para el [fecha]?"</li>
             </ol>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 5 ó Acepta soluciones intermedias</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">Si el cliente tiene problemas reales de liquidez, ofrÈcele alternativas:</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 5 ‚Äî Acepta soluciones intermedias</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">Si el cliente tiene problemas reales de liquidez, ofr√©cele alternativas:</p>
             <ul className="space-y-2 text-zinc-300 mb-6">
               <li>? <strong>Fraccionar la factura</strong> en 2-3 pagos</li>
               <li>? <strong>Plazo adicional pactado</strong> a cambio de fecha cerrada por escrito</li>
-              <li>? <strong>DomiciliaciÛn SEPA</strong> para futuras facturas (le quita el "olvido" de la ecuaciÛn)</li>
-              <li>? <strong>Anticipo parcial inmediato + resto en X dÌas</strong></li>
+              <li>? <strong>Domiciliaci√≥n SEPA</strong> para futuras facturas (le quita el "olvido" de la ecuaci√≥n)</li>
+              <li>? <strong>Anticipo parcial inmediato + resto en X d√≠as</strong></li>
             </ul>
-            <p className="text-zinc-300 leading-relaxed mb-4">El cliente que prefiere negociar antes que cerrar la relaciÛn contigo es un cliente que SÕ va a pagar. Dale la opciÛn.</p>
+            <p className="text-zinc-300 leading-relaxed mb-4">El cliente que prefiere negociar antes que cerrar la relaci√≥n contigo es un cliente que S√ç va a pagar. Dale la opci√≥n.</p>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 6 ó La trampa emocional que evitar</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">El error m·s com˙n: <strong>esperar 3 meses, acumular frustraciÛn y luego mandar un email duro lleno de reproche.</strong></p>
-            <p className="text-zinc-300 leading-relaxed mb-4">Eso garantiza que el cliente se enfade. Tu frustraciÛn acumulada se transmite en cada palabra y rompe la relaciÛn. La soluciÛn: empezar a reclamar el dÌa 1, con tono cordial, antes de que tu emociÛn se acumule.</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 6 ‚Äî La trampa emocional que evitar</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">El error m√°s com√∫n: <strong>esperar 3 meses, acumular frustraci√≥n y luego mandar un email duro lleno de reproche.</strong></p>
+            <p className="text-zinc-300 leading-relaxed mb-4">Eso garantiza que el cliente se enfade. Tu frustraci√≥n acumulada se transmite en cada palabra y rompe la relaci√≥n. La soluci√≥n: empezar a reclamar el d√≠a 1, con tono cordial, antes de que tu emoci√≥n se acumule.</p>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 7 ó Automatiza para no quemarte t˙</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">El mejor truco para cobrar sin enfadarse: <strong>que NO seas t˙ quien escriba los emails de reclamaciÛn</strong>. Un sistema automatizado mantiene tono profesional incluso cuando t˙ ya est·s cansado y harto. Y el cliente lo percibe como "negocio", no como "ataque personal".</p>
-            <p className="text-zinc-300 leading-relaxed mb-4">AquÌ es donde Saldea entra: la IA escribe cada email con el tono exacto que toca seg˙n los dÌas de retraso. T˙ no tienes que pensar, no tienes que escribir, no tienes que enfadarte. La IA lo hace por ti, profesionalmente.</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Paso 7 ‚Äî Automatiza para no quemarte t√∫</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">El mejor truco para cobrar sin enfadarse: <strong>que NO seas t√∫ quien escriba los emails de reclamaci√≥n</strong>. Un sistema automatizado mantiene tono profesional incluso cuando t√∫ ya est√°s cansado y harto. Y el cliente lo percibe como "negocio", no como "ataque personal".</p>
+            <p className="text-zinc-300 leading-relaxed mb-4">Aqu√≠ es donde Saldea entra: la IA escribe cada email con el tono exacto que toca seg√∫n los d√≠as de retraso. T√∫ no tienes que pensar, no tienes que escribir, no tienes que enfadarte. La IA lo hace por ti, profesionalmente.</p>
 
             <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Resumen visual</h2>
             <div className="overflow-x-auto my-5">
               <table className="w-full text-sm border-collapse">
                 <thead>
                   <tr className="bg-sky-500/20">
-                    <th className="py-3 px-4 text-left text-zinc-100">DÌa</th>
-                    <th className="py-3 px-4 text-left text-zinc-100">AcciÛn</th>
+                    <th className="py-3 px-4 text-left text-zinc-100">D√≠a</th>
+                    <th className="py-3 px-4 text-left text-zinc-100">Acci√≥n</th>
                     <th className="py-3 px-4 text-left text-zinc-100">Tono</th>
                   </tr>
                 </thead>
                 <tbody className="text-zinc-300">
                   <tr className="border-b border-white/10"><td className="py-2 px-4">1</td><td className="py-2 px-4">Email recordatorio</td><td className="py-2 px-4">Amable + "si ya pagaste, ignora"</td></tr>
                   <tr className="border-b border-white/10"><td className="py-2 px-4">7-14</td><td className="py-2 px-4">Email firme</td><td className="py-2 px-4">Cita Ley 3/2004 sin amenazar</td></tr>
-                  <tr className="border-b border-white/10"><td className="py-2 px-4">15-20</td><td className="py-2 px-4">Llamada telefÛnica</td><td className="py-2 px-4">Pregunta humana</td></tr>
-                  <tr className="border-b border-white/10"><td className="py-2 px-4">30</td><td className="py-2 px-4">Negocia plan de pago</td><td className="py-2 px-4">SoluciÛn compartida</td></tr>
+                  <tr className="border-b border-white/10"><td className="py-2 px-4">15-20</td><td className="py-2 px-4">Llamada telef√≥nica</td><td className="py-2 px-4">Pregunta humana</td></tr>
+                  <tr className="border-b border-white/10"><td className="py-2 px-4">30</td><td className="py-2 px-4">Negocia plan de pago</td><td className="py-2 px-4">Soluci√≥n compartida</td></tr>
                   <tr><td className="py-2 px-4">60</td><td className="py-2 px-4">Burofax</td><td className="py-2 px-4">Formal y profesional</td></tr>
                 </tbody>
               </table>
@@ -134,18 +134,18 @@ export default function PageCobrarSinEnfadar() {
             <h2 className="text-2xl font-bold text-zinc-100 mt-10 mb-4">Errores que enfadan al cliente</h2>
             <ul className="space-y-2 text-zinc-300 mb-6">
               <li>? Reclamar por WhatsApp informal: parece poco serio y agresivo a la vez</li>
-              <li>? Mandar muchos emails seguidos en pocos dÌas</li>
-              <li>? Usar may˙sculas o signos de exclamaciÛn m˙ltiples (!!!)</li>
+              <li>? Mandar muchos emails seguidos en pocos d√≠as</li>
+              <li>? Usar may√∫sculas o signos de exclamaci√≥n m√∫ltiples (!!!)</li>
               <li>? Mencionar a tus abogados antes de tiempo</li>
-              <li>? Hacer p˙blica la deuda en redes sociales</li>
-              <li>? Llamar a horas inadecuadas (antes de las 9, despuÈs de las 19)</li>
+              <li>? Hacer p√∫blica la deuda en redes sociales</li>
+              <li>? Llamar a horas inadecuadas (antes de las 9, despu√©s de las 19)</li>
               <li>? Dejar pasar 3 meses sin decir nada y luego explotar</li>
             </ul>
           </section>
 
           <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea hace exactamente esto, autom·ticamente</h3>
-            <p className="text-zinc-300 mb-5">Cada email escalado con el tono correcto. Sin que t˙ tengas que escribirlos. Sin que te enfades. Sin perder al cliente. <strong>30 dÌas gratis.</strong></p>
+            <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea hace exactamente esto, autom√°ticamente</h3>
+            <p className="text-zinc-300 mb-5">Cada email escalado con el tono correcto. Sin que t√∫ tengas que escribirlos. Sin que te enfades. Sin perder al cliente. <strong>30 d√≠as gratis.</strong></p>
             <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
           </aside>
         </div>
