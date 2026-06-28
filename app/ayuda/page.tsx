@@ -43,8 +43,20 @@ const faqs: Array<{ q: string; a: string }> = [
   },
 ]
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
 export default function AyudaPage() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <div className="min-h-screen bg-[#0a0a0b] text-zinc-100">
       <main className="max-w-3xl mx-auto px-6 py-16">
         <div className="mb-12 text-center">
@@ -127,5 +139,6 @@ export default function AyudaPage() {
       </main>
       <MarketingFooter />
     </div>
+    </>
   )
 }
