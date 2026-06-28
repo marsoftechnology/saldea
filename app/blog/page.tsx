@@ -5,6 +5,12 @@ export const metadata: Metadata = {
   title: 'Blog · Cómo cobrar mejor tus facturas | Marsof',
   description: 'Guías prácticas y plantillas para autónomos y pymes españolas: reclamar facturas, evitar morosos, automatizar cobros. Por Marsof.',
   alternates: { canonical: 'https://marsof.es/blog' },
+  openGraph: {
+    title: 'Blog Marsof · Guías para cobrar mejor tus facturas',
+    description: 'Guías prácticas y plantillas para autónomos y pymes: reclamar facturas, evitar morosos y automatizar cobros con IA.',
+    type: 'website',
+    locale: 'es_ES',
+  },
 }
 
 const articulos = [
@@ -288,9 +294,28 @@ const articulos = [
   },
 ]
 
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Blog Marsof · Guías para cobrar mejor tus facturas',
+  description: 'Guías prácticas y plantillas para autónomos y pymes españolas: reclamar facturas, evitar morosos, automatizar cobros.',
+  url: 'https://www.marsof.es/blog',
+  publisher: { '@id': 'https://marsof.es/#organization' },
+  inLanguage: 'es-ES',
+  hasPart: articulos.map(a => ({
+    '@type': 'Article',
+    headline: a.titulo,
+    url: `https://www.marsof.es/blog/${a.slug}`,
+    datePublished: a.fecha,
+    author: { '@type': 'Organization', name: 'Marsof Technology' },
+  })),
+}
+
 export default function BlogIndex() {
   return (
-    <div className="min-h-screen bg-transparent text-zinc-100">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
+      <div className="min-h-screen bg-transparent text-zinc-100">
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -350,5 +375,6 @@ export default function BlogIndex() {
         </div>
       </section>
     </div>
+  </>
   )
 }

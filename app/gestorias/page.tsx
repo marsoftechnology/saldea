@@ -22,9 +22,21 @@ export const metadata: Metadata = {
   },
 }
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Software de cobros automáticos con IA para gestorías',
+  provider: { '@id': 'https://marsof.es/#organization' },
+  areaServed: { '@type': 'Country', name: 'España' },
+  description: 'Saldea automatiza el cobro de facturas para gestorías y asesorías españolas. IA que persigue morosos con mensajes personalizados que escalan en tono.',
+  offers: { '@type': 'Offer', price: '49', priceCurrency: 'EUR', description: 'Plan Pro mensual' },
+}
+
 export default function PageGestorias() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
@@ -158,5 +170,6 @@ export default function PageGestorias() {
       </section>
       <MarketingFooter />
     </div>
+  </>
   )
 }
