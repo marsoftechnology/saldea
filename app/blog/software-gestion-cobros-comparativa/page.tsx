@@ -1,21 +1,21 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Mejor software de gesti√≥n de cobros 2026: comparativa Espa√±a | Marsof',
-  description: 'Comparamos 7 herramientas para automatizar el cobro de facturas en Espa√±a: precios, funciones, integraci√≥n con Stripe, IA y soporte. An√°lisis honesto 2026.',
-  alternates: { canonical: 'https://marsof.es/blog/software-gestion-cobros-comparativa' },
+  title: 'Mejor software de gestiÛn de cobros 2026: comparativa EspaÒa | Marsof',
+  description: 'Comparamos 7 herramientas para automatizar el cobro de facturas en EspaÒa: precios, funciones, integraciÛn con Stripe, IA y soporte. An·lisis honesto 2026.',
+  alternates: { canonical: 'https://www.marsof.es/blog/software-gestion-cobros-comparativa' },
   keywords: [
-    'software gesti√≥n cobros',
-    'mejor software facturaci√≥n cobros',
-    'herramienta cobros aut√≥nomos',
+    'software gestiÛn cobros',
+    'mejor software facturaciÛn cobros',
+    'herramienta cobros autÛnomos',
     'comparativa software morosos',
     'app para cobrar facturas',
     'crm cobros pymes',
   ],
   openGraph: {
-    title: 'Mejor software de gesti√≥n de cobros 2026: comparativa Espa√±a',
-    description: 'An√°lisis honesto de 7 herramientas con precios y funciones.',
+    title: 'Mejor software de gestiÛn de cobros 2026: comparativa EspaÒa',
+    description: 'An·lisis honesto de 7 herramientas con precios y funciones.',
     type: 'article',
     locale: 'es_ES',
   },
@@ -25,24 +25,24 @@ export default function PageSoftwareComparativa() {
   return (
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ¬∑ 12 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Mejor software de gesti√≥n de cobros 2026 en Espa√±a</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Si gestionas facturas y quieres cobrar m√°s r√°pido sin perseguir clientes a mano, aqu√≠ tienes el an√°lisis honesto de las 7 herramientas m√°s usadas en Espa√±a.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ∑ 12 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Mejor software de gestiÛn de cobros 2026 en EspaÒa</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">Si gestionas facturas y quieres cobrar m·s r·pido sin perseguir clientes a mano, aquÌ tienes el an·lisis honesto de las 7 herramientas m·s usadas en EspaÒa.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">C√≥mo elegir tu software de cobros</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">CÛmo elegir tu software de cobros</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Antes de comparar, ten claros estos 4 criterios:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li><strong>1. Automatizaci√≥n:</strong> ¬ømanda los recordatorios solo o tienes que pulsar t√∫ cada vez?</li>
-            <li><strong>2. Escalado de tono:</strong> ¬øusa un solo email tipo o adapta el mensaje seg√∫n los d√≠as de retraso?</li>
-            <li><strong>3. Detecci√≥n de respuestas:</strong> ¬øentiende cuando el cliente paga, discute o promete pago?</li>
-            <li><strong>4. Integraci√≥n con Stripe / cuenta bancaria:</strong> ¬øgenera links de pago autom√°ticos?</li>
+            <li><strong>1. AutomatizaciÛn:</strong> ømanda los recordatorios solo o tienes que pulsar t˙ cada vez?</li>
+            <li><strong>2. Escalado de tono:</strong> øusa un solo email tipo o adapta el mensaje seg˙n los dÌas de retraso?</li>
+            <li><strong>3. DetecciÛn de respuestas:</strong> øentiende cuando el cliente paga, discute o promete pago?</li>
+            <li><strong>4. IntegraciÛn con Stripe / cuenta bancaria:</strong> øgenera links de pago autom·ticos?</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Comparativa r√°pida</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Comparativa r·pida</h2>
           <div className="overflow-x-auto my-5">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -54,55 +54,55 @@ export default function PageSoftwareComparativa() {
                 </tr>
               </thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10 bg-sky-500/5"><td className="py-2 px-3 font-bold">Saldea</td><td className="py-2 px-3">49‚Ç¨/mes</td><td className="py-2 px-3">‚úÖ</td><td className="py-2 px-3">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Holded</td><td className="py-2 px-3">29-99‚Ç¨/mes</td><td className="py-2 px-3">‚ùå</td><td className="py-2 px-3">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Quipu</td><td className="py-2 px-3">19-89‚Ç¨/mes</td><td className="py-2 px-3">‚ùå</td><td className="py-2 px-3">Parcial</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Anfix</td><td className="py-2 px-3">19-99‚Ç¨/mes</td><td className="py-2 px-3">‚ùå</td><td className="py-2 px-3">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Sage 50</td><td className="py-2 px-3">desde 49‚Ç¨</td><td className="py-2 px-3">‚ùå</td><td className="py-2 px-3">‚ùå</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Chaser (UK)</td><td className="py-2 px-3">~75‚Ç¨/mes</td><td className="py-2 px-3">Parcial</td><td className="py-2 px-3">‚úÖ</td></tr>
-                <tr><td className="py-2 px-3">Hoja Excel</td><td className="py-2 px-3">0‚Ç¨</td><td className="py-2 px-3">‚ùå</td><td className="py-2 px-3">‚ùå</td></tr>
+                <tr className="border-b border-white/10 bg-sky-500/5"><td className="py-2 px-3 font-bold">Saldea</td><td className="py-2 px-3">49Ä/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Holded</td><td className="py-2 px-3">29-99Ä/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Quipu</td><td className="py-2 px-3">19-89Ä/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">Parcial</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Anfix</td><td className="py-2 px-3">19-99Ä/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Sage 50</td><td className="py-2 px-3">desde 49Ä</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Chaser (UK)</td><td className="py-2 px-3">~75Ä/mes</td><td className="py-2 px-3">Parcial</td><td className="py-2 px-3">?</td></tr>
+                <tr><td className="py-2 px-3">Hoja Excel</td><td className="py-2 px-3">0Ä</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">1. Saldea ‚Äî IA espec√≠fica para cobros</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para qui√©n:</strong> aut√≥nomos, gestor√≠as y pymes espa√±olas que quieren AUTOMATIZAR todo el proceso de cobro sin perder personalizaci√≥n.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo bueno:</strong> √∫nica herramienta del mercado espa√±ol con IA que <strong>escala el tono progresivamente</strong> (amable ‚Üí firme ‚Üí formal) y <strong>detecta respuestas reales</strong> (paga, dispute, promesa). Integraci√≥n Stripe Connect nativa.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> lanzada en 2026, comunidad a√∫n peque√±a.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Precio:</strong> 49‚Ç¨/mes (49‚Ç¨) o 499‚Ç¨/a√±o. 30 d√≠as gratis.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">1. Saldea ó IA especÌfica para cobros</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para quiÈn:</strong> autÛnomos, gestorÌas y pymes espaÒolas que quieren AUTOMATIZAR todo el proceso de cobro sin perder personalizaciÛn.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo bueno:</strong> ˙nica herramienta del mercado espaÒol con IA que <strong>escala el tono progresivamente</strong> (amable ? firme ? formal) y <strong>detecta respuestas reales</strong> (paga, dispute, promesa). IntegraciÛn Stripe Connect nativa.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> lanzada en 2026, comunidad a˙n pequeÒa.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Precio:</strong> 49Ä/mes (49Ä) o 499Ä/aÒo. 30 dÌas gratis.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">2. Holded ‚Äî ERP completo</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para qui√©n:</strong> empresas medianas que quieren factura + contabilidad + RRHH + CRM en una sola herramienta.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">2. Holded ó ERP completo</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para quiÈn:</strong> empresas medianas que quieren factura + contabilidad + RRHH + CRM en una sola herramienta.</p>
           <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo bueno:</strong> es un ERP serio, todo conectado.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> los recordatorios de cobro son b√°sicos. No escala tono ni detecta respuestas.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> los recordatorios de cobro son b·sicos. No escala tono ni detecta respuestas.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">3. Quipu ‚Äî Factura para aut√≥nomos</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Buena para facturaci√≥n, simple. Los recordatorios son manuales y sin escalado.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">3. Quipu ó Factura para autÛnomos</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Buena para facturaciÛn, simple. Los recordatorios son manuales y sin escalado.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">4. Anfix ‚Äî Contabilidad y factura</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Foco contable. Los recordatorios existen pero requieren intervenci√≥n manual.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">4. Anfix ó Contabilidad y factura</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Foco contable. Los recordatorios existen pero requieren intervenciÛn manual.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">5. Sage 50 ‚Äî Software cl√°sico</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Pesado, instalable, sin automatizaci√≥n moderna. Solo si tu asesor lo exige.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">5. Sage 50 ó Software cl·sico</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Pesado, instalable, sin automatizaciÛn moderna. Solo si tu asesor lo exige.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">6. Chaser ‚Äî Soluci√≥n UK</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Buena pero pensada para Reino Unido. No conoce la Ley 3/2004 espa√±ola ni los 40‚Ç¨ de indemnizaci√≥n.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">6. Chaser ó SoluciÛn UK</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Buena pero pensada para Reino Unido. No conoce la Ley 3/2004 espaÒola ni los 40Ä de indemnizaciÛn.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">7. Excel / Google Sheets ‚Äî Manual</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">7. Excel / Google Sheets ó Manual</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Gratis pero te lleva 2-3 horas/semana mantenerlo y la mitad de las facturas se te pasan.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Conclusi√≥n</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si quieres una herramienta dedicada exclusivamente a <strong>cobrar mejor y m√°s r√°pido</strong> y que use IA para escalar el tono y detectar respuestas: <strong>Saldea</strong>. Si necesitas un ERP completo con facturaci√≥n y contabilidad: Holded o Anfix.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">ConclusiÛn</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si quieres una herramienta dedicada exclusivamente a <strong>cobrar mejor y m·s r·pido</strong> y que use IA para escalar el tono y detectar respuestas: <strong>Saldea</strong>. Si necesitas un ERP completo con facturaciÛn y contabilidad: Holded o Anfix.</p>
         </section>
 
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Pru√©balo t√∫ mismo</h3>
-          <p className="text-zinc-300 mb-5">30 d√≠as gratis. Se requiere tarjeta. Cancela en 1 clic. Sin permanencia.</p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">PruÈbalo t˙ mismo</h3>
+          <p className="text-zinc-300 mb-5">30 dÌas gratis. Se requiere tarjeta. Cancela en 1 clic. Sin permanencia.</p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
 
         <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="text-xs text-zinc-500">Comparativa basada en informaci√≥n p√∫blica de cada producto a fecha de mayo 2026. Los precios pueden cambiar.</p>
+          <p className="text-xs text-zinc-500">Comparativa basada en informaciÛn p˙blica de cada producto a fecha de mayo 2026. Los precios pueden cambiar.</p>
         </div>
       </div>
     </article>

@@ -1,10 +1,10 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Procedimiento monitorio: c√≥mo reclamar una deuda sin abogado | Marsof',
-  description: 'Gu√≠a completa del procedimiento monitorio en Espa√±a: c√≥mo presentar la demanda, plazos, coste y cu√°ndo se necesita abogado. Actualizado 2026.',
-  alternates: { canonical: 'https://marsof.es/blog/procedimiento-monitorio-reclamar-deuda' },
+  title: 'Procedimiento monitorio: cÛmo reclamar una deuda sin abogado | Marsof',
+  description: 'GuÌa completa del procedimiento monitorio en EspaÒa: cÛmo presentar la demanda, plazos, coste y cu·ndo se necesita abogado. Actualizado 2026.',
+  alternates: { canonical: 'https://www.marsof.es/blog/procedimiento-monitorio-reclamar-deuda' },
   keywords: [
     'procedimiento monitorio',
     'monitorio sin abogado',
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     'demanda morosos',
   ],
   openGraph: {
-    title: 'Procedimiento monitorio: c√≥mo reclamar una deuda sin abogado',
-    description: 'Pasos, formularios y plazos para el monitorio en Espa√±a.',
+    title: 'Procedimiento monitorio: cÛmo reclamar una deuda sin abogado',
+    description: 'Pasos, formularios y plazos para el monitorio en EspaÒa.',
     type: 'article',
     locale: 'es_ES',
   },
@@ -27,10 +27,10 @@ const schema = {
   name: 'Procedimiento monitorio paso a paso',
   totalTime: 'P30D',
   step: [
-    { '@type': 'HowToStep', name: 'Preparar documentaci√≥n', text: 'Factura, contrato, comunicaciones previas (burofax).' },
+    { '@type': 'HowToStep', name: 'Preparar documentaciÛn', text: 'Factura, contrato, comunicaciones previas (burofax).' },
     { '@type': 'HowToStep', name: 'Rellenar formulario', text: 'Modelo oficial del CGPJ.' },
     { '@type': 'HowToStep', name: 'Presentar en juzgado', text: 'Decanato del lugar del deudor.' },
-    { '@type': 'HowToStep', name: 'Esperar requerimiento', text: 'El juez requiere pago al deudor en 20 d√≠as.' },
+    { '@type': 'HowToStep', name: 'Esperar requerimiento', text: 'El juez requiere pago al deudor en 20 dÌas.' },
   ],
 }
 
@@ -40,41 +40,41 @@ export default function PageMonitorio() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <article className="min-h-screen bg-zinc-950 text-zinc-100">
         <div className="max-w-3xl mx-auto px-6 py-16">
-          <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+          <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
           <header className="mb-10">
-            <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">V√≠a judicial ¬∑ 9 min</p>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Procedimiento monitorio: c√≥mo reclamar una deuda sin abogado</h1>
-            <p className="text-zinc-400 text-lg leading-relaxed">El procedimiento monitorio es el camino m√°s r√°pido y barato en Espa√±a para cobrar una deuda dineraria. Sin abogado si la cuant√≠a es inferior a 2.000‚Ç¨.</p>
+            <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">VÌa judicial ∑ 9 min</p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Procedimiento monitorio: cÛmo reclamar una deuda sin abogado</h1>
+            <p className="text-zinc-400 text-lg leading-relaxed">El procedimiento monitorio es el camino m·s r·pido y barato en EspaÒa para cobrar una deuda dineraria. Sin abogado si la cuantÌa es inferior a 2.000Ä.</p>
           </header>
 
           <section className="prose prose-invert max-w-none">
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øQu√© es el procedimiento monitorio?</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">Es un procedimiento judicial <strong>simplificado y √°gil</strong> regulado en los art√≠culos 812-818 de la Ley de Enjuiciamiento Civil. Est√° pensado para reclamar deudas <strong>dinerarias, l√≠quidas, vencidas y exigibles</strong>, sin l√≠mite m√°ximo de cuant√≠a.</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øQuÈ es el procedimiento monitorio?</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">Es un procedimiento judicial <strong>simplificado y ·gil</strong> regulado en los artÌculos 812-818 de la Ley de Enjuiciamiento Civil. Est· pensado para reclamar deudas <strong>dinerarias, lÌquidas, vencidas y exigibles</strong>, sin lÌmite m·ximo de cuantÌa.</p>
 
             <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ventajas frente a un juicio ordinario</h2>
             <ul className="space-y-2 text-zinc-300 mb-6">
-              <li>‚úÖ <strong>Sin abogado ni procurador</strong> si la cuant√≠a es inferior a 2.000‚Ç¨.</li>
-              <li>‚úÖ <strong>R√°pido:</strong> el juez requiere pago al deudor en 20 d√≠as.</li>
-              <li>‚úÖ <strong>Sin tasas judiciales</strong> para personas f√≠sicas.</li>
-              <li>‚úÖ <strong>Sin cuant√≠a m√°xima:</strong> puedes reclamar 500‚Ç¨ o 500.000‚Ç¨.</li>
-              <li>‚úÖ <strong>Si el deudor no responde,</strong> se ejecuta directamente.</li>
+              <li>? <strong>Sin abogado ni procurador</strong> si la cuantÌa es inferior a 2.000Ä.</li>
+              <li>? <strong>R·pido:</strong> el juez requiere pago al deudor en 20 dÌas.</li>
+              <li>? <strong>Sin tasas judiciales</strong> para personas fÌsicas.</li>
+              <li>? <strong>Sin cuantÌa m·xima:</strong> puedes reclamar 500Ä o 500.000Ä.</li>
+              <li>? <strong>Si el deudor no responde,</strong> se ejecuta directamente.</li>
             </ul>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Documentaci√≥n que necesitas</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">DocumentaciÛn que necesitas</h2>
             <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-              <li>Factura original (o contrato, presupuesto firmado, albar√°n...).</li>
+              <li>Factura original (o contrato, presupuesto firmado, albar·n...).</li>
               <li>Comunicaciones previas reclamando el pago (emails, burofax, cartas).</li>
-              <li>Justificantes de env√≠o del burofax (acuse y certificaci√≥n de contenido).</li>
-              <li>Datos completos del deudor (nombre/raz√≥n social, CIF/DNI, domicilio).</li>
-              <li>C√°lculo detallado de la deuda: principal + intereses + 40‚Ç¨ indemnizaci√≥n.</li>
+              <li>Justificantes de envÌo del burofax (acuse y certificaciÛn de contenido).</li>
+              <li>Datos completos del deudor (nombre/razÛn social, CIF/DNI, domicilio).</li>
+              <li>C·lculo detallado de la deuda: principal + intereses + 40Ä indemnizaciÛn.</li>
             </ol>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">C√≥mo presentar la demanda paso a paso</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">CÛmo presentar la demanda paso a paso</h2>
             <ol className="space-y-3 text-zinc-300 list-decimal list-inside mb-6">
-              <li><strong>Descarga el formulario oficial</strong> "Petici√≥n inicial de procedimiento monitorio" en la web del CGPJ (poderjudicial.es).</li>
-              <li><strong>Rell√©nalo</strong> con tus datos, los del deudor, importe reclamado e identifica los documentos que adjuntas.</li>
-              <li><strong>Adjunta toda la documentaci√≥n.</strong></li>
-              <li><strong>Pres√©ntalo</strong> en el Decanato de los juzgados del <strong>domicilio del deudor</strong>. Puede ser:
+              <li><strong>Descarga el formulario oficial</strong> "PeticiÛn inicial de procedimiento monitorio" en la web del CGPJ (poderjudicial.es).</li>
+              <li><strong>RellÈnalo</strong> con tus datos, los del deudor, importe reclamado e identifica los documentos que adjuntas.</li>
+              <li><strong>Adjunta toda la documentaciÛn.</strong></li>
+              <li><strong>PresÈntalo</strong> en el Decanato de los juzgados del <strong>domicilio del deudor</strong>. Puede ser:
                 <ul className="ml-6 mt-2 space-y-1 list-disc">
                   <li>Presencial (con cita previa).</li>
                   <li>Online (con certificado digital) en sede.justicia.gob.es</li>
@@ -83,38 +83,38 @@ export default function PageMonitorio() {
               <li>El juzgado <strong>admite</strong> y emite requerimiento al deudor.</li>
             </ol>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Qu√© pasa despu√©s de presentar la demanda</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">QuÈ pasa despuÈs de presentar la demanda</h2>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
-              <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Escenario 1 ‚Äî El deudor paga:</strong> caso cerrado, cobras.</p>
-              <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Escenario 2 ‚Äî El deudor no responde en 20 d√≠as:</strong> el juez dicta auto de ejecuci√≥n. Puedes embargar cuentas, salarios, propiedades.</p>
-              <p className="text-zinc-300"><strong className="text-sky-400">Escenario 3 ‚Äî El deudor se opone:</strong> el procedimiento se convierte en juicio verbal u ordinario seg√∫n cuant√≠a. Aqu√≠ ya necesitar√°s abogado.</p>
+              <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Escenario 1 ó El deudor paga:</strong> caso cerrado, cobras.</p>
+              <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Escenario 2 ó El deudor no responde en 20 dÌas:</strong> el juez dicta auto de ejecuciÛn. Puedes embargar cuentas, salarios, propiedades.</p>
+              <p className="text-zinc-300"><strong className="text-sky-400">Escenario 3 ó El deudor se opone:</strong> el procedimiento se convierte en juicio verbal u ordinario seg˙n cuantÌa. AquÌ ya necesitar·s abogado.</p>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øCu√°nto cuesta?</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øCu·nto cuesta?</h2>
             <ul className="space-y-2 text-zinc-300 mb-6">
-              <li><strong>Personas f√≠sicas:</strong> 0‚Ç¨ en tasas judiciales.</li>
-              <li><strong>Empresas (deuda &lt; 2.000‚Ç¨):</strong> 0‚Ç¨ en tasas + 0‚Ç¨ abogado.</li>
-              <li><strong>Empresas (deuda &gt; 2.000‚Ç¨):</strong> tasas (~100‚Ç¨) + abogado y procurador (300-800‚Ç¨).</li>
+              <li><strong>Personas fÌsicas:</strong> 0Ä en tasas judiciales.</li>
+              <li><strong>Empresas (deuda &lt; 2.000Ä):</strong> 0Ä en tasas + 0Ä abogado.</li>
+              <li><strong>Empresas (deuda &gt; 2.000Ä):</strong> tasas (~100Ä) + abogado y procurador (300-800Ä).</li>
               <li><strong>Si ganas:</strong> el deudor paga costas.</li>
             </ul>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo NO usar el monitorio</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo NO usar el monitorio</h2>
             <ul className="space-y-2 text-zinc-300 mb-6">
-              <li>‚ùå Cuando hay <strong>disputa real</strong> sobre el servicio prestado.</li>
-              <li>‚ùå Cuando la <strong>deuda no est√° documentada</strong> con factura/contrato.</li>
-              <li>‚ùå Cuando ya ha pasado el <strong>plazo de prescripci√≥n</strong> (5 a√±os).</li>
-              <li>‚ùå Cuando esperas que el deudor <strong>se vaya a oponer</strong> y prefieres juicio ordinario directo.</li>
+              <li>? Cuando hay <strong>disputa real</strong> sobre el servicio prestado.</li>
+              <li>? Cuando la <strong>deuda no est· documentada</strong> con factura/contrato.</li>
+              <li>? Cuando ya ha pasado el <strong>plazo de prescripciÛn</strong> (5 aÒos).</li>
+              <li>? Cuando esperas que el deudor <strong>se vaya a oponer</strong> y prefieres juicio ordinario directo.</li>
             </ul>
           </section>
 
           <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea genera la documentaci√≥n lista para el monitorio</h3>
-            <p className="text-zinc-300 mb-5">Cada email que manda Saldea queda registrado con fecha y contenido. Si tienes que ir al monitorio, exportas el historial en PDF y lo presentas como prueba documental. <strong>30 d√≠as gratis.</strong></p>
-            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+            <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea genera la documentaciÛn lista para el monitorio</h3>
+            <p className="text-zinc-300 mb-5">Cada email que manda Saldea queda registrado con fecha y contenido. Si tienes que ir al monitorio, exportas el historial en PDF y lo presentas como prueba documental. <strong>30 dÌas gratis.</strong></p>
+            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
           </aside>
 
           <div className="mt-12 pt-8 border-t border-white/10">
-            <p className="text-xs text-zinc-500">Informaci√≥n orientativa. Para casos complejos consulta con un abogado.</p>
+            <p className="text-xs text-zinc-500">InformaciÛn orientativa. Para casos complejos consulta con un abogado.</p>
           </div>
         </div>
       </article>

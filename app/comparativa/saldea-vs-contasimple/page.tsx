@@ -1,11 +1,11 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Saldea vs Contasimple: facturaci√≥n vs cobros autom√°ticos 2026',
-  description: 'Contasimple es gratis para aut√≥nomos peque√±os. Saldea automatiza cobros con IA. Comparativa honesta: cu√°ndo usar cada uno.',
-  alternates: { canonical: 'https://marsof.es/comparativa/saldea-vs-contasimple' },
+  title: 'Saldea vs Contasimple: facturaciÛn vs cobros autom·ticos 2026',
+  description: 'Contasimple es gratis para autÛnomos pequeÒos. Saldea automatiza cobros con IA. Comparativa honesta: cu·ndo usar cada uno.',
+  alternates: { canonical: 'https://www.marsof.es/comparativa/saldea-vs-contasimple' },
   keywords: ['saldea vs contasimple', 'contasimple cobros', 'alternativa contasimple', 'contasimple vs saldea'],
   openGraph: { title: 'Saldea vs Contasimple', description: 'Comparativa honesta.', type: 'article', locale: 'es_ES' },
 }
@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Saldea vs Contasimple: facturaci√≥n vs cobros autom√°ticos 2026',
-  description: '¬øSaldea o Contasimple? Contasimple gestiona facturas, Saldea las cobra autom√°ticamente con IA.',
+  headline: 'Saldea vs Contasimple: facturaciÛn vs cobros autom·ticos 2026',
+  description: 'øSaldea o Contasimple? Contasimple gestiona facturas, Saldea las cobra autom·ticamente con IA.',
   author: { '@type': 'Organization', name: 'Marsof Technology' },
-  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://marsof.es/og-image.png' } },
+  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://www.marsof.es/og-image.png' } },
   datePublished: '2026-05-16',
   dateModified: '2026-05-16',
   inLanguage: 'es-ES',
@@ -32,62 +32,62 @@ export default function PageVsContasimple() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 d√≠as gratis</Link></div>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÌas gratis</Link></div>
         </div>
       </nav>
       <article className="max-w-3xl mx-auto px-6 py-16">
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ¬∑ 6 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ∑ 6 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea vs Contasimple</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Contasimple es uno de los softwares de facturaci√≥n gratuitos m√°s usados por aut√≥nomos en Espa√±a. Saldea es la IA que persigue los cobros. Veamos cu√°ndo conviene cada uno.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">Contasimple es uno de los softwares de facturaciÛn gratuitos m·s usados por autÛnomos en EspaÒa. Saldea es la IA que persigue los cobros. Veamos cu·ndo conviene cada uno.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Resumen</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
-            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Contasimple:</strong> facturaci√≥n gratis para aut√≥nomos peque√±os. Libros de IVA b√°sicos, modelo 130/303.</p>
+            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Contasimple:</strong> facturaciÛn gratis para autÛnomos pequeÒos. Libros de IVA b·sicos, modelo 130/303.</p>
             <p className="text-zinc-300"><strong className="text-sky-400">Saldea:</strong> NO emite facturas. Persigue las que ya has emitido cuando el cliente se retrasa.</p>
           </div>
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Comparativa</h2>
           <div className="overflow-x-auto my-5">
             <table className="w-full text-sm border-collapse">
-              <thead><tr className="bg-sky-500/20"><th className="py-3 px-4 text-left text-zinc-100">Funci√≥n</th><th className="py-3 px-4 text-left text-zinc-100">Saldea</th><th className="py-3 px-4 text-left text-zinc-100">Contasimple</th></tr></thead>
+              <thead><tr className="bg-sky-500/20"><th className="py-3 px-4 text-left text-zinc-100">FunciÛn</th><th className="py-3 px-4 text-left text-zinc-100">Saldea</th><th className="py-3 px-4 text-left text-zinc-100">Contasimple</th></tr></thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Emitir facturas</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ Gratis</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Libros de IVA</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Modelos AEAT</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ Plan Pro</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios IA</td><td className="py-2 px-4">‚úÖ Claude</td><td className="py-2 px-4">‚ùå</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">‚úÖ</td><td className="py-2 px-4">B√°sico</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Emitir facturas</td><td className="py-2 px-4">?</td><td className="py-2 px-4">? Gratis</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Libros de IVA</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Modelos AEAT</td><td className="py-2 px-4">?</td><td className="py-2 px-4">? Plan Pro</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios IA</td><td className="py-2 px-4">? Claude</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">?</td><td className="py-2 px-4">B·sico</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Plan gratis</td><td className="py-2 px-4">3 facturas</td><td className="py-2 px-4">Ilimitado</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Plan Pro</td><td className="py-2 px-4">49‚Ç¨/mes</td><td className="py-2 px-4">~10-20‚Ç¨/mes</td></tr>
-                <tr><td className="py-2 px-4">Conciliaci√≥n bancaria autom√°tica</td><td className="py-2 px-4">‚úÖ Plan Max</td><td className="py-2 px-4">‚ùå</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Plan Pro</td><td className="py-2 px-4">49Ä/mes</td><td className="py-2 px-4">~10-20Ä/mes</td></tr>
+                <tr><td className="py-2 px-4">ConciliaciÛn bancaria autom·tica</td><td className="py-2 px-4">? Plan Max</td><td className="py-2 px-4">?</td></tr>
               </tbody>
             </table>
           </div>
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El stack aut√≥nomo low-cost: Contasimple + Saldea</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si eres aut√≥nomo con presupuesto ajustado:</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El stack autÛnomo low-cost: Contasimple + Saldea</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si eres autÛnomo con presupuesto ajustado:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì <strong>Contasimple gratis</strong> ‚Üí emites facturas, llevas libro IVA</li>
-            <li>‚úì <strong>Saldea 49‚Ç¨/mes</strong> ‚Üí automatiza cobros cuando se retrasen</li>
+            <li>? <strong>Contasimple gratis</strong> ? emites facturas, llevas libro IVA</li>
+            <li>? <strong>Saldea 49Ä/mes</strong> ? automatiza cobros cuando se retrasen</li>
           </ul>
-          <p className="text-zinc-300 leading-relaxed mb-4">Total: ~49‚Ç¨/mes para tener todo el ciclo desde la emisi√≥n hasta el cobro persiguiendo morosos autom√°ticamente.</p>
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo solo necesitas Contasimple</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Total: ~49Ä/mes para tener todo el ciclo desde la emisiÛn hasta el cobro persiguiendo morosos autom·ticamente.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo solo necesitas Contasimple</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Aut√≥nomo reci√©n empezando</li>
-            <li>‚úì Tus clientes pagan r√°pido</li>
-            <li>‚úì Volumen bajo (1-3 facturas/mes)</li>
+            <li>? AutÛnomo reciÈn empezando</li>
+            <li>? Tus clientes pagan r·pido</li>
+            <li>? Volumen bajo (1-3 facturas/mes)</li>
           </ul>
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo a√±adir Saldea</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo aÒadir Saldea</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Tu cliente paga tarde habitualmente</li>
-            <li>‚úì Tienes facturas vencidas pendientes</li>
-            <li>‚úì Dedicas tiempo a reclamar manualmente</li>
-            <li>‚úì <strong>Conciliaci√≥n bancaria autom√°tica</strong> (Plan Max): detecta autom√°ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
+            <li>? Tu cliente paga tarde habitualmente</li>
+            <li>? Tienes facturas vencidas pendientes</li>
+            <li>? Dedicas tiempo a reclamar manualmente</li>
+            <li>? <strong>ConciliaciÛn bancaria autom·tica</strong> (Plan Max): detecta autom·ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
         </section>
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Mant√©n Contasimple, a√±ade Saldea</h3>
-          <p className="text-zinc-300 mb-5">Importa CSV desde Contasimple. Saldea persigue las facturas vencidas. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">MantÈn Contasimple, aÒade Saldea</h3>
+          <p className="text-zinc-300 mb-5">Importa CSV desde Contasimple. Saldea persigue las facturas vencidas. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </article>
       <MarketingFooter />

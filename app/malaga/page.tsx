@@ -1,20 +1,20 @@
-ï»¿import Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Saldea en MÃ¡laga: software de cobros para autÃ³nomos y pymes malagueÃ±as',
-  description: 'Software espaÃ±ol con IA para automatizar el cobro de facturas. Para autÃ³nomos, gestorÃ­as, empresas tecnolÃ³gicas y turÃ­sticas de MÃ¡laga. 30 dÃ­as gratis.',
-  alternates: { canonical: 'https://marsof.es/malaga' },
-  keywords: ['software cobros MÃ¡laga', 'gestorÃ­a MÃ¡laga', 'autÃ³nomo MÃ¡laga facturas', 'Saldea MÃ¡laga', 'pyme Costa del Sol', 'morosos MÃ¡laga'],
-  openGraph: { title: 'Saldea en MÃ¡laga', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
+  title: 'Saldea en Málaga: software de cobros para autónomos y pymes malagueñas',
+  description: 'Software español con IA para automatizar el cobro de facturas. Para autónomos, gestorías, empresas tecnológicas y turísticas de Málaga. 30 días gratis.',
+  alternates: { canonical: 'https://www.marsof.es/malaga' },
+  keywords: ['software cobros Málaga', 'gestoría Málaga', 'autónomo Málaga facturas', 'Saldea Málaga', 'pyme Costa del Sol', 'morosos Málaga'],
+  openGraph: { title: 'Saldea en Málaga', description: 'Software de cobros con IA.', type: 'website', locale: 'es_ES' },
 }
 
 const schema = {
   '@context': 'https://schema.org', '@type': 'Service',
-  serviceType: 'Software de cobros automÃ¡ticos con IA',
+  serviceType: 'Software de cobros automáticos con IA',
   provider: { '@id': 'https://marsof.es/#organization' },
-  areaServed: { '@type': 'City', name: 'MÃ¡laga' },
+  areaServed: { '@type': 'City', name: 'Málaga' },
 }
 
 export default function PageMalaga() {
@@ -26,35 +26,35 @@ export default function PageMalaga() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÃ­as gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 días gratis</Link>
             </div>
           </div>
         </nav>
         <section className="max-w-4xl mx-auto px-6 pt-16 pb-12">
-          <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6"><span>ğŸ“ Atendiendo MÃ¡laga y Costa del Sol</span></div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea para empresas y autÃ³nomos de MÃ¡laga</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed mb-8">MÃ¡laga es el polo tecnolÃ³gico emergente del sur de EspaÃ±a. Cientos de startups, pymes turÃ­sticas y autÃ³nomos del sector servicios trabajan con plazos largos. Saldea automatiza tus cobros con IA mientras tÃº te dedicas a crecer.</p>
-          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Sectores malagueÃ±os donde mÃ¡s encaja Saldea</h2>
+          <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6"><span>?? Atendiendo Málaga y Costa del Sol</span></div>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea para empresas y autónomos de Málaga</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed mb-8">Málaga es el polo tecnológico emergente del sur de España. Cientos de startups, pymes turísticas y autónomos del sector servicios trabajan con plazos largos. Saldea automatiza tus cobros con IA mientras tú te dedicas a crecer.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Sectores malagueños donde más encaja Saldea</h2>
           <ul className="space-y-2 text-zinc-300 mb-8">
-            <li>ğŸ’» <strong>Startups tecnolÃ³gicas</strong> del MÃ¡laga TechPark (CÃ¡rtama, PTA)</li>
-            <li>ğŸ–ï¸ <strong>Empresas turÃ­sticas</strong> y de servicios a hoteles</li>
-            <li>ğŸ“Š <strong>AsesorÃ­as y gestorÃ­as</strong> de MÃ¡laga capital, Marbella, Estepona, Fuengirola</li>
-            <li>ğŸ—ï¸ <strong>ConstrucciÃ³n y reformas</strong> (sector activo Costa del Sol)</li>
-            <li>ğŸ¨ <strong>Agencias creativas</strong> y consultoras digitales</li>
-            <li>ğŸ›’ <strong>Comercio mayorista</strong> y proveedores hostelerÃ­a</li>
+            <li>?? <strong>Startups tecnológicas</strong> del Málaga TechPark (Cártama, PTA)</li>
+            <li>??? <strong>Empresas turísticas</strong> y de servicios a hoteles</li>
+            <li>?? <strong>Asesorías y gestorías</strong> de Málaga capital, Marbella, Estepona, Fuengirola</li>
+            <li>??? <strong>Construcción y reformas</strong> (sector activo Costa del Sol)</li>
+            <li>?? <strong>Agencias creativas</strong> y consultoras digitales</li>
+            <li>?? <strong>Comercio mayorista</strong> y proveedores hostelería</li>
           </ul>
-          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por quÃ© encaja en MÃ¡laga</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por qué encaja en Málaga</h2>
           <ul className="space-y-3 text-zinc-300 mb-8">
-            <li>âœ“ <strong>Empresa hermana en AndalucÃ­a</strong>: Marsof es andaluza, conocemos el ecosistema andaluz</li>
-            <li>âœ“ <strong>IA en castellano</strong> que entiende el contexto espaÃ±ol</li>
-            <li>âœ“ <strong>Cumple Ley 3/2004 y Veri*factu</strong></li>
-            <li>âœ“ <strong>Soporte cercano</strong> en horario peninsular</li>
-            <li>âœ“ <strong>30 dÃ­as gratis</strong> Â· cancela antes y no pagas nada</li>
+            <li>? <strong>Empresa hermana en Andalucía</strong>: Marsof es andaluza, conocemos el ecosistema andaluz</li>
+            <li>? <strong>IA en castellano</strong> que entiende el contexto español</li>
+            <li>? <strong>Cumple Ley 3/2004 y Veri*factu</strong></li>
+            <li>? <strong>Soporte cercano</strong> en horario peninsular</li>
+            <li>? <strong>30 días gratis</strong> · cancela antes y no pagas nada</li>
           </ul>
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center mt-12">
-            <h2 className="text-2xl font-bold mb-2">Empieza desde MÃ¡laga</h2>
-            <p className="text-zinc-400 mb-6">5 min para activarlo. 1 mes para probarlo. 0â‚¬ hasta entonces.</p>
-            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis â†’</Link>
+            <h2 className="text-2xl font-bold mb-2">Empieza desde Málaga</h2>
+            <p className="text-zinc-400 mb-6">5 min para activarlo. 1 mes para probarlo. 0€ hasta entonces.</p>
+            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis ?</Link>
           </div>
         </section>
         <MarketingFooter />

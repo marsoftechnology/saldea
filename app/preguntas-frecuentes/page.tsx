@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Preguntas frecuentes sobre cobros, morosos y Saldea | Saldea',
   description: '40+ respuestas a las dudas más frecuentes sobre cobrar facturas impagadas, intereses de demora, burofax, monitorio y cómo funciona Saldea.',
-  alternates: { canonical: 'https://marsof.es/preguntas-frecuentes' },
+  alternates: { canonical: 'https://www.marsof.es/preguntas-frecuentes' },
   keywords: [
     'preguntas frecuentes cobros',
     'dudas factura impagada',

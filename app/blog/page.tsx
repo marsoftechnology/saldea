@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Blog · Cómo cobrar mejor tus facturas | Marsof',
   description: 'Guías prácticas y plantillas para autónomos y pymes españolas: reclamar facturas, evitar morosos, automatizar cobros. Por Marsof.',
-  alternates: { canonical: 'https://marsof.es/blog' },
+  alternates: { canonical: 'https://www.marsof.es/blog' },
   openGraph: {
     title: 'Blog Marsof · Guías para cobrar mejor tus facturas',
     description: 'Guías prácticas y plantillas para autónomos y pymes: reclamar facturas, evitar morosos y automatizar cobros con IA.',

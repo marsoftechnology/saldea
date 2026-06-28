@@ -1,71 +1,71 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'C√≥mo cobrar honorarios impagados (consultores, abogados, m√©dicos) | Marsof',
-  description: 'Plan espec√≠fico para cobrar honorarios profesionales. Consultores, abogados, m√©dicos, arquitectos. Particularidades legales y trucos.',
-  alternates: { canonical: 'https://marsof.es/blog/como-cobrar-honorarios-impagados' },
+  title: 'CÛmo cobrar honorarios impagados (consultores, abogados, mÈdicos) | Marsof',
+  description: 'Plan especÌfico para cobrar honorarios profesionales. Consultores, abogados, mÈdicos, arquitectos. Particularidades legales y trucos.',
+  alternates: { canonical: 'https://www.marsof.es/blog/como-cobrar-honorarios-impagados' },
   keywords: ['cobrar honorarios', 'honorarios impagados', 'consultor cobrar', 'abogado cobrar honorarios', 'jura de cuentas'],
-  openGraph: { title: 'C√≥mo cobrar honorarios impagados', description: 'Consultores y profesionales.', type: 'article', locale: 'es_ES' },
+  openGraph: { title: 'CÛmo cobrar honorarios impagados', description: 'Consultores y profesionales.', type: 'article', locale: 'es_ES' },
 }
 
 export default function Page() {
   return (
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso especial ¬∑ 5 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">C√≥mo cobrar honorarios impagados</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Consultores, abogados, m√©dicos, arquitectos. Te explico las particularidades legales y los trucos del sector.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso especial ∑ 5 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">CÛmo cobrar honorarios impagados</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">Consultores, abogados, mÈdicos, arquitectos. Te explico las particularidades legales y los trucos del sector.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Particularidades de los honorarios</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Los honorarios profesionales tienen su propio marco:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>üìã <strong>Colegios profesionales</strong> ofrecen mediaci√≥n gratuita o low-cost</li>
-            <li>‚öñÔ∏è <strong>Jura de cuentas (abogados):</strong> procedimiento expr√©s para cobrar honorarios judiciales</li>
-            <li>üè• <strong>Aseguradoras m√©dicas:</strong> sus propios protocolos y plazos</li>
-            <li>üìê <strong>Arquitectos/aparejadores:</strong> Colegio publica baremos orientativos</li>
+            <li>?? <strong>Colegios profesionales</strong> ofrecen mediaciÛn gratuita o low-cost</li>
+            <li>?? <strong>Jura de cuentas (abogados):</strong> procedimiento exprÈs para cobrar honorarios judiciales</li>
+            <li>?? <strong>Aseguradoras mÈdicas:</strong> sus propios protocolos y plazos</li>
+            <li>?? <strong>Arquitectos/aparejadores:</strong> Colegio publica baremos orientativos</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Plan general</h2>
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-            <li>Email cordial el d√≠a 1 vencido</li>
-            <li>Email firme con Ley 3/2004 al d√≠a 15</li>
-            <li>Llamada al d√≠a 20-25</li>
-            <li>Burofax al d√≠a 45-60</li>
-            <li>Mediaci√≥n del Colegio profesional (si aplica)</li>
-            <li>Procedimiento monitorio al d√≠a 90</li>
+            <li>Email cordial el dÌa 1 vencido</li>
+            <li>Email firme con Ley 3/2004 al dÌa 15</li>
+            <li>Llamada al dÌa 20-25</li>
+            <li>Burofax al dÌa 45-60</li>
+            <li>MediaciÛn del Colegio profesional (si aplica)</li>
+            <li>Procedimiento monitorio al dÌa 90</li>
           </ol>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Trucos por sector</h2>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Abogados ‚Äî Jura de cuentas</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Procedimiento expr√©s (art. 35 LEC) para cobrar honorarios judiciales. Sin necesidad de juicio. Decide el secretario judicial.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Abogados ó Jura de cuentas</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Procedimiento exprÈs (art. 35 LEC) para cobrar honorarios judiciales. Sin necesidad de juicio. Decide el secretario judicial.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">M√©dicos privados ‚Äî Aseguradoras</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Cada aseguradora tiene plazo y proceso. Si hay nomencl√°tor mal aplicado, retrasos eternos. Soluci√≥n: contacto directo con el departamento de proveedores.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">MÈdicos privados ó Aseguradoras</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Cada aseguradora tiene plazo y proceso. Si hay nomencl·tor mal aplicado, retrasos eternos. SoluciÛn: contacto directo con el departamento de proveedores.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Arquitectos ‚Äî Visado colegial</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Documentos visados por el Colegio = prueba reforzada. El Colegio puede gestionar el cobro a cambio de comisi√≥n.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Arquitectos ó Visado colegial</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Documentos visados por el Colegio = prueba reforzada. El Colegio puede gestionar el cobro a cambio de comisiÛn.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Consultores ‚Äî Retainer mensual</h3>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Consultores ó Retainer mensual</h3>
           <p className="text-zinc-300 leading-relaxed mb-4">Cambia el modelo: retainer mensual con SEPA o tarjeta. Reduce morosidad un 70%.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cl√°usulas que protegen tus honorarios</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cl·usulas que protegen tus honorarios</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Anticipo del 30-50%</li>
-            <li>‚úì Pago por hitos / entregas</li>
-            <li>‚úì Cesi√≥n de propiedad intelectual SOLO tras pago completo</li>
-            <li>‚úì Ley 3/2004 expresa</li>
-            <li>‚úì Suspensi√≥n de servicios por impago a 15 d√≠as</li>
+            <li>? Anticipo del 30-50%</li>
+            <li>? Pago por hitos / entregas</li>
+            <li>? CesiÛn de propiedad intelectual SOLO tras pago completo</li>
+            <li>? Ley 3/2004 expresa</li>
+            <li>? SuspensiÛn de servicios por impago a 15 dÌas</li>
           </ul>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea para profesionales independientes</h3>
-          <p className="text-zinc-300 mb-5">Persigue tus honorarios autom√°ticamente. Recordatorios escalados seg√∫n los d√≠as de retraso. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <p className="text-zinc-300 mb-5">Persigue tus honorarios autom·ticamente. Recordatorios escalados seg˙n los dÌas de retraso. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>

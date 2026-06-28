@@ -5,7 +5,7 @@ import MarketingFooter from '../components/MarketingFooter'
 export const metadata: Metadata = {
   title: 'Saldea para autónomos: cobra tus facturas sin perseguir a clientes',
   description: 'La herramienta que persigue tus facturas impagadas por ti con IA. Pensada para autónomos y freelancers españoles. 30 días gratis.',
-  alternates: { canonical: 'https://marsof.es/autonomos' },
+  alternates: { canonical: 'https://www.marsof.es/autonomos' },
   keywords: [
     'cobrar facturas autónomo',
     'autónomo morosos',

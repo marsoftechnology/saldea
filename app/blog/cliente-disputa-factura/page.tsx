@@ -1,78 +1,78 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cliente que dispute la factura: c√≥mo defender tu cobro | Marsof',
-  description: 'El cliente dice "no estoy conforme" para evitar pagar. C√≥mo distinguir disputa leg√≠tima de excusa y c√≥mo defender tu factura.',
-  alternates: { canonical: 'https://marsof.es/blog/cliente-disputa-factura' },
+  title: 'Cliente que dispute la factura: cÛmo defender tu cobro | Marsof',
+  description: 'El cliente dice "no estoy conforme" para evitar pagar. CÛmo distinguir disputa legÌtima de excusa y cÛmo defender tu factura.',
+  alternates: { canonical: 'https://www.marsof.es/blog/cliente-disputa-factura' },
   keywords: ['cliente disputa factura', 'cliente no conforme', 'reclamar disputa factura', 'cobrar con disputa'],
-  openGraph: { title: 'Cliente que dispute la factura', description: 'C√≥mo defender tu cobro.', type: 'article', locale: 'es_ES' },
+  openGraph: { title: 'Cliente que dispute la factura', description: 'CÛmo defender tu cobro.', type: 'article', locale: 'es_ES' },
 }
 
 export default function Page() {
   return (
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso espec√≠fico ¬∑ 4 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso especÌfico ∑ 4 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cliente que disputa la factura</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">"No estoy de acuerdo". A veces es disputa real, otras veces excusa para no pagar. C√≥mo distinguirlas.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">"No estoy de acuerdo". A veces es disputa real, otras veces excusa para no pagar. CÛmo distinguirlas.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Disputa real vs excusa</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Disputa real (~30%):</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Aparece TRAS la entrega, no despu√©s del recordatorio</li>
-            <li>‚úì Identifica punto concreto del trabajo</li>
-            <li>‚úì Aporta razones t√©cnicas</li>
-            <li>‚úì Propone soluci√≥n</li>
+            <li>? Aparece TRAS la entrega, no despuÈs del recordatorio</li>
+            <li>? Identifica punto concreto del trabajo</li>
+            <li>? Aporta razones tÈcnicas</li>
+            <li>? Propone soluciÛn</li>
           </ul>
           <p className="text-zinc-300 leading-relaxed mb-4">Excusa (~70%):</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚ùå Aparece despu√©s de tu recordatorio de pago</li>
-            <li>‚ùå Vago ("no me convence")</li>
-            <li>‚ùå No identifica nada concreto</li>
-            <li>‚ùå No propone soluci√≥n, solo se queja</li>
+            <li>? Aparece despuÈs de tu recordatorio de pago</li>
+            <li>? Vago ("no me convence")</li>
+            <li>? No identifica nada concreto</li>
+            <li>? No propone soluciÛn, solo se queja</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">C√≥mo responder ante disputa</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">CÛmo responder ante disputa</h2>
           <div className="bg-zinc-900/40 border-l-4 border-sky-500 rounded-r-xl p-5 my-4">
-            <p className="text-zinc-300 text-sm italic">"Vale, dime exactamente qu√© punto no cumple. Te concedo 7 d√≠as para detallarlo por escrito. Pasado este plazo, sin alegaci√≥n concreta, mantengo la factura."</p>
+            <p className="text-zinc-300 text-sm italic">"Vale, dime exactamente quÈ punto no cumple. Te concedo 7 dÌas para detallarlo por escrito. Pasado este plazo, sin alegaciÛn concreta, mantengo la factura."</p>
           </div>
-          <p className="text-zinc-300 leading-relaxed mb-4">Esa frase fuerza al cliente a concretar. Si era excusa, no podr√° concretar y la disputa se desinfla. Si es real, te lo dir√° y podr√°s resolver.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Esa frase fuerza al cliente a concretar. Si era excusa, no podr· concretar y la disputa se desinfla. Si es real, te lo dir· y podr·s resolver.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si tiene raz√≥n parcialmente</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si tiene razÛn parcialmente</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Reconoce el error sin disculparse en exceso</li>
-            <li>‚úì Ofrece correcci√≥n r√°pida (no nuevo presupuesto)</li>
-            <li>‚úì O descuento parcial: "Te aplico 10% de descuento para zanjarlo"</li>
-            <li>‚úì Documenta el acuerdo por email</li>
+            <li>? Reconoce el error sin disculparse en exceso</li>
+            <li>? Ofrece correcciÛn r·pida (no nuevo presupuesto)</li>
+            <li>? O descuento parcial: "Te aplico 10% de descuento para zanjarlo"</li>
+            <li>? Documenta el acuerdo por email</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si NO tiene raz√≥n</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Mant√©n la factura. Defensa:</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si NO tiene razÛn</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">MantÈn la factura. Defensa:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Presenta presupuesto/contrato firmado donde se acord√≥ lo entregado</li>
-            <li>‚úì Emails donde el cliente confirma encargo y aceptaci√≥n</li>
-            <li>‚úì Si pasaron 7-15 d√≠as sin rechazar = aceptaci√≥n t√°cita</li>
-            <li>‚úì Documenta toda la negociaci√≥n por escrito</li>
-            <li>‚úì Sigue con el plan de cobro: recordatorios, burofax, monitorio</li>
+            <li>? Presenta presupuesto/contrato firmado donde se acordÛ lo entregado</li>
+            <li>? Emails donde el cliente confirma encargo y aceptaciÛn</li>
+            <li>? Si pasaron 7-15 dÌas sin rechazar = aceptaciÛn t·cita</li>
+            <li>? Documenta toda la negociaciÛn por escrito</li>
+            <li>? Sigue con el plan de cobro: recordatorios, burofax, monitorio</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo aceptar descuento</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo aceptar descuento</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Acepta descuento si:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Recuperas el cobro inmediato (en 7 d√≠as)</li>
-            <li>‚úì Mantienes el cliente para futuras facturas</li>
-            <li>‚úì El descuento es &lt; coste de monitorio</li>
+            <li>? Recuperas el cobro inmediato (en 7 dÌas)</li>
+            <li>? Mantienes el cliente para futuras facturas</li>
+            <li>? El descuento es &lt; coste de monitorio</li>
           </ul>
-          <p className="text-zinc-300 leading-relaxed mb-4">No aceptes si es cliente puntual que no volver√°s a ver. Mant√©n factura √≠ntegra.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">No aceptes si es cliente puntual que no volver·s a ver. MantÈn factura Ìntegra.</p>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea detecta disputas y pausa el env√≠o</h3>
-          <p className="text-zinc-300 mb-5">La IA reconoce cuando el cliente responde "no estoy conforme" y pausa los recordatorios para que T√ö gestiones la disputa. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea detecta disputas y pausa el envÌo</h3>
+          <p className="text-zinc-300 mb-5">La IA reconoce cuando el cliente responde "no estoy conforme" y pausa los recordatorios para que T⁄ gestiones la disputa. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>

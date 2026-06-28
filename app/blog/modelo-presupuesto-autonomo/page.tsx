@@ -1,10 +1,10 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Modelo de presupuesto para aut√≥nomos (plantilla gratis 2026) | Marsof',
-  description: 'Plantilla de presupuesto profesional para aut√≥nomos. Estructura, qu√© incluir, c√≥mo hacer que te lo aprueben antes y cl√°usulas que evitan impagos.',
-  alternates: { canonical: 'https://marsof.es/blog/modelo-presupuesto-autonomo' },
+  title: 'Modelo de presupuesto para autÛnomos (plantilla gratis 2026) | Marsof',
+  description: 'Plantilla de presupuesto profesional para autÛnomos. Estructura, quÈ incluir, cÛmo hacer que te lo aprueben antes y cl·usulas que evitan impagos.',
+  alternates: { canonical: 'https://www.marsof.es/blog/modelo-presupuesto-autonomo' },
   keywords: [
     'modelo presupuesto autonomo',
     'plantilla presupuesto word',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'modelo presupuesto servicios',
   ],
   openGraph: {
-    title: 'Modelo de presupuesto para aut√≥nomos',
+    title: 'Modelo de presupuesto para autÛnomos',
     description: 'Plantilla gratis que blinda tus cobros.',
     type: 'article',
     locale: 'es_ES',
@@ -24,95 +24,95 @@ export default function PageModeloPresupuesto() {
   return (
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Plantilla ¬∑ 8 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Modelo de presupuesto para aut√≥nomos</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Un buen presupuesto evita el 70% de los problemas de cobro futuros. Te dejo la plantilla que uso y las cl√°usulas clave que blindan tu trabajo.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Plantilla ∑ 8 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Modelo de presupuesto para autÛnomos</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">Un buen presupuesto evita el 70% de los problemas de cobro futuros. Te dejo la plantilla que uso y las cl·usulas clave que blindan tu trabajo.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øQu√© debe llevar un presupuesto profesional?</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øQuÈ debe llevar un presupuesto profesional?</h2>
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-            <li>N√∫mero de presupuesto (correlativo)</li>
-            <li>Fecha de emisi√≥n y validez</li>
-            <li>Tus datos (nombre, NIF, direcci√≥n, contacto)</li>
-            <li>Datos del cliente (raz√≥n social, CIF, contacto)</li>
-            <li>Descripci√≥n detallada de los servicios o productos</li>
+            <li>N˙mero de presupuesto (correlativo)</li>
+            <li>Fecha de emisiÛn y validez</li>
+            <li>Tus datos (nombre, NIF, direcciÛn, contacto)</li>
+            <li>Datos del cliente (razÛn social, CIF, contacto)</li>
+            <li>DescripciÛn detallada de los servicios o productos</li>
             <li>Plazo de entrega</li>
             <li>Precio desglosado con IVA</li>
             <li>Forma de pago propuesta</li>
-            <li>Cl√°usulas de aceptaci√≥n, anticipo y aplazamiento</li>
+            <li>Cl·usulas de aceptaciÛn, anticipo y aplazamiento</li>
             <li>Espacio para firma del cliente</li>
           </ol>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Plantilla completa lista para copiar</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5 text-sm">
             <p className="text-zinc-300 whitespace-pre-line">
-{`PRESUPUESTO N¬∫ [P-2026-001]
+{`PRESUPUESTO N∫ [P-2026-001]
 Fecha: [DD/MM/2026]
-V√°lido hasta: [DD/MM/2026 + 30 d√≠as]
+V·lido hasta: [DD/MM/2026 + 30 dÌas]
 
 EMITE:
 [Tu nombre completo]
 NIF: [Tu NIF]
-Direcci√≥n: [Tu direcci√≥n]
+DirecciÛn: [Tu direcciÛn]
 Email: [tu@email.com]
-Tel√©fono: [Tu tel√©fono]
+TelÈfono: [Tu telÈfono]
 
 DESTINATARIO:
-[Raz√≥n social del cliente]
+[RazÛn social del cliente]
 CIF: [CIF cliente]
-Direcci√≥n: [Direcci√≥n]
+DirecciÛn: [DirecciÛn]
 Persona de contacto: [Nombre]
 Email: [email contacto]
 
-DESCRIPCI√ìN DE LOS SERVICIOS:
+DESCRIPCI”N DE LOS SERVICIOS:
 
 1. [Concepto detallado del servicio o producto]
    - Subtarea 1
    - Subtarea 2
    - Subtarea 3
-   Precio: [IMPORTE]‚Ç¨
+   Precio: [IMPORTE]Ä
 
 2. [Concepto 2]
-   Precio: [IMPORTE]‚Ç¨
+   Precio: [IMPORTE]Ä
 
-RESUMEN ECON√ìMICO:
-Base imponible: [SUMA]‚Ç¨
-IVA (21%): [IVA]‚Ç¨
-TOTAL: [TOTAL]‚Ç¨
+RESUMEN ECON”MICO:
+Base imponible: [SUMA]Ä
+IVA (21%): [IVA]Ä
+TOTAL: [TOTAL]Ä
 
 PLAZO DE ENTREGA:
-[X] d√≠as laborables desde la firma del presupuesto y abono del anticipo.
+[X] dÌas laborables desde la firma del presupuesto y abono del anticipo.
 
 FORMA DE PAGO:
-- 30% en la firma del presupuesto: [IMPORTE]‚Ç¨
-- 70% a la entrega del trabajo: [IMPORTE]‚Ç¨
+- 30% en la firma del presupuesto: [IMPORTE]Ä
+- 70% a la entrega del trabajo: [IMPORTE]Ä
 - Transferencia bancaria a IBAN [TU IBAN]
 
 CONDICIONES:
-1. La aceptaci√≥n del presupuesto implica la conformidad
-   con los t√©rminos y condiciones aqu√≠ descritos.
+1. La aceptaciÛn del presupuesto implica la conformidad
+   con los tÈrminos y condiciones aquÌ descritos.
 
-2. En caso de impago en los plazos pactados, se aplicar√°n
+2. En caso de impago en los plazos pactados, se aplicar·n
    los intereses de demora previstos en la Ley 3/2004
-   (tipo BCE + 8 puntos porcentuales) y la indemnizaci√≥n
-   fija de 40‚Ç¨ por costes de cobro.
+   (tipo BCE + 8 puntos porcentuales) y la indemnizaciÛn
+   fija de 40Ä por costes de cobro.
 
-3. Cualquier modificaci√≥n al alcance descrito implicar√°
-   una revisi√≥n del presupuesto.
+3. Cualquier modificaciÛn al alcance descrito implicar·
+   una revisiÛn del presupuesto.
 
 4. El profesional se reserva el derecho a suspender el
-   servicio si se acumulan m√°s de 15 d√≠as naturales de
+   servicio si se acumulan m·s de 15 dÌas naturales de
    retraso en cualquier pago.
 
-5. Este presupuesto tiene una validez de 30 d√≠as naturales
-   desde la fecha de emisi√≥n.
+5. Este presupuesto tiene una validez de 30 dÌas naturales
+   desde la fecha de emisiÛn.
 
-ACEPTACI√ìN DEL CLIENTE:
+ACEPTACI”N DEL CLIENTE:
 
-He le√≠do y acepto los t√©rminos de este presupuesto.
+He leÌdo y acepto los tÈrminos de este presupuesto.
 
 Fecha: ___________________
 
@@ -127,43 +127,43 @@ DNI/CIF: ___________________`}
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Los 5 elementos que blindan tu cobro</h2>
 
           <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">1. Anticipo del 30-50%</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Es lo M√ÅS importante. Filtra clientes no serios y te garantiza al menos parte del cobro.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Es lo M¡S importante. Filtra clientes no serios y te garantiza al menos parte del cobro.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">2. Cl√°usula de Ley 3/2004 expresa</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Aunque la ley te ampara, mencionarla expresamente disuade impagos y refuerza tu posici√≥n si hay que reclamar.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">2. Cl·usula de Ley 3/2004 expresa</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Aunque la ley te ampara, mencionarla expresamente disuade impagos y refuerza tu posiciÛn si hay que reclamar.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">3. Cl√°usula de suspensi√≥n por impago</h3>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">3. Cl·usula de suspensiÛn por impago</h3>
           <p className="text-zinc-300 leading-relaxed mb-4">Te permite dejar de prestar el servicio sin que te demanden por incumplimiento. Imprescindible en proyectos largos.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">4. Validez limitada (30 d√≠as)</h3>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">4. Validez limitada (30 dÌas)</h3>
           <p className="text-zinc-300 leading-relaxed mb-4">Evita que un cliente acepte un presupuesto de hace 6 meses cuando los precios han subido. Te da control.</p>
 
           <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">5. Firma del cliente</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Un presupuesto NO firmado es dif√≠cil de defender. Un presupuesto firmado vale como contrato simplificado.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Un presupuesto NO firmado es difÌcil de defender. Un presupuesto firmado vale como contrato simplificado.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">C√≥mo enviar el presupuesto para que te lo firmen</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">CÛmo enviar el presupuesto para que te lo firmen</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì <strong>PDF firmado digitalmente.</strong> Herramientas: Signaturit, DocuSign, SignNow (~15‚Ç¨/mes)</li>
-            <li>‚úì <strong>Email de env√≠o con resumen claro:</strong> tres bullets de lo que incluye, importe total y plazo</li>
-            <li>‚úì <strong>CTA claro:</strong> "Si te parece bien, f√≠rmamelo y empezamos cuanto antes"</li>
-            <li>‚úì <strong>Seguimiento a los 3 d√≠as:</strong> "Hola, ¬øpudiste ver el presupuesto que te mand√©?"</li>
+            <li>? <strong>PDF firmado digitalmente.</strong> Herramientas: Signaturit, DocuSign, SignNow (~15Ä/mes)</li>
+            <li>? <strong>Email de envÌo con resumen claro:</strong> tres bullets de lo que incluye, importe total y plazo</li>
+            <li>? <strong>CTA claro:</strong> "Si te parece bien, fÌrmamelo y empezamos cuanto antes"</li>
+            <li>? <strong>Seguimiento a los 3 dÌas:</strong> "Hola, øpudiste ver el presupuesto que te mandÈ?"</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Errores t√≠picos en presupuestos</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Errores tÌpicos en presupuestos</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚ùå Olvidar el IVA</li>
-            <li>‚ùå No pedir anticipo</li>
-            <li>‚ùå No poner plazo de validez (presupuesto vivo eterno)</li>
-            <li>‚ùå Olvidar cl√°usula de modificaciones (alcance abierto = trabajo extra gratis)</li>
-            <li>‚ùå Empezar a trabajar sin firma</li>
-            <li>‚ùå Aceptar pagos a 90 d√≠as en el presupuesto (la ley es 60 d√≠as B2B)</li>
+            <li>? Olvidar el IVA</li>
+            <li>? No pedir anticipo</li>
+            <li>? No poner plazo de validez (presupuesto vivo eterno)</li>
+            <li>? Olvidar cl·usula de modificaciones (alcance abierto = trabajo extra gratis)</li>
+            <li>? Empezar a trabajar sin firma</li>
+            <li>? Aceptar pagos a 90 dÌas en el presupuesto (la ley es 60 dÌas B2B)</li>
           </ul>
         </section>
 
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Cuando el presupuesto pase a factura, conecta Saldea</h3>
-          <p className="text-zinc-300 mb-5">Tu factura con todos los datos correctos + Saldea = cobros autom√°ticos sin trabajo manual. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <p className="text-zinc-300 mb-5">Tu factura con todos los datos correctos + Saldea = cobros autom·ticos sin trabajo manual. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>

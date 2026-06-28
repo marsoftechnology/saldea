@@ -5,7 +5,7 @@ import MarketingFooter from '../components/MarketingFooter'
 export const metadata: Metadata = {
   title: 'Recursos gratis: plantillas, calculadoras y guías de cobros | Saldea',
   description: 'Plantillas Word/Excel gratis para reclamar facturas, calculadora de intereses de demora, modelos de burofax y más. Todo sin registro.',
-  alternates: { canonical: 'https://marsof.es/recursos' },
+  alternates: { canonical: 'https://www.marsof.es/recursos' },
   keywords: [
     'plantilla reclamacion factura',
     'modelo burofax word',

@@ -5,7 +5,7 @@ import MarketingFooter from '../components/MarketingFooter'
 export const metadata: Metadata = {
   title: 'Saldea para gestorías y asesorías: cobra las facturas de tus clientes sin perseguir',
   description: 'Software de gestión de cobros pensado para gestorías y asesorías españolas. Automatiza los recordatorios de tus clientes con IA. 30 días gratis.',
-  alternates: { canonical: 'https://marsof.es/gestorias' },
+  alternates: { canonical: 'https://www.marsof.es/gestorias' },
   keywords: [
     'software gestoría cobros',
     'gestión cobros gestoría',

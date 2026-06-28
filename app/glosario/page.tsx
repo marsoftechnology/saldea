@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Glosario de cobros, facturas y morosidad en España | Saldea',
   description: '60+ términos sobre cobros, facturación, morosidad e impagos explicados claramente. Diccionario completo para autónomos y empresas en España.',
-  alternates: { canonical: 'https://marsof.es/glosario' },
+  alternates: { canonical: 'https://www.marsof.es/glosario' },
   keywords: [
     'glosario cobros',
     'diccionario facturación',
@@ -91,7 +91,7 @@ const schema = {
     '@type': 'DefinedTerm',
     name: t,
     description: d,
-    inDefinedTermSet: 'https://marsof.es/glosario',
+    inDefinedTermSet: 'https://www.marsof.es/glosario',
   })),
 }
 

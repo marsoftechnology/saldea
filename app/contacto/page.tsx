@@ -5,7 +5,7 @@ import MarketingFooter from '../components/MarketingFooter'
 export const metadata: Metadata = {
   title: 'Contacto | Marsof Technology',
   description: 'Contacta con Marsof Technology. Soporte de Saldea, ventas, prensa, alianzas. Email, formulario y dirección en Huelva.',
-  alternates: { canonical: 'https://marsof.es/contacto' },
+  alternates: { canonical: 'https://www.marsof.es/contacto' },
   keywords: [
     'Marsof contacto',
     'soporte Saldea',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const schemaContacto = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  url: 'https://marsof.es/contacto',
+  url: 'https://www.marsof.es/contacto',
   name: 'Contacto Marsof Technology',
   publisher: { '@id': 'https://marsof.es/#organization' },
 }

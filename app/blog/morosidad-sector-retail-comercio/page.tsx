@@ -1,10 +1,10 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Morosidad en retail y comercio 2026: cobrar a tiendas y minoristas | Marsof',
-  description: 'C√≥mo cobrar facturas a tiendas, comercios y minoristas. Plazos, estacionalidad y estrategias espec√≠ficas para proveedores de retail.',
-  alternates: { canonical: 'https://marsof.es/blog/morosidad-sector-retail-comercio' },
+  description: 'CÛmo cobrar facturas a tiendas, comercios y minoristas. Plazos, estacionalidad y estrategias especÌficas para proveedores de retail.',
+  alternates: { canonical: 'https://www.marsof.es/blog/morosidad-sector-retail-comercio' },
   keywords: ['cobrar tiendas', 'morosidad retail', 'comercio impagos', 'proveedor retail', 'cobrar minoristas'],
   openGraph: { title: 'Morosidad en retail y comercio', description: 'Cobrar a tiendas y minoristas.', type: 'article', locale: 'es_ES' },
 }
@@ -13,11 +13,11 @@ export default function PageRetail() {
   return (
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Sector ¬∑ 6 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Sector ∑ 6 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Morosidad en retail y comercio</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Si eres proveedor de tiendas, comercios o cadenas minoristas, conoces el desaf√≠o: estacionalidad, devoluciones y plazos largos. Aqu√≠ las claves.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">Si eres proveedor de tiendas, comercios o cadenas minoristas, conoces el desafÌo: estacionalidad, devoluciones y plazos largos. AquÌ las claves.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Tipos de cliente retail</h2>
@@ -25,11 +25,11 @@ export default function PageRetail() {
             <table className="w-full text-sm border-collapse">
               <thead><tr className="bg-sky-500/20"><th className="py-3 px-4 text-left text-zinc-100">Tipo</th><th className="py-3 px-4 text-left text-zinc-100">Plazo</th><th className="py-3 px-4 text-left text-zinc-100">Riesgo</th></tr></thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Cadena grande (Inditex, El Corte Ingl√©s)</td><td className="py-2 px-4">60-90 d√≠as</td><td className="py-2 px-4">Bajo</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Cadena mediana</td><td className="py-2 px-4">60 d√≠as</td><td className="py-2 px-4">Medio</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Tienda multimarca</td><td className="py-2 px-4">30-60 d√≠as</td><td className="py-2 px-4">Medio</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Tienda independiente</td><td className="py-2 px-4">30 d√≠as</td><td className="py-2 px-4">Alto</td></tr>
-                <tr><td className="py-2 px-4">Ecommerce minorista</td><td className="py-2 px-4">7-30 d√≠as</td><td className="py-2 px-4">Medio-Alto</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Cadena grande (Inditex, El Corte InglÈs)</td><td className="py-2 px-4">60-90 dÌas</td><td className="py-2 px-4">Bajo</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Cadena mediana</td><td className="py-2 px-4">60 dÌas</td><td className="py-2 px-4">Medio</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Tienda multimarca</td><td className="py-2 px-4">30-60 dÌas</td><td className="py-2 px-4">Medio</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Tienda independiente</td><td className="py-2 px-4">30 dÌas</td><td className="py-2 px-4">Alto</td></tr>
+                <tr><td className="py-2 px-4">Ecommerce minorista</td><td className="py-2 px-4">7-30 dÌas</td><td className="py-2 px-4">Medio-Alto</td></tr>
               </tbody>
             </table>
           </div>
@@ -37,8 +37,8 @@ export default function PageRetail() {
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Particularidades del retail</h2>
           <ul className="space-y-3 text-zinc-300 mb-6">
             <li><strong>1. Estacionalidad brutal:</strong> en enero y septiembre las tiendas tienen menos liquidez. Aprovecha la temporada alta para cobrar todo.</li>
-            <li><strong>2. Devoluciones de productos:</strong> el cliente puede devolver y aplazar la factura. Conviene cl√°usula estricta sobre devoluciones (30 d√≠as, en perfecto estado).</li>
-            <li><strong>3. Descuentos por pronto pago:</strong> son trampa habitual. "Te pago al d√≠a si me das 5%". Si te retrasas, no eres moroso. Cuidado.</li>
+            <li><strong>2. Devoluciones de productos:</strong> el cliente puede devolver y aplazar la factura. Conviene cl·usula estricta sobre devoluciones (30 dÌas, en perfecto estado).</li>
+            <li><strong>3. Descuentos por pronto pago:</strong> son trampa habitual. "Te pago al dÌa si me das 5%". Si te retrasas, no eres moroso. Cuidado.</li>
             <li><strong>4. Cuentas con desplazamiento:</strong> "Te pago la del mes anterior". Habitual pero pone tu liquidez en riesgo.</li>
           </ul>
 
@@ -46,26 +46,26 @@ export default function PageRetail() {
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
             <li><strong>Verifica el comercio</strong> en eInforma antes de cuentas grandes</li>
             <li><strong>Anticipo o cobro contra-reembolso</strong> en tiendas nuevas</li>
-            <li><strong>Domiciliaci√≥n SEPA</strong> para clientes recurrentes peque√±os</li>
-            <li><strong>Recordatorios autom√°ticos</strong> seg√∫n plazo pactado (30/60 d√≠as)</li>
-            <li><strong>Suspensi√≥n de env√≠os</strong> si m√°s de 15 d√≠as vencido</li>
-            <li><strong>Burofax + Ley 3/2004</strong> al d√≠a 60-90</li>
+            <li><strong>DomiciliaciÛn SEPA</strong> para clientes recurrentes pequeÒos</li>
+            <li><strong>Recordatorios autom·ticos</strong> seg˙n plazo pactado (30/60 dÌas)</li>
+            <li><strong>SuspensiÛn de envÌos</strong> si m·s de 15 dÌas vencido</li>
+            <li><strong>Burofax + Ley 3/2004</strong> al dÌa 60-90</li>
           </ol>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Se√±ales de cierre de un comercio</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">SeÒales de cierre de un comercio</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>üö© Te empiezan a pedir descuentos o "pago a fin de temporada"</li>
-            <li>üö© Reducen pedidos repentinamente</li>
-            <li>üö© No contesta el due√±o, solo dependientes</li>
-            <li>üö© Empieza a aparecer en listas de impagos del gremio</li>
-            <li>üö© Est√° en concurso preventivo (BORME.es)</li>
+            <li>?? Te empiezan a pedir descuentos o "pago a fin de temporada"</li>
+            <li>?? Reducen pedidos repentinamente</li>
+            <li>?? No contesta el dueÒo, solo dependientes</li>
+            <li>?? Empieza a aparecer en listas de impagos del gremio</li>
+            <li>?? Est· en concurso preventivo (BORME.es)</li>
           </ul>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si ves estas se√±ales: <strong>suspende env√≠os, exige cobro contra-entrega y reclama lo pendiente con urgencia</strong>. En retail, cuando una tienda cierra, los proveedores son los √∫ltimos en cobrar.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si ves estas seÒales: <strong>suspende envÌos, exige cobro contra-entrega y reclama lo pendiente con urgencia</strong>. En retail, cuando una tienda cierra, los proveedores son los ˙ltimos en cobrar.</p>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea para proveedores de retail</h3>
-          <p className="text-zinc-300 mb-5">Configura plazos por tipo de cliente, recordatorios estacionales y escalado autom√°tico. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <p className="text-zinc-300 mb-5">Configura plazos por tipo de cliente, recordatorios estacionales y escalado autom·tico. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>

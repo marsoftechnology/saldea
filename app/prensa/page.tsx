@@ -1,11 +1,11 @@
-ï»¿import Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Sala de prensa Marsof Technology Â· Kit de medios | Marsof',
-  description: 'InformaciÃ³n para periodistas, podcasts y medios sobre Marsof Technology y Saldea. Logos, datos clave, biografÃ­a del fundador y casos.',
-  alternates: { canonical: 'https://marsof.es/prensa' },
+  title: 'Sala de prensa Marsof Technology · Kit de medios | Marsof',
+  description: 'Información para periodistas, podcasts y medios sobre Marsof Technology y Saldea. Logos, datos clave, biografía del fundador y casos.',
+  alternates: { canonical: 'https://www.marsof.es/prensa' },
   keywords: ['Marsof prensa', 'Saldea kit medios', 'Marsof noticias', 'Carlos Galvez Marsof', 'Marsof startup'],
   openGraph: { title: 'Sala de prensa Marsof Technology', description: 'Kit de medios y datos.', type: 'website', locale: 'es_ES' },
 }
@@ -24,12 +24,12 @@ export default function PagePrensa() {
 
       <section className="max-w-3xl mx-auto px-6 py-16">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Sala de prensa Marsof</h1>
-        <p className="text-zinc-400 text-lg mb-12">InformaciÃ³n para periodistas, podcasts, eventos y medios. Si necesitas datos, entrevista o algo especÃ­fico, escrÃ­benos.</p>
+        <p className="text-zinc-400 text-lg mb-12">Información para periodistas, podcasts, eventos y medios. Si necesitas datos, entrevista o algo específico, escríbenos.</p>
 
-        <h2 className="text-2xl font-bold text-zinc-100 mb-4">QuiÃ©nes somos en 1 pÃ¡rrafo</h2>
+        <h2 className="text-2xl font-bold text-zinc-100 mb-4">Quiénes somos en 1 párrafo</h2>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-10">
           <p className="text-zinc-300 leading-relaxed">
-            <strong>Marsof Technology</strong> es una empresa espaÃ±ola de software fundada en 2026 con sede en Huelva. Desarrolla <strong>Saldea</strong>, una IA que automatiza el cobro de facturas impagadas para autÃ³nomos, gestorÃ­as y pymes en EspaÃ±a. Lo hace combinando recordatorios escalados con Claude (IA de Anthropic) y Stripe Connect para cobros automÃ¡ticos. Cumple Ley 3/2004 y RGPD con datos en servidores europeos.
+            <strong>Marsof Technology</strong> es una empresa española de software fundada en 2026 con sede en Huelva. Desarrolla <strong>Saldea</strong>, una IA que automatiza el cobro de facturas impagadas para autónomos, gestorías y pymes en España. Lo hace combinando recordatorios escalados con Claude (IA de Anthropic) y Stripe Connect para cobros automáticos. Cumple Ley 3/2004 y RGPD con datos en servidores europeos.
           </p>
         </div>
 
@@ -37,11 +37,11 @@ export default function PagePrensa() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 text-center">
             <p className="text-2xl font-bold text-sky-400">2026</p>
-            <p className="text-xs text-zinc-500 mt-1">FundaciÃ³n</p>
+            <p className="text-xs text-zinc-500 mt-1">Fundación</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 text-center">
             <p className="text-2xl font-bold text-sky-400">Huelva</p>
-            <p className="text-xs text-zinc-500 mt-1">AndalucÃ­a, EspaÃ±a</p>
+            <p className="text-xs text-zinc-500 mt-1">Andalucía, España</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 text-center">
             <p className="text-2xl font-bold text-sky-400">B2B SaaS</p>
@@ -55,49 +55,49 @@ export default function PagePrensa() {
 
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Fundador</h2>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-10">
-          <h3 className="font-bold text-zinc-100 text-lg mb-2">Carlos GÃ¡lvez Carrillo</h3>
+          <h3 className="font-bold text-zinc-100 text-lg mb-2">Carlos Gálvez Carrillo</h3>
           <p className="text-zinc-400 text-sm mb-3">Fundador y CEO de Marsof Technology</p>
           <p className="text-zinc-300 leading-relaxed text-sm mb-3">
-            MÃ¡s de una dÃ©cada de carrera en finanzas corporativas, anÃ¡lisis de inversiÃ³n y consultorÃ­a de negocio. Ha asesorado a empresas de distintos tamaÃ±os en estructuraciÃ³n financiera, optimizaciÃ³n de operaciones y estrategia de crecimiento. Esa visiÃ³n transversal del tejido empresarial espaÃ±ol le llevÃ³ a identificar una oportunidad clara: las pymes necesitan software diseÃ±ado para su realidad, no adaptaciones de herramientas extranjeras. FundÃ³ Marsof Technology en 2026 para construirlo.
+            Más de una década de carrera en finanzas corporativas, análisis de inversión y consultoría de negocio. Ha asesorado a empresas de distintos tamaños en estructuración financiera, optimización de operaciones y estrategia de crecimiento. Esa visión transversal del tejido empresarial español le llevó a identificar una oportunidad clara: las pymes necesitan software diseñado para su realidad, no adaptaciones de herramientas extranjeras. Fundó Marsof Technology en 2026 para construirlo.
           </p>
           <p className="text-zinc-500 text-xs">Contacto directo: <a href="mailto:carlosgc@marsof.es" className="text-sky-400 hover:underline">carlosgc@marsof.es</a></p>
         </div>
 
-        <h2 className="text-2xl font-bold text-zinc-100 mb-4">Mensajes clave para artÃ­culos</h2>
+        <h2 className="text-2xl font-bold text-zinc-100 mb-4">Mensajes clave para artículos</h2>
         <ul className="space-y-3 text-zinc-300 mb-10">
-          <li>ğŸ“ <strong>Mensaje 1:</strong> La morosidad afecta al 25% de las facturas B2B en EspaÃ±a. Las pymes pierden hasta 5 horas semanales reclamando manualmente.</li>
-          <li>ğŸ“ <strong>Mensaje 2:</strong> Saldea automatiza esos recordatorios con IA, escalando el tono segÃºn los dÃ­as de retraso.</li>
-          <li>ğŸ“ <strong>Mensaje 3:</strong> Cumple la Ley 3/2004 de morosidad, RGPD y se integra con Stripe Connect.</li>
-          <li>ğŸ“ <strong>Mensaje 4:</strong> Empresa 100% espaÃ±ola, datos en servidores europeos, soporte en espaÃ±ol.</li>
+          <li>?? <strong>Mensaje 1:</strong> La morosidad afecta al 25% de las facturas B2B en España. Las pymes pierden hasta 5 horas semanales reclamando manualmente.</li>
+          <li>?? <strong>Mensaje 2:</strong> Saldea automatiza esos recordatorios con IA, escalando el tono según los días de retraso.</li>
+          <li>?? <strong>Mensaje 3:</strong> Cumple la Ley 3/2004 de morosidad, RGPD y se integra con Stripe Connect.</li>
+          <li>?? <strong>Mensaje 4:</strong> Empresa 100% española, datos en servidores europeos, soporte en español.</li>
         </ul>
 
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Temas sobre los que podemos hablar</h2>
         <ul className="space-y-2 text-zinc-300 mb-10">
-          <li>âœ“ Morosidad en pymes espaÃ±olas</li>
-          <li>âœ“ Inteligencia artificial aplicada al negocio</li>
-          <li>âœ“ SaaS espaÃ±ol y mercado B2B</li>
-          <li>âœ“ Ley 3/2004, Veri*factu, factura electrÃ³nica B2B</li>
-          <li>âœ“ Emprendimiento desde AndalucÃ­a rural</li>
-          <li>âœ“ Stripe Connect y pagos en SaaS</li>
+          <li>? Morosidad en pymes españolas</li>
+          <li>? Inteligencia artificial aplicada al negocio</li>
+          <li>? SaaS español y mercado B2B</li>
+          <li>? Ley 3/2004, Veri*factu, factura electrónica B2B</li>
+          <li>? Emprendimiento desde Andalucía rural</li>
+          <li>? Stripe Connect y pagos en SaaS</li>
         </ul>
 
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Recursos descargables</h2>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-10">
-          <p className="text-zinc-300 mb-3">Si necesitas logos, capturas, vÃ­deo demo o mÃ¡s material, escrÃ­benos a <a href="mailto:hola@marsof.es" className="text-sky-400 hover:underline">hola@marsof.es</a> y te enviamos el kit completo en 24h.</p>
-          <p className="text-zinc-400 text-sm">Disponible: logos PNG/SVG, capturas de producto, vÃ­deo demo 90 segundos, foto del fundador.</p>
+          <p className="text-zinc-300 mb-3">Si necesitas logos, capturas, vídeo demo o más material, escríbenos a <a href="mailto:hola@marsof.es" className="text-sky-400 hover:underline">hola@marsof.es</a> y te enviamos el kit completo en 24h.</p>
+          <p className="text-zinc-400 text-sm">Disponible: logos PNG/SVG, capturas de producto, vídeo demo 90 segundos, foto del fundador.</p>
         </div>
 
         <h2 className="text-2xl font-bold text-zinc-100 mb-4">Contacto para prensa</h2>
         <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-6 mb-10">
           <p className="text-zinc-300 mb-2"><strong>Email:</strong> <a href="mailto:hola@marsof.es" className="text-sky-400 hover:underline">hola@marsof.es</a></p>
-          <p className="text-zinc-300 mb-2"><strong>Respuesta:</strong> menos de 24 horas en dÃ­as laborables</p>
-          <p className="text-zinc-300"><strong>Idiomas:</strong> espaÃ±ol</p>
+          <p className="text-zinc-300 mb-2"><strong>Respuesta:</strong> menos de 24 horas en días laborables</p>
+          <p className="text-zinc-300"><strong>Idiomas:</strong> español</p>
         </div>
 
         <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold mb-2">Â¿Quieres probar Saldea para tu artÃ­culo?</h2>
-          <p className="text-zinc-400 mb-6">30 dÃ­as gratis. Te damos acceso completo para que veas cÃ³mo funciona.</p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar â†’</Link>
+          <h2 className="text-2xl font-bold mb-2">¿Quieres probar Saldea para tu artículo?</h2>
+          <p className="text-zinc-400 mb-6">30 días gratis. Te damos acceso completo para que veas cómo funciona.</p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar ?</Link>
         </div>
       </section>
       <MarketingFooter />

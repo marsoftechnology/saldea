@@ -1,61 +1,61 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '¬øMerece la pena cobrar deudas peque√±as? An√°lisis y opciones | Marsof',
-  description: 'Cu√°nto cuesta realmente reclamar una deuda de 100‚Ç¨, 300‚Ç¨ o 500‚Ç¨. Cu√°ndo merece la pena y cu√°ndo asumirlo como gasto.',
-  alternates: { canonical: 'https://marsof.es/blog/cobrar-pequenas-cantidades' },
-  keywords: ['cobrar peque√±as cantidades', 'reclamar deuda peque√±a', 'merece pena cobrar poco', 'monitorio importes bajos'],
-  openGraph: { title: '¬øMerece la pena cobrar deudas peque√±as?', description: 'An√°lisis y opciones.', type: 'article', locale: 'es_ES' },
+  title: 'øMerece la pena cobrar deudas pequeÒas? An·lisis y opciones | Marsof',
+  description: 'Cu·nto cuesta realmente reclamar una deuda de 100Ä, 300Ä o 500Ä. Cu·ndo merece la pena y cu·ndo asumirlo como gasto.',
+  alternates: { canonical: 'https://www.marsof.es/blog/cobrar-pequenas-cantidades' },
+  keywords: ['cobrar pequeÒas cantidades', 'reclamar deuda pequeÒa', 'merece pena cobrar poco', 'monitorio importes bajos'],
+  openGraph: { title: 'øMerece la pena cobrar deudas pequeÒas?', description: 'An·lisis y opciones.', type: 'article', locale: 'es_ES' },
 }
 
 export default function Page() {
   return (
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso espec√≠fico ¬∑ 4 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">¬øMerece la pena cobrar deudas peque√±as?</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">100‚Ç¨, 300‚Ç¨, 500‚Ç¨... A veces el coste de reclamar supera lo que recuperar√≠as. An√°lisis honesto.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso especÌfico ∑ 4 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">øMerece la pena cobrar deudas pequeÒas?</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">100Ä, 300Ä, 500Ä... A veces el coste de reclamar supera lo que recuperarÌas. An·lisis honesto.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Coste real de reclamar</h2>
           <div className="overflow-x-auto my-5">
             <table className="w-full text-sm border-collapse">
-              <thead><tr className="bg-sky-500/20"><th className="py-3 px-4 text-left text-zinc-100">Acci√≥n</th><th className="py-3 px-4 text-left text-zinc-100">Coste directo</th><th className="py-3 px-4 text-left text-zinc-100">Tu tiempo</th></tr></thead>
+              <thead><tr className="bg-sky-500/20"><th className="py-3 px-4 text-left text-zinc-100">AcciÛn</th><th className="py-3 px-4 text-left text-zinc-100">Coste directo</th><th className="py-3 px-4 text-left text-zinc-100">Tu tiempo</th></tr></thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Emails de recordatorio</td><td className="py-2 px-4">0‚Ç¨</td><td className="py-2 px-4">30 min</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Llamada telef√≥nica</td><td className="py-2 px-4">0‚Ç¨</td><td className="py-2 px-4">15 min</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Burofax</td><td className="py-2 px-4">35‚Ç¨</td><td className="py-2 px-4">30 min</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Monitorio &lt;2.000‚Ç¨</td><td className="py-2 px-4">0‚Ç¨</td><td className="py-2 px-4">3-5 h</td></tr>
-                <tr><td className="py-2 px-4">Monitorio &gt;2.000‚Ç¨ con abogado</td><td className="py-2 px-4">300-800‚Ç¨</td><td className="py-2 px-4">2-3 h</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Emails de recordatorio</td><td className="py-2 px-4">0Ä</td><td className="py-2 px-4">30 min</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Llamada telefÛnica</td><td className="py-2 px-4">0Ä</td><td className="py-2 px-4">15 min</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Burofax</td><td className="py-2 px-4">35Ä</td><td className="py-2 px-4">30 min</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Monitorio &lt;2.000Ä</td><td className="py-2 px-4">0Ä</td><td className="py-2 px-4">3-5 h</td></tr>
+                <tr><td className="py-2 px-4">Monitorio &gt;2.000Ä con abogado</td><td className="py-2 px-4">300-800Ä</td><td className="py-2 px-4">2-3 h</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Decisi√≥n por importe</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">DecisiÛn por importe</h2>
           <ul className="space-y-3 text-zinc-300 mb-6">
-            <li><strong>&lt;100‚Ç¨:</strong> automatiza los emails. Si tras 60 d√≠as no paga, asume como gasto. No merece tu tiempo m√°s.</li>
-            <li><strong>100-500‚Ç¨:</strong> emails escalados + burofax. Si tras burofax no paga, asume.</li>
-            <li><strong>500-2.000‚Ç¨:</strong> proceso completo incluido monitorio. Sin abogado.</li>
-            <li><strong>&gt;2.000‚Ç¨:</strong> proceso completo + abogado. Cualquier impago de esta cuant√≠a merece atenci√≥n.</li>
+            <li><strong>&lt;100Ä:</strong> automatiza los emails. Si tras 60 dÌas no paga, asume como gasto. No merece tu tiempo m·s.</li>
+            <li><strong>100-500Ä:</strong> emails escalados + burofax. Si tras burofax no paga, asume.</li>
+            <li><strong>500-2.000Ä:</strong> proceso completo incluido monitorio. Sin abogado.</li>
+            <li><strong>&gt;2.000Ä:</strong> proceso completo + abogado. Cualquier impago de esta cuantÌa merece atenciÛn.</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El truco psicol√≥gico de los 40‚Ç¨</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Recuerda: la Ley 3/2004 te da 40‚Ç¨ AUTOM√ÅTICOS por cada factura impagada. Es lo MISMO si la factura era de 50‚Ç¨ o de 50.000‚Ç¨.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4">Una factura de 100‚Ç¨ vencida hace 60 d√≠as vale: 100 + 2 + 40 = <strong>142‚Ç¨</strong>. El 42% son intereses y compensaci√≥n. Reclamar PEQUE√ëAS cantidades vale m√°s de lo que parece.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El truco psicolÛgico de los 40Ä</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Recuerda: la Ley 3/2004 te da 40Ä AUTOM¡TICOS por cada factura impagada. Es lo MISMO si la factura era de 50Ä o de 50.000Ä.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Una factura de 100Ä vencida hace 60 dÌas vale: 100 + 2 + 40 = <strong>142Ä</strong>. El 42% son intereses y compensaciÛn. Reclamar PEQUE—AS cantidades vale m·s de lo que parece.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Estrategia: bundle de peque√±as deudas</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si tienes 10 facturas peque√±as impagadas del mismo cliente: s√∫malas y tr√°talas como una sola reclamaci√≥n. El cliente ver√° el total y reaccionar√°.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Estrategia: bundle de pequeÒas deudas</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si tienes 10 facturas pequeÒas impagadas del mismo cliente: s˙malas y tr·talas como una sola reclamaciÛn. El cliente ver· el total y reaccionar·.</p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">La mejor estrategia: automatizar</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si reclamar a mano cuesta tu tiempo, una herramienta automatizada cambia la ecuaci√≥n. Vale la pena reclamar HASTA peque√±as cantidades porque tu inversi√≥n es solo la suscripci√≥n mensual.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si reclamar a mano cuesta tu tiempo, una herramienta automatizada cambia la ecuaciÛn. Vale la pena reclamar HASTA pequeÒas cantidades porque tu inversiÛn es solo la suscripciÛn mensual.</p>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea reclama peque√±as cantidades sin coste extra</h3>
-          <p className="text-zinc-300 mb-5">Suscripci√≥n fija 49‚Ç¨/mes. Reclama 1 factura o 100. Mismo coste. Recupera deudas que antes asum√≠as como p√©rdida. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea reclama pequeÒas cantidades sin coste extra</h3>
+          <p className="text-zinc-300 mb-5">SuscripciÛn fija 49Ä/mes. Reclama 1 factura o 100. Mismo coste. Recupera deudas que antes asumÌas como pÈrdida. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>

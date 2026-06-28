@@ -1,12 +1,12 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'C√≥mo enviar un burofax para reclamar una deuda (gu√≠a 2026) | Marsof',
-  description: 'Paso a paso para mandar un burofax legal en Espa√±a: contenido, coste, d√≥nde enviarlo y modelo gratis. √ötil antes del procedimiento monitorio.',
-  alternates: { canonical: 'https://marsof.es/blog/como-enviar-burofax-reclamar-deuda' },
+  title: 'CÛmo enviar un burofax para reclamar una deuda (guÌa 2026) | Marsof',
+  description: 'Paso a paso para mandar un burofax legal en EspaÒa: contenido, coste, dÛnde enviarlo y modelo gratis. ⁄til antes del procedimiento monitorio.',
+  alternates: { canonical: 'https://www.marsof.es/blog/como-enviar-burofax-reclamar-deuda' },
   keywords: [
-    'c√≥mo enviar burofax',
+    'cÛmo enviar burofax',
     'burofax reclamar deuda',
     'modelo burofax impago',
     'burofax precio',
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     'burofax certificado deuda',
   ],
   openGraph: {
-    title: 'C√≥mo enviar un burofax para reclamar una deuda',
-    description: 'Gu√≠a paso a paso con modelo gratis y precios actualizados 2026.',
+    title: 'CÛmo enviar un burofax para reclamar una deuda',
+    description: 'GuÌa paso a paso con modelo gratis y precios actualizados 2026.',
     type: 'article',
     locale: 'es_ES',
   },
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
 const schemaHowTo = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: 'C√≥mo enviar un burofax para reclamar una deuda',
+  name: 'CÛmo enviar un burofax para reclamar una deuda',
   totalTime: 'PT20M',
   estimatedCost: { '@type': 'MonetaryAmount', currency: 'EUR', value: '35' },
   step: [
-    { '@type': 'HowToStep', name: 'Redactar el contenido', text: 'Identifica deudor, deuda, factura e intereses seg√∫n Ley 3/2004.' },
-    { '@type': 'HowToStep', name: 'Elegir modalidad', text: 'Burofax con acuse de recibo y certificaci√≥n de contenido.' },
-    { '@type': 'HowToStep', name: 'Enviarlo en Correos', text: 'Online o presencial. Coste 25-40‚Ç¨.' },
-    { '@type': 'HowToStep', name: 'Guardar justificantes', text: 'Acuse de recibo + certificaci√≥n de contenido como prueba.' },
+    { '@type': 'HowToStep', name: 'Redactar el contenido', text: 'Identifica deudor, deuda, factura e intereses seg˙n Ley 3/2004.' },
+    { '@type': 'HowToStep', name: 'Elegir modalidad', text: 'Burofax con acuse de recibo y certificaciÛn de contenido.' },
+    { '@type': 'HowToStep', name: 'Enviarlo en Correos', text: 'Online o presencial. Coste 25-40Ä.' },
+    { '@type': 'HowToStep', name: 'Guardar justificantes', text: 'Acuse de recibo + certificaciÛn de contenido como prueba.' },
   ],
 }
 
@@ -41,36 +41,36 @@ export default function PageBurofax() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaHowTo) }} />
       <article className="min-h-screen bg-zinc-950 text-zinc-100">
         <div className="max-w-3xl mx-auto px-6 py-16">
-          <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+          <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
           <header className="mb-10">
-            <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Procedimiento legal ¬∑ 7 min</p>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">C√≥mo enviar un burofax para reclamar una deuda</h1>
-            <p className="text-zinc-400 text-lg leading-relaxed">El burofax es la mejor prueba antes de ir a juicio. Te explico cu√°ndo usarlo, qu√© debe contener y c√≥mo enviarlo paso a paso.</p>
+            <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Procedimiento legal ∑ 7 min</p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">CÛmo enviar un burofax para reclamar una deuda</h1>
+            <p className="text-zinc-400 text-lg leading-relaxed">El burofax es la mejor prueba antes de ir a juicio. Te explico cu·ndo usarlo, quÈ debe contener y cÛmo enviarlo paso a paso.</p>
           </header>
 
           <section className="prose prose-invert max-w-none">
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øQu√© es exactamente un burofax?</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">Un burofax es un env√≠o postal de Correos con <strong>tres caracter√≠sticas legales</strong> √∫nicas: acuse de recibo (sabes qui√©n y cu√°ndo lo recibi√≥), certificaci√≥n de contenido (Correos da fe de lo enviado) y valor probatorio en juicio.</p>
-            <p className="text-zinc-300 leading-relaxed mb-4">Es la herramienta perfecta para reclamar una deuda cuando los emails ya no funcionan, justo antes de iniciar la v√≠a judicial.</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øQuÈ es exactamente un burofax?</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">Un burofax es un envÌo postal de Correos con <strong>tres caracterÌsticas legales</strong> ˙nicas: acuse de recibo (sabes quiÈn y cu·ndo lo recibiÛ), certificaciÛn de contenido (Correos da fe de lo enviado) y valor probatorio en juicio.</p>
+            <p className="text-zinc-300 leading-relaxed mb-4">Es la herramienta perfecta para reclamar una deuda cuando los emails ya no funcionan, justo antes de iniciar la vÌa judicial.</p>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øCu√°nto cuesta un burofax en 2026?</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øCu·nto cuesta un burofax en 2026?</h2>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
               <ul className="space-y-2 text-zinc-300">
-                <li><strong className="text-sky-400">Online (Correos.es):</strong> ~28‚Ç¨ con acuse y certificaci√≥n</li>
-                <li><strong className="text-sky-400">Presencial en oficina:</strong> ~35‚Ç¨</li>
-                <li><strong className="text-sky-400">P√°ginas extra:</strong> +0,30‚Ç¨ por p√°gina adicional</li>
+                <li><strong className="text-sky-400">Online (Correos.es):</strong> ~28Ä con acuse y certificaciÛn</li>
+                <li><strong className="text-sky-400">Presencial en oficina:</strong> ~35Ä</li>
+                <li><strong className="text-sky-400">P·ginas extra:</strong> +0,30Ä por p·gina adicional</li>
               </ul>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Qu√© debe contener el burofax</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">QuÈ debe contener el burofax</h2>
             <ol className="space-y-3 text-zinc-300 list-decimal list-inside mb-6">
-              <li><strong>Identificaci√≥n del acreedor</strong> (tu empresa o nombre, CIF/DNI).</li>
-              <li><strong>Identificaci√≥n del deudor</strong> (nombre completo, CIF/DNI, direcci√≥n).</li>
-              <li><strong>Origen de la deuda:</strong> n√∫mero de factura, fecha, concepto, importe.</li>
+              <li><strong>IdentificaciÛn del acreedor</strong> (tu empresa o nombre, CIF/DNI).</li>
+              <li><strong>IdentificaciÛn del deudor</strong> (nombre completo, CIF/DNI, direcciÛn).</li>
+              <li><strong>Origen de la deuda:</strong> n˙mero de factura, fecha, concepto, importe.</li>
               <li><strong>Intereses de demora</strong> conforme a la Ley 3/2004 (tipo BCE + 8 puntos).</li>
-              <li><strong>Indemnizaci√≥n de 40‚Ç¨</strong> por costes de cobro.</li>
-              <li><strong>Plazo</strong> para pagar (10 d√≠as naturales suele ser est√°ndar).</li>
-              <li><strong>Advertencia</strong> de que en caso contrario se iniciar√°n acciones judiciales.</li>
+              <li><strong>IndemnizaciÛn de 40Ä</strong> por costes de cobro.</li>
+              <li><strong>Plazo</strong> para pagar (10 dÌas naturales suele ser est·ndar).</li>
+              <li><strong>Advertencia</strong> de que en caso contrario se iniciar·n acciones judiciales.</li>
               <li><strong>Lugar, fecha y firma.</strong></li>
             </ol>
 
@@ -79,30 +79,30 @@ export default function PageBurofax() {
               <p className="text-zinc-300 text-sm whitespace-pre-line">
 {`[Tu nombre/empresa]
 [Tu CIF/DNI]
-[Tu direcci√≥n]
+[Tu direcciÛn]
 
 A: [Nombre del deudor]
 [CIF/DNI del deudor]
-[Direcci√≥n del deudor]
+[DirecciÛn del deudor]
 
 [Lugar y fecha]
 
-Asunto: Requerimiento de pago ‚Äî Factura [N√öMERO]
+Asunto: Requerimiento de pago ó Factura [N⁄MERO]
 
-Muy Sr./Sra. m√≠o/a:
+Muy Sr./Sra. mÌo/a:
 
-Mediante el presente burofax le requiero formalmente al pago de la deuda que mantiene con [empresa] derivada de la factura n¬∫ [N√öMERO], emitida el [FECHA] por importe de [IMPORTE]‚Ç¨, cuyo vencimiento se produjo el [FECHA VENCIMIENTO] y que a d√≠a de hoy contin√∫a impagada.
+Mediante el presente burofax le requiero formalmente al pago de la deuda que mantiene con [empresa] derivada de la factura n∫ [N⁄MERO], emitida el [FECHA] por importe de [IMPORTE]Ä, cuyo vencimiento se produjo el [FECHA VENCIMIENTO] y que a dÌa de hoy contin˙a impagada.
 
 Conforme a la Ley 3/2004 de 29 de diciembre, de medidas de lucha contra la morosidad en operaciones comerciales, le reclamo:
 
-- Principal: [IMPORTE]‚Ç¨
-- Intereses de demora (BCE + 8 puntos): [CALCULAR]‚Ç¨
-- Indemnizaci√≥n por costes de cobro: 40‚Ç¨
-- TOTAL: [SUMA]‚Ç¨
+- Principal: [IMPORTE]Ä
+- Intereses de demora (BCE + 8 puntos): [CALCULAR]Ä
+- IndemnizaciÛn por costes de cobro: 40Ä
+- TOTAL: [SUMA]Ä
 
-Le concedo un plazo improrrogable de 10 d√≠as naturales desde la recepci√≥n del presente para abonar la cantidad indicada mediante transferencia a la cuenta [IBAN].
+Le concedo un plazo improrrogable de 10 dÌas naturales desde la recepciÛn del presente para abonar la cantidad indicada mediante transferencia a la cuenta [IBAN].
 
-Transcurrido dicho plazo sin atender al pago, proceder√© a iniciar las acciones judiciales oportunas, repercuti√©ndole en su totalidad las costas y gastos derivados.
+Transcurrido dicho plazo sin atender al pago, procederÈ a iniciar las acciones judiciales oportunas, repercutiÈndole en su totalidad las costas y gastos derivados.
 
 Atentamente,
 [Firma]
@@ -110,28 +110,28 @@ Atentamente,
               </p>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">C√≥mo enviarlo paso a paso</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">CÛmo enviarlo paso a paso</h2>
             <ol className="space-y-3 text-zinc-300 list-decimal list-inside mb-6">
-              <li>Entra en <strong>correos.es</strong> e identif√≠cate.</li>
+              <li>Entra en <strong>correos.es</strong> e identifÌcate.</li>
               <li>Busca "Burofax online".</li>
               <li>Pega el texto del modelo adaptado a tu caso.</li>
-              <li>Marca: <strong>"con acuse de recibo"</strong> y <strong>"con certificaci√≥n de contenido"</strong>.</li>
-              <li>Paga (28-35‚Ç¨) y env√≠a.</li>
-              <li>Correos te env√≠a PDF firmado del acuse en 2-5 d√≠as.</li>
+              <li>Marca: <strong>"con acuse de recibo"</strong> y <strong>"con certificaciÛn de contenido"</strong>.</li>
+              <li>Paga (28-35Ä) y envÌa.</li>
+              <li>Correos te envÌa PDF firmado del acuse en 2-5 dÌas.</li>
             </ol>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øY si no lo recoge el deudor?</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øY si no lo recoge el deudor?</h2>
             <p className="text-zinc-300 leading-relaxed mb-4">Aunque el deudor no recoja el burofax, <strong>se considera entregado a efectos legales</strong> si Correos ha intentado entregarlo y dejado aviso. Esto basta para iniciar el procedimiento monitorio posterior.</p>
           </section>
 
           <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-zinc-100 mb-2">Antes del burofax, prueba con Saldea</h3>
-            <p className="text-zinc-300 mb-5">Muchos clientes pagan en cuanto reciben un recordatorio firme autom√°tico. Saldea manda emails escalados con IA. Si tras 30 d√≠as no paga, ya tienes pruebas listas para el burofax. <strong>30 d√≠as gratis.</strong></p>
-            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+            <p className="text-zinc-300 mb-5">Muchos clientes pagan en cuanto reciben un recordatorio firme autom·tico. Saldea manda emails escalados con IA. Si tras 30 dÌas no paga, ya tienes pruebas listas para el burofax. <strong>30 dÌas gratis.</strong></p>
+            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
           </aside>
 
           <div className="mt-12 pt-8 border-t border-white/10">
-            <p className="text-xs text-zinc-500">Informaci√≥n orientativa. Para casos concretos consulta con un abogado.</p>
+            <p className="text-xs text-zinc-500">InformaciÛn orientativa. Para casos concretos consulta con un abogado.</p>
           </div>
         </div>
       </article>

@@ -5,7 +5,7 @@ import MarketingFooter from '../components/MarketingFooter'
 export const metadata: Metadata = {
   title: 'Sobre Marsof Technology — Empresa española de software SaaS',
   description: 'Marsof Technology es una empresa española de software con sede en Huelva. Construimos herramientas SaaS con IA para automatizar los procesos administrativos de autónomos y pymes en España.',
-  alternates: { canonical: 'https://marsof.es/sobre-marsof' },
+  alternates: { canonical: 'https://www.marsof.es/sobre-marsof' },
   keywords: [
     'Marsof',
     'Marsof Technology',
@@ -32,7 +32,7 @@ const schemaOrg = {
   alternateName: ['Marsof', 'Marsof Tech'],
   legalName: 'Marsof Technology',
   url: 'https://marsof.es',
-  logo: 'https://marsof.es/og-image.png',
+  logo: 'https://www.marsof.es/og-image.png',
   description: 'Empresa española de software con sede en Huelva. Construye herramientas SaaS con IA para automatizar los procesos administrativos de autónomos y pymes.',
   foundingDate: '2026',
   founders: [{ '@type': 'Person', name: 'Carlos Gálvez Carrillo', jobTitle: 'Fundador y CEO', description: 'Profesional con trayectoria en finanzas corporativas, análisis de inversión y consultoría de negocio.' }],

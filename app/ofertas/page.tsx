@@ -6,7 +6,7 @@ import { Logo } from '../components/Logo'
 export const metadata: Metadata = {
   title: 'Trabaja con nosotros — Marsof Technology',
   description: 'Únete a Marsof Technology. Buscamos cofundador/a técnico apasionado por construir micro-SaaS con IA para autónomos y pymes españolas.',
-  alternates: { canonical: 'https://marsof.es/ofertas' },
+  alternates: { canonical: 'https://www.marsof.es/ofertas' },
   openGraph: {
     title: 'Trabaja con nosotros — Marsof Technology',
     description: 'Buscamos cofundador/a técnico para crecer juntos.',

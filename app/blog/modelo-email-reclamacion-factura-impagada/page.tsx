@@ -1,13 +1,13 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Modelo de email de reclamaci√≥n de factura impagada (4 plantillas 2026) | Marsof',
-  description: 'Plantillas gratis de email para reclamar facturas impagadas: tono amable, firme, formal y burofax. Adaptadas a la legislaci√≥n espa√±ola y RGPD. Copia y usa.',
-  alternates: { canonical: 'https://marsof.es/blog/modelo-email-reclamacion-factura-impagada' },
+  title: 'Modelo de email de reclamaciÛn de factura impagada (4 plantillas 2026) | Marsof',
+  description: 'Plantillas gratis de email para reclamar facturas impagadas: tono amable, firme, formal y burofax. Adaptadas a la legislaciÛn espaÒola y RGPD. Copia y usa.',
+  alternates: { canonical: 'https://www.marsof.es/blog/modelo-email-reclamacion-factura-impagada' },
   openGraph: {
-    title: 'Modelo de email de reclamaci√≥n de factura impagada ¬∑ 4 plantillas',
-    description: 'Plantillas listas para copiar: amable, firme, formal y previo a burofax. Adaptadas a Espa√±a y RGPD.',
+    title: 'Modelo de email de reclamaciÛn de factura impagada ∑ 4 plantillas',
+    description: 'Plantillas listas para copiar: amable, firme, formal y previo a burofax. Adaptadas a EspaÒa y RGPD.',
     type: 'article',
     locale: 'es_ES',
   },
@@ -15,32 +15,32 @@ export const metadata: Metadata = {
 
 const plantillas = [
   {
-    titulo: '1. Plantilla amable (1-7 d√≠as de retraso)',
-    contexto: '√ösala cuando la factura lleva poco tiempo vencida. Asume que es un olvido. Mantiene la relaci√≥n comercial.',
-    asunto: 'Recordatorio amistoso ‚Äî Factura {NUMERO}',
+    titulo: '1. Plantilla amable (1-7 dÌas de retraso)',
+    contexto: '⁄sala cuando la factura lleva poco tiempo vencida. Asume que es un olvido. Mantiene la relaciÛn comercial.',
+    asunto: 'Recordatorio amistoso ó Factura {NUMERO}',
     cuerpo: `Hola {NOMBRE_CLIENTE},
 
-Espero que est√©s bien. Te escribo para recordarte que la factura {NUMERO} con fecha {FECHA_FACTURA} por importe de {IMPORTE}‚Ç¨ ten√≠a vencimiento el {FECHA_VENCIMIENTO} y, a d√≠a de hoy, a√∫n la veo pendiente en nuestro sistema.
+Espero que estÈs bien. Te escribo para recordarte que la factura {NUMERO} con fecha {FECHA_FACTURA} por importe de {IMPORTE}Ä tenÌa vencimiento el {FECHA_VENCIMIENTO} y, a dÌa de hoy, a˙n la veo pendiente en nuestro sistema.
 
-Entiendo perfectamente que se puede traspapelar entre tantos correos. ¬øPodr√≠as echarle un vistazo cuando tengas un momento y confirmarme si necesitas que te reenv√≠e el PDF o los datos bancarios?
+Entiendo perfectamente que se puede traspapelar entre tantos correos. øPodrÌas echarle un vistazo cuando tengas un momento y confirmarme si necesitas que te reenvÌe el PDF o los datos bancarios?
 
-Si ya la has abonado en los √∫ltimos d√≠as, perdona el toque y por favor ignora este mensaje.
+Si ya la has abonado en los ˙ltimos dÌas, perdona el toque y por favor ignora este mensaje.
 
 Un saludo,
 {TU_NOMBRE}
 {TU_EMPRESA}`,
   },
   {
-    titulo: '2. Plantilla firme (8-20 d√≠as de retraso)',
+    titulo: '2. Plantilla firme (8-20 dÌas de retraso)',
     contexto: 'La factura lleva ya semanas. Toca subir el tono sin perder la profesionalidad. Recuerda al cliente sus obligaciones.',
-    asunto: 'Factura {NUMERO} vencida ‚Äî Acci√≥n requerida',
+    asunto: 'Factura {NUMERO} vencida ó AcciÛn requerida',
     cuerpo: `Estimado/a {NOMBRE_CLIENTE},
 
-La factura {NUMERO}, por importe de {IMPORTE}‚Ç¨, venci√≥ el {FECHA_VENCIMIENTO} y a d√≠a de hoy contin√∫a pendiente de pago.
+La factura {NUMERO}, por importe de {IMPORTE}Ä, venciÛ el {FECHA_VENCIMIENTO} y a dÌa de hoy contin˙a pendiente de pago.
 
-Te agradecer√≠a que regularizases la situaci√≥n en los pr√≥ximos 5 d√≠as naturales mediante transferencia a la cuenta indicada en la factura. Si existe alg√∫n problema con el servicio prestado o con la facturaci√≥n, por favor comun√≠camelo cuanto antes para resolverlo conjuntamente.
+Te agradecerÌa que regularizases la situaciÛn en los prÛximos 5 dÌas naturales mediante transferencia a la cuenta indicada en la factura. Si existe alg˙n problema con el servicio prestado o con la facturaciÛn, por favor comunÌcamelo cuanto antes para resolverlo conjuntamente.
 
-En caso de que ya se haya realizado el pago, te ruego me env√≠es el justificante para poder cuadrarlo.
+En caso de que ya se haya realizado el pago, te ruego me envÌes el justificante para poder cuadrarlo.
 
 Quedo a la espera de tu respuesta.
 
@@ -49,41 +49,41 @@ Atentamente,
 {TU_EMPRESA}`,
   },
   {
-    titulo: '3. Plantilla formal (21-45 d√≠as)',
-    contexto: 'El impago se prolonga. Hay que mencionar las consecuencias legales sin amenazar. Tono fr√≠o y profesional.',
-    asunto: 'Requerimiento de pago ‚Äî Factura {NUMERO}',
+    titulo: '3. Plantilla formal (21-45 dÌas)',
+    contexto: 'El impago se prolonga. Hay que mencionar las consecuencias legales sin amenazar. Tono frÌo y profesional.',
+    asunto: 'Requerimiento de pago ó Factura {NUMERO}',
     cuerpo: `Estimado/a {NOMBRE_CLIENTE},
 
-Mediante el presente le notifico formalmente que la factura {NUMERO}, emitida el {FECHA_FACTURA} por importe de {IMPORTE}‚Ç¨, lleva {DIAS_VENCIDA} d√≠as vencida sin haber sido satisfecha.
+Mediante el presente le notifico formalmente que la factura {NUMERO}, emitida el {FECHA_FACTURA} por importe de {IMPORTE}Ä, lleva {DIAS_VENCIDA} dÌas vencida sin haber sido satisfecha.
 
-Conforme a la Ley 3/2004 de medidas de lucha contra la morosidad en operaciones comerciales, le requiero formalmente al abono √≠ntegro de la deuda, m√°s los intereses legales devengados, en un plazo m√°ximo de 10 d√≠as naturales desde la recepci√≥n de este correo.
+Conforme a la Ley 3/2004 de medidas de lucha contra la morosidad en operaciones comerciales, le requiero formalmente al abono Ìntegro de la deuda, m·s los intereses legales devengados, en un plazo m·ximo de 10 dÌas naturales desde la recepciÛn de este correo.
 
-Transcurrido dicho plazo sin recibir el pago ni una propuesta concreta de regularizaci√≥n, me ver√© obligado a iniciar las acciones legales oportunas para la reclamaci√≥n de la deuda, incluida la posible inscripci√≥n en ficheros de morosidad (ASNEF, RAI) y la reclamaci√≥n judicial, cuyos costes (intereses de demora, costas procesales y honorarios de procurador) ser√°n √≠ntegramente a su cargo.
+Transcurrido dicho plazo sin recibir el pago ni una propuesta concreta de regularizaciÛn, me verÈ obligado a iniciar las acciones legales oportunas para la reclamaciÛn de la deuda, incluida la posible inscripciÛn en ficheros de morosidad (ASNEF, RAI) y la reclamaciÛn judicial, cuyos costes (intereses de demora, costas procesales y honorarios de procurador) ser·n Ìntegramente a su cargo.
 
-Conf√≠o en su pronta respuesta para evitar dichas medidas.
+ConfÌo en su pronta respuesta para evitar dichas medidas.
 
 Atentamente,
 {TU_NOMBRE}
 {TU_EMPRESA}`,
   },
   {
-    titulo: '4. Plantilla previo a burofax (46+ d√≠as)',
-    contexto: '√öltimo aviso amistoso antes de mandar burofax o entrar en monitorio. Plazo cerrado y advertencias claras.',
-    asunto: '√öLTIMO AVISO PREVIO A ACCIONES LEGALES ‚Äî Factura {NUMERO}',
+    titulo: '4. Plantilla previo a burofax (46+ dÌas)',
+    contexto: '⁄ltimo aviso amistoso antes de mandar burofax o entrar en monitorio. Plazo cerrado y advertencias claras.',
+    asunto: '⁄LTIMO AVISO PREVIO A ACCIONES LEGALES ó Factura {NUMERO}',
     cuerpo: `{NOMBRE_CLIENTE},
 
-Le comunico que la factura {NUMERO}, por importe de {IMPORTE}‚Ç¨, lleva {DIAS_VENCIDA} d√≠as vencida sin atender, pese a los recordatorios previos.
+Le comunico que la factura {NUMERO}, por importe de {IMPORTE}Ä, lleva {DIAS_VENCIDA} dÌas vencida sin atender, pese a los recordatorios previos.
 
-Este correo constituye el √öLTIMO requerimiento extrajudicial antes de proceder a:
+Este correo constituye el ⁄LTIMO requerimiento extrajudicial antes de proceder a:
 
-1. Env√≠o de burofax con certificaci√≥n de contenido y acuse de recibo.
-2. Inclusi√≥n en los ficheros de informaci√≥n sobre solvencia patrimonial (ASNEF, RAI).
-3. Reclamaci√≥n judicial v√≠a procedimiento monitorio (art. 812 LEC).
-4. Reclamaci√≥n √≠ntegra de los intereses legales de demora, costas procesales y honorarios de procurador, que correr√°n por su cuenta.
+1. EnvÌo de burofax con certificaciÛn de contenido y acuse de recibo.
+2. InclusiÛn en los ficheros de informaciÛn sobre solvencia patrimonial (ASNEF, RAI).
+3. ReclamaciÛn judicial vÌa procedimiento monitorio (art. 812 LEC).
+4. ReclamaciÛn Ìntegra de los intereses legales de demora, costas procesales y honorarios de procurador, que correr·n por su cuenta.
 
-Dispone de 7 d√≠as naturales desde la fecha de este correo para abonar la totalidad de la deuda o presentar una propuesta concreta de regularizaci√≥n.
+Dispone de 7 dÌas naturales desde la fecha de este correo para abonar la totalidad de la deuda o presentar una propuesta concreta de regularizaciÛn.
 
-Transcurrido dicho plazo, las actuaciones se iniciar√°n sin m√°s aviso.
+Transcurrido dicho plazo, las actuaciones se iniciar·n sin m·s aviso.
 
 {TU_NOMBRE}
 {TU_EMPRESA}`,
@@ -91,12 +91,12 @@ Transcurrido dicho plazo, las actuaciones se iniciar√°n sin m√°s aviso.
 ]
 
 const seccionesIndice = [
-  { id: 'cuando-reclamar', titulo: 'Cu√°ndo reclamar una factura impagada' },
-  { id: 'errores', titulo: '5 errores t√≠picos al reclamar por email' },
+  { id: 'cuando-reclamar', titulo: 'Cu·ndo reclamar una factura impagada' },
+  { id: 'errores', titulo: '5 errores tÌpicos al reclamar por email' },
   { id: 'plantillas', titulo: 'Las 4 plantillas (copia y pega)' },
-  { id: 'que-hacer-despues', titulo: 'Qu√© hacer si el cliente no contesta' },
-  { id: 'rgpd', titulo: '¬øEs legal reclamar por email? (RGPD)' },
-  { id: 'automatizar', titulo: 'C√≥mo automatizar todo el proceso' },
+  { id: 'que-hacer-despues', titulo: 'QuÈ hacer si el cliente no contesta' },
+  { id: 'rgpd', titulo: 'øEs legal reclamar por email? (RGPD)' },
+  { id: 'automatizar', titulo: 'CÛmo automatizar todo el proceso' },
 ]
 
 export default function ArticuloPage() {
@@ -121,40 +121,40 @@ export default function ArticuloPage() {
         </div>
       </nav>
 
-      {/* Art√≠culo */}
+      {/* ArtÌculo */}
       <article className="max-w-3xl mx-auto px-6 pt-12 pb-20">
         {/* Migas */}
         <nav className="text-sm text-zinc-500 mb-6">
           <Link href="/saldea" className="hover:text-zinc-400">Saldea</Link>
-          <span className="mx-2">‚Ä∫</span>
+          <span className="mx-2">õ</span>
           <Link href="/blog" className="hover:text-zinc-400">Blog</Link>
-          <span className="mx-2">‚Ä∫</span>
-          <span className="text-zinc-400">Modelo email reclamaci√≥n factura impagada</span>
+          <span className="mx-2">õ</span>
+          <span className="text-zinc-400">Modelo email reclamaciÛn factura impagada</span>
         </nav>
 
         {/* Cabecera */}
         <header className="mb-10">
           <div className="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-3">
-            Cobros ¬∑ Plantillas
+            Cobros ∑ Plantillas
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 leading-tight mb-5">
-            Modelo de email de reclamaci√≥n de factura impagada (4 plantillas 2026)
+            Modelo de email de reclamaciÛn de factura impagada (4 plantillas 2026)
           </h1>
           <p className="text-xl text-zinc-400 leading-relaxed">
-            Las 4 plantillas que de verdad funcionan en Espa√±a seg√∫n los d√≠as de retraso. Listas para copiar, adaptadas a la Ley 3/2004 de morosidad y al RGPD.
+            Las 4 plantillas que de verdad funcionan en EspaÒa seg˙n los dÌas de retraso. Listas para copiar, adaptadas a la Ley 3/2004 de morosidad y al RGPD.
           </p>
           <div className="mt-6 flex items-center gap-4 text-sm text-zinc-500">
-            <span>Carlos G√°lvez ¬∑ Fundador de Saldea</span>
-            <span>¬∑</span>
+            <span>Carlos G·lvez ∑ Fundador de Saldea</span>
+            <span>∑</span>
             <time dateTime={fechaPub}>13 de mayo, 2026</time>
-            <span>¬∑</span>
+            <span>∑</span>
             <span>9 min de lectura</span>
           </div>
         </header>
 
-        {/* √çndice */}
+        {/* Õndice */}
         <aside className="bg-zinc-900/30 border border-white/10 rounded-xl p-6 mb-10">
-          <h2 className="text-sm font-semibold text-zinc-100 uppercase tracking-wider mb-4">En este art√≠culo</h2>
+          <h2 className="text-sm font-semibold text-zinc-100 uppercase tracking-wider mb-4">En este artÌculo</h2>
           <ol className="space-y-2">
             {seccionesIndice.map((s, i) => (
               <li key={s.id}>
@@ -169,67 +169,67 @@ export default function ArticuloPage() {
         {/* Intro */}
         <div className="prose prose-lg max-w-none">
           <p className="text-zinc-300 leading-relaxed text-lg">
-            En Espa√±a, seg√∫n el Observatorio sobre Morosidad y Estrategia Financiera Empresarial, el plazo medio de cobro de los aut√≥nomos y pymes ronda los 81 d√≠as, muy por encima del l√≠mite legal de 60. Una factura impagada no es solo una incomodidad: es liquidez bloqueada que pone en riesgo tu negocio.
+            En EspaÒa, seg˙n el Observatorio sobre Morosidad y Estrategia Financiera Empresarial, el plazo medio de cobro de los autÛnomos y pymes ronda los 81 dÌas, muy por encima del lÌmite legal de 60. Una factura impagada no es solo una incomodidad: es liquidez bloqueada que pone en riesgo tu negocio.
           </p>
           <p className="text-zinc-300 leading-relaxed">
-            La buena noticia es que la mayor√≠a de impagos se resuelven antes de llegar a v√≠a judicial ‚Äî si reclamas <strong>en el momento correcto</strong> y con el <strong>tono adecuado</strong>. En esta gu√≠a tienes 4 plantillas reales que puedes copiar y usar hoy mismo.
+            La buena noticia es que la mayorÌa de impagos se resuelven antes de llegar a vÌa judicial ó si reclamas <strong>en el momento correcto</strong> y con el <strong>tono adecuado</strong>. En esta guÌa tienes 4 plantillas reales que puedes copiar y usar hoy mismo.
           </p>
         </div>
 
-        {/* Secci√≥n: cu√°ndo reclamar */}
+        {/* SecciÛn: cu·ndo reclamar */}
         <section id="cuando-reclamar" className="mt-14 scroll-mt-24">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-4">Cu√°ndo reclamar una factura impagada</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-4">Cu·ndo reclamar una factura impagada</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            La regla general en Espa√±a la fija la Ley 3/2004 de morosidad: salvo pacto distinto entre las partes, una factura entre empresas vence a los 30 d√≠as naturales desde la entrega del bien o servicio (60 d√≠as como m√°ximo). A partir de ah√≠, ya puedes reclamar.
+            La regla general en EspaÒa la fija la Ley 3/2004 de morosidad: salvo pacto distinto entre las partes, una factura entre empresas vence a los 30 dÌas naturales desde la entrega del bien o servicio (60 dÌas como m·ximo). A partir de ahÌ, ya puedes reclamar.
           </p>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            En la pr√°ctica, lo que mejor funciona es escalar la presi√≥n <strong>poco a poco</strong> en funci√≥n de los d√≠as de retraso:
+            En la pr·ctica, lo que mejor funciona es escalar la presiÛn <strong>poco a poco</strong> en funciÛn de los dÌas de retraso:
           </p>
           <div className="overflow-x-auto -mx-2 my-6">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b-2 border-white/10">
-                  <th className="text-left py-3 px-4 font-semibold text-zinc-100">D√≠as de retraso</th>
-                  <th className="text-left py-3 px-4 font-semibold text-zinc-100">Acci√≥n recomendada</th>
+                  <th className="text-left py-3 px-4 font-semibold text-zinc-100">DÌas de retraso</th>
+                  <th className="text-left py-3 px-4 font-semibold text-zinc-100">AcciÛn recomendada</th>
                   <th className="text-left py-3 px-4 font-semibold text-zinc-100">Tono</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
-                <tr><td className="py-3 px-4 text-zinc-300">1-7 d√≠as</td><td className="py-3 px-4 text-zinc-300">Email amable</td><td className="py-3 px-4 text-zinc-300">Cordial</td></tr>
-                <tr><td className="py-3 px-4 text-zinc-300">8-20 d√≠as</td><td className="py-3 px-4 text-zinc-300">Email firme + llamada</td><td className="py-3 px-4 text-zinc-300">Firme</td></tr>
-                <tr><td className="py-3 px-4 text-zinc-300">21-45 d√≠as</td><td className="py-3 px-4 text-zinc-300">Requerimiento formal</td><td className="py-3 px-4 text-zinc-300">Formal con base legal</td></tr>
-                <tr><td className="py-3 px-4 text-zinc-300">46+ d√≠as</td><td className="py-3 px-4 text-zinc-300">√öltimo aviso + burofax</td><td className="py-3 px-4 text-zinc-300">Extremo / legal</td></tr>
+                <tr><td className="py-3 px-4 text-zinc-300">1-7 dÌas</td><td className="py-3 px-4 text-zinc-300">Email amable</td><td className="py-3 px-4 text-zinc-300">Cordial</td></tr>
+                <tr><td className="py-3 px-4 text-zinc-300">8-20 dÌas</td><td className="py-3 px-4 text-zinc-300">Email firme + llamada</td><td className="py-3 px-4 text-zinc-300">Firme</td></tr>
+                <tr><td className="py-3 px-4 text-zinc-300">21-45 dÌas</td><td className="py-3 px-4 text-zinc-300">Requerimiento formal</td><td className="py-3 px-4 text-zinc-300">Formal con base legal</td></tr>
+                <tr><td className="py-3 px-4 text-zinc-300">46+ dÌas</td><td className="py-3 px-4 text-zinc-300">⁄ltimo aviso + burofax</td><td className="py-3 px-4 text-zinc-300">Extremo / legal</td></tr>
               </tbody>
             </table>
           </div>
           <p className="text-zinc-300 leading-relaxed">
-            Si saltas pasos (mandar un email dur√≠simo el d√≠a 3) quemas la relaci√≥n. Si te quedas corto (seguir mandando emails amables el d√≠a 60) el cliente percibe que no pasa nada y aprende a pagarte el √∫ltimo.
+            Si saltas pasos (mandar un email durÌsimo el dÌa 3) quemas la relaciÛn. Si te quedas corto (seguir mandando emails amables el dÌa 60) el cliente percibe que no pasa nada y aprende a pagarte el ˙ltimo.
           </p>
         </section>
 
-        {/* Secci√≥n: errores t√≠picos */}
+        {/* SecciÛn: errores tÌpicos */}
         <section id="errores" className="mt-14 scroll-mt-24">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-4">5 errores t√≠picos al reclamar por email</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-4">5 errores tÌpicos al reclamar por email</h2>
           <ol className="space-y-4 text-zinc-300">
             <li>
-              <strong className="text-zinc-100">1. Tardar demasiado.</strong> Si esperas 30 d√≠as para mandar el primer recordatorio, el cliente ya ha decidido que tu cobro no es prioridad. Manda el primer aviso el d√≠a 3-5.
+              <strong className="text-zinc-100">1. Tardar demasiado.</strong> Si esperas 30 dÌas para mandar el primer recordatorio, el cliente ya ha decidido que tu cobro no es prioridad. Manda el primer aviso el dÌa 3-5.
             </li>
             <li>
               <strong className="text-zinc-100">2. Usar siempre el mismo tono.</strong> Mandar 4 emails amables seguidos es ineficaz. Hay que escalar.
             </li>
             <li>
-              <strong className="text-zinc-100">3. No adjuntar la factura.</strong> Adjuntar el PDF elimina la excusa t√≠pica "no la encuentro, ¬øme la reenv√≠as?".
+              <strong className="text-zinc-100">3. No adjuntar la factura.</strong> Adjuntar el PDF elimina la excusa tÌpica "no la encuentro, øme la reenvÌas?".
             </li>
             <li>
-              <strong className="text-zinc-100">4. Amenazar antes de tiempo.</strong> Mencionar burofax o ASNEF en el d√≠a 5 te hace quedar como hist√©rico y rompe la relaci√≥n.
+              <strong className="text-zinc-100">4. Amenazar antes de tiempo.</strong> Mencionar burofax o ASNEF en el dÌa 5 te hace quedar como histÈrico y rompe la relaciÛn.
             </li>
             <li>
-              <strong className="text-zinc-100">5. No detectar respuestas.</strong> Si el cliente responde "ya pagu√©" y le sigues mandando recordatorios, lo pierdes para siempre.
+              <strong className="text-zinc-100">5. No detectar respuestas.</strong> Si el cliente responde "ya paguÈ" y le sigues mandando recordatorios, lo pierdes para siempre.
             </li>
           </ol>
         </section>
 
-        {/* Secci√≥n: plantillas */}
+        {/* SecciÛn: plantillas */}
         <section id="plantillas" className="mt-14 scroll-mt-24">
           <h2 className="text-2xl font-bold text-zinc-100 mb-2">Las 4 plantillas (copia y pega)</h2>
           <p className="text-zinc-400 mb-8">Sustituye los campos entre llaves <code className="text-sky-300 bg-sky-500/10 text-sky-300 px-1 rounded">{`{NOMBRE_CLIENTE}`}</code> por los datos reales de tu factura.</p>
@@ -252,58 +252,58 @@ export default function ArticuloPage() {
           </div>
         </section>
 
-        {/* Secci√≥n: qu√© hacer despu√©s */}
+        {/* SecciÛn: quÈ hacer despuÈs */}
         <section id="que-hacer-despues" className="mt-14 scroll-mt-24">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-4">Qu√© hacer si el cliente no contesta</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-4">QuÈ hacer si el cliente no contesta</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            Si tras las 4 plantillas el cliente sigue sin pagar ni dar se√±ales, tienes tres caminos en Espa√±a:
+            Si tras las 4 plantillas el cliente sigue sin pagar ni dar seÒales, tienes tres caminos en EspaÒa:
           </p>
           <ul className="space-y-3 text-zinc-300 list-disc list-inside">
-            <li><strong>Burofax con certificaci√≥n de contenido.</strong> Coste ~30‚Ç¨. Suele desbloquear el 40-50% de los casos solo por la presi√≥n psicol√≥gica. Vale como prueba en juicio.</li>
-            <li><strong>Procedimiento monitorio (art. 812 LEC).</strong> Sin abogado ni procurador hasta 2.000‚Ç¨. Si el deudor no se opone en 20 d√≠as, hay t√≠tulo ejecutivo directo.</li>
-            <li><strong>Inscripci√≥n en ASNEF / RAI.</strong> Solo si la deuda est√° documentada y vencida. Da√±a el rating crediticio del cliente y lo presiona much√≠simo.</li>
+            <li><strong>Burofax con certificaciÛn de contenido.</strong> Coste ~30Ä. Suele desbloquear el 40-50% de los casos solo por la presiÛn psicolÛgica. Vale como prueba en juicio.</li>
+            <li><strong>Procedimiento monitorio (art. 812 LEC).</strong> Sin abogado ni procurador hasta 2.000Ä. Si el deudor no se opone en 20 dÌas, hay tÌtulo ejecutivo directo.</li>
+            <li><strong>InscripciÛn en ASNEF / RAI.</strong> Solo si la deuda est· documentada y vencida. DaÒa el rating crediticio del cliente y lo presiona muchÌsimo.</li>
           </ul>
         </section>
 
-        {/* Secci√≥n: RGPD */}
+        {/* SecciÛn: RGPD */}
         <section id="rgpd" className="mt-14 scroll-mt-24">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-4">¬øEs legal reclamar por email? (RGPD)</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-4">øEs legal reclamar por email? (RGPD)</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            S√≠. Reclamar el pago de una factura emitida en el marco de una relaci√≥n comercial est√° amparado por la base jur√≠dica del <strong>inter√©s leg√≠timo</strong> (art. 6.1.f RGPD) y por la propia <strong>ejecuci√≥n del contrato</strong> (art. 6.1.b). No necesitas un consentimiento expreso para mandar emails de cobro.
+            SÌ. Reclamar el pago de una factura emitida en el marco de una relaciÛn comercial est· amparado por la base jurÌdica del <strong>interÈs legÌtimo</strong> (art. 6.1.f RGPD) y por la propia <strong>ejecuciÛn del contrato</strong> (art. 6.1.b). No necesitas un consentimiento expreso para mandar emails de cobro.
           </p>
           <p className="text-zinc-300 leading-relaxed">
-            Lo que s√≠ debes respetar: no compartir los datos del deudor con terceros (salvo cesi√≥n leg√≠tima a una empresa de recobro o registro de morosos), guardar las pruebas con la diligencia debida y permitir el ejercicio de derechos ARCO si el cliente los reclama.
+            Lo que sÌ debes respetar: no compartir los datos del deudor con terceros (salvo cesiÛn legÌtima a una empresa de recobro o registro de morosos), guardar las pruebas con la diligencia debida y permitir el ejercicio de derechos ARCO si el cliente los reclama.
           </p>
         </section>
 
-        {/* Secci√≥n: automatizar ‚Äî CTA Saldea */}
+        {/* SecciÛn: automatizar ó CTA Saldea */}
         <section id="automatizar" className="mt-14 scroll-mt-24">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-4">C√≥mo automatizar todo el proceso</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-4">CÛmo automatizar todo el proceso</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            Copiar plantillas funciona, pero requiere que t√∫ est√©s pendiente de cada vencimiento, escojas el tono correcto, mandes el PDF, detectes si el cliente responde y pauses los recordatorios cuando hace falta. Sumas f√°cilmente 5-10 horas al mes persiguiendo cobros.
+            Copiar plantillas funciona, pero requiere que t˙ estÈs pendiente de cada vencimiento, escojas el tono correcto, mandes el PDF, detectes si el cliente responde y pauses los recordatorios cuando hace falta. Sumas f·cilmente 5-10 horas al mes persiguiendo cobros.
           </p>
           <p className="text-zinc-300 leading-relaxed mb-6">
-            <strong>Saldea</strong> hace exactamente eso por ti: importas tus facturas, configuras tu tono, y la IA se encarga del resto. Detecta cuando el cliente paga o discute, escala el tono seg√∫n los d√≠as de retraso, y solo te avisa cuando hay algo importante.
+            <strong>Saldea</strong> hace exactamente eso por ti: importas tus facturas, configuras tu tono, y la IA se encarga del resto. Detecta cuando el cliente paga o discute, escala el tono seg˙n los dÌas de retraso, y solo te avisa cuando hay algo importante.
           </p>
 
           <div className="bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-zinc-100 mb-2">Prueba Saldea 30 d√≠as gratis</h3>
+            <h3 className="text-xl font-bold text-zinc-100 mb-2">Prueba Saldea 30 dÌas gratis</h3>
             <p className="text-zinc-300 mb-5">
-              Plan Pro completo durante 30 d√≠as. Cancela antes y no pagas nada.
+              Plan Pro completo durante 30 dÌas. Cancela antes y no pagas nada.
             </p>
             <Link
               href="/registro"
               className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors"
             >
-              Empezar gratis ‚Üí
+              Empezar gratis ?
             </Link>
           </div>
         </section>
 
-        {/* Footer del art√≠culo */}
+        {/* Footer del artÌculo */}
         <footer className="mt-16 pt-8 border-t border-white/10 text-sm text-zinc-400">
           <p>
-            ¬øTe ha resultado √∫til este art√≠culo? Cu√©ntanoslo en{' '}
+            øTe ha resultado ˙til este artÌculo? CuÈntanoslo en{' '}
             <a href="mailto:carlosgc@marsof.es" className="text-sky-300 hover:underline">carlosgc@marsof.es</a>.
           </p>
         </footer>
@@ -316,17 +316,17 @@ export default function ArticuloPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Article',
-            headline: 'Modelo de email de reclamaci√≥n de factura impagada (4 plantillas 2026)',
-            description: 'Plantillas gratis de email para reclamar facturas impagadas adaptadas a la legislaci√≥n espa√±ola y RGPD.',
+            headline: 'Modelo de email de reclamaciÛn de factura impagada (4 plantillas 2026)',
+            description: 'Plantillas gratis de email para reclamar facturas impagadas adaptadas a la legislaciÛn espaÒola y RGPD.',
             datePublished: fechaPub,
             dateModified: fechaPub,
-            author: { '@type': 'Person', name: 'Carlos G√°lvez', url: 'https://marsof.es' },
+            author: { '@type': 'Person', name: 'Carlos G·lvez', url: 'https://marsof.es' },
             publisher: {
               '@type': 'Organization',
-              name: 'Saldea ‚Äî Marsof Technology',
-              logo: { '@type': 'ImageObject', url: 'https://marsof.es/logo.png' },
+              name: 'Saldea ó Marsof Technology',
+              logo: { '@type': 'ImageObject', url: 'https://www.marsof.es/logo.png' },
             },
-            mainEntityOfPage: 'https://marsof.es/blog/modelo-email-reclamacion-factura-impagada',
+            mainEntityOfPage: 'https://www.marsof.es/blog/modelo-email-reclamacion-factura-impagada',
           }),
         }}
       />

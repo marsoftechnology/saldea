@@ -1,4 +1,4 @@
-Ôªø'use client'
+'use client'
 
 import { useState, useCallback, useRef } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
@@ -10,11 +10,11 @@ const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 
 const FEATURES = [
   'Facturas y clientes ilimitados',
-  'Recordatorios autom√°ticos por email e IA',
+  'Recordatorios autom·ticos por email e IA',
   'WhatsApp para clientes con consentimiento',
-  'Clasificaci√≥n autom√°tica de respuestas',
+  'ClasificaciÛn autom·tica de respuestas',
   'Informes y analytics completos',
-  'Integraci√≥n Stripe + Holded',
+  'IntegraciÛn Stripe + Holded',
   'Soporte prioritario',
 ]
 
@@ -35,7 +35,7 @@ export default function TrialPaywall() {
       body: JSON.stringify({ interval: intervalo }),
     })
     if (!res.ok) {
-      setErrorPago('Error al conectar con el sistema de pago. Int√©ntalo de nuevo.')
+      setErrorPago('Error al conectar con el sistema de pago. IntÈntalo de nuevo.')
       return ''
     }
     const { clientSecret } = await res.json()
@@ -52,10 +52,10 @@ export default function TrialPaywall() {
 
           {/* Header con degradado */}
           <div className="bg-gradient-to-br from-sky-500/20 to-sky-600/5 border-b border-white/5 px-8 py-6 text-center">
-            <div className="text-5xl mb-3">‚è∞</div>
+            <div className="text-5xl mb-3">?</div>
             <h2 className="text-xl font-bold text-zinc-100">Tu prueba gratuita ha finalizado</h2>
             <p className="text-sm text-zinc-400 mt-1">
-              Activa el plan Pro para seguir usando Saldea sin l√≠mites
+              Activa el plan Pro para seguir usando Saldea sin lÌmites
             </p>
           </div>
 
@@ -64,7 +64,7 @@ export default function TrialPaywall() {
             <ul className="space-y-2 mb-6">
               {FEATURES.map(f => (
                 <li key={f} className="flex items-center gap-2.5 text-sm text-zinc-300">
-                  <span className="text-emerald-400 flex-shrink-0">‚úì</span>
+                  <span className="text-emerald-400 flex-shrink-0">?</span>
                   {f}
                 </li>
               ))}
@@ -80,8 +80,8 @@ export default function TrialPaywall() {
                     : 'border-white/10 text-zinc-400 hover:border-white/20'
                 }`}
               >
-                <span className="block font-bold">49‚Ç¨/mes</span>
-                <span className="block text-xs opacity-75 mt-0.5">30 d√≠as gratis al empezar</span>
+                <span className="block font-bold">49Ä/mes</span>
+                <span className="block text-xs opacity-75 mt-0.5">30 dÌas gratis al empezar</span>
               </button>
 
               <button
@@ -97,8 +97,8 @@ export default function TrialPaywall() {
                     Recomendado
                   </span>
                 )}
-                <span className="block font-bold">499‚Ç¨/a√±o</span>
-                <span className="block text-xs text-emerald-400 mt-0.5">Ahorra 89‚Ç¨ (2 meses)</span>
+                <span className="block font-bold">499Ä/aÒo</span>
+                <span className="block text-xs text-emerald-400 mt-0.5">Ahorra 89Ä (2 meses)</span>
               </button>
             </div>
 
@@ -110,34 +110,34 @@ export default function TrialPaywall() {
               onClick={() => setFase('checkout')}
               className="w-full bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-white font-bold py-3.5 rounded-xl text-base transition-colors shadow-lg shadow-sky-500/20"
             >
-              Activar Pro y continuar ‚Üí
+              Activar Pro y continuar ?
             </button>
 
             <p className="text-center text-xs text-zinc-500 mt-4">
-              Sin permanencia ¬∑ cancela cuando quieras ¬∑{' '}
+              Sin permanencia ∑ cancela cuando quieras ∑{' '}
               <a href="mailto:carlosgc@marsof.es" className="text-zinc-400 hover:text-zinc-200 underline underline-offset-2">
-                ¬øDudas?
+                øDudas?
               </a>
             </p>
           </div>
         </div>
       ) : (
-        /* Checkout embebido ‚Äî blanco para que Stripe se vea bien */
+        /* Checkout embebido ó blanco para que Stripe se vea bien */
         <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden">
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
             <div>
               <p className="font-semibold text-gray-900">
-                {intervalo === 'anio' ? 'Plan Pro ‚Äî 499‚Ç¨/a√±o' : 'Plan Pro ‚Äî 49‚Ç¨/mes'}
+                {intervalo === 'anio' ? 'Plan Pro ó 499Ä/aÒo' : 'Plan Pro ó 49Ä/mes'}
               </p>
               <p className="text-xs text-gray-400 mt-0.5">
-                {intervalo === 'anio' ? 'Sin permanencia ¬∑ cobro √∫nico' : '30 d√≠as gratis ¬∑ cancela cuando quieras'}
+                {intervalo === 'anio' ? 'Sin permanencia ∑ cobro ˙nico' : '30 dÌas gratis ∑ cancela cuando quieras'}
               </p>
             </div>
             <button
               onClick={() => setFase('expired')}
               className="text-sm text-gray-400 hover:text-gray-700 transition-colors"
             >
-              ‚Üê Volver
+              ? Volver
             </button>
           </div>
 
@@ -148,7 +148,7 @@ export default function TrialPaywall() {
               </EmbeddedCheckoutProvider>
             ) : (
               <div className="p-8 text-center text-gray-500 text-sm">
-                Stripe no est√° configurado. A√±ade{' '}
+                Stripe no est· configurado. AÒade{' '}
                 <code className="bg-gray-100 px-1 rounded">NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY</code>{' '}
                 a las variables de entorno.
               </div>

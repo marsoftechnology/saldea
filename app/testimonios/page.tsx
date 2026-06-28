@@ -5,7 +5,7 @@ import MarketingFooter from '../components/MarketingFooter'
 export const metadata: Metadata = {
   title: 'Testimonios de usuarios de Saldea | Marsof',
   description: 'Lo que dicen autónomos, gestorías y pymes que ya usan Saldea para cobrar sus facturas sin perder el tiempo.',
-  alternates: { canonical: 'https://marsof.es/testimonios' },
+  alternates: { canonical: 'https://www.marsof.es/testimonios' },
   keywords: ['testimonios Saldea', 'opiniones Saldea', 'reseñas Saldea', 'usuarios Saldea'],
   openGraph: { title: 'Testimonios Saldea', description: 'Lo que dicen los usuarios.', type: 'website', locale: 'es_ES' },
 }

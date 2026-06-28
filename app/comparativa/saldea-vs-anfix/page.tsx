@@ -1,11 +1,11 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Saldea vs Anfix: comparativa para asesor√≠as y gestor√≠as 2026',
-  description: 'Anfix gestiona contabilidad multi-cliente, Saldea persigue cobros con IA. Comparativa honesta y por qu√© usar ambos en una gestor√≠a.',
-  alternates: { canonical: 'https://marsof.es/comparativa/saldea-vs-anfix' },
+  title: 'Saldea vs Anfix: comparativa para asesorÌas y gestorÌas 2026',
+  description: 'Anfix gestiona contabilidad multi-cliente, Saldea persigue cobros con IA. Comparativa honesta y por quÈ usar ambos en una gestorÌa.',
+  alternates: { canonical: 'https://www.marsof.es/comparativa/saldea-vs-anfix' },
   keywords: [
     'saldea vs anfix',
     'anfix cobros',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Saldea vs Anfix: comparativa honesta',
-    description: 'Para asesor√≠as y gestor√≠as espa√±olas.',
+    description: 'Para asesorÌas y gestorÌas espaÒolas.',
     type: 'article',
     locale: 'es_ES',
   },
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Saldea vs Anfix: comparativa para asesor√≠as y gestor√≠as 2026',
-  description: '¬øSaldea o Anfix? Comparativa para gestor√≠as: cobros autom√°ticos con IA vs software de gesti√≥n tradicional.',
+  headline: 'Saldea vs Anfix: comparativa para asesorÌas y gestorÌas 2026',
+  description: 'øSaldea o Anfix? Comparativa para gestorÌas: cobros autom·ticos con IA vs software de gestiÛn tradicional.',
   author: { '@type': 'Organization', name: 'Marsof Technology' },
-  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://marsof.es/og-image.png' } },
+  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://www.marsof.es/og-image.png' } },
   datePublished: '2026-05-16',
   dateModified: '2026-05-16',
   inLanguage: 'es-ES',
@@ -43,23 +43,23 @@ export default function PageVsAnfix() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 d√≠as gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÌas gratis</Link>
           </div>
         </div>
       </nav>
 
       <article className="max-w-3xl mx-auto px-6 py-16">
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ¬∑ 7 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Saldea vs Anfix para gestor√≠as</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Si tu gestor√≠a usa Anfix, Saldea es el complemento perfecto. Te explico qu√© hace cada uno y c√≥mo se integran.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ∑ 7 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Saldea vs Anfix para gestorÌas</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">Si tu gestorÌa usa Anfix, Saldea es el complemento perfecto. Te explico quÈ hace cada uno y cÛmo se integran.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El reparto natural</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
-            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Anfix:</strong> ERP contable para asesor√≠as. Gestiona la contabilidad de TUS clientes (libros de IVA, modelos, balances, n√≥minas).</p>
-            <p className="text-zinc-300"><strong className="text-sky-400">Saldea:</strong> herramienta de cobros. Persigue las facturas impagadas de TUS clientes (o las tuyas) con IA y secuencias autom√°ticas.</p>
+            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Anfix:</strong> ERP contable para asesorÌas. Gestiona la contabilidad de TUS clientes (libros de IVA, modelos, balances, nÛminas).</p>
+            <p className="text-zinc-300"><strong className="text-sky-400">Saldea:</strong> herramienta de cobros. Persigue las facturas impagadas de TUS clientes (o las tuyas) con IA y secuencias autom·ticas.</p>
           </div>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Comparativa funcional</h2>
@@ -67,32 +67,32 @@ export default function PageVsAnfix() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="bg-sky-500/20">
-                  <th className="py-3 px-4 text-left text-zinc-100">Funci√≥n</th>
+                  <th className="py-3 px-4 text-left text-zinc-100">FunciÛn</th>
                   <th className="py-3 px-4 text-left text-zinc-100">Saldea</th>
                   <th className="py-3 px-4 text-left text-zinc-100">Anfix</th>
                 </tr>
               </thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Contabilidad multi-cliente</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Modelos AEAT (303, 130, 390)</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">N√≥minas</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Veri*factu</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Multi-cliente para gestor√≠as</td><td className="py-2 px-4">‚úÖ (orgs)</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios cobro con IA</td><td className="py-2 px-4">‚úÖ Claude</td><td className="py-2 px-4">‚ùå</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Escalado de tono</td><td className="py-2 px-4">‚úÖ 4 niveles</td><td className="py-2 px-4">‚ùå</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Detecci√≥n respuestas</td><td className="py-2 px-4">‚úÖ</td><td className="py-2 px-4">‚ùå</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">‚úÖ</td><td className="py-2 px-4">Pasarela</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Precio para gestor√≠a</td><td className="py-2 px-4">49‚Ç¨/mes</td><td className="py-2 px-4">~99‚Ç¨/mes seg√∫n clientes</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Trial</td><td className="py-2 px-4">30 d√≠as con tarjeta</td><td className="py-2 px-4">15 d√≠as</td></tr>
-                <tr><td className="py-2 px-4">Conciliaci√≥n bancaria autom√°tica</td><td className="py-2 px-4">‚úÖ Plan Max</td><td className="py-2 px-4">‚ùå</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Contabilidad multi-cliente</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Modelos AEAT (303, 130, 390)</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">NÛminas</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Veri*factu</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Multi-cliente para gestorÌas</td><td className="py-2 px-4">? (orgs)</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios cobro con IA</td><td className="py-2 px-4">? Claude</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Escalado de tono</td><td className="py-2 px-4">? 4 niveles</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">DetecciÛn respuestas</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">?</td><td className="py-2 px-4">Pasarela</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Precio para gestorÌa</td><td className="py-2 px-4">49Ä/mes</td><td className="py-2 px-4">~99Ä/mes seg˙n clientes</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Trial</td><td className="py-2 px-4">30 dÌas con tarjeta</td><td className="py-2 px-4">15 dÌas</td></tr>
+                <tr><td className="py-2 px-4">ConciliaciÛn bancaria autom·tica</td><td className="py-2 px-4">? Plan Max</td><td className="py-2 px-4">?</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El stack ideal de una gestor√≠a 2026</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si gestionas la contabilidad de varios clientes, la combinaci√≥n m√°s rentable es:</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El stack ideal de una gestorÌa 2026</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si gestionas la contabilidad de varios clientes, la combinaciÛn m·s rentable es:</p>
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-            <li><strong>Anfix</strong> para la contabilidad, modelos, n√≥minas, Veri*factu de cada cliente</li>
+            <li><strong>Anfix</strong> para la contabilidad, modelos, nÛminas, Veri*factu de cada cliente</li>
             <li><strong>Saldea</strong> para perseguir cobros de los clientes que se retrasan</li>
             <li>Vendes Saldea como <strong>servicio premium</strong> a tus clientes: "Te llevo la contabilidad Y te recupero las facturas vencidas"</li>
           </ol>
@@ -100,21 +100,21 @@ export default function PageVsAnfix() {
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El argumento comercial para tu cliente</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Cuando vas a un cliente, no le digas "uso Saldea y Anfix". Dile esto:</p>
           <div className="bg-zinc-900/40 border-l-4 border-sky-500 rounded-r-xl p-5 my-4">
-            <p className="text-zinc-300 italic">"Te llevo toda la contabilidad mensual (IVA, IRPF, modelos) y, adem√°s, persigo autom√°ticamente con IA cualquier factura que se te retrase. Servicio integral: facturas legales + cobros recuperados."</p>
+            <p className="text-zinc-300 italic">"Te llevo toda la contabilidad mensual (IVA, IRPF, modelos) y, adem·s, persigo autom·ticamente con IA cualquier factura que se te retrase. Servicio integral: facturas legales + cobros recuperados."</p>
           </div>
-          <p className="text-zinc-300 leading-relaxed mb-4">Eso te permite cobrar un fee mensual mayor o vender Saldea como add-on espec√≠fico (29-49‚Ç¨/mes adicionales por cliente activo).</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Eso te permite cobrar un fee mensual mayor o vender Saldea como add-on especÌfico (29-49Ä/mes adicionales por cliente activo).</p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Diferencial clave de Saldea</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Lo que NO encuentras en ning√∫n software de gestor√≠a: una IA que <strong>escala el tono progresivamente</strong> (amable ‚Üí firme ‚Üí formal con Ley 3/2004 ‚Üí previo a burofax) y <strong>entiende las respuestas</strong> de los morosos (paga, dispute, promesa, vacaciones).</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Lo que NO encuentras en ning˙n software de gestorÌa: una IA que <strong>escala el tono progresivamente</strong> (amable ? firme ? formal con Ley 3/2004 ? previo a burofax) y <strong>entiende las respuestas</strong> de los morosos (paga, dispute, promesa, vacaciones).</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì <strong>Conciliaci√≥n bancaria autom√°tica</strong> (Plan Max): detecta autom√°ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
+            <li>? <strong>ConciliaciÛn bancaria autom·tica</strong> (Plan Max): detecta autom·ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
         </section>
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Pru√©balo con uno de tus clientes</h3>
-          <p className="text-zinc-300 mb-5">Coge el cliente que m√°s facturas vencidas tiene. Importa sus facturas en Saldea. En 30 d√≠as sabr√°s si tu gestor√≠a puede vender esto como servicio premium. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">PruÈbalo con uno de tus clientes</h3>
+          <p className="text-zinc-300 mb-5">Coge el cliente que m·s facturas vencidas tiene. Importa sus facturas en Saldea. En 30 dÌas sabr·s si tu gestorÌa puede vender esto como servicio premium. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </article>
 

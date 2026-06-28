@@ -1,42 +1,42 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'C√≥mo cobrar a clientes como dise√±ador o freelance creativo | Marsof',
-  description: 'Estrategias espec√≠ficas para dise√±adores, ilustradores y creativos. Cl√°usula de propiedad intelectual, anticipos y archivos fuente.',
-  alternates: { canonical: 'https://marsof.es/blog/cobrar-disenador-creativo' },
-  keywords: ['cobrar dise√±ador freelance', 'cobrar dise√±o gr√°fico', 'cobrar ilustrador', 'cobrar trabajo creativo'],
-  openGraph: { title: 'C√≥mo cobrar como dise√±ador creativo', description: 'Estrategias y cl√°usulas.', type: 'article', locale: 'es_ES' },
+  title: 'CÛmo cobrar a clientes como diseÒador o freelance creativo | Marsof',
+  description: 'Estrategias especÌficas para diseÒadores, ilustradores y creativos. Cl·usula de propiedad intelectual, anticipos y archivos fuente.',
+  alternates: { canonical: 'https://www.marsof.es/blog/cobrar-disenador-creativo' },
+  keywords: ['cobrar diseÒador freelance', 'cobrar diseÒo gr·fico', 'cobrar ilustrador', 'cobrar trabajo creativo'],
+  openGraph: { title: 'CÛmo cobrar como diseÒador creativo', description: 'Estrategias y cl·usulas.', type: 'article', locale: 'es_ES' },
 }
 
 export default function Page() {
   return (
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Sector ¬∑ 4 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">C√≥mo cobrar como dise√±ador o freelance creativo</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">El sector creativo es vulnerable a impagos. Pero tienes un arma √∫nica: la propiedad intelectual.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Sector ∑ 4 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">CÛmo cobrar como diseÒador o freelance creativo</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">El sector creativo es vulnerable a impagos. Pero tienes un arma ˙nica: la propiedad intelectual.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Tu arma secreta: la propiedad intelectual</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">En Espa√±a, la propiedad intelectual de tu trabajo es tuya HASTA que cobras. Esto te da un poder enorme.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">En EspaÒa, la propiedad intelectual de tu trabajo es tuya HASTA que cobras. Esto te da un poder enorme.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cl√°usula cr√≠tica en presupuesto</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cl·usula crÌtica en presupuesto</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4 text-sm">
             <p className="text-zinc-300 whitespace-pre-line">
-{`PROPIEDAD INTELECTUAL Y CESI√ìN DE DERECHOS:
+{`PROPIEDAD INTELECTUAL Y CESI”N DE DERECHOS:
 
-La cesi√≥n de los derechos de explotaci√≥n y uso comercial
-del trabajo entregado se efect√∫a √öNICAMENTE tras el pago
-√≠ntegro del importe acordado.
+La cesiÛn de los derechos de explotaciÛn y uso comercial
+del trabajo entregado se efect˙a ⁄NICAMENTE tras el pago
+Ìntegro del importe acordado.
 
 Hasta el pago completo, el trabajo se entrega bajo licencia
-limitada de revisi√≥n interna, prohibiendo su uso comercial,
-publicaci√≥n, modificaci√≥n o cesi√≥n a terceros.
+limitada de revisiÛn interna, prohibiendo su uso comercial,
+publicaciÛn, modificaciÛn o cesiÛn a terceros.
 
-El uso no autorizado constituye infracci√≥n de los derechos
+El uso no autorizado constituye infracciÛn de los derechos
 de propiedad intelectual (Real Decreto Legislativo 1/1996),
 con las consecuencias legales correspondientes.`}
             </p>
@@ -44,35 +44,35 @@ con las consecuencias legales correspondientes.`}
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Entrega en fases</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>1Ô∏è‚É£ <strong>Borradores en PDF con marca de agua</strong> hasta 1er hito de pago</li>
-            <li>2Ô∏è‚É£ <strong>Versi√≥n preview sin archivos fuente</strong> hasta 2¬∫ hito</li>
-            <li>3Ô∏è‚É£ <strong>Archivos fuente y derechos de explotaci√≥n</strong> SOLO tras pago completo</li>
+            <li>1?? <strong>Borradores en PDF con marca de agua</strong> hasta 1er hito de pago</li>
+            <li>2?? <strong>VersiÛn preview sin archivos fuente</strong> hasta 2∫ hito</li>
+            <li>3?? <strong>Archivos fuente y derechos de explotaciÛn</strong> SOLO tras pago completo</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si lo est√° usando sin pagar</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si lo est· usando sin pagar</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Es agravante. Manda burofax:</p>
           <div className="bg-zinc-900/40 border-l-4 border-rose-500 rounded-r-xl p-5 my-4">
-            <p className="text-zinc-300 text-sm italic">"He detectado que est√°s usando comercialmente el material entregado sin haber completado el pago. Esto constituye infracci√≥n de propiedad intelectual seg√∫n RDL 1/1996. Te requiero al pago √≠ntegro de [importe] en 7 d√≠as, o proceder√© a denuncia por uso indebido + reclamaci√≥n civil."</p>
+            <p className="text-zinc-300 text-sm italic">"He detectado que est·s usando comercialmente el material entregado sin haber completado el pago. Esto constituye infracciÛn de propiedad intelectual seg˙n RDL 1/1996. Te requiero al pago Ìntegro de [importe] en 7 dÌas, o procederÈ a denuncia por uso indebido + reclamaciÛn civil."</p>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Estructura de precios t√≠pica</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Estructura de precios tÌpica</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì 30% al firmar presupuesto (reserva de fecha)</li>
-            <li>‚úì 30% a la entrega de borradores aprobados</li>
-            <li>‚úì 40% a la entrega final con cesi√≥n de derechos</li>
+            <li>? 30% al firmar presupuesto (reserva de fecha)</li>
+            <li>? 30% a la entrega de borradores aprobados</li>
+            <li>? 40% a la entrega final con cesiÛn de derechos</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Plataformas de cobro creativo</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì <strong>Stripe Connect:</strong> link de pago en cada entrega</li>
-            <li>‚úì <strong>Cuenta aut√≥nomo dedicada:</strong> separar lo creativo del resto</li>
-            <li>‚úì <strong>Portal cliente con contrase√±a:</strong> archivos bloqueados hasta cobro</li>
+            <li>? <strong>Stripe Connect:</strong> link de pago en cada entrega</li>
+            <li>? <strong>Cuenta autÛnomo dedicada:</strong> separar lo creativo del resto</li>
+            <li>? <strong>Portal cliente con contraseÒa:</strong> archivos bloqueados hasta cobro</li>
           </ul>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea persigue tus cobros creativos</h3>
-          <p className="text-zinc-300 mb-5">Mientras t√∫ creas, Saldea reclama. Recordatorios profesionales con tu marca personal. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <p className="text-zinc-300 mb-5">Mientras t˙ creas, Saldea reclama. Recordatorios profesionales con tu marca personal. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>

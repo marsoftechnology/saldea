@@ -43,7 +43,7 @@ function BrowserFrame({ src, alt, url, priority = false }: { src: string; alt: s
 export const metadata: Metadata = {
   title: 'Saldea — Software de cobros con IA para autónomos y pymes',
   description: 'Automatiza el cobro de tus facturas impagadas con IA. Recordatorios por email que escalan en tono, detección de respuestas, conciliación bancaria automática y Stripe Connect. 49€/mes · 30 días gratis.',
-  alternates: { canonical: 'https://marsof.es/saldea' },
+  alternates: { canonical: 'https://www.marsof.es/saldea' },
   keywords: [
     'software cobros',
     'cobrar facturas impagadas',

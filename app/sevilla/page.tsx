@@ -1,22 +1,22 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Saldea en Sevilla: software de cobros para aut√≥nomos y gestor√≠as hispalenses',
-  description: 'Saldea es la herramienta espa√±ola con IA que automatiza el cobro de facturas. Para aut√≥nomos, gestor√≠as y pymes de Sevilla y toda la provincia.',
-  alternates: { canonical: 'https://marsof.es/sevilla' },
+  title: 'Saldea en Sevilla: software de cobros para autÛnomos y gestorÌas hispalenses',
+  description: 'Saldea es la herramienta espaÒola con IA que automatiza el cobro de facturas. Para autÛnomos, gestorÌas y pymes de Sevilla y toda la provincia.',
+  alternates: { canonical: 'https://www.marsof.es/sevilla' },
   keywords: [
     'software cobros Sevilla',
-    'gestor√≠a Sevilla cobros',
-    'aut√≥nomo Sevilla facturas',
-    'asesor√≠a fiscal Sevilla',
+    'gestorÌa Sevilla cobros',
+    'autÛnomo Sevilla facturas',
+    'asesorÌa fiscal Sevilla',
     'Saldea Sevilla',
     'pyme Sevilla cobros',
   ],
   openGraph: {
     title: 'Saldea en Sevilla: software de cobros con IA',
-    description: 'Para aut√≥nomos y gestor√≠as de Sevilla.',
+    description: 'Para autÛnomos y gestorÌas de Sevilla.',
     type: 'website',
     locale: 'es_ES',
   },
@@ -25,10 +25,10 @@ export const metadata: Metadata = {
 const schemaLocal = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  serviceType: 'Software de gesti√≥n de cobros',
+  serviceType: 'Software de gestiÛn de cobros',
   provider: { '@id': 'https://marsof.es/#organization' },
   areaServed: { '@type': 'City', name: 'Sevilla' },
-  description: 'Software con IA que automatiza el cobro de facturas para aut√≥nomos, gestor√≠as y pymes de Sevilla.',
+  description: 'Software con IA que automatiza el cobro de facturas para autÛnomos, gestorÌas y pymes de Sevilla.',
 }
 
 export default function PageSevilla() {
@@ -41,60 +41,60 @@ export default function PageSevilla() {
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
             <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 d√≠as gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÌas gratis</Link>
             </div>
           </div>
         </nav>
 
         <section className="max-w-4xl mx-auto px-6 pt-16 pb-12">
           <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-300 px-3 py-1.5 rounded-full text-xs font-medium mb-6">
-            <span>üìç Atendiendo Sevilla y provincia</span>
+            <span>?? Atendiendo Sevilla y provincia</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea en Sevilla: automatiza el cobro de tus facturas</h1>
           <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-            Si eres aut√≥nomo, gestor√≠a o pyme en <strong>Sevilla</strong>, sabes lo que es perseguir cobros. Saldea, desarrollada en <strong>Marsof Technology</strong> (Huelva), automatiza ese proceso con IA. Te quita horas semanales de trabajo manual.
+            Si eres autÛnomo, gestorÌa o pyme en <strong>Sevilla</strong>, sabes lo que es perseguir cobros. Saldea, desarrollada en <strong>Marsof Technology</strong> (Huelva), automatiza ese proceso con IA. Te quita horas semanales de trabajo manual.
           </p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El tejido empresarial sevillano y los cobros</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            Sevilla concentra el mayor n√∫mero de <strong>gestor√≠as y asesor√≠as fiscales de Andaluc√≠a</strong>. Sus principales sectores cliente son: hosteler√≠a, comercio, construcci√≥n, servicios profesionales, agricultura y industria agroalimentaria.
+            Sevilla concentra el mayor n˙mero de <strong>gestorÌas y asesorÌas fiscales de AndalucÌa</strong>. Sus principales sectores cliente son: hostelerÌa, comercio, construcciÛn, servicios profesionales, agricultura y industria agroalimentaria.
           </p>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            En todos esos sectores, la morosidad supera la media nacional. Las facturas que vencen a 60 d√≠as suelen pagarse a 90-120. Saldea est√° pensado exactamente para perseguir esas facturas sin que tengas que dedicar horas.
+            En todos esos sectores, la morosidad supera la media nacional. Las facturas que vencen a 60 dÌas suelen pagarse a 90-120. Saldea est· pensado exactamente para perseguir esas facturas sin que tengas que dedicar horas.
           </p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Sectores sevillanos que m√°s usan Saldea</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Sectores sevillanos que m·s usan Saldea</h2>
           <ul className="space-y-2 text-zinc-300 mb-8">
-            <li>üìä <strong>Asesor√≠as fiscales</strong> de Sevilla capital, Aljarafe, Alcal√° de Guada√≠ra, Dos Hermanas</li>
-            <li>üè® <strong>Hosteler√≠a y restauraci√≥n</strong> (proveedores y profesionales)</li>
-            <li>üèóÔ∏è <strong>Construcci√≥n</strong> y materiales</li>
-            <li>üé® <strong>Agencias creativas y consultoras</strong></li>
-            <li>üç∑ <strong>Bodegas y agroalimentarias</strong> de la Sierra Norte y la Campi√±a</li>
-            <li>üë©‚Äçüíª <strong>Aut√≥nomos del sector servicios</strong> (formaci√≥n, dise√±o, salud)</li>
+            <li>?? <strong>AsesorÌas fiscales</strong> de Sevilla capital, Aljarafe, Alcal· de GuadaÌra, Dos Hermanas</li>
+            <li>?? <strong>HostelerÌa y restauraciÛn</strong> (proveedores y profesionales)</li>
+            <li>??? <strong>ConstrucciÛn</strong> y materiales</li>
+            <li>?? <strong>Agencias creativas y consultoras</strong></li>
+            <li>?? <strong>Bodegas y agroalimentarias</strong> de la Sierra Norte y la CampiÒa</li>
+            <li>????? <strong>AutÛnomos del sector servicios</strong> (formaciÛn, diseÒo, salud)</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por qu√© Saldea encaja en Sevilla</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Por quÈ Saldea encaja en Sevilla</h2>
           <ul className="space-y-3 text-zinc-300 mb-8">
-            <li>‚úì <strong>Empresa espa√±ola y andaluza</strong>: Marsof es andaluza, no de Silicon Valley</li>
-            <li>‚úì <strong>Soporte en espa√±ol horario peninsular</strong>: si tienes dudas, te contestamos r√°pido</li>
-            <li>‚úì <strong>Conoce la Ley 3/2004</strong>: los emails escalan autom√°ticamente y citan la normativa espa√±ola</li>
-            <li>‚úì <strong>Stripe Connect integrado</strong>: tus cobros aparecen en tu cuenta bancaria directamente</li>
-            <li>‚úì <strong>30 d√≠as gratis</strong>: pru√©balo con clientes reales antes de pagar nada</li>
+            <li>? <strong>Empresa espaÒola y andaluza</strong>: Marsof es andaluza, no de Silicon Valley</li>
+            <li>? <strong>Soporte en espaÒol horario peninsular</strong>: si tienes dudas, te contestamos r·pido</li>
+            <li>? <strong>Conoce la Ley 3/2004</strong>: los emails escalan autom·ticamente y citan la normativa espaÒola</li>
+            <li>? <strong>Stripe Connect integrado</strong>: tus cobros aparecen en tu cuenta bancaria directamente</li>
+            <li>? <strong>30 dÌas gratis</strong>: pruÈbalo con clientes reales antes de pagar nada</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-12 mb-4">Reuniones presenciales (Sevilla y Huelva)</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">
-            Si gestionas un despacho mediano o grande en Sevilla y prefieres una <strong>demo presencial</strong> o videollamada personalizada, escr√≠benos a <a href="mailto:carlosgc@marsof.es" className="text-sky-400 hover:underline">carlosgc@marsof.es</a>.
+            Si gestionas un despacho mediano o grande en Sevilla y prefieres una <strong>demo presencial</strong> o videollamada personalizada, escrÌbenos a <a href="mailto:carlosgc@marsof.es" className="text-sky-400 hover:underline">carlosgc@marsof.es</a>.
           </p>
           <p className="text-zinc-300 leading-relaxed mb-8">
-            Para gestor√≠as con m√°s de 10 clientes activos, vamos en persona a Sevilla cuando sea necesario. Estamos a 1 hora.
+            Para gestorÌas con m·s de 10 clientes activos, vamos en persona a Sevilla cuando sea necesario. Estamos a 1 hora.
           </p>
 
           <div className="bg-gradient-to-br from-sky-500/15 to-transparent border border-sky-500/30 rounded-2xl p-8 text-center">
-            <h2 className="text-2xl font-bold mb-2">Empieza con 30 d√≠as gratis</h2>
+            <h2 className="text-2xl font-bold mb-2">Empieza con 30 dÌas gratis</h2>
             <p className="text-zinc-400 mb-6">Cancela antes y no pagas nada. Sin permanencia. Si no encaja con tu negocio en Sevilla, cancelas en 1 clic.</p>
-            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis ‚Üí</Link>
+            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-bold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Empezar gratis ?</Link>
           </div>
         </section>
 

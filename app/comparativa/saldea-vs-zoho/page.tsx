@@ -1,12 +1,12 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../../components/MarketingFooter'
 
 export const metadata: Metadata = {
   title: 'Saldea vs Zoho Books: ERP global vs cobros locales 2026',
-  description: 'Zoho Books es contabilidad internacional. Saldea es IA espa√±ola de cobros. An√°lisis honesto y por qu√© Saldea encaja mejor para el mercado espa√±ol.',
-  alternates: { canonical: 'https://marsof.es/comparativa/saldea-vs-zoho' },
-  keywords: ['saldea vs zoho', 'zoho books cobros', 'alternativa zoho', 'zoho vs saldea espa√±ol'],
+  description: 'Zoho Books es contabilidad internacional. Saldea es IA espaÒola de cobros. An·lisis honesto y por quÈ Saldea encaja mejor para el mercado espaÒol.',
+  alternates: { canonical: 'https://www.marsof.es/comparativa/saldea-vs-zoho' },
+  keywords: ['saldea vs zoho', 'zoho books cobros', 'alternativa zoho', 'zoho vs saldea espaÒol'],
   openGraph: { title: 'Saldea vs Zoho Books', description: 'ERP global vs cobros locales.', type: 'article', locale: 'es_ES' },
 }
 
@@ -14,9 +14,9 @@ const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'Saldea vs Zoho Books: ERP global vs cobros locales 2026',
-  description: '¬øSaldea o Zoho Books? Zoho Books es un ERP global, Saldea es la IA especializada en cobrar facturas en Espa√±a.',
+  description: 'øSaldea o Zoho Books? Zoho Books es un ERP global, Saldea es la IA especializada en cobrar facturas en EspaÒa.',
   author: { '@type': 'Organization', name: 'Marsof Technology' },
-  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://marsof.es/og-image.png' } },
+  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://www.marsof.es/og-image.png' } },
   datePublished: '2026-05-16',
   dateModified: '2026-05-16',
   inLanguage: 'es-ES',
@@ -32,59 +32,59 @@ export default function PageVsZoho() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 d√≠as gratis</Link></div>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÌas gratis</Link></div>
         </div>
       </nav>
       <article className="max-w-3xl mx-auto px-6 py-16">
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ¬∑ 6 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ∑ 6 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea vs Zoho Books</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Zoho Books es una suite contable global. Saldea est√° pensado 100% para el mercado espa√±ol. An√°lisis honesto.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">Zoho Books es una suite contable global. Saldea est· pensado 100% para el mercado espaÒol. An·lisis honesto.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Resumen</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
-            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Zoho Books:</strong> contabilidad SaaS multinacional. Funciona en 180 pa√≠ses. √ötil si tienes operaciones internacionales.</p>
-            <p className="text-zinc-300"><strong className="text-sky-400">Saldea:</strong> SaaS espa√±ol 100% enfocado en cobros autom√°ticos con IA. Conoce Ley 3/2004 y Veri*factu de forma nativa.</p>
+            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Zoho Books:</strong> contabilidad SaaS multinacional. Funciona en 180 paÌses. ⁄til si tienes operaciones internacionales.</p>
+            <p className="text-zinc-300"><strong className="text-sky-400">Saldea:</strong> SaaS espaÒol 100% enfocado en cobros autom·ticos con IA. Conoce Ley 3/2004 y Veri*factu de forma nativa.</p>
           </div>
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Comparativa</h2>
           <div className="overflow-x-auto my-5">
             <table className="w-full text-sm border-collapse">
-              <thead><tr className="bg-sky-500/20"><th className="py-3 px-4 text-left text-zinc-100">Funci√≥n</th><th className="py-3 px-4 text-left text-zinc-100">Saldea</th><th className="py-3 px-4 text-left text-zinc-100">Zoho Books</th></tr></thead>
+              <thead><tr className="bg-sky-500/20"><th className="py-3 px-4 text-left text-zinc-100">FunciÛn</th><th className="py-3 px-4 text-left text-zinc-100">Saldea</th><th className="py-3 px-4 text-left text-zinc-100">Zoho Books</th></tr></thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Origen</td><td className="py-2 px-4">Espa√±a (Marsof)</td><td className="py-2 px-4">India (Zoho)</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Soporte espa√±ol</td><td className="py-2 px-4">‚úÖ Nativo</td><td className="py-2 px-4">Limitado</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Ley 3/2004</td><td className="py-2 px-4">‚úÖ Autom√°tico</td><td className="py-2 px-4">‚ùå</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Origen</td><td className="py-2 px-4">EspaÒa (Marsof)</td><td className="py-2 px-4">India (Zoho)</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Soporte espaÒol</td><td className="py-2 px-4">? Nativo</td><td className="py-2 px-4">Limitado</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Ley 3/2004</td><td className="py-2 px-4">? Autom·tico</td><td className="py-2 px-4">?</td></tr>
                 <tr className="border-b border-white/10"><td className="py-2 px-4">Veri*factu</td><td className="py-2 px-4">N/A (no factura)</td><td className="py-2 px-4">Pendiente</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios IA</td><td className="py-2 px-4">‚úÖ Claude</td><td className="py-2 px-4">B√°sicos</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Contabilidad</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Datos en Europa</td><td className="py-2 px-4">‚úÖ Frankfurt</td><td className="py-2 px-4">Multinacional</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Precio</td><td className="py-2 px-4">49‚Ç¨/mes</td><td className="py-2 px-4">~20-200‚Ç¨/mes seg√∫n plan</td></tr>
-                <tr><td className="py-2 px-4">Conciliaci√≥n bancaria autom√°tica</td><td className="py-2 px-4">‚úÖ Plan Max</td><td className="py-2 px-4">‚ùå</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios IA</td><td className="py-2 px-4">? Claude</td><td className="py-2 px-4">B·sicos</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Contabilidad</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Datos en Europa</td><td className="py-2 px-4">? Frankfurt</td><td className="py-2 px-4">Multinacional</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Precio</td><td className="py-2 px-4">49Ä/mes</td><td className="py-2 px-4">~20-200Ä/mes seg˙n plan</td></tr>
+                <tr><td className="py-2 px-4">ConciliaciÛn bancaria autom·tica</td><td className="py-2 px-4">? Plan Max</td><td className="py-2 px-4">?</td></tr>
               </tbody>
             </table>
           </div>
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo elegir Zoho Books</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo elegir Zoho Books</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Empresa con operaciones internacionales (USA, UK, India)</li>
-            <li>‚úì Necesitas suite contable integrada con CRM, ventas, RRHH (Zoho One)</li>
-            <li>‚úì Eres equipo biling√ºe y no te molesta soporte en ingl√©s</li>
+            <li>? Empresa con operaciones internacionales (USA, UK, India)</li>
+            <li>? Necesitas suite contable integrada con CRM, ventas, RRHH (Zoho One)</li>
+            <li>? Eres equipo biling¸e y no te molesta soporte en inglÈs</li>
           </ul>
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo elegir Saldea</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo elegir Saldea</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Operas principalmente en Espa√±a</li>
-            <li>‚úì Tu problema son las facturas vencidas, no la contabilidad</li>
-            <li>‚úì Quieres soporte y producto en espa√±ol sin desfase horario</li>
-            <li>‚úì Necesitas que los recordatorios <strong>citen autom√°ticamente la Ley 3/2004</strong></li>
-            <li>‚úì <strong>Conciliaci√≥n bancaria autom√°tica</strong> (Plan Max): detecta autom√°ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
+            <li>? Operas principalmente en EspaÒa</li>
+            <li>? Tu problema son las facturas vencidas, no la contabilidad</li>
+            <li>? Quieres soporte y producto en espaÒol sin desfase horario</li>
+            <li>? Necesitas que los recordatorios <strong>citen autom·ticamente la Ley 3/2004</strong></li>
+            <li>? <strong>ConciliaciÛn bancaria autom·tica</strong> (Plan Max): detecta autom·ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El argumento decisivo</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si tu cliente es espa√±ol, lo que m√°s le mueve es que el recordatorio cite espec√≠ficamente la <strong>Ley 3/2004</strong> y los intereses concretos. Zoho no lo hace nativamente. Saldea s√≠, en cada email. La diferencia se nota en la tasa de cobro real.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si tu cliente es espaÒol, lo que m·s le mueve es que el recordatorio cite especÌficamente la <strong>Ley 3/2004</strong> y los intereses concretos. Zoho no lo hace nativamente. Saldea sÌ, en cada email. La diferencia se nota en la tasa de cobro real.</p>
         </section>
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea + Zoho Books pueden convivir</h3>
-          <p className="text-zinc-300 mb-5">Si ya usas Zoho para contabilidad internacional, Saldea complementa con cobros autom√°ticos para Espa√±a. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <p className="text-zinc-300 mb-5">Si ya usas Zoho para contabilidad internacional, Saldea complementa con cobros autom·ticos para EspaÒa. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </article>
       <MarketingFooter />

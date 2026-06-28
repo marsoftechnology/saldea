@@ -1,22 +1,22 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import MarketingFooter from '../../components/MarketingFooter'
 
 export const metadata: Metadata = {
-  title: 'Saldea vs Billin: facturaci√≥n vs cobros autom√°ticos 2026',
-  description: 'Billin factura, Saldea cobra. Comparativa honesta: precio, funciones y por qu√© usar ambos en aut√≥nomos y pymes espa√±olas.',
-  alternates: { canonical: 'https://marsof.es/comparativa/saldea-vs-billin' },
+  title: 'Saldea vs Billin: facturaciÛn vs cobros autom·ticos 2026',
+  description: 'Billin factura, Saldea cobra. Comparativa honesta: precio, funciones y por quÈ usar ambos en autÛnomos y pymes espaÒolas.',
+  alternates: { canonical: 'https://www.marsof.es/comparativa/saldea-vs-billin' },
   keywords: ['saldea vs billin', 'billin cobros', 'alternativa billin', 'mejor software autonomos', 'billin vs saldea'],
-  openGraph: { title: 'Saldea vs Billin: comparativa 2026', description: 'Facturaci√≥n + cobros autom√°ticos.', type: 'article', locale: 'es_ES' },
+  openGraph: { title: 'Saldea vs Billin: comparativa 2026', description: 'FacturaciÛn + cobros autom·ticos.', type: 'article', locale: 'es_ES' },
 }
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Saldea vs Billin: facturaci√≥n vs cobros autom√°ticos 2026',
-  description: '¬øSaldea o Billin? Comparativa: Billin factura, Saldea cobra autom√°ticamente con IA cuando el cliente no paga.',
+  headline: 'Saldea vs Billin: facturaciÛn vs cobros autom·ticos 2026',
+  description: 'øSaldea o Billin? Comparativa: Billin factura, Saldea cobra autom·ticamente con IA cuando el cliente no paga.',
   author: { '@type': 'Organization', name: 'Marsof Technology' },
-  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://marsof.es/og-image.png' } },
+  publisher: { '@type': 'Organization', name: 'Marsof Technology', logo: { '@type': 'ImageObject', url: 'https://www.marsof.es/og-image.png' } },
   datePublished: '2026-05-16',
   dateModified: '2026-05-16',
   inLanguage: 'es-ES',
@@ -32,22 +32,22 @@ export default function PageVsBillin() {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
           <div className="flex items-center gap-2">
-<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 d√≠as gratis</Link>
+<Link href="/registro" className="bg-sky-500 text-zinc-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-sky-400 transition-colors">30 dÌas gratis</Link>
           </div>
         </div>
       </nav>
 
       <article className="max-w-3xl mx-auto px-6 py-16">
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ¬∑ 6 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ∑ 6 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Saldea vs Billin</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Billin emite facturas legales. Saldea persigue los cobros con IA. Son herramientas que cubren etapas distintas. Aqu√≠ va el an√°lisis.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">Billin emite facturas legales. Saldea persigue los cobros con IA. Son herramientas que cubren etapas distintas. AquÌ va el an·lisis.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Resumen</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
-            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Billin:</strong> software de facturaci√≥n gratuito (con planes de pago) para aut√≥nomos. Buenas plantillas, f√°cil de usar, Veri*factu homologado.</p>
+            <p className="text-zinc-300 mb-3"><strong className="text-sky-400">Billin:</strong> software de facturaciÛn gratuito (con planes de pago) para autÛnomos. Buenas plantillas, f·cil de usar, Veri*factu homologado.</p>
             <p className="text-zinc-300"><strong className="text-sky-400">Saldea:</strong> NO emite facturas. PERSIGUE las facturas que ya emitiste con IA cuando el cliente se retrasa.</p>
           </div>
 
@@ -56,54 +56,54 @@ export default function PageVsBillin() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="bg-sky-500/20">
-                  <th className="py-3 px-4 text-left text-zinc-100">Funci√≥n</th>
+                  <th className="py-3 px-4 text-left text-zinc-100">FunciÛn</th>
                   <th className="py-3 px-4 text-left text-zinc-100">Saldea</th>
                   <th className="py-3 px-4 text-left text-zinc-100">Billin</th>
                 </tr>
               </thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Emitir facturas</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Veri*factu</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios autom√°ticos</td><td className="py-2 px-4">‚úÖ con IA</td><td className="py-2 px-4">B√°sicos (manuales)</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Escalado tono IA</td><td className="py-2 px-4">‚úÖ 4 niveles</td><td className="py-2 px-4">‚ùå</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Detecci√≥n respuestas</td><td className="py-2 px-4">‚úÖ Claude</td><td className="py-2 px-4">‚ùå</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">‚úÖ nativo</td><td className="py-2 px-4">Parcial</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Plan gratis</td><td className="py-2 px-4">Limitado (3 facturas)</td><td className="py-2 px-4">S√≠ (con l√≠mites)</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Plan Pro</td><td className="py-2 px-4">49‚Ç¨/mes</td><td className="py-2 px-4">~15-30‚Ç¨/mes</td></tr>
-                <tr><td className="py-2 px-4">Conciliaci√≥n bancaria autom√°tica</td><td className="py-2 px-4">‚úÖ Plan Max</td><td className="py-2 px-4">‚ùå</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Emitir facturas</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Veri*factu</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Recordatorios autom·ticos</td><td className="py-2 px-4">? con IA</td><td className="py-2 px-4">B·sicos (manuales)</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Escalado tono IA</td><td className="py-2 px-4">? 4 niveles</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">DetecciÛn respuestas</td><td className="py-2 px-4">? Claude</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Stripe Connect</td><td className="py-2 px-4">? nativo</td><td className="py-2 px-4">Parcial</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Plan gratis</td><td className="py-2 px-4">Limitado (3 facturas)</td><td className="py-2 px-4">SÌ (con lÌmites)</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Plan Pro</td><td className="py-2 px-4">49Ä/mes</td><td className="py-2 px-4">~15-30Ä/mes</td></tr>
+                <tr><td className="py-2 px-4">ConciliaciÛn bancaria autom·tica</td><td className="py-2 px-4">? Plan Max</td><td className="py-2 px-4">?</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El stack perfecto del aut√≥nomo: Billin + Saldea</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si eres aut√≥nomo en Espa√±a, esta combinaci√≥n es de las m√°s eficientes:</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El stack perfecto del autÛnomo: Billin + Saldea</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si eres autÛnomo en EspaÒa, esta combinaciÛn es de las m·s eficientes:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì <strong>Billin gratis o ~15‚Ç¨/mes</strong> ‚Üí emites facturas, cumples Veri*factu, llevas libro IVA</li>
-            <li>‚úì <strong>Saldea 49‚Ç¨/mes</strong> ‚Üí automatiza la persecuci√≥n de cobros con IA</li>
-            <li>Total: ~65‚Ç¨/mes para tener todo el ciclo desde la emisi√≥n hasta el cobro</li>
+            <li>? <strong>Billin gratis o ~15Ä/mes</strong> ? emites facturas, cumples Veri*factu, llevas libro IVA</li>
+            <li>? <strong>Saldea 49Ä/mes</strong> ? automatiza la persecuciÛn de cobros con IA</li>
+            <li>Total: ~65Ä/mes para tener todo el ciclo desde la emisiÛn hasta el cobro</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo solo necesitas Billin</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo solo necesitas Billin</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Aut√≥nomo principiante con pocos clientes</li>
-            <li>‚úì Tus clientes pagan r√°pido (B2C o domiciliaci√≥n SEPA)</li>
-            <li>‚úì Volumen bajo (1-3 facturas/mes)</li>
+            <li>? AutÛnomo principiante con pocos clientes</li>
+            <li>? Tus clientes pagan r·pido (B2C o domiciliaciÛn SEPA)</li>
+            <li>? Volumen bajo (1-3 facturas/mes)</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu√°ndo a√±adir Saldea</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cu·ndo aÒadir Saldea</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì Facturas a empresas que pagan tarde</li>
-            <li>‚úì M√°s de 5 facturas/mes</li>
-            <li>‚úì Dedicas tiempo a perseguir cobros manualmente</li>
-            <li>‚úì Tienes facturas vencidas pendientes ahora mismo</li>
-            <li>‚úì <strong>Conciliaci√≥n bancaria autom√°tica</strong> (Plan Max): detecta autom√°ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
+            <li>? Facturas a empresas que pagan tarde</li>
+            <li>? M·s de 5 facturas/mes</li>
+            <li>? Dedicas tiempo a perseguir cobros manualmente</li>
+            <li>? Tienes facturas vencidas pendientes ahora mismo</li>
+            <li>? <strong>ConciliaciÛn bancaria autom·tica</strong> (Plan Max): detecta autom·ticamente los cobros bancarios y los cruza con tus facturas pendientes.</li>
           </ul>
         </section>
 
         <aside className="mt-12 bg-gradient-to-br from-sky-50 to-sky-100/50 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Conecta Billin + Saldea hoy</h3>
-          <p className="text-zinc-300 mb-5">Importa CSV desde Billin. Saldea persigue. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <p className="text-zinc-300 mb-5">Importa CSV desde Billin. Saldea persigue. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </article>
       <MarketingFooter />

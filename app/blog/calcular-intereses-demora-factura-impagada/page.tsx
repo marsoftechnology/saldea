@@ -1,21 +1,21 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'C√≥mo calcular los intereses de demora de una factura impagada (2026) | Marsof',
-  description: 'F√≥rmula exacta para calcular los intereses de demora seg√∫n Ley 3/2004 con ejemplos reales y tipo de inter√©s actualizado a 2026.',
-  alternates: { canonical: 'https://marsof.es/blog/calcular-intereses-demora-factura-impagada' },
+  title: 'CÛmo calcular los intereses de demora de una factura impagada (2026) | Marsof',
+  description: 'FÛrmula exacta para calcular los intereses de demora seg˙n Ley 3/2004 con ejemplos reales y tipo de interÈs actualizado a 2026.',
+  alternates: { canonical: 'https://www.marsof.es/blog/calcular-intereses-demora-factura-impagada' },
   keywords: [
     'calcular intereses demora',
     'intereses de demora factura',
-    'tipo inter√©s demora 2026',
-    'f√≥rmula intereses morosidad',
-    'cu√°nto cobrar intereses moroso',
+    'tipo interÈs demora 2026',
+    'fÛrmula intereses morosidad',
+    'cu·nto cobrar intereses moroso',
     'ley 3/2004 intereses',
   ],
   openGraph: {
-    title: 'C√≥mo calcular los intereses de demora de una factura impagada',
-    description: 'F√≥rmula, tipo actualizado 2026 y ejemplos pr√°cticos.',
+    title: 'CÛmo calcular los intereses de demora de una factura impagada',
+    description: 'FÛrmula, tipo actualizado 2026 y ejemplos pr·cticos.',
     type: 'article',
     locale: 'es_ES',
   },
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: 'C√≥mo calcular los intereses de demora de una factura impagada',
+  name: 'CÛmo calcular los intereses de demora de una factura impagada',
   totalTime: 'PT5M',
   step: [
-    { '@type': 'HowToStep', name: 'Conocer el tipo legal', text: 'Tipo BCE m√°s 8 puntos porcentuales (~12,5% en 2026).' },
-    { '@type': 'HowToStep', name: 'Calcular d√≠as vencidos', text: 'D√≠as desde el vencimiento hasta hoy.' },
-    { '@type': 'HowToStep', name: 'Aplicar la f√≥rmula', text: 'Principal √ó tipo anual √ó (d√≠as / 365).' },
-    { '@type': 'HowToStep', name: 'Sumar 40‚Ç¨ de indemnizaci√≥n', text: 'Indemnizaci√≥n legal autom√°tica por factura impagada.' },
+    { '@type': 'HowToStep', name: 'Conocer el tipo legal', text: 'Tipo BCE m·s 8 puntos porcentuales (~12,5% en 2026).' },
+    { '@type': 'HowToStep', name: 'Calcular dÌas vencidos', text: 'DÌas desde el vencimiento hasta hoy.' },
+    { '@type': 'HowToStep', name: 'Aplicar la fÛrmula', text: 'Principal ◊ tipo anual ◊ (dÌas / 365).' },
+    { '@type': 'HowToStep', name: 'Sumar 40Ä de indemnizaciÛn', text: 'IndemnizaciÛn legal autom·tica por factura impagada.' },
   ],
 }
 
@@ -40,78 +40,78 @@ export default function PageIntereses() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <article className="min-h-screen bg-zinc-950 text-zinc-100">
         <div className="max-w-3xl mx-auto px-6 py-16">
-          <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+          <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
           <header className="mb-10">
-            <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">C√°lculos legales ¬∑ 5 min</p>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">C√≥mo calcular los intereses de demora de una factura impagada</h1>
-            <p className="text-zinc-400 text-lg leading-relaxed">F√≥rmula sencilla, tipo de inter√©s actualizado y ejemplos reales para que reclames el dinero exacto que te corresponde.</p>
+            <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">C·lculos legales ∑ 5 min</p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">CÛmo calcular los intereses de demora de una factura impagada</h1>
+            <p className="text-zinc-400 text-lg leading-relaxed">FÛrmula sencilla, tipo de interÈs actualizado y ejemplos reales para que reclames el dinero exacto que te corresponde.</p>
           </header>
 
           <section className="prose prose-invert max-w-none">
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El tipo legal de inter√©s de demora en 2026</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">Seg√∫n la <strong>Ley 3/2004</strong>, el tipo de inter√©s de demora es el <strong>tipo de inter√©s del BCE m√°s 8 puntos porcentuales</strong>. Se publica cada semestre en el BOE.</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El tipo legal de interÈs de demora en 2026</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">Seg˙n la <strong>Ley 3/2004</strong>, el tipo de interÈs de demora es el <strong>tipo de interÈs del BCE m·s 8 puntos porcentuales</strong>. Se publica cada semestre en el BOE.</p>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
               <p className="text-zinc-200 mb-2"><strong>Tipo aplicable 1er semestre 2026:</strong></p>
               <p className="text-3xl font-bold text-sky-400">12,5% anual</p>
               <p className="text-xs text-zinc-500 mt-2">(Tipo BCE 4,5% + 8 puntos)</p>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">La f√≥rmula exacta</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">La fÛrmula exacta</h2>
             <div className="bg-sky-500/5 border border-sky-500/30 rounded-xl p-5 my-5 text-center">
-              <p className="text-xl font-bold text-zinc-100">Intereses = Principal √ó Tipo √ó (D√≠as vencidos / 365)</p>
+              <p className="text-xl font-bold text-zinc-100">Intereses = Principal ◊ Tipo ◊ (DÌas vencidos / 365)</p>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ejemplo 1 ‚Äî Factura de 1.000‚Ç¨ vencida 30 d√≠as</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ejemplo 1 ó Factura de 1.000Ä vencida 30 dÌas</h2>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4">
-              <p className="text-zinc-300 text-sm">1.000 √ó 0,125 √ó (30/365) = <strong className="text-sky-400">10,27‚Ç¨ de intereses</strong></p>
-              <p className="text-zinc-400 text-xs mt-2">+ 40‚Ç¨ de indemnizaci√≥n por costes de cobro</p>
-              <p className="text-zinc-100 font-bold mt-2">Total a reclamar: 1.050,27‚Ç¨</p>
+              <p className="text-zinc-300 text-sm">1.000 ◊ 0,125 ◊ (30/365) = <strong className="text-sky-400">10,27Ä de intereses</strong></p>
+              <p className="text-zinc-400 text-xs mt-2">+ 40Ä de indemnizaciÛn por costes de cobro</p>
+              <p className="text-zinc-100 font-bold mt-2">Total a reclamar: 1.050,27Ä</p>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ejemplo 2 ‚Äî Factura de 5.000‚Ç¨ vencida 90 d√≠as</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ejemplo 2 ó Factura de 5.000Ä vencida 90 dÌas</h2>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4">
-              <p className="text-zinc-300 text-sm">5.000 √ó 0,125 √ó (90/365) = <strong className="text-sky-400">154,11‚Ç¨ de intereses</strong></p>
-              <p className="text-zinc-400 text-xs mt-2">+ 40‚Ç¨ de indemnizaci√≥n por costes de cobro</p>
-              <p className="text-zinc-100 font-bold mt-2">Total a reclamar: 5.194,11‚Ç¨</p>
+              <p className="text-zinc-300 text-sm">5.000 ◊ 0,125 ◊ (90/365) = <strong className="text-sky-400">154,11Ä de intereses</strong></p>
+              <p className="text-zinc-400 text-xs mt-2">+ 40Ä de indemnizaciÛn por costes de cobro</p>
+              <p className="text-zinc-100 font-bold mt-2">Total a reclamar: 5.194,11Ä</p>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ejemplo 3 ‚Äî Factura de 15.000‚Ç¨ vencida 6 meses</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ejemplo 3 ó Factura de 15.000Ä vencida 6 meses</h2>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4">
-              <p className="text-zinc-300 text-sm">15.000 √ó 0,125 √ó (180/365) = <strong className="text-sky-400">924,66‚Ç¨ de intereses</strong></p>
-              <p className="text-zinc-400 text-xs mt-2">+ 40‚Ç¨ de indemnizaci√≥n por costes de cobro</p>
-              <p className="text-zinc-100 font-bold mt-2">Total a reclamar: 15.964,66‚Ç¨</p>
+              <p className="text-zinc-300 text-sm">15.000 ◊ 0,125 ◊ (180/365) = <strong className="text-sky-400">924,66Ä de intereses</strong></p>
+              <p className="text-zinc-400 text-xs mt-2">+ 40Ä de indemnizaciÛn por costes de cobro</p>
+              <p className="text-zinc-100 font-bold mt-2">Total a reclamar: 15.964,66Ä</p>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Tabla r√°pida de intereses (tipo 12,5%)</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Tabla r·pida de intereses (tipo 12,5%)</h2>
             <div className="overflow-x-auto my-5">
               <table className="w-full text-sm border-collapse">
                 <thead>
                   <tr className="bg-sky-500/20">
                     <th className="py-3 px-4 text-left text-zinc-100">Principal</th>
-                    <th className="py-3 px-4 text-left text-zinc-100">30 d√≠as</th>
-                    <th className="py-3 px-4 text-left text-zinc-100">60 d√≠as</th>
-                    <th className="py-3 px-4 text-left text-zinc-100">90 d√≠as</th>
-                    <th className="py-3 px-4 text-left text-zinc-100">180 d√≠as</th>
+                    <th className="py-3 px-4 text-left text-zinc-100">30 dÌas</th>
+                    <th className="py-3 px-4 text-left text-zinc-100">60 dÌas</th>
+                    <th className="py-3 px-4 text-left text-zinc-100">90 dÌas</th>
+                    <th className="py-3 px-4 text-left text-zinc-100">180 dÌas</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-white/10"><td className="py-2 px-4">500‚Ç¨</td><td className="py-2 px-4">5,14‚Ç¨</td><td className="py-2 px-4">10,27‚Ç¨</td><td className="py-2 px-4">15,41‚Ç¨</td><td className="py-2 px-4">30,82‚Ç¨</td></tr>
-                  <tr className="border-b border-white/10"><td className="py-2 px-4">1.000‚Ç¨</td><td className="py-2 px-4">10,27‚Ç¨</td><td className="py-2 px-4">20,55‚Ç¨</td><td className="py-2 px-4">30,82‚Ç¨</td><td className="py-2 px-4">61,64‚Ç¨</td></tr>
-                  <tr className="border-b border-white/10"><td className="py-2 px-4">3.000‚Ç¨</td><td className="py-2 px-4">30,82‚Ç¨</td><td className="py-2 px-4">61,64‚Ç¨</td><td className="py-2 px-4">92,47‚Ç¨</td><td className="py-2 px-4">184,93‚Ç¨</td></tr>
-                  <tr className="border-b border-white/10"><td className="py-2 px-4">5.000‚Ç¨</td><td className="py-2 px-4">51,37‚Ç¨</td><td className="py-2 px-4">102,74‚Ç¨</td><td className="py-2 px-4">154,11‚Ç¨</td><td className="py-2 px-4">308,22‚Ç¨</td></tr>
-                  <tr className="border-b border-white/10"><td className="py-2 px-4">10.000‚Ç¨</td><td className="py-2 px-4">102,74‚Ç¨</td><td className="py-2 px-4">205,48‚Ç¨</td><td className="py-2 px-4">308,22‚Ç¨</td><td className="py-2 px-4">616,44‚Ç¨</td></tr>
+                  <tr className="border-b border-white/10"><td className="py-2 px-4">500Ä</td><td className="py-2 px-4">5,14Ä</td><td className="py-2 px-4">10,27Ä</td><td className="py-2 px-4">15,41Ä</td><td className="py-2 px-4">30,82Ä</td></tr>
+                  <tr className="border-b border-white/10"><td className="py-2 px-4">1.000Ä</td><td className="py-2 px-4">10,27Ä</td><td className="py-2 px-4">20,55Ä</td><td className="py-2 px-4">30,82Ä</td><td className="py-2 px-4">61,64Ä</td></tr>
+                  <tr className="border-b border-white/10"><td className="py-2 px-4">3.000Ä</td><td className="py-2 px-4">30,82Ä</td><td className="py-2 px-4">61,64Ä</td><td className="py-2 px-4">92,47Ä</td><td className="py-2 px-4">184,93Ä</td></tr>
+                  <tr className="border-b border-white/10"><td className="py-2 px-4">5.000Ä</td><td className="py-2 px-4">51,37Ä</td><td className="py-2 px-4">102,74Ä</td><td className="py-2 px-4">154,11Ä</td><td className="py-2 px-4">308,22Ä</td></tr>
+                  <tr className="border-b border-white/10"><td className="py-2 px-4">10.000Ä</td><td className="py-2 px-4">102,74Ä</td><td className="py-2 px-4">205,48Ä</td><td className="py-2 px-4">308,22Ä</td><td className="py-2 px-4">616,44Ä</td></tr>
                 </tbody>
               </table>
             </div>
 
-            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øHay que reclamar los intereses expresamente?</h2>
-            <p className="text-zinc-300 leading-relaxed mb-4">El <strong>derecho a cobrar intereses es autom√°tico</strong>: no necesitas requerimiento previo. Pero para cobrarlos efectivamente, s√≠ debes <strong>cuantificarlos e incluirlos</strong> en la reclamaci√≥n (email firme, burofax o demanda).</p>
+            <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øHay que reclamar los intereses expresamente?</h2>
+            <p className="text-zinc-300 leading-relaxed mb-4">El <strong>derecho a cobrar intereses es autom·tico</strong>: no necesitas requerimiento previo. Pero para cobrarlos efectivamente, sÌ debes <strong>cuantificarlos e incluirlos</strong> en la reclamaciÛn (email firme, burofax o demanda).</p>
           </section>
 
           <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea calcula los intereses autom√°ticamente</h3>
-            <p className="text-zinc-300 mb-5">Cada email que manda Saldea incluye el importe principal, los intereses de demora actualizados y los 40‚Ç¨ de indemnizaci√≥n. Sin que t√∫ toques una calculadora. <strong>30 d√≠as gratis.</strong></p>
-            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+            <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea calcula los intereses autom·ticamente</h3>
+            <p className="text-zinc-300 mb-5">Cada email que manda Saldea incluye el importe principal, los intereses de demora actualizados y los 40Ä de indemnizaciÛn. Sin que t˙ toques una calculadora. <strong>30 dÌas gratis.</strong></p>
+            <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
           </aside>
 
           <div className="mt-12 pt-8 border-t border-white/10">

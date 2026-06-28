@@ -1,10 +1,10 @@
-Ôªøimport Link from 'next/link'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Factura proforma vs factura ordinaria: diferencias 2026 | Marsof',
-  description: 'Qu√© es una factura proforma, cu√°ndo usarla, diferencias legales con la factura ordinaria y plantilla gratis. Gu√≠a clara para aut√≥nomos y empresas.',
-  alternates: { canonical: 'https://marsof.es/blog/factura-proforma-vs-factura-ordinaria' },
+  description: 'QuÈ es una factura proforma, cu·ndo usarla, diferencias legales con la factura ordinaria y plantilla gratis. GuÌa clara para autÛnomos y empresas.',
+  alternates: { canonical: 'https://www.marsof.es/blog/factura-proforma-vs-factura-ordinaria' },
   keywords: [
     'factura proforma',
     'factura proforma vs ordinaria',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Factura proforma vs factura ordinaria',
-    description: 'Diferencias legales y cu√°ndo usar cada una.',
+    description: 'Diferencias legales y cu·ndo usar cada una.',
     type: 'article',
     locale: 'es_ES',
   },
@@ -24,11 +24,11 @@ export default function PageProforma() {
   return (
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">‚Üê Volver al blog</Link>
+        <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Facturaci√≥n ¬∑ 5 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">FacturaciÛn ∑ 5 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Factura proforma vs factura ordinaria</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Una se contabiliza, la otra no. Una vale para Hacienda, la otra no. Esta es la diferencia exacta y cu√°ndo conviene cada una.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">Una se contabiliza, la otra no. Una vale para Hacienda, la otra no. Esta es la diferencia exacta y cu·ndo conviene cada una.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
@@ -43,88 +43,88 @@ export default function PageProforma() {
                 </tr>
               </thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Validez fiscal</td><td className="py-2 px-4">‚ùå No vale para Hacienda</td><td className="py-2 px-4">‚úÖ Vale para Hacienda</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Genera IVA</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Genera IRPF</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Es contable</td><td className="py-2 px-4">‚ùå</td><td className="py-2 px-4">‚úÖ</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Vinculante</td><td className="py-2 px-4">No (es oferta)</td><td className="py-2 px-4">S√≠ (es obligaci√≥n)</td></tr>
-                <tr><td className="py-2 px-4">Numeraci√≥n correlativa</td><td className="py-2 px-4">No obligatoria</td><td className="py-2 px-4">Obligatoria</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Validez fiscal</td><td className="py-2 px-4">? No vale para Hacienda</td><td className="py-2 px-4">? Vale para Hacienda</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Genera IVA</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Genera IRPF</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Es contable</td><td className="py-2 px-4">?</td><td className="py-2 px-4">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Vinculante</td><td className="py-2 px-4">No (es oferta)</td><td className="py-2 px-4">SÌ (es obligaciÛn)</td></tr>
+                <tr><td className="py-2 px-4">NumeraciÛn correlativa</td><td className="py-2 px-4">No obligatoria</td><td className="py-2 px-4">Obligatoria</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øQu√© es una factura proforma?</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Una factura proforma es un <strong>documento informativo previo</strong> a la operaci√≥n real. Funciona como un <strong>presupuesto formal con apariencia de factura</strong>: incluye todos los datos (cliente, importe, IVA, concepto) pero no genera obligaci√≥n fiscal ni contable.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øQuÈ es una factura proforma?</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Una factura proforma es un <strong>documento informativo previo</strong> a la operaciÛn real. Funciona como un <strong>presupuesto formal con apariencia de factura</strong>: incluye todos los datos (cliente, importe, IVA, concepto) pero no genera obligaciÛn fiscal ni contable.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øCu√°ndo conviene usarla?</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øCu·ndo conviene usarla?</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚úì <strong>Para enviar un presupuesto formal</strong> al cliente antes de empezar el trabajo.</li>
-            <li>‚úì <strong>Para que el cliente solicite financiaci√≥n</strong> bancaria o fondos antes del pago.</li>
-            <li>‚úì <strong>Para operaciones internacionales</strong>, donde se necesita un documento previo al env√≠o.</li>
-            <li>‚úì <strong>Para cobrar anticipos</strong> antes de emitir la factura final.</li>
-            <li>‚úó NUNCA para contabilizar o liquidar impuestos.</li>
+            <li>? <strong>Para enviar un presupuesto formal</strong> al cliente antes de empezar el trabajo.</li>
+            <li>? <strong>Para que el cliente solicite financiaciÛn</strong> bancaria o fondos antes del pago.</li>
+            <li>? <strong>Para operaciones internacionales</strong>, donde se necesita un documento previo al envÌo.</li>
+            <li>? <strong>Para cobrar anticipos</strong> antes de emitir la factura final.</li>
+            <li>? NUNCA para contabilizar o liquidar impuestos.</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¬øQu√© pasa despu√©s de la proforma?</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Cuando el cliente acepta y se realiza la operaci√≥n real (entrega o cobro), debes emitir la <strong>factura ordinaria</strong> con los mismos datos pero con numeraci√≥n correlativa fiscal. Esta s√≠ va a tu libro de IVA e IRPF.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">øQuÈ pasa despuÈs de la proforma?</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Cuando el cliente acepta y se realiza la operaciÛn real (entrega o cobro), debes emitir la <strong>factura ordinaria</strong> con los mismos datos pero con numeraciÛn correlativa fiscal. Esta sÌ va a tu libro de IVA e IRPF.</p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Elementos obligatorios de una proforma</h2>
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
             <li>La palabra "PROFORMA" claramente visible</li>
-            <li>Tus datos (nombre, NIF, direcci√≥n)</li>
+            <li>Tus datos (nombre, NIF, direcciÛn)</li>
             <li>Datos del cliente</li>
-            <li>Fecha de emisi√≥n</li>
-            <li>Descripci√≥n del producto o servicio</li>
+            <li>Fecha de emisiÛn</li>
+            <li>DescripciÛn del producto o servicio</li>
             <li>Precio unitario y total</li>
             <li>IVA aplicable (informativo)</li>
             <li>Total con IVA</li>
-            <li>Validez de la oferta (15-30 d√≠as recomendado)</li>
+            <li>Validez de la oferta (15-30 dÌas recomendado)</li>
             <li>Forma de pago propuesta</li>
           </ol>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Plantilla b√°sica</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Plantilla b·sica</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4 text-sm">
             <p className="text-zinc-300 whitespace-pre-line">
-{`FACTURA PROFORMA N¬∫ [NUMERO]
+{`FACTURA PROFORMA N∫ [NUMERO]
 Fecha: [FECHA]
-V√°lida hasta: [FECHA + 30 d√≠as]
+V·lida hasta: [FECHA + 30 dÌas]
 
 DE: [Tu nombre/empresa]
 NIF/CIF: [Tu NIF]
-Direcci√≥n: [Tu direcci√≥n]
+DirecciÛn: [Tu direcciÛn]
 
 A: [Cliente]
 NIF/CIF: [NIF cliente]
-Direcci√≥n: [Direcci√≥n cliente]
+DirecciÛn: [DirecciÛn cliente]
 
 CONCEPTO          | CANT | PRECIO U. | TOTAL
-[Servicio/producto] | 1   | 1.000‚Ç¨    | 1.000‚Ç¨
+[Servicio/producto] | 1   | 1.000Ä    | 1.000Ä
 
-Base imponible:    1.000‚Ç¨
-IVA (21%):           210‚Ç¨
-TOTAL:             1.210‚Ç¨
+Base imponible:    1.000Ä
+IVA (21%):           210Ä
+TOTAL:             1.210Ä
 
 Forma de pago: Transferencia bancaria a IBAN [TU IBAN]
 Condiciones: 30% anticipo, 70% a la entrega.
 
 Esta factura proforma NO tiene validez fiscal.
-Se emitir√° factura ordinaria tras la aceptaci√≥n.`}
+Se emitir· factura ordinaria tras la aceptaciÛn.`}
             </p>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Errores t√≠picos con la proforma</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Errores tÌpicos con la proforma</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>‚ùå <strong>Olvidar poner "PROFORMA"</strong> en grande. Si no lo pones, Hacienda puede considerarla factura real.</li>
-            <li>‚ùå <strong>Usarla para cobrar</strong>. Para cobrar necesitas la factura ordinaria.</li>
-            <li>‚ùå <strong>No emitir la factura ordinaria despu√©s</strong>. Si te pagan, tienes 30 d√≠as.</li>
-            <li>‚ùå <strong>Numeraci√≥n correlativa con las ordinarias</strong>. Las proformas llevan numeraci√≥n separada.</li>
+            <li>? <strong>Olvidar poner "PROFORMA"</strong> en grande. Si no lo pones, Hacienda puede considerarla factura real.</li>
+            <li>? <strong>Usarla para cobrar</strong>. Para cobrar necesitas la factura ordinaria.</li>
+            <li>? <strong>No emitir la factura ordinaria despuÈs</strong>. Si te pagan, tienes 30 dÌas.</li>
+            <li>? <strong>NumeraciÛn correlativa con las ordinarias</strong>. Las proformas llevan numeraciÛn separada.</li>
           </ul>
         </section>
 
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Cuando emitas la factura ordinaria, con√©ctala con Saldea</h3>
-          <p className="text-zinc-300 mb-5">Si el cliente acepta la proforma pero despu√©s se retrasa con la factura ordinaria, Saldea persigue el cobro autom√°ticamente. <strong>30 d√≠as gratis.</strong></p>
-          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ‚Üí</Link>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Cuando emitas la factura ordinaria, conÈctala con Saldea</h3>
+          <p className="text-zinc-300 mb-5">Si el cliente acepta la proforma pero despuÈs se retrasa con la factura ordinaria, Saldea persigue el cobro autom·ticamente. <strong>30 dÌas gratis.</strong></p>
+          <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
