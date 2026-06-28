@@ -67,9 +67,21 @@ const recursos = [
   },
 ]
 
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Recursos gratis: plantillas, calculadoras y guías de cobros',
+  description: 'Plantillas Word/Excel, calculadora de intereses de demora, modelos de burofax y más. Todo gratis y sin registro.',
+  url: 'https://www.marsof.es/recursos',
+  publisher: { '@id': 'https://marsof.es/#organization' },
+  inLanguage: 'es-ES',
+}
+
 export default function PageRecursos() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
+      <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
@@ -104,5 +116,6 @@ export default function PageRecursos() {
       </section>
       <MarketingFooter />
     </div>
+  </>
   )
 }

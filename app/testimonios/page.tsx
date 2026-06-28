@@ -234,8 +234,28 @@ function Avatar({ iniciales, color }: { iniciales: string; color: string }) {
 export default function PageTestimonios() {
   const media = (testimonios.reduce((s, t) => s + t.estrellas, 0) / testimonios.length).toFixed(1)
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Testimonios de usuarios de Saldea',
+    url: 'https://www.marsof.es/testimonios',
+    itemListElement: testimonios.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Review',
+        reviewBody: t.texto,
+        author: { '@type': 'Person', name: t.nombre },
+        reviewRating: { '@type': 'Rating', ratingValue: t.estrellas, bestRating: 5 },
+        itemReviewed: { '@type': 'SoftwareApplication', name: 'Saldea', url: 'https://www.marsof.es/saldea' },
+      },
+    })),
+  }
+
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
@@ -301,5 +321,6 @@ export default function PageTestimonios() {
 
       <MarketingFooter />
     </div>
+  </>
   )
 }

@@ -10,9 +10,22 @@ export const metadata: Metadata = {
   openGraph: { title: 'Programa de afiliados Marsof', description: 'Gana 20% recurrente recomendando Saldea.', type: 'website', locale: 'es_ES' },
 }
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Programa de afiliados SaaS',
+  name: 'Programa de afiliados Marsof / Saldea',
+  description: 'Gana una comisión recurrente del 20% durante el primer año recomendando Saldea a gestorías, autónomos y pymes.',
+  provider: { '@id': 'https://marsof.es/#organization' },
+  offers: { '@type': 'Offer', description: '20% de comisión recurrente el primer año', priceCurrency: 'EUR' },
+  url: 'https://www.marsof.es/afiliados',
+}
+
 export default function PageAfiliados() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <nav className="sticky top-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-zinc-100">Marsof / Saldea</Link>
@@ -93,5 +106,6 @@ export default function PageAfiliados() {
       </section>
       <MarketingFooter />
     </div>
+  </>
   )
 }
