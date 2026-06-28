@@ -2,75 +2,79 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo escribir un email firme pero amable para cobrar | Marsof',
-  description: 'La fórmula exacta para escribir emails firmes pero educados al reclamar facturas. Estructura, palabras clave y plantilla completa.',
+  title: 'Cï¿½mo escribir un email firme pero amable para cobrar | Marsof',
+  description: 'La fï¿½rmula exacta para escribir emails firmes pero educados al reclamar facturas. Estructura, palabras clave y plantilla completa.',
   alternates: { canonical: 'https://www.marsof.es/blog/como-escribir-email-firme-pero-amable' },
-  keywords: ['email firme cobrar', 'email reclamación amable', 'email serio sin agresivo', 'tono email moroso', 'escribir email cobro profesional'],
+  keywords: ['email firme cobrar', 'email reclamaciï¿½n amable', 'email serio sin agresivo', 'tono email moroso', 'escribir email cobro profesional'],
   openGraph: { title: 'Email firme pero amable para cobrar', description: 'Estructura y plantilla.', type: 'article', locale: 'es_ES' },
 }
 
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Cï¿½mo escribir un email firme pero amable para cobrar", "description": "La fï¿½rmula exacta para escribir emails firmes pero educados al reclamar facturas. Estructura, palabras clave y plantilla completa.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/como-escribir-email-firme-pero-amable"}
+
 export default function Page() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Plantillas · 6 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cómo escribir un email firme pero amable</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">La diferencia entre cobrar y perder el cliente está en el tono. Aquí la fórmula.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Plantillas ï¿½ 6 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cï¿½mo escribir un email firme pero amable</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">La diferencia entre cobrar y perder el cliente estï¿½ en el tono. Aquï¿½ la fï¿½rmula.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">La estructura ABCD</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Un email firme pero amable sigue esta estructura:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li><strong>A — Apertura cordial</strong> (1 línea, saludo personal)</li>
-            <li><strong>B — Bloque del problema</strong> (factura, fecha, importe, hechos secos)</li>
-            <li><strong>C — Consecuencias informativas</strong> (no amenazas: información legal)</li>
-            <li><strong>D — Despedida con salida positiva</strong> (oferta para resolver)</li>
+            <li><strong>A ï¿½ Apertura cordial</strong> (1 lï¿½nea, saludo personal)</li>
+            <li><strong>B ï¿½ Bloque del problema</strong> (factura, fecha, importe, hechos secos)</li>
+            <li><strong>C ï¿½ Consecuencias informativas</strong> (no amenazas: informaciï¿½n legal)</li>
+            <li><strong>D ï¿½ Despedida con salida positiva</strong> (oferta para resolver)</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Plantilla completa</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5 text-sm">
             <p className="text-zinc-300 whitespace-pre-line">
-{`Asunto: Factura [NÚMERO] vencida — Acción requerida
+{`Asunto: Factura [Nï¿½MERO] vencida ï¿½ Acciï¿½n requerida
 
 Hola [Nombre],
 
-Espero que estés bien.
+Espero que estï¿½s bien.
 
-[B] Te escribo porque la factura nº [NÚMERO] de fecha [FECHA EMISIÓN] por importe de [IMPORTE]€ ha vencido el [FECHA VENCIMIENTO] y, a día de hoy, sigue pendiente de pago.
+[B] Te escribo porque la factura nï¿½ [Nï¿½MERO] de fecha [FECHA EMISIï¿½N] por importe de [IMPORTE]ï¿½ ha vencido el [FECHA VENCIMIENTO] y, a dï¿½a de hoy, sigue pendiente de pago.
 
-[C] Te informo que, conforme a la Ley 3/2004 de medidas contra la morosidad en operaciones comerciales, desde el vencimiento se devengan automáticamente:
+[C] Te informo que, conforme a la Ley 3/2004 de medidas contra la morosidad en operaciones comerciales, desde el vencimiento se devengan automï¿½ticamente:
 - Intereses de demora del 12,5% anual (BCE + 8 puntos)
-- Indemnización fija de 40€ por costes de cobro
+- Indemnizaciï¿½n fija de 40ï¿½ por costes de cobro
 
-A día de hoy, el importe total adeudado asciende a [IMPORTE TOTAL]€.
+A dï¿½a de hoy, el importe total adeudado asciende a [IMPORTE TOTAL]ï¿½.
 
-[D] Si ya has realizado el pago en los últimos días, por favor remíteme el justificante para que pueda cuadrarlo. En caso contrario, te agradecería que me confirmes una fecha concreta de pago. Estoy abierto a estudiar un plan de pago si necesitas fraccionarlo.
+[D] Si ya has realizado el pago en los ï¿½ltimos dï¿½as, por favor remï¿½teme el justificante para que pueda cuadrarlo. En caso contrario, te agradecerï¿½a que me confirmes una fecha concreta de pago. Estoy abierto a estudiar un plan de pago si necesitas fraccionarlo.
 
 Quedo a la espera de tu respuesta.
 
 Un saludo,
 [Tu nombre]
 [Tu empresa]
-[Tu teléfono]`}
+[Tu telï¿½fono]`}
             </p>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Por qué funciona esta estructura</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Por quï¿½ funciona esta estructura</h2>
           <ul className="space-y-3 text-zinc-300 mb-6">
-            <li><strong>"Espero que estés bien":</strong> abre cordial, no entras a degüello</li>
+            <li><strong>"Espero que estï¿½s bien":</strong> abre cordial, no entras a degï¿½ello</li>
             <li><strong>Datos secos en B:</strong> factura, fecha, importe. Hechos, no emociones</li>
-            <li><strong>"Te informo" en C:</strong> es INFORMACIÓN, no amenaza. Le das datos para decidir</li>
+            <li><strong>"Te informo" en C:</strong> es INFORMACIï¿½N, no amenaza. Le das datos para decidir</li>
             <li><strong>"Si ya has realizado el pago":</strong> le das salida, no asumes mala fe</li>
             <li><strong>"Estoy abierto a plan de pago":</strong> humaniza y muestra que prefieres cobrar a litigar</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Palabras que SÍ usar</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Palabras que Sï¿½ usar</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
             <li>? "Te informo" ? frio pero educado</li>
             <li>? "Conforme a la Ley 3/2004" ? da seriedad legal</li>
-            <li>? "Te agradecería que confirmes" ? pide acción concreta</li>
+            <li>? "Te agradecerï¿½a que confirmes" ? pide acciï¿½n concreta</li>
             <li>? "Estoy abierto a" ? muestra flexibilidad</li>
             <li>? "Quedo a la espera" ? cierre profesional</li>
           </ul>
@@ -79,26 +83,27 @@ Un saludo,
           <ul className="space-y-2 text-zinc-300 mb-6">
             <li>? "Tienes que" ? suena imperativo</li>
             <li>? "Es inadmisible" ? emocional</li>
-            <li>? "No puedo más" ? muestras debilidad</li>
-            <li>? "Esta es la última vez" ? ultimátum que probablemente no cumplirás</li>
+            <li>? "No puedo mï¿½s" ? muestras debilidad</li>
+            <li>? "Esta es la ï¿½ltima vez" ? ultimï¿½tum que probablemente no cumplirï¿½s</li>
             <li>? "Llevo esperando..." ? quejica</li>
-            <li>? "Por favor" repetido ? suena a súplica</li>
+            <li>? "Por favor" repetido ? suena a sï¿½plica</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cuándo enviar este email</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cuï¿½ndo enviar este email</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>?? <strong>Día 7-15 vencido:</strong> primer email con esta plantilla</li>
-            <li>?? <strong>Día 30 vencido:</strong> sube tono añadiendo "Plazo improrrogable: 7 días naturales"</li>
-            <li>?? <strong>Día 60 vencido:</strong> burofax con misma estructura pero formal</li>
+            <li>?? <strong>Dï¿½a 7-15 vencido:</strong> primer email con esta plantilla</li>
+            <li>?? <strong>Dï¿½a 30 vencido:</strong> sube tono aï¿½adiendo "Plazo improrrogable: 7 dï¿½as naturales"</li>
+            <li>?? <strong>Dï¿½a 60 vencido:</strong> burofax con misma estructura pero formal</li>
           </ul>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea envía estos emails automáticamente</h3>
-          <p className="text-zinc-300 mb-5">Estructura ABCD aplicada por la IA. Calcula intereses y los inserta en el email. Tú no escribes nada. <strong>30 días gratis.</strong></p>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea envï¿½a estos emails automï¿½ticamente</h3>
+          <p className="text-zinc-300 mb-5">Estructura ABCD aplicada por la IA. Calcula intereses y los inserta en el email. Tï¿½ no escribes nada. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 

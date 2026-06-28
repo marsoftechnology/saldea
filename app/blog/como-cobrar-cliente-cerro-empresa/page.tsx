@@ -2,75 +2,80 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a un cliente que cerró su empresa | Marsof',
-  description: 'Tu cliente cerró la empresa o entró en concurso. ¿Puedes cobrar? Sí, en ciertos casos. Te explico cómo y cuándo.',
+  title: 'Cï¿½mo cobrar a un cliente que cerrï¿½ su empresa | Marsof',
+  description: 'Tu cliente cerrï¿½ la empresa o entrï¿½ en concurso. ï¿½Puedes cobrar? Sï¿½, en ciertos casos. Te explico cï¿½mo y cuï¿½ndo.',
   alternates: { canonical: 'https://www.marsof.es/blog/como-cobrar-cliente-cerro-empresa' },
-  keywords: ['cliente cerró empresa', 'cobrar empresa cerrada', 'cliente quebrado', 'cliente concurso acreedores'],
-  openGraph: { title: 'Cómo cobrar a un cliente que cerró', description: 'Concurso y soluciones.', type: 'article', locale: 'es_ES' },
+  keywords: ['cliente cerrï¿½ empresa', 'cobrar empresa cerrada', 'cliente quebrado', 'cliente concurso acreedores'],
+  openGraph: { title: 'Cï¿½mo cobrar a un cliente que cerrï¿½', description: 'Concurso y soluciones.', type: 'article', locale: 'es_ES' },
 }
+
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Cï¿½mo cobrar a un cliente que cerrï¿½ su empresa", "description": "Tu cliente cerrï¿½ la empresa o entrï¿½ en concurso. ï¿½Puedes cobrar? Sï¿½, en ciertos casos. Te explico cï¿½mo y cuï¿½ndo.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/como-cobrar-cliente-cerro-empresa"}
 
 export default function Page() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso especial · 5 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cómo cobrar a un cliente que cerró</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Cuando la empresa cierra o entra en concurso, complica todo. Pero hay opciones, sobre todo si actúas rápido.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso especial ï¿½ 5 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cï¿½mo cobrar a un cliente que cerrï¿½</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">Cuando la empresa cierra o entra en concurso, complica todo. Pero hay opciones, sobre todo si actï¿½as rï¿½pido.</p>
         </header>
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Verifica primero: ¿qué pasó?</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Verifica primero: ï¿½quï¿½ pasï¿½?</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>?? <strong>Busca en BORME</strong> (boe.es/diario_borme): ¿está en concurso? ¿Disolución?</li>
+            <li>?? <strong>Busca en BORME</strong> (boe.es/diario_borme): ï¿½estï¿½ en concurso? ï¿½Disoluciï¿½n?</li>
             <li>?? <strong>einforma.com:</strong> estado actual de la empresa</li>
             <li>?? <strong>Hacienda:</strong> verifica si el CIF sigue activo</li>
-            <li>?? <strong>Sus redes/web:</strong> ¿hay nuevas empresas del mismo dueño?</li>
+            <li>?? <strong>Sus redes/web:</strong> ï¿½hay nuevas empresas del mismo dueï¿½o?</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Escenario 1 — Concurso de acreedores</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Lo más común. Si publican concurso en BORME:</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Escenario 1 ï¿½ Concurso de acreedores</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Lo mï¿½s comï¿½n. Si publican concurso en BORME:</p>
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-            <li>Tienes <strong>30 días desde publicación</strong> para inscribir tu crédito como acreedor</li>
-            <li>Necesitas: factura original, prueba de la deuda, datos identificación</li>
+            <li>Tienes <strong>30 dï¿½as desde publicaciï¿½n</strong> para inscribir tu crï¿½dito como acreedor</li>
+            <li>Necesitas: factura original, prueba de la deuda, datos identificaciï¿½n</li>
             <li>Lo presentas al <strong>administrador concursal</strong> designado</li>
             <li>Esperas a la lista provisional y final de acreedores</li>
-            <li>Cobras (si hay liquidez) según orden legal: trabajadores ? Hacienda ? Seguridad Social ? garantizados ? ordinarios</li>
+            <li>Cobras (si hay liquidez) segï¿½n orden legal: trabajadores ? Hacienda ? Seguridad Social ? garantizados ? ordinarios</li>
           </ol>
           <p className="text-zinc-300 leading-relaxed mb-4"><strong>Realidad:</strong> el acreedor ordinario cobra el 10-30% de la deuda en el mejor caso. Pero algo es algo.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Escenario 2 — Empresa disuelta</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">La empresa se disolvió sin concurso formal:</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Escenario 2 ï¿½ Empresa disuelta</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">La empresa se disolviï¿½ sin concurso formal:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
             <li>? Si los socios no liquidaron correctamente, pueden ser <strong>responsables personales</strong></li>
-            <li>? Si hubo "vaciado" de la empresa a otra paralela: <strong>acción de levantamiento del velo</strong></li>
-            <li>? Si el administrador no convocó concurso obligatorio: <strong>responsabilidad personal</strong></li>
+            <li>? Si hubo "vaciado" de la empresa a otra paralela: <strong>acciï¿½n de levantamiento del velo</strong></li>
+            <li>? Si el administrador no convocï¿½ concurso obligatorio: <strong>responsabilidad personal</strong></li>
           </ul>
-          <p className="text-zinc-300 leading-relaxed mb-4">Aquí necesitas abogado mercantilista. Pero hay opciones reales.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Aquï¿½ necesitas abogado mercantilista. Pero hay opciones reales.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Escenario 3 — El dueño abrió otra empresa</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Misma persona, otra empresa, mismos clientes. Esto se llama "sucesión empresarial fraudulenta":</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Escenario 3 ï¿½ El dueï¿½o abriï¿½ otra empresa</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Misma persona, otra empresa, mismos clientes. Esto se llama "sucesiï¿½n empresarial fraudulenta":</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? Demanda al socio personalmente vía "responsabilidad solidaria"</li>
+            <li>? Demanda al socio personalmente vï¿½a "responsabilidad solidaria"</li>
             <li>? La empresa nueva puede ser declarada continuadora de las deudas</li>
             <li>? Requiere abogado pero las probabilidades son altas si hay pruebas</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si nada funciona</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Última opción: declararlo como <strong>crédito incobrable</strong> en tu contabilidad. Te permite:</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">ï¿½ltima opciï¿½n: declararlo como <strong>crï¿½dito incobrable</strong> en tu contabilidad. Te permite:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? Recuperar el IVA repercutido (si han pasado 6-12 meses según ley actual)</li>
-            <li>? Imputar la pérdida fiscalmente</li>
+            <li>? Recuperar el IVA repercutido (si han pasado 6-12 meses segï¿½n ley actual)</li>
+            <li>? Imputar la pï¿½rdida fiscalmente</li>
             <li>? Cerrar el caso emocionalmente y seguir</li>
           </ul>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea te avisa antes del cierre</h3>
-          <p className="text-zinc-300 mb-5">Si tu cliente publica concurso o cambia datos en BORME, Saldea integra alertas. Reaccionas a tiempo para inscribir tu crédito. <strong>30 días gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Si tu cliente publica concurso o cambia datos en BORME, Saldea integra alertas. Reaccionas a tiempo para inscribir tu crï¿½dito. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 

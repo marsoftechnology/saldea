@@ -2,58 +2,63 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar cursos y formación online sin impagos | Marsof',
-  description: 'Estrategias específicas para formadores online: pre-pago, fraccionamiento, suspensión de acceso, recordatorios automáticos.',
+  title: 'Cï¿½mo cobrar cursos y formaciï¿½n online sin impagos | Marsof',
+  description: 'Estrategias especï¿½ficas para formadores online: pre-pago, fraccionamiento, suspensiï¿½n de acceso, recordatorios automï¿½ticos.',
   alternates: { canonical: 'https://www.marsof.es/blog/cobrar-curso-formacion-online' },
-  keywords: ['cobrar curso online', 'formación impagos', 'cobrar formación empresa', 'plataforma cursos cobro'],
-  openGraph: { title: 'Cómo cobrar cursos y formación online', description: 'Sin impagos.', type: 'article', locale: 'es_ES' },
+  keywords: ['cobrar curso online', 'formaciï¿½n impagos', 'cobrar formaciï¿½n empresa', 'plataforma cursos cobro'],
+  openGraph: { title: 'Cï¿½mo cobrar cursos y formaciï¿½n online', description: 'Sin impagos.', type: 'article', locale: 'es_ES' },
 }
+
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Cï¿½mo cobrar cursos y formaciï¿½n online sin impagos", "description": "Estrategias especï¿½ficas para formadores online: pre-pago, fraccionamiento, suspensiï¿½n de acceso, recordatorios automï¿½ticos.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/cobrar-curso-formacion-online"}
 
 export default function Page() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Sector · 4 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cómo cobrar cursos y formación online</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">El sector formación tiene un patrón único: cliente paga, accede al contenido y "se olvida" de las cuotas siguientes. Cómo evitarlo.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Sector ï¿½ 4 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cï¿½mo cobrar cursos y formaciï¿½n online</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">El sector formaciï¿½n tiene un patrï¿½n ï¿½nico: cliente paga, accede al contenido y "se olvida" de las cuotas siguientes. Cï¿½mo evitarlo.</p>
         </header>
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Regla 1 — Pre-pago 100% siempre que puedas</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si vendes a particular, exige el 100% antes de dar acceso. Stripe + plataforma de cursos = pago automático antes de acceso. Cero morosidad.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Regla 1 ï¿½ Pre-pago 100% siempre que puedas</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si vendes a particular, exige el 100% antes de dar acceso. Stripe + plataforma de cursos = pago automï¿½tico antes de acceso. Cero morosidad.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Regla 2 — Si fraccionas, suspende acceso</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si permites pago en 3 cuotas: cláusula automática "si falla 1 cuota, se suspende el acceso al curso". Lo dejas claro EN EL CONTRATO.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Regla 2 ï¿½ Si fraccionas, suspende acceso</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si permites pago en 3 cuotas: clï¿½usula automï¿½tica "si falla 1 cuota, se suspende el acceso al curso". Lo dejas claro EN EL CONTRATO.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Regla 3 — Empresas: factura previa con plazo corto</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si vendes formación a empresa, factura ANTES de impartir, con plazo de 15-30 días. Tu empresa cliente lo gestiona, no el participante.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Regla 3 ï¿½ Empresas: factura previa con plazo corto</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si vendes formaciï¿½n a empresa, factura ANTES de impartir, con plazo de 15-30 dï¿½as. Tu empresa cliente lo gestiona, no el participante.</p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Plataformas que automatizan el cobro</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? <strong>Hotmart, Teachable, Thinkific:</strong> cobran automáticamente y suspenden acceso si falla pago</li>
+            <li>? <strong>Hotmart, Teachable, Thinkific:</strong> cobran automï¿½ticamente y suspenden acceso si falla pago</li>
             <li>? <strong>Stripe Subscriptions:</strong> SEPA o tarjeta recurrente</li>
             <li>? <strong>Saldea:</strong> persigue impagos de SEPA devueltos en formaciones recurrentes</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Casos típicos y soluciones</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Casos tï¿½picos y soluciones</h2>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Cliente paga 1ª cuota y desaparece</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Suspende acceso al curso. Email automático: "Cuota fallida. Acceso suspendido. Regulariza para retomar". 70% pagan tras esta suspensión.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Cliente paga 1ï¿½ cuota y desaparece</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Suspende acceso al curso. Email automï¿½tico: "Cuota fallida. Acceso suspendido. Regulariza para retomar". 70% pagan tras esta suspensiï¿½n.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Empresa contrata formación in-company y no paga</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Sigue plan estándar: emails escalados, burofax, monitorio. Tienes alta solidez probatoria (lista de asistencia, programa entregado, contratos firmados).</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Empresa contrata formaciï¿½n in-company y no paga</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Sigue plan estï¿½ndar: emails escalados, burofax, monitorio. Tienes alta solidez probatoria (lista de asistencia, programa entregado, contratos firmados).</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Cliente bonificación FUNDAE</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si fuiste centro impartidor: cobras igualmente. La bonificación es ASUNTO DE LA EMPRESA con Hacienda, NO con tu factura.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">Cliente bonificaciï¿½n FUNDAE</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si fuiste centro impartidor: cobras igualmente. La bonificaciï¿½n es ASUNTO DE LA EMPRESA con Hacienda, NO con tu factura.</p>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea persigue cuotas de formación impagadas</h3>
-          <p className="text-zinc-300 mb-5">Si SEPA falla o el alumno se atrasa, recordatorios automáticos profesionales. <strong>30 días gratis.</strong></p>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea persigue cuotas de formaciï¿½n impagadas</h3>
+          <p className="text-zinc-300 mb-5">Si SEPA falla o el alumno se atrasa, recordatorios automï¿½ticos profesionales. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 

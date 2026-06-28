@@ -2,47 +2,51 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Mejor software de gestión de cobros 2026: comparativa España | Marsof',
-  description: 'Comparamos 7 herramientas para automatizar el cobro de facturas en España: precios, funciones, integración con Stripe, IA y soporte. Análisis honesto 2026.',
+  title: 'Mejor software de gestiï¿½n de cobros 2026: comparativa Espaï¿½a | Marsof',
+  description: 'Comparamos 7 herramientas para automatizar el cobro de facturas en Espaï¿½a: precios, funciones, integraciï¿½n con Stripe, IA y soporte. Anï¿½lisis honesto 2026.',
   alternates: { canonical: 'https://www.marsof.es/blog/software-gestion-cobros-comparativa' },
   keywords: [
-    'software gestión cobros',
-    'mejor software facturación cobros',
-    'herramienta cobros autónomos',
+    'software gestiï¿½n cobros',
+    'mejor software facturaciï¿½n cobros',
+    'herramienta cobros autï¿½nomos',
     'comparativa software morosos',
     'app para cobrar facturas',
     'crm cobros pymes',
   ],
   openGraph: {
-    title: 'Mejor software de gestión de cobros 2026: comparativa España',
-    description: 'Análisis honesto de 7 herramientas con precios y funciones.',
+    title: 'Mejor software de gestiï¿½n de cobros 2026: comparativa Espaï¿½a',
+    description: 'Anï¿½lisis honesto de 7 herramientas con precios y funciones.',
     type: 'article',
     locale: 'es_ES',
   },
 }
 
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Mejor software de gestiï¿½n de cobros 2026: comparativa Espaï¿½a", "description": "Comparamos 7 herramientas para automatizar el cobro de facturas en Espaï¿½a: precios, funciones, integraciï¿½n con Stripe, IA y soporte. Anï¿½lisis honesto 2026.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/software-gestion-cobros-comparativa"}
+
 export default function PageSoftwareComparativa() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa · 12 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Mejor software de gestión de cobros 2026 en España</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Si gestionas facturas y quieres cobrar más rápido sin perseguir clientes a mano, aquí tienes el análisis honesto de las 7 herramientas más usadas en España.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comparativa ï¿½ 12 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Mejor software de gestiï¿½n de cobros 2026 en Espaï¿½a</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">Si gestionas facturas y quieres cobrar mï¿½s rï¿½pido sin perseguir clientes a mano, aquï¿½ tienes el anï¿½lisis honesto de las 7 herramientas mï¿½s usadas en Espaï¿½a.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cómo elegir tu software de cobros</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cï¿½mo elegir tu software de cobros</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Antes de comparar, ten claros estos 4 criterios:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li><strong>1. Automatización:</strong> ¿manda los recordatorios solo o tienes que pulsar tú cada vez?</li>
-            <li><strong>2. Escalado de tono:</strong> ¿usa un solo email tipo o adapta el mensaje según los días de retraso?</li>
-            <li><strong>3. Detección de respuestas:</strong> ¿entiende cuando el cliente paga, discute o promete pago?</li>
-            <li><strong>4. Integración con Stripe / cuenta bancaria:</strong> ¿genera links de pago automáticos?</li>
+            <li><strong>1. Automatizaciï¿½n:</strong> ï¿½manda los recordatorios solo o tienes que pulsar tï¿½ cada vez?</li>
+            <li><strong>2. Escalado de tono:</strong> ï¿½usa un solo email tipo o adapta el mensaje segï¿½n los dï¿½as de retraso?</li>
+            <li><strong>3. Detecciï¿½n de respuestas:</strong> ï¿½entiende cuando el cliente paga, discute o promete pago?</li>
+            <li><strong>4. Integraciï¿½n con Stripe / cuenta bancaria:</strong> ï¿½genera links de pago automï¿½ticos?</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Comparativa rápida</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Comparativa rï¿½pida</h2>
           <div className="overflow-x-auto my-5">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -54,58 +58,59 @@ export default function PageSoftwareComparativa() {
                 </tr>
               </thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10 bg-sky-500/5"><td className="py-2 px-3 font-bold">Saldea</td><td className="py-2 px-3">49€/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Holded</td><td className="py-2 px-3">29-99€/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Quipu</td><td className="py-2 px-3">19-89€/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">Parcial</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Anfix</td><td className="py-2 px-3">19-99€/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Sage 50</td><td className="py-2 px-3">desde 49€</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-3">Chaser (UK)</td><td className="py-2 px-3">~75€/mes</td><td className="py-2 px-3">Parcial</td><td className="py-2 px-3">?</td></tr>
-                <tr><td className="py-2 px-3">Hoja Excel</td><td className="py-2 px-3">0€</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10 bg-sky-500/5"><td className="py-2 px-3 font-bold">Saldea</td><td className="py-2 px-3">49ï¿½/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Holded</td><td className="py-2 px-3">29-99ï¿½/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Quipu</td><td className="py-2 px-3">19-89ï¿½/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">Parcial</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Anfix</td><td className="py-2 px-3">19-99ï¿½/mes</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Sage 50</td><td className="py-2 px-3">desde 49ï¿½</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-3">Chaser (UK)</td><td className="py-2 px-3">~75ï¿½/mes</td><td className="py-2 px-3">Parcial</td><td className="py-2 px-3">?</td></tr>
+                <tr><td className="py-2 px-3">Hoja Excel</td><td className="py-2 px-3">0ï¿½</td><td className="py-2 px-3">?</td><td className="py-2 px-3">?</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">1. Saldea — IA específica para cobros</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para quién:</strong> autónomos, gestorías y pymes españolas que quieren AUTOMATIZAR todo el proceso de cobro sin perder personalización.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo bueno:</strong> única herramienta del mercado español con IA que <strong>escala el tono progresivamente</strong> (amable ? firme ? formal) y <strong>detecta respuestas reales</strong> (paga, dispute, promesa). Integración Stripe Connect nativa.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> lanzada en 2026, comunidad aún pequeña.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Precio:</strong> 49€/mes (49€) o 499€/año. 30 días gratis.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">1. Saldea ï¿½ IA especï¿½fica para cobros</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para quiï¿½n:</strong> autï¿½nomos, gestorï¿½as y pymes espaï¿½olas que quieren AUTOMATIZAR todo el proceso de cobro sin perder personalizaciï¿½n.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo bueno:</strong> ï¿½nica herramienta del mercado espaï¿½ol con IA que <strong>escala el tono progresivamente</strong> (amable ? firme ? formal) y <strong>detecta respuestas reales</strong> (paga, dispute, promesa). Integraciï¿½n Stripe Connect nativa.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> lanzada en 2026, comunidad aï¿½n pequeï¿½a.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Precio:</strong> 49ï¿½/mes (49ï¿½) o 499ï¿½/aï¿½o. 30 dï¿½as gratis.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">2. Holded — ERP completo</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para quién:</strong> empresas medianas que quieren factura + contabilidad + RRHH + CRM en una sola herramienta.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">2. Holded ï¿½ ERP completo</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Para quiï¿½n:</strong> empresas medianas que quieren factura + contabilidad + RRHH + CRM en una sola herramienta.</p>
           <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo bueno:</strong> es un ERP serio, todo conectado.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> los recordatorios de cobro son básicos. No escala tono ni detecta respuestas.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Lo malo:</strong> los recordatorios de cobro son bï¿½sicos. No escala tono ni detecta respuestas.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">3. Quipu — Factura para autónomos</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Buena para facturación, simple. Los recordatorios son manuales y sin escalado.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">3. Quipu ï¿½ Factura para autï¿½nomos</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Buena para facturaciï¿½n, simple. Los recordatorios son manuales y sin escalado.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">4. Anfix — Contabilidad y factura</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Foco contable. Los recordatorios existen pero requieren intervención manual.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">4. Anfix ï¿½ Contabilidad y factura</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Foco contable. Los recordatorios existen pero requieren intervenciï¿½n manual.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">5. Sage 50 — Software clásico</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Pesado, instalable, sin automatización moderna. Solo si tu asesor lo exige.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">5. Sage 50 ï¿½ Software clï¿½sico</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Pesado, instalable, sin automatizaciï¿½n moderna. Solo si tu asesor lo exige.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">6. Chaser — Solución UK</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Buena pero pensada para Reino Unido. No conoce la Ley 3/2004 española ni los 40€ de indemnización.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">6. Chaser ï¿½ Soluciï¿½n UK</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Buena pero pensada para Reino Unido. No conoce la Ley 3/2004 espaï¿½ola ni los 40ï¿½ de indemnizaciï¿½n.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">7. Excel / Google Sheets — Manual</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">7. Excel / Google Sheets ï¿½ Manual</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Gratis pero te lleva 2-3 horas/semana mantenerlo y la mitad de las facturas se te pasan.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Conclusión</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si quieres una herramienta dedicada exclusivamente a <strong>cobrar mejor y más rápido</strong> y que use IA para escalar el tono y detectar respuestas: <strong>Saldea</strong>. Si necesitas un ERP completo con facturación y contabilidad: Holded o Anfix.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Conclusiï¿½n</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si quieres una herramienta dedicada exclusivamente a <strong>cobrar mejor y mï¿½s rï¿½pido</strong> y que use IA para escalar el tono y detectar respuestas: <strong>Saldea</strong>. Si necesitas un ERP completo con facturaciï¿½n y contabilidad: Holded o Anfix.</p>
         </section>
 
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Pruébalo tú mismo</h3>
-          <p className="text-zinc-300 mb-5">30 días gratis. Se requiere tarjeta. Cancela en 1 clic. Sin permanencia.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Pruï¿½balo tï¿½ mismo</h3>
+          <p className="text-zinc-300 mb-5">30 dï¿½as gratis. Se requiere tarjeta. Cancela en 1 clic. Sin permanencia.</p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
 
         <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="text-xs text-zinc-500">Comparativa basada en información pública de cada producto a fecha de mayo 2026. Los precios pueden cambiar.</p>
+          <p className="text-xs text-zinc-500">Comparativa basada en informaciï¿½n pï¿½blica de cada producto a fecha de mayo 2026. Los precios pueden cambiar.</p>
         </div>
       </div>
     </article>
+    </>
   )
 }
 

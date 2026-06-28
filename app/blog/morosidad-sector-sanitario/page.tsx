@@ -2,22 +2,26 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Morosidad sector sanitario 2026: cobrar a clínicas y proveedores médicos | Marsof',
-  description: 'Cómo cobrar facturas a clínicas privadas, mutuas, residencias y proveedores médicos. Plazos reales, peculiaridades del sector y soluciones.',
+  title: 'Morosidad sector sanitario 2026: cobrar a clï¿½nicas y proveedores mï¿½dicos | Marsof',
+  description: 'Cï¿½mo cobrar facturas a clï¿½nicas privadas, mutuas, residencias y proveedores mï¿½dicos. Plazos reales, peculiaridades del sector y soluciones.',
   alternates: { canonical: 'https://www.marsof.es/blog/morosidad-sector-sanitario' },
   keywords: ['cobrar clinica', 'mutua paga tarde', 'cobros sector salud', 'residencias mayores cobros', 'proveedor medico facturas'],
-  openGraph: { title: 'Morosidad sector sanitario', description: 'Cobrar a clínicas y mutuas.', type: 'article', locale: 'es_ES' },
+  openGraph: { title: 'Morosidad sector sanitario', description: 'Cobrar a clï¿½nicas y mutuas.', type: 'article', locale: 'es_ES' },
 }
+
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Morosidad sector sanitario 2026: cobrar a clï¿½nicas y proveedores mï¿½dicos", "description": "Cï¿½mo cobrar facturas a clï¿½nicas privadas, mutuas, residencias y proveedores mï¿½dicos. Plazos reales, peculiaridades del sector y soluciones.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/morosidad-sector-sanitario"}
 
 export default function PageSanitario() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Sector · 7 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Sector ï¿½ 7 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Morosidad en el sector sanitario</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Clínicas privadas, mutuas, aseguradoras, residencias y proveedores médicos. Cada uno tiene su lógica de pago. Aquí va lo que necesitas saber.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">Clï¿½nicas privadas, mutuas, aseguradoras, residencias y proveedores mï¿½dicos. Cada uno tiene su lï¿½gica de pago. Aquï¿½ va lo que necesitas saber.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
@@ -28,49 +32,50 @@ export default function PageSanitario() {
                 <tr className="bg-sky-500/20"><th className="py-3 px-4 text-left text-zinc-100">Cliente</th><th className="py-3 px-4 text-left text-zinc-100">Plazo medio real</th></tr>
               </thead>
               <tbody className="text-zinc-300">
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Hospital público (SNS)</td><td className="py-2 px-4">90-180 días</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Clínica privada grande</td><td className="py-2 px-4">60-90 días</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Mutua / aseguradora</td><td className="py-2 px-4">60-120 días</td></tr>
-                <tr className="border-b border-white/10"><td className="py-2 px-4">Residencia mayores privada</td><td className="py-2 px-4">30-60 días</td></tr>
-                <tr><td className="py-2 px-4">Particular en consulta</td><td className="py-2 px-4">Inmediato o 7 días</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Hospital pï¿½blico (SNS)</td><td className="py-2 px-4">90-180 dï¿½as</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Clï¿½nica privada grande</td><td className="py-2 px-4">60-90 dï¿½as</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Mutua / aseguradora</td><td className="py-2 px-4">60-120 dï¿½as</td></tr>
+                <tr className="border-b border-white/10"><td className="py-2 px-4">Residencia mayores privada</td><td className="py-2 px-4">30-60 dï¿½as</td></tr>
+                <tr><td className="py-2 px-4">Particular en consulta</td><td className="py-2 px-4">Inmediato o 7 dï¿½as</td></tr>
               </tbody>
             </table>
           </div>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Peculiaridades del sector</h2>
           <ul className="space-y-3 text-zinc-300 mb-6">
-            <li><strong>1. Pagos por acto médico vs por convenio:</strong> los honorarios profesionales y los conciertos con mutuas tienen lógicas distintas.</li>
-            <li><strong>2. Códigos y nomenclátor:</strong> cada mutua tiene su sistema. Si falla un código, retrasan el pago semanas.</li>
-            <li><strong>3. Auditorías de facturación:</strong> las aseguradoras revisan caso por caso. Cualquier discrepancia retrasa el pago.</li>
-            <li><strong>4. Cesión de derechos:</strong> el paciente cede el cobro a la aseguradora. Si la aseguradora rechaza, el paciente no paga.</li>
+            <li><strong>1. Pagos por acto mï¿½dico vs por convenio:</strong> los honorarios profesionales y los conciertos con mutuas tienen lï¿½gicas distintas.</li>
+            <li><strong>2. Cï¿½digos y nomenclï¿½tor:</strong> cada mutua tiene su sistema. Si falla un cï¿½digo, retrasan el pago semanas.</li>
+            <li><strong>3. Auditorï¿½as de facturaciï¿½n:</strong> las aseguradoras revisan caso por caso. Cualquier discrepancia retrasa el pago.</li>
+            <li><strong>4. Cesiï¿½n de derechos:</strong> el paciente cede el cobro a la aseguradora. Si la aseguradora rechaza, el paciente no paga.</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Marco legal aplicable</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li><strong>Ley 3/2004 (morosidad B2B):</strong> 60 días máximo en operaciones entre clínicas/mutuas</li>
-            <li><strong>Ley 9/2017 (sector público):</strong> 30 días para hospitales públicos</li>
+            <li><strong>Ley 3/2004 (morosidad B2B):</strong> 60 dï¿½as mï¿½ximo en operaciones entre clï¿½nicas/mutuas</li>
+            <li><strong>Ley 9/2017 (sector pï¿½blico):</strong> 30 dï¿½as para hospitales pï¿½blicos</li>
             <li><strong>Ley 50/1980 contrato de seguro:</strong> regula plazos y obligaciones de las aseguradoras</li>
-            <li><strong>Interesés del 12,5%</strong> + 40€ por factura aplican igual que en cualquier sector</li>
+            <li><strong>Interesï¿½s del 12,5%</strong> + 40ï¿½ por factura aplican igual que en cualquier sector</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Estrategia anti-morosos en sanitario</h2>
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-            <li><strong>Convenio claro con cada mutua:</strong> revisa cada año las condiciones</li>
-            <li><strong>Facturación impecable:</strong> códigos correctos, sin tachones, justificantes</li>
-            <li><strong>Sistemático con plazos:</strong> recordatorio el día 30 si era a 30, día 60 si era a 60</li>
+            <li><strong>Convenio claro con cada mutua:</strong> revisa cada aï¿½o las condiciones</li>
+            <li><strong>Facturaciï¿½n impecable:</strong> cï¿½digos correctos, sin tachones, justificantes</li>
+            <li><strong>Sistemï¿½tico con plazos:</strong> recordatorio el dï¿½a 30 si era a 30, dï¿½a 60 si era a 60</li>
             <li><strong>Email al departamento de pagos</strong> y al gerente cuando se retrasa</li>
-            <li><strong>Para hospital público:</strong> denuncia ante la Junta Consultiva de Contratación Administrativa</li>
-            <li><strong>Burofax + Ley 3/2004 o Ley 9/2017</strong> según corresponda</li>
+            <li><strong>Para hospital pï¿½blico:</strong> denuncia ante la Junta Consultiva de Contrataciï¿½n Administrativa</li>
+            <li><strong>Burofax + Ley 3/2004 o Ley 9/2017</strong> segï¿½n corresponda</li>
           </ol>
         </section>
 
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea automatiza recordatorios a clínicas y mutuas</h3>
-          <p className="text-zinc-300 mb-5">Plantillas configurables por cliente (mutua, hospital, residencia). Cita la ley correcta automáticamente. <strong>30 días gratis.</strong></p>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea automatiza recordatorios a clï¿½nicas y mutuas</h3>
+          <p className="text-zinc-300 mb-5">Plantillas configurables por cliente (mutua, hospital, residencia). Cita la ley correcta automï¿½ticamente. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 

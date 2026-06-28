@@ -2,80 +2,85 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Qué decir cuando un cliente no paga: 12 frases que funcionan | Marsof',
+  title: 'Quï¿½ decir cuando un cliente no paga: 12 frases que funcionan | Marsof',
   description: 'Las 12 frases exactas que usan los profesionales para reclamar cobros sin perder al cliente. Email, llamada y WhatsApp. Plantillas listas.',
   alternates: { canonical: 'https://www.marsof.es/blog/que-decir-cuando-cliente-no-paga' },
-  keywords: ['qué decir cliente no paga', 'frases reclamar pago', 'cómo dirigirse moroso', 'palabras exactas cobrar', 'qué escribir cliente moroso'],
-  openGraph: { title: 'Qué decir cuando un cliente no paga', description: '12 frases que funcionan.', type: 'article', locale: 'es_ES' },
+  keywords: ['quï¿½ decir cliente no paga', 'frases reclamar pago', 'cï¿½mo dirigirse moroso', 'palabras exactas cobrar', 'quï¿½ escribir cliente moroso'],
+  openGraph: { title: 'Quï¿½ decir cuando un cliente no paga', description: '12 frases que funcionan.', type: 'article', locale: 'es_ES' },
 }
+
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Quï¿½ decir cuando un cliente no paga: 12 frases que funcionan", "description": "Las 12 frases exactas que usan los profesionales para reclamar cobros sin perder al cliente. Email, llamada y WhatsApp. Plantillas listas.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/que-decir-cuando-cliente-no-paga"}
 
 export default function Page() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comunicación · 6 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Qué decir cuando un cliente no paga</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Las 12 frases exactas que funcionan. Sin sonar agresivo, sin sonar débil, sin perder al cliente.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Comunicaciï¿½n ï¿½ 6 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Quï¿½ decir cuando un cliente no paga</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">Las 12 frases exactas que funcionan. Sin sonar agresivo, sin sonar dï¿½bil, sin perder al cliente.</p>
         </header>
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Día 1 — Cuando acaba de vencer</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Dï¿½a 1 ï¿½ Cuando acaba de vencer</h2>
           <div className="bg-zinc-900/40 border-l-4 border-sky-500 rounded-r-xl p-5 my-4">
-            <p className="text-zinc-300 text-sm italic"><strong>Frase 1 (email amable):</strong><br/>"Hola [nombre], te recuerdo que la factura [X] venció ayer. Si ya la has pagado en los últimos días, perdona el toque. Si no, ¿cuándo podrías procesarla? Un saludo."</p>
+            <p className="text-zinc-300 text-sm italic"><strong>Frase 1 (email amable):</strong><br/>"Hola [nombre], te recuerdo que la factura [X] venciï¿½ ayer. Si ya la has pagado en los ï¿½ltimos dï¿½as, perdona el toque. Si no, ï¿½cuï¿½ndo podrï¿½as procesarla? Un saludo."</p>
           </div>
           <div className="bg-zinc-900/40 border-l-4 border-sky-500 rounded-r-xl p-5 my-4">
-            <p className="text-zinc-300 text-sm italic"><strong>Frase 2 (WhatsApp):</strong><br/>"Hola [nombre], aviso amistoso: la factura [X] ya está vencida. ¿Algún tema con el pago?"</p>
+            <p className="text-zinc-300 text-sm italic"><strong>Frase 2 (WhatsApp):</strong><br/>"Hola [nombre], aviso amistoso: la factura [X] ya estï¿½ vencida. ï¿½Algï¿½n tema con el pago?"</p>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Día 7-14 — El recordatorio firme</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Dï¿½a 7-14 ï¿½ El recordatorio firme</h2>
           <div className="bg-zinc-900/40 border-l-4 border-amber-500 rounded-r-xl p-5 my-4">
-            <p className="text-zinc-300 text-sm italic"><strong>Frase 3 (email firme):</strong><br/>"[nombre], la factura [X] sigue pendiente. Según la Ley 3/2004 desde hoy se devengan intereses del 12,5% anual e indemnización de 40€. Si me confirmas cuándo procesarás el pago, lo cerramos sin tener que cuantificar nada."</p>
+            <p className="text-zinc-300 text-sm italic"><strong>Frase 3 (email firme):</strong><br/>"[nombre], la factura [X] sigue pendiente. Segï¿½n la Ley 3/2004 desde hoy se devengan intereses del 12,5% anual e indemnizaciï¿½n de 40ï¿½. Si me confirmas cuï¿½ndo procesarï¿½s el pago, lo cerramos sin tener que cuantificar nada."</p>
           </div>
           <div className="bg-zinc-900/40 border-l-4 border-amber-500 rounded-r-xl p-5 my-4">
-            <p className="text-zinc-300 text-sm italic"><strong>Frase 4 (llamada):</strong><br/>"Hola [nombre], te llamo por la factura pendiente. ¿Va todo bien por tu lado? ¿Algún problema que pueda resolver?"</p>
+            <p className="text-zinc-300 text-sm italic"><strong>Frase 4 (llamada):</strong><br/>"Hola [nombre], te llamo por la factura pendiente. ï¿½Va todo bien por tu lado? ï¿½Algï¿½n problema que pueda resolver?"</p>
           </div>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cuando el cliente da excusas</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4">
-            <p className="text-zinc-200 mb-2"><strong>Si dice "tengo problemas de tesorería":</strong></p>
-            <p className="text-zinc-400 text-sm italic">"Entiendo. ¿Te ayudaría dividirlo en 2 pagos? Pongamos por escrito una fecha cerrada para cada uno."</p>
+            <p className="text-zinc-200 mb-2"><strong>Si dice "tengo problemas de tesorerï¿½a":</strong></p>
+            <p className="text-zinc-400 text-sm italic">"Entiendo. ï¿½Te ayudarï¿½a dividirlo en 2 pagos? Pongamos por escrito una fecha cerrada para cada uno."</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4">
             <p className="text-zinc-200 mb-2"><strong>Si dice "estoy esperando que me paguen otros":</strong></p>
-            <p className="text-zinc-400 text-sm italic">"Mi factura está vencida y los intereses corren desde el día 1, independientemente de tus cobros. Cuanto antes lo cerremos, mejor para ambos."</p>
+            <p className="text-zinc-400 text-sm italic">"Mi factura estï¿½ vencida y los intereses corren desde el dï¿½a 1, independientemente de tus cobros. Cuanto antes lo cerremos, mejor para ambos."</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4">
             <p className="text-zinc-200 mb-2"><strong>Si dice "ya te lo he transferido":</strong></p>
-            <p className="text-zinc-400 text-sm italic">"Perfecto. ¿Me puedes pasar el justificante o el número de operación? Lo cuadro y te lo confirmo."</p>
+            <p className="text-zinc-400 text-sm italic">"Perfecto. ï¿½Me puedes pasar el justificante o el nï¿½mero de operaciï¿½n? Lo cuadro y te lo confirmo."</p>
           </div>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-4">
             <p className="text-zinc-200 mb-2"><strong>Si dice "no estoy de acuerdo con la factura":</strong></p>
-            <p className="text-zinc-400 text-sm italic">"Vale, dime qué punto concreto. Si hay un error, lo corregimos hoy mismo. Si no, mantenemos lo facturado."</p>
+            <p className="text-zinc-400 text-sm italic">"Vale, dime quï¿½ punto concreto. Si hay un error, lo corregimos hoy mismo. Si no, mantenemos lo facturado."</p>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cuando ya pasaron 60 días</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cuando ya pasaron 60 dï¿½as</h2>
           <div className="bg-zinc-900/40 border-l-4 border-rose-500 rounded-r-xl p-5 my-4">
-            <p className="text-zinc-300 text-sm italic"><strong>Frase 9 (previo a burofax):</strong><br/>"[nombre], antes de proceder a la vía formal, te ofrezco una última opción: cierre del pago en 7 días naturales. De lo contrario, el siguiente paso será burofax y procedimiento monitorio, repercutiendo los costes legales."</p>
+            <p className="text-zinc-300 text-sm italic"><strong>Frase 9 (previo a burofax):</strong><br/>"[nombre], antes de proceder a la vï¿½a formal, te ofrezco una ï¿½ltima opciï¿½n: cierre del pago en 7 dï¿½as naturales. De lo contrario, el siguiente paso serï¿½ burofax y procedimiento monitorio, repercutiendo los costes legales."</p>
           </div>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Lo que NUNCA debes decir</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? "Si no me pagas, te denuncio" (amenaza vacía si aún no has mandado burofax)</li>
-            <li>? "Eres un sinvergüenza" (insulto, te puede denunciar a ti)</li>
-            <li>? "Voy a contarle a todo el mundo que no pagas" (difamación)</li>
+            <li>? "Si no me pagas, te denuncio" (amenaza vacï¿½a si aï¿½n no has mandado burofax)</li>
+            <li>? "Eres un sinvergï¿½enza" (insulto, te puede denunciar a ti)</li>
+            <li>? "Voy a contarle a todo el mundo que no pagas" (difamaciï¿½n)</li>
             <li>? Mensajes a las 23:00 o fines de semana (acoso)</li>
-            <li>? Más de 1 email al día (acoso)</li>
-            <li>? Mayúsculas o muchos signos de exclamación</li>
+            <li>? Mï¿½s de 1 email al dï¿½a (acoso)</li>
+            <li>? Mayï¿½sculas o muchos signos de exclamaciï¿½n</li>
           </ul>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea escribe las frases por ti</h3>
-          <p className="text-zinc-300 mb-5">La IA escoge el tono exacto según los días de retraso. Tú no tienes que pensar qué decir. <strong>30 días gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">La IA escoge el tono exacto segï¿½n los dï¿½as de retraso. Tï¿½ no tienes que pensar quï¿½ decir. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 

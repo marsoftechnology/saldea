@@ -2,37 +2,41 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Ratio de liquidez para pymes: cómo calcularlo y mejorarlo | Marsof',
-  description: 'Qué es el ratio de liquidez, fórmula, valores ideales en España y cómo mejorarlo cobrando antes. Guía práctica para pymes y autónomos.',
+  title: 'Ratio de liquidez para pymes: cï¿½mo calcularlo y mejorarlo | Marsof',
+  description: 'Quï¿½ es el ratio de liquidez, fï¿½rmula, valores ideales en Espaï¿½a y cï¿½mo mejorarlo cobrando antes. Guï¿½a prï¿½ctica para pymes y autï¿½nomos.',
   alternates: { canonical: 'https://www.marsof.es/blog/ratio-liquidez-pyme-2026' },
   keywords: ['ratio liquidez', 'ratio liquidez pyme', 'calcular liquidez', 'ratio tesoreria', 'salud financiera pyme'],
-  openGraph: { title: 'Ratio de liquidez para pymes', description: 'Fórmula, valores ideales y mejora.', type: 'article', locale: 'es_ES' },
+  openGraph: { title: 'Ratio de liquidez para pymes', description: 'Fï¿½rmula, valores ideales y mejora.', type: 'article', locale: 'es_ES' },
 }
+
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Ratio de liquidez para pymes: cï¿½mo calcularlo y mejorarlo", "description": "Quï¿½ es el ratio de liquidez, fï¿½rmula, valores ideales en Espaï¿½a y cï¿½mo mejorarlo cobrando antes. Guï¿½a prï¿½ctica para pymes y autï¿½nomos.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/ratio-liquidez-pyme-2026"}
 
 export default function PageLiquidez() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Finanzas · 7 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Finanzas ï¿½ 7 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Ratio de liquidez para pymes</h1>
           <p className="text-zinc-400 text-lg leading-relaxed">El indicador que te dice si tu empresa puede pagar sus deudas a corto plazo. Si no lo mides, vas a ciegas.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¿Qué es el ratio de liquidez?</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">El <strong>ratio de liquidez</strong> mide la capacidad de tu empresa para hacer frente a sus deudas a corto plazo (las que vencen en menos de un año) con los recursos que tiene también a corto plazo.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">ï¿½Quï¿½ es el ratio de liquidez?</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">El <strong>ratio de liquidez</strong> mide la capacidad de tu empresa para hacer frente a sus deudas a corto plazo (las que vencen en menos de un aï¿½o) con los recursos que tiene tambiï¿½n a corto plazo.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Fórmula</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Fï¿½rmula</h2>
           <div className="bg-sky-500/5 border border-sky-500/30 rounded-xl p-5 my-5 text-center">
             <p className="text-xl font-bold text-zinc-100">Ratio liquidez = Activo corriente / Pasivo corriente</p>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">¿Qué incluye cada término?</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">ï¿½Quï¿½ incluye cada tï¿½rmino?</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
             <li><strong>Activo corriente:</strong> caja, cuentas a cobrar (facturas pendientes), inventario, inversiones a corto plazo.</li>
-            <li><strong>Pasivo corriente:</strong> deudas a proveedores, impuestos a pagar, sueldos pendientes, préstamos a corto plazo.</li>
+            <li><strong>Pasivo corriente:</strong> deudas a proveedores, impuestos a pagar, sueldos pendientes, prï¿½stamos a corto plazo.</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Valores ideales</h2>
@@ -41,7 +45,7 @@ export default function PageLiquidez() {
               <thead>
                 <tr className="bg-sky-500/20">
                   <th className="py-3 px-4 text-left text-zinc-100">Ratio</th>
-                  <th className="py-3 px-4 text-left text-zinc-100">Diagnóstico</th>
+                  <th className="py-3 px-4 text-left text-zinc-100">Diagnï¿½stico</th>
                 </tr>
               </thead>
               <tbody className="text-zinc-300">
@@ -53,41 +57,42 @@ export default function PageLiquidez() {
             </table>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ejemplo práctico</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Ejemplo prï¿½ctico</h2>
           <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-5 my-5">
-            <p className="text-zinc-300 mb-2"><strong>Caso 1 — Empresa con problemas:</strong></p>
-            <p className="text-zinc-400 text-sm">Activo corriente: 50.000€ (de los cuales 35.000€ son facturas vencidas pendientes)</p>
-            <p className="text-zinc-400 text-sm">Pasivo corriente: 60.000€</p>
+            <p className="text-zinc-300 mb-2"><strong>Caso 1 ï¿½ Empresa con problemas:</strong></p>
+            <p className="text-zinc-400 text-sm">Activo corriente: 50.000ï¿½ (de los cuales 35.000ï¿½ son facturas vencidas pendientes)</p>
+            <p className="text-zinc-400 text-sm">Pasivo corriente: 60.000ï¿½</p>
             <p className="text-sky-400 text-sm mt-2"><strong>Ratio: 0,83 ? PELIGRO</strong></p>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El "ratio ácido" o quick ratio</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Variante más exigente que excluye el inventario (porque no siempre se puede vender rápido):</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El "ratio ï¿½cido" o quick ratio</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Variante mï¿½s exigente que excluye el inventario (porque no siempre se puede vender rï¿½pido):</p>
           <div className="bg-sky-500/5 border border-sky-500/30 rounded-xl p-5 my-5 text-center">
-            <p className="text-lg font-bold text-zinc-100">Ratio ácido = (Activo corriente - Inventario) / Pasivo corriente</p>
+            <p className="text-lg font-bold text-zinc-100">Ratio ï¿½cido = (Activo corriente - Inventario) / Pasivo corriente</p>
           </div>
-          <p className="text-zinc-300 leading-relaxed mb-4">Idealmente debe ser = 1. Si tu ratio normal es 1,5 pero el ácido es 0,6, tienes demasiado capital atrapado en inventario.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Idealmente debe ser = 1. Si tu ratio normal es 1,5 pero el ï¿½cido es 0,6, tienes demasiado capital atrapado en inventario.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cómo mejorar tu ratio de liquidez</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cï¿½mo mejorar tu ratio de liquidez</h2>
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-            <li><strong>Cobra más rápido tus facturas</strong> ? bajar el DSO (días promedio cobro)</li>
-            <li><strong>Negocia plazos más largos con proveedores</strong> ? subir el DPO (días promedio pago)</li>
+            <li><strong>Cobra mï¿½s rï¿½pido tus facturas</strong> ? bajar el DSO (dï¿½as promedio cobro)</li>
+            <li><strong>Negocia plazos mï¿½s largos con proveedores</strong> ? subir el DPO (dï¿½as promedio pago)</li>
             <li><strong>Reduce inventario inmovilizado</strong> ? vender stock antiguo aunque sea con descuento</li>
             <li><strong>Factoring puntual</strong> para facturas grandes que tardan mucho</li>
             <li><strong>Anticipos a clientes nuevos</strong> ? no esperes a entregar para cobrar 100%</li>
           </ol>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El impacto real de cobrar 30 días antes</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Ejemplo:</strong> empresa con 200.000€ de facturas anuales y DSO de 75 días. Si baja el DSO a 45 días (cobra 30 días antes), libera <strong>~16.500€ de capital</strong> que estaba atrapado en cuentas a cobrar. Eso mejora el ratio de liquidez automáticamente.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El impacto real de cobrar 30 dï¿½as antes</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4"><strong>Ejemplo:</strong> empresa con 200.000ï¿½ de facturas anuales y DSO de 75 dï¿½as. Si baja el DSO a 45 dï¿½as (cobra 30 dï¿½as antes), libera <strong>~16.500ï¿½ de capital</strong> que estaba atrapado en cuentas a cobrar. Eso mejora el ratio de liquidez automï¿½ticamente.</p>
         </section>
 
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea mejora tu ratio de liquidez</h3>
-          <p className="text-zinc-300 mb-5">Cobrando 20-30 días antes con recordatorios automáticos, mejoras tu ratio sin pedir préstamos ni hacer factoring. <strong>30 días gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Cobrando 20-30 dï¿½as antes con recordatorios automï¿½ticos, mejoras tu ratio sin pedir prï¿½stamos ni hacer factoring. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 

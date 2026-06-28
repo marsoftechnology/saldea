@@ -2,8 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Facturas recurrentes para suscripciones: guía 2026 | Marsof',
-  description: 'Cómo gestionar facturas recurrentes en suscripciones SaaS, alquileres, mantenimientos. Automatización, cumplimiento fiscal y reducción de impagos.',
+  title: 'Facturas recurrentes para suscripciones: guï¿½a 2026 | Marsof',
+  description: 'Cï¿½mo gestionar facturas recurrentes en suscripciones SaaS, alquileres, mantenimientos. Automatizaciï¿½n, cumplimiento fiscal y reducciï¿½n de impagos.',
   alternates: { canonical: 'https://www.marsof.es/blog/facturas-recurrentes-suscripciones' },
   keywords: [
     'factura recurrente',
@@ -14,90 +14,95 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Facturas recurrentes para suscripciones',
-    description: 'Cómo gestionarlas sin volverte loco.',
+    description: 'Cï¿½mo gestionarlas sin volverte loco.',
     type: 'article',
     locale: 'es_ES',
   },
 }
 
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Facturas recurrentes para suscripciones: guï¿½a 2026", "description": "Cï¿½mo gestionar facturas recurrentes en suscripciones SaaS, alquileres, mantenimientos. Automatizaciï¿½n, cumplimiento fiscal y reducciï¿½n de impagos.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/facturas-recurrentes-suscripciones"}
+
 export default function PageRecurrentes() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Facturación · 6 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Facturaciï¿½n ï¿½ 6 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Facturas recurrentes para suscripciones</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Si cobras cuotas mensuales por SaaS, alquileres, mantenimientos o servicios fijos, gestionar facturas recurrentes a mano es perder el tiempo. Te explico cómo automatizarlo bien.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">Si cobras cuotas mensuales por SaaS, alquileres, mantenimientos o servicios fijos, gestionar facturas recurrentes a mano es perder el tiempo. Te explico cï¿½mo automatizarlo bien.</p>
         </header>
 
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Qué es una factura recurrente</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">Una factura recurrente es la que emites <strong>periódicamente con el mismo concepto, importe y cliente</strong>. La más típica: la cuota mensual de una suscripción SaaS, un alquiler o un servicio de mantenimiento.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4">Cada emisión tiene <strong>número correlativo independiente</strong> y vale fiscalmente como factura ordinaria. Solo cambia que la generas con plantilla automatizada.</p>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Quï¿½ es una factura recurrente</h2>
+          <p className="text-zinc-300 leading-relaxed mb-4">Una factura recurrente es la que emites <strong>periï¿½dicamente con el mismo concepto, importe y cliente</strong>. La mï¿½s tï¿½pica: la cuota mensual de una suscripciï¿½n SaaS, un alquiler o un servicio de mantenimiento.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Cada emisiï¿½n tiene <strong>nï¿½mero correlativo independiente</strong> y vale fiscalmente como factura ordinaria. Solo cambia que la generas con plantilla automatizada.</p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Sectores que usan facturas recurrentes</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
             <li>?? <strong>SaaS y software</strong>: suscripciones mensuales o anuales</li>
             <li>?? <strong>Inmobiliarias</strong>: alquileres mensuales</li>
-            <li>?? <strong>Mantenimientos</strong>: ascensores, climatización, jardinería</li>
-            <li>?? <strong>Asesorías y gestorías</strong>: cuota mensual por cliente</li>
+            <li>?? <strong>Mantenimientos</strong>: ascensores, climatizaciï¿½n, jardinerï¿½a</li>
+            <li>?? <strong>Asesorï¿½as y gestorï¿½as</strong>: cuota mensual por cliente</li>
             <li>?? <strong>Agencias</strong>: retainer mensual con clientes</li>
-            <li>??? <strong>Gimnasios y formación</strong>: cuotas mensuales o anuales</li>
+            <li>??? <strong>Gimnasios y formaciï¿½n</strong>: cuotas mensuales o anuales</li>
             <li>?? <strong>Hosting y dominios</strong>: renovaciones anuales</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cómo automatizar bien las facturas recurrentes</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cï¿½mo automatizar bien las facturas recurrentes</h2>
 
           <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">1. Domicilia los cobros con SEPA</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">El cliente firma una vez el mandato SEPA y a partir de ahí los cobros van automáticos cada mes. <strong>Reduces la morosidad hasta un 70%.</strong> Solo puede oponerse en caso de disputa real.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">El cliente firma una vez el mandato SEPA y a partir de ahï¿½ los cobros van automï¿½ticos cada mes. <strong>Reduces la morosidad hasta un 70%.</strong> Solo puede oponerse en caso de disputa real.</p>
 
           <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">2. Avisa antes del cobro (obligatorio en SEPA)</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">La normativa SEPA exige preaviso de 14 días naturales antes del primer cobro y 1 día antes de los siguientes. Esto se llama "mandate notification".</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">La normativa SEPA exige preaviso de 14 dï¿½as naturales antes del primer cobro y 1 dï¿½a antes de los siguientes. Esto se llama "mandate notification".</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">3. Genera la factura el mismo día del cobro</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">La factura debe llevar la fecha de la operación, que en recurrentes es el día del cobro. Te conviene emitirla automáticamente para no acumular pendientes.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">3. Genera la factura el mismo dï¿½a del cobro</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">La factura debe llevar la fecha de la operaciï¿½n, que en recurrentes es el dï¿½a del cobro. Te conviene emitirla automï¿½ticamente para no acumular pendientes.</p>
 
           <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">4. Numera con prefijo dedicado</h3>
           <p className="text-zinc-300 leading-relaxed mb-4">Por orden, conviene usar serie separada para recurrentes (p.ej. SUB-2026-001) frente a las facturas puntuales (FAC-2026-001).</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">5. Gestiona las renovaciones automáticas con claridad</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Si tu suscripción es anual con renovación automática, debes <strong>avisar al cliente con 30 días de antelación</strong> según la Ley de Consumidores (si aplica). Para clientes B2B, lo que pacte el contrato.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">5. Gestiona las renovaciones automï¿½ticas con claridad</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Si tu suscripciï¿½n es anual con renovaciï¿½n automï¿½tica, debes <strong>avisar al cliente con 30 dï¿½as de antelaciï¿½n</strong> segï¿½n la Ley de Consumidores (si aplica). Para clientes B2B, lo que pacte el contrato.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Qué hacer cuando una factura recurrente falla</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Quï¿½ hacer cuando una factura recurrente falla</h2>
           <ol className="space-y-2 text-zinc-300 list-decimal list-inside mb-6">
-            <li><strong>Día 1:</strong> el cobro SEPA rechaza (saldo insuficiente, cuenta cerrada). Aviso automático al cliente por email.</li>
-            <li><strong>Día 3:</strong> reintento de cobro automático.</li>
-            <li><strong>Día 7:</strong> si sigue sin pagar, suspensión parcial del servicio (acceso reducido o limitado).</li>
-            <li><strong>Día 15:</strong> suspensión total del servicio + comunicación formal.</li>
-            <li><strong>Día 30:</strong> baja definitiva. Reclamación de la cuota pendiente con Ley 3/2004.</li>
+            <li><strong>Dï¿½a 1:</strong> el cobro SEPA rechaza (saldo insuficiente, cuenta cerrada). Aviso automï¿½tico al cliente por email.</li>
+            <li><strong>Dï¿½a 3:</strong> reintento de cobro automï¿½tico.</li>
+            <li><strong>Dï¿½a 7:</strong> si sigue sin pagar, suspensiï¿½n parcial del servicio (acceso reducido o limitado).</li>
+            <li><strong>Dï¿½a 15:</strong> suspensiï¿½n total del servicio + comunicaciï¿½n formal.</li>
+            <li><strong>Dï¿½a 30:</strong> baja definitiva. Reclamaciï¿½n de la cuota pendiente con Ley 3/2004.</li>
           </ol>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Errores típicos en facturación recurrente</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Errores tï¿½picos en facturaciï¿½n recurrente</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
             <li>? Olvidar emitir la factura del mes (Hacienda te puede multar)</li>
-            <li>? No comunicar las renovaciones automáticas (puede invalidar el cobro)</li>
-            <li>? Subir el precio sin avisar al menos 30 días antes</li>
+            <li>? No comunicar las renovaciones automï¿½ticas (puede invalidar el cobro)</li>
+            <li>? Subir el precio sin avisar al menos 30 dï¿½as antes</li>
             <li>? No cancelar suscripciones cuando el cliente lo pide</li>
-            <li>? Mezclar serie de numeración con facturas ordinarias</li>
+            <li>? Mezclar serie de numeraciï¿½n con facturas ordinarias</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Herramientas para facturación recurrente</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Herramientas para facturaciï¿½n recurrente</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li><strong>Stripe Billing:</strong> el estándar para SaaS. 0,5% + IVA por suscripción activa.</li>
-            <li><strong>Holded:</strong> ERP completo, incluye facturación recurrente.</li>
-            <li><strong>Quipu / Anfix:</strong> facturación con módulo de recurrentes.</li>
+            <li><strong>Stripe Billing:</strong> el estï¿½ndar para SaaS. 0,5% + IVA por suscripciï¿½n activa.</li>
+            <li><strong>Holded:</strong> ERP completo, incluye facturaciï¿½n recurrente.</li>
+            <li><strong>Quipu / Anfix:</strong> facturaciï¿½n con mï¿½dulo de recurrentes.</li>
             <li><strong>Saldea:</strong> no genera la factura recurrente, pero si tu cliente se retrasa con el cobro, persigue la deuda con IA.</li>
           </ul>
         </section>
 
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea complementa tu facturación recurrente</h3>
-          <p className="text-zinc-300 mb-5">Si usas Stripe Billing o Holded para emitir las facturas, conecta Saldea para perseguir los impagos cuando el cobro SEPA falla. <strong>30 días gratis.</strong></p>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea complementa tu facturaciï¿½n recurrente</h3>
+          <p className="text-zinc-300 mb-5">Si usas Stripe Billing o Holded para emitir las facturas, conecta Saldea para perseguir los impagos cuando el cobro SEPA falla. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 

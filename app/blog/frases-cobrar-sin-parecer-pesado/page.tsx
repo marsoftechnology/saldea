@@ -3,82 +3,87 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Frases para cobrar a un cliente sin parecer pesado | Marsof',
-  description: 'Las 15 frases que usan los autónomos profesionales para reclamar pagos sin agobiar. Resultado: cobras igual sin perder el cliente.',
+  description: 'Las 15 frases que usan los autï¿½nomos profesionales para reclamar pagos sin agobiar. Resultado: cobras igual sin perder el cliente.',
   alternates: { canonical: 'https://www.marsof.es/blog/frases-cobrar-sin-parecer-pesado' },
-  keywords: ['frases cobrar sin parecer pesado', 'cómo cobrar sin agobiar', 'frases recordar pago educado', 'frases cobro profesional'],
+  keywords: ['frases cobrar sin parecer pesado', 'cï¿½mo cobrar sin agobiar', 'frases recordar pago educado', 'frases cobro profesional'],
   openGraph: { title: 'Frases para cobrar sin parecer pesado', description: '15 frases que funcionan.', type: 'article', locale: 'es_ES' },
 }
 
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Frases para cobrar a un cliente sin parecer pesado", "description": "Las 15 frases que usan los autï¿½nomos profesionales para reclamar pagos sin agobiar. Resultado: cobras igual sin perder el cliente.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/frases-cobrar-sin-parecer-pesado"}
+
 export default function Page() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Plantillas · 5 min</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Plantillas ï¿½ 5 min</p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Frases para cobrar a un cliente sin parecer pesado</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">El secreto está en escoger las palabras correctas. Aquí las 15 que funcionan.</p>
+          <p className="text-zinc-400 text-lg leading-relaxed">El secreto estï¿½ en escoger las palabras correctas. Aquï¿½ las 15 que funcionan.</p>
         </header>
         <section className="prose prose-invert max-w-none">
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">La fórmula psicológica</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">La fï¿½rmula psicolï¿½gica</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Una frase no pesada cumple 3 condiciones:</p>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? <strong>Asume buena fe</strong> ("seguramente se traspapeló")</li>
-            <li>? <strong>Da salida fácil</strong> ("si ya pagaste, ignora")</li>
-            <li>? <strong>Pregunta abierta, no acusación</strong> ("cuándo te viene bien")</li>
+            <li>? <strong>Asume buena fe</strong> ("seguramente se traspapelï¿½")</li>
+            <li>? <strong>Da salida fï¿½cil</strong> ("si ya pagaste, ignora")</li>
+            <li>? <strong>Pregunta abierta, no acusaciï¿½n</strong> ("cuï¿½ndo te viene bien")</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Frases para abrir la conversación</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Frases para abrir la conversaciï¿½n</h2>
           <div className="space-y-3 my-5">
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">1. "Te recuerdo que la factura [X] vence hoy. Si necesitas el PDF de nuevo, dímelo."</p></div>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">2. "Aviso amable: la factura [X] está vencida. ¿Cuándo te viene bien procesarla?"</p></div>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">3. "Hola [nombre], seguramente se traspapeló: la factura [X] sigue pendiente."</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">1. "Te recuerdo que la factura [X] vence hoy. Si necesitas el PDF de nuevo, dï¿½melo."</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">2. "Aviso amable: la factura [X] estï¿½ vencida. ï¿½Cuï¿½ndo te viene bien procesarla?"</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">3. "Hola [nombre], seguramente se traspapelï¿½: la factura [X] sigue pendiente."</p></div>
           </div>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Frases para subir el tono sin agobiar</h2>
           <div className="space-y-3 my-5">
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">4. "Llevamos dos semanas sin tener noticias. ¿Algún problema que pueda resolver desde mi lado?"</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">4. "Llevamos dos semanas sin tener noticias. ï¿½Algï¿½n problema que pueda resolver desde mi lado?"</p></div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">5. "Para no tener que aplicar intereses Ley 3/2004, dime una fecha concreta de pago, por favor."</p></div>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">6. "¿Hay algo que pueda ayudarte a desbloquear el pago de la factura [X]?"</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">6. "ï¿½Hay algo que pueda ayudarte a desbloquear el pago de la factura [X]?"</p></div>
           </div>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Frases si el cliente da excusas</h2>
           <div className="space-y-3 my-5">
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">7. "Entiendo. ¿Te ayudaría dividirlo en 2 pagos?"</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">7. "Entiendo. ï¿½Te ayudarï¿½a dividirlo en 2 pagos?"</p></div>
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">8. "Ok, ponemos por escrito la nueva fecha y zanjamos esto."</p></div>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">9. "¿Domiciliación SEPA para futuras facturas? Te quitamos el tema del olvido."</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">9. "ï¿½Domiciliaciï¿½n SEPA para futuras facturas? Te quitamos el tema del olvido."</p></div>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Frases para clientes recurrentes (relación a largo plazo)</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Frases para clientes recurrentes (relaciï¿½n a largo plazo)</h2>
           <div className="space-y-3 my-5">
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">10. "Sé que tenemos buena relación, por eso te lo pregunto directamente: ¿qué pasa con la factura [X]?"</p></div>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">11. "Llevamos colaborando [X] meses sin problemas, así que asumo que es un despiste."</p></div>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">12. "¿Quieres que ajustemos los plazos de pago en futuras facturas para que te encajen mejor?"</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">10. "Sï¿½ que tenemos buena relaciï¿½n, por eso te lo pregunto directamente: ï¿½quï¿½ pasa con la factura [X]?"</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">11. "Llevamos colaborando [X] meses sin problemas, asï¿½ que asumo que es un despiste."</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">12. "ï¿½Quieres que ajustemos los plazos de pago en futuras facturas para que te encajen mejor?"</p></div>
           </div>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Frases para cerrar profesionalmente</h2>
           <div className="space-y-3 my-5">
             <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">13. "Gracias por confirmarme. Cuento con el ingreso el [fecha]."</p></div>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">14. "Perfecto. Te paso recordatorio el día anterior para asegurarnos."</p></div>
-            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">15. "Gracias por la respuesta rápida. Apunto la nueva fecha y zanjamos esto. Un saludo."</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">14. "Perfecto. Te paso recordatorio el dï¿½a anterior para asegurarnos."</p></div>
+            <div className="bg-zinc-900/40 border border-white/10 rounded-xl p-4"><p className="text-zinc-300 text-sm">15. "Gracias por la respuesta rï¿½pida. Apunto la nueva fecha y zanjamos esto. Un saludo."</p></div>
           </div>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Lo que SÍ es pesado (evítalo)</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Lo que Sï¿½ es pesado (evï¿½talo)</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? "¿Has visto mi mensaje?" (en lugar de "Te paso recordatorio")</li>
-            <li>? "Por favor, contesta" (suena a súplica)</li>
+            <li>? "ï¿½Has visto mi mensaje?" (en lugar de "Te paso recordatorio")</li>
+            <li>? "Por favor, contesta" (suena a sï¿½plica)</li>
             <li>? "Necesito el dinero" (problema tuyo, no le importa al cliente)</li>
             <li>? "Es la cuarta vez que te escribo" (numerar te hace ver desesperado)</li>
-            <li>? Mensaje cada día (mejor cada 4-7 días)</li>
+            <li>? Mensaje cada dï¿½a (mejor cada 4-7 dï¿½as)</li>
           </ul>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea escribe las frases por ti</h3>
-          <p className="text-zinc-300 mb-5">Sin que tengas que pensar qué decir. La IA escoge tono, momento y plantilla. <strong>30 días gratis.</strong></p>
+          <p className="text-zinc-300 mb-5">Sin que tengas que pensar quï¿½ decir. La IA escoge tono, momento y plantilla. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 

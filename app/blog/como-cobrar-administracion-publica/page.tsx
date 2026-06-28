@@ -2,78 +2,83 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cómo cobrar a la Administración Pública en España (2026) | Marsof',
-  description: 'Plazos reales, marco legal y trucos para cobrar más rápido a Ayuntamientos, Diputaciones y Comunidades Autónomas. Ley 9/2017 y monitorio.',
+  title: 'Cï¿½mo cobrar a la Administraciï¿½n Pï¿½blica en Espaï¿½a (2026) | Marsof',
+  description: 'Plazos reales, marco legal y trucos para cobrar mï¿½s rï¿½pido a Ayuntamientos, Diputaciones y Comunidades Autï¿½nomas. Ley 9/2017 y monitorio.',
   alternates: { canonical: 'https://www.marsof.es/blog/como-cobrar-administracion-publica' },
-  keywords: ['cobrar administración pública', 'cobrar ayuntamiento', 'morosidad sector público', 'ley 9/2017 contratos'],
-  openGraph: { title: 'Cómo cobrar a la Administración Pública', description: 'Plazos y trucos legales.', type: 'article', locale: 'es_ES' },
+  keywords: ['cobrar administraciï¿½n pï¿½blica', 'cobrar ayuntamiento', 'morosidad sector pï¿½blico', 'ley 9/2017 contratos'],
+  openGraph: { title: 'Cï¿½mo cobrar a la Administraciï¿½n Pï¿½blica', description: 'Plazos y trucos legales.', type: 'article', locale: 'es_ES' },
 }
+
+const articleSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Cï¿½mo cobrar a la Administraciï¿½n Pï¿½blica en Espaï¿½a (2026)", "description": "Plazos reales, marco legal y trucos para cobrar mï¿½s rï¿½pido a Ayuntamientos, Diputaciones y Comunidades Autï¿½nomas. Ley 9/2017 y monitorio.", "author": {"@type": "Organization", "name": "Marsof Technology"}, "publisher": {"@type": "Organization", "name": "Marsof Technology", "logo": {"@type": "ImageObject", "url": "https://www.marsof.es/og-image.png"}}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "inLanguage": "es-ES", "url": "https://www.marsof.es/blog/como-cobrar-administracion-publica"}
 
 export default function Page() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <article className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/blog" className="text-sm text-sky-400 hover:text-sky-300 mb-8 inline-block">? Volver al blog</Link>
         <header className="mb-10">
-          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso especial · 6 min</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cómo cobrar a la Administración Pública</h1>
-          <p className="text-zinc-400 text-lg leading-relaxed">Por ley te deben pagar a 30 días. En la realidad, 90-180 días es común. Te explico cómo acelerarlo.</p>
+          <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider mb-3">Caso especial ï¿½ 6 min</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">Cï¿½mo cobrar a la Administraciï¿½n Pï¿½blica</h1>
+          <p className="text-zinc-400 text-lg leading-relaxed">Por ley te deben pagar a 30 dï¿½as. En la realidad, 90-180 dï¿½as es comï¿½n. Te explico cï¿½mo acelerarlo.</p>
         </header>
         <section className="prose prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">El marco legal</h2>
-          <p className="text-zinc-300 leading-relaxed mb-4">La <strong>Ley 9/2017 de Contratos del Sector Público</strong> obliga a la Administración a pagar en <strong>30 días naturales desde la conformidad de la factura</strong>. La conformidad se entiende otorgada a los 30 días de presentación si no la rechazan expresamente.</p>
-          <p className="text-zinc-300 leading-relaxed mb-4">Resultado teórico: máximo 60 días desde que presentas factura. Realidad: pueden pasar 90-180 días.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">La <strong>Ley 9/2017 de Contratos del Sector Pï¿½blico</strong> obliga a la Administraciï¿½n a pagar en <strong>30 dï¿½as naturales desde la conformidad de la factura</strong>. La conformidad se entiende otorgada a los 30 dï¿½as de presentaciï¿½n si no la rechazan expresamente.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Resultado teï¿½rico: mï¿½ximo 60 dï¿½as desde que presentas factura. Realidad: pueden pasar 90-180 dï¿½as.</p>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Pasos para cobrar más rápido</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Pasos para cobrar mï¿½s rï¿½pido</h2>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">1. Factura electrónica en FACe</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Las facturas a Administración Pública deben presentarse a través del portal <strong>FACe</strong> (face.gob.es). Si no la presentas ahí, no cuenta como entregada y el plazo no empieza.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">1. Factura electrï¿½nica en FACe</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Las facturas a Administraciï¿½n Pï¿½blica deben presentarse a travï¿½s del portal <strong>FACe</strong> (face.gob.es). Si no la presentas ahï¿½, no cuenta como entregada y el plazo no empieza.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">2. Códigos DIR3 correctos</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Cada Administración tiene 3 códigos obligatorios (oficina contable, órgano gestor, unidad tramitadora). Confirma estos códigos ANTES de facturar. Si están mal, te devuelven la factura y empiezas de cero.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">2. Cï¿½digos DIR3 correctos</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Cada Administraciï¿½n tiene 3 cï¿½digos obligatorios (oficina contable, ï¿½rgano gestor, unidad tramitadora). Confirma estos cï¿½digos ANTES de facturar. Si estï¿½n mal, te devuelven la factura y empiezas de cero.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">3. Seguimiento sistemático</h3>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">3. Seguimiento sistemï¿½tico</h3>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>Día 7: "Confirmadme recepción de la factura X"</li>
-            <li>Día 30: "¿Está aprobada la factura X?"</li>
-            <li>Día 45: "Falta confirmar fecha de pago"</li>
-            <li>Día 60: "Han pasado los 30 días desde conformidad. Solicito información de pago"</li>
+            <li>Dï¿½a 7: "Confirmadme recepciï¿½n de la factura X"</li>
+            <li>Dï¿½a 30: "ï¿½Estï¿½ aprobada la factura X?"</li>
+            <li>Dï¿½a 45: "Falta confirmar fecha de pago"</li>
+            <li>Dï¿½a 60: "Han pasado los 30 dï¿½as desde conformidad. Solicito informaciï¿½n de pago"</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si pasan 60 días sin pagar</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Si pasan 60 dï¿½as sin pagar</h2>
           <p className="text-zinc-300 leading-relaxed mb-4">Tienes 3 herramientas legales potentes:</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">A) Certificación expresa</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Pides al interventor que CERTIFIQUE el reconocimiento de la obligación. Una vez certificada, puedes ir a vía judicial directamente.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">A) Certificaciï¿½n expresa</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Pides al interventor que CERTIFIQUE el reconocimiento de la obligaciï¿½n. Una vez certificada, puedes ir a vï¿½a judicial directamente.</p>
 
-          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">B) Reclamación de intereses</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Pasados los 30 días desde conformidad, se devengan intereses + 40€ automáticos. Recláma por escrito mencionando la Ley 9/2017 y la Ley 3/2004.</p>
+          <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">B) Reclamaciï¿½n de intereses</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">Pasados los 30 dï¿½as desde conformidad, se devengan intereses + 40ï¿½ automï¿½ticos. Reclï¿½ma por escrito mencionando la Ley 9/2017 y la Ley 3/2004.</p>
 
           <h3 className="text-xl font-bold text-zinc-100 mt-6 mb-3">C) Procedimiento monitorio o ejecutivo</h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">Pasados 90 días, puedes ir a juzgado contencioso-administrativo. Con factura electrónica registrada en FACe, tienes prueba suficiente.</p>
+          <p className="text-zinc-300 leading-relaxed mb-4">Pasados 90 dï¿½as, puedes ir a juzgado contencioso-administrativo. Con factura electrï¿½nica registrada en FACe, tienes prueba suficiente.</p>
 
           <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Trucos que muchos no usan</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? <strong>Plan de pago a proveedores:</strong> algunos Ayuntamientos abren ventanas de "pago a 90 días con descuento del 2-3%". Vale la pena</li>
-            <li>? <strong>Cesión a empresa de cobro:</strong> hay empresas que compran tu factura administración a descuento del 5-10%</li>
-            <li>? <strong>Confirming público:</strong> ICO ofrece programas de pronto pago a proveedores de administración</li>
-            <li>? <strong>Junta Consultiva de Contratación:</strong> denuncia formal si retraso reiterado</li>
+            <li>? <strong>Plan de pago a proveedores:</strong> algunos Ayuntamientos abren ventanas de "pago a 90 dï¿½as con descuento del 2-3%". Vale la pena</li>
+            <li>? <strong>Cesiï¿½n a empresa de cobro:</strong> hay empresas que compran tu factura administraciï¿½n a descuento del 5-10%</li>
+            <li>? <strong>Confirming pï¿½blico:</strong> ICO ofrece programas de pronto pago a proveedores de administraciï¿½n</li>
+            <li>? <strong>Junta Consultiva de Contrataciï¿½n:</strong> denuncia formal si retraso reiterado</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cuándo NO trabajar con Administración</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mt-8 mb-4">Cuï¿½ndo NO trabajar con Administraciï¿½n</h2>
           <ul className="space-y-2 text-zinc-300 mb-6">
-            <li>? Si tu pyme no aguanta 60-120 días sin cobrar</li>
-            <li>? Si el importe es bajo (&lt;1.000€): no compensa el trámite</li>
-            <li>? Si Administración con histórico de morosidad publicado</li>
+            <li>? Si tu pyme no aguanta 60-120 dï¿½as sin cobrar</li>
+            <li>? Si el importe es bajo (&lt;1.000ï¿½): no compensa el trï¿½mite</li>
+            <li>? Si Administraciï¿½n con histï¿½rico de morosidad publicado</li>
           </ul>
         </section>
         <aside className="mt-12 bg-sky-500/10 border border-sky-500/30 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea sigue el ritmo de la Administración</h3>
-          <p className="text-zinc-300 mb-5">Recordatorios programados a 30/60/90 días con citas legales correctas (Ley 9/2017). Sin que tengas que llevar la cuenta. <strong>30 días gratis.</strong></p>
+          <h3 className="text-xl font-bold text-zinc-100 mb-2">Saldea sigue el ritmo de la Administraciï¿½n</h3>
+          <p className="text-zinc-300 mb-5">Recordatorios programados a 30/60/90 dï¿½as con citas legales correctas (Ley 9/2017). Sin que tengas que llevar la cuenta. <strong>30 dï¿½as gratis.</strong></p>
           <Link href="/registro" className="inline-block bg-sky-500 text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-sky-400 transition-colors">Probar Saldea gratis ?</Link>
         </aside>
       </div>
     </article>
+    </>
   )
 }
 
