@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "marsof.es" }],
+      "destination": "https://www.marsof.es/:path*",
+      "permanent": true
+    }
+  ],
   "crons": [
     {
       "path": "/api/cron",
