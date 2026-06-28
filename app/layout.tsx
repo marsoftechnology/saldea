@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
   applicationName: 'Saldea',
   title: {
-    default: 'Marsof — Software español para automatizar tu negocio',
+    default: 'Marsof Technology — Empresa tecnológica española con IA',
     template: '%s | Marsof',
   },
-  description: 'Marsof Technology, empresa española de software con sede en Huelva. Desarrolla Saldea, IA que automatiza el cobro de facturas para autónomos y pymes. 30 días gratis.',
+  description: 'Marsof Technology es una empresa tecnológica española especializada en inteligencia artificial para autónomos, gestorías y pymes. Tecnología innovadora hecha en España.',
   keywords: [
     'Marsof',
     'Marsof Technology',
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     siteName: 'Marsof',
     locale: 'es_ES',
     url: APP_URL,
-    title: 'Marsof — Software español para automatizar tu negocio',
-    description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 30 días gratis.',
+    title: 'Marsof Technology — Empresa tecnológica española con IA',
+    description: 'Empresa tecnológica española especializada en inteligencia artificial para autónomos, gestorías y pymes. Tecnología innovadora hecha en España.',
     images: [
       {
         url: '/opengraph-image',
@@ -72,8 +72,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@marsof_es',
-    title: 'Marsof — Software español para automatizar tu negocio',
-    description: 'Empresa española de software. Desarrollamos Saldea, IA que automatiza el cobro de facturas. 30 días gratis.',
+    title: 'Marsof Technology — Empresa tecnológica española con IA',
+    description: 'Empresa tecnológica española especializada en inteligencia artificial para autónomos, gestorías y pymes. Tecnología innovadora hecha en España.',
     images: ['/opengraph-image'],
   },
   robots: {
@@ -118,8 +118,8 @@ const schemaOrganizacion = {
     height: '630',
   },
   image: `${APP_URL}/og-image.png`,
-  description: 'Marsof Technology es una empresa española de software con sede en Huelva. Desarrolla Saldea, una IA que automatiza el cobro de facturas impagadas para autónomos y pymes.',
-  slogan: 'Software español para automatizar tu negocio',
+  description: 'Marsof Technology es una empresa tecnológica española con sede en Huelva, especializada en el desarrollo de soluciones con inteligencia artificial para autónomos, gestorías y pymes.',
+  slogan: 'Empresa tecnológica española con inteligencia artificial',
   founder: {
     '@type': 'Person',
     name: 'Carlos Gálvez Carrillo',
